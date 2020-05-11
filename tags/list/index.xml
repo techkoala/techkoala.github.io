@@ -1,27 +1,27 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>List - tag - TechKoala</title>
+        <title>List - 标签 - TechKoala</title>
         <link>https://ron159.github.io/tags/list/</link>
-        <description>List - tag - TechKoala</description>
+        <description>List - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Jan 2020 16:41:48 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/tags/list/" rel="self" type="application/rss+xml" /><item>
     <title>448. Find All Numbers Disappeared in an Array</title>
     <link>https://ron159.github.io/find-all-numbers-disappeared-in-an-array/</link>
     <pubDate>Thu, 02 Jan 2020 16:41:48 &#43;0800</pubDate>
-    <author></author>
+    <author>作者</author>
     <guid>https://ron159.github.io/find-all-numbers-disappeared-in-an-array/</guid>
     <description><![CDATA[1 2 3 4 5 6 7 class Solution: def findDisappearedNumbers(self, nums: List[int]) -&gt; List[int]: for n in nums: a = abs(n) - 1 #取得元素本应该出现的下标（位置） if nums[a] &gt; 0: nums[a] *= -1 #（对出现了的元素对应位置的元素做标记） return [i+1]]></description>
 </item><item>
     <title>169.Majority Element</title>
     <link>https://ron159.github.io/majority-element/</link>
     <pubDate>Thu, 02 Jan 2020 15:43:12 &#43;0800</pubDate>
-    <author></author>
+    <author>作者</author>
     <guid>https://ron159.github.io/majority-element/</guid>
     <description><![CDATA[暴力解法： 利用字典存储来遍历字典的方法，可以做，但是时间效率太低 遍历字典 1 d = {&#39;x&#39;: 1, &#39;y&#39;: 2, &#39;z&#39;: 3} 遍历keys 1 2 3 4 5 6 7 8 9 10 11 12 13 14 for key in d: print]]></description>
 </item><item>
     <title>121.Best Time to Buy and Sell Stock</title>
     <link>https://ron159.github.io/best-time-to-buy-and-sell-stock/</link>
     <pubDate>Thu, 02 Jan 2020 12:56:04 &#43;0800</pubDate>
-    <author></author>
+    <author>作者</author>
     <guid>https://ron159.github.io/best-time-to-buy-and-sell-stock/</guid>
     <description><![CDATA[此题知识点： float('inf') It acts as an unbounded upper value for comparison. This is useful for finding lowest values for something. for example, calculating path route costs when traversing trees. e.g. Finding the &ldquo;cheapest&rdquo; path in a list of options: 1 2 3 4 5 6 7 8 9 &gt;&gt;&gt; lowest_path_cost = float(&#39;inf&#39;) &gt;&gt;&gt; # pretend that these were calculated using some worthwhile algorithm &gt;&gt;&gt; path_costs]]></description>
 </item></channel>

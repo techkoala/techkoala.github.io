@@ -1,13 +1,13 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Software - category - TechKoala</title>
+        <title>Software - 分类 - TechKoala</title>
         <link>https://ron159.github.io/categories/software/</link>
-        <description>Software - category - TechKoala</description>
+        <description>Software - 分类 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/categories/software/" rel="self" type="application/rss+xml" /><item>
     <title>正在使用的软件</title>
     <link>https://ron159.github.io/softwares/</link>
     <pubDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</pubDate>
-    <author></author>
+    <author>作者</author>
     <guid>https://ron159.github.io/softwares/</guid>
     <description><![CDATA[多平台软件使用记录： ​ 1.粗体表示在多平台使用的软件 ​ 2.斜体表示优先选择表示商店版本(Windows &amp; Mac os) ​ 3.Linux优先选用对应包管]]></description>
 </item></channel>
