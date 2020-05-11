@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>TechKoala</title>
+        <link>https://ron159.github.io/</link>
+        <description>TechKoala的自留地</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 30 Dec 2019 16:53:54 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>Github推送问题</title>
+    <link>https://ron159.github.io/github_push_issue/</link>
+    <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
+    <author></author>
+    <guid>https://ron159.github.io/github_push_issue/</guid>
+    <description><![CDATA[权限被拒绝（公钥） ​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5]]></description>
+</item><item>
+    <title>448. Find All Numbers Disappeared in an Array</title>
+    <link>https://ron159.github.io/find-all-numbers-disappeared-in-an-array/</link>
+    <pubDate>Thu, 02 Jan 2020 16:41:48 &#43;0800</pubDate>
+    <author></author>
+    <guid>https://ron159.github.io/find-all-numbers-disappeared-in-an-array/</guid>
+    <description><![CDATA[1 2 3 4 5 6 7 class Solution: def findDisappearedNumbers(self, nums: List[int]) -&gt; List[int]: for n in nums: a = abs(n) - 1 #取得元素本应该出现的下标（位置） if nums[a] &gt; 0: nums[a] *= -1 #（对出现了的元素对应位置的元素做标记） return [i+1]]></description>
+</item><item>
+    <title>169.Majority Element</title>
+    <link>https://ron159.github.io/majority-element/</link>
+    <pubDate>Thu, 02 Jan 2020 15:43:12 &#43;0800</pubDate>
+    <author></author>
+    <guid>https://ron159.github.io/majority-element/</guid>
+    <description><![CDATA[暴力解法： 利用字典存储来遍历字典的方法，可以做，但是时间效率太低 遍历字典 1 d = {&#39;x&#39;: 1, &#39;y&#39;: 2, &#39;z&#39;: 3} 遍历keys 1 2 3 4 5 6 7 8 9 10 11 12 13 14 for key in d: print]]></description>
+</item><item>
+    <title>121.Best Time to Buy and Sell Stock</title>
+    <link>https://ron159.github.io/best-time-to-buy-and-sell-stock/</link>
+    <pubDate>Thu, 02 Jan 2020 12:56:04 &#43;0800</pubDate>
+    <author></author>
+    <guid>https://ron159.github.io/best-time-to-buy-and-sell-stock/</guid>
+    <description><![CDATA[此题知识点： float('inf') It acts as an unbounded upper value for comparison. This is useful for finding lowest values for something. for example, calculating path route costs when traversing trees. e.g. Finding the &ldquo;cheapest&rdquo; path in a list of options: 1 2 3 4 5 6 7 8 9 &gt;&gt;&gt; lowest_path_cost = float(&#39;inf&#39;) &gt;&gt;&gt; # pretend that these were calculated using some worthwhile algorithm &gt;&gt;&gt; path_costs]]></description>
+</item><item>
+    <title>正在使用的软件</title>
+    <link>https://ron159.github.io/softwares/</link>
+    <pubDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</pubDate>
+    <author></author>
+    <guid>https://ron159.github.io/softwares/</guid>
+    <description><![CDATA[多平台软件使用记录： ​ 1.粗体表示在多平台使用的软件 ​ 2.斜体表示优先选择表示商店版本(Windows &amp; Mac os) ​ 3.Linux优先选用对应包管]]></description>
+</item></channel>
+</rss>

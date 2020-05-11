@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - tag - TechKoala</title>
+        <link>https://ron159.github.io/tags/linux/</link>
+        <description>Linux - tag - TechKoala</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 10 May 2020 11:25:57 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Github推送问题</title>
+    <link>https://ron159.github.io/github_push_issue/</link>
+    <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
+    <author></author>
+    <guid>https://ron159.github.io/github_push_issue/</guid>
+    <description><![CDATA[权限被拒绝（公钥） ​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5]]></description>
+</item></channel>
+</rss>
