@@ -7,14 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Github推送问题 - TechKoala</title>
         <meta name="Description" content="TechKoala的自留地"><meta property="og:title" content="Github推送问题" />
-<meta property="og:description" content="权限被拒绝（公钥） ​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5" />
+<meta property="og:description" content="​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ron159.github.io/github_push_issue/" />
 <meta property="article:published_time" content="2020-05-10T11:25:57+08:00" />
 <meta property="article:modified_time" content="2020-05-10T11:25:57+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Github推送问题"/>
-<meta name="twitter:description" content="权限被拒绝（公钥） ​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5"/>
+<meta name="twitter:description" content="​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,7 +32,7 @@
                 "url": "https:\/\/ron159.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "Github, Git, Linux","wordcount":  267 ,
+            },"genre": "posts","keywords": "Github, Git, Linux","wordcount":  300 ,
         "url": "https:\/\/ron159.github.io\/github_push_issue\/","datePublished": "2020-05-10T11:25:57+08:00","dateModified": "2020-05-10T11:25:57+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
                 "@type": "Organization",
                 "name": "TechKoala",
@@ -122,7 +122,7 @@
                                 <i class="far fa-folder fa-fw"></i>Git
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-10>2020-05-10</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 267 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 300 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -132,11 +132,10 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#确认公钥已附加到账户">确认公钥已附加到账户</a></li>
-    <li><a href="#github添加">Github添加</a></li>
+    <li><a href="#添加到github">添加到Github</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="权限被拒绝公钥">权限被拒绝（公钥）</h1>
-<p>​	首先，使用如下命令检查问题详情：</p>
+            </div><div class="content" id="content"><p>​	首先，使用如下命令检查问题详情：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -222,7 +221,9 @@ $ ssh-add -l -E md5
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add /xxx/.ssh/xxx
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="github添加">Github添加</h2>
+</div><pre><code>注：不知为何，使用自定义名字的密钥，每次git操作都要重新添加一次，尚不明确原因。
+</code></pre>
+<h2 id="添加到github">添加到Github</h2>
 <p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -265,5 +266,8 @@ $ ssh-add -l -E md5
             </a>
         </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
     window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};
-</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-166130360-1',{ 'storage': 'none' });ga('set', 'anonymizeIp', true);ga('send', 'pageview');
+        </script><script type="text/javascript" src="https://www.google-analytics.com/analytics.js" async></script></body>
 </html>
