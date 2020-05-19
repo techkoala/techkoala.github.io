@@ -2,14 +2,18 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://ron159.github.io/tags/blog/</loc><lastmod>2020-05-12T22:14:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/categories/blog/</loc><lastmod>2020-05-12T22:14:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/categories/</loc><lastmod>2020-05-12T23:00:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/tags/hugo/</loc><lastmod>2020-05-12T22:14:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/hugo_loveit_q_a/</loc><lastmod>2020-05-12T22:14:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/posts/</loc><lastmod>2020-05-12T23:00:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/tags/qa/</loc><lastmod>2020-05-12T22:14:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://ron159.github.io/tags/</loc><lastmod>2020-05-12T23:00:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/categories/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/posts/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/tags/pve/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/pve_q_a/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/tags/qa/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/tags/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/tags/vm/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/categories/vm/</loc><lastmod>2020-05-19T15:34:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/tags/blog/</loc><lastmod>2020-05-13T23:10:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/categories/blog/</loc><lastmod>2020-05-13T23:10:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/tags/hugo/</loc><lastmod>2020-05-13T23:10:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://ron159.github.io/hugo_loveit_q_a/</loc><lastmod>2020-05-13T23:10:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://ron159.github.io/tags/nonsense/</loc><lastmod>2020-05-12T23:00:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://ron159.github.io/categories/nonsense/</loc><lastmod>2020-05-12T23:00:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://ron159.github.io/brief_history_of_qrcode/</loc><lastmod>2020-05-12T23:00:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

@@ -3,7 +3,14 @@
         <title>Q&amp;A - 标签 - TechKoala</title>
         <link>https://ron159.github.io/tags/qa/</link>
         <description>Q&amp;A - 标签 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 May 2020 21:54:02 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/tags/qa/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 May 2020 15:31:34 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/tags/qa/" rel="self" type="application/rss+xml" /><item>
+    <title>PVE安装Q&amp;A</title>
+    <link>https://ron159.github.io/pve_q_a/</link>
+    <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ron159.github.io/pve_q_a/</guid>
+    <description><![CDATA[PVE安装 Q&amp;A 近期将家里的服务器从Hyper-V迁移到PVE上。 目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS 目前的网络拓扑图如下： 网络拓扑]]></description>
+</item><item>
     <title>Hugo搭配LoveIt使用问题</title>
     <link>https://ron159.github.io/hugo_loveit_q_a/</link>
     <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
