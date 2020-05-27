@@ -27,7 +27,7 @@
 
 
 
-- [Bandizip](<https://en.bandisoft.com/bandizip/>)*(7.0版本已增加付费,暂时停留于6.25)*
+- [Bandizip](<https://en.bandisoft.com/bandizip/>)*(7.0版本已增加付费,停留于6.26)*
 
 - **[7-zip](<https://www.7-zip.org/download.html>)**
 
@@ -40,6 +40,8 @@
 
 
 - **[FDM](<https://www.freedownloadmanager.org/zh/>)**
+
+- **[Motrix](<https://motrix.app/>)**
 
 - ~~Eagleget~~ *(官方宣称是外国软件，查询证书为国产，原因不明)*
 
@@ -241,7 +243,9 @@
 
 - **[Meld](<https://meldmerge.org/>)** *(跨平台开源文件/文件夹对比软件)*
 
-- **[utools](<https://u.tools/>)**
+- **[Utools](<https://u.tools/>)**
+
+- [PowerToys](<https://github.com/microsoft/PowerToys/>)
 
 
 

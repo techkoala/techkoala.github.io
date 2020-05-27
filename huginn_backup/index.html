@@ -5,35 +5,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>PVE安装Q&amp;A - TechKoala</title>
-        <meta name="Description" content="TechKoala的自留地"><meta property="og:title" content="PVE安装Q&amp;A" />
-<meta property="og:description" content="PVE安装 Q&amp;A 近期将家里的服务器从Hyper-V迁移到PVE上。 目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS 目前的网络拓扑图如下： 网络拓扑" />
+        <title>Huginn（Docker）数据备份与恢复 - TechKoala</title>
+        <meta name="Description" content="TechKoala的自留地"><meta property="og:title" content="Huginn（Docker）数据备份与恢复" />
+<meta property="og:description" content="备份数据 使用命令在容器中生成备份： 1 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql 或直接拷贝数据到容器外： 1 $ docker exec -it huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql 恢复数据 首先复制文件到da" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ron159.github.io/pve_q_a/" />
-<meta property="article:published_time" content="2020-05-19T15:31:34+08:00" />
+<meta property="og:url" content="https://ron159.github.io/huginn_backup/" />
+<meta property="article:published_time" content="2020-05-27T23:06:20+08:00" />
 <meta property="article:modified_time" content="2020-05-27T23:17:41+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PVE安装Q&amp;A"/>
-<meta name="twitter:description" content="PVE安装 Q&amp;A 近期将家里的服务器从Hyper-V迁移到PVE上。 目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS 目前的网络拓扑图如下： 网络拓扑"/>
+<meta name="twitter:title" content="Huginn（Docker）数据备份与恢复"/>
+<meta name="twitter:description" content="备份数据 使用命令在容器中生成备份： 1 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql 或直接拷贝数据到容器外： 1 $ docker exec -it huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql 恢复数据 首先复制文件到da"/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ron159.github.io/pve_q_a/" /><link rel="prev" href="https://ron159.github.io/hugo_loveit_q_a/" /><link rel="next" href="https://ron159.github.io/huginn_backup/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ron159.github.io/huginn_backup/" /><link rel="prev" href="https://ron159.github.io/pve_q_a/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "PVE安装Q\u0026A",
+        "headline": "Huginn（Docker）数据备份与恢复",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ron159.github.io\/pve_q_a\/"
+            "@id": "https:\/\/ron159.github.io\/huginn_backup\/"
         },"image": {
                 "@type": "ImageObject",
                 "url": "https:\/\/ron159.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "Q\x26A, VM, PVE","wordcount":  381 ,
-        "url": "https:\/\/ron159.github.io\/pve_q_a\/","datePublished": "2020-05-19T15:31:34+08:00","dateModified": "2020-05-27T23:17:41+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            },"genre": "posts","keywords": "Huginn, Linux","wordcount":  120 ,
+        "url": "https:\/\/ron159.github.io\/huginn_backup\/","datePublished": "2020-05-27T23:06:20+08:00","dateModified": "2020-05-27T23:17:41+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
                 "@type": "Organization",
                 "name": "TechKoala",
                 "logo": {
@@ -114,13 +114,13 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">PVE安装Q&amp;A</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Huginn（Docker）数据备份与恢复</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;
-                    <span class="post-category">收录于<a href="/categories/vm/">
-                                <i class="far fa-folder fa-fw"></i>VM
+                    <span class="post-category">收录于<a href="/categories/linux/">
+                                <i class="far fa-folder fa-fw"></i>Linux
                             </a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-19>2020-05-19</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 381 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-27>2020-05-27</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 120 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -131,51 +131,57 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#1-temporary-failure-in-name-resolution">1. Temporary failure in name resolution：</a></li>
-        <li><a href="#2-群晖挂载硬盘">2. 群晖挂载硬盘：</a></li>
-        <li><a href="#3-pve节点监视图不显示时间为1970-1-1">3. PVE节点监视图不显示，时间为1970-1-1：</a></li>
-        <li><a href="#4-群晖socks代理">4. 群晖socks代理</a></li>
+        <li><a href="#备份数据">备份数据</a></li>
+        <li><a href="#恢复数据">恢复数据</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="pve安装-qa">PVE安装 Q&amp;A</h1>
-<p>近期将家里的服务器从Hyper-V迁移到PVE上。</p>
-<p>目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS</p>
-<p>目前的网络拓扑图如下：</p>
-<figure><a class="lightgallery" href="/images/PVE/%e6%8b%93%e6%89%91.png" title="/images/PVE/拓扑.png" data-thumbnail="/images/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
-        <img
-            class="lazyload"
-            src="/svg/loading/normal.min.svg"
-            data-src="/images/PVE/%e6%8b%93%e6%89%91.png"
-            data-srcset="/images/PVE/%e6%8b%93%e6%89%91.png, /images/PVE/%e6%8b%93%e6%89%91.png 1.5x, /images/PVE/%e6%8b%93%e6%89%91.png 2x"
-            data-sizes="auto"
-            alt="/images/PVE/拓扑.png" />
-    </a><figcaption class="image-caption">网络拓扑图</figcaption>
-    </figure>
-<p>将安装过程中遇到的问题以及解决方法整理如下：</p>
-<h3 id="1-temporary-failure-in-name-resolution">1. Temporary failure in name resolution：</h3>
-<p>由于开始使用路由器拨号，因此初次安装设置的DNS服务器为路由器地址，安装软路由后更改了地址，所以导致DNS服务器设置错误192.168.1.190&gt;192.168.1.1</p>
-<h3 id="2-群晖挂载硬盘">2. 群晖挂载硬盘：</h3>
-<p>PVE正确识别到了NTFS的一硬盘，但是群晖不能自动挂载。需要关机后，在PVE虚拟机管理界面，添加，然后重启才能识别。(否则显示为红色，同样的，移除硬件需要同样的操作)</p>
-<h3 id="3-pve节点监视图不显示时间为1970-1-1">3. PVE节点监视图不显示，时间为1970-1-1：</h3>
-<p>删除界面缓存文件即可：</p>
+            </div><div class="content" id="content"><h3 id="备份数据">备份数据</h3>
+<p>使用命令在容器中生成备份：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">rm /var/lib/rrdcached/db/pve2-node
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="4-群晖socks代理">4. 群晖socks代理</h3>
-<p>Openwrt安装luci-app-Privoxy，设置转发规则：</p>
+</div><p>或直接拷贝数据到容器外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">/ ip:port .
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="恢复数据">恢复数据</h3>
+<p>首先复制文件到daocker中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/wangjie/huginn_backupfile.sql huginn: /app/wjhuginn/huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div><p>然后进入docker：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来恢复数据库:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -189,23 +195,22 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/pve_q_a/index.md" target="_blank">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/huginn_backup/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A" data-hashtags="Q&A,VM,PVE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://ron159.github.io/pve_q_a/" data-hashtag="Q&amp;A"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A"><i class="fab fa-line fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://ron159.github.io/pve_q_a/" data-title="PVE安装Q&amp;A"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复" data-hashtags="Huginn,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://ron159.github.io/huginn_backup/" data-hashtag="Huginn"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复"><i class="fab fa-line fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://ron159.github.io/huginn_backup/" data-title="Huginn（Docker）数据备份与恢复"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/qa/">Q&amp;A</a>,&nbsp;<a href="/tags/vm/">VM</a>,&nbsp;<a href="/tags/pve/">PVE</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/huginn/">Huginn</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/hugo_loveit_q_a/" class="prev" rel="prev" title="Hugo搭配LoveIt使用问题"><i class="fas fa-angle-left fa-fw"></i>Hugo搭配LoveIt使用问题</a>
-            <a href="/huginn_backup/" class="next" rel="next" title="Huginn（Docker）数据备份与恢复">Huginn（Docker）数据备份与恢复<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/pve_q_a/" class="prev" rel="prev" title="PVE安装Q&amp;A"><i class="fas fa-angle-left fa-fw"></i>PVE安装Q&amp;A</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
