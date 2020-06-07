@@ -1,14 +1,71 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Blog - 标签 - TechKoala</title>
-        <link>https://ron159.github.io/tags/blog/</link>
+        <link>https://www.techkoala.top/tags/blog/</link>
         <description>Blog - 标签 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 May 2020 21:54:02 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/tags/blog/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 May 2020 21:54:02 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/blog/" rel="self" type="application/rss+xml" /><item>
     <title>Hugo搭配LoveIt使用问题</title>
-    <link>https://ron159.github.io/hugo_loveit_q_a/</link>
+    <link>https://www.techkoala.top/hugo_loveit_q_a/</link>
     <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/hugo_loveit_q_a/</guid>
-    <description><![CDATA[1.虚拟机中Hugo server无法远程访问 hugo server默认只会bind localhost 使用： 1 $ Hugo server --bind xxx.xxx.xxx.xxx 指定虚拟机IP，即可通过同网域机器访问该web]]></description>
+    <guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
+    <description><![CDATA[<h3 id="1虚拟机中hugo-server无法远程访问">1.虚拟机中Hugo server无法远程访问</h3>
+<p>hugo server默认只会bind localhost
+使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
+</code></pre></td></tr></table>
+</div>
+</div><p>指定虚拟机IP，即可通过同网域机器访问该web服务</p>
+<h3 id="2使用git信息生成文章上一次修改时间">2.使用git信息生成文章上一次修改时间</h3>
+<p>首先，启用git信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">enableGitInfo = true
+</code></pre></td></tr></table>
+</div>
+</div><p>然后，启用gitRepo参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">gitRepo = &#34;/xxx/xxxx/.git/&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是：</p>
+<ul>
+<li>这里.git应该init在hugo生成的项目根目录中</li>
+<li>但是这样，如果只push public文件夹到Github上部署的话，网页上无法正确跳转对应的commit详情页。</li>
+</ul>
+<h3 id="3页面出现extra-stringxxxx">3.页面出现%!(EXTRA string=xxxx)</h3>
+<p>LoveIt Github Issue提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreffer">解决方案</a></p>
+<p>但实际通过修改config.toml中的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">defaultContentLanguage = &#34;zh&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">defaultContentLanguage = &#34;zh-cn&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>即可解决。</p>
+]]></description>
 </item></channel>
 </rss>

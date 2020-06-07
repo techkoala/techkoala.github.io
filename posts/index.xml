@@ -1,77 +1,736 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>所有文章 - TechKoala</title>
-        <link>https://ron159.github.io/posts/</link>
+        <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 27 May 2020 23:06:20 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 27 May 2020 23:06:20 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Huginn（Docker）数据备份与恢复</title>
-    <link>https://ron159.github.io/huginn_backup/</link>
+    <link>https://www.techkoala.top/huginn_backup/</link>
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/huginn_backup/</guid>
-    <description><![CDATA[备份数据 使用命令在容器中生成备份： 1 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql 或直接拷贝数据到容器外： 1 $ docker exec -it huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql 恢复数据 首先复制文件到da]]></description>
+    <guid>https://www.techkoala.top/huginn_backup/</guid>
+    <description><![CDATA[<h3 id="备份数据">备份数据</h3>
+<p>使用命令在容器中生成备份：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div><p>或直接拷贝数据到容器外：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="恢复数据">恢复数据</h3>
+<p>首先复制文件到daocker中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/wangjie/huginn_backupfile.sql huginn: /app/wjhuginn/huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div><p>然后进入docker：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来恢复数据库:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
 </item><item>
     <title>PVE安装Q&amp;A</title>
-    <link>https://ron159.github.io/pve_q_a/</link>
+    <link>https://www.techkoala.top/pve_q_a/</link>
     <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/pve_q_a/</guid>
-    <description><![CDATA[PVE安装 Q&amp;A 近期将家里的服务器从Hyper-V迁移到PVE上。 目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS 目前的网络拓扑图如下： 网络拓扑]]></description>
+    <guid>https://www.techkoala.top/pve_q_a/</guid>
+    <description><![CDATA[<h1 id="pve安装-qa">PVE安装 Q&amp;A</h1>
+<p>近期将家里的服务器从Hyper-V迁移到PVE上。</p>
+<p>目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS</p>
+<p>目前的网络拓扑图如下：</p>
+<figure><a class="lightgallery" href="/images/PVE/%e6%8b%93%e6%89%91.png" title="/images/PVE/拓扑.png" data-thumbnail="/images/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
+        
+    </a><figcaption class="image-caption">网络拓扑图</figcaption>
+    </figure>
+<p>将安装过程中遇到的问题以及解决方法整理如下：</p>
+<h3 id="1-temporary-failure-in-name-resolution">1. Temporary failure in name resolution：</h3>
+<p>由于开始使用路由器拨号，因此初次安装设置的DNS服务器为路由器地址，安装软路由后更改了地址，所以导致DNS服务器设置错误192.168.1.190&gt;192.168.1.1</p>
+<h3 id="2-群晖挂载硬盘">2. 群晖挂载硬盘：</h3>
+<p>PVE正确识别到了NTFS的一硬盘，但是群晖不能自动挂载。需要关机后，在PVE虚拟机管理界面，添加，然后重启才能识别。(否则显示为红色，同样的，移除硬件需要同样的操作)</p>
+<h3 id="3-pve节点监视图不显示时间为1970-1-1">3. PVE节点监视图不显示，时间为1970-1-1：</h3>
+<p>删除界面缓存文件即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell">rm /var/lib/rrdcached/db/pve2-node
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-群晖socks代理">4. 群晖socks代理</h3>
+<p>Openwrt安装luci-app-Privoxy，设置转发规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell">/ ip:port .
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
 </item><item>
     <title>Hugo搭配LoveIt使用问题</title>
-    <link>https://ron159.github.io/hugo_loveit_q_a/</link>
+    <link>https://www.techkoala.top/hugo_loveit_q_a/</link>
     <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/hugo_loveit_q_a/</guid>
-    <description><![CDATA[1.虚拟机中Hugo server无法远程访问 hugo server默认只会bind localhost 使用： 1 $ Hugo server --bind xxx.xxx.xxx.xxx 指定虚拟机IP，即可通过同网域机器访问该web]]></description>
+    <guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
+    <description><![CDATA[<h3 id="1虚拟机中hugo-server无法远程访问">1.虚拟机中Hugo server无法远程访问</h3>
+<p>hugo server默认只会bind localhost
+使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
+</code></pre></td></tr></table>
+</div>
+</div><p>指定虚拟机IP，即可通过同网域机器访问该web服务</p>
+<h3 id="2使用git信息生成文章上一次修改时间">2.使用git信息生成文章上一次修改时间</h3>
+<p>首先，启用git信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">enableGitInfo = true
+</code></pre></td></tr></table>
+</div>
+</div><p>然后，启用gitRepo参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">gitRepo = &#34;/xxx/xxxx/.git/&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是：</p>
+<ul>
+<li>这里.git应该init在hugo生成的项目根目录中</li>
+<li>但是这样，如果只push public文件夹到Github上部署的话，网页上无法正确跳转对应的commit详情页。</li>
+</ul>
+<h3 id="3页面出现extra-stringxxxx">3.页面出现%!(EXTRA string=xxxx)</h3>
+<p>LoveIt Github Issue提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreffer">解决方案</a></p>
+<p>但实际通过修改config.toml中的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">defaultContentLanguage = &#34;zh&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">defaultContentLanguage = &#34;zh-cn&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>即可解决。</p>
+]]></description>
 </item><item>
     <title>改变世界的条形码</title>
-    <link>https://ron159.github.io/brief_history_of_qrcode/</link>
+    <link>https://www.techkoala.top/brief_history_of_qrcode/</link>
     <pubDate>Tue, 12 May 2020 17:59:52 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/brief_history_of_qrcode/</guid>
-    <description><![CDATA[注：本文是最早以TechKoala的名字所写的文章，发布于电脑爱好者2013年第06期。 说来当时以邮汇方式发的稿费至今没有收到，2333 面对]]></description>
+    <guid>https://www.techkoala.top/brief_history_of_qrcode/</guid>
+    <description><![CDATA[<pre><code>注：本文是最早以TechKoala的名字所写的文章，发布于电脑爱好者2013年第06期。
+    说来当时以邮汇方式发的稿费至今没有收到，2333
+</code></pre>
+<p>  面对我们随时可以看见的条形码，说出来你也许会不信，如果没有这个家伙，整个世界的经济都无法正常运行。这些黑白条码不但能让机场不弄丢你的行李，能对快件的包裹进行跟踪，而且还能在网上对各种信件进行查询。它们既可以用在食品包装上，也可以用在图书的扉页。这个时候看看手上的《电脑爱好者》杂志，你发现了吗？</p>
+<h3 id="条形码的由来">条形码的由来</h3>
+<p>  三十多年前的一天，一位名叫道森的购物者走进马什超市，购买了一包箭牌口香糖，扫扫条形码然后付钱。这在今天稀疏平常的事，当时却是标志性事件—由此，条形码迎来了它的里程碑，从此走到你我的眼前。</p>
+<figure><a class="lightgallery" href="images/Brief_history_of_QRCode/wood.jpg" title="images/Brief_history_of_QRCode/wood.jpg" data-thumbnail="images/Brief_history_of_QRCode/wood.jpg" data-sub-html="<h2>伍德蓝德</h2>">
+        
+    </a><figcaption class="image-caption">伍德蓝德</figcaption>
+    </figure>
+<p>  说到条形码，就不得不说它的发明者——伍德蓝德。他出生于新泽西州，从小便对技术发明具有浓厚的兴趣，具备非凡的动手能力。他生长在二战前后，战争期间，他不得不中断学业，参与研发原子弹的曼哈顿工程，这个看似八竿子打不着边的事，却使他对发明愈发迷恋。二战之后，美国经济快速发展，规模宏大的超市面临着一个巨大的问题，他们无法精确掌握库存情况，唯一的办法是手工清理，但耗时又费力。于是他们向德雷赛尔大学求助，恰巧伍德蓝德得知，于是，伍德蓝德开始与自己的朋友苏沃一起研究这个解决方案。蓝德本来是出于商业目的，但随着研究的深入，这项工作彻底改变了他的人生。类似历史上的诸多发明，开始时，蓝德遇到了许多次失败，但他没有放弃。他毅然辍学全心投入，坚信成功不远，但总差那么一层窗户纸。后来，他去了迈阿密的住所放松，那里有优美的居住环境、安静的思考空间，他期待能有灵感迸发。</p>
+<p>  老天不负有心人。有一天，他在沙滩坐定，苦苦思索：“如何才能给每件物品分类呢？编号？对！莫尔斯电码？可是这样太复杂了，一般人也没办法分辨。”想到此，他开始无聊地在沙滩上用手画沙子，一条一条，突然，一个神奇的图案出现在蓝德脑海—如果用粗细、间距不同的竖线构成图案，那就可以实现对商品编码。就这样，条码的原型在沙滩上诞生了。待到出现文章开头的一幕时，已经过去了三十多年，可喜的是，我们的主人公是一位有耐心的人。</p>
+<h3 id="条形码的标准与应用">条形码的标准与应用</h3>
+<p>  与现在的条形码不同，蓝德发明的第一条条形码不是由线条构成，而是一组同心圆，通过照片扫描器读取。它形如箭靶，美国人称其为“公牛眼”。遗憾的是，以美国当时的工艺和经济水平，他们还没有能力印制出这种编码。</p>
+<figure><a class="lightgallery" href="images/Brief_history_of_QRCode/first_code.png" title="images/Brief_history_of_QRCode/first_code.png" data-thumbnail="images/Brief_history_of_QRCode/first_code.png" data-sub-html="<h2>公牛眼</h2>">
+        
+    </a><figcaption class="image-caption">公牛眼</figcaption>
+    </figure>
+<p>  后来，伍德蓝德加入了IBM公司，并把自己的专利卖给了IBM。然而，伟大的成果却并非属于IBM，几经转手，机遇来到了RCA公司。直到条形码大展宏图时，IBM公司里的人才知道：“哦，原来发明条形码的人就在我们公司。”</p>
+<p>  我们目前所知的第一个商用条形码出现于1966年，但人们很快就意识到应该为其制定出一个行业标准。</p>
+<p>  两年后的夏天，应国家食物连锁协会要求，Logicon公司开发出了食品工业统一码（UGPIC）。随后，美国统一编码协会建立了UPC码系统，并且实现了该码制的标准化。UPC码首先在杂货零售业中试用，俄亥俄州的Marsh超级市场安装了由NCR（IBM公司的前身）制造的第一台UPC扫描器，而第一个被收银员扫描的便是文章开头所说的标价69美分的十片装箭牌口香糖。</p>
+<p>  直到现在，我们都不可否认的是，正是零售业的成功应用才促进了条形码技术的发展。</p>
+<p>  目前，全球每天大约要扫描80亿次条形码。而普华永道公司的一项研究报告表明，条形码每年仅在超市和大众零售领域就能为客户、零售商和制造商节约300亿美元的成本。令人感到遗憾的是，伍德兰德的朋友，条形码联合发明人苏沃并没有亲眼看到条形码的商业化应用，他在自己38岁的时候（1962年）英年早逝。而伍德蓝德则在1992年被当时的美国总统布什授予了国家科技奖章。</p>
+<p>  令人遗憾的是，前不久，伍德蓝也不幸地告别了人世。据《纽约时代》报道，他于美国当地时间2012年12月9日在自己新泽西的家中逝世，享年91岁。蓝德的女儿苏珊评价父亲说：“他参与了整个系统的设计，从使用者的站立方式、激光扫描仪高度到如何保护人们的眼睛不受激光刺激，他是一个绝对的完美主义者。”</p>
+<h3 id="条形码的未来">条形码的未来</h3>
+<p>  今天，条形码已经占据我们生活的每个角落，从超市购买的食品到手中握住的杂志，我们依靠条形码管理我们的生活，条形码技术也在不断进步。</p>
+<p>  其实，如今风生水起的二维码也属于条形码，作为后起之秀，它比它的前辈更进一步。自从它出现以来，得到了人们的广泛关注，发展十分迅速。</p>
+<p>  二维条形码最早发明于日本，它是用某种特定的几何图形按一定规律在平面（二维方向上）分布的黑白相间的图形记录数据符号信息的，在代码编制上巧妙地利用构成计算机内部逻辑基础的“0”、“1”比特流的概念，使用若干个与二进制相对应的几何形体来表示文字数值信息，通过图像输入设备或光电扫描设备自动识读以实现信息自动处理。它具有条形码技术的一些共性：每种码制有其特定的字符集；每个字符占有一定的宽度；具有一定的校验功能等。同时还具有对不同行的信息自动识别功能、处理图形旋转变化等特点。</p>
+<p>  一维条形码虽然提高了资料收集与资料处理的速度，但由于受到资料容量的限制，一维条形码仅能标识商品，而不能描述商品，因此相当依赖电脑网络和资料库。在没有资料库或不便连网的地方，一维条形码很难派上用场。此外一维条形码有一个明显的缺点，即垂直方向不携带资料，故资料密度偏低。当初这样设计有二个目的：（1）为了保证局部损坏的条形码仍可正确辨识；（2）使扫描容易完成。</p>
+<p>  要提高资料密度，又要在一个固定面积上印出所需资料，可用二种方法来解决：（1）在一维条形码的基础上向二维条形码方向扩展；（2）利用图像识别原理，采用新的几何形体和结构设计出二维条形码。前者发展出堆叠式（Stacked）二维条形码，后者则有矩阵式（Matrix）二维条形码之发展，构成现今二维条形码的两大类型：</p>
+<p><code>堆叠式二维条形码的编码原理是建立在一维条形码的基础上，将一维条形码的高度变窄，再依需要堆成多行，其在编码设计、检查原理、识读方式等方面都继承了一维条形码的特点，但由于行数增加，对行的辨别、解码算法及软件则与一维条形码有所不同。较具代表性的堆叠式二维条形码有PDF417、Code16K、Supercode、Code49等。</code></p>
+<p><code>矩阵式二维条形码是以矩阵的形式组成，在矩阵相应元素位置上，用点的出现表示二进制的“1”，不出现表示二进制的“0”，点的排列组合确定了矩阵码所代表的意义。其中点可以是方点、圆点或其他形状的点。矩阵码是建立在电脑图像处理技术、组合编码原理等基础上的图形符号自动辨识的码制，已较不适合用“条形码”称之。具有代表性的矩阵式二维条形码有Datamatrix、Maxicode、Vericode、Softstrip、Code1、Philips Dot Code等。</code></p>
+<p>  二维条形码的新技术在1980年代晚期逐渐被重视，在“资料储存量大”、“资讯随着产品走”、“可以传真影印”、“错误纠正能力高”等特性下，二维条形码在1990年代初期已逐渐被使用。现在，几乎所有的社交软件都具备扫一扫的功能，对着抽象的图案一扫，迎来一个多彩的世界已经成为许多人的习惯。</p>
+<p>  马化腾在去年九月开幕的互联网大会的演讲中便说到：“从微信强化扫二维码的功能之后，我们希望把这个行为定义成更加普及，老百姓一看到码就去扫的概念。我们前几天还在网上看到一个新的名词，就是扫墓，看到墓碑有那个二维码，一扫描就看到这个墓碑的主人过去的生平介绍等等，这些都是非常典型的应用。”</p>
+<p>  或许，墓碑的例子有些夸张，但是，你不能否认，条形码越来越贴近我们的生活，不再只是局限于购物。也许未来，我们的一切都涵盖在那小小的方寸之间。</p>
+<hr>
+<p>  碰巧，时隔多年把这篇文章重新整理出来的时候，回形针正好发布了一期关于二维码的视频：</p>
+<div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1Y54y1D7cT&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
+
+<p>  放在这里，作为补充。</p>
+]]></description>
 </item><item>
     <title>Symbian的前世今生</title>
-    <link>https://ron159.github.io/brief_history_of_symbian/</link>
+    <link>https://www.techkoala.top/brief_history_of_symbian/</link>
     <pubDate>Mon, 11 May 2020 22:57:01 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/brief_history_of_symbian/</guid>
-    <description><![CDATA[注：这是一篇写于2013年的文章，时过境迁，仅表怀念。 毫不夸张的说,今天我们所拥有的一切,都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃]]></description>
+    <guid>https://www.techkoala.top/brief_history_of_symbian/</guid>
+    <description><![CDATA[<pre><code>注：这是一篇写于2013年的文章，时过境迁，仅表怀念。
+</code></pre>
+<p>  毫不夸张的说,今天我们所拥有的一切,都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃它的卡顿，都无法改变它作为手机智能操作系统鼻祖的地位。当山寨机还在襁褓中时，当伪智能还在浪费人们的时间时，作为先驱的它便已上路。大多数人接触的第一款真正的智能手机系统，它把软件下载，游戏安装，刷机破解等诸多名词第一次带到了大众视野。它叫Symbian，也曾辉煌。三十年河东，三十年河西，科技领域本就没有常青树。虽然如今已经沦落，但不妨碍我们一起回味它曾经的辉煌。</p>
+<h3 id="混沌之初symbian伊始">混沌之初，Symbian伊始</h3>
+<p>​  Symbian，源自一家充满梦想的公司。</p>
+<p>  1980年，potter在伦敦成立了Psion公司，这家以数字产品开发和研究为目的，为率先使用电子设备的大公司服务的小公司便是Symbian的生母。随着公司的发展，Psion开始浸淫移动终端市场，他们生产的各类移动设备不仅皮实耐用还能按需求定制，凭借这种“开放移动”的理念，Psion在上世纪90年代 成为了欧洲较成功的PDA生产商，进而促进了EPOC的诞生。在potter看来，EPOC是一种面向普通大众的便携系统。正如他的全称“A new epoch of personal convenience.”（一个人人方便使用电子产品的新时代），他被Psion给予了对于人机交互未来的憧憬。</p>
+<p>  犹如一代闪电，EPOC划开了混沌的天空，不过真正的风暴才刚来临。</p>
+<p>  1991年到1998年，Psion发布了几款给予EPOC 16的的设备，作为早期产品，免不了简陋无比，它们充其量只能算是PDA模块，只是方便了厂商研发新品。</p>
+<p>  真正让EPOC走向成熟的是一位叫做Nicholas Myers 的程序设计师。1994年，他在构思下一代EPOC时，设定了开发适应21世纪技术性能的系统的目标。正是这样的思路。让他把握住了市场脉搏。1997年，他成为Psion旗下Symbian软件公司的CEO，其上任后发布的EPOC 32操作系统，比起前辈，已有了翻天覆地的变化。吸引了人们以及投资者的兴趣。今天我们吧Myers成为“Symbian之父”。</p>
+<p>  EPOC 32与windows极为相似，它是一套32位的系统，支持多任务，拥有图形化美观的界面。鉴于当时几乎没有可以直接用于手机的操作系统，它的问世，一下子汇聚了厂商的目光。不过，任何一项新技术新产品的诞生都需要时间的推敲，智能手机系统作为新兴事物，没有哪家厂商敢冒险直接挺近。一番商榷之后，1998年，爱立信、诺基亚、摩托罗拉和Psion共同成立了一家公司，目的是推进手机和PDA的智能化，它就是我们今天熟知的“Symbian”。</p>
+<h3 id="拉帮结派飞速发展">拉帮结派，飞速发展</h3>
+<p>  联盟的成立不仅吸引了大量手机厂商，一些上有配件商，例如ARM和德州仪器都加入了合作计划。</p>
+<p>  Symbian从一成立便秉持着开放的理念，任何组织和个人都能为其开发软件。但刚成立那几年，公司都未能推出一款真真意义上的产品，巨头们也只是作为附属项目在发展。直到1999年，Symbian OS v5平台作为第一款成熟的产品被设计出来，为了争夺“谁是世界上第一台智能手机”，爱立信没有经过完成的DEBUG，就匆忙的把他推向市场，生产出Erisson R380。同时期，摩托也推迟了自己的天拓A6188。可实际上，两者中无论哪个都不能算严格意义上的智能手机，它们连软件都不能自由安装，真正算起来，搭载了os v5.1的诺基亚9210才符合智能机最基本的定义，由此，诺基亚开始领先于其他厂商并保持到了最后。</p>
+<p>  众所周知，利益面前必有纠纷。诺基亚的崛起必然伴随了很多厂商的陨落，同时，它的存在也让联盟中其他有实力的厂商感到了危机，这为后来阵营的割分埋下了导火索。</p>
+<p>  Symbian成立之初提出了著名的三分法：Pearl(珍珠）、Quartz(石英）和Crystal（水晶）。分别对应手机的三大发展趋势：标砖键盘、触摸屏以及全键盘。诺基亚依靠Pearl迅速赢得了市场，逼迫索尼爱立信和摩托罗拉只能另寻他路&ndash;Quartz。于是，联盟分为了两大派系，一是以诺基亚牵头的S系列平台，再者便是索尼爱立信主打UIQ。诺基亚凭借标准键盘占据了大半江山，而后者则主攻触摸屏。这种同床异梦的现象愈演愈烈，直接导致了联盟崩溃的迫近。</p>
+<p>  当然，上述现象只是苗头，整个联盟正处于高速发展阶段。2002年，微软的WM系统进入市场，这个原本被人们誉为“Symbian终结者”的系统，却远没有它的大哥一般占据市场，反而被后者打的满地找牙。与此同时，诺基亚更是凭借Pearl进一步扩展帝国的领土，N70、N73、N95的横空出世，为诺基亚扎实了自己的实力，待到Symbian王朝最鼎盛时，这个姓塞的家族占据了72%的智能手机市场，其中更是有九成乃至如日中天的诺基亚。直到现在，都没有哪一家厂商甚至哪一个操作系统打破这个纪录。</p>
+<h3 id="兄弟反目联盟瓦解">兄弟反目，联盟瓦解</h3>
+<p>  正如上文所说，一家独大必然引发隐患。而事实证明那一天来了。2008年，UIQ宣布倒闭。究其原因，一方面是由于它自身定位与市场的极大反差，而另一方面便是来自于诺基亚的压力。相比S60，开发者在这个平台上的收益远不及前者。应用程序的短缺自然局限了消费者的购买欲，如此一来，倒闭似乎只是时间问题了。诺基亚的持续壮大，扼杀了其他厂商的利润，长此以往，天平的过分了倾斜让别的厂商不得不退出Symbian的纷争。UIQ的倒闭，标志着诺基亚对于Symbian掌控的最大化，后者从此只有一个主人了。</p>
+<p>  联盟名存实亡，但诺基亚为了避嫌，标榜着“开放”而成立了Symbian基金会，继续推向面向所有开发者开放的原则，明则共享资源，暗则染指一统智能市场。不幸的是，这是iPhone和Android问世了。后来的结果，各位看官一定也都清楚。诺基亚的美梦做早了，自大的它快走到了末路。</p>
+<p>  多年以后，关于那个一统江湖的传说，早已沦为笑谈罢了。</p>
+<h3 id="成也symbian败也symbian">成也Symbian，败也Symbian</h3>
+<p>  船大难掉头。巨头对于市场末端的变化总是慢半拍。身处多年王位的诺基亚早已麻痹了大意。UIQ的倒闭，让其认为触摸屏不被市场接受，继续推进S60这个老迈的系统被诺基亚看做唯一路线。iPhone的面市彻底颠覆了人们对于智能手机的认识，一度让人们认为iPhone重新定义了智能手机。市场的反应也确实印证了这一点，我们的双手确实是最适合操作的工具。但固守己见的诺基亚貌似看不到这一变化，迟迟不肯跳出键盘的定式思维。虽然后来确实推出了几款诸如5800这样销量很不错的触屏手机，当一切来的太晚，苹果做大了，随后的绿皮机器人也成熟了，Symbian王朝彻底步入了晚年。</p>
+<p>  失去市场号召力的诺基亚此时的地位一落千丈，对于Symbian的态度也是一日三变。曾一度把源代码挂在网站上任人下载，随后又宣布只面向企业用户开源。这时的诺基亚真的急了。不愿投奔机器人阵营沦落为硬件制作商的他，竟甘心跪倒在昔日手下败将的裙下。2011年12月，Symbian Belle正式更名为诺基亚Belle。诺基亚连名字都不行再见的Symbian从此已经不复存在。</p>
+<p>  然而，这并不意味着Symbian彻底的灭亡。名字虽然没有了，但产品依旧没有改变，与其说它灭亡不如说它失去了原来那般强大的市场号召力。毕竟，凭借S40在低端市场的畅销，诺基亚还能在手机市场分的一杯羹。</p>
+<h3 id="未来未来">未来？未来！</h3>
+<p>  向微软投怀送抱之后，诺基亚在Symbian的建树彻底才枯思竭。以至于不得不推出808这样依靠单一买点为噱头吸引市场关注的“帐篷手机”。Symbian的今生今世已经无话可说。而未来又在何方？原本打算有所期盼的笔者，本来打算对它的未来有所展望和揣测，不幸的是，本文截稿前的1月24日，诺基亚公布了2012年第四季度最新的财政业绩报告显示，该季度诺基亚实现净利润2.02亿欧元，告别6连亏，但同时诺基亚官方宣称去年在巴塞罗那发布的808PureView将会是最后一款塞班手机，这也意味着塞班这一已经被使用了15年之久的智能手机操作系统终于将告别市场，而诺基亚在智能手机领域也终于百分之百微软化。 诺基亚CEO斯蒂芬·埃洛普表示：“2012财年上半年相对艰难，但第四财季表现强劲，设备和服务部门的运营利润率得到了改善。我们将继续执行既定的转移战略，包括继续提升产品竞争力，加速运营，管理成本等。”</p>
+<p>  因此，至少在看得见的未来，Symbian已经没有了未来！</p>
+<h3 id="末了">末了</h3>
+<p>  无论多么强大的文明都有覆灭的一天，帝国如是，企业如是。在暗潮汹涌的科技领域，公司不能推出迎合市场口味，顺应市场变化的产品，迎来的就只有倒闭。在创新与颠覆这条路上，Symbian不是第一个倒下的，也不会是最后一个。</p>
+<pre><code>P.S.谨以此文献给那些成长路上的人和事，Symbian没了，坛子没有了，但我们都还在。
+    这些有关我们青春的事逝去也就随他去了，至少我们还有彼此。</code></pre>
+]]></description>
 </item><item>
     <title>Github推送问题</title>
-    <link>https://ron159.github.io/github_push_issue/</link>
+    <link>https://www.techkoala.top/github_push_issue/</link>
     <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/github_push_issue/</guid>
-    <description><![CDATA[​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval]]></description>
-</item><item>
-    <title>448. Find All Numbers Disappeared in an Array</title>
-    <link>https://ron159.github.io/find-all-numbers-disappeared-in-an-array/</link>
-    <pubDate>Thu, 02 Jan 2020 16:41:48 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://ron159.github.io/find-all-numbers-disappeared-in-an-array/</guid>
-    <description><![CDATA[1 2 3 4 5 6 7 class Solution: def findDisappearedNumbers(self, nums: List[int]) -&gt; List[int]: for n in nums: a = abs(n) - 1 #取得元素本应该出现的下标（位置） if nums[a] &gt; 0: nums[a] *= -1 #（对出现了的元素对应位置的元素做标记） return [i+1]]></description>
-</item><item>
-    <title>169.Majority Element</title>
-    <link>https://ron159.github.io/majority-element/</link>
-    <pubDate>Thu, 02 Jan 2020 15:43:12 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://ron159.github.io/majority-element/</guid>
-    <description><![CDATA[暴力解法： 利用字典存储来遍历字典的方法，可以做，但是时间效率太低 遍历字典 1 d = {&#39;x&#39;: 1, &#39;y&#39;: 2, &#39;z&#39;: 3} 遍历keys 1 2 3 4 5 6 7 8 9 10 11 12 13 14 for key in d: print]]></description>
-</item><item>
-    <title>121.Best Time to Buy and Sell Stock</title>
-    <link>https://ron159.github.io/best-time-to-buy-and-sell-stock/</link>
-    <pubDate>Thu, 02 Jan 2020 12:56:04 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://ron159.github.io/best-time-to-buy-and-sell-stock/</guid>
-    <description><![CDATA[此题知识点： float('inf') It acts as an unbounded upper value for comparison. This is useful for finding lowest values for something. for example, calculating path route costs when traversing trees. e.g. Finding the &ldquo;cheapest&rdquo; path in a list of options: 1 2 3 4 5 6 7 8 9 &gt;&gt;&gt; lowest_path_cost = float(&#39;inf&#39;) &gt;&gt;&gt; # pretend that these were calculated using some worthwhile algorithm &gt;&gt;&gt; path_costs]]></description>
+    <guid>https://www.techkoala.top/github_push_issue/</guid>
+    <description><![CDATA[<p>​	首先，使用如下命令检查问题详情：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh -vT git@github.com
+</code></pre></td></tr></table>
+</div>
+</div><p>​	然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
+$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+&gt; Agent pid <span class="m">59566</span>
+$ ssh-add -l
+&gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	如果使用的是 OpenSSH 6.8 或更新版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
+$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+&gt; Agent pid <span class="m">59566</span>
+$ ssh-add -l -E md5
+&gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="确认公钥已附加到账户">确认公钥已附加到账户</h2>
+<p>​	在后台启动 SSH 代理程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+&gt; Agent pid <span class="m">59566</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	找到并记录公钥指纹。 如果使用的是 OpenSSH 6.7 或更早版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l
+&gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	如果使用的是 OpenSSH 6.8 或更新版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l -E md5
+&gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	如果没有添加，则</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add /xxx/.ssh/xxx
+</code></pre></td></tr></table>
+</div>
+</div><pre><code>注：不知为何，使用自定义名字的密钥，每次git操作都要重新添加一次，尚不明确原因。
+</code></pre>
+<h2 id="添加到github">添加到Github</h2>
+<p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>
+]]></description>
 </item><item>
     <title>正在使用的软件</title>
-    <link>https://ron159.github.io/softwares/</link>
+    <link>https://www.techkoala.top/softwares/</link>
     <pubDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/softwares/</guid>
-    <description><![CDATA[多平台软件使用记录： ​ 1.粗体表示在多平台使用的软件 ​ 2.斜体表示优先选择表示商店版本(Windows &amp; Mac os) ​ 3.Linux优先选用对应包管]]></description>
+    <guid>https://www.techkoala.top/softwares/</guid>
+    <description><![CDATA[<h1 id="多平台软件使用记录">多平台软件使用记录：</h1>
+<p>​    1.粗体表示在多平台使用的软件</p>
+<p>​    2.斜体表示优先选择表示商店版本(Windows &amp; Mac os)</p>
+<p>​    3.Linux优先选用对应包管理器安装</p>
+<h3 id="浏览器">浏览器</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreffer">Chrome</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener noreffer">FireFox</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.microsoftedgeinsider.com/zh-cn/download" target="_blank" rel="noopener noreffer">Microsoft Edge</a></strong></p>
+</li>
+</ul>
+<h3 id="压缩解压缩">压缩/解压缩</h3>
+<ul>
+<li>
+<p><a href="https://en.bandisoft.com/bandizip/" target="_blank" rel="noopener noreffer">Bandizip</a><em>(7.0版本已增加付费,停留于6.26)</em></p>
+</li>
+<li>
+<p><strong><a href="https://www.7-zip.org/download.html" target="_blank" rel="noopener noreffer">7-zip</a></strong></p>
+</li>
+<li>
+<p><a href="https://www.peazip.org/" target="_blank" rel="noopener noreffer">Peazip</a></p>
+</li>
+</ul>
+<h3 id="下载软件">下载软件</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.freedownloadmanager.org/zh/" target="_blank" rel="noopener noreffer">FDM</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://motrix.app/" target="_blank" rel="noopener noreffer">Motrix</a></strong></p>
+</li>
+<li>
+<p><del>Eagleget</del> <em>(官方宣称是外国软件，查询证书为国产，原因不明)</em></p>
+</li>
+<li>
+<p><strong><a href="https://www.resilio.com/individuals-sync/" target="_blank" rel="noopener noreffer">Resilio Sync</a></strong></p>
+</li>
+<li>
+<p><a href="https://www.internetdownloadmanager.com/" target="_blank" rel="noopener noreffer">IDM</a></p>
+</li>
+<li>
+<p><a href="https://aria2.github.io/" target="_blank" rel="noopener noreffer">Aria2</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mayswind/AriaNg" target="_blank" rel="noopener noreffer">Aria2NG</a></p>
+</li>
+<li>
+<p><a href="https://curl.haxx.se/" target="_blank" rel="noopener noreffer">Curl</a></p>
+</li>
+<li>
+<p><a href="https://www.gnu.org/software/wget/" target="_blank" rel="noopener noreffer">Wget</a></p>
+</li>
+</ul>
+<h3 id="游戏平台及工具">游戏平台及工具</h3>
+<ul>
+<li>
+<p><a href="https://www.blizzardgames.cn/zh/" target="_blank" rel="noopener noreffer">战网</a></p>
+</li>
+<li>
+<p><a href="https://store.steampowered.com/about/" target="_blank" rel="noopener noreffer">Steam</a></p>
+</li>
+<li>
+<p><a href="https://www.origin.com/sgp/en-us/store/download" target="_blank" rel="noopener noreffer">Origin</a></p>
+</li>
+<li>
+<p><a href="https://uplay.ubisoft.com/zh-cn" target="_blank" rel="noopener noreffer">Uplay</a></p>
+</li>
+<li>
+<p><a href="https://www.gog.com/" target="_blank" rel="noopener noreffer">GOG Galaxy</a></p>
+</li>
+<li>
+<p><a href="https://uu.163.com/" target="_blank" rel="noopener noreffer">网易UU</a></p>
+</li>
+<li>
+<p><a href="https://support.logi.com/hc/zh-cn/articles/360025298053" target="_blank" rel="noopener noreffer">Logitech鼠标驱动</a></p>
+</li>
+</ul>
+<h3 id="code">Code</h3>
+<ul>
+<li>
+<p><strong><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreffer">Visual studio code</a></strong></p>
+</li>
+<li>
+<p><a href="https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.google.com%2F" target="_blank" rel="noopener noreffer">Visual studio 2019</a></p>
+</li>
+<li>
+<p><strong><a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreffer">Python3</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://ww2.mathworks.cn/products/matlab.html" target="_blank" rel="noopener noreffer">Matlab</a></strong></p>
+</li>
+<li>
+<p><a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener noreffer">Pycharm-professional</a></p>
+</li>
+<li>
+<p><a href="https://www.jetbrains.com/go/" target="_blank" rel="noopener noreffer">Goland</a></p>
+</li>
+<li>
+<p><a href="https://golang.org/" target="_blank" rel="noopener noreffer">Go</a></p>
+</li>
+</ul>
+<h3 id="文档工具">文档工具</h3>
+<ul>
+<li>
+<p>Office 365</p>
+</li>
+<li>
+<p><a href="https://otp.landian.vip/zh-cn/" target="_blank" rel="noopener noreffer">Office tools plus</a><em>(office套件管理工具)</em></p>
+</li>
+<li>
+<p><strong><a href="https://typora.io/" target="_blank" rel="noopener noreffer">Typora</a></strong></p>
+</li>
+<li>
+<p><a href="https://www.islide.cc/" target="_blank" rel="noopener noreffer">iSlide Tools</a></p>
+</li>
+<li>
+<p><em>DrawBoard PDF</em></p>
+</li>
+<li>
+<p><a href="https://get.adobe.com/cn/reader/otherversions/" target="_blank" rel="noopener noreffer">Adobe acrobat DC</a></p>
+</li>
+<li>
+<p><a href="http://cajviewer.cnki.net/" target="_blank" rel="noopener noreffer">CAJViewer</a></p>
+</li>
+<li>
+<p><a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener noreffer">Visio</a></p>
+</li>
+<li>
+<p><em>OneNote</em></p>
+</li>
+<li>
+<p><strong><a href="https://www.notion.so/" target="_blank" rel="noopener noreffer">Notion</a></strong></p>
+</li>
+</ul>
+<h3 id="视频音乐">视频&amp;音乐</h3>
+<ul>
+<li>
+<p><a href="https://potplayer.daum.net/" target="_blank" rel="noopener noreffer">Potplayer</a></p>
+</li>
+<li>
+<p><em>斗鱼</em></p>
+</li>
+<li>
+<p><em>网易云音乐</em></p>
+</li>
+<li>
+<p><em>Mp3tag</em> <em>(歌曲信息管理)</em></p>
+</li>
+<li>
+<p><em>foobar2000</em></p>
+</li>
+<li>
+<p><a href="https://www.videolan.org/vlc/index.html" target="_blank" rel="noopener noreffer">VLC</a></p>
+</li>
+<li>
+<p><a href="https://github.com/shakrmedia/petal" target="_blank" rel="noopener noreffer">Petal</a><em>(Linux下豆瓣FM第三方客户端)</em></p>
+</li>
+</ul>
+<h3 id="网盘工具">网盘工具</h3>
+<ul>
+<li>
+<p>Onedrive</p>
+</li>
+<li>
+<p><a href="https://www.raidrive.com/" target="_blank" rel="noopener noreffer">RaiDrive</a></p>
+</li>
+<li>
+<p><strong><a href="https://rclone.org/downloads/" target="_blank" rel="noopener noreffer">Rclone</a></strong></p>
+</li>
+<li>
+<p><del>Speedpan</del> <em>(已转Pandownload)</em></p>
+</li>
+<li>
+<p><del><a href="https://pandownload.com/" target="_blank" rel="noopener noreffer">Pandownload</a></del> <em>(已失效，尽量避免使用百度网盘)</em></p>
+</li>
+<li>
+<p><a href="https://www.goodsync.com/" target="_blank" rel="noopener noreffer">Goodsync</a></p>
+</li>
+</ul>
+<h3 id="即时通信">即时通信</h3>
+<ul>
+<li>
+<p><strong><a href="https://desktop.telegram.org/" target="_blank" rel="noopener noreffer">Telegram</a></strong></p>
+</li>
+<li>
+<p><em><del>Unigram</del></em> <em>(Telegram第三方客户端，相较官方客户端增加了PC端的端到端加密聊天功能)</em></p>
+</li>
+<li>
+<p><em>微信</em></p>
+</li>
+<li>
+<p><em>QQ</em></p>
+</li>
+</ul>
+<h3 id="密码管理">密码管理</h3>
+<ul>
+<li><em><strong><a href="https://www.enpass.io/" target="_blank" rel="noopener noreffer">Enpass</a></strong></em></li>
+</ul>
+<h3 id="网络工具">网络工具</h3>
+<ul>
+<li>
+<p><del><a href="https://shadowsocks.org/en/download/servers.html" target="_blank" rel="noopener noreffer">Shadowsocks-libev</a></del> <em>(转向vmess协议)</em></p>
+</li>
+<li>
+<p><del>Sstap</del> <em>(停止更新)</em></p>
+</li>
+<li>
+<p><del><a href="https://github.com/2dust/v2rayN" target="_blank" rel="noopener noreffer">V2rayN</a></del> <em>(已转Clash，支持更加灵活的规则和配置文件管理)</em></p>
+</li>
+<li>
+<p><a href="https://github.com/Dreamacro/clash" target="_blank" rel="noopener noreffer">Clash</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Fndroid/clash_for_windows_pkg/releases" target="_blank" rel="noopener noreffer">Clash for Windows</a></p>
+</li>
+<li>
+<p><a href="https://github.com/yichengchen/clashX" target="_blank" rel="noopener noreffer">ClashX</a></p>
+</li>
+<li>
+<p><a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener noreffer">Fiddler</a></p>
+</li>
+<li>
+<p><a href="https://www.ipip.net/product/client.html" target="_blank" rel="noopener noreffer">Best Trace</a></p>
+</li>
+<li>
+<p><del><a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener noreffer">MobaXterm</a></del> <em>(已转Termius,多端同步)</em></p>
+</li>
+<li>
+<p><strong><a href="https://termius.com/" target="_blank" rel="noopener noreffer">Termius</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.zerotier.com/" target="_blank" rel="noopener noreffer">ZeroTier One</a></strong></p>
+</li>
+<li>
+<p><a href="https://remmina.org/" target="_blank" rel="noopener noreffer">Remmina</a> <em>(Linux下远程桌面)</em></p>
+</li>
+<li>
+<p><strong><a href="https://www.wireshark.org/" target="_blank" rel="noopener noreffer">Wireshark</a></strong></p>
+</li>
+</ul>
+<h3 id="效率工具">效率工具</h3>
+<ul>
+<li>
+<p><del><a href="https://getquicker.net/" target="_blank" rel="noopener noreffer">Quicker</a></del> <em>(已转utools)</em></p>
+</li>
+<li>
+<p><del><a href="http://www.wox.one/" target="_blank" rel="noopener noreffer">Wox</a></del> <em>(已转utools)</em></p>
+</li>
+<li>
+<p><a href="http://www.yingdev.com/projects/wgestures" target="_blank" rel="noopener noreffer">WGestures</a> <em>(Windows鼠标手势)</em></p>
+</li>
+<li>
+<p><a href="https://github.com/Mapaler/FastCopy-M" target="_blank" rel="noopener noreffer">Fastcopy-M</a> <em>(基于原版的二次开发)</em></p>
+</li>
+<li>
+<p><a href="https://www.voidtools.com/zh-cn/" target="_blank" rel="noopener noreffer">Everything</a></p>
+</li>
+<li>
+<p><em>Pollar</em></p>
+</li>
+<li>
+<p><a href="https://github.com/thjaeger/easystroke/wiki/BuildInstructions" target="_blank" rel="noopener noreffer">Easystroke</a><em>(Linux鼠标手势)</em></p>
+</li>
+<li>
+<p><del><a href="https://www.scootersoftware.com/download.php" target="_blank" rel="noopener noreffer">Bcompare</a></del> <em>(已用Meld代替)</em></p>
+</li>
+<li>
+<p><strong><a href="https://meldmerge.org/" target="_blank" rel="noopener noreffer">Meld</a></strong> <em>(跨平台开源文件/文件夹对比软件)</em></p>
+</li>
+<li>
+<p><strong><a href="https://u.tools/" target="_blank" rel="noopener noreffer">Utools</a></strong></p>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/PowerToys/" target="_blank" rel="noopener noreffer">PowerToys</a></p>
+</li>
+</ul>
+<h3 id="软件磁盘管理">软件&amp;磁盘管理</h3>
+<ul>
+<li>
+<p><del><a href="https://www.ccleaner.com/" target="_blank" rel="noopener noreffer">CCleaner</a></del></p>
+</li>
+<li>
+<p><a href="https://www.chuyu.me/" target="_blank" rel="noopener noreffer">Dism++</a></p>
+</li>
+<li>
+<p><a href="https://scoop.sh/" target="_blank" rel="noopener noreffer">Scoop</a> <em>(PowerShell包管理器)</em></p>
+</li>
+<li>
+<p><a href="https://geekuninstaller.com/" target="_blank" rel="noopener noreffer">Geek Uninstaller</a></p>
+</li>
+<li>
+<p><a href="http://www.uderzo.it/main_products/space_sniffer/" target="_blank" rel="noopener noreffer">SpaceSniffer</a></p>
+</li>
+<li>
+<p><em>CrystalDiskMark</em></p>
+</li>
+<li>
+<p><a href="https://crystalmark.info/en/software/crystaldiskinfo/" target="_blank" rel="noopener noreffer">CrystalDiskInfo</a></p>
+</li>
+<li>
+<p><a href="http://www.diskgenius.cn/" target="_blank" rel="noopener noreffer">DiskGenius</a></p>
+</li>
+</ul>
+<h3 id="安全工具">安全工具</h3>
+<ul>
+<li>
+<p><a href="https://www.huorong.cn/" target="_blank" rel="noopener noreffer">火绒</a></p>
+</li>
+<li>
+<p><a href="https://www.sandboxie.com/" target="_blank" rel="noopener noreffer">Sandboxie</a></p>
+</li>
+</ul>
+<h3 id="虚拟机">虚拟机</h3>
+<ul>
+<li><a href="https://www.vmware.com/cn.html" target="_blank" rel="noopener noreffer">VMware Workstation Pro</a></li>
+</ul>
+<h3 id="阅读">阅读</h3>
+<ul>
+<li>
+<p><strong><del><a href="http://irreader.fatecore.com/" target="_blank" rel="noopener noreffer">irreader</a></del></strong></p>
+</li>
+<li>
+<p><a href="https://lzone.de/liferea/" target="_blank" rel="noopener noreffer">Liferea</a></p>
+</li>
+<li>
+<p><strong><a href="https://chrome.google.com/webstore/detail/feedbro/mefgmmbdailogpfhfblcnnjfmnpnmdfa?hl=en" target="_blank" rel="noopener noreffer">FeedBro</a></strong> <em>(Chrome插件)</em></p>
+</li>
+</ul>
+<h3 id="cli">Cli</h3>
+<ul>
+<li>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH" target="_blank" rel="noopener noreffer">Zsh</a></p>
+</li>
+<li>
+<p><a href="https://ohmyz.sh/" target="_blank" rel="noopener noreffer">Oh-my-zsh</a> <em>(插件见配置文件)</em></p>
+</li>
+<li>
+<p><a href="https://github.com/denisidoro/navi" target="_blank" rel="noopener noreffer">Navi</a></p>
+</li>
+<li>
+<p><a href="https://github.com/KittyKatt/screenFetch" target="_blank" rel="noopener noreffer">Screenfetch</a></p>
+</li>
+<li>
+<p><a href="https://hisham.hm/htop/" target="_blank" rel="noopener noreffer">Htop</a></p>
+</li>
+</ul>
+<h3 id="系统工具">系统工具</h3>
+<ul>
+<li>
+<p><a href="https://www.bleachbit.org/" target="_blank" rel="noopener noreffer">BleachBit</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jonls/redshift" target="_blank" rel="noopener noreffer">Redshift</a></p>
+</li>
+<li>
+<p>Deepin-wine</p>
+</li>
+<li>
+<p><a href="https://hub.docker.com/" target="_blank" rel="noopener noreffer">Docker</a></p>
+</li>
+<li>
+<p><a href="https://github.com/teejee2008/timeshift" target="_blank" rel="noopener noreffer">TimeShift</a><em>(系统备份)</em></p>
+</li>
+<li>
+<p><a href="https://better365.cn/" target="_blank" rel="noopener noreffer">Better and Better</a></p>
+</li>
+<li>
+<p><a href="https://bjango.com/mac/istatmenus/" target="_blank" rel="noopener noreffer">iStat Menus</a></p>
+</li>
+</ul>
+<h3 id="邮件">邮件</h3>
+<ul>
+<li><a href="https://www.thunderbird.net/zh-CN/" target="_blank" rel="noopener noreffer">Thunderbird</a></li>
+</ul>
+]]></description>
 </item></channel>
 </rss>

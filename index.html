@@ -6,11 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>TechKoala</title>
-        <meta name="Description" content="TechKoala的自留地"><meta property="og:title" content="TechKoala" />
+        <title>TechKoala</title><meta name="Description" content="TechKoala的自留地"><meta property="og:title" content="TechKoala" />
 <meta property="og:description" content="TechKoala的自留地" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ron159.github.io/" />
+<meta property="og:url" content="https://www.techkoala.top/" />
 <meta property="og:updated_time" content="2019-12-30T16:53:54+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TechKoala"/>
@@ -18,18 +17,18 @@
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ron159.github.io/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="TechKoala">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="TechKoala">
     <link rel="feed" href="/index.xml" type="application/rss+xml" title="TechKoala"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "WebSite",
-        "url": "https:\/\/ron159.github.io\/","inLanguage": "zh-CN","author": {
+        "url": "https:\/\/www.techkoala.top\/","inLanguage": "zh-CN","author": {
                 "@type": "Person",
                 "name": "TechKoala"
-            },"description": "TechKoala的自留地","image": "https:\/\/ron159.github.io\/cover.png","thumbnailUrl": "https:\/\/ron159.github.io\/logo.png","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","name": "TechKoala"
+            },"description": "TechKoala的自留地","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","name": "TechKoala"
     }
     </script></head>
-    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -92,83 +91,45 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="page home"><div class="home-profile"><div class="home-avatar"><a href="/posts" title="文章"><img
+                <div class="container"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="/posts" title="文章"><img
         class="lazyload"
-        src="/svg/loading/small.min.svg"
+        src="/svg/loading.min.svg"
         data-src="/images/avatar.png"
         data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
         data-sizes="auto"
-        alt="文章"
-        title="文章" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="social-links"><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
+        alt="/images/avatar.png"
+        title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/huginn_backup/">Huginn（Docker）数据备份与恢复</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">
-            发布于&nbsp;<time datetime=2020-05-27>2020-05-27</time>
-        </span>&nbsp;
-            <span class="post-category">收录于<a href="/categories/linux/">
-                        <i class="far fa-folder fa-fw"></i>Linux
-                    </a></span></div><div class="content">备份数据 使用命令在容器中生成备份： 1 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql 或直接拷贝数据到容器外： 1 $ docker exec -it huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql 恢复数据 首先复制文件到da</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-05-27">2020-05-27</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">备份数据 使用命令在容器中生成备份： 1 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql 或直接拷贝数据到容器外： 1 $ docker exec -it huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql 恢复数据 首先复制文件到da</div><div class="post-footer">
         <a href="/huginn_backup/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/huginn/">Huginn</a>,&nbsp;<a href="/tags/linux/">Linux</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/pve_q_a/">PVE安装Q&amp;A</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">
-            发布于&nbsp;<time datetime=2020-05-19>2020-05-19</time>
-        </span>&nbsp;
-            <span class="post-category">收录于<a href="/categories/vm/">
-                        <i class="far fa-folder fa-fw"></i>VM
-                    </a></span></div><div class="content">PVE安装 Q&amp;A 近期将家里的服务器从Hyper-V迁移到PVE上。 目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS 目前的网络拓扑图如下： 网络拓扑</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-05-19">2020-05-19</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/vm/"><i class="far fa-folder fa-fw"></i>VM</a></span></div><div class="content">PVE安装 Q&amp;A 近期将家里的服务器从Hyper-V迁移到PVE上。 目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS 目前的网络拓扑图如下： 网络拓扑</div><div class="post-footer">
         <a href="/pve_q_a/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/qa/">Q&amp;A</a>,&nbsp;<a href="/tags/vm/">VM</a>,&nbsp;<a href="/tags/pve/">PVE</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/hugo_loveit_q_a/">Hugo搭配LoveIt使用问题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">
-            发布于&nbsp;<time datetime=2020-05-12>2020-05-12</time>
-        </span>&nbsp;
-            <span class="post-category">收录于<a href="/categories/blog/">
-                        <i class="far fa-folder fa-fw"></i>Blog
-                    </a></span></div><div class="content">1.虚拟机中Hugo server无法远程访问 hugo server默认只会bind localhost 使用： 1 $ Hugo server --bind xxx.xxx.xxx.xxx 指定虚拟机IP，即可通过同网域机器访问该web</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-05-12">2020-05-12</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/blog/"><i class="far fa-folder fa-fw"></i>Blog</a></span></div><div class="content">1.虚拟机中Hugo server无法远程访问 hugo server默认只会bind localhost 使用： 1 $ Hugo server --bind xxx.xxx.xxx.xxx 指定虚拟机IP，即可通过同网域机器访问该web</div><div class="post-footer">
         <a href="/hugo_loveit_q_a/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/blog/">Blog</a>,&nbsp;<a href="/tags/hugo/">Hugo</a>,&nbsp;<a href="/tags/qa/">Q&amp;A</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/brief_history_of_qrcode/">改变世界的条形码</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">
-            发布于&nbsp;<time datetime=2020-05-12>2020-05-12</time>
-        </span>&nbsp;
-            <span class="post-category">收录于<a href="/categories/nonsense/">
-                        <i class="far fa-folder fa-fw"></i>Nonsense
-                    </a></span></div><div class="content">注：本文是最早以TechKoala的名字所写的文章，发布于电脑爱好者2013年第06期。 说来当时以邮汇方式发的稿费至今没有收到，2333 面对</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-05-12">2020-05-12</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/nonsense/"><i class="far fa-folder fa-fw"></i>Nonsense</a></span></div><div class="content">注：本文是最早以TechKoala的名字所写的文章，发布于电脑爱好者2013年第06期。 说来当时以邮汇方式发的稿费至今没有收到，2333 面对</div><div class="post-footer">
         <a href="/brief_history_of_qrcode/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nonsense/">Nonsense</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/brief_history_of_symbian/">Symbian的前世今生</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">
-            发布于&nbsp;<time datetime=2020-05-11>2020-05-11</time>
-        </span>&nbsp;
-            <span class="post-category">收录于<a href="/categories/nonsense/">
-                        <i class="far fa-folder fa-fw"></i>Nonsense
-                    </a></span></div><div class="content">注：这是一篇写于2013年的文章，时过境迁，仅表怀念。 毫不夸张的说,今天我们所拥有的一切,都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-05-11">2020-05-11</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/nonsense/"><i class="far fa-folder fa-fw"></i>Nonsense</a></span></div><div class="content">注：这是一篇写于2013年的文章，时过境迁，仅表怀念。 毫不夸张的说,今天我们所拥有的一切,都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃</div><div class="post-footer">
         <a href="/brief_history_of_symbian/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nonsense/">Nonsense</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/github_push_issue/">Github推送问题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">
-            发布于&nbsp;<time datetime=2020-05-10>2020-05-10</time>
-        </span>&nbsp;
-            <span class="post-category">收录于<a href="/categories/github/">
-                        <i class="far fa-folder fa-fw"></i>Github
-                    </a>&nbsp;<a href="/categories/git/">
-                        <i class="far fa-folder fa-fw"></i>Git
-                    </a></span></div><div class="content">​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-05-10">2020-05-10</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/github/"><i class="far fa-folder fa-fw"></i>Github</a>&nbsp;<a href="/categories/git/"><i class="far fa-folder fa-fw"></i>Git</a></span></div><div class="content">​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval</div><div class="post-footer">
         <a href="/github_push_issue/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a>,&nbsp;<a href="/tags/linux/">Linux</a></div></div>
-</article>
-<ul class="pagination"><li class="page-item active">
+</article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
@@ -187,10 +148,8 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
-    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"data":{"id-1":"人最优秀的品质之一是适应性强（不畏艰难），最差劲的品质之一也是适应性强（同流合污）。他们去适应，去忍受诋毁侮辱，不惜赴汤蹈火，虽然困难重重，但是从不退缩。"},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};
-</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', 'UA-166130360-1',{ 'storage': 'none' });ga('set', 'anonymizeIp', true);ga('send', 'pageview');
-        </script><script type="text/javascript" src="https://www.google-analytics.com/analytics.js" async></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"data":{"id-1":"人最优秀的品质之一是适应性强（不畏艰难），最差劲的品质之一也是适应性强（同流合污）。他们去适应，去忍受诋毁侮辱，不惜赴汤蹈火，虽然困难重重，但是从不退缩。"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>
 </html>

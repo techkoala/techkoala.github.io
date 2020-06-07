@@ -1,14 +1,61 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Huginn - 标签 - TechKoala</title>
-        <link>https://ron159.github.io/tags/huginn/</link>
+        <link>https://www.techkoala.top/tags/huginn/</link>
         <description>Huginn - 标签 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 27 May 2020 23:06:20 &#43;0800</lastBuildDate><atom:link href="https://ron159.github.io/tags/huginn/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 27 May 2020 23:06:20 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/huginn/" rel="self" type="application/rss+xml" /><item>
     <title>Huginn（Docker）数据备份与恢复</title>
-    <link>https://ron159.github.io/huginn_backup/</link>
+    <link>https://www.techkoala.top/huginn_backup/</link>
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://ron159.github.io/huginn_backup/</guid>
-    <description><![CDATA[备份数据 使用命令在容器中生成备份： 1 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql 或直接拷贝数据到容器外： 1 $ docker exec -it huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql 恢复数据 首先复制文件到da]]></description>
+    <guid>https://www.techkoala.top/huginn_backup/</guid>
+    <description><![CDATA[<h3 id="备份数据">备份数据</h3>
+<p>使用命令在容器中生成备份：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div><p>或直接拷贝数据到容器外：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="恢复数据">恢复数据</h3>
+<p>首先复制文件到daocker中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/wangjie/huginn_backupfile.sql huginn: /app/wjhuginn/huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div><p>然后进入docker：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来恢复数据库:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
 </item></channel>
 </rss>
