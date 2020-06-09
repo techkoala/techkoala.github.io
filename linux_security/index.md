@@ -7,7 +7,7 @@
 
 ### 常用日志文件
 
-Debian以及RHEL系的系统日志是由一个名为syslog的服务管理的，如以下日志文件都是由syslog日志服务驱动的：
+**Debian**以及**RHEL**系的系统日志是由一个名为syslog的服务管理的，如以下日志文件都是由syslog日志服务驱动的：
 
 `/var/log/boot.log`：记录了系统在引导过程中发生的事件，就是Linux系统开机自检过程显示的信息
 
@@ -27,13 +27,13 @@ Debian以及RHEL系的系统日志是由一个名为syslog的服务管理的，�
 
 **`/var/log/auth.log`或`/var/log/secure`存储来自可插拔认证模块(PAM)的日志，包括成功的登录，失败的登录尝试和认证方式。**
 
-    注：Ubuntu 和 Debian 在/var/log/auth.log 中存储认证信息
-       而RHEL或CentOS 则在/var/log/secure 中存储。
+    注：**Debian**系在/var/log/auth.log 中存储认证信息而**RHEL**系则在/var/log/secure 中存储。
 
-        Archlinux使用systemd 提供的日志系统（logging system），称为 journal。
-        使用 systemd 日志，无需额外安装日志服务（syslog），具体内容待补充。
+**Archlinux**使用`systemd`提供的日志系统（logging system），称为`journal`。使用 systemd 日志，无需额外安装日志服务（syslog）。
 
-### 日志查看命令
+
+
+### 相关日志查看命令
 
 ```bash
 $ cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | awk '{print $2" = "$1;}'
@@ -139,6 +139,35 @@ $ awk -F: '$2=="!!" {print $1}' /etc/shadow
 
 然后查看`/etc/passwd`确认空口令用户是否可以登录，选择是否加固密码。
 
+#### 登录失败后强制延时
+
+在`/etc/pam.d/system-login`中添加`auth optional pam_faildelay.so delay=4000000`，表示延时4秒（单位微秒）
+
+#### 限制root权限
+
+可以为单个用户启用单个程序的 root 权限，而不用为了运行一个程序启用该用户对 root 的完整访问权。例如，要授予用户 alice 对特定程序的访问权限：
+
+编辑`/etc/sudoers`
+
+```shell
+$ visudo
+```
+
+  - 若要指定visudo的默认编辑器，最好是修改`/etc/sudoers`中的`Defaults editor=xxxx`
+  
+    而不是使用
+
+    ```shell
+    $ EDITOR=nano visudo
+    ```
+
+    因为任何程序都可以通过该命令指定作为编辑器，存在风险。
+
+添加：
+
+`alice ALL = NOPASSWD: /path/to/program`
+
+
 ### 关闭不必要的服务
 
 **例如：** 某台Linux服务器用于www应用，那么除了httpd服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：
@@ -189,3 +218,5 @@ $ find / -nouser -o –nogroup
 - [1] Linux服务器为什么被黑？
 
 - [2] [linux系统安全加固--账号相关](https://www.cnblogs.com/doublexi/p/9636506.html)
+
+- [3] [Security - Archlinux Wiki](https://wiki.archlinux.org/index.php/Security)
