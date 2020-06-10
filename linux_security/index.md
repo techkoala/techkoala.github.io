@@ -1,7 +1,10 @@
 # Linux安全分析与加固
 
+   {{< image src="/images/Linux/linux.png" >}} 
 
     记录一些常见的Linux服务器安全问题分析以及防护措施
+
+<!--more-->
 
 ## 日志分析
 

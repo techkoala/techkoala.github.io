@@ -9,14 +9,16 @@
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/huginn_backup/</guid>
-    <description><![CDATA[<h3 id="备份数据">备份数据</h3>
+    <description><![CDATA[<pre><code>简单介绍使用Docker运行的Huginn数据的备份与恢复
+</code></pre>
+<h3 id="备份数据">备份数据</h3>
 <p>使用命令在容器中生成备份：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>或直接拷贝数据到容器外：</p>
@@ -25,7 +27,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="恢复数据">恢复数据</h3>
@@ -35,7 +37,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入docker：</p>
@@ -44,7 +46,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -ti huginn bash
 </code></pre></td></tr></table>
 </div>
 </div><p>接下来恢复数据库:</p>
@@ -53,7 +55,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>
@@ -444,7 +446,6 @@
 <h3 id="邮件">邮件</h3>
 <ul>
 <li><a href="https://www.thunderbird.net/zh-CN/" target="_blank" rel="noopener noreffer">Thunderbird</a></li>
-</ul>
-]]></description>
+</ul>]]></description>
 </item></channel>
 </rss>

@@ -2,7 +2,7 @@
     <channel>
         <title>TechKoala</title>
         <link>https://www.techkoala.top/</link>
-        <description>TechKoala的自留地</description>
+        <description>TechKoala&#39;s自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 30 Dec 2019 16:53:54 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
@@ -11,7 +11,10 @@
     <pubDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/linux_security/</guid>
-    <description><![CDATA[<pre><code>记录一些常见的Linux服务器安全问题分析以及防护措施
+    <description><![CDATA[<a class="lightgallery" href="/images/Linux/linux.png" title="/images/Linux/linux.png" data-thumbnail="/images/Linux/linux.png">
+        
+    </a>
+<pre><code>记录一些常见的Linux服务器安全问题分析以及防护措施
 </code></pre>
 <h2 id="日志分析">日志分析</h2>
 <h3 id="常用日志文件">常用日志文件</h3>
@@ -229,22 +232,23 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <li>
 <p>[3] <a href="https://wiki.archlinux.org/index.php/Security" target="_blank" rel="noopener noreffer">Security - Archlinux Wiki</a></p>
 </li>
-</ul>
-]]></description>
+</ul>]]></description>
 </item><item>
     <title>Huginn（Docker）数据备份与恢复</title>
     <link>https://www.techkoala.top/huginn_backup/</link>
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/huginn_backup/</guid>
-    <description><![CDATA[<h3 id="备份数据">备份数据</h3>
+    <description><![CDATA[<pre><code>简单介绍使用Docker运行的Huginn数据的备份与恢复
+</code></pre>
+<h3 id="备份数据">备份数据</h3>
 <p>使用命令在容器中生成备份：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>或直接拷贝数据到容器外：</p>
@@ -253,7 +257,7 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="恢复数据">恢复数据</h3>
@@ -263,7 +267,7 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入docker：</p>
@@ -272,7 +276,7 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -ti huginn bash
 </code></pre></td></tr></table>
 </div>
 </div><p>接下来恢复数据库:</p>
@@ -281,7 +285,7 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>
@@ -291,7 +295,9 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
     <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/pve_q_a/</guid>
-    <description><![CDATA[<h1 id="pve安装-qa">PVE安装 Q&amp;A</h1>
+    <description><![CDATA[<pre><code>PVE安装过程中遇到的问题以及解决方法
+</code></pre>
+<h1 id="pve安装-qa">PVE安装 Q&amp;A</h1>
 <p>近期将家里的服务器从Hyper-V迁移到PVE上。</p>
 <p>目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS</p>
 <p>目前的网络拓扑图如下：</p>
@@ -331,15 +337,17 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
     <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
-    <description><![CDATA[<h3 id="1虚拟机中hugo-server无法远程访问">1.虚拟机中Hugo server无法远程访问</h3>
-<p>hugo server默认只会bind localhost
-使用：</p>
+    <description><![CDATA[<pre><code>使用hugo以及LoveIt搭建本博客遇到的问题以及解决方案
+</code></pre>
+<h3 id="1虚拟机中hugo-server无法远程访问">1.虚拟机中Hugo server无法远程访问</h3>
+<p>hugo server默认只会bind localhost</p>
+<p>使用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ Hugo server --bind xxx.xxx.xxx.xxx
 </code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机IP，即可通过同网域机器访问该web服务</p>
@@ -364,40 +372,26 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 </div>
 </div><p>需要注意的是：</p>
 <ul>
-<li>这里.git应该init在hugo生成的项目根目录中</li>
-<li>但是这样，如果只push public文件夹到Github上部署的话，网页上无法正确跳转对应的commit详情页。</li>
+<li>
+<p>这里.git应该init在hugo生成的项目根目录中</p>
+</li>
+<li>
+<p>但是这样，如果只push public文件夹到Github上部署的话，网页上无法正确跳转对应的commit详情页。</p>
+</li>
 </ul>
 <h3 id="3页面出现extra-stringxxxx">3.页面出现%!(EXTRA string=xxxx)</h3>
 <p>LoveIt Github Issue提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreffer">解决方案</a></p>
-<p>但实际通过修改config.toml中的：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">defaultContentLanguage = &#34;zh&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>为</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">defaultContentLanguage = &#34;zh-cn&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>即可解决。</p>
-]]></description>
+<p>但实际通过修改config.toml中的<code>defaultContentLanguage = &quot;zh&quot;</code>为<code>defaultContentLanguage = &quot;zh-cn&quot;</code>即可解决。</p>]]></description>
 </item><item>
     <title>改变世界的条形码</title>
     <link>https://www.techkoala.top/brief_history_of_qrcode/</link>
     <pubDate>Tue, 12 May 2020 17:59:52 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/brief_history_of_qrcode/</guid>
-    <description><![CDATA[<pre><code>注：本文是最早以TechKoala的名字所写的文章，发布于电脑爱好者2013年第06期。
-    说来当时以邮汇方式发的稿费至今没有收到，2333
+    <description><![CDATA[<pre><code>条形码以及二维码的过去与将来
 </code></pre>
+<p>注：本文是最早以TechKoala的名字所写的文章，发布于电脑爱好者2013年第06期。
+说来当时以邮汇方式发的稿费至今没有收到，2333</p>
 <p>  面对我们随时可以看见的条形码，说出来你也许会不信，如果没有这个家伙，整个世界的经济都无法正常运行。这些黑白条码不但能让机场不弄丢你的行李，能对快件的包裹进行跟踪，而且还能在网上对各种信件进行查询。它们既可以用在食品包装上，也可以用在图书的扉页。这个时候看看手上的《电脑爱好者》杂志，你发现了吗？</p>
 <h3 id="条形码的由来">条形码的由来</h3>
 <p>  三十多年前的一天，一位名叫道森的购物者走进马什超市，购买了一包箭牌口香糖，扫扫条形码然后付钱。这在今天稀疏平常的事，当时却是标志性事件—由此，条形码迎来了它的里程碑，从此走到你我的眼前。</p>
@@ -434,16 +428,16 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <p>  碰巧，时隔多年把这篇文章重新整理出来的时候，回形针正好发布了一期关于二维码的视频：</p>
 <div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1Y54y1D7cT&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
 
-<p>  放在这里，作为补充。</p>
-]]></description>
+<p>  放在这里，作为补充。</p>]]></description>
 </item><item>
     <title>Symbian的前世今生</title>
     <link>https://www.techkoala.top/brief_history_of_symbian/</link>
     <pubDate>Mon, 11 May 2020 22:57:01 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/brief_history_of_symbian/</guid>
-    <description><![CDATA[<pre><code>注：这是一篇写于2013年的文章，时过境迁，仅表怀念。
+    <description><![CDATA[<pre><code>聊聊Symbian的过去
 </code></pre>
+<p>注：这是一篇写于2013年的文章，时过境迁，仅表怀念。</p>
 <p>  毫不夸张的说,今天我们所拥有的一切,都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃它的卡顿，都无法改变它作为手机智能操作系统鼻祖的地位。当山寨机还在襁褓中时，当伪智能还在浪费人们的时间时，作为先驱的它便已上路。大多数人接触的第一款真正的智能手机系统，它把软件下载，游戏安装，刷机破解等诸多名词第一次带到了大众视野。它叫Symbian，也曾辉煌。三十年河东，三十年河西，科技领域本就没有常青树。虽然如今已经沦落，但不妨碍我们一起回味它曾经的辉煌。</p>
 <h3 id="混沌之初symbian伊始">混沌之初，Symbian伊始</h3>
 <p>​  Symbian，源自一家充满梦想的公司。</p>
@@ -472,15 +466,16 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <h3 id="末了">末了</h3>
 <p>  无论多么强大的文明都有覆灭的一天，帝国如是，企业如是。在暗潮汹涌的科技领域，公司不能推出迎合市场口味，顺应市场变化的产品，迎来的就只有倒闭。在创新与颠覆这条路上，Symbian不是第一个倒下的，也不会是最后一个。</p>
 <pre><code>P.S.谨以此文献给那些成长路上的人和事，Symbian没了，坛子没有了，但我们都还在。
-    这些有关我们青春的事逝去也就随他去了，至少我们还有彼此。</code></pre>
-]]></description>
+    这些有关我们青春的事逝去也就随他去了，至少我们还有彼此。</code></pre>]]></description>
 </item><item>
     <title>Github推送问题</title>
     <link>https://www.techkoala.top/github_push_issue/</link>
     <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/github_push_issue/</guid>
-    <description><![CDATA[<p>​	首先，使用如下命令检查问题详情：</p>
+    <description><![CDATA[<pre><code>使用github时遇到的推送问题以及解决方法
+</code></pre>
+<p>​	首先，使用如下命令检查问题详情：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -569,8 +564,7 @@ $ ssh-add -l -E md5
 </div><pre><code>注：不知为何，使用自定义名字的密钥，每次git操作都要重新添加一次，尚不明确原因。
 </code></pre>
 <h2 id="添加到github">添加到Github</h2>
-<p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>
-]]></description>
+<p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>]]></description>
 </item><item>
     <title>正在使用的软件</title>
     <link>https://www.techkoala.top/softwares/</link>
@@ -958,7 +952,6 @@ $ ssh-add -l -E md5
 <h3 id="邮件">邮件</h3>
 <ul>
 <li><a href="https://www.thunderbird.net/zh-CN/" target="_blank" rel="noopener noreffer">Thunderbird</a></li>
-</ul>
-]]></description>
+</ul>]]></description>
 </item></channel>
 </rss>

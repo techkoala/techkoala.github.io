@@ -1,17 +1,21 @@
 # Huginn（Docker）数据备份与恢复
 
 
+    简单介绍使用Docker运行的Huginn数据的备份与恢复
+
+<!--more-->
+
 ### 备份数据
 
 使用命令在容器中生成备份：
 
-```shell
+```bash
 $ docker exec -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production > huginn_backupfile.sql
 ```
 
 或直接拷贝数据到容器外：
 
-```shell
+```bash
 $ docker exec -it  huginn mysqldump -u root -ppassword huginn_production > /root/test_db.sql
 ```
 
@@ -19,18 +23,18 @@ $ docker exec -it  huginn mysqldump -u root -ppassword huginn_production > /root
 
 首先复制文件到daocker中：
 
-```shell
+```bash
 $ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
 ```
 
 然后进入docker：
 
-```shell
+```bash
 $ docker exec -ti huginn bash
 ```
 
 接下来恢复数据库:
 
-```shell
+```bash
 $ mysql -u root -ppassword huginn_production < huginn_backupfile.sql
 ```

@@ -5,15 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Github推送问题 - TechKoala</title><meta name="Description" content="TechKoala的自留地"><meta property="og:title" content="Github推送问题" />
-<meta property="og:description" content="​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval" />
+        <title>Github推送问题 - TechKoala</title><meta name="Description" content="TechKoala&#39;s自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="Github推送问题" />
+<meta property="og:description" content="使用github时遇到的推送问题以及解决方法
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/github_push_issue/" />
 <meta property="article:published_time" content="2020-05-10T11:25:57+08:00" />
-<meta property="article:modified_time" content="2020-05-12T21:23:58+08:00" />
+<meta property="article:modified_time" content="2020-06-10T11:19:00+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Github推送问题"/>
-<meta name="twitter:description" content="​ 首先，使用如下命令检查问题详情： 1 $ ssh -vT git@github.com ​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本： 1 2 3 4 5 # 在后台启动 ssh-agent $ eval"/>
+<meta name="twitter:description" content="使用github时遇到的推送问题以及解决方法
+"/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,8 +28,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/github_push_issue\/"
-        },"genre": "posts","keywords": "Github, Git, Linux","wordcount":  300 ,
-        "url": "https:\/\/www.techkoala.top\/github_push_issue\/","datePublished": "2020-05-10T11:25:57+08:00","dateModified": "2020-05-12T21:23:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "Github, Git, Linux","wordcount":  322 ,
+        "url": "https:\/\/www.techkoala.top\/github_push_issue\/","datePublished": "2020-05-10T11:25:57+08:00","dateModified": "2020-06-10T11:19:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -103,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Github推送问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/github/"><i class="far fa-folder fa-fw"></i>Github</a>&nbsp;<a href="/categories/git/"><i class="far fa-folder fa-fw"></i>Git</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-10">2020-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 300 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-10">2020-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 322 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -116,7 +118,9 @@
     <li><a href="#添加到github">添加到Github</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>​	首先，使用如下命令检查问题详情：</p>
+            </div><div class="content" id="content"><pre><code>使用github时遇到的推送问题以及解决方法
+</code></pre>
+<p>​	首先，使用如下命令检查问题详情：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -205,20 +209,19 @@ $ ssh-add -l -E md5
 </div><pre><code>注：不知为何，使用自定义名字的密钥，每次git操作都要重新添加一次，尚不明确原因。
 </code></pre>
 <h2 id="添加到github">添加到Github</h2>
-<p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>
-</div><div class="post-footer" id="post-footer">
+<p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-05-12&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/23f0c050ec79ec026d43477f3ff9353c456fbb92" target="_blank" title="commit by ron159(zlronron159@gmail.com) 23f0c050ec79ec026d43477f3ff9353c456fbb92: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>23f0c05</a></span>
+                <span>更新于 2020-06-10&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/56f771a1898a762504ce0f93eb0c7111b88c34b3" target="_blank" title="commit by ron159(zlronron159@gmail.com) 56f771a1898a762504ce0f93eb0c7111b88c34b3: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>56f771a</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题" data-hashtags="Github,Git,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/github_push_issue/" data-hashtag="Github"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题" data-hashtags="Github,Git,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/github_push_issue/" data-hashtag="Github"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/github_push_issue/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/github_push_issue/" data-title="Github推送问题"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
