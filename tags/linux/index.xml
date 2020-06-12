@@ -283,7 +283,7 @@ $ ssh-add -l -E md5
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="确认公钥已附加到账户">确认公钥已附加到账户</h2>
-<p>​	在后台启动 SSH 代理程序。</p>
+<p>​在后台启动 SSH 代理程序。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -294,7 +294,7 @@ $ ssh-add -l -E md5
 &gt; Agent pid <span class="m">59566</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>​	找到并记录公钥指纹。 如果使用的是 OpenSSH 6.7 或更早版本：</p>
+</div><p>​找到并记录公钥指纹。 如果使用的是 OpenSSH 6.7 或更早版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -305,7 +305,7 @@ $ ssh-add -l -E md5
 &gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>​	如果使用的是 OpenSSH 6.8 或更新版本：</p>
+</div><p>​如果使用的是 OpenSSH 6.8 或更新版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -316,7 +316,7 @@ $ ssh-add -l -E md5
 &gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>​	如果没有添加，则</p>
+</div><p>如果没有添加，则</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

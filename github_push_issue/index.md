@@ -33,28 +33,28 @@ $ ssh-add -l -E md5
 
 ## 确认公钥已附加到账户
 
-​	在后台启动 SSH 代理程序。
+​在后台启动 SSH 代理程序。
 
 ```shell
 $ eval "$(ssh-agent -s)"
 > Agent pid 59566
 ```
 
-​	找到并记录公钥指纹。 如果使用的是 OpenSSH 6.7 或更早版本：
+​找到并记录公钥指纹。 如果使用的是 OpenSSH 6.7 或更早版本：
 
 ```shell
 $ ssh-add -l
 > 2048 a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa (RSA)
 ```
 
-​	如果使用的是 OpenSSH 6.8 或更新版本：
+​如果使用的是 OpenSSH 6.8 或更新版本：
 
 ```shell
 $ ssh-add -l -E md5
 > 2048 MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa (RSA)
 ```
 
-​	如果没有添加，则
+如果没有添加，则
 
 ```shell
 $ ssh-add /xxx/.ssh/xxx
