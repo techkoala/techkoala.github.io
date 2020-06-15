@@ -9,7 +9,10 @@
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/huginn_backup/</guid>
-    <description><![CDATA[<pre><code>简单介绍使用Docker运行的Huginn数据的备份与恢复
+    <description><![CDATA[<a class="lightgallery" href="/images/Huginn/Huginn.png" title="/images/Huginn/Huginn.png" data-thumbnail="/images/Huginn/Huginn.png">
+        
+    </a>
+<pre><code>简单介绍使用Docker运行的Huginn数据的备份与恢复
 </code></pre>
 <h3 id="备份数据">备份数据</h3>
 <p>使用命令在容器中生成备份：</p>
@@ -65,8 +68,9 @@
     <pubDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/softwares/</guid>
-    <description><![CDATA[<h1 id="多平台软件使用记录">多平台软件使用记录：</h1>
-<p>多平台软件记录与推荐</p>
+    <description><![CDATA[<pre><code>多平台软件记录与推荐
+</code></pre>
+<h1 id="多平台软件使用记录">多平台软件使用记录：</h1>
 <p>​    1.粗体表示在多平台使用的软件</p>
 <p>​    2.斜体表示优先选择表示商店版本(Windows &amp; Mac os)</p>
 <p>​    3.Linux优先选用对应包管理器安装</p>

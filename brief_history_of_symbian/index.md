@@ -1,5 +1,6 @@
 # Symbian的前世今生
 
+   {{< image src="/images/symbian/symbian.jpg" >}} 
 
     聊聊Symbian的过去
 

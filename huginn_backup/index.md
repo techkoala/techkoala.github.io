@@ -1,6 +1,7 @@
 # Huginn（Docker）数据备份与恢复
 
-
+   {{< image src="/images/Huginn/Huginn.png" >}} 
+   
     简单介绍使用Docker运行的Huginn数据的备份与恢复
 
 <!--more-->
