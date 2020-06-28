@@ -6,6 +6,77 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 30 Dec 2019 16:53:54 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Nagle算法</title>
+    <link>https://www.techkoala.top/turn_off_nagle/</link>
+    <pubDate>Sun, 28 Jun 2020 10:44:16 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/turn_off_nagle/</guid>
+    <description><![CDATA[<pre><code>简要介绍Nagle算法，并提供关闭方法从而降低延迟
+</code></pre>
+<h2 id="nagle算法">Nagle算法</h2>
+<p>Nagle算法通过减少网络发包频率从而提高TCP/IP网络的效率。</p>
+<p>主要解决由于TCP包头大小，导致频繁发送小数据包有效数据内容太少，开销过大段的问题。</p>
+<p>Nagle算法是将大量等待发送的小数据包合并起来，然后一次性全部发送出去。具体地说，只要有一个发送方没有收到任何确认的数据包，发送方就应该一直缓冲它的输出，直到它有一个完整的数据包的输出，这样就允许一次发送所有的输出。</p>
+<p>其思路可以由下面的步骤所描述：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">if there is new data to send then
+    if the window size ≥ MSS and available data is ≥ MSS then
+        send complete MSS segment now
+    else
+        if there is unconfirmed data still in the pipe then
+            enqueue data in the buffer until an acknowledge is received
+        else
+            send data immediately
+        end if
+    end if
+end if
+</code></pre></td></tr></table>
+</div>
+</div><p>Nagle算法可能导致期望实时响应和低延迟的应用程序体验不佳。</p>
+<p>诸如网络多人视频游戏或鼠标在远程控制的操作系统中移动等应用程序，期望立即发送操作，而算法故意延迟传输，以牺牲延迟为代价提高带宽效率。因此，具有低带宽时间敏感传输的应用程序通常用于绕过 Nagle 延迟的 ACK 延迟。</p>
+<h2 id="windows下关闭nagle算法">Windows下关闭Nagle算法</h2>
+<ol>
+<li>
+<p>打开注册表编辑器</p>
+</li>
+<li>
+<p>打开如下路径<code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></p>
+<a class="lightgallery" href="/images/Network/regedit.png" title="/images/Network/regedit.png" data-thumbnail="/images/Network/regedit.png">
+        
+    </a>
+</li>
+<li>
+<p>依次点击下方注册表项，检查右窗格中是否包含<code>DhcpIPAddress</code>值；</p>
+</li>
+<li>
+<p>在包含有<code>DhcpIPAddress</code>的子项下，分别建立两个<code>DWORD(32)</code>值，依次命名为<code>TcpAckFrequency</code>和<code>TCPNoDelay</code>，键值全部设为<code>1</code>。</p>
+<p><strong><code>注意</code></strong> 包含<code>DhcpIPAddress</code>的子项可能不只一个，所有的都要添加。</p>
+</li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreffer">Nagel算法维基百科</a></p>
+</li>
+<li>
+<p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreffer">RFC896</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>Linux安全分析与加固</title>
     <link>https://www.techkoala.top/linux_security/</link>
     <pubDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</pubDate>
