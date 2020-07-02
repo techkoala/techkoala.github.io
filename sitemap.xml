@@ -2,39 +2,42 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://www.techkoala.top/categories/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/dns/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/network/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/network/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/posts/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/translation/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/dns_update/</loc><lastmod>2020-07-02T15:48:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/nagle/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/turn_off_nagle/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/network/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/categories/network/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/posts/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/</loc><lastmod>2020-06-28T11:14:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/linux/</loc><lastmod>2020-06-12T19:13:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/categories/linux/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/linux_security/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/security/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/huginn/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/huginn_backup/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/tags/software/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/categories/software/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/tags/pve/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/pve_q_a/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/qa/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/vm/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/categories/vm/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/blog/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/categories/blog/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/hugo/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/hugo_loveit_q_a/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/tags/nonsense/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/categories/nonsense/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/brief_history_of_qrcode/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/brief_history_of_symbian/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://www.techkoala.top/categories/linux/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/linux_security/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/security/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/huginn/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/huginn_backup/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/tags/software/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/categories/software/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/tags/pve/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/pve_q_a/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/qa/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/vm/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/categories/vm/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/blog/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/categories/blog/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/hugo/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/hugo_loveit_q_a/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/tags/nonsense/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/categories/nonsense/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/brief_history_of_qrcode/</loc><lastmod>2020-06-10T11:19:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://www.techkoala.top/brief_history_of_symbian/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://www.techkoala.top/tags/git/</loc><lastmod>2020-06-12T19:13:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://www.techkoala.top/categories/git/</loc><lastmod>2020-06-12T19:13:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://www.techkoala.top/tags/github/</loc><lastmod>2020-06-12T19:13:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://www.techkoala.top/categories/github/</loc><lastmod>2020-06-12T19:13:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://www.techkoala.top/github_push_issue/</loc><lastmod>2020-06-12T19:13:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/softwares/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://www.techkoala.top/about/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url></urlset>
+            <loc>https://www.techkoala.top/softwares/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/about/</loc><lastmod>2020-06-15T21:10:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url></urlset>
