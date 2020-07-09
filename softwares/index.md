@@ -7,17 +7,13 @@
 
 # 多平台软件使用记录：
 
-
 ​    1.粗体表示在多平台使用的软件
 
 ​    2.斜体表示优先选择表示商店版本(Windows & Mac os)
 
 ​    3.Linux优先选用对应包管理器安装
 
-
 ### 浏览器
-
-
 
 - **[Chrome](<https://www.google.com/chrome/>)**
 
@@ -25,11 +21,57 @@
 
 - **[Microsoft Edge](<https://www.microsoftedgeinsider.com/zh-cn/download>)**
 
+  #### 浏览器插件
 
+  - [ClearURLs](<https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei>)
+    
+  - [Enpass extension](<https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi>)
+    
+  - [Feedbro](<https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd>)  
+
+  - [MONKNOW](<https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde>)  
+
+  - [OneNote Web Clipper](<https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma>)
+    
+  - [Proxy SwitchyOmega](<https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe>) 
+
+  - [Save to Pocket](<https://microsoftedge.microsoft.com/addons/detail/save-to-pocket/jicacccodjjgmghnmekophahpmddeemd?hl=zh-CN>)
+    
+  - [Tampermonkey](<https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd>)
+      
+  - [uBlock Origin](<https://microsoftedge.microsoft.com/addons/detail/ublock-origin/odfafepnkmbhccpbejgmiehpchacaeak>)
+
+  - [京价保 - 京东价保助手](<https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge>)  
+
+  - [FireShot](<https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm>)   
+
+  - [沙拉查词-聚合词典划词翻译](<https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp>)   
+
+  - [隐私獾](<https://microsoftedge.microsoft.com/addons/detail/%E9%9A%90%E7%A7%81%E7%8D%BE/mkejgcgkdlddbggjhhflekkondicpnop>)  
+
+  - [Augmented Steam](<https://chrome.google.com/webstore/detail/augmented-steam/dnhpnfgdlenaccegplpojghhmaamnnfp>) 
+
+  - [Free Download Manager](<https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp>)  
+
+  - [Imagus](<https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab>)  
+
+  - [Little Star](<https://chrome.google.com/webstore/detail/little-star/kmjfdonmflchjdlmeoecbmebfpnafpec>) 
+
+  - [Notion Web Clipper](<https://chrome.google.com/webstore/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk>)  
+
+  - [OneTab](<https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall>)
+
+  - [Stylus](<https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne>)
+
+  - [Unpaywall](<https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha>)
+
+  - [Reggy](<https://chrome.google.com/webstore/detail/reggy/pnneajlgffpejnabhionnhdfhibijihe>)
+
+  - [Vimium](<https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb>)
+
+  - [二管家](<https://chrome.google.com/webstore/detail/nooboss/aajodjghehmlpahhboidcpfjcncmcklf>)
 
 ### 压缩/解压缩
-
-
 
 - [Bandizip](<https://en.bandisoft.com/bandizip/>)*(7.0版本已增加付费,停留于6.26)*
 
@@ -37,19 +79,13 @@
 
 - [Peazip](<https://www.peazip.org/>)
 
-
-
 ### 下载软件
-
-
 
 - **[FDM](<https://www.freedownloadmanager.org/zh/>)**
 
 - **[Motrix](<https://motrix.app/>)**
 
 - ~~Eagleget~~ *(官方宣称是外国软件，查询证书为国产，原因不明)*
-
-- **[Resilio Sync](<https://www.resilio.com/individuals-sync/>)**
 
 - [IDM](https://www.internetdownloadmanager.com/)
 
@@ -62,10 +98,7 @@
 - [Wget](<https://www.gnu.org/software/wget/>)
 
 
-
 ### 游戏平台及工具
-
-
 
 - [战网](<https://www.blizzardgames.cn/zh/>)
 
@@ -81,11 +114,7 @@
 
 - [Logitech鼠标驱动](<https://support.logi.com/hc/zh-cn/articles/360025298053>)
 
-
-
 ### Code
-
-
 
 - **[Visual studio code](<https://code.visualstudio.com/>)**
 
@@ -103,11 +132,7 @@
 
 - [Go](<https://golang.org/>)
 
-
-
 ### 文档工具
-
-
 
 - Office 365
 
@@ -129,11 +154,7 @@
 
 - **[Notion](<https://www.notion.so/>)**
 
-
-
 ### 视频&音乐
-
-
 
 - [Potplayer](<https://potplayer.daum.net/>)
 
@@ -149,11 +170,7 @@
 
 - [Petal](<https://github.com/shakrmedia/petal>)*(Linux下豆瓣FM第三方客户端)*
 
-
-
 ### 网盘工具
-
-
 
 - Onedrive
 
@@ -167,11 +184,9 @@
 
 - [Goodsync](<https://www.goodsync.com/>)
 
-
+- **[Resilio Sync](<https://www.resilio.com/individuals-sync/>)**
 
 ### 即时通信
-
-
 
 - **[Telegram](<https://desktop.telegram.org/>)**
 
@@ -181,19 +196,11 @@
 
 - *QQ*
 
-
-
 ### 密码管理
-
-
 
 - ***[Enpass](<https://www.enpass.io/>)***
 
-
-
 ### 网络工具
-
-
 
 - ~~[Shadowsocks-libev](<https://shadowsocks.org/en/download/servers.html>)~~ *(转向vmess协议)*
 
@@ -221,14 +228,7 @@
 
 - **[Wireshark](<https://www.wireshark.org/>)**
 
-
-
-
-
 ### 效率工具
-
-
-
 - ~~[Quicker](<https://getquicker.net/>)~~ *(已转utools)*
 
 - ~~[Wox](<http://www.wox.one/>)~~ *(已转utools)*
@@ -251,11 +251,7 @@
 
 - [PowerToys](<https://github.com/microsoft/PowerToys/>)
 
-
-
 ### 软件&磁盘管理
-
-
 
 - ~~[CCleaner](<https://www.ccleaner.com/>)~~
 
@@ -273,29 +269,19 @@
 
 - [DiskGenius](<http://www.diskgenius.cn/>)
 
-
-
 ### 安全工具
-
-
 
 - [火绒](<https://www.huorong.cn/>)
 
 - [Sandboxie](<https://www.sandboxie.com/>)
 
-
-
 ### 虚拟机
-
-
 
 - [VMware Workstation Pro](<https://www.vmware.com/cn.html>)
 
-
+- Hyper-V
 
 ### 阅读
-
-
 
 - **~~[irreader](<http://irreader.fatecore.com/>)~~** 
 
@@ -303,11 +289,7 @@
 
 - **[FeedBro](<https://chrome.google.com/webstore/detail/feedbro/mefgmmbdailogpfhfblcnnjfmnpnmdfa?hl=en>)** *(Chrome插件)*
 
-
-
 ### Cli
-
-
 
 - [Zsh](<https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH>)
 
@@ -319,11 +301,7 @@
 
 - [Htop](<https://hisham.hm/htop/>)
 
-
-
 ### 系统工具
-
-
 
 - [BleachBit](<https://www.bleachbit.org/>)
 
@@ -339,11 +317,7 @@
 
 - [iStat Menus](<https://bjango.com/mac/istatmenus/>)
 
-  
-
 ### 邮件
-
-
 
 - [Thunderbird](<https://www.thunderbird.net/zh-CN/>)
 
