@@ -9,7 +9,7 @@
     <pubDate>Sun, 28 Jun 2020 10:44:16 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/turn_off_nagle/</guid>
-    <description><![CDATA[<pre><code>简要介绍Nagle算法，并提供关闭方法从而降低延迟
+    <description><![CDATA[<pre><code>简要介绍Nagle算法
 </code></pre>
 <h2 id="nagle算法">Nagle算法</h2>
 <p>Nagle算法通过减少网络发包频率从而提高TCP/IP网络的效率。</p>

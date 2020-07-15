@@ -3,7 +3,112 @@
         <title>所有文章 - TechKoala</title>
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>NAT系列1：认识NAT</title>
+    <link>https://www.techkoala.top/nat/</link>
+    <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/nat/</guid>
+    <description><![CDATA[<pre><code>一文概览NAT
+</code></pre>
+<h2 id="nat">NAT</h2>
+<p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在IP数据包通过路由器或防火墙时重写来源IP地址或目的IP地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有IP地址访问互联网的私有网络中。</p>
+<p>NAT从大类上都可以分为两类：<code>静态NAT</code>和<code>动态NAT</code>。</p>
+<p><code>静态NAT</code>是管理员手动创建和维护映射，通常与NAT的入站类型相关联。</p>
+<p><code>动态NAT</code>是路由器根据需要自动创建和维护映射，通常与NAT的出站类型相关联。</p>
+<p>每个TCP/IP数据包都包含一个<code>源IP地址</code>、<code>源端口</code>、<code>目的IP地址</code>和<code>目的端口</code>。所有类型的NAT都会使用这些值创建NAT映射。</p>
+<pre><code>例如，一个IP为`192.168.0.1`的内部客户机使用端口`56876`，经过NAT转变后IP变
+为3.3.3.3（翻译后的源IP）和端口56876（源端口）连接到IP 2.2.2.2（目的IP地
+址）的80端口（目的端口）。NAT使用原始内部IP和端口、翻译后IP和端口这4个值创建
+一个映射。当数据包从网站返回到路由器时，使用与该映射相关值，NAT将数据包转发到
+内部客户端。
+</code></pre>
+<h2 id="nat的四种类型">NAT的四种类型</h2>
+<h3 id="全锥型natfull-cone-nat">全锥型NAT（Full Cone NAT)</h3>
+<figure><a class="lightgallery" href="/images/Network/NAT/Full_Cone_NAT.png" title="/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型NAT</h2>">
+        
+    </a><figcaption class="image-caption">全锥型NAT</figcaption>
+    </figure>
+<p>全锥型NAT是静态NAT，也是唯一一种永久开放端口的NAT，允许从<strong>任何外部主机</strong>进行入站连接。全锥型NAT将一个公共IP地址和端口映射到LAN IP和端口。任何外部主机都可以通过映射的NAT IP和端口向LAN IP发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的NAT也被称为端口转发。这是受限制最少的NAT类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
+<pre><code>例如，我的电脑有一个网站在80端口上运行，我创建了一个一对一的规则，将路由器的
+WAN IP 1.1.1.1映射到192.168.0.1，端口80映射到80端口。凡是在80端口向
+1.1.1.1发送数据的外部主机都会被NAT转发到192.168.0.1 80端口。
+</code></pre>
+<p><strong>注意</strong>：端口号不必相同；我可以在56456端口上运行我的网站，但创建NAT映射，将80端口转发到56456端口。这样，外部客户端就会认为我的网站在80端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
+<h3 id="受限锥形natrestricted-cone-nat">受限锥形NAT（Restricted Cone NAT）</h3>
+<figure><a class="lightgallery" href="/images/Network/NAT/Restricted_Cone_NAT.png" title="/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形NAT</h2>">
+        
+    </a><figcaption class="image-caption">受限锥形NAT</figcaption>
+    </figure>
+<p>受限锥体NAT是动态NAT，它的工作方式与全锥型NAT相同，但会对进站的IP地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的IP地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
+<pre><code>例如，我的电脑与一个网站(56.45.34.78)进行外向连接，源IP为192.168.0.1，源端
+口为56723。NAT使用源端口56723创建一个（动态）映射到我的电脑。使用目的端口
+56723（这是出站NAT的源端口）到达的源IP为56.45.34.78（网站IP）的数据包将被接
+受，接着网站返回数据至我的PC。任何其他IP即使使用正确的56723端口进行连接尝试将
+被丢弃。同样，即使正确的IP使用56723以外的目的端口进行的连接尝试也将被丢弃。
+</code></pre>
+<h3 id="端口受限锥型natport-restricted-cone-nat">端口受限锥型NAT（Port Restricted Cone NAT)</h3>
+<figure><a class="lightgallery" href="/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型NAT</h2>">
+        
+    </a><figcaption class="image-caption">端口受限锥型NAT</figcaption>
+    </figure>
+<p>端口受限锥型NAT是动态NAT，它的作用与受限锥形NAT完全相同，但同时对端口进行限制。受限锥形NAT接受来自外部主机任何源端口的连接，而端口受限锥型NAT则进一步要求外部主机的源端口是固定的。</p>
+<pre><code>例如，我的电脑在80端口（目标端口）上向网站IP 217.87.69.8建立了一个外向连接。
+NAT将我的源IP 192.168.0.1映射到WAN IP 1.1.1.1和源端口56723。当网站发回
+数据包时，它的源IP必须是217.87.69.8，目的端口是56723（就像一个受限锥型NAT），
+但除此之外，还要求源端口必须是80。如果这三者中的任何一个不一样，端口受限锥型NAT
+就会放弃连接。
+</code></pre>
+<h3 id="对称型natsymmetric-nat">对称型NAT（Symmetric NAT）</h3>
+<figure><a class="lightgallery" href="/images/Network/NAT/Symmetric_NAT.png" title="/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型NAT</h2>">
+        
+    </a><figcaption class="image-caption">对称型NAT</figcaption>
+    </figure>
+<p>对称型NAT是动态NAT，它限制的方式与端口受限锥型NAT完全相同，但处理NAT转换的方式不同。目前讨论的所有类型的NAT在NAT连接时都<strong>不会改变源端口</strong>。</p>
+<pre><code>例如，当客户端使用IP 192.168.0.1和源端口56723访问互联网时，NAT将源IP改变为
+56.35.67.35，但保持端口号不变，这被称为端口保留。
+</code></pre>
+<p>而对称型NAT会将端口改为<strong>随机生成的新端口</strong>，甚至是同一客户端到不同目的地的连接也会发生。<strong>亦即为每个连接创建唯一的映射</strong></p>
+<pre><code>例如，在端口受限锥型NAT的例子上进行扩展，我的PC向网站IP 217.87.69.8和
+56.76.87.98建立两个出站连接。我的电脑使用源IP 192.168.0.1和源端口56723进行
+两个连接。到目前为止，在所有类型的NAT上，这两个连接都会被NAT化，只改变源IP地址
+而保持源端口不变。然而这次，对称型NAT没有将源端口保留为56723，而是将其中一个连
+接的源端口改为45765，另一个连接的源端口改为53132（随机）。这就为每个连接创建了
+唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以217.87.69.8必须将
+数据包发送到目的端口45765，56.76.87.98必须将数据包发送到端口53132，此外还需
+要遵循端口受限锥型NAT的要求。
+</code></pre>
+<h2 id="对nat的正面评价">对NAT的正面评价</h2>
+<ol>
+<li>
+<p>NAT在一定程度上缓解了IPv4地址短缺的问题，让更多的设备（间接）接入了互联网。</p>
+</li>
+<li>
+<p>NAT全双工连接支持的缺少在一些情况下可以看作是一个有好处的特征而不是一个限制。在一定程度上，NAT依赖于本地网络上的一台机器来初始化和路由器另一边的主机的任何连接，它可以阻止外部网络上的主机的恶意活动。这样就可以阻止网络蠕虫病毒来提高本地系统的可靠性，阻挡恶意浏览来提高本地系统的私密性。很多具有NAT功能的防火墙都是使用这种功能来提供核心保护的。另外，它也为UDP的跨局域网的传输提供了方便。</p>
+</li>
+</ol>
+<h2 id="对nat的批评">对NAT的批评</h2>
+<ol>
+<li>
+<p>在一个具有NAT功能的路由器下的主机并没有获得真正的IP地址，并且不能参与一些因特网协议，一些需要初始化从外部网络创建的TCP连接和无状态协议（比如UDP）无法实现。除非NAT路由器管理者预先设置了规则，否则送来的数据包将不能到达正确的目的地址。</p>
+</li>
+<li>
+<p>端对端连接是被IAB委员会（Internet Architecture Board）支持的核心因特网协议之一，因此有些人据此认为NAT是对公用因特网的一个破坏。一些因特网服务提供商（ISP）只向他们的客户提供本地IP地址，所以他们必须通过NAT来访问ISP网络以外的服务，并且这些公司能不能算的上真正的提供了因特网服务的话题也被谈起。</p>
+</li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2" target="_blank" rel="noopener noreffer">网络地址转换</a></p>
+</li>
+<li>
+<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreffer">What you need to know about symmetric NAT</a></p>
+</li>
+<li>
+<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>深入浅出DNS解析</title>
     <link>https://www.techkoala.top/dns_update/</link>
     <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>
@@ -265,7 +370,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     <pubDate>Sun, 28 Jun 2020 10:44:16 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/turn_off_nagle/</guid>
-    <description><![CDATA[<pre><code>简要介绍Nagle算法，并提供关闭方法从而降低延迟
+    <description><![CDATA[<pre><code>简要介绍Nagle算法
 </code></pre>
 <h2 id="nagle算法">Nagle算法</h2>
 <p>Nagle算法通过减少网络发包频率从而提高TCP/IP网络的效率。</p>
@@ -896,475 +1001,5 @@ $ ssh-add -l -E md5
 </code></pre>
 <h2 id="添加到github">添加到Github</h2>
 <p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>]]></description>
-</item><item>
-    <title>正在使用的软件</title>
-    <link>https://www.techkoala.top/softwares/</link>
-    <pubDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/softwares/</guid>
-    <description><![CDATA[<pre><code>多平台软件记录与推荐
-</code></pre>
-<h1 id="多平台软件使用记录">多平台软件使用记录：</h1>
-<p>​    1.粗体表示在多平台使用的软件</p>
-<p>​    2.斜体表示优先选择表示商店版本(Windows &amp; Mac os)</p>
-<p>​    3.Linux优先选用对应包管理器安装</p>
-<h3 id="浏览器">浏览器</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreffer">Chrome</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener noreffer">FireFox</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.microsoftedgeinsider.com/zh-cn/download" target="_blank" rel="noopener noreffer">Microsoft Edge</a></strong></p>
-<h4 id="浏览器插件">浏览器插件</h4>
-<ul>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei" target="_blank" rel="noopener noreffer">ClearURLs</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi" target="_blank" rel="noopener noreffer">Enpass extension</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd" target="_blank" rel="noopener noreffer">Feedbro</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde" target="_blank" rel="noopener noreffer">MONKNOW</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma" target="_blank" rel="noopener noreffer">OneNote Web Clipper</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe" target="_blank" rel="noopener noreffer">Proxy SwitchyOmega</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/save-to-pocket/jicacccodjjgmghnmekophahpmddeemd?hl=zh-CN" target="_blank" rel="noopener noreffer">Save to Pocket</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd" target="_blank" rel="noopener noreffer">Tampermonkey</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/ublock-origin/odfafepnkmbhccpbejgmiehpchacaeak" target="_blank" rel="noopener noreffer">uBlock Origin</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge" target="_blank" rel="noopener noreffer">京价保 - 京东价保助手</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm" target="_blank" rel="noopener noreffer">FireShot</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp" target="_blank" rel="noopener noreffer">沙拉查词-聚合词典划词翻译</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E9%9A%90%E7%A7%81%E7%8D%BE/mkejgcgkdlddbggjhhflekkondicpnop" target="_blank" rel="noopener noreffer">隐私獾</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/augmented-steam/dnhpnfgdlenaccegplpojghhmaamnnfp" target="_blank" rel="noopener noreffer">Augmented Steam</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp" target="_blank" rel="noopener noreffer">Free Download Manager</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab" target="_blank" rel="noopener noreffer">Imagus</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/little-star/kmjfdonmflchjdlmeoecbmebfpnafpec" target="_blank" rel="noopener noreffer">Little Star</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk" target="_blank" rel="noopener noreffer">Notion Web Clipper</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" target="_blank" rel="noopener noreffer">OneTab</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne" target="_blank" rel="noopener noreffer">Stylus</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha" target="_blank" rel="noopener noreffer">Unpaywall</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/reggy/pnneajlgffpejnabhionnhdfhibijihe" target="_blank" rel="noopener noreffer">Reggy</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="noopener noreffer">Vimium</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/nooboss/aajodjghehmlpahhboidcpfjcncmcklf" target="_blank" rel="noopener noreffer">二管家</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="压缩解压缩">压缩/解压缩</h3>
-<ul>
-<li>
-<p><a href="https://en.bandisoft.com/bandizip/" target="_blank" rel="noopener noreffer">Bandizip</a><em>(7.0版本已增加付费,停留于6.26)</em></p>
-</li>
-<li>
-<p><strong><a href="https://www.7-zip.org/download.html" target="_blank" rel="noopener noreffer">7-zip</a></strong></p>
-</li>
-<li>
-<p><a href="https://www.peazip.org/" target="_blank" rel="noopener noreffer">Peazip</a></p>
-</li>
-</ul>
-<h3 id="下载软件">下载软件</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.freedownloadmanager.org/zh/" target="_blank" rel="noopener noreffer">FDM</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://motrix.app/" target="_blank" rel="noopener noreffer">Motrix</a></strong></p>
-</li>
-<li>
-<p><del>Eagleget</del> <em>(官方宣称是外国软件，查询证书为国产，原因不明)</em></p>
-</li>
-<li>
-<p><a href="https://www.internetdownloadmanager.com/" target="_blank" rel="noopener noreffer">IDM</a></p>
-</li>
-<li>
-<p><a href="https://aria2.github.io/" target="_blank" rel="noopener noreffer">Aria2</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mayswind/AriaNg" target="_blank" rel="noopener noreffer">Aria2NG</a></p>
-</li>
-<li>
-<p><a href="https://curl.haxx.se/" target="_blank" rel="noopener noreffer">Curl</a></p>
-</li>
-<li>
-<p><a href="https://www.gnu.org/software/wget/" target="_blank" rel="noopener noreffer">Wget</a></p>
-</li>
-</ul>
-<h3 id="游戏平台及工具">游戏平台及工具</h3>
-<ul>
-<li>
-<p><a href="https://www.blizzardgames.cn/zh/" target="_blank" rel="noopener noreffer">战网</a></p>
-</li>
-<li>
-<p><a href="https://store.steampowered.com/about/" target="_blank" rel="noopener noreffer">Steam</a></p>
-</li>
-<li>
-<p><a href="https://www.origin.com/sgp/en-us/store/download" target="_blank" rel="noopener noreffer">Origin</a></p>
-</li>
-<li>
-<p><a href="https://uplay.ubisoft.com/zh-cn" target="_blank" rel="noopener noreffer">Uplay</a></p>
-</li>
-<li>
-<p><a href="https://www.gog.com/" target="_blank" rel="noopener noreffer">GOG Galaxy</a></p>
-</li>
-<li>
-<p><a href="https://uu.163.com/" target="_blank" rel="noopener noreffer">网易UU</a></p>
-</li>
-<li>
-<p><a href="https://support.logi.com/hc/zh-cn/articles/360025298053" target="_blank" rel="noopener noreffer">Logitech鼠标驱动</a></p>
-</li>
-</ul>
-<h3 id="code">Code</h3>
-<ul>
-<li>
-<p><strong><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreffer">Visual studio code</a></strong></p>
-</li>
-<li>
-<p><a href="https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.google.com%2F" target="_blank" rel="noopener noreffer">Visual studio 2019</a></p>
-</li>
-<li>
-<p><strong><a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreffer">Python3</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://ww2.mathworks.cn/products/matlab.html" target="_blank" rel="noopener noreffer">Matlab</a></strong></p>
-</li>
-<li>
-<p><a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener noreffer">Pycharm-professional</a></p>
-</li>
-<li>
-<p><a href="https://www.jetbrains.com/go/" target="_blank" rel="noopener noreffer">Goland</a></p>
-</li>
-<li>
-<p><a href="https://golang.org/" target="_blank" rel="noopener noreffer">Go</a></p>
-</li>
-</ul>
-<h3 id="文档工具">文档工具</h3>
-<ul>
-<li>
-<p>Office 365</p>
-</li>
-<li>
-<p><a href="https://otp.landian.vip/zh-cn/" target="_blank" rel="noopener noreffer">Office tools plus</a><em>(office套件管理工具)</em></p>
-</li>
-<li>
-<p><strong><a href="https://typora.io/" target="_blank" rel="noopener noreffer">Typora</a></strong></p>
-</li>
-<li>
-<p><a href="https://www.islide.cc/" target="_blank" rel="noopener noreffer">iSlide Tools</a></p>
-</li>
-<li>
-<p><em>DrawBoard PDF</em></p>
-</li>
-<li>
-<p><a href="https://get.adobe.com/cn/reader/otherversions/" target="_blank" rel="noopener noreffer">Adobe acrobat DC</a></p>
-</li>
-<li>
-<p><a href="http://cajviewer.cnki.net/" target="_blank" rel="noopener noreffer">CAJViewer</a></p>
-</li>
-<li>
-<p><a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener noreffer">Visio</a></p>
-</li>
-<li>
-<p><em>OneNote</em></p>
-</li>
-<li>
-<p><strong><a href="https://www.notion.so/" target="_blank" rel="noopener noreffer">Notion</a></strong></p>
-</li>
-</ul>
-<h3 id="视频音乐">视频&amp;音乐</h3>
-<ul>
-<li>
-<p><a href="https://potplayer.daum.net/" target="_blank" rel="noopener noreffer">Potplayer</a></p>
-</li>
-<li>
-<p><em>斗鱼</em></p>
-</li>
-<li>
-<p><em>网易云音乐</em></p>
-</li>
-<li>
-<p><em>Mp3tag</em> <em>(歌曲信息管理)</em></p>
-</li>
-<li>
-<p><em>foobar2000</em></p>
-</li>
-<li>
-<p><a href="https://www.videolan.org/vlc/index.html" target="_blank" rel="noopener noreffer">VLC</a></p>
-</li>
-<li>
-<p><a href="https://github.com/shakrmedia/petal" target="_blank" rel="noopener noreffer">Petal</a><em>(Linux下豆瓣FM第三方客户端)</em></p>
-</li>
-</ul>
-<h3 id="网盘工具">网盘工具</h3>
-<ul>
-<li>
-<p>Onedrive</p>
-</li>
-<li>
-<p><a href="https://www.raidrive.com/" target="_blank" rel="noopener noreffer">RaiDrive</a></p>
-</li>
-<li>
-<p><strong><a href="https://rclone.org/downloads/" target="_blank" rel="noopener noreffer">Rclone</a></strong></p>
-</li>
-<li>
-<p><del>Speedpan</del> <em>(已转Pandownload)</em></p>
-</li>
-<li>
-<p><del><a href="https://pandownload.com/" target="_blank" rel="noopener noreffer">Pandownload</a></del> <em>(已失效，尽量避免使用百度网盘)</em></p>
-</li>
-<li>
-<p><a href="https://www.goodsync.com/" target="_blank" rel="noopener noreffer">Goodsync</a></p>
-</li>
-<li>
-<p><strong><a href="https://www.resilio.com/individuals-sync/" target="_blank" rel="noopener noreffer">Resilio Sync</a></strong></p>
-</li>
-</ul>
-<h3 id="即时通信">即时通信</h3>
-<ul>
-<li>
-<p><strong><a href="https://desktop.telegram.org/" target="_blank" rel="noopener noreffer">Telegram</a></strong></p>
-</li>
-<li>
-<p><em><del>Unigram</del></em> <em>(Telegram第三方客户端，相较官方客户端增加了PC端的端到端加密聊天功能)</em></p>
-</li>
-<li>
-<p><em>微信</em></p>
-</li>
-<li>
-<p><em>QQ</em></p>
-</li>
-</ul>
-<h3 id="密码管理">密码管理</h3>
-<ul>
-<li><em><strong><a href="https://www.enpass.io/" target="_blank" rel="noopener noreffer">Enpass</a></strong></em></li>
-</ul>
-<h3 id="网络工具">网络工具</h3>
-<ul>
-<li>
-<p><del><a href="https://shadowsocks.org/en/download/servers.html" target="_blank" rel="noopener noreffer">Shadowsocks-libev</a></del> <em>(转向vmess协议)</em></p>
-</li>
-<li>
-<p><del>Sstap</del> <em>(停止更新)</em></p>
-</li>
-<li>
-<p><del><a href="https://github.com/2dust/v2rayN" target="_blank" rel="noopener noreffer">V2rayN</a></del> <em>(已转Clash，支持更加灵活的规则和配置文件管理)</em></p>
-</li>
-<li>
-<p><a href="https://github.com/Dreamacro/clash" target="_blank" rel="noopener noreffer">Clash</a></p>
-</li>
-<li>
-<p><a href="https://github.com/Fndroid/clash_for_windows_pkg/releases" target="_blank" rel="noopener noreffer">Clash for Windows</a></p>
-</li>
-<li>
-<p><a href="https://github.com/yichengchen/clashX" target="_blank" rel="noopener noreffer">ClashX</a></p>
-</li>
-<li>
-<p><a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener noreffer">Fiddler</a></p>
-</li>
-<li>
-<p><a href="https://www.ipip.net/product/client.html" target="_blank" rel="noopener noreffer">Best Trace</a></p>
-</li>
-<li>
-<p><del><a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener noreffer">MobaXterm</a></del> <em>(已转Termius,多端同步)</em></p>
-</li>
-<li>
-<p><strong><a href="https://termius.com/" target="_blank" rel="noopener noreffer">Termius</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.zerotier.com/" target="_blank" rel="noopener noreffer">ZeroTier One</a></strong></p>
-</li>
-<li>
-<p><a href="https://remmina.org/" target="_blank" rel="noopener noreffer">Remmina</a> <em>(Linux下远程桌面)</em></p>
-</li>
-<li>
-<p><strong><a href="https://www.wireshark.org/" target="_blank" rel="noopener noreffer">Wireshark</a></strong></p>
-</li>
-</ul>
-<h3 id="效率工具">效率工具</h3>
-<ul>
-<li>
-<p><del><a href="https://getquicker.net/" target="_blank" rel="noopener noreffer">Quicker</a></del> <em>(已转utools)</em></p>
-</li>
-<li>
-<p><del><a href="http://www.wox.one/" target="_blank" rel="noopener noreffer">Wox</a></del> <em>(已转utools)</em></p>
-</li>
-<li>
-<p><a href="http://www.yingdev.com/projects/wgestures" target="_blank" rel="noopener noreffer">WGestures</a> <em>(Windows鼠标手势)</em></p>
-</li>
-<li>
-<p><a href="https://github.com/Mapaler/FastCopy-M" target="_blank" rel="noopener noreffer">Fastcopy-M</a> <em>(基于原版的二次开发)</em></p>
-</li>
-<li>
-<p><a href="https://www.voidtools.com/zh-cn/" target="_blank" rel="noopener noreffer">Everything</a></p>
-</li>
-<li>
-<p><em>Pollar</em></p>
-</li>
-<li>
-<p><a href="https://github.com/thjaeger/easystroke/wiki/BuildInstructions" target="_blank" rel="noopener noreffer">Easystroke</a><em>(Linux鼠标手势)</em></p>
-</li>
-<li>
-<p><del><a href="https://www.scootersoftware.com/download.php" target="_blank" rel="noopener noreffer">Bcompare</a></del> <em>(已用Meld代替)</em></p>
-</li>
-<li>
-<p><strong><a href="https://meldmerge.org/" target="_blank" rel="noopener noreffer">Meld</a></strong> <em>(跨平台开源文件/文件夹对比软件)</em></p>
-</li>
-<li>
-<p><strong><a href="https://u.tools/" target="_blank" rel="noopener noreffer">Utools</a></strong></p>
-</li>
-<li>
-<p><a href="https://github.com/microsoft/PowerToys/" target="_blank" rel="noopener noreffer">PowerToys</a></p>
-</li>
-</ul>
-<h3 id="软件磁盘管理">软件&amp;磁盘管理</h3>
-<ul>
-<li>
-<p><del><a href="https://www.ccleaner.com/" target="_blank" rel="noopener noreffer">CCleaner</a></del></p>
-</li>
-<li>
-<p><a href="https://www.chuyu.me/" target="_blank" rel="noopener noreffer">Dism++</a></p>
-</li>
-<li>
-<p><a href="https://scoop.sh/" target="_blank" rel="noopener noreffer">Scoop</a> <em>(PowerShell包管理器)</em></p>
-</li>
-<li>
-<p><a href="https://geekuninstaller.com/" target="_blank" rel="noopener noreffer">Geek Uninstaller</a></p>
-</li>
-<li>
-<p><a href="http://www.uderzo.it/main_products/space_sniffer/" target="_blank" rel="noopener noreffer">SpaceSniffer</a></p>
-</li>
-<li>
-<p><em>CrystalDiskMark</em></p>
-</li>
-<li>
-<p><a href="https://crystalmark.info/en/software/crystaldiskinfo/" target="_blank" rel="noopener noreffer">CrystalDiskInfo</a></p>
-</li>
-<li>
-<p><a href="http://www.diskgenius.cn/" target="_blank" rel="noopener noreffer">DiskGenius</a></p>
-</li>
-</ul>
-<h3 id="安全工具">安全工具</h3>
-<ul>
-<li>
-<p><a href="https://www.huorong.cn/" target="_blank" rel="noopener noreffer">火绒</a></p>
-</li>
-<li>
-<p><a href="https://www.sandboxie.com/" target="_blank" rel="noopener noreffer">Sandboxie</a></p>
-</li>
-</ul>
-<h3 id="虚拟机">虚拟机</h3>
-<ul>
-<li>
-<p><a href="https://www.vmware.com/cn.html" target="_blank" rel="noopener noreffer">VMware Workstation Pro</a></p>
-</li>
-<li>
-<p>Hyper-V</p>
-</li>
-</ul>
-<h3 id="阅读">阅读</h3>
-<ul>
-<li>
-<p><strong><del><a href="http://irreader.fatecore.com/" target="_blank" rel="noopener noreffer">irreader</a></del></strong></p>
-</li>
-<li>
-<p><a href="https://lzone.de/liferea/" target="_blank" rel="noopener noreffer">Liferea</a></p>
-</li>
-<li>
-<p><strong><a href="https://chrome.google.com/webstore/detail/feedbro/mefgmmbdailogpfhfblcnnjfmnpnmdfa?hl=en" target="_blank" rel="noopener noreffer">FeedBro</a></strong> <em>(Chrome插件)</em></p>
-</li>
-</ul>
-<h3 id="cli">Cli</h3>
-<ul>
-<li>
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH" target="_blank" rel="noopener noreffer">Zsh</a></p>
-</li>
-<li>
-<p><a href="https://ohmyz.sh/" target="_blank" rel="noopener noreffer">Oh-my-zsh</a> <em>(插件见配置文件)</em></p>
-</li>
-<li>
-<p><a href="https://github.com/denisidoro/navi" target="_blank" rel="noopener noreffer">Navi</a></p>
-</li>
-<li>
-<p><a href="https://github.com/KittyKatt/screenFetch" target="_blank" rel="noopener noreffer">Screenfetch</a></p>
-</li>
-<li>
-<p><a href="https://hisham.hm/htop/" target="_blank" rel="noopener noreffer">Htop</a></p>
-</li>
-</ul>
-<h3 id="系统工具">系统工具</h3>
-<ul>
-<li>
-<p><a href="https://www.bleachbit.org/" target="_blank" rel="noopener noreffer">BleachBit</a></p>
-</li>
-<li>
-<p><a href="https://github.com/jonls/redshift" target="_blank" rel="noopener noreffer">Redshift</a></p>
-</li>
-<li>
-<p>Deepin-wine</p>
-</li>
-<li>
-<p><a href="https://hub.docker.com/" target="_blank" rel="noopener noreffer">Docker</a></p>
-</li>
-<li>
-<p><a href="https://github.com/teejee2008/timeshift" target="_blank" rel="noopener noreffer">TimeShift</a><em>(系统备份)</em></p>
-</li>
-<li>
-<p><a href="https://better365.cn/" target="_blank" rel="noopener noreffer">Better and Better</a></p>
-</li>
-<li>
-<p><a href="https://bjango.com/mac/istatmenus/" target="_blank" rel="noopener noreffer">iStat Menus</a></p>
-</li>
-</ul>
-<h3 id="邮件">邮件</h3>
-<ul>
-<li><a href="https://www.thunderbird.net/zh-CN/" target="_blank" rel="noopener noreffer">Thunderbird</a></li>
-</ul>]]></description>
 </item></channel>
 </rss>
