@@ -1,7 +1,7 @@
-# Github推送问题
+# Github 推送问题
 
 
-    使用github时遇到的推送问题以及解决方法
+    使用 github 时遇到的推送问题以及解决方法
 
 <!--more-->
 
@@ -59,8 +59,8 @@ $ ssh-add -l -E md5
 ```shell
 $ ssh-add /xxx/.ssh/xxx
 ```
-    注：不知为何，使用自定义名字的密钥，每次git操作都要重新添加一次，尚不明确原因。
-## 添加到Github
+    注：不知为何，使用自定义名字的密钥，每次 git 操作都要重新添加一次，尚不明确原因。
+## 添加到 Github
 
 ​	**Settings** >> **SSH and GPG keys** >> 添加公钥即可
 

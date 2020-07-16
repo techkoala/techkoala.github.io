@@ -4,19 +4,19 @@
         <link>https://www.techkoala.top/tags/dns/</link>
         <description>DNS - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/dns/" rel="self" type="application/rss+xml" /><item>
-    <title>深入浅出DNS解析</title>
+    <title>深入浅出 DNS 解析</title>
     <link>https://www.techkoala.top/dns_update/</link>
     <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/dns_update/</guid>
-    <description><![CDATA[<pre><code>DNS如何工作？当我们更新网站的DNS记录的时候到底发生了什么？更新后必须等待48小时才能生效吗？
-为什么有的人看到的是新IP，有的人看到的是旧IP？
+    <description><![CDATA[<pre><code>DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？
+为什么有的人看到的是新 IP，有的人看到的是旧 IP？
 </code></pre>
-<h2 id="dns分类">DNS分类</h2>
-<p>我们知道，DNS服务器有两种：权威服务器（authoritative）和递归服务器（recursive）</p>
-<p><code>权威DNS服务器（也称为名称服务器，NS，nameserver）</code>具有其所负责的每个域的IP地址数据库。</p>
-<p>例如，<code>github.com</code>的权威DNS服务器是<code>NS-421.awsdNS-52.com</code></p>
-<p>您可以像这样要求它提供<code>github.com</code>的IP:</p>
+<h2 id="dns-分类">DNS 分类</h2>
+<p>我们知道，DNS 服务器有两种：权威服务器（authoritative）和递归服务器（recursive）</p>
+<p><code>权威 DNS 服务器（也称为名称服务器，NS，nameserver）</code> 具有其所负责的每个域的 IP 地址数据库。</p>
+<p>例如，<code>github.com</code> 的权威 DNS 服务器是 <code>NS-421.awsdNS-52.com</code></p>
+<p>您可以像这样要求它提供 <code>github.com</code> 的 IP:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -25,16 +25,16 @@
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
-</div><p><code>递归DNS服务器</code>，本身并不知道谁拥有什么IP地址。它们通过询问正确的权威DNS服务器，找出域名的IP地址，然后缓存这个IP地址，以备再次询问。8.8.8.8是一个递归DNS服务器。</p>
-<p>当人们访问你的网站时，他们可能会向递归DNS服务器进行DNS查询。那么，递归DNS服务器是如何工作的呢?</p>
-<h3 id="递归dns服务器如何工作">递归DNS服务器如何工作</h3>
-<p>以<code>8.8.8.8</code>为例，如果我们向其请求<code>github.com</code>的IP地址（A记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
+</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。8.8.8.8 是一个递归 DNS 服务器。</p>
+<p>当人们访问你的网站时，他们可能会向递归 DNS 服务器进行 DNS 查询。那么，递归 DNS 服务器是如何工作的呢？</p>
+<h3 id="递归-dns-服务器如何工作">递归 DNS 服务器如何工作</h3>
+<p>以 <code>8.8.8.8</code> 为例，如果我们向其请求 <code>github.com</code> 的 IP 地址（A 记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
 <ol>
 <li>
-<p>递归服务器内部硬编码（hardcoded）有根DNS服务器<code>.</code>的IP地址（参见[2][3]），选择一个根DNS服务器，例如<code>198.41.0.4</code></p>
+<p>递归服务器内部硬编码（hardcoded）有根 DNS 服务器 <code>.</code> 的 IP 地址（参见 [2][3]），选择一个根 DNS 服务器，例如 <code>198.41.0.4</code></p>
 </li>
 <li>
-<p>询问根DNS服务器有关<code>com.</code>的NS</p>
+<p>询问根 DNS 服务器有关 <code>com.</code> 的 NS</p>
 <p>此步可以使用如下方法模拟：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -56,11 +56,11 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 ...
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到，这里我们得到一个<code>com.</code>的权威NS<code>a.gtld-servers.net.</code>及其IP地址<code>192.5.6.30</code></p>
-<p><strong>注</strong>：实际上，99.99%的情况下，此步我们就将得到<code>github.com</code>的A记录，但为了展示DNS解析进程，我们假设这里没有得到。</p>
+</div><p>可以看到，这里我们得到一个 <code>com.</code> 的权威 NS<code>a.gtld-servers.net.</code> 及其 IP 地址 <code>192.5.6.30</code></p>
+<p><strong>注</strong>：实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示 DNS 解析进程，我们假设这里没有得到。</p>
 </li>
 <li>
-<p>询问该权威NS有关<code>github.com</code>的NS</p>
+<p>询问该权威 NS 有关 <code>github.com</code> 的 NS</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -79,10 +79,10 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 ... 
 </code></pre></td></tr></table>
 </div>
-</div><p>这里，我们得到的<code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code>及其IP地址<code>205.251.193.165</code></p>
+</div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 IP 地址 <code>205.251.193.165</code></p>
 </li>
 <li>
-<p>询问该NS有关<code>github.com</code>的A记录</p>
+<p>询问该 NS 有关 <code>github.com</code> 的 A 记录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -95,22 +95,22 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
 </div>
-</div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了<code>github.com</code>的IP地址。</p>
+</div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 <code>github.com</code> 的 IP 地址。</p>
 </li>
 </ol>
-<p>此外，使用<code>$ dig @8.8.8.8 +trace github.com</code>可以一次性显示上述所有步骤。</p>
-<h2 id="更新dns记录">更新DNS记录</h2>
-<p>更新DNS记录时，有两种情况：</p>
+<p>此外，使用 <code>$ dig @8.8.8.8 +trace github.com</code> 可以一次性显示上述所有步骤。</p>
+<h2 id="更新-dns-记录">更新 DNS 记录</h2>
+<p>更新 DNS 记录时，有两种情况：</p>
 <ol>
 <li>
-<p>保持相同的NS</p>
+<p>保持相同的 NS</p>
 </li>
 <li>
-<p>变更NS</p>
+<p>变更 NS</p>
 </li>
 </ol>
 <h3 id="首先谈谈生存时间ttlstime-to-live">首先谈谈生存时间（TTLs，time to live）</h3>
-<p>上面已经说到，DNS服务器一般存有缓存，而控制缓存是否过期的参数就是TTL。</p>
+<p>上面已经说到，DNS 服务器一般存有缓存，而控制缓存是否过期的参数就是 TTL。</p>
 <p>我们假设得到一个查询结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -124,9 +124,9 @@ github.com.		60	IN	A	140.82.112.4
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
 </div>
-</div><p>这里的60（秒）即表示TTL，这是一个很短的TTL。理论上，如果每个用户都遵循DNS标准，那么<code>github.com</code>在更改了IP地址后，每个用户都应该在60秒内得到这个新的地址。但实际上呢？</p>
-<h3 id="更新同一ns上的dns记录">更新同一NS上的DNS记录</h3>
-<p>假设我们已经在域名商处更新了新的DNS记录<code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
+</div><p>这里的 60（秒）即表示 TTL，这是一个很短的 TTL。理论上，如果每个用户都遵循 DNS 标准，那么 <code>github.com</code> 在更改了 IP 地址后，每个用户都应该在 60 秒内得到这个新的地址。但实际上呢？</p>
+<h3 id="更新同一-ns-上的-dns-记录">更新同一 NS 上的 DNS 记录</h3>
+<p>假设我们已经在域名商处更新了新的 DNS 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -139,7 +139,7 @@ github.com.		60	IN	A	140.82.112.4
 test.jvNS.ca.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
-</div><p>如果此前没有设置过DNS记录，因为没有缓存，所以立刻生效了。这里可以看到TTL是299。那么，修改IP为<code>5.6.7.8</code>呢。</p>
+</div><p>如果此前没有设置过 DNS 记录，因为没有缓存，所以立刻生效了。这里可以看到 TTL 是 299。那么，修改 IP 为 <code>5.6.7.8</code> 呢。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -152,18 +152,18 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 test.jvNS.ca.		144	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到，IP并没有发生改变且TTL表示缓存还将存在144秒。而且，多次查询，你可能会发现，有时候可以得到新的IP，但有的时候又是旧的IP。</p>
-<p>这里是因为像<code>8.8.8.8</code>这样的DNS服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
-<p>等待5分钟后，所有的缓存都更新了，再次查询，将会始终返回新IP。</p>
-<h3 id="ttl并非总是可靠">TTL并非总是可靠</h3>
-<p>与大多数互联网协议一样，并不是所有的终端都服从DNS规范（包括<code>8.8.8.8</code>这样的大型DNS也不尊重TTL）。一些ISP的DNS服务器会将缓存记录的时间比TTL规定的时间长，比如可能是2天而不是5分钟。而且人们总是可以在他们的/etc/hosts中硬编码旧的IP地址。</p>
-<p>此外，应用程序（例如浏览器）都内置了自己的DNS缓存，或者本地网关也存在缓存。</p>
-<p>这也是为什么，即便正确地设置了对应的TTL（大部分DNS将会在短时间内更新缓存），有些DNS服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的IP地址。</p>
-<h3 id="连同ns一起更新">连同NS一起更新</h3>
-<p>假设此前的NS为<code>dNS1.p01.NSone.net</code>，现在我们把他修改为谷歌的NS<code>NS-cloud-b1.googledomaiNS.com</code>。</p>
-<p>通常，当你修改完成后，你的域名商会提示你：“修改将在48小时内生效”。</p>
-<p>然后设置一个新的A记录指向<code>1.2.3.4</code></p>
-<p>dig看看：</p>
+</div><p>可以看到，IP 并没有发生改变且 TTL 表示缓存还将存在 144 秒。而且，多次查询，你可能会发现，有时候可以得到新的 IP，但有的时候又是旧的 IP。</p>
+<p>这里是因为像 <code>8.8.8.8</code> 这样的 DNS 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
+<p>等待 5 分钟后，所有的缓存都更新了，再次查询，将会始终返回新 IP。</p>
+<h3 id="ttl-并非总是可靠">TTL 并非总是可靠</h3>
+<p>与大多数互联网协议一样，并不是所有的终端都服从 DNS 规范（包括 <code>8.8.8.8</code> 这样的大型 DNS 也不尊重 TTL）。一些 ISP 的 DNS 服务器会将缓存记录的时间比 TTL 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 /etc/hosts 中硬编码旧的 IP 地址。</p>
+<p>此外，应用程序（例如浏览器）都内置了自己的 DNS 缓存，或者本地网关也存在缓存。</p>
+<p>这也是为什么，即便正确地设置了对应的 TTL（大部分 DNS 将会在短时间内更新缓存），有些 DNS 服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的 IP 地址。</p>
+<h3 id="连同-ns-一起更新">连同 NS 一起更新</h3>
+<p>假设此前的 NS 为 <code>dNS1.p01.NSone.net</code>，现在我们把他修改为谷歌的 NS<code>NS-cloud-b1.googledomaiNS.com</code>。</p>
+<p>通常，当你修改完成后，你的域名商会提示你：“修改将在 48 小时内生效”。</p>
+<p>然后设置一个新的 A 记录指向 <code>1.2.3.4</code></p>
+<p>dig 看看：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -176,7 +176,7 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 examplecat.com.		17	IN	A	104.248.50.87
 </code></pre></td></tr></table>
 </div>
-</div><p><code>8.8.8.8</code>没有变化，询问别的DNS：</p>
+</div><p><code>8.8.8.8</code> 没有变化，询问别的 DNS：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -189,9 +189,9 @@ examplecat.com.		17	IN	A	104.248.50.87
 examplecat.com.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
-</div><p><code>1.1.1.1</code>更新了。</p>
-<p>造成这样不同结果的原因，可能是此前并没有人询问过<code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的IP。</p>
-<p>而如果我们向新的NS查询，肯定会得到新的IP记录：</p>
+</div><p><code>1.1.1.1</code> 更新了。</p>
+<p>造成这样不同结果的原因，可能是此前并没有人询问过 <code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的 IP。</p>
+<p>而如果我们向新的 NS 查询，肯定会得到新的 IP 记录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -204,8 +204,8 @@ examplecat.com.		299	IN	A	1.2.3.4
 examplecat.com.		300	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="ns的ttl要长很多">NS的TTL要长很多</h3>
-<p>域名商提示：“修改将在48小时内生效”的原因是NS记录（告诉递归NS应该向哪个NS查询）的TTL要长的多。</p>
+</div><h3 id="ns-的-ttl-要长很多">NS 的 TTL 要长很多</h3>
+<p>域名商提示：“修改将在 48 小时内生效” 的原因是 NS 记录（告诉递归 NS 应该向哪个 NS 查询）的 TTL 要长的多。</p>
 <p>回到上一节中，我们的查询结果显示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -225,9 +225,9 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 ...
 </code></pre></td></tr></table>
 </div>
-</div><p>172800秒是48小时！这就是为什么更改NS后需要更长的时间来生效。</p>
-<h3 id="ns如何得到更新">NS如何得到更新？</h3>
-<p>更新NS后，我们向根服务器查询的话就会到得到这样的结果：</p>
+</div><p>172800 秒是 48 小时！这就是为什么更改 NS 后需要更长的时间来生效。</p>
+<h3 id="ns-如何得到更新">NS 如何得到更新？</h3>
+<p>更新 NS 后，我们向根服务器查询的话就会到得到这样的结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -240,12 +240,12 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </code></pre></td></tr></table>
 </div>
-</div><p>你可能会疑惑，新的NS记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的NS后，他们会负责将这个给更改告知根服务器。</p>
+</div><p>你可能会疑惑，新的 NS 记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的 NS 后，他们会负责将这个给更改告知根服务器。</p>
 <p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（TLD）（非.com）可能速度稍微慢一些。</p>
 <h2 id="总结">总结</h2>
-<p>本文展示了DNS的解析过程以及我们更新DNS记录时发送了什么，希望有助于你理解这一过程。</p>
+<p>本文展示了 DNS 的解析过程以及我们更新 DNS 记录时发送了什么，希望有助于你理解这一过程。</p>
 <h2 id="说明">说明</h2>
-<p><strong>注</strong>：本文属于<code>Translation</code>系列文章，本系列文章<strong>主要内容</strong>来源于博主对优秀外文文章地翻译和校对，这里并不一定遵循原文的叙述逻辑，内容上也会有一定的增删，原文请见参考。</p>
+<p><strong>说明：<strong>本文属于 <code>Translation</code> 系列文章，本系列文章</strong>主要内容</strong>来源于博主对优秀外文文章地翻译和校对，这里并不一定遵循原文的叙述逻辑，内容上也会有一定的增删，原文请见参考。</p>
 <p>译文的目的一方面是加深自己学习的印象，另外一方面是希望能够共享优质的内容。</p>
 <h2 id="参考">参考</h2>
 <ul>

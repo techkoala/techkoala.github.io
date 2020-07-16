@@ -4,7 +4,7 @@
         <link>https://www.techkoala.top/tags/linux/</link>
         <description>Linux - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/linux/" rel="self" type="application/rss+xml" /><item>
-    <title>Linux安全分析与加固</title>
+    <title>Linux 安全分析与加固</title>
     <link>https://www.techkoala.top/linux_security/</link>
     <pubDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</pubDate>
     <author>作者</author>
@@ -12,33 +12,33 @@
     <description><![CDATA[<a class="lightgallery" href="/images/Linux/linux.png" title="/images/Linux/linux.png" data-thumbnail="/images/Linux/linux.png">
         
     </a>
-<pre><code>记录一些常见的Linux服务器安全问题分析以及防护措施
+<pre><code>记录一些常见的 Linux 服务器安全问题分析以及防护措施
 </code></pre>
 <h2 id="日志分析">日志分析</h2>
 <h3 id="常用日志文件">常用日志文件</h3>
-<p><strong>Debian</strong>以及<strong>RHEL</strong>系的系统日志是由一个名为syslog的服务管理的，如以下日志文件都是由syslog日志服务驱动的：</p>
-<p><code>/var/log/boot.log</code>：记录了系统在引导过程中发生的事件，就是Linux系统开机自检过程显示的信息</p>
-<p><code>/var/log/lastlog</code> ：记录最后一次用户成功登陆的时间、登陆IP等信息</p>
-<p><code>/var/log/messages</code> ：记录Linux操作系统常见的系统和服务错误信息</p>
-<p><code>/var/log/secure</code> ：Linux系统安全日志，记录用户和工作组变坏情况、用户登陆认证情况</p>
-<p><code>/var/log/syslog</code>：只记录警告信息，常常是系统出问题的信息，使用lastlog查看</p>
-<p><code>/var/log/wtmp</code>：该日志文件永久记录每个用户登录、注销及系统的启动、停机的事件，使用last命令查看</p>
-<p><code>/var/run/utmp</code>：该日志文件记录有关当前登录的每个用户的信息。如 who、w、users、finger等就需要访问这个文件</p>
-<p><strong><code>/var/log/btmp</code>：记录Linux登陆失败的用户、时间以及远程IP地址</strong></p>
-<p><strong><code>/var/log/auth.log</code>或<code>/var/log/secure</code>存储来自可插拔认证模块(PAM)的日志，包括成功的登录，失败的登录尝试和认证方式。</strong></p>
-<pre><code>注：**Debian**系在/var/log/auth.log 中存储认证信息而**RHEL**系则在/var/log/secure 中存储。
+<p><strong>Debian</strong> 以及 <strong>RHEL</strong> 系的系统日志是由一个名为 syslog 的服务管理的，如以下日志文件都是由 syslog 日志服务驱动的：</p>
+<p><code>/var/log/boot.log</code>：记录了系统在引导过程中发生的事件，就是 Linux 系统开机自检过程显示的信息</p>
+<p><code>/var/log/lastlog</code> ：记录最后一次用户成功登陆的时间、登陆 IP 等信息</p>
+<p><code>/var/log/messages</code> ：记录 Linux 操作系统常见的系统和服务错误信息</p>
+<p><code>/var/log/secure</code> ：Linux 系统安全日志，记录用户和工作组变坏情况、用户登陆认证情况</p>
+<p><code>/var/log/syslog</code>：只记录警告信息，常常是系统出问题的信息，使用 lastlog 查看</p>
+<p><code>/var/log/wtmp</code>：该日志文件永久记录每个用户登录、注销及系统的启动、停机的事件，使用 last 命令查看</p>
+<p><code>/var/run/utmp</code>：该日志文件记录有关当前登录的每个用户的信息。如 who、w、users、finger 等就需要访问这个文件</p>
+<p><strong><code>/var/log/btmp</code>：记录 Linux 登陆失败的用户、时间以及远程 IP 地址</strong></p>
+<p><strong><code>/var/log/auth.log</code> 或 <code>/var/log/secure</code> 存储来自可插拔认证模块 (PAM) 的日志，包括成功的登录，失败的登录尝试和认证方式。</strong></p>
+<pre><code>注：**Debian** 系在 /var/log/auth.log 中存储认证信息而 **RHEL** 系则在 /var/log/secure 中存储。
 </code></pre>
-<p><strong>Archlinux</strong>使用<code>systemd</code>提供的日志系统（logging system），称为<code>journal</code>。使用 systemd 日志，无需额外安装日志服务（syslog）。</p>
+<p><strong>Archlinux</strong> 使用 <code>systemd</code> 提供的日志系统（logging system），称为 <code>journal</code>。使用 systemd 日志，无需额外安装日志服务（syslog）。</p>
 <h3 id="相关日志查看命令">相关日志查看命令</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ cat /var/log/secure <span class="p">|</span> awk <span class="s1">&#39;/Failed/{print $(NF-3)}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> awk <span class="s1">&#39;{print $2&#34; = &#34;$1;}&#39;</span>
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cat /var/log/secure <span class="p">|</span> awk <span class="s1">&#39;/Failed/{print $(NF-3)}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> awk <span class="s1">&#39;{print $2&#34;=&#34;$1;}&#39;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>查看尝试暴力登录root的IP及次数</p>
+</div><p>查看尝试暴力登录 root 的 IP 及次数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -50,7 +50,7 @@
 </div><hr>
 <h2 id="常见防护措施">常见防护措施</h2>
 <h3 id="ssh">SSH</h3>
-<h4 id="编辑ssh配置文件">编辑SSH配置文件</h4>
+<h4 id="编辑-ssh-配置文件">编辑 SSH 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -61,12 +61,12 @@
 </div>
 </div><p><strong>1、修改端口</strong></p>
 <p><code>#Port 22 —&gt; Port xxxx</code></p>
-<p><strong>2、关闭root登录</strong></p>
+<p><strong>2、关闭 root 登录</strong></p>
 <p><code>PermitRootLogin yes -&gt; PermitRootLogin no</code></p>
 <p><strong>3、使用证书登录</strong></p>
 <ul>
 <li>
-<p><strong>若不存在证书首先执行下面步骤：</strong></p>
+<p><strong>若不存在证书首先执行下面步骤</strong></p>
 <p>在客户端生成密钥:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -85,7 +85,7 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i .ssh/id_rsa.pub server
 </code></pre></td></tr></table>
 </div>
-</div><p>或手动将id_rsa.pub拷贝至服务器用户目录的.ssh中，并修改访问权限：</p>
+</div><p>或手动将 id_rsa.pub 拷贝至服务器用户目录的.ssh 中，并修改访问权限：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -115,7 +115,7 @@
 <p><code>PasswordAuthentication no</code></p>
 <p>禁止空密码：</p>
 <p><code>PermitEmptyPasswords no</code></p>
-<p><strong>最后，重启SSHD服务</strong></p>
+<p><strong>最后，重启 SSHD 服务</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -126,9 +126,9 @@
 </div>
 </div><h3 id="用户以及用户组管理">用户以及用户组管理</h3>
 <h4 id="无用用户用户组">无用用户、用户组</h4>
-<p><strong>Linux系统中可以删除的默认用户和组大致有如下这些：</strong></p>
-<p>可删除的用户，如<code>adm,lp,sync,shutdown,halt,news,uucp,operator,games,gopher</code>等。</p>
-<p>可删除的组，如<code>adm,lp,news,uucp,games,dip,pppusers,popusers,slipusers</code>等。</p>
+<p><strong>Linux 系统中可以删除的默认用户和组大致有如下这些：</strong></p>
+<p>可删除的用户，如 <code>adm,lp,sync,shutdown,halt,news,uucp,operator,games,gopher</code> 等。</p>
+<p>可删除的组，如 <code>adm,lp,news,uucp,games,dip,pppusers,popusers,slipusers</code> 等。</p>
 <h4 id="空口令账户">空口令账户</h4>
 <p>使用如下命令检测空口令账户：</p>
 <div class="highlight"><div class="chroma">
@@ -139,12 +139,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F: <span class="s1">&#39;$2==&#34;!!&#34; {print $1}&#39;</span> /etc/shadow
 </code></pre></td></tr></table>
 </div>
-</div><p>然后查看<code>/etc/passwd</code>确认空口令用户是否可以登录，选择是否加固密码。</p>
+</div><p>然后查看 <code>/etc/passwd</code> 确认空口令用户是否可以登录，选择是否加固密码。</p>
 <h4 id="登录失败后强制延时">登录失败后强制延时</h4>
-<p>在<code>/etc/pam.d/system-login</code>中添加<code>auth optional pam_faildelay.so delay=4000000</code>，表示延时4秒（单位微秒）</p>
-<h4 id="限制root权限">限制root权限</h4>
+<p>在 <code>/etc/pam.d/system-login</code> 中添加 <code>auth optional pam_faildelay.so delay=4000000</code>，表示延时 4 秒（单位微秒）</p>
+<h4 id="限制-root-权限">限制 root 权限</h4>
 <p>可以为单个用户启用单个程序的 root 权限，而不用为了运行一个程序启用该用户对 root 的完整访问权。例如，要授予用户 alice 对特定程序的访问权限：</p>
-<p>编辑<code>/etc/sudoers</code></p>
+<p>编辑 <code>/etc/sudoers</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -155,7 +155,7 @@
 </div>
 </div><ul>
 <li>
-<p>若要指定visudo的默认编辑器，最好是修改<code>/etc/sudoers</code>中的<code>Defaults editor=xxxx</code></p>
+<p>若要指定 visudo 的默认编辑器，最好是修改 <code>/etc/sudoers</code> 中的 <code>Defaults editor=xxxx</code></p>
 <p>而不是使用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -171,7 +171,7 @@
 <p>添加：</p>
 <p><code>alice ALL = NOPASSWD: /path/to/program</code></p>
 <h3 id="关闭不必要的服务">关闭不必要的服务</h3>
-<p><strong>例如：</strong> 某台Linux服务器用于www应用，那么除了httpd服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：</p>
+<p><strong>例如</strong> 某台 Linux 服务器用于 www 应用，那么除了 httpd 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：</p>
 <p><code>anacron、auditd、autofs、avahi-daemon、avahi-dnsconfd、bluetooth、cpuspeed、firstboot、gpm、haldaemon、hidd、ip6tables、ipsec、isdn、lpd、mcstrans、messagebus、netfs、nfs、nfslock、nscd、pcscd portmap、readahead_early、restorecond、rpcgssd、rpcidmapd、rstatd、sendmail、setroubleshoot、yppasswdd ypserv</code></p>
 <h3 id="文件系统安全">文件系统安全</h3>
 <p><strong>文件权限检查和修改</strong></p>
@@ -182,29 +182,29 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">查找文件：$ find / -type f -perm -2 -o -perm -20 <span class="p">|</span>xargs ls -al
-查找目录：$ find / -type d -perm -2 -o -perm -20 <span class="p">|</span>xargs ls –ld
+<pre class="chroma"><code class="language-bash" data-lang="bash">查找文件：$ find /-type f -perm -2 -o -perm -20 <span class="p">|</span>xargs ls -al
+查找目录：$ find /-type d -perm -2 -o -perm -20 <span class="p">|</span>xargs ls –ld
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>（2）查找系统中所有含“s”位的程序</strong></p>
+</div><p><strong>（2）查找系统中所有含 “s” 位的程序</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">find / -type f -perm -4000 -o -perm -2000 -print <span class="p">|</span> xargs ls –al
+<pre class="chroma"><code class="language-bash" data-lang="bash">find /-type f -perm -4000 -o -perm -2000 -print <span class="p">|</span> xargs ls –al
 </code></pre></td></tr></table>
 </div>
-</div><p>含有“s”位权限的程序对系统安全威胁很大，通过查找系统中所有具有“s”位权限的程序，可以把某些不必要的“s”位程序去掉，这样可以防止用户滥用权限或提升权限的可能性。</p>
-<p><strong>（3）检查系统中所有suid及sgid文件</strong></p>
+</div><p>含有 “s” 位权限的程序对系统安全威胁很大，通过查找系统中所有具有 “s” 位权限的程序，可以把某些不必要的 “s” 位程序去掉，这样可以防止用户滥用权限或提升权限的可能性。</p>
+<p><strong>（3）检查系统中所有 suid 及 sgid 文件</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ find / -user root -perm -2000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
-$ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find /-user root -perm -2000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
+$ find /-user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>将检查的结果保存到文件中，可在以后的系统检查中作为参考。</p>
@@ -214,7 +214,7 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ find / -nouser -o –nogroup
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find /-nouser -o –nogroup
 </code></pre></td></tr></table>
 </div>
 </div><p>没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。</p>
@@ -222,22 +222,22 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] Linux服务器为什么被黑？</p>
+<p>[1] Linux 服务器为什么被黑？</p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/doublexi/p/9636506.html" target="_blank" rel="noopener noreffer">linux系统安全加固&ndash;账号相关</a></p>
+<p>[2] <a href="https://www.cnblogs.com/doublexi/p/9636506.html" target="_blank" rel="noopener noreffer">linux 系统安全加固 &ndash; 账号相关</a></p>
 </li>
 <li>
 <p>[3] <a href="https://wiki.archlinux.org/index.php/Security" target="_blank" rel="noopener noreffer">Security - Archlinux Wiki</a></p>
 </li>
 </ul>]]></description>
 </item><item>
-    <title>Github推送问题</title>
+    <title>Github 推送问题</title>
     <link>https://www.techkoala.top/github_push_issue/</link>
     <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/github_push_issue/</guid>
-    <description><![CDATA[<pre><code>使用github时遇到的推送问题以及解决方法
+    <description><![CDATA[<pre><code>使用 github 时遇到的推送问题以及解决方法
 </code></pre>
 <p>​	首先，使用如下命令检查问题详情：</p>
 <div class="highlight"><div class="chroma">
@@ -325,9 +325,9 @@ $ ssh-add -l -E md5
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add /xxx/.ssh/xxx
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>注：不知为何，使用自定义名字的密钥，每次git操作都要重新添加一次，尚不明确原因。
+</div><pre><code>注：不知为何，使用自定义名字的密钥，每次 git 操作都要重新添加一次，尚不明确原因。
 </code></pre>
-<h2 id="添加到github">添加到Github</h2>
+<h2 id="添加到-github">添加到 Github</h2>
 <p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>]]></description>
 </item></channel>
 </rss>

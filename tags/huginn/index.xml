@@ -12,7 +12,7 @@
     <description><![CDATA[<a class="lightgallery" href="/images/Huginn/Huginn.png" title="/images/Huginn/Huginn.png" data-thumbnail="/images/Huginn/Huginn.png">
         
     </a>
-<pre><code>简单介绍使用Docker运行的Huginn数据的备份与恢复
+<pre><code>简单介绍使用 Docker 运行的 Huginn 数据的备份与恢复
 </code></pre>
 <h3 id="备份数据">备份数据</h3>
 <p>使用命令在容器中生成备份：</p>
@@ -34,7 +34,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="恢复数据">恢复数据</h3>
-<p>首先复制文件到daocker中：</p>
+<p>首先复制文件到 daocker 中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -43,7 +43,7 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
-</div><p>然后进入docker：</p>
+</div><p>然后进入 docker：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

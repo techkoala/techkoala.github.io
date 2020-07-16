@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Nagle算法 - TechKoala</title><meta name="Description" content="TechKoala&#39;s自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="Nagle算法" />
-<meta property="og:description" content="简要介绍Nagle算法
+        <title>Nagle 算法 - TechKoala</title><meta name="Description" content="TechKoala&#39;s自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="Nagle 算法" />
+<meta property="og:description" content="简要介绍 Nagle 算法
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/turn_off_nagle/" />
 <meta property="article:published_time" content="2020-06-28T10:44:16+08:00" />
 <meta property="article:modified_time" content="2020-07-15T14:38:55+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Nagle算法"/>
-<meta name="twitter:description" content="简要介绍Nagle算法
+<meta name="twitter:title" content="Nagle 算法"/>
+<meta name="twitter:description" content="简要介绍 Nagle 算法
 "/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -23,12 +23,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Nagle算法",
+        "headline": "Nagle 算法",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/turn_off_nagle\/"
-        },"genre": "posts","keywords": "Network, Nagle","wordcount":  696 ,
+        },"genre": "posts","keywords": "Network, Nagle","wordcount":  518 ,
         "url": "https:\/\/www.techkoala.top\/turn_off_nagle\/","datePublished": "2020-06-28T10:44:16+08:00","dateModified": "2020-07-15T14:38:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -103,9 +103,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Nagle算法</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Nagle 算法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-28">2020-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 696 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-28">2020-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 518 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -114,17 +114,17 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#nagle算法">Nagle算法</a></li>
-    <li><a href="#windows下关闭nagle算法">Windows下关闭Nagle算法</a></li>
+    <li><a href="#nagle-算法">Nagle 算法</a></li>
+    <li><a href="#windows-下关闭-nagle-算法">Windows 下关闭 Nagle 算法</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><pre><code>简要介绍Nagle算法
+            </div><div class="content" id="content"><pre><code>简要介绍 Nagle 算法
 </code></pre>
-<h2 id="nagle算法">Nagle算法</h2>
-<p>Nagle算法通过减少网络发包频率从而提高TCP/IP网络的效率。</p>
-<p>主要解决由于TCP包头大小，导致频繁发送小数据包有效数据内容太少，开销过大段的问题。</p>
-<p>Nagle算法是将大量等待发送的小数据包合并起来，然后一次性全部发送出去。具体地说，只要有一个发送方没有收到任何确认的数据包，发送方就应该一直缓冲它的输出，直到它有一个完整的数据包的输出，这样就允许一次发送所有的输出。</p>
+<h2 id="nagle-算法">Nagle 算法</h2>
+<p>Nagle 算法通过减少网络发包频率从而提高 TCP/IP 网络的效率。</p>
+<p>主要解决由于 TCP 包头大小，导致频繁发送小数据包有效数据内容太少，开销过大段的问题。</p>
+<p>Nagle 算法是将大量等待发送的小数据包合并起来，然后一次性全部发送出去。具体地说，只要有一个发送方没有收到任何确认的数据包，发送方就应该一直缓冲它的输出，直到它有一个完整的数据包的输出，这样就允许一次发送所有的输出。</p>
 <p>其思路可以由下面的步骤所描述：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -154,15 +154,15 @@
 end if
 </code></pre></td></tr></table>
 </div>
-</div><p>Nagle算法可能导致期望实时响应和低延迟的应用程序体验不佳。</p>
+</div><p>Nagle 算法可能导致期望实时响应和低延迟的应用程序体验不佳。</p>
 <p>诸如网络多人视频游戏或鼠标在远程控制的操作系统中移动等应用程序，期望立即发送操作，而算法故意延迟传输，以牺牲延迟为代价提高带宽效率。因此，具有低带宽时间敏感传输的应用程序通常用于绕过 Nagle 延迟的 ACK 延迟。</p>
-<h2 id="windows下关闭nagle算法">Windows下关闭Nagle算法</h2>
+<h2 id="windows-下关闭-nagle-算法">Windows 下关闭 Nagle 算法</h2>
 <ol>
 <li>
 <p>打开注册表编辑器</p>
 </li>
 <li>
-<p>打开如下路径<code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></p>
+<p>打开如下路径 <code>计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></p>
 <a class="lightgallery" href="/images/Network/regedit.png" title="/images/Network/regedit.png" data-thumbnail="/images/Network/regedit.png">
         <img
             class="lazyload"
@@ -174,17 +174,17 @@ end if
     </a>
 </li>
 <li>
-<p>依次点击下方注册表项，检查右窗格中是否包含<code>DhcpIPAddress</code>值；</p>
+<p>依次点击下方注册表项，检查右窗格中是否包含 <code>DhcpIPAddress</code> 值；</p>
 </li>
 <li>
-<p>在包含有<code>DhcpIPAddress</code>的子项下，分别建立两个<code>DWORD(32)</code>值，依次命名为<code>TcpAckFrequency</code>和<code>TCPNoDelay</code>，键值全部设为<code>1</code>。</p>
-<p><strong><code>注意</code></strong> 包含<code>DhcpIPAddress</code>的子项可能不只一个，所有的都要添加。</p>
+<p>在包含有 <code>DhcpIPAddress</code> 的子项下，分别建立两个 <code>DWORD (32)</code> 值，依次命名为 <code>TcpAckFrequency</code> 和 <code>TCPNoDelay</code>，键值全部设为 <code>1</code>。</p>
+<p><strong>注意</strong> 包含 <code>DhcpIPAddress</code> 的子项可能不只一个，所有的都要添加。</p>
 </li>
 </ol>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreffer">Nagel算法维基百科</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreffer">Nagel 算法维基百科</a></p>
 </li>
 <li>
 <p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreffer">RFC896</a></p>
@@ -201,7 +201,7 @@ end if
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle算法" data-hashtags="Network,Nagle"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/turn_off_nagle/" data-hashtag="Network"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle算法"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/turn_off_nagle/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle算法"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle算法"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle 算法" data-hashtags="Network,Nagle"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/turn_off_nagle/" data-hashtag="Network"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle 算法"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/turn_off_nagle/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle 算法"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/turn_off_nagle/" data-title="Nagle 算法"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -213,8 +213,8 @@ end if
         </section>
     </div>
 
-    <div class="post-nav"><a href="/linux_security/" class="prev" rel="prev" title="Linux安全分析与加固"><i class="fas fa-angle-left fa-fw"></i>Linux安全分析与加固</a>
-            <a href="/dns_update/" class="next" rel="next" title="深入浅出DNS解析">深入浅出DNS解析<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/linux_security/" class="prev" rel="prev" title="Linux 安全分析与加固"><i class="fas fa-angle-left fa-fw"></i>Linux 安全分析与加固</a>
+            <a href="/dns_update/" class="next" rel="next" title="深入浅出 DNS 解析">深入浅出 DNS 解析<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -229,7 +229,7 @@ end if
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":[""],"clientID":"","clientSecret":"","id":"2020-06-28T10:44:16+08:00","owner":"","repo":"","title":"Nagle算法"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":[""],"clientID":"","clientSecret":"","id":"2020-06-28T10:44:16+08:00","owner":"","repo":"","title":"Nagle 算法"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>

@@ -11,7 +11,7 @@
 
 ​    2.斜体表示优先选择表示商店版本(Windows & Mac os)
 
-​    3.Linux优先选用对应包管理器安装
+​    3.Linux 优先选用对应包管理器安装
 
 ### 浏览器
 
@@ -136,7 +136,7 @@
 
 - Office 365
 
-- [Office tools plus](<https://otp.landian.vip/zh-cn/>)*(office套件管理工具)*
+- [Office tools plus](<https://otp.landian.vip/zh-cn/>)*(office 套件管理工具)*
 
 - **[Typora](<https://typora.io/>)**
 
@@ -168,7 +168,7 @@
 
 - [VLC](<https://www.videolan.org/vlc/index.html>)
 
-- [Petal](<https://github.com/shakrmedia/petal>)*(Linux下豆瓣FM第三方客户端)*
+- [Petal](<https://github.com/shakrmedia/petal>)*(Linux 下豆瓣 FM 第三方客户端)*
 
 ### 网盘工具
 
@@ -190,7 +190,7 @@
 
 - **[Telegram](<https://desktop.telegram.org/>)**
 
-- *~~Unigram~~* *(Telegram第三方客户端，相较官方客户端增加了PC端的端到端加密聊天功能)*
+- *~~Unigram~~* *(Telegram 第三方客户端，相较官方客户端增加了 PC 端的端到端加密聊天功能)*
 
 - *微信*
 
@@ -202,11 +202,11 @@
 
 ### 网络工具
 
-- ~~[Shadowsocks-libev](<https://shadowsocks.org/en/download/servers.html>)~~ *(转向vmess协议)*
+- ~~[Shadowsocks-libev](<https://shadowsocks.org/en/download/servers.html>)~~ *(转向 vmess 协议)*
 
 - ~~Sstap~~ *(停止更新)*
 
-- ~~[V2rayN](<https://github.com/2dust/v2rayN>)~~ *(已转Clash，支持更加灵活的规则和配置文件管理)*
+- ~~[V2rayN](<https://github.com/2dust/v2rayN>)~~ *(已转 Clash，支持更加灵活的规则和配置文件管理)*
 
 - [Clash](<https://github.com/Dreamacro/clash>)
 
@@ -218,7 +218,7 @@
 
 - [Best Trace](<https://www.ipip.net/product/client.html>)
 
-- ~~[MobaXterm](<https://mobaxterm.mobatek.net/>)~~ *(已转Termius,多端同步)*
+- ~~[MobaXterm](<https://mobaxterm.mobatek.net/>)~~ *(已转 Termius,多端同步)*
 
 - **[Termius](<https://termius.com/>)**
 
@@ -233,7 +233,7 @@
 
 - ~~[Wox](<http://www.wox.one/>)~~ *(已转utools)*
 
-- [WGestures](<http://www.yingdev.com/projects/wgestures>) *(Windows鼠标手势)*
+- [WGestures](<http://www.yingdev.com/projects/wgestures>) *(Windows 鼠标手势)*
 
 - [Fastcopy-M](<https://github.com/Mapaler/FastCopy-M>) *(基于原版的二次开发)*
 
@@ -241,9 +241,9 @@
 
 - *Pollar*
 
-- [Easystroke](<https://github.com/thjaeger/easystroke/wiki/BuildInstructions>)*(Linux鼠标手势)*
+- [Easystroke](<https://github.com/thjaeger/easystroke/wiki/BuildInstructions>)*(Linux 鼠标手势)*
 
-- ~~[Bcompare](<https://www.scootersoftware.com/download.php>)~~ *(已用Meld代替)*
+- ~~[Bcompare](<https://www.scootersoftware.com/download.php>)~~ *(已用 Meld 代替)*
 
 - **[Meld](<https://meldmerge.org/>)** *(跨平台开源文件/文件夹对比软件)*
 
@@ -257,7 +257,7 @@
 
 - [Dism++](<https://www.chuyu.me/>)
 
-- [Scoop](<https://scoop.sh/>) *(PowerShell包管理器)*
+- [Scoop](<https://scoop.sh/>) *(PowerShell 包管理器)*
 
 - [Geek Uninstaller](<https://geekuninstaller.com/>)
 
@@ -286,8 +286,6 @@
 - **~~[irreader](<http://irreader.fatecore.com/>)~~** 
 
 - [Liferea](<https://lzone.de/liferea/>)
-
-- **[FeedBro](<https://chrome.google.com/webstore/detail/feedbro/mefgmmbdailogpfhfblcnnjfmnpnmdfa?hl=en>)** *(Chrome插件)*
 
 ### Cli
 
