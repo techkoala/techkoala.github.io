@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>SCP 概览 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="SCP 概览" />
+<meta property="og:description" content="SCP就是SSH协议的文件传输功能吗？
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.techkoala.top/scp/" />
+<meta property="article:published_time" content="2020-07-18T10:28:05+08:00" />
+<meta property="article:modified_time" content="2020-07-18T20:11:44+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SCP 概览"/>
+<meta name="twitter:description" content="SCP就是SSH协议的文件传输功能吗？
+"/>
+<meta name="application-name" content="TechKoala">
+<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/scp/" /><link rel="prev" href="https://www.techkoala.top/nat_issues_solutions/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SCP 概览",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.techkoala.top\/scp\/"
+        },"genre": "posts","keywords": "Software, Linux, Translation","wordcount":  2629 ,
+        "url": "https:\/\/www.techkoala.top\/scp\/","datePublished": "2020-07-18T10:28:05+08:00","dateModified": "2020-07-18T20:11:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "TechKoala"},"author": {
+                "@type": "Person",
+                "name": "TechKoala"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="TechKoala">TechKoala</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"> Posts </a><a class="menu-item" href="/tags"> Tags </a><a class="menu-item" href="/categories"> Categories </a><a class="menu-item" href="/about"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="TechKoala">TechKoala</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts" title="">Posts</a><a class="menu-item" href="/tags" title="">Tags</a><a class="menu-item" href="/categories" title="">Categories</a><a class="menu-item" href="/about" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">SCP 概览</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2629 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是scp">什么是SCP</a></li>
+    <li><a href="#scp-工作原理">SCP 工作原理</a>
+      <ul>
+        <li><a href="#连接建立">连接建立</a></li>
+        <li><a href="#有线协议">有线协议</a></li>
+      </ul>
+    </li>
+    <li><a href="#scp-的问题">SCP 的问题</a>
+      <ul>
+        <li><a href="#性能">性能</a></li>
+        <li><a href="#安全">安全</a></li>
+      </ul>
+    </li>
+    <li><a href="#scp-的替代方案">SCP 的替代方案</a></li>
+    <li><a href="#结论">结论</a></li>
+    <li><a href="#see-also">See also</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><pre><code>SCP就是SSH协议的文件传输功能吗？
+</code></pre>
+<h2 id="什么是scp">什么是SCP</h2>
+<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
+<p>使用起来特别方便：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+</code></pre></td></tr></table>
+</div>
+</div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
+<p>SCP 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。SCP 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
+<p>使用前需要首先配置到远程主机的 SSH 连接权限。SCP 的验证提示和 SSH 看起很像，因为 SCP 跑在 SSH 的上层，仅仅把它作为文件数据的管道。事实上，SSH 负责处理所有安全相关的任务，SCP 只是将一些文件扔到 SSH 连接上。</p>
+<p>维基百科上的条目讲述了 SCP 的历史，简而言之：在旧的 BSD 系统上曾经有一个叫 RCP 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 RCP 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 SSH 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
+<h2 id="scp-工作原理">SCP 工作原理</h2>
+<p>SCP 并不是一个标准协议，白并没有一个 RFC 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的有线协议。</p>
+<h3 id="连接建立">连接建立</h3>
+<p>实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似Unix管道。OpenSSH中包含两个程序来完成:<code>sshd</code>和<code>scp</code>。<code>sshd</code>是始终运行的服务器守护进程，接受新的SSH连接。<code>scp</code>是伪装成ssh的客户端程序，发送和接受文件。</p>
+<p>当<code>scp</code>运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的<code>scp</code>程序。你可以认为是<code>ssh exec scp [flags]</code>。主要的标志包含<code>-t</code>（&ldquo;to&rdquo;）和<code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而<code>-d</code>表示文件夹，<code>-r</code>表示递归。</p>
+<a class="lightgallery" href="/images/Software/SCP/scp-1.png" title="/images/Software/SCP/scp-1.png" data-thumbnail="/images/Software/SCP/scp-1.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/Software/SCP/scp-1.png"
+            data-srcset="/images/Software/SCP/scp-1.png, /images/Software/SCP/scp-1.png 1.5x, /images/Software/SCP/scp-1.png 2x"
+            data-sizes="auto"
+            alt="/images/Software/SCP/scp-1.png" />
+    </a>
+<p>值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端<code>scp</code>开始运行后，实际的SCP协议命令开始通过<code>STDIN</code>和<code>STDOUT</code>运行。</p>
+<h3 id="有线协议">有线协议</h3>
+<p>现在，安全的I/O通道建立起来，并且已经有效地切换到RCP协议上。该协议是<strong>顺序</strong>（一次一个操作）和<strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
+<ul>
+<li>
+<p>[command type] 通常是一个 ASCII 字符：</p>
+<ul>
+<li>&lsquo;C&rsquo;- 写入文件</li>
+<li>&lsquo;D&rsquo;- 输入目录</li>
+<li>&lsquo;E&rsquo;- 退出最后一个目录</li>
+<li>&lsquo;T&rsquo;- 设置下一个文件或目录的创建 / 更新时间戳</li>
+</ul>
+</li>
+<li>
+<p>[arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。&ldquo;E&rdquo; 命令没有参数。</p>
+</li>
+<li>
+<p>[optional data] 在上一个命令为 &ldquo;C&rdquo;（创建文件）时发送。数据的大小指定为 &ldquo;C&rdquo; 的参数。</p>
+</li>
+</ul>
+<p>此外，还有控制字节，这些字节是在没有新行的情况下自己发送的：</p>
+<ul>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;OK&rdquo;，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。</p>
+</li>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;警告&rdquo;，后面是要向用户显示的行（由新行终止）。</p>
+</li>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;错误&rdquo; 后跟随可选消息（和警告相同），但连接随后终止。</p>
+</li>
+</ul>
+<p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
+<a class="lightgallery" href="/images/Software/SCP/scp-2.png" title="/images/Software/SCP/scp-2.png" data-thumbnail="/images/Software/SCP/scp-2.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/Software/SCP/scp-2.png"
+            data-srcset="/images/Software/SCP/scp-2.png, /images/Software/SCP/scp-2.png 1.5x, /images/Software/SCP/scp-2.png 2x"
+            data-sizes="auto"
+            alt="/images/Software/SCP/scp-2.png" />
+    </a>
+<h2 id="scp-的问题">SCP 的问题</h2>
+<p>看起来，SCP 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<h3 id="性能">性能</h3>
+<p>有线协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
+<p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+$ find /tmp/big_folder/ -type f <span class="p">|</span> wc -l
+<span class="m">10000</span>
+
+<span class="c1"># Using scp</span>
+$ <span class="nb">time</span> scp -r -q /tmp/big_folder/ server:/tmp/big_folder
+
+________________________________________________________
+Executed in  882.99 millis	fish       	external
+   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
+   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
+
+<span class="c1"># Using tar over ssh</span>
+$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/ -f -&#39;&#34;</span>
+tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
+
+________________________________________________________
+Executed in  215.68 millis	fish       	external
+   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
+   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
+</code></pre></td></tr></table>
+</div>
+</div><p>在这种比较糟糕的情况下，tar&amp;ssh 的 215.68ms 对比 SCP 的 882.99ms，足足有四倍的速度提升。</p>
+<h3 id="安全">安全</h3>
+<p>我们已经知道，SCP 靠 SSH 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<p>OpenSSH 的发行说明提到：</p>
+<pre><code>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。
+</code></pre>
+<p>如果远程端的 shell 打印出任何非交互式会话，则本地 scp 进程将愉快地将该输出解释为 SCP 命令。好的话，这仅仅是打破 SCP 协议中模糊的错误。但在最坏的情况下，远程 shell 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
+<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 SCP 实现（包括 OpenSSH）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于～/.ssh/authorized_keys 或～/.bashrc）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 CLI 应用程序的人来说都是一个很好的教训。</p>
+<h2 id="scp-的替代方案">SCP 的替代方案</h2>
+<p>SFTP 被广泛认为是 SCP 的继承者。为了传输层安全性，它仍然在 SSH 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+缺点是，您需要学习 SFTP 提示命令，协议本身尚未完全标准化（有很多 RFC 草稿，但作者最终放弃了）。</p>
+<p>Rsync 是另一个很好的选择。使用与 scp 命令完全相同 - 它也利用 SSH。Rsync 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
+<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 OpenSSH 不同，Rsync 在大多数系统上并不预安装。</p>
+<h2 id="结论">结论</h2>
+<p>SCP 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，SCP 仍然适合。</p>
+<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 SCP 更可取。选择最适合您需求的，然后试着开始使用。</p>
+<h2 id="see-also">See also</h2>
+<p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+</li>
+<li>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+</li>
+<li>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-07-18&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/f0006633f34dbff3bf2d40d1b17821a51c17ecad" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) f0006633f34dbff3bf2d40d1b17821a51c17ecad: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>f000663</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/scp/" data-title="SCP 概览" data-hashtags="Software,Linux,Translation"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/scp/" data-hashtag="Software"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.techkoala.top/scp/" data-title="SCP 概览"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/scp/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/scp/" data-title="SCP 概览"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/scp/" data-title="SCP 概览"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/software/">Software</a>,&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/translation/">Translation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/nat_issues_solutions/" class="prev" rel="prev" title="NAT 系列 2：NAT 引发的问题以及解决方法"><i class="fas fa-angle-left fa-fw"></i>NAT 系列 2：NAT 引发的问题以及解决方法</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/dillonzq/LoveIt">LoveIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>
+</html>

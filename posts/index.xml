@@ -3,7 +3,156 @@
         <title>所有文章 - TechKoala</title>
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>SCP 概览</title>
+    <link>https://www.techkoala.top/scp/</link>
+    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/scp/</guid>
+    <description><![CDATA[<pre><code>SCP就是SSH协议的文件传输功能吗？
+</code></pre>
+<h2 id="什么是scp">什么是SCP</h2>
+<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
+<p>使用起来特别方便：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+</code></pre></td></tr></table>
+</div>
+</div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
+<p>SCP 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。SCP 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
+<p>使用前需要首先配置到远程主机的 SSH 连接权限。SCP 的验证提示和 SSH 看起很像，因为 SCP 跑在 SSH 的上层，仅仅把它作为文件数据的管道。事实上，SSH 负责处理所有安全相关的任务，SCP 只是将一些文件扔到 SSH 连接上。</p>
+<p>维基百科上的条目讲述了 SCP 的历史，简而言之：在旧的 BSD 系统上曾经有一个叫 RCP 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 RCP 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 SSH 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
+<h2 id="scp-工作原理">SCP 工作原理</h2>
+<p>SCP 并不是一个标准协议，白并没有一个 RFC 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的有线协议。</p>
+<h3 id="连接建立">连接建立</h3>
+<p>实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似Unix管道。OpenSSH中包含两个程序来完成:<code>sshd</code>和<code>scp</code>。<code>sshd</code>是始终运行的服务器守护进程，接受新的SSH连接。<code>scp</code>是伪装成ssh的客户端程序，发送和接受文件。</p>
+<p>当<code>scp</code>运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的<code>scp</code>程序。你可以认为是<code>ssh exec scp [flags]</code>。主要的标志包含<code>-t</code>（&ldquo;to&rdquo;）和<code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而<code>-d</code>表示文件夹，<code>-r</code>表示递归。</p>
+<a class="lightgallery" href="/images/Software/SCP/scp-1.png" title="/images/Software/SCP/scp-1.png" data-thumbnail="/images/Software/SCP/scp-1.png">
+        
+    </a>
+<p>值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端<code>scp</code>开始运行后，实际的SCP协议命令开始通过<code>STDIN</code>和<code>STDOUT</code>运行。</p>
+<h3 id="有线协议">有线协议</h3>
+<p>现在，安全的I/O通道建立起来，并且已经有效地切换到RCP协议上。该协议是<strong>顺序</strong>（一次一个操作）和<strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
+<ul>
+<li>
+<p>[command type] 通常是一个 ASCII 字符：</p>
+<ul>
+<li>&lsquo;C&rsquo;- 写入文件</li>
+<li>&lsquo;D&rsquo;- 输入目录</li>
+<li>&lsquo;E&rsquo;- 退出最后一个目录</li>
+<li>&lsquo;T&rsquo;- 设置下一个文件或目录的创建 / 更新时间戳</li>
+</ul>
+</li>
+<li>
+<p>[arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。&ldquo;E&rdquo; 命令没有参数。</p>
+</li>
+<li>
+<p>[optional data] 在上一个命令为 &ldquo;C&rdquo;（创建文件）时发送。数据的大小指定为 &ldquo;C&rdquo; 的参数。</p>
+</li>
+</ul>
+<p>此外，还有控制字节，这些字节是在没有新行的情况下自己发送的：</p>
+<ul>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;OK&rdquo;，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。</p>
+</li>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;警告&rdquo;，后面是要向用户显示的行（由新行终止）。</p>
+</li>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;错误&rdquo; 后跟随可选消息（和警告相同），但连接随后终止。</p>
+</li>
+</ul>
+<p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
+<a class="lightgallery" href="/images/Software/SCP/scp-2.png" title="/images/Software/SCP/scp-2.png" data-thumbnail="/images/Software/SCP/scp-2.png">
+        
+    </a>
+<h2 id="scp-的问题">SCP 的问题</h2>
+<p>看起来，SCP 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<h3 id="性能">性能</h3>
+<p>有线协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
+<p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+$ find /tmp/big_folder/ -type f <span class="p">|</span> wc -l
+<span class="m">10000</span>
+
+<span class="c1"># Using scp</span>
+$ <span class="nb">time</span> scp -r -q /tmp/big_folder/ server:/tmp/big_folder
+
+________________________________________________________
+Executed in  882.99 millis	fish       	external
+   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
+   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
+
+<span class="c1"># Using tar over ssh</span>
+$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/ -f -&#39;&#34;</span>
+tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
+
+________________________________________________________
+Executed in  215.68 millis	fish       	external
+   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
+   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
+</code></pre></td></tr></table>
+</div>
+</div><p>在这种比较糟糕的情况下，tar&amp;ssh 的 215.68ms 对比 SCP 的 882.99ms，足足有四倍的速度提升。</p>
+<h3 id="安全">安全</h3>
+<p>我们已经知道，SCP 靠 SSH 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<p>OpenSSH 的发行说明提到：</p>
+<pre><code>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。
+</code></pre>
+<p>如果远程端的 shell 打印出任何非交互式会话，则本地 scp 进程将愉快地将该输出解释为 SCP 命令。好的话，这仅仅是打破 SCP 协议中模糊的错误。但在最坏的情况下，远程 shell 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
+<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 SCP 实现（包括 OpenSSH）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于～/.ssh/authorized_keys 或～/.bashrc）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 CLI 应用程序的人来说都是一个很好的教训。</p>
+<h2 id="scp-的替代方案">SCP 的替代方案</h2>
+<p>SFTP 被广泛认为是 SCP 的继承者。为了传输层安全性，它仍然在 SSH 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+缺点是，您需要学习 SFTP 提示命令，协议本身尚未完全标准化（有很多 RFC 草稿，但作者最终放弃了）。</p>
+<p>Rsync 是另一个很好的选择。使用与 scp 命令完全相同 - 它也利用 SSH。Rsync 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
+<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 OpenSSH 不同，Rsync 在大多数系统上并不预安装。</p>
+<h2 id="结论">结论</h2>
+<p>SCP 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，SCP 仍然适合。</p>
+<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 SCP 更可取。选择最适合您需求的，然后试着开始使用。</p>
+<h2 id="see-also">See also</h2>
+<p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+</li>
+<li>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+</li>
+<li>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>NAT 系列 2：NAT 引发的问题以及解决方法</title>
     <link>https://www.techkoala.top/nat_issues_solutions/</link>
     <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
@@ -915,46 +1064,5 @@ $ find /-user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <sp
 <div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1Y54y1D7cT&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
 
 <p>   放在这里，作为补充。</p>]]></description>
-</item><item>
-    <title>Symbian 的前世今生</title>
-    <link>https://www.techkoala.top/brief_history_of_symbian/</link>
-    <pubDate>Mon, 11 May 2020 22:57:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/brief_history_of_symbian/</guid>
-    <description><![CDATA[<a class="lightgallery" href="/images/symbian/symbian.jpg" title="/images/symbian/symbian.jpg" data-thumbnail="/images/symbian/symbian.jpg">
-        
-    </a>
-<pre><code>聊聊 Symbian 的过去
-</code></pre>
-<p>注：这是一篇写于 2013 年的文章，时过境迁，仅表怀念。</p>
-<p>   毫不夸张的说，今天我们所拥有的一切，都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃它的卡顿，都无法改变它作为手机智能操作系统鼻祖的地位。当山寨机还在襁褓中时，当伪智能还在浪费人们的时间时，作为先驱的它便已上路。大多数人接触的第一款真正的智能手机系统，它把软件下载，游戏安装，刷机破解等诸多名词第一次带到了大众视野。它叫 Symbian，也曾辉煌。三十年河东，三十年河西，科技领域本就没有常青树。虽然如今已经沦落，但不妨碍我们一起回味它曾经的辉煌。</p>
-<h3 id="混沌之初symbian-伊始">混沌之初，Symbian 伊始</h3>
-<p>​  Symbian，源自一家充满梦想的公司。</p>
-<p>  1980 年，potter 在伦敦成立了 Psion 公司，这家以数字产品开发和研究为目的，为率先使用电子设备的大公司服务的小公司便是 Symbian 的生母。随着公司的发展，Psion 开始浸淫移动终端市场，他们生产的各类移动设备不仅皮实耐用还能按需求定制，凭借这种 “开放移动” 的理念，Psion 在上世纪 90 年代 成为了欧洲较成功的 PDA 生产商，进而促进了 EPOC 的诞生。在 potter 看来，EPOC 是一种面向普通大众的便携系统。正如他的全称 “A new epoch of personal convenience.”（一个人人方便使用电子产品的新时代），他被 Psion 给予了对于人机交互未来的憧憬。</p>
-<p>   犹如一代闪电，EPOC 划开了混沌的天空，不过真正的风暴才刚来临。</p>
-<p>  1991 年到 1998 年，Psion 发布了几款给予 EPOC 16 的的设备，作为早期产品，免不了简陋无比，它们充其量只能算是 PDA 模块，只是方便了厂商研发新品。</p>
-<p>   真正让 EPOC 走向成熟的是一位叫做 Nicholas Myers 的程序设计师。1994 年，他在构思下一代 EPOC 时，设定了开发适应 21 世纪技术性能的系统的目标。正是这样的思路。让他把握住了市场脉搏。1997 年，他成为 Psion 旗下 Symbian 软件公司的 CEO，其上任后发布的 EPOC 32 操作系统，比起前辈，已有了翻天覆地的变化。吸引了人们以及投资者的兴趣。今天我们吧 Myers 成为 “Symbian 之父”。</p>
-<p>  EPOC 32 与 windows 极为相似，它是一套 32 位的系统，支持多任务，拥有图形化美观的界面。鉴于当时几乎没有可以直接用于手机的操作系统，它的问世，一下子汇聚了厂商的目光。不过，任何一项新技术新产品的诞生都需要时间的推敲，智能手机系统作为新兴事物，没有哪家厂商敢冒险直接挺近。一番商榷之后，1998 年，爱立信、诺基亚、摩托罗拉和 Psion 共同成立了一家公司，目的是推进手机和 PDA 的智能化，它就是我们今天熟知的 “Symbian”。</p>
-<h3 id="拉帮结派飞速发展">拉帮结派，飞速发展</h3>
-<p>   联盟的成立不仅吸引了大量手机厂商，一些上有配件商，例如 ARM 和德州仪器都加入了合作计划。</p>
-<p>  Symbian 从一成立便秉持着开放的理念，任何组织和个人都能为其开发软件。但刚成立那几年，公司都未能推出一款真真意义上的产品，巨头们也只是作为附属项目在发展。直到 1999 年，Symbian OS v5 平台作为第一款成熟的产品被设计出来，为了争夺 “谁是世界上第一台智能手机”，爱立信没有经过完成的 DEBUG，就匆忙的把他推向市场，生产出 Erisson R380。同时期，摩托也推迟了自己的天拓 A6188。可实际上，两者中无论哪个都不能算严格意义上的智能手机，它们连软件都不能自由安装，真正算起来，搭载了 os v5.1 的诺基亚 9210 才符合智能机最基本的定义，由此，诺基亚开始领先于其他厂商并保持到了最后。</p>
-<p>   众所周知，利益面前必有纠纷。诺基亚的崛起必然伴随了很多厂商的陨落，同时，它的存在也让联盟中其他有实力的厂商感到了危机，这为后来阵营的割分埋下了导火索。</p>
-<p>  Symbian 成立之初提出了著名的三分法：Pearl (珍珠）、Quartz (石英）和 Crystal（水晶）。分别对应手机的三大发展趋势：标砖键盘、触摸屏以及全键盘。诺基亚依靠 Pearl 迅速赢得了市场，逼迫索尼爱立信和摩托罗拉只能另寻他路 &ndash;Quartz。于是，联盟分为了两大派系，一是以诺基亚牵头的 S 系列平台，再者便是索尼爱立信主打 UIQ。诺基亚凭借标准键盘占据了大半江山，而后者则主攻触摸屏。这种同床异梦的现象愈演愈烈，直接导致了联盟崩溃的迫近。</p>
-<p>   当然，上述现象只是苗头，整个联盟正处于高速发展阶段。2002 年，微软的 WM 系统进入市场，这个原本被人们誉为 “Symbian 终结者” 的系统，却远没有它的大哥一般占据市场，反而被后者打的满地找牙。与此同时，诺基亚更是凭借 Pearl 进一步扩展帝国的领土，N70、N73、N95 的横空出世，为诺基亚扎实了自己的实力，待到 Symbian 王朝最鼎盛时，这个姓塞的家族占据了 72% 的智能手机市场，其中更是有九成乃至如日中天的诺基亚。直到现在，都没有哪一家厂商甚至哪一个操作系统打破这个纪录。</p>
-<h3 id="兄弟反目联盟瓦解">兄弟反目，联盟瓦解</h3>
-<p>   正如上文所说，一家独大必然引发隐患。而事实证明那一天来了。2008 年，UIQ 宣布倒闭。究其原因，一方面是由于它自身定位与市场的极大反差，而另一方面便是来自于诺基亚的压力。相比 S60，开发者在这个平台上的收益远不及前者。应用程序的短缺自然局限了消费者的购买欲，如此一来，倒闭似乎只是时间问题了。诺基亚的持续壮大，扼杀了其他厂商的利润，长此以往，天平的过分了倾斜让别的厂商不得不退出 Symbian 的纷争。UIQ 的倒闭，标志着诺基亚对于 Symbian 掌控的最大化，后者从此只有一个主人了。</p>
-<p>   联盟名存实亡，但诺基亚为了避嫌，标榜着 “开放” 而成立了 Symbian 基金会，继续推向面向所有开发者开放的原则，明则共享资源，暗则染指一统智能市场。不幸的是，这是 iPhone 和 Android 问世了。后来的结果，各位看官一定也都清楚。诺基亚的美梦做早了，自大的它快走到了末路。</p>
-<p>   多年以后，关于那个一统江湖的传说，早已沦为笑谈罢了。</p>
-<h3 id="成也-symbian败也-symbian">成也 Symbian，败也 Symbian</h3>
-<p>   船大难掉头。巨头对于市场末端的变化总是慢半拍。身处多年王位的诺基亚早已麻痹了大意。UIQ 的倒闭，让其认为触摸屏不被市场接受，继续推进 S60 这个老迈的系统被诺基亚看做唯一路线。iPhone 的面市彻底颠覆了人们对于智能手机的认识，一度让人们认为 iPhone 重新定义了智能手机。市场的反应也确实印证了这一点，我们的双手确实是最适合操作的工具。但固守己见的诺基亚貌似看不到这一变化，迟迟不肯跳出键盘的定式思维。虽然后来确实推出了几款诸如 5800 这样销量很不错的触屏手机，当一切来的太晚，苹果做大了，随后的绿皮机器人也成熟了，Symbian 王朝彻底步入了晚年。</p>
-<p>   失去市场号召力的诺基亚此时的地位一落千丈，对于 Symbian 的态度也是一日三变。曾一度把源代码挂在网站上任人下载，随后又宣布只面向企业用户开源。这时的诺基亚真的急了。不愿投奔机器人阵营沦落为硬件制作商的他，竟甘心跪倒在昔日手下败将的裙下。2011 年 12 月，Symbian Belle 正式更名为诺基亚 Belle。诺基亚连名字都不行再见的 Symbian 从此已经不复存在。</p>
-<p>   然而，这并不意味着 Symbian 彻底的灭亡。名字虽然没有了，但产品依旧没有改变，与其说它灭亡不如说它失去了原来那般强大的市场号召力。毕竟，凭借 S40 在低端市场的畅销，诺基亚还能在手机市场分的一杯羹。</p>
-<h3 id="未来未来">未来？未来！</h3>
-<p>   向微软投怀送抱之后，诺基亚在 Symbian 的建树彻底才枯思竭。以至于不得不推出 808 这样依靠单一买点为噱头吸引市场关注的 “帐篷手机”。Symbian 的今生今世已经无话可说。而未来又在何方？原本打算有所期盼的笔者，本来打算对它的未来有所展望和揣测，不幸的是，本文截稿前的 1 月 24 日，诺基亚公布了 2012 年第四季度最新的财政业绩报告显示，该季度诺基亚实现净利润 2.02 亿欧元，告别 6 连亏，但同时诺基亚官方宣称去年在巴塞罗那发布的 808PureView 将会是最后一款塞班手机，这也意味着塞班这一已经被使用了 15 年之久的智能手机操作系统终于将告别市场，而诺基亚在智能手机领域也终于百分之百微软化。 诺基亚 CEO 斯蒂芬・埃洛普表示：“2012 财年上半年相对艰难，但第四财季表现强劲，设备和服务部门的运营利润率得到了改善。我们将继续执行既定的转移战略，包括继续提升产品竞争力，加速运营，管理成本等。”</p>
-<p>   因此，至少在看得见的未来，Symbian 已经没有了未来！</p>
-<h3 id="末了">末了</h3>
-<p>   无论多么强大的文明都有覆灭的一天，帝国如是，企业如是。在暗潮汹涌的科技领域，公司不能推出迎合市场口味，顺应市场变化的产品，迎来的就只有倒闭。在创新与颠覆这条路上，Symbian 不是第一个倒下的，也不会是最后一个。</p>
-<pre><code>P.S. 谨以此文献给那些成长路上的人和事，Symbian 没了，坛子没有了，但我们都还在。
-    这些有关我们青春的事逝去也就随他去了，至少我们还有彼此。</code></pre>]]></description>
 </item></channel>
 </rss>
