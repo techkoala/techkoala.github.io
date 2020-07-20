@@ -6,8 +6,8 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>深入浅出 DNS 解析 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="深入浅出 DNS 解析" />
-<meta property="og:description" content="DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？
-为什么有的人看到的是新 IP，有的人看到的是旧 IP？
+<meta property="og:description" content="
+DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？为什么有的人看到的是新 IP，有的人看到的是旧 IP？
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/dns_update/" />
@@ -15,8 +15,8 @@
 <meta property="article:modified_time" content="2020-07-16T11:39:45+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="深入浅出 DNS 解析"/>
-<meta name="twitter:description" content="DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？
-为什么有的人看到的是新 IP，有的人看到的是旧 IP？
+<meta name="twitter:description" content="
+DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？为什么有的人看到的是新 IP，有的人看到的是旧 IP？
 "/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -136,9 +136,9 @@
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><pre><code>DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？
-为什么有的人看到的是新 IP，有的人看到的是旧 IP？
-</code></pre>
+            </div><div class="content" id="content"><blockquote>
+<p>DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？为什么有的人看到的是新 IP，有的人看到的是旧 IP？</p>
+</blockquote>
 <h2 id="dns-分类">DNS 分类</h2>
 <p>我们知道，DNS 服务器有两种：权威服务器（authoritative）和递归服务器（recursive）</p>
 <p><code>权威 DNS 服务器（也称为名称服务器，NS，nameserver）</code> 具有其所负责的每个域的 IP 地址数据库。</p>
@@ -152,7 +152,7 @@
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
-</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。8.8.8.8 是一个递归 DNS 服务器。</p>
+</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 DNS 服务器。</p>
 <p>当人们访问你的网站时，他们可能会向递归 DNS 服务器进行 DNS 查询。那么，递归 DNS 服务器是如何工作的呢？</p>
 <h3 id="递归-dns-服务器如何工作">递归 DNS 服务器如何工作</h3>
 <p>以 <code>8.8.8.8</code> 为例，如果我们向其请求 <code>github.com</code> 的 IP 地址（A 记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
@@ -283,7 +283,7 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 <p>这里是因为像 <code>8.8.8.8</code> 这样的 DNS 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
 <p>等待 5 分钟后，所有的缓存都更新了，再次查询，将会始终返回新 IP。</p>
 <h3 id="ttl-并非总是可靠">TTL 并非总是可靠</h3>
-<p>与大多数互联网协议一样，并不是所有的终端都服从 DNS 规范（包括 <code>8.8.8.8</code> 这样的大型 DNS 也不尊重 TTL）。一些 ISP 的 DNS 服务器会将缓存记录的时间比 TTL 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 /etc/hosts 中硬编码旧的 IP 地址。</p>
+<p>与大多数互联网协议一样，并不是所有的终端都服从 DNS 规范（包括 <code>8.8.8.8</code> 这样的大型 DNS 也不尊重 TTL）。一些 ISP 的 DNS 服务器会将缓存记录的时间比 TTL 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 <code>/etc/hosts</code> 中硬编码旧的 IP 地址。</p>
 <p>此外，应用程序（例如浏览器）都内置了自己的 DNS 缓存，或者本地网关也存在缓存。</p>
 <p>这也是为什么，即便正确地设置了对应的 TTL（大部分 DNS 将会在短时间内更新缓存），有些 DNS 服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的 IP 地址。</p>
 <h3 id="连同-ns-一起更新">连同 NS 一起更新</h3>

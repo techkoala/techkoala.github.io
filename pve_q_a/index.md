@@ -1,7 +1,7 @@
 # PVE 安装 Q&A
 
 
-    PVE 安装过程中遇到的问题以及解决方法
+>PVE 安装过程中遇到的问题以及解决方法
 
 <!--more-->
 
@@ -13,7 +13,7 @@
 
    目前的网络拓扑图如下：
 
-   {{< image src="/images/PVE/ 拓扑.png" caption="网络拓扑图" >}} 
+   {{< image src="/images/PVE/拓扑.png" caption="网络拓扑图" >}} 
 
    将安装过程中遇到的问题以及解决方法整理如下：
 

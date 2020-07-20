@@ -6,7 +6,8 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>NAT 系列 2：NAT 引发的问题以及解决方法 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="NAT 系列 2：NAT 引发的问题以及解决方法" />
-<meta property="og:description" content="NAT 引发的问题以及解决方法
+<meta property="og:description" content="
+NAT 引发的问题以及解决方法
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/nat_issues_solutions/" />
@@ -14,7 +15,8 @@
 <meta property="article:modified_time" content="2020-07-16T11:39:45+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NAT 系列 2：NAT 引发的问题以及解决方法"/>
-<meta name="twitter:description" content="NAT 引发的问题以及解决方法
+<meta name="twitter:description" content="
+NAT 引发的问题以及解决方法
 "/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -28,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/nat_issues_solutions\/"
-        },"genre": "posts","keywords": "Network, NAT, Translation","wordcount":  1821 ,
+        },"genre": "posts","keywords": "Network, NAT, Translation","wordcount":  1818 ,
         "url": "https:\/\/www.techkoala.top\/nat_issues_solutions\/","datePublished": "2020-07-15T14:19:14+08:00","dateModified": "2020-07-16T11:39:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -105,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">NAT 系列 2：NAT 引发的问题以及解决方法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-15">2020-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1821 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-15">2020-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1818 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -125,16 +127,17 @@
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><pre><code>NAT 引发的问题以及解决方法
-</code></pre>
+            </div><div class="content" id="content"><blockquote>
+<p>NAT 引发的问题以及解决方法</p>
+</blockquote>
 <h2 id="问题">问题</h2>
-<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 P2P 联机方式）时候给我们造成困扰。如果 Xbox、PS、switch 或者 PC 上的应用程序报告 NAT 是严格、类型 3、类型 D、对称这样的字样，那么就意味着你将会出现联机问题。</p>
-<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 NAT 化的。但是，在 Internet 上与之通信的任何设备都应该使用公共 IP 地址，例如 1.1.1.1。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 Xbox Live 或 PS 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 192.168.0.1 和端口 54324，而不是 Nat 后的公共 IP。它应该发送的是（例如）1.1.1.1 的公共 IP 地址和端口 54324。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 54254，而不是主机本身的内部端口（54324）。</p>
-<p>** 这不仅仅是游戏面对的问题，这一直是 NAT 的问题。**</p>
+<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 P2P 联机方式）时候给我们造成困扰。如果 Xbox、PS、switch 或者 PC 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
+<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 NAT 化的。但是，在 Internet 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 Xbox Live 或 PS 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
+<p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
 <p>那么，主机如何得知它位于 NAT 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
 <h2 id="解决办法">解决办法</h2>
 <h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
-<p>Stun 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
+<p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
 <figure><a class="lightgallery" href="/images/Network/NAT/STUN_Algorithm.png" title="/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
         <img

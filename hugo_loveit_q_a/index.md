@@ -1,7 +1,7 @@
 # Hugo搭配LoveIt使用问题
 
 
-    使用 hugo 以及 LoveIt 搭建本博客遇到的问题以及解决方案
+>使用 hugo 以及 LoveIt 搭建本博客遇到的问题以及解决方案
 
 <!--more-->
 

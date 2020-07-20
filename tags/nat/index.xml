@@ -9,16 +9,17 @@
     <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/nat_issues_solutions/</guid>
-    <description><![CDATA[<pre><code>NAT 引发的问题以及解决方法
-</code></pre>
+    <description><![CDATA[<blockquote>
+<p>NAT 引发的问题以及解决方法</p>
+</blockquote>
 <h2 id="问题">问题</h2>
-<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 P2P 联机方式）时候给我们造成困扰。如果 Xbox、PS、switch 或者 PC 上的应用程序报告 NAT 是严格、类型 3、类型 D、对称这样的字样，那么就意味着你将会出现联机问题。</p>
-<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 NAT 化的。但是，在 Internet 上与之通信的任何设备都应该使用公共 IP 地址，例如 1.1.1.1。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 Xbox Live 或 PS 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 192.168.0.1 和端口 54324，而不是 Nat 后的公共 IP。它应该发送的是（例如）1.1.1.1 的公共 IP 地址和端口 54324。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 54254，而不是主机本身的内部端口（54324）。</p>
-<p>** 这不仅仅是游戏面对的问题，这一直是 NAT 的问题。**</p>
+<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 P2P 联机方式）时候给我们造成困扰。如果 Xbox、PS、switch 或者 PC 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
+<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 NAT 化的。但是，在 Internet 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 Xbox Live 或 PS 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
+<p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
 <p>那么，主机如何得知它位于 NAT 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
 <h2 id="解决办法">解决办法</h2>
 <h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
-<p>Stun 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
+<p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
 <figure><a class="lightgallery" href="/images/Network/NAT/STUN_Algorithm.png" title="/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
         
@@ -52,76 +53,60 @@
     <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/nat/</guid>
-    <description><![CDATA[<pre><code>一文概览 NAT
-</code></pre>
+    <description><![CDATA[<blockquote>
+<p>一文概览 NAT</p>
+</blockquote>
 <h2 id="nat">NAT</h2>
 <p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 IP 数据包通过路由器或防火墙时重写来源 IP 地址或目的 IP 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 IP 地址访问互联网的私有网络中。</p>
 <p>NAT 从大类上都可以分为两类：<code>静态 NAT</code> 和 <code>动态 NAT</code>。</p>
 <p><code>静态 NAT</code> 是管理员手动创建和维护映射，通常与 NAT 的入站类型相关联。</p>
 <p><code>动态 NAT</code> 是路由器根据需要自动创建和维护映射，通常与 NAT 的出站类型相关联。</p>
 <p>每个 TCP/IP 数据包都包含一个 <code>源 IP 地址</code>、<code>源端口</code>、<code>目的 IP 地址</code> 和 <code>目的端口</code>。所有类型的 NAT 都会使用这些值创建 NAT 映射。</p>
-<pre><code>例如，一个 IP 为 `192.168.0.1` 的内部客户机使用端口 `56876`，经过 NAT 转
-变后 IP 变为 3.3.3.3（翻译后的源 IP）和端口 56876（源端口）连接到 IP 
-2.2.2.2（目的 IP 地址）的 80 端口（目的端口）。NAT 使用原始内部 IP 和端口、
-翻译后 IP 和端口这 4 个值创建一个映射。当数据包从网站返回到路由器时，使用与该
-映射相关值，NAT 将数据包转发到内部客户端。
-</code></pre>
+<blockquote>
+<p>例如，一个 IP 为 <code>192.168.0.1</code> 的内部客户机使用端口 <code>56876</code>，经过 NAT 转变后 IP 变为 <code>3.3.3.3</code>（翻译后的源 IP）和端口 <code>56876</code>（源端口）连接到 IP <code>2.2.2.2</code>（目的 IP 地址）的 <code>80</code> 端口（目的端口）。NAT 使用原始内部 IP 和端口、翻译后 IP 和端口这 4 个值创建一个映射。当数据包从网站返回到路由器时，使用与该映射相关值，NAT 将数据包转发到内部客户端。</p>
+</blockquote>
 <h2 id="nat-的四种类型">NAT 的四种类型</h2>
 <h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
 <figure><a class="lightgallery" href="/images/Network/NAT/Full_Cone_NAT.png" title="/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
-<p>全锥型 NAT 是静态 NAT，也是唯一一种永久开放端口的 NAT，允许从 ** 任何外部主机 ** 进行入站连接。全锥型 NAT 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 NAT IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 NAT 也被称为端口转发。这是受限制最少的 NAT 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
-<pre><code>例如，我的电脑有一个网站在 80 端口上运行，我创建了一个一对一的规则，将路由器的
-WAN IP 1.1.1.1 映射到 192.168.0.1，端口 80 映射到 80 端口。凡是在 80 端
-口向 1.1.1.1 发送数据的外部主机都会被 NAT 转发到 192.168.0.1 80 端口。
-</code></pre>
-<p>** 注意：** 端口号不必相同；我可以在 56456 端口上运行我的网站，但创建 NAT 映射，将 80 端口转发到 56456 端口。这样，外部客户端就会认为我的网站在 80 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
+<p>全锥型 NAT 是静态 NAT，也是唯一一种永久开放端口的 NAT，允许从 <strong>任何外部主机</strong> 进行入站连接。全锥型 NAT 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 NAT IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 NAT 也被称为端口转发。这是受限制最少的 NAT 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
+<blockquote>
+<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 NAT 转发到 <code>192.168.0.1 80</code> 端口。</p>
+</blockquote>
+<p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 NAT 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
 <figure><a class="lightgallery" href="/images/Network/NAT/Restricted_Cone_NAT.png" title="/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
         
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
-<p>受限锥体 NAT 是动态 NAT，它的工作方式与全锥型 NAT 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。** 亦即需要内部主机首先发起连接的外部主机，才能被接受入站。**</p>
-<pre><code>例如，我的电脑与一个网站 (56.45.34.78) 进行外向连接，源 IP 为 192.168.0.1，
-源端口为 56723。NAT 使用源端口 56723 创建一个（动态）映射到我的电脑。使用目
-的端口 56723（这是出站 NAT 的源端口）到达的源 IP 为 56.45.34.78（网站 IP）
-的数据包将被接受，接着网站返回数据至我的 PC。任何其他 IP 即使使用正确的 56723 
-端口进行连接尝试将被丢弃。同样，即使正确的 IP 使用 56723 以外的目的端口进行的
-连接尝试也将被丢弃。
-</code></pre>
+<p>受限锥体 NAT 是动态 NAT，它的工作方式与全锥型 NAT 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
+<blockquote>
+<p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 IP 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。NAT 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的源 IP 为 <code>56.45.34.78</code>（网站 IP）的数据包将被接受，接着网站返回数据至我的 PC。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 IP 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
+</blockquote>
 <h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
 <figure><a class="lightgallery" href="/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
 <p>端口受限锥型 NAT 是动态 NAT，它的作用与受限锥形 NAT 完全相同，但同时对端口进行限制。受限锥形 NAT 接受来自外部主机任何源端口的连接，而端口受限锥型 NAT 则进一步要求外部主机的源端口是固定的。</p>
-<pre><code>例如，我的电脑在 80 端口（目标端口）上向网站 IP 217.87.69.8 建立了一个外向连
-接。NAT 将我的源 IP 192.168.0.1 映射到 WAN IP 1.1.1.1 和源端口 56723。当
-网站发回数据包时，它的源 IP 必须是 217.87.69.8，目的端口是 56723（就像一个
-受限锥型 NAT），但除此之外，还要求源端口必须是 80。如果这三者中的任何一个不一
-样，端口受限锥型 NAT 就会放弃连接。
-</code></pre>
+<blockquote>
+<p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
+</blockquote>
 <h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
 <figure><a class="lightgallery" href="/images/Network/NAT/Symmetric_NAT.png" title="/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
         
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>
-<p>对称型 NAT 是动态 NAT，它限制的方式与端口受限锥型 NAT 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 NAT 在 NAT 连接时都 ** 不会改变源端口 **。</p>
-<pre><code>例如，当客户端使用 IP 192.168.0.1 和源端口 56723 访问互联网时，NAT 将源 IP 
-改变为 56.35.67.35，但保持端口号不变，这被称为端口保留。
-</code></pre>
-<p>而对称型 NAT 会将端口改为 ** 随机生成的新端口 <strong>，甚至是同一客户端到不同目的地的连接也会发生。</strong> 亦即为每个连接创建唯一的映射 **</p>
-<pre><code>例如，在端口受限锥型 NAT 的例子上进行扩展，我的 PC 向网站 IP 217.87.69.8 和
-56.76.87.98 建立两个出站连接。我的电脑使用源 IP 192.168.0.1 和源端口 56723 进行
-两个连接。到目前为止，在所有类型的 NAT 上，这两个连接都会被 NAT 化，只改变源 IP 地址
-而保持源端口不变。然而这次，对称型 NAT 没有将源端口保留为 56723，而是将其中一个连
-接的源端口改为 45765，另一个连接的源端口改为 53132（随机）。这就为每个连接创建了
-唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 217.87.69.8 必须将
-数据包发送到目的端口 45765，56.76.87.98 必须将数据包发送到端口 53132，此外还需
-要遵循端口受限锥型 NAT 的要求。
-</code></pre>
+<p>对称型 NAT 是动态 NAT，它限制的方式与端口受限锥型 NAT 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 NAT 在 NAT 连接时都 <strong>不会改变源端口</strong>。</p>
+<blockquote>
+<p>例如，当客户端使用 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 访问互联网时，NAT 将源 IP 改变为 <code>56.35.67.35</code>，但保持端口号不变，这被称为端口保留。</p>
+</blockquote>
+<p>而对称型 NAT 会将端口改为 <strong>随机生成的新端口</strong>，甚至是同一客户端到不同目的地的连接也会发生。<strong>亦即为每个连接创建唯一的映射</strong></p>
+<blockquote>
+<p>例如，在端口受限锥型 NAT 的例子上进行扩展，我的 PC 向网站 IP <code>217.87.69.8</code> 和 <code>56.76.87.98</code> 建立两个出站连接。我的电脑使用源 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 进行两个连接。到目前为止，在所有类型的 NAT 上，这两个连接都会被 NAT 化，只改变源 IP 地址而保持源端口不变。然而这次，对称型 NAT 没有将源端口保留为 <code>56723</code>，而是将其中一个连接的源端口改为 <code>45765</code>，另一个连接的源端口改为 <code>53132</code>（随机）。这就为每个连接创建了唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 <code>217.87.69.8</code> 必须将数据包发送到目的端口 <code>45765</code>，<code>56.76.87.98</code> 必须将数据包发送到端口 <code>53132</code>，此外还需要遵循端口受限锥型 NAT 的要求。</p>
+</blockquote>
 <h2 id="对-nat-的正面评价">对 NAT 的正面评价</h2>
 <ol>
 <li>

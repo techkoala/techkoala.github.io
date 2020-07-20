@@ -2,7 +2,7 @@
 
    {{< image src="/images/Linux/linux.png" >}} 
 
-    记录一些常见的 Linux 服务器安全问题分析以及防护措施
+>记录一些常见的 Linux 服务器安全问题分析以及防护措施
 
 <!--more-->
 
@@ -30,7 +30,7 @@
 
 **`/var/log/auth.log` 或 `/var/log/secure` 存储来自可插拔认证模块 (PAM) 的日志，包括成功的登录，失败的登录尝试和认证方式。**
 
-    注：**Debian** 系在 /var/log/auth.log 中存储认证信息而 **RHEL** 系则在 /var/log/secure 中存储。
+>注：**Debian** 系在 /var/log/auth.log 中存储认证信息而 **RHEL** 系则在 /var/log/secure 中存储。
 
 **Archlinux** 使用 `systemd` 提供的日志系统（logging system），称为 `journal`。使用 systemd 日志，无需额外安装日志服务（syslog）。
 
