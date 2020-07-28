@@ -394,7 +394,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreffer">What happeNS when you update your DNS?</a></p>
+<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreffer">What happens when you update your DNS?</a></p>
 </li>
 <li>
 <p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">unbound’s source code</a></p>

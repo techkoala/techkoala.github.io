@@ -208,7 +208,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 
 ## 参考
 
-- [1] [What happeNS when you update your DNS?](https://jvNS.ca/blog/how-updating-dNS-works/)
+- [1] [What happens when you update your DNS?](https://jvNS.ca/blog/how-updating-dNS-works/)
 
 - [2] [unbound’s source code](https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131)
 

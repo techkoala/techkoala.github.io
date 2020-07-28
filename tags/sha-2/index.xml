@@ -1,0 +1,638 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>SHA-2 - 标签 - TechKoala</title>
+        <link>https://www.techkoala.top/tags/sha-2/</link>
+        <description>SHA-2 - 标签 - TechKoala</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/sha-2/" rel="self" type="application/rss+xml" /><item>
+    <title>逐步详解 SHA-2 算法（以 SHA-256 为例）</title>
+    <link>https://www.techkoala.top/learn_sha_2_step_by_step/</link>
+    <pubDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/learn_sha_2_step_by_step/</guid>
+    <description><![CDATA[<blockquote>
+<p>最常见的 SHA-2 算法是如何实现的？本文逐步为你讲解。</p>
+</blockquote>
+<p><code>SHA-2</code> (Secure Hash Algorithm 2)，是最流行的哈希算法之一，包括了：<code>SHA-224</code>、<code>SHA-256</code>、<code>SHA-384</code>、<code>SHA-512</code>、<code>SHA-512/224</code>、<code>SHA-512/256</code>。这些变体除了生成摘要的长度、循环运行的次数等一些细微差异之外，基本结构是一致的。</p>
+<p><code>SHA-2</code> 以安全和速度著称，在未生成密钥的情况下（例如挖掘比特币），像 <code>SHA-2</code> 这样的快速哈希算法通常占据上风。</p>
+<h2 id="哈希函数hash-function">哈希函数（Hash Function）</h2>
+<p>如果，你还不清楚哈希是什么，可以参见我的<a href="http://techkoala.top/hash_functions/" target="_blank" rel="noopener noreffer">另外一篇文章</a></p>
+<p>简单来说，哈希函数的拥有如下三个重要特性：</p>
+<ul>
+<li>
+<p>哈希函数对数据进行确定性加扰。</p>
+</li>
+<li>
+<p>无论输入是什么，哈希函数的输出始终具有相同的长度（大小）。</p>
+</li>
+<li>
+<p>无法从加扰数据中检索原始数据（单向函数）。</p>
+</li>
+</ul>
+<h2 id="sha-2-vs-sha-256">SHA-2 vs SHA-256</h2>
+<p>有人可能会困惑：欸？我平时看到的都是 <code>SHA-128</code>、<code>SHA-256</code>，<code>SHA-2</code> 又是什么？</p>
+<p><code>SHA-2</code> 是一种算法，一种关于如何哈希数据的广义思想。<code>SHA-256</code> 设置了定义 <code>SHA-2</code> 算法行为的附加常量。其中一个常量是输出大小，“256” 和 “512” 是指它们各自的输出摘要大小（以位为单位）。</p>
+<h2 id="逐步详解-sha-256">逐步详解 SHA-256</h2>
+<p>接下来举例说明 SHA-256 如何工作:</p>
+<h3 id="第一步消息预处理">第一步：消息预处理</h3>
+<ol>
+<li>
+<p>将 <code>hello world</code> 转换为二进制</p>
+<blockquote>
+<p>01101000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100</p>
+</blockquote>
+</li>
+<li>
+<p>尾部追加单独的 <code>1</code></p>
+<blockquote>
+<p>01101000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100 <strong>1</strong></p>
+</blockquote>
+</li>
+<li>
+<p>填充 0 直到数据为 512 的整数倍，再减去 64 位（在本例中剩下 448 位）：</p>
+<blockquote>
+<p>01101000 01100101 01101100 01101100 01101111 00100000 01110111 01101111</p>
+<p>01110010 01101100 01100100 10000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+</blockquote>
+</li>
+<li>
+<p>在末尾附加新的 64 位，这 64 位是一个大端整数，用于表示原始二进制输入的长度。在本文的例子中，是 <code>88</code>，或者二进制，<code>1011000</code>。</p>
+<blockquote>
+<p>01101000 01100101 01101100 01101100 01101111 00100000 01110111 01101111</p>
+<p>01110010 01101100 01100100 10000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</p>
+<p>00000000 00000000 00000000 00000000 00000000 00000000 00000000 01011000</p>
+</blockquote>
+</li>
+</ol>
+<p>现在，得到了初始的输入值（通过对消息进行补位处理，最终的长度应该是 512 位的倍数）。</p>
+<h3 id="第二步初始化哈希值h">第二步：初始化哈希值（h）</h3>
+<p>现在，初始化 8 个哈希值。这些是硬编码的常数，分别代表前 8 个素数（2、3、5、7、11、13、17、19）的平方根的小数部分的前 32 位：</p>
+<blockquote>
+<p>h0 := 0x6a09e667</p>
+<p>h1 := 0xbb67ae85</p>
+<p>h2 := 0x3c6ef372</p>
+<p>h3 := 0xa54ff53a</p>
+<p>h4 := 0x510e527f</p>
+<p>h5 := 0x9b05688c</p>
+<p>h6 := 0x1f83d9ab</p>
+<p>h7 := 0x5be0cd19</p>
+</blockquote>
+<h3 id="第三步初始化圆常数k">第三步：初始化圆常数(k)</h3>
+<p>与步骤 2 类似，初始化一些常量，一共有 64 个。每个值（0-63）是前 64 个素数（2-311）的立方根分数部分的前 32 位。</p>
+<blockquote>
+<p>0x428a2f98 0x71374491 0xb5c0fbcf 0xe9b5dba5 0x3956c25b 0x59f111f1</p>
+<p>0x923f82a4 0xab1c5ed5 0xd807aa98 0x12835b01 0x243185be 0x550c7dc3</p>
+<p>0x72be5d74 0x80deb1fe 0x9bdc06a7 0xc19bf174 0xe49b69c1 0xefbe4786</p>
+<p>0x0fc19dc6 0x240ca1cc 0x2de92c6f 0x4a7484aa 0x5cb0a9dc 0x76f988da</p>
+<p>0x983e5152 0xa831c66d 0xb00327c8 0xbf597fc7 0xc6e00bf3 0xd5a79147</p>
+<p>0x06ca6351 0x14292967 0x27b70a85 0x2e1b2138 0x4d2c6dfc 0x53380d13</p>
+<p>0x650a7354 0x766a0abb 0x81c2c92e 0x92722c85 0xa2bfe8a1 0xa81a664b</p>
+<p>0xc24b8b70 0xc76c51a3 0xd192e819 0xd6990624 0xf40e3585 0x106aa070</p>
+<p>0x19a4c116 0x1e376c08 0x2748774c 0x34b0bcb5 0x391c0cb3 0x4ed8aa4a</p>
+<p>0x5b9cca4f 0x682e6ff3 0x748f82ee 0x78a5636f 0x84c87814 0x8cc70208</p>
+<p>0x90befffa 0xa4506ceb 0xbef9a3f7 0xc67178f2</p>
+</blockquote>
+<h3 id="第四步块循环">第四步：块循环</h3>
+<p>对输入的每 512 位分为一块，执行以下步骤：</p>
+<p><strong>注：</strong> 在本文的例子中，因为 “hello world” 太短了，所以只有一个块。在循环的每一次迭代中，都将对哈希值 h0-h7 进行变更，最终作为结果输出。</p>
+<h3 id="第五步重组信息数组w">第五步：重组信息数组（w）</h3>
+<ol>
+<li>
+<p>将步骤 1 中的输入数据重新排列到新数组中，其中每个条目都是一个 32 位字：</p>
+<blockquote>
+<p>01101000011001010110110001101100 01101111001000000111011101101111</p>
+<p>01110010011011000110010010000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000001011000</p>
+</blockquote>
+</li>
+<li>
+<p>再加上 48 个初始化为零的字，这样就有了一个数组 <strong>w [0…63]</strong></p>
+<blockquote>
+<p>01101000011001010110110001101100 01101111001000000111011101101111</p>
+<p>01110010011011000110010010000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000001011000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>&hellip; &hellip;</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+</blockquote>
+</li>
+<li>
+<p>使用以下算法修改数组末尾的零索引：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">For i from w[16…63]:
+    s0 = (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)
+
+    s1 = (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
+
+    w[i] = w[i-16] + s0 + w[i-7] + s1
+</code></pre></td></tr></table>
+</div>
+</div><p>以 w[16] 举例说明：</p>
+<blockquote>
+<p>w[1] rightrotate 7:</p>
+<p>01101111001000000111011101101111 -&gt; 11011110110111100100000011101110</p>
+</blockquote>
+<blockquote>
+<p>w[1] rightrotate 18:</p>
+<p>01101111001000000111011101101111 -&gt; 00011101110110111101101111001000</p>
+</blockquote>
+<blockquote>
+<p>w[1] rightshift 3:</p>
+<p>01101111001000000111011101101111 -&gt; 00001101111001000000111011101101</p>
+</blockquote>
+<blockquote>
+<p>s0 = 11011110110111100100000011101110</p>
+<p><strong>XOR</strong> 00011101110110111101101111001000</p>
+<p><strong>XOR</strong> 00001101111001000000111011101101</p>
+<p>= 11001110111000011001010111001011</p>
+</blockquote>
+<blockquote>
+<p>w[14] rightrotate 17:</p>
+<p>00000000000000000000000000000000 -&gt; 00000000000000000000000000000000</p>
+</blockquote>
+<blockquote>
+<p>w[14] rightrotate19:</p>
+<p>00000000000000000000000000000000 -&gt; 00000000000000000000000000000000</p>
+</blockquote>
+<blockquote>
+<p>w[14] rightshift 10:</p>
+<p>00000000000000000000000000000000 -&gt; 00000000000000000000000000000000</p>
+</blockquote>
+<blockquote>
+<p>s1 = 00000000000000000000000000000000</p>
+<p><strong>XOR</strong> 00000000000000000000000000000000</p>
+<p><strong>XOR</strong> 00000000000000000000000000000000</p>
+<p>= 00000000000000000000000000000000</p>
+</blockquote>
+<blockquote>
+<p>w[16] = w[0] + s0 + w[9] + s1</p>
+<p>= 01101000011001010110110001101100 <br>
++ 11001110111000011001010111001011 <br>
++ 00000000000000000000000000000000 <br>
++ 00000000000000000000000000000000 <br>
+= 00110111010001110000001000110111</p>
+<p>// addition is calculated modulo $ 2^{32} $</p>
+</blockquote>
+<p>总的结果就是：</p>
+<blockquote>
+<p>01101000011001010110110001101100 01101111001000000111011101101111</p>
+<p>01110010011011000110010010000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000000000000</p>
+<p>00000000000000000000000000000000 00000000000000000000000001011000</p>
+<p>00110111010001110000001000110111 10000110110100001100000000110001</p>
+<p>11010011101111010001000100001011 01111000001111110100011110000010</p>
+<p>00101010100100000111110011101101 01001011001011110111110011001001</p>
+<p>00110001111000011001010001011101 10001001001101100100100101100100</p>
+<p>01111111011110100000011011011010 11000001011110011010100100111010</p>
+<p>10111011111010001111011001010101 00001100000110101110001111100110</p>
+<p>10110000111111100000110101111101 01011111011011100101010110010011</p>
+<p>00000000100010011001101101010010 00000111111100011100101010010100</p>
+<p>00111011010111111110010111010110 01101000011001010110001011100110</p>
+<p>11001000010011100000101010011110 00000110101011111001101100100101</p>
+<p>10010010111011110110010011010111 01100011111110010101111001011010</p>
+<p>11100011000101100110011111010111 10000100001110111101111000010110</p>
+<p>11101110111011001010100001011011 10100000010011111111001000100001</p>
+<p>11111001000110001010110110111000 00010100101010001001001000011001</p>
+<p>00010000100001000101001100011101 01100000100100111110000011001101</p>
+<p>10000011000000110101111111101001 11010101101011100111100100111000</p>
+<p>00111001001111110000010110101101 11111011010010110001101111101111</p>
+<p>11101011011101011111111100101001 01101010001101101001010100110100</p>
+<p>00100010111111001001110011011000 10101001011101000000110100101011</p>
+<p>01100000110011110011100010000101 11000100101011001001100000111010</p>
+<p>00010001010000101111110110101101 10110000101100000001110111011001</p>
+<p>10011000111100001100001101101111 01110010000101111011100000011110</p>
+<p>10100010110101000110011110011010 00000001000011111001100101111011</p>
+<p>11111100000101110100111100001010 11000010110000101110101100010110</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="第六步压缩">第六步：压缩</h3>
+<ol>
+<li>
+<p>初始化变量 a，b，c，d，e，f，g，h，并将它们分别设置为等于当前的哈希值：h0，h1，h2，h3，h4，h5，h6，h7</p>
+</li>
+<li>
+<p>进行压缩循环。 压缩循环将改变 a…h 的值。压缩循环如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">for i from 0 to 63:
+    S1 = (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
+    ch = (e and f) xor ((not e) and g)
+    temp1 = h + S1 + ch + k[i] + w[i]
+    S0 = (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
+    maj = (a and b) xor (a and c) xor (b and c)
+    temp2 := S0 + maj
+    h = g
+    g = f
+    e = d + temp1
+    d = c
+    c = b
+    b = a
+    a = temp1 + temp2
+</code></pre></td></tr></table>
+</div>
+</div><p>下面演示第一次迭代，所有加法都是以 $ 2^{32} $ 为模的：</p>
+<blockquote>
+<p>a = 0x6a09e667 = 01101010000010011110011001100111</p>
+<p>b = 0xbb67ae85 = 10111011011001111010111010000101</p>
+<p>c = 0x3c6ef372 = 00111100011011101111001101110010</p>
+<p>d = 0xa54ff53a = 10100101010011111111010100111010</p>
+<p>e = 0x510e527f = 01010001000011100101001001111111</p>
+<p>f = 0x9b05688c = 10011011000001010110100010001100</p>
+<p>g = 0x1f83d9ab = 00011111100000111101100110101011</p>
+<p>h = 0x5be0cd19 = 01011011111000001100110100011001</p>
+</blockquote>
+<blockquote>
+<p>e rightrotate 6:</p>
+<p>01010001000011100101001001111111 -&gt; 11111101010001000011100101001001</p>
+</blockquote>
+<blockquote>
+<p>e rightrotate 11:</p>
+<p>01010001000011100101001001111111 -&gt; 01001111111010100010000111001010</p>
+</blockquote>
+<blockquote>
+<p>e rightrotate 25:</p>
+<p>01010001000011100101001001111111 -&gt; 10000111001010010011111110101000</p>
+</blockquote>
+<blockquote>
+<p>S1 = 11111101010001000011100101001001</p>
+<p><strong>XOR</strong> 01001111111010100010000111001010</p>
+<p><strong>XOR</strong> 10000111001010010011111110101000</p>
+<p>= 00110101100001110010011100101011</p>
+</blockquote>
+<blockquote>
+<p>e and f:</p>
+<p>01010001000011100101001001111111
+&amp; 10011011000001010110100010001100 =
+00010001000001000100000000001100</p>
+</blockquote>
+<blockquote>
+<p>not e:</p>
+<p>01010001000011100101001001111111 -&gt; 10101110111100011010110110000000</p>
+</blockquote>
+<blockquote>
+<p>(not e) and g:</p>
+<p>10101110111100011010110110000000
+&amp; 00011111100000111101100110101011
+= 00001110100000011000100110000000</p>
+</blockquote>
+<blockquote>
+<p>ch = (e and f) xor ((not e) and g)</p>
+<p>= 00010001000001000100000000001100</p>
+<p><strong>XOR</strong> 00001110100000011000100110000000</p>
+<p>= 00011111100001011100100110001100</p>
+</blockquote>
+<blockquote>
+<p>// k[i] 是圆常数</p>
+<p>// w[i] 信息数组</p>
+</blockquote>
+<blockquote>
+<p>temp1 = h + S1 + ch + k[i] + w[i]</p>
+<p>= 01011011111000001100110100011001
++ 00110101100001110010011100101011
++ 00011111100001011100100110001100
++ 1000010100010100010111110011000
++ 01101000011001010110110001101100
+= 01011011110111010101100111010100</p>
+</blockquote>
+<blockquote>
+<p>a rightrotate 2:</p>
+<p>01101010000010011110011001100111 -&gt; 11011010100000100111100110011001</p>
+</blockquote>
+<blockquote>
+<p>a rightrotate 13:</p>
+<p>01101010000010011110011001100111 -&gt; 00110011001110110101000001001111</p>
+</blockquote>
+<blockquote>
+<p>a rightrotate 22:</p>
+<p>01101010000010011110011001100111 -&gt; 00100111100110011001110110101000</p>
+</blockquote>
+<blockquote>
+<p>S0 = 11011010100000100111100110011001</p>
+<p><strong>XOR</strong> 00110011001110110101000001001111</p>
+<p><strong>XOR</strong> 00100111100110011001110110101000</p>
+<p>= 11001110001000001011010001111110</p>
+</blockquote>
+<blockquote>
+<p>a and b:</p>
+<p>01101010000010011110011001100111
+&amp; 10111011011001111010111010000101 =
+00101010000000011010011000000101</p>
+</blockquote>
+<blockquote>
+<p>a and c:</p>
+<p>01101010000010011110011001100111
+&amp; 00111100011011101111001101110010 =
+00101000000010001110001001100010</p>
+</blockquote>
+<blockquote>
+<p>b and c:</p>
+<p>10111011011001111010111010000101
+&amp; 00111100011011101111001101110010 =
+00111000011001101010001000000000</p>
+</blockquote>
+<blockquote>
+<p>maj = (a and b) xor (a and c) xor (b and c)</p>
+<p>= 00101010000000011010011000000101</p>
+<p><strong>XOR</strong> 00101000000010001110001001100010</p>
+<p><strong>XOR</strong> 00111000011001101010001000000000</p>
+<p>= 00111010011011111110011001100111</p>
+</blockquote>
+<blockquote>
+<p>temp2 = S0 + maj
+= 11001110001000001011010001111110 + 00111010011011111110011001100111
+= 00001000100100001001101011100101</p>
+</blockquote>
+<blockquote>
+<p>h = 00011111100000111101100110101011</p>
+<p>g = 10011011000001010110100010001100</p>
+<p>f = 01010001000011100101001001111111</p>
+<p>e = 10100101010011111111010100111010 + 01011011110111010101100111010100
+= 00000001001011010100111100001110</p>
+<p>d = 00111100011011101111001101110010</p>
+<p>c = 10111011011001111010111010000101</p>
+<p>b = 01101010000010011110011001100111</p>
+<p>a = 01011011110111010101100111010100 + 00001000100100001001101011100101
+= 01100100011011011111010010111001</p>
+</blockquote>
+<p>整个计算会继续循环进行了 63 次，期间不断修改了变量 a-h 的值。最终结果为：</p>
+<blockquote>
+<p>a = 4F434152 = 001001111010000110100000101010010</p>
+<p>b = D7E58F83 = 011010111111001011000111110000011</p>
+<p>c = 68BF5F65 = 001101000101111110101111101100101</p>
+<p>d = 352DB6C0 = 000110101001011011011011011000000</p>
+<p>e = 73769D64 = 001110011011101101001110101100100</p>
+<p>f = DF4E1862 = 011011111010011100001100001100010</p>
+<p>g = 71051E01 = 001110001000001010001111000000001</p>
+<p>h = 870F00D0 = 010000111000011110000000011010000</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="第七步修改最终值">第七步：修改最终值</h3>
+<p>压缩循环完成后，仍然处于在块循环中，通过向哈希值中添加它们各自的变量 a-h 来修改哈希值。同样的，所有的加法都是模 $ 2^{32} $。</p>
+<blockquote>
+<p>h0 = h0 + a = 10111001010011010010011110111001</p>
+<p>h1 = h1 + b = 10010011010011010011111000001000</p>
+<p>h2 = h2 + c = 10100101001011100101001011010111</p>
+<p>h3 = h3 + d = 11011010011111011010101111111010</p>
+<p>h4 = h4 + e = 11000100100001001110111111100011</p>
+<p>h5 = h5 + f = 01111010010100111000000011101110</p>
+<p>h6 = h6 + g = 10010000100010001111011110101100</p>
+<p>h7 = h7 + h = 11100010111011111100110111101001</p>
+</blockquote>
+<h3 id="第八步-组成最终的哈希值">第八步: 组成最终的哈希值</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
+       = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
+</code></pre></td></tr></table>
+</div>
+</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步🙂。</p>
+<h2 id="附录">附录</h2>
+<figure><a class="lightgallery" href="/images/Algorithm/SHA-2.png" title="/images/Algorithm/SHA-2.png" data-thumbnail="/images/Algorithm/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
+        
+    </a><figcaption class="image-caption">SHA-2 的第 t 个加密循环</figcaption>
+    </figure>
+<p>下面这段<strong>伪代码</strong>总结了上面执行的所有步骤：</p>
+<blockquote>
+<p>注 1：所有变量均为 32 位无符号整数，加法以 $ 2^32 $ 为模</p>
+<p>注 2：对于每一轮，在消息调度数组 w [i]，0≤i≤63 中有一个循环常数 k [i] 和一个条目。</p>
+<p>注 3：压缩函数使用 8 个工作变量，a 到 h。</p>
+<p>注 4：在此伪代码中表示常量时使用大端约定，并且当将消息块数据从字节解析到字时，例如，填充后的输入消息 “abc” 的第一个字是 0x61626380</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Initialize hash values:
+(first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19):
+h0 := 0x6a09e667
+h1 := 0xbb67ae85
+h2 := 0x3c6ef372
+h3 := 0xa54ff53a
+h4 := 0x510e527f
+h5 := 0x9b05688c
+h6 := 0x1f83d9ab
+h7 := 0x5be0cd19
+
+Initialize array of round constants:
+(first 32 bits of the fractional parts of the cube roots of the first 64 primes 2..311):
+k[0..63] :=
+   0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+   0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+   0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+   0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+   0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+   0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+   0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+   0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+
+Pre-processing (Padding):
+begin with the original message of length L bits
+append a single &#39;1&#39; bit
+append K &#39;0&#39; bits, where K is the minimum number &gt;= 0 such that L + 1 + K + 64 is a multiple of 512
+append L as a 64-bit big-endian integer, making the total post-processed length a multiple of 512 bits
+
+Process the message in successive 512-bit chunks:
+break message into 512-bit chunks
+for each chunk
+    create a 64-entry message schedule array w[0..63] of 32-bit words
+    (The initial values in w[0..63] don&#39;t matter, so many implementations zero them here)
+    copy chunk into first 16 words w[0..15] of the message schedule array
+
+    Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
+    for i from 16 to 63
+        s0 := (w[i-15] rightrotate  7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift  3)
+        s1 := (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
+        w[i] := w[i-16] + s0 + w[i-7] + s1
+
+    Initialize working variables to current hash value:
+    a := h0
+    b := h1
+    c := h2
+    d := h3
+    e := h4
+    f := h5
+    g := h6
+    h := h7
+
+    Compression function main loop:
+    for i from 0 to 63
+        S1 := (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
+        ch := (e and f) xor ((not e) and g)
+        temp1 := h + S1 + ch + k[i] + w[i]
+        S0 := (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
+        maj := (a and b) xor (a and c) xor (b and c)
+        temp2 := S0 + maj
+ 
+        h := g
+        g := f
+        f := e
+        e := d + temp1
+        d := c
+        c := b
+        b := a
+        a := temp1 + temp2
+
+    Add the compressed chunk to the current hash value:
+    h0 := h0 + a
+    h1 := h1 + b
+    h2 := h2 + c
+    h3 := h3 + d
+    h4 := h4 + e
+    h5 := h5 + f
+    h6 := h6 + g
+    h7 := h7 + h
+
+Produce the final hash value (big-endian):
+digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreffer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
+</li>
+<li>
+<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreffer">SHA-2</a></p>
+</li>
+</ul>]]></description>
+</item></channel>
+</rss>
