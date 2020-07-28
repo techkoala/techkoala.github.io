@@ -773,7 +773,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     <description><![CDATA[<blockquote>
 <p>SCP就是SSH协议的文件传输功能吗？</p>
 </blockquote>
-<h2 id="什么是scp">什么是SCP</h2>
+<h2 id="什么是-scp">什么是 SCP</h2>
 <p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
@@ -790,12 +790,13 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <p>维基百科上的条目讲述了 SCP 的历史，简而言之：在旧的 BSD 系统上曾经有一个叫 RCP 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 RCP 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 SSH 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
 <h2 id="scp-工作原理">SCP 工作原理</h2>
 <p>SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
-<h3 id="连接建立">连接建立</h3>
+<h3 id="建立连接">建立连接</h3>
 <p>实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似Unix管道。OpenSSH中包含两个程序来完成:<code>sshd</code>和<code>scp</code>。<code>sshd</code>是始终运行的服务器守护进程，接受新的SSH连接。<code>scp</code>是伪装成ssh的客户端程序，发送和接受文件。</p>
 <p>当<code>scp</code>运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的<code>scp</code>程序。你可以认为是<code>ssh exec scp [flags]</code>。主要的标志包含<code>-t</code>（&ldquo;to&rdquo;）和<code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而<code>-d</code>表示文件夹，<code>-r</code>表示递归。</p>
-<a class="lightgallery" href="/images/Software/SCP/scp-1.png" title="/images/Software/SCP/scp-1.png" data-thumbnail="/images/Software/SCP/scp-1.png">
+<figure><a class="lightgallery" href="/images/Software/SCP/scp-1.png" title="/images/Software/SCP/scp-1.png" data-thumbnail="/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         
-    </a>
+    </a><figcaption class="image-caption">建立连接</figcaption>
+    </figure>
 <p>值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端<code>scp</code>开始运行后，实际的SCP协议命令开始通过<code>STDIN</code>和<code>STDOUT</code>运行。</p>
 <h3 id="传输协议">传输协议</h3>
 <p>现在，安全的I/O通道建立起来，并且已经有效地切换到RCP协议上。该协议是<strong>顺序</strong>（一次一个操作）和<strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
@@ -830,9 +831,10 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 </ul>
 <p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
-<a class="lightgallery" href="/images/Software/SCP/scp-2.png" title="/images/Software/SCP/scp-2.png" data-thumbnail="/images/Software/SCP/scp-2.png">
+<figure><a class="lightgallery" href="/images/Software/SCP/scp-2.png" title="/images/Software/SCP/scp-2.png" data-thumbnail="/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
         
-    </a>
+    </a><figcaption class="image-caption">传输过程</figcaption>
+    </figure>
 <h2 id="scp-的问题">SCP 的问题</h2>
 <p>看起来，SCP 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
 <h3 id="性能">性能</h3>

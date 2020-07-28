@@ -5,7 +5,7 @@
 
 <!--more-->
 
-## 什么是SCP
+## 什么是 SCP
 
 SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。
 
@@ -27,13 +27,13 @@ SCP 使用起来特别便利，因为他能工作在几乎所有的 `Unix-like` 
 
 SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述如何实现它。`OpenSSH` 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。
 
-### 连接建立
+### 建立连接
 
 实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 `STDIN/STDOUT` ，有点类似Unix管道。OpenSSH中包含两个程序来完成:`sshd`和`scp`。`sshd`是始终运行的服务器守护进程，接受新的SSH连接。`scp`是伪装成ssh的客户端程序，发送和接受文件。
 
 当`scp`运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的`scp`程序。你可以认为是`ssh exec scp [flags]`。主要的标志包含`-t`（"to"）和`-f`（"from"）用于代表接受和发送，而`-d`表示文件夹，`-r`表示递归。
 
-{{< image src="/images/Software/SCP/scp-1.png" >}} 
+{{< image src="/images/Software/SCP/scp-1.png" caption="建立连接" >}} 
 
 值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端`scp`开始运行后，实际的SCP协议命令开始通过`STDIN`和`STDOUT`运行。
 
@@ -63,7 +63,7 @@ SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述�
 
 下面这个带有注释的图片实例，详细讲述了这个过程：
 
-{{< image src="/images/Software/SCP/scp-2.png" >}} 
+{{< image src="/images/Software/SCP/scp-2.png" caption="传输过程" >}} 
 
 
 ## SCP 的问题
