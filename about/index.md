@@ -5,7 +5,7 @@
 
 - 会点 `Python` 的 `通信狗`
 
-- 对网络相关知识有浓厚的兴趣
+- 对 `网络` 相关知识有浓厚的兴趣
 
 - 喜欢 `瞎折腾` 一些有用没用的技术
 
@@ -13,7 +13,9 @@
 
 本质上，就是自己的笔记，某天突发奇想：做成网站也不错呀，随时都可以查看。于是就有了这网站。
 
-本网站使用开源静态网站生成器 [Hugo](https://gohugo.io/) 渲染 `Markdown` 文档生成，主题采用 [LoveIt](https://github.com/dillonzq/LoveIt)
+网站文章使用 `Markdown` 撰写排版，网页利用 [Hugo](https://gohugo.io/) 渲染生成，页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点。
+
+在此，感谢各位开发者的贡献。
 
 ## 说明
 
