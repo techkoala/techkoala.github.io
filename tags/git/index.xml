@@ -4,13 +4,13 @@
         <link>https://www.techkoala.top/tags/git/</link>
         <description>Git - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 10 May 2020 11:25:57 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/git/" rel="self" type="application/rss+xml" /><item>
-    <title>Github 推送问题</title>
-    <link>https://www.techkoala.top/github_push_issue/</link>
+    <title>Github 使用问题</title>
+    <link>https://www.techkoala.top/github_issue/</link>
     <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/github_push_issue/</guid>
+    <guid>https://www.techkoala.top/github_issue/</guid>
     <description><![CDATA[<blockquote>
-<p>使用 github 时遇到的推送问题以及解决方法</p>
+<p>总结使用 Github 时遇到的问题以及解决方法</p>
 </blockquote>
 <p>​	首先，使用如下命令检查问题详情：</p>
 <div class="highlight"><div class="chroma">

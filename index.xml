@@ -7,10 +7,10 @@
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>LTE 系列：下行链路帧结构</title>
-    <link>https://www.techkoala.top/lte_download_frame_structure/</link>
+    <link>https://www.techkoala.top/lte_downlink_frame_structure/</link>
     <pubDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/lte_download_frame_structure/</guid>
+    <guid>https://www.techkoala.top/lte_downlink_frame_structure/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 下行链路帧结构详细讲解</p>
 </blockquote>
@@ -1634,10 +1634,10 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </ul>]]></description>
 </item><item>
     <title>Nagle 算法</title>
-    <link>https://www.techkoala.top/turn_off_nagle/</link>
+    <link>https://www.techkoala.top/nagle/</link>
     <pubDate>Sun, 28 Jun 2020 10:44:16 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/turn_off_nagle/</guid>
+    <guid>https://www.techkoala.top/nagle/</guid>
     <description><![CDATA[<blockquote>
 <p>简要介绍 Nagle 算法</p>
 </blockquote>
