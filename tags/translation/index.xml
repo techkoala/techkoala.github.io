@@ -3,7 +3,326 @@
         <title>Translation - 标签 - TechKoala</title>
         <link>https://www.techkoala.top/tags/translation/</link>
         <description>Translation - 标签 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/translation/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/translation/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系列：下行链路帧结构</title>
+    <link>https://www.techkoala.top/lte_download_frame_structure/</link>
+    <pubDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_download_frame_structure/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 下行链路帧结构详细讲解</p>
+</blockquote>
+<h2 id="下行帧结构">下行帧结构</h2>
+<h3 id="fdd类型-1">FDD——类型 1</h3>
+<p>36.211 中 FDD LTE 的帧结构概览图如下所示：</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
+        
+    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
+    </figure>
+<p>上图仅显示了帧在时域上的结构，而没有显示频域上的结构。</p>
+<p>从图中可以看处：</p>
+<ul>
+<li>
+<p>一帧（一个无线帧，一个系统帧）的持续时间是 10 ms。</p>
+</li>
+<li>
+<p>一帧（10 毫秒）的样本数是 307200（307.200 K）。</p>
+</li>
+<li>
+<p>一帧中有 10 个子帧。</p>
+</li>
+<li>
+<p>一个子帧中有 2 个时隙。</p>
+</li>
+</ul>
+<p>那么一个时隙是时域上最小的结构吗？不，如果进一步放大此结构，则会得到下图：</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-sub-html="<h2>时隙结构</h2>">
+        
+    </a><figcaption class="image-caption">时隙结构</figcaption>
+    </figure>
+<p>可以观察到一个时隙由 7 个<code>符号</code>组成。（一个符号是信号的某个时间跨度，在 I/Q 星座中的一个点。）</p>
+<p>在符号的开头，还有一个很小的跨度，称为<code>循环前缀</code>，其余部分是真实的符号数据。</p>
+<p>LTE 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
+<p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
+        
+    </a><figcaption class="image-caption">符号结构</figcaption>
+    </figure>
+<p>此图中显示的长度不随采样率而变化，但是每个符号和 CP 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
+<p>关于上述子帧结构，需要注意的几件事是：</p>
+<ul>
+<li>
+<p>时隙中的第一个 OFDM 符号比剩下的 OFDM 符号长一些。</p>
+</li>
+<li>
+<p>上图中显示的样本数基于以下参数设置：采样率为 30.72M 个样本/秒和 2048 个 bin/IFFT（$N_{ifft}$）。实际采样率和 $N_{ifft}$ 可能会随系统带宽而变化，需要根据特定带宽来缩放。</p>
+</li>
+<li>
+<p>每种系统带宽的典型 $N_{ifft}$ 如下:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>System BW</th>
+<th>Number of RBs</th>
+<th>$N_{ifft}$ (bins/IFFT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.4</td>
+<td>6</td>
+<td>128</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>15</td>
+<td>256</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>25</td>
+<td>512</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>50</td>
+<td>1024</td>
+</tr>
+<tr>
+<td>15.0</td>
+<td>75</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>20.0</td>
+<td>100</td>
+<td>2048</td>
+</tr>
+</tbody>
+</table>
+<p>下图是<code>LTE 资源网格</code>的总体子帧结构：</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-sub-html="<h2>LTE 资源网格</h2>">
+        
+    </a><figcaption class="image-caption">LTE 资源网格</figcaption>
+    </figure>
+<p>以下显示所有 4 个天线信号叠加（重叠）的理想情况下的下行链路帧结构和 RE（Resource Element，资源元素）映射的示例。</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-sub-html="<h2>4天线帧结构和 RE 映射示例</h2>">
+        
+    </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
+    </figure>
+<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 LTE 信号分析器测量来自 LTE 网络模拟器的 LTE 信号的测量结果。这是在 LTE 网络正在传输 MIB/SIB 且 UE 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
+<p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
+        
+    </a><figcaption class="image-caption">下行帧结构物理信道</figcaption>
+    </figure>
+<p>如上所述，我们可以在二维图中表示LTE信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。</p>
+<hr>
+<p>首先让我们看一下频域结构：</p>
+<ul>
+<li>
+<p>LTE（无论 OFDM/OFDMA）频带由多个小间隔信道组成，这些小信道称为<code>子载波</code>。</p>
+</li>
+<li>
+<p>无论 LTE 频带的系统带宽是多少，<code>子载波</code>间隔都相同。</p>
+</li>
+<li>
+<p>如果 LTE 信道的系统带宽发生变化，则信道数（子载波）会发生变化，但信道之间的间隔不会发生变化。</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>子载波和下一个子载波之间的空间是多少？ 15 Khz</p>
+</li>
+<li>
+<p>20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200个子载波。</p>
+</li>
+<li>
+<p>10 Mhz LTE 频段的信道（子载波）数量是多少？ 600个子载波。</p>
+</li>
+<li>
+<p>5 Mhz LTE 频段的信道（子载波）数量是多少？ 300个子载波。</p>
+</li>
+</ol>
+<hr>
+<p>接着我们看一下横轴（即时域）的上的基本组成单位。时域上的最小单位是符号，长度为 66.7 us。无论带宽如何，符号长度都不会改变。</p>
+<ol>
+<li>
+<p>一个时隙中有多少个符号？ A&gt; 7 个符号。</p>
+</li>
+<li>
+<p>一个子帧中有多少个符号？ A&gt; 14 个符号。</p>
+</li>
+<li>
+<p>一个帧中有几个时隙？ A&gt; 20个时隙。</p>
+</li>
+</ol>
+<hr>
+<p>现在，让我们看一下由时域（横轴）和频域（竖轴）组成的单位。我们将此类型的单元称为二维单元。</p>
+<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 LTE 中协议侧和 RF 测量侧最重要的单元。</p>
+<ol>
+<li>
+<p>一个资源块中有多少个符号？  7个符号。</p>
+</li>
+<li>
+<p>一个资源块中有多少个子载波？  12个子载波。</p>
+</li>
+<li>
+<p>一个资源块中有多少资源元素？  84个资源元素。</p>
+</li>
+</ol>
+<p>那么</p>
+<ol start="4">
+<li>
+<p>20 Mhz频带中有多少资源块？  100个资源块。</p>
+</li>
+<li>
+<p>10 Mhz频带中有多少资源块？  50个资源块。</p>
+</li>
+<li>
+<p>5 Mhz频带中有多少资源块？  25个资源块。</p>
+</li>
+</ol>
+<h3 id="tdd类型-2">TDD——类型 2</h3>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-sub-html="<h2>TDD 帧结构</h2>">
+        
+    </a><figcaption class="image-caption">TDD 帧结构</figcaption>
+    </figure>
+<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 TDD UL/DL 资源分配图。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDCCH</td>
+<td>橙色</td>
+</tr>
+<tr>
+<td>PBCH</td>
+<td>蓝色</td>
+</tr>
+<tr>
+<td>PSS</td>
+<td>紫色</td>
+</tr>
+<tr>
+<td>SSS</td>
+<td>浅蓝色</td>
+</tr>
+<tr>
+<td>PDSCH</td>
+<td>白色</td>
+</tr>
+<tr>
+<td>Reserved</td>
+<td>黑色</td>
+</tr>
+<tr>
+<td>Ref Signal</td>
+<td>红色</td>
+</tr>
+<tr>
+<td>PCFICH</td>
+<td>浅绿色</td>
+</tr>
+<tr>
+<td>PHICH</td>
+<td>黄色</td>
+</tr>
+<tr>
+<td>TDD Uplink</td>
+<td>绿色</td>
+</tr>
+<tr>
+<td>Guard Period</td>
+<td>灰色</td>
+</tr>
+</tbody>
+</table>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 1, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 1, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 2, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 2, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 3, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 3, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 4, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 4, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 5, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 5, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 6, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 6, Special Subframe Config 0</figcaption>
+    </figure>
+<hr>
+<p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧0和子帧6中的符号结构如何变化。</p>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 1</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 1</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 2</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 2</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 3</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 3</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 4</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 4</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 5</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 5</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 6</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 6</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 7</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 7</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 8</h2>">
+        
+    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
+    </figure>
+<h3 id="laa类型-3">LAA——类型 3</h3>
+<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 LTE-U 一样，这也是一种在未经许可的频率范围内传输 LTE 信号的技术。 然而，与 LTE-U 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 LTE 信号类似于 WLAN 突发，并使 LTE 信号更好地与现有的 WLAN 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1]<a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
+</li>
+<li>
+<p>[2]<a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>逐步详解 SHA-2 算法（以 SHA-256 为例）</title>
     <link>https://www.techkoala.top/learn_sha_2_step_by_step/</link>
     <pubDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</pubDate>
@@ -1299,10 +1618,6 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（TLD）（非.com）可能速度稍微慢一些。</p>
 <h2 id="总结">总结</h2>
 <p>本文展示了 DNS 的解析过程以及我们更新 DNS 记录时发送了什么，希望有助于你理解这一过程。</p>
-<h2 id="说明">说明</h2>
-<p><strong>说明:</strong> 本文属于 <code>Translation</code> 系列文章，本系列文章 <strong>主要内容</strong> 来源于博主对优秀外文文章地翻译和校对，这里并不一定遵循原文的叙述逻辑，内容上也会有一定的增删，原文请见参考。</p>
-<p>译文的目的一方面是加深自己学习的印象，另外一方面是希望能够共享优质的内容。</p>
-<p>本说明对所有含 <code>Translation</code> 标签的文章均适用。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
