@@ -1,13 +1,13 @@
-# Hugo 搭配 LoveIt 使用问题
+# Hugo 搭配 LoveIt 技巧总结
 
 
->使用 Hugo 以及 LoveIt 搭建本博客遇到的问题以及解决方案
+> 记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案
 
 <!--more-->
 
 ### 1. 虚拟机中 Hugo server 无法远程访问
 
-hugo server 默认只会 bind localhost
+`hugo server` 默认只会 `bind localhost`
 
 使用：
 
@@ -19,7 +19,7 @@ $ Hugo server --bind xxx.xxx.xxx.xxx
 
 ### 2. 使用 git 信息生成文章上一次修改时间
 
-首先，启用 git 信息：
+首先，启用 `git` 信息：
 
 ```
 enableGitInfo = true
@@ -33,7 +33,7 @@ gitRepo = "/xxx/xxxx/.git/"
 
 需要注意的是：
 
-- 这里.git 应该 init 在 hugo 生成的项目根目录中
+- 这里 `.git` 应该 init 在 hugo 生成的项目根目录中
 
 - 但是这样，如果只 push public 文件夹到 Github 上部署的话，网页上无法正确跳转对应的 commit 详情页。
 
@@ -42,3 +42,35 @@ gitRepo = "/xxx/xxxx/.git/"
 LoveIt Github Issue 提到该问题的{{< link href="https://github.com/dillonzq/LoveIt/issues/197" content=解决方案 title="%!(EXTRA string=Text) in some text" >}}
 
 但实际通过修改 config.toml 中的`defaultContentLanguage = "zh"`为`defaultContentLanguage = "zh-cn"`即可解决。
+
+### 4.开启 Gitalk 评论
+
+Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
+
+因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。
+
+接着打开 `Settings > Developer settings > OAuth Apps` ，点击 `New OAuth App`
+
+{{< image src="/images/Hugo/OAuth_App.png" caption="新建 OAuth App" >}} 
+
+然后填写信息：
+
+> - Application name : 随便填写
+> - Homepage URL     : 随便填写
+> - Application description : 随便填写
+> - Authorization callback URL : 一定要填写你的博客地址
+
+完成后，点击 `Register application` 完成注册。
+
+然后找到博客项目根目录中的 `config.toml` ，修改以下字段：
+
+```
+[params.page.comment.gitalk]
+enable = true
+owner = "techkoala"  # 你的 Github 用户名
+repo = "commets_of_blog" # 用于存储评论的仓库名
+clientId = "xxxxxx"      # 请于 OAuth App 页面获取
+clientSecret = "xxxxxx"  # 请于 OAuth App 页面获取
+```
+
+完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。
