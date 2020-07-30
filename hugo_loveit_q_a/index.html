@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/hugo_loveit_q_a\/"
-        },"genre": "posts","keywords": "Blog, Hugo, Q\x26A","wordcount":  554 ,
+        },"genre": "posts","keywords": "Blog, Hugo, Q\x26A","wordcount":  689 ,
         "url": "https:\/\/www.techkoala.top\/hugo_loveit_q_a\/","datePublished": "2020-05-12T21:54:02+08:00","dateModified": "2020-07-30T12:42:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hugo 搭配 LoveIt 技巧总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/blog/"><i class="far fa-folder fa-fw"></i>Blog</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-12">2020-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 554 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-12">2020-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 689 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -122,6 +122,7 @@
         <li><a href="#2-使用-git-信息生成文章上一次修改时间">2. 使用 git 信息生成文章上一次修改时间</a></li>
         <li><a href="#3-页面出现-extra-stringxxxx">3. 页面出现 %!(EXTRA string=xxxx)</a></li>
         <li><a href="#4开启-gitalk-评论">4.开启 Gitalk 评论</a></li>
+        <li><a href="#cdn-配置">CDN 配置</a></li>
       </ul>
     </li>
   </ul>
@@ -215,7 +216,30 @@ clientId = &#34;xxxxxx&#34;      # 请于 OAuth App 页面获取
 clientSecret = &#34;xxxxxx&#34;  # 请于 OAuth App 页面获取
 </code></pre></td></tr></table>
 </div>
-</div><p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p></div><div class="post-footer" id="post-footer">
+</div><p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p>
+<h3 id="cdn-配置">CDN 配置</h3>
+<p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
+<p>将该目录下的 <code>jsdelivr.yml</code> 移动到你的项目下相同路径： <code>assets/data/cdn/</code>。（如果需要使用别的 <code>CDN</code>，可以执行参考 <code>CDN</code> 网站的配置说明对 <code>jsdelivr.yml</code> 进行修改</p>
+<p>然后修改 <code>config.toml</code> 文件中的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  # CSS 和 JS 文件的 CDN 设置
+  [params.cdn]
+  # CDN 数据文件名称, 默认不启用
+  # (&#34;jsdelivr.yml&#34;)
+  data = &#34;jsdelivr.yml&#34;
+
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

@@ -74,3 +74,20 @@ clientSecret = "xxxxxx"  # 请于 OAuth App 页面获取
 ```
 
 完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。
+
+### CDN 配置
+
+`LoveIt` 的默认的 `CDN` 数据文件位于 `themes/LoveIt/assets/data/cdn/` 目录。
+
+将该目录下的 `jsdelivr.yml` 移动到你的项目下相同路径： `assets/data/cdn/`。（如果需要使用别的 `CDN`，可以执行参考 `CDN` 网站的配置说明对 `jsdelivr.yml` 进行修改
+
+然后修改 `config.toml` 文件中的：
+
+```
+  # CSS 和 JS 文件的 CDN 设置
+  [params.cdn]
+  # CDN 数据文件名称, 默认不启用
+  # ("jsdelivr.yml")
+  data = "jsdelivr.yml"
+
+  ```
