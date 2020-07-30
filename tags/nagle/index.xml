@@ -54,10 +54,13 @@ end if
 </li>
 <li>
 <p>打开如下路径 <code>计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></p>
-<a class="lightgallery" href="/images/Network/regedit.png" title="/images/Network/regedit.png" data-thumbnail="/images/Network/regedit.png">
-        
-    </a>
 </li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/regedit.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/regedit.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/regedit.png" data-sub-html="<h2>注册表界面</h2>">
+        
+    </a><figcaption class="image-caption">注册表界面</figcaption>
+    </figure>
+<ol start="3">
 <li>
 <p>依次点击下方注册表项，检查右窗格中是否包含 <code>DhcpIPAddress</code> 值；</p>
 </li>

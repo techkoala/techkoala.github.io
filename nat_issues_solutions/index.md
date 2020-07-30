@@ -23,7 +23,7 @@ STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到�
 
 STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。
 
-{{< image src="/images/Network/NAT/STUN_Algorithm.png" caption="STUN 算法" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" caption="STUN 算法" >}}
 
 如果你还记得，除了对称型 NAT 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；
 

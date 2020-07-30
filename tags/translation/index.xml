@@ -15,7 +15,7 @@
 <h2 id="下行帧结构">下行帧结构</h2>
 <h3 id="fdd类型-1">FDD——类型 1</h3>
 <p>36.211 中 FDD LTE 的帧结构概览图如下所示：</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
         
     </a><figcaption class="image-caption">FDD 帧结构</figcaption>
     </figure>
@@ -36,7 +36,7 @@
 </li>
 </ul>
 <p>那么一个时隙是时域上最小的结构吗？不，如果进一步放大此结构，则会得到下图：</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-sub-html="<h2>时隙结构</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-sub-html="<h2>时隙结构</h2>">
         
     </a><figcaption class="image-caption">时隙结构</figcaption>
     </figure>
@@ -44,7 +44,7 @@
 <p>在符号的开头，还有一个很小的跨度，称为<code>循环前缀</code>，其余部分是真实的符号数据。</p>
 <p>LTE 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
 <p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
         
     </a><figcaption class="image-caption">符号结构</figcaption>
     </figure>
@@ -103,18 +103,18 @@
 </tbody>
 </table>
 <p>下图是<code>LTE 资源网格</code>的总体子帧结构：</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-sub-html="<h2>LTE 资源网格</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-sub-html="<h2>LTE 资源网格</h2>">
         
     </a><figcaption class="image-caption">LTE 资源网格</figcaption>
     </figure>
 <p>以下显示所有 4 个天线信号叠加（重叠）的理想情况下的下行链路帧结构和 RE（Resource Element，资源元素）映射的示例。</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-sub-html="<h2>4天线帧结构和 RE 映射示例</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-sub-html="<h2>4天线帧结构和 RE 映射示例</h2>">
         
     </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
     </figure>
 <p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 LTE 信号分析器测量来自 LTE 网络模拟器的 LTE 信号的测量结果。这是在 LTE 网络正在传输 MIB/SIB 且 UE 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
 <p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
         
     </a><figcaption class="image-caption">下行帧结构物理信道</figcaption>
     </figure>
@@ -186,7 +186,7 @@
 </li>
 </ol>
 <h3 id="tdd类型-2">TDD——类型 2</h3>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-sub-html="<h2>TDD 帧结构</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-sub-html="<h2>TDD 帧结构</h2>">
         
     </a><figcaption class="image-caption">TDD 帧结构</figcaption>
     </figure>
@@ -245,69 +245,69 @@
 </tr>
 </tbody>
 </table>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 1, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 1, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 1, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 2, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 2, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 2, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 3, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 3, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 3, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 4, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 4, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 4, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 5, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 5, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 5, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 6, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 6, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 6, Special Subframe Config 0</figcaption>
     </figure>
 <hr>
 <p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧0和子帧6中的符号结构如何变化。</p>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 1</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 1</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 1</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 2</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 2</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 2</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 3</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 3</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 3</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 4</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 4</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 4</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 5</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 5</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 5</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 6</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 6</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 6</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 7</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 7</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 7</figcaption>
     </figure>
-<figure><a class="lightgallery" href="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" title="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-thumbnail="/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 8</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 8</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
     </figure>
@@ -763,7 +763,7 @@
 </div>
 </div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步🙂。</p>
 <h2 id="附录">附录</h2>
-<figure><a class="lightgallery" href="/images/Algorithm/SHA-2.png" title="/images/Algorithm/SHA-2.png" data-thumbnail="/images/Algorithm/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
         
     </a><figcaption class="image-caption">SHA-2 的第 t 个加密循环</figcaption>
     </figure>
@@ -987,7 +987,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <h3 id="输出定长">输出定长</h3>
 <p>如果对<strong>单个单词</strong>进行哈希处理，则输出将具有一定的大小（对于 <code>SHA-256</code>，则为特定的哈希函数，大小为 256 位）。即便我对<strong>一本书</strong>进行哈希处理，输出同样将是相同的大小。</p>
 <p>这是另一个重要的功能，因为它可以节省我们的计算时间。 一个典型的例子是使用哈希作为数据映射中的键。 数据映射是计算机科学中用来存储数据的一种简单结构。</p>
-<figure><a class="lightgallery" href="/images/Algorithm/Hash/key-map.gif" title="/images/Algorithm/Hash/key-map.gif" data-thumbnail="/images/Algorithm/Hash/key-map.gif" data-sub-html="<h2>数据映射</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" data-sub-html="<h2>数据映射</h2>">
         
     </a><figcaption class="image-caption">数据映射</figcaption>
     </figure>
@@ -1110,7 +1110,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <h3 id="建立连接">建立连接</h3>
 <p>实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似Unix管道。OpenSSH中包含两个程序来完成:<code>sshd</code>和<code>scp</code>。<code>sshd</code>是始终运行的服务器守护进程，接受新的SSH连接。<code>scp</code>是伪装成ssh的客户端程序，发送和接受文件。</p>
 <p>当<code>scp</code>运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的<code>scp</code>程序。你可以认为是<code>ssh exec scp [flags]</code>。主要的标志包含<code>-t</code>（&ldquo;to&rdquo;）和<code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而<code>-d</code>表示文件夹，<code>-r</code>表示递归。</p>
-<figure><a class="lightgallery" href="/images/Software/SCP/scp-1.png" title="/images/Software/SCP/scp-1.png" data-thumbnail="/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         
     </a><figcaption class="image-caption">建立连接</figcaption>
     </figure>
@@ -1148,7 +1148,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 </ul>
 <p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
-<figure><a class="lightgallery" href="/images/Software/SCP/scp-2.png" title="/images/Software/SCP/scp-2.png" data-thumbnail="/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
         
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
@@ -1252,7 +1252,7 @@ Executed in  215.68 millis	fish       	external
 <h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
 <p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
-<figure><a class="lightgallery" href="/images/Network/NAT/STUN_Algorithm.png" title="/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
         
     </a><figcaption class="image-caption">STUN 算法</figcaption>
     </figure>
@@ -1298,7 +1298,7 @@ Executed in  215.68 millis	fish       	external
 </blockquote>
 <h2 id="nat-的四种类型">NAT 的四种类型</h2>
 <h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Full_Cone_NAT.png" title="/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
@@ -1308,7 +1308,7 @@ Executed in  215.68 millis	fish       	external
 </blockquote>
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 NAT 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Restricted_Cone_NAT.png" title="/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
         
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
@@ -1317,7 +1317,7 @@ Executed in  215.68 millis	fish       	external
 <p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 IP 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。NAT 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的源 IP 为 <code>56.45.34.78</code>（网站 IP）的数据包将被接受，接着网站返回数据至我的 PC。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 IP 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
 </blockquote>
 <h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
@@ -1326,7 +1326,7 @@ Executed in  215.68 millis	fish       	external
 <p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
 </blockquote>
 <h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Symmetric_NAT.png" title="/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
         
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>

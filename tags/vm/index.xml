@@ -16,7 +16,7 @@
 <p>近期将家里的服务器从 Hyper-V 迁移到 PVE 上。</p>
 <p>目前安装有黑群晖、Openwrt、Ubuntu 18.09LTS</p>
 <p>目前的网络拓扑图如下：</p>
-<figure><a class="lightgallery" href="/images/PVE/%e6%8b%93%e6%89%91.png" title="/images/PVE/拓扑.png" data-thumbnail="/images/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>

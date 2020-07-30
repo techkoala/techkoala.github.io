@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/nat/" />
 <meta property="article:published_time" content="2020-07-14T23:25:54+08:00" />
-<meta property="article:modified_time" content="2020-07-20T21:12:10+08:00" />
+<meta property="article:modified_time" content="2020-07-30T12:42:18+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NAT 系列 1：认识 NAT"/>
 <meta name="twitter:description" content="
@@ -31,7 +31,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/nat\/"
         },"genre": "posts","keywords": "Network, NAT, Translation","wordcount":  2749 ,
-        "url": "https:\/\/www.techkoala.top\/nat\/","datePublished": "2020-07-14T23:25:54+08:00","dateModified": "2020-07-20T21:12:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/nat\/","datePublished": "2020-07-14T23:25:54+08:00","dateModified": "2020-07-30T12:42:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -144,14 +144,14 @@
 </blockquote>
 <h2 id="nat-的四种类型">NAT 的四种类型</h2>
 <h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Full_Cone_NAT.png" title="/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/images/Network/NAT/Full_Cone_NAT.png"
-            data-srcset="/images/Network/NAT/Full_Cone_NAT.png, /images/Network/NAT/Full_Cone_NAT.png 1.5x, /images/Network/NAT/Full_Cone_NAT.png 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png 2x"
             data-sizes="auto"
-            alt="/images/Network/NAT/Full_Cone_NAT.png" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" />
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
 <p>全锥型 NAT 是静态 NAT，也是唯一一种永久开放端口的 NAT，允许从 <strong>任何外部主机</strong> 进行入站连接。全锥型 NAT 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 NAT IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 NAT 也被称为端口转发。这是受限制最少的 NAT 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
@@ -160,14 +160,14 @@
 </blockquote>
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 NAT 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Restricted_Cone_NAT.png" title="/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/images/Network/NAT/Restricted_Cone_NAT.png"
-            data-srcset="/images/Network/NAT/Restricted_Cone_NAT.png, /images/Network/NAT/Restricted_Cone_NAT.png 1.5x, /images/Network/NAT/Restricted_Cone_NAT.png 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png 2x"
             data-sizes="auto"
-            alt="/images/Network/NAT/Restricted_Cone_NAT.png" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" />
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
 <p>受限锥体 NAT 是动态 NAT，它的工作方式与全锥型 NAT 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
@@ -175,14 +175,14 @@
 <p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 IP 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。NAT 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的源 IP 为 <code>56.45.34.78</code>（网站 IP）的数据包将被接受，接着网站返回数据至我的 PC。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 IP 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
 </blockquote>
 <h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/images/Network/NAT/Port_Restricted_Cone_NAT.png"
-            data-srcset="/images/Network/NAT/Port_Restricted_Cone_NAT.png, /images/Network/NAT/Port_Restricted_Cone_NAT.png 1.5x, /images/Network/NAT/Port_Restricted_Cone_NAT.png 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png 2x"
             data-sizes="auto"
-            alt="/images/Network/NAT/Port_Restricted_Cone_NAT.png" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" />
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
 <p>端口受限锥型 NAT 是动态 NAT，它的作用与受限锥形 NAT 完全相同，但同时对端口进行限制。受限锥形 NAT 接受来自外部主机任何源端口的连接，而端口受限锥型 NAT 则进一步要求外部主机的源端口是固定的。</p>
@@ -190,14 +190,14 @@
 <p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
 </blockquote>
 <h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
-<figure><a class="lightgallery" href="/images/Network/NAT/Symmetric_NAT.png" title="/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/images/Network/NAT/Symmetric_NAT.png"
-            data-srcset="/images/Network/NAT/Symmetric_NAT.png, /images/Network/NAT/Symmetric_NAT.png 1.5x, /images/Network/NAT/Symmetric_NAT.png 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png 2x"
             data-sizes="auto"
-            alt="/images/Network/NAT/Symmetric_NAT.png" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" />
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>
 <p>对称型 NAT 是动态 NAT，它限制的方式与端口受限锥型 NAT 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 NAT 在 NAT 连接时都 <strong>不会改变源端口</strong>。</p>
@@ -250,8 +250,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-07-20&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/62b75ca0592a80355f0ad7419ccd2d603aae9894" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 62b75ca0592a80355f0ad7419ccd2d603aae9894: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>62b75ca</a></span>
+                <span>更新于 2020-07-30&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/4ea3ae9c0b71c13128d8dc059e21dcc4600bd255" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 4ea3ae9c0b71c13128d8dc059e21dcc4600bd255: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>4ea3ae9</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

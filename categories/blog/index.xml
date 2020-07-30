@@ -59,7 +59,7 @@
 <p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
 <p>因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。</p>
 <p>接着打开 <code>Settings &gt; Developer settings &gt; OAuth Apps</code> ，点击 <code>New OAuth App</code></p>
-<figure><a class="lightgallery" href="/images/Hugo/OAuth_App.png" title="/images/Hugo/OAuth_App.png" data-thumbnail="/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
         
     </a><figcaption class="image-caption">新建 OAuth App</figcaption>
     </figure>

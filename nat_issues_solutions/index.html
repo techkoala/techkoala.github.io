@@ -12,7 +12,7 @@ NAT 引发的问题以及解决方法
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/nat_issues_solutions/" />
 <meta property="article:published_time" content="2020-07-15T14:19:14+08:00" />
-<meta property="article:modified_time" content="2020-07-29T22:55:01+08:00" />
+<meta property="article:modified_time" content="2020-07-30T12:42:18+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NAT 系列 2：NAT 引发的问题以及解决方法"/>
 <meta name="twitter:description" content="
@@ -31,7 +31,7 @@ NAT 引发的问题以及解决方法
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/nat_issues_solutions\/"
         },"genre": "posts","keywords": "Network, NAT, Translation","wordcount":  1818 ,
-        "url": "https:\/\/www.techkoala.top\/nat_issues_solutions\/","datePublished": "2020-07-15T14:19:14+08:00","dateModified": "2020-07-29T22:55:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/nat_issues_solutions\/","datePublished": "2020-07-15T14:19:14+08:00","dateModified": "2020-07-30T12:42:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -139,14 +139,14 @@ NAT 引发的问题以及解决方法
 <h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
 <p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
-<figure><a class="lightgallery" href="/images/Network/NAT/STUN_Algorithm.png" title="/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/images/Network/NAT/STUN_Algorithm.png"
-            data-srcset="/images/Network/NAT/STUN_Algorithm.png, /images/Network/NAT/STUN_Algorithm.png 1.5x, /images/Network/NAT/STUN_Algorithm.png 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png 2x"
             data-sizes="auto"
-            alt="/images/Network/NAT/STUN_Algorithm.png" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" />
     </a><figcaption class="image-caption">STUN 算法</figcaption>
     </figure>
 <p>如果你还记得，除了对称型 NAT 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
@@ -174,8 +174,8 @@ NAT 引发的问题以及解决方法
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-07-29&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/d3079c39ec4f282e68fd5f9b6216c5438d74a84f" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) d3079c39ec4f282e68fd5f9b6216c5438d74a84f: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>d3079c3</a></span>
+                <span>更新于 2020-07-30&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/4ea3ae9c0b71c13128d8dc059e21dcc4600bd255" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 4ea3ae9c0b71c13128d8dc059e21dcc4600bd255: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>4ea3ae9</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

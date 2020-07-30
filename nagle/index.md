@@ -39,7 +39,7 @@ Nagle 算法可能导致期望实时响应和低延迟的应用程序体验不�
 
 2. 打开如下路径 `计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces`
    
-   {{< image src="/images/Network/regedit.png" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/regedit.png" caption="注册表界面" >}} 
 
 3. 依次点击下方注册表项，检查右窗格中是否包含 `DhcpIPAddress` 值；
 

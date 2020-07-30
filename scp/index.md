@@ -33,7 +33,7 @@ SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述�
 
 当`scp`运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的`scp`程序。你可以认为是`ssh exec scp [flags]`。主要的标志包含`-t`（"to"）和`-f`（"from"）用于代表接受和发送，而`-d`表示文件夹，`-r`表示递归。
 
-{{< image src="/images/Software/SCP/scp-1.png" caption="建立连接" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" caption="建立连接" >}} 
 
 值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端`scp`开始运行后，实际的SCP协议命令开始通过`STDIN`和`STDOUT`运行。
 
@@ -63,7 +63,7 @@ SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述�
 
 下面这个带有注释的图片实例，详细讲述了这个过程：
 
-{{< image src="/images/Software/SCP/scp-2.png" caption="传输过程" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" caption="传输过程" >}} 
 
 
 ## SCP 的问题

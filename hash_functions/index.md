@@ -35,7 +35,7 @@
 
 这是另一个重要的功能，因为它可以节省我们的计算时间。 一个典型的例子是使用哈希作为数据映射中的键。 数据映射是计算机科学中用来存储数据的一种简单结构。
 
-{{< image src="/images/Algorithm/Hash/key-map.gif" caption="数据映射" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" caption="数据映射" >}}
 
 当程序在映射中存储数据时，会为映射指定一个键和值。当程序想要访问该值时，它只要提供适当的键就能接收相应的值。数据映射很好，因为它们可以立即找到数据。计算机通过键可以立即找到对应的值，而不是花费数小时在数百万条记录中搜索。
 

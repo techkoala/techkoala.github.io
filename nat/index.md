@@ -23,7 +23,7 @@ NAT 从大类上都可以分为两类：`静态 NAT` 和 `动态 NAT`。
 
 ### 全锥型 NAT（Full Cone NAT)
 
-{{< image src="/images/Network/NAT/Full_Cone_NAT.png" caption="全锥型 NAT" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" caption="全锥型 NAT" >}}
 
 全锥型 NAT 是静态 NAT，也是唯一一种永久开放端口的 NAT，允许从 **任何外部主机** 进行入站连接。全锥型 NAT 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 NAT IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 NAT 也被称为端口转发。这是受限制最少的 NAT 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。
 
@@ -33,7 +33,7 @@ NAT 从大类上都可以分为两类：`静态 NAT` 和 `动态 NAT`。
 
 ### 受限锥形 NAT（Restricted Cone NAT）
 
-{{< image src="/images/Network/NAT/Restricted_Cone_NAT.png" caption="受限锥形 NAT" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" caption="受限锥形 NAT" >}}
 
 受限锥体 NAT 是动态 NAT，它的工作方式与全锥型 NAT 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。**亦即需要内部主机首先发起连接的外部主机，才能被接受入站。**
 
@@ -41,7 +41,7 @@ NAT 从大类上都可以分为两类：`静态 NAT` 和 `动态 NAT`。
 
 ### 端口受限锥型 NAT（Port Restricted Cone NAT)
 
-{{< image src="/images/Network/NAT/Port_Restricted_Cone_NAT.png" caption="端口受限锥型 NAT" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" caption="端口受限锥型 NAT" >}}
 
 端口受限锥型 NAT 是动态 NAT，它的作用与受限锥形 NAT 完全相同，但同时对端口进行限制。受限锥形 NAT 接受来自外部主机任何源端口的连接，而端口受限锥型 NAT 则进一步要求外部主机的源端口是固定的。
 
@@ -49,7 +49,7 @@ NAT 从大类上都可以分为两类：`静态 NAT` 和 `动态 NAT`。
 
 ### 对称型 NAT（Symmetric NAT）
 
-{{< image src="/images/Network/NAT/Symmetric_NAT.png" caption="对称型 NAT" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" caption="对称型 NAT" >}}
 
 对称型 NAT 是动态 NAT，它限制的方式与端口受限锥型 NAT 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 NAT 在 NAT 连接时都 **不会改变源端口**。
 
