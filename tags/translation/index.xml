@@ -3,7 +3,299 @@
         <title>Translation - 标签 - TechKoala</title>
         <link>https://www.techkoala.top/tags/translation/</link>
         <description>Translation - 标签 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/translation/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Jul 2020 22:49:22 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/translation/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系列：帧中的物理信道和信号</title>
+    <link>https://www.techkoala.top/lte_physical_channels_and_signals/</link>
+    <pubDate>Wed, 29 Jul 2020 22:49:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_physical_channels_and_signals/</guid>
+    <description><![CDATA[<blockquote>
+<p>概述 LTE 信息帧中的各类物理通道和信号</p>
+</blockquote>
+<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 LTE 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
+<h2 id="pbch">PBCH</h2>
+<p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
+<ul>
+<li>
+<p>它只携带 MIB (master information block，主系统信息块)</p>
+</li>
+<li>
+<p>它使用的是 QPSK</p>
+</li>
+<li>
+<p>映射到 6 个资源块（72 个子载波），以 0 号子帧中的 DC 子载波为中心</p>
+</li>
+<li>
+<p>映射到不为传输参考信号、PDCCH 或 PCHICH 而保留的资源元素</p>
+</li>
+<li>
+<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
+</li>
+</ul>
+<h2 id="pcfich">PCFICH</h2>
+<p><strong>Physical Control Format Indicator Channel，物理控制格式指示通道</strong></p>
+<ul>
+<li>
+<p>它映射到每个下行链路子帧中的第一个 OFDM 符号</p>
+</li>
+<li>
+<p>它包含了携带控制信道（PDCCH 和 PHICH）的 OFDM 符号数量的信息。UE 对该信道进行解码，以找出该帧中为控制信道（PDCCH 和 PHICH）分配了多少个 OFDM 符号</p>
+</li>
+<li>
+<p>它是子帧的第一个 OFDM 符号的 16 个数据子载波</p>
+</li>
+<li>
+<p>PCFICH 数据由 4 个 REG 承载，并且这 4 个 REG 均匀分布在整个频带上，与带宽无关</p>
+</li>
+<li>
+<p>PCFICH 的确切位置由小区 ID 和带宽确定</p>
+</li>
+<li>
+<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreffer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PCFICH</a> 页面</p>
+</li>
+</ul>
+<h2 id="pdcch">PDCCH</h2>
+<p><strong>Physical Downlink Control Channel，物理下行控制信道</strong></p>
+<ul>
+<li>
+<p>映射到下行链路每个子帧中前 L 个 OFDM 符号</p>
+</li>
+<li>
+<p>PDCCH 的符号数（L）可以是 1,2 或 3</p>
+</li>
+<li>
+<p>PDCCH 的符号数由 PCFICH 指定</p>
+</li>
+<li>
+<p>PDCCH 承载 DCI，而 DCI 承载传输格式，资源分配，与 DL-SCH，UL-SCH 和 PCH 相关的 H-ARQ 信息以及其他取决于 DCI 格式的信息</p>
+</li>
+<li>
+<p>PDCCH 还携带用于 UL 调度分配的 DCI 0（例如，UL 授权）</p>
+</li>
+<li>
+<p>可以在单个子帧中分配多个 PDCCH，并且 UE 对所有 PDCCH 进行盲解码</p>
+</li>
+<li>
+<p>调制方案是 QPSK</p>
+</li>
+<li>
+<p>PDCCH 类似于 HSDPA 的 HS-SCCH、R99 的 PDCCH 和 HSUPA 的 E-AGCH/E-RGCH</p>
+</li>
+<li>
+<p>即使 PDCCH 具有很多功能，但并非所有功能都同时使用，因此 PDCCH 配置应灵活设置</p>
+</li>
+<li>
+<p>如果您对该通道中的详细信息映射感兴趣，请参阅 36.211 中的 6.8.1。简要说明如下：</p>
+</li>
+</ul>
+<blockquote>
+<p>物理下行链路控制信道承载调度分配和其他控制信息。物理控制信道是在一个或几个连续的控制信道元素（CCE）的聚合上发送的，其中控制信道元素对应于 9 个资源元素组。未分配给 PCFICH 或 PHICH 的资源元素组的数量为 REG N。系统中可用的 CCE 从 0 和 N_CCE-1 编号，其中 N_CCE = floor（N_REG/9）。</p>
+</blockquote>
+<ul>
+<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDCCH</a> 页面</li>
+</ul>
+<h2 id="phich">PHICH</h2>
+<p><strong>Physical Hybrid ARQ Indicator Channel，物理 HARQ 指示信道</strong></p>
+<ul>
+<li>
+<p>对收到的 PUSCH 进行 H-ARQ 反馈</p>
+</li>
+<li>
+<p>UE 在 UL 中传输数据后，等待 PHICH 进行 ACK</p>
+</li>
+<li>
+<p>类似于 HSPA 中的 E-HICH</p>
+</li>
+<li>
+<p>某些情况下，几个 PHICH 使用相同的资源元素构成 PHICH 组</p>
+</li>
+<li>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreffer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PHICH </a> 页面</p>
+</li>
+</ul>
+<h2 id="pdsch">PDSCH</h2>
+<p><strong>Physical Downlink Shared Channel，物理下行共享信道</strong></p>
+<ul>
+<li>
+<p>携带用户特定的数据（DL 有效负载）</p>
+</li>
+<li>
+<p>携带随机访问响应消息</p>
+</li>
+<li>
+<p>它使用带有 QPSK，16 QAM，64 QAM，256 QAM 调制方案的 AMC（此调制方案由 DCI 承载的 MCS 确定）</p>
+</li>
+<li>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDSCH </a> 页面</p>
+</li>
+</ul>
+<h2 id="prach">PRACH</h2>
+<p><strong>Physical Random Access Channel，物理随机接入信道</strong></p>
+<ul>
+<li>
+<p>携带随机访问前导码</p>
+</li>
+<li>
+<p>它在频域中占用 72 个子载波（6 RB）的带宽</p>
+</li>
+<li>
+<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列</a> 生成</p>
+</li>
+<li>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreffer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PRACH</a> 页面</p>
+</li>
+</ul>
+<h2 id="p-ss">P-SS</h2>
+<p><strong>Primary Synchronization Signal，主同步信号</strong></p>
+<ul>
+<li>
+<p>映射到 72 个活动子载波（6 个资源块），以时隙 0（子帧 0）和时隙 10（子帧 5）中的 DC 子载波为中心。</p>
+</li>
+<li>
+<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列值</a> 组成</p>
+</li>
+<li>
+<p>用于下行帧同步</p>
+</li>
+<li>
+<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
+</li>
+<li>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreffer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PSS</a> 页面</p>
+</li>
+</ul>
+<blockquote>
+<p>如何从基带捕获的 IQ 数据序列中找到 PSS 的确切位置？是定时同步中最重要的部分之一；也是理解 LTE 协议中非常棘手的部分之一，需要花费很长时间进行研究。</p>
+</blockquote>
+<h2 id="s-ss">S-SS</h2>
+<p><strong>Secondary Synchronization Signal，副同步信号</strong></p>
+<p>SSS 是用于无线电帧同步的特定物理层信号，它具有以下列出的特征：</p>
+<ul>
+<li>
+<p>映射到 72 个活动子载波（6 个资源块），以 FDD 中的时隙 0（子帧 0）和时隙 10（子帧 5）的 DC 子载波为中心</p>
+</li>
+<li>
+<p>子帧 0 中的 SSS 序列与子帧 5 中的 SSS 序列互不相同</p>
+</li>
+<li>
+<p>由 62 个加扰序列（基于 m 序列）组成</p>
+</li>
+<li>
+<p>奇偶索引的资源元素的值由不同方程生成</p>
+</li>
+<li>
+<p>用于下行帧同步</p>
+</li>
+<li>
+<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
+</li>
+<li>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreffer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : SSS</a></p>
+</li>
+</ul>
+<h2 id="rs">RS</h2>
+<p><strong>Reference Signal，参考信号</strong></p>
+<p>大多数信道（例如，PDSCH，PDCCH，PBCH 等）都用于承载特殊信息（比特序列），它们与更高层的信道相连，但是参考信号是仅存在于 PHY 层的特殊信号，不用于传递任何特定信息。参考信号的目的是为下行链路功率提供参考点。</p>
+<p>当 UE 尝试计算 DL 功率（即，来自 eNode-B 的信号的功率）时，它将测量参考信号的功率并将其作为下行链路小区功率。</p>
+<p>这些参考信号由每个时隙中的多个特定资源元素承载，并且资源元素的具体位置由天线配置确定。</p>
+<h3 id="rs---cell-specific">RS - Cell Specific</h3>
+<p>在下图中，红色/蓝色/绿色/黄色是承载参考信号的部分，灰色标记的资源元素是为参考信号保留的部分，但未承载该特定天线的参考信号。（插图基于 36.211 的图 6.10.1.2-1： 下行链路参考信号的映射（正常循环前缀））</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" data-sub-html="<h2>小区特定参考信号</h2>">
+        
+    </a><figcaption class="image-caption">小区特定参考信号</figcaption>
+    </figure>
+<p>以下是 4 天线情况下物理信道配置和 RE（资源元素）映射的示例。测量结果来自 LTE 信号分析仪，它测量从 LTE 网络模拟器传出的 LTE 信号。它仅显示 20 Mhz 系统带宽中的一个 RB（RB0）（总共 100 个 RB），并且分别在 LTE 网络发送 MIB/SIB 和 UE 未连接时在天线端口 0、1、2、3 处捕获。你会注意到，每个天线的参考信号位置都不同。 由于此参考信号位置的差异，REG 分组可能由 PCFICH 的不同位置中略有不同。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" data-sub-html="<h2>各天线小区特定参考信号</h2>">
+        
+    </a><figcaption class="image-caption">各天线小区特定参考信号</figcaption>
+    </figure>
+<p>有两种不同类型的参考信号：小区特定参考信号和 UE 特定参考信号</p>
+<p>小区特定参考信号（CRS）：该参考信号在每个子帧处被发送，并且跨越整个工作带宽，通过天线端口 0、1、2、3 发送。</p>
+<p>UE 特定参考信号：此参考信号在仅分配给特定 UE 的资源块中传输，并通过天线端口 5 传输。</p>
+<p>特定于小区的参考信号的资源元素是否固定？</p>
+<p>否，位置会根据物理小区 ID 进行更改，如下所述：</p>
+<ul>
+<li>
+<p>参考信号的时域索引（l）= 固定（l = [0,4]）</p>
+</li>
+<li>
+<p>参考信号的频域索引 k 根据 36.211 6.10.1.2 映射到资源元素中指定的物理小区 ID 而变化。</p>
+<p>主要规则是：$k = 6m + (v + v_{shift})mod 6$，其中v_shift=物理小区ID mod6。详细信息参阅 36.211 6.10.1.2</p>
+</li>
+</ul>
+<p>下行参考信号携带什么样的值？</p>
+<p>该值是 36.211 6.10.1.1 序列生成中定义算法生成的伪随机序列。该序列的确定值之一是物理小区 ID，这意味着物理小区 ID 也影响参考信号的值。</p>
+<p>CRS 是否以任何子帧类型（类型 1、2、3）传输？</p>
+<p>对于帧结构类型 1，在所有下行链路子帧中发送 CRS。
+对于帧结构类型 2，在所有下行链路子帧和 DwPTS 中发送 CRS
+对于帧结构类型 3，CRS 在非空子帧中传输</p>
+<h3 id="rs---mbsfn">RS - MBSFN</h3>
+<p>下图基于 36.211 的图 6.10.2.2-1：MBSFN 参考信号的映射（扩展循环前缀，Δf= 15 kHz）</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" data-sub-html="<h2>Reference Signal - MBSFN</h2>">
+        
+    </a><figcaption class="image-caption">Reference Signal - MBSFN</figcaption>
+    </figure>
+<h3 id="rs---ue-specific">RS - UE Specific</h3>
+<p>下图基于 36.211 的图 6.10.3.2-1：特定于 UE 的参考信号，天线端口 5（正常循环前缀）的映射</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" data-sub-html="<h2>Reference Signal - UE Specific - Antenna Port 5</h2>">
+        
+    </a><figcaption class="image-caption">Reference Signal - UE Specific - Antenna Port 5</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" data-sub-html="<h2>Reference Signal - UE Specific - Antenna Port 5</h2>">
+        
+    </a><figcaption class="image-caption">Reference Signal - UE Specific - Antenna Port 5</figcaption>
+    </figure>
+<h3 id="rs---positioning">RS - Positioning</h3>
+<p>下图基于 36.211 的图 6.10.4.2-1：定位参考信号的映射（正常循环前缀）</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" data-sub-html="<h2>Reference Signal - Positioning - Antenna Port 6</h2>">
+        
+    </a><figcaption class="image-caption">Reference Signal - Positioning - Antenna Port 6</figcaption>
+    </figure>
+<h3 id="rs---csi">RS - CSI</h3>
+<p>下图基于 36.211 的图 6.10.5.2-1：CSI 参考信号的映射（CSI 配置 0，常规循环前缀）</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" data-sub-html="<h2>Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22</h2>">
+        
+    </a><figcaption class="image-caption">Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22</figcaption>
+    </figure>
+<h2 id="全帧快照">全帧快照</h2>
+<p>下图展示了上述提及的所有物理信道在整个框架上的整体图像：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" data-sub-html="<h2>Full Frame</h2>">
+        
+    </a><figcaption class="image-caption">Full Frame</figcaption>
+    </figure>
+<h2 id="通信过程中的物理信道">通信过程中的物理信道</h2>
+<p>下图显示了上行/下行数据传输的总体顺序：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" data-sub-html="<h2>数据传输序列图</h2>">
+        
+    </a><figcaption class="image-caption">数据传输序列图</figcaption>
+    </figure>
+<h2 id="附">附</h2>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - Radio Frame</h2>">
+        
+    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Radio Frame</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - PBCH</h2>">
+        
+    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - PBCH</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - PSS/SSS</h2>">
+        
+    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - PSS/SSS</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - Each Symbol</h2>">
+        
+    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
+</li>
+<li>
+<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE的信道</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>LTE 系列：下行链路帧结构</title>
     <link>https://www.techkoala.top/lte_downlink_frame_structure/</link>
     <pubDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</pubDate>
@@ -316,10 +608,10 @@
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1]<a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
+<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
 </li>
 <li>
-<p>[2]<a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
+<p>[2] <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
 </li>
 </ul>]]></description>
 </item><item>

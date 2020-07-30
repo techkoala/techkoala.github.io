@@ -185,6 +185,6 @@ Guard Period| 灰色
 
 ## 参考
 
-- [1][Frame Structure - Downlink](http://www.sharetechnote.com/html/FrameStructure_DL.html)
+- [1] [Frame Structure - Downlink](http://www.sharetechnote.com/html/FrameStructure_DL.html)
 
-- [2][Sandesh Dhagle's Resource Grid Tools](http://dhagle.in/LTE)
+- [2] [Sandesh Dhagle's Resource Grid Tools](http://dhagle.in/LTE)
