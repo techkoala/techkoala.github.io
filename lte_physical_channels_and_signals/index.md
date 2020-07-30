@@ -223,7 +223,7 @@ CRS 是否以任何子帧类型（类型 1、2、3）传输？
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" caption="数据传输序列图">}} 
 
-## 附
+## 附加图
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" caption="Spectrogram - LTE FDD DL - Radio Frame">}} 
 
@@ -235,7 +235,7 @@ CRS 是否以任何子帧类型（类型 1、2、3）传输？
 
 ## 参考
 
-- [1] [Frame Structure - Downlink](http://www.sharetechnote.com/html/FrameStructure_DL.html)
+- [1] [Physical Channels and Signals](http://www.sharetechnote.com/html/FrameStructure_DL.html)
 
 - [2] [LTE的信道](https://www.cnblogs.com/klb561/p/12227359.html)
 
