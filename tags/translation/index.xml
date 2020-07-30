@@ -763,7 +763,7 @@
 </div>
 </div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步🙂。</p>
 <h2 id="附录">附录</h2>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
         
     </a><figcaption class="image-caption">SHA-2 的第 t 个加密循环</figcaption>
     </figure>
@@ -987,7 +987,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <h3 id="输出定长">输出定长</h3>
 <p>如果对<strong>单个单词</strong>进行哈希处理，则输出将具有一定的大小（对于 <code>SHA-256</code>，则为特定的哈希函数，大小为 256 位）。即便我对<strong>一本书</strong>进行哈希处理，输出同样将是相同的大小。</p>
 <p>这是另一个重要的功能，因为它可以节省我们的计算时间。 一个典型的例子是使用哈希作为数据映射中的键。 数据映射是计算机科学中用来存储数据的一种简单结构。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.gif" data-sub-html="<h2>数据映射</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.webp" data-sub-html="<h2>数据映射</h2>">
         
     </a><figcaption class="image-caption">数据映射</figcaption>
     </figure>

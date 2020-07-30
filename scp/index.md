@@ -65,7 +65,6 @@ SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述�
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" caption="传输过程" >}} 
 
-
 ## SCP 的问题
 
 看起来，SCP 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。
