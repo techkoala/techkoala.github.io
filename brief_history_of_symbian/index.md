@@ -1,6 +1,7 @@
 # Symbian 的前世今生
 
    {{< image src="/images/symbian/symbian.jpg" >}} 
+   {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/symbian/symbian.jpg" >}} 
 
 >聊聊 Symbian 的过去
 
