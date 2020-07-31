@@ -60,7 +60,8 @@ $ ssh-add -l -E md5
 $ ssh-add /xxx/.ssh/xxx
 ```
     注：不知为何，使用自定义名字的密钥，每次 git 操作都要重新添加一次，尚不明确原因。
+
 ## 添加到 Github
 
-​	**Settings** >> **SSH and GPG keys** >> 添加公钥即可
+​	**Settings** > **SSH and GPG keys** > 添加公钥即可
 

@@ -101,6 +101,6 @@ $ ssh-add -l -E md5
 </div><pre><code>注：不知为何，使用自定义名字的密钥，每次 git 操作都要重新添加一次，尚不明确原因。
 </code></pre>
 <h2 id="添加到-github">添加到 Github</h2>
-<p>​	<strong>Settings</strong> &raquo; <strong>SSH and GPG keys</strong> &raquo; 添加公钥即可</p>]]></description>
+<p>​	<strong>Settings</strong> &gt; <strong>SSH and GPG keys</strong> &gt; 添加公钥即可</p>]]></description>
 </item></channel>
 </rss>
