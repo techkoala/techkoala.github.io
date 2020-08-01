@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/learn_sha_2_step_by_step/" />
 <meta property="article:published_time" content="2020-07-28T16:19:03+08:00" />
-<meta property="article:modified_time" content="2020-07-30T20:18:58+08:00" />
+<meta property="article:modified_time" content="2020-07-31T11:03:54+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="逐步详解 SHA-2 算法（以 SHA-256 为例）"/>
 <meta name="twitter:description" content="
@@ -31,7 +31,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/"
         },"genre": "posts","keywords": "SHA-2, SHA-256, Hash, Translation","wordcount":  2987 ,
-        "url": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/","datePublished": "2020-07-28T16:19:03+08:00","dateModified": "2020-07-30T20:18:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/","datePublished": "2020-07-28T16:19:03+08:00","dateModified": "2020-07-31T11:03:54+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -154,7 +154,7 @@
 </li>
 </ul>
 <h2 id="sha-2-vs-sha-256">SHA-2 vs SHA-256</h2>
-<p>有人可能会困惑：欸？我平时看到的都是 <code>SHA-128</code>、<code>SHA-256</code>，<code>SHA-2</code> 又是什么？</p>
+<p>有人可能会困惑：欸？我平时看到的都是 <code>SHA-128</code>、<code>SHA-256</code> 等等，这个 <code>SHA-2</code> 又是什么？</p>
 <p><code>SHA-2</code> 是一种算法，一种关于如何哈希数据的广义思想。<code>SHA-256</code> 设置了定义 <code>SHA-2</code> 算法行为的附加常量。其中一个常量是输出大小，“256” 和 “512” 是指它们各自的输出摘要大小（以位为单位）。</p>
 <h2 id="逐步详解-sha-256">逐步详解 SHA-256</h2>
 <p>接下来举例说明 SHA-256 如何工作:</p>
@@ -581,7 +581,7 @@
     </figure>
 <p>下面这段<strong>伪代码</strong>总结了上面执行的所有步骤：</p>
 <blockquote>
-<p>注 1：所有变量均为 32 位无符号整数，加法以 $ 2^32 $ 为模</p>
+<p>注 1：所有变量均为 32 位无符号整数，加法以 $ 2^{32} $ 为模</p>
 <p>注 2：对于每一轮，在消息调度数组 w [i]，0≤i≤63 中有一个循环常数 k [i] 和一个条目。</p>
 <p>注 3：压缩函数使用 8 个工作变量，a 到 h。</p>
 <p>注 4：在此伪代码中表示常量时使用大端约定，并且当将消息块数据从字节解析到字时，例如，填充后的输入消息 “abc” 的第一个字是 0x61626380</p>
@@ -768,8 +768,8 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-07-30&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/d075c60d1c3f86197558463c332b96134a7a56ba" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) d075c60d1c3f86197558463c332b96134a7a56ba: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>d075c60</a></span>
+                <span>更新于 2020-07-31&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/362e9eddaab9421d8a4c9cd71c5956a2f5e7d6be" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 362e9eddaab9421d8a4c9cd71c5956a2f5e7d6be: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>362e9ed</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
