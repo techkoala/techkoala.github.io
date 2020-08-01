@@ -123,3 +123,9 @@ Git提供了用于自定义日志消息格式的选项，你可以查看自定�
 上述命令会显示为下图样式：
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Github/GitLog/CustomPrettyOptions.jpg" caption="漂亮格式输出 Log" >}}
+
+## 参考
+
+- [1] [Ten Useful Git Log Tricks](https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy)
+
+- [2] [Git 基础 - 查看提交历史](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2)

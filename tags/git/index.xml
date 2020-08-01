@@ -183,7 +183,16 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Github/GitLog/CustomPrettyOptions.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Github/GitLog/CustomPrettyOptions.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Github/GitLog/CustomPrettyOptions.jpg" data-sub-html="<h2>漂亮格式输出 Log</h2>">
         
     </a><figcaption class="image-caption">漂亮格式输出 Log</figcaption>
-    </figure>]]></description>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy" target="_blank" rel="noopener noreffer">Ten Useful Git Log Tricks</a></p>
+</li>
+<li>
+<p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreffer">Git 基础 - 查看提交历史</a></p>
+</li>
+</ul>]]></description>
 </item><item>
     <title>Github 使用问题</title>
     <link>https://www.techkoala.top/github_issue/</link>
