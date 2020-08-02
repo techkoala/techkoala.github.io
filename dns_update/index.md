@@ -1,7 +1,7 @@
 # 深入浅出 DNS 解析
 
 
->DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？为什么有的人看到的是新 IP，有的人看到的是旧 IP？
+> DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？为什么有的人看到的是新 IP，有的人看到的是旧 IP？
 
 <!--more-->
 
@@ -15,8 +15,8 @@
 
 您可以像这样要求它提供 `github.com` 的 IP:
 
-```
-dig @NS-421.awsdNS-52.com github.com
+```shell
+$ dig @NS-421.awsdNS-52.com github.com
 ```
 
 `递归 DNS 服务器`，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。`8.8.8.8` 是一个递归 DNS 服务器。
@@ -33,7 +33,7 @@ dig @NS-421.awsdNS-52.com github.com
     
     此步可以使用如下方法模拟：
 
-    ```
+    ```shell
     $ dig @198.41.0.4 github.com
 
     ...
@@ -49,7 +49,7 @@ dig @NS-421.awsdNS-52.com github.com
 
 3. 询问该权威 NS 有关 `github.com` 的 NS
 
-    ```
+    ```shell
     $ dig @192.5.6.30 github.com
 
     ...
@@ -62,7 +62,7 @@ dig @NS-421.awsdNS-52.com github.com
 
 4. 询问该 NS 有关 `github.com` 的 A 记录
 
-    ```
+    ```shell
     $ dig @205.251.193.165 github.com
 
     github.com.		60	IN	A	140.82.112.4
@@ -86,7 +86,7 @@ dig @NS-421.awsdNS-52.com github.com
 
 我们假设得到一个查询结果：
 
-```
+```shell
 $ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
@@ -98,7 +98,7 @@ github.com.		60	IN	A	140.82.112.4
 
 假设我们已经在域名商处更新了新的 DNS 记录 `test.jvNS.ca`-->`1.2.3.4`，试着查询：
 
-```
+```shell
 $ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		299	IN	A	1.2.3.4
@@ -106,7 +106,7 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 
 如果此前没有设置过 DNS 记录，因为没有缓存，所以立刻生效了。这里可以看到 TTL 是 299。那么，修改 IP 为 `5.6.7.8` 呢。
 
-```
+```shell
 $ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		144	IN	A	1.2.3.4
@@ -136,7 +136,7 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 
 dig 看看：
 
-```
+```shell
 $ dig @8.8.8.8 examplecat.com
 
 examplecat.com.		17	IN	A	104.248.50.87
@@ -144,7 +144,7 @@ examplecat.com.		17	IN	A	104.248.50.87
 
 `8.8.8.8` 没有变化，询问别的 DNS：
 
-```
+```shell
 $ dig @1.1.1.1 examplecat.com
 
 examplecat.com.		299	IN	A	1.2.3.4
@@ -156,7 +156,7 @@ examplecat.com.		299	IN	A	1.2.3.4
 
 而如果我们向新的 NS 查询，肯定会得到新的 IP 记录：
 
-```
+```shell
 $ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
 
 examplecat.com.		300	IN	A	1.2.3.4
@@ -168,7 +168,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 
 回到上一节中，我们的查询结果显示：
 
-```
+```shell
 $ dig @192.5.6.30 github.com
 
 ...
@@ -183,7 +183,7 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 
 更新 NS 后，我们向根服务器查询的话就会到得到这样的结果：
 
-```
+```shell
 $ dig NS @j.gtld-servers.net examplecat.com
 
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com

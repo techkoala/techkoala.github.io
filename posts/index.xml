@@ -202,7 +202,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
     <description><![CDATA[<blockquote>
 <p>概述 LTE 信息帧中的各类物理通道和信号</p>
 </blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 LTE 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
+<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
 <h2 id="pbch">PBCH</h2>
 <p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
 <ul>
@@ -496,7 +496,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 </blockquote>
 <h2 id="下行帧结构">下行帧结构</h2>
 <h3 id="fdd类型-1">FDD——类型 1</h3>
-<p>36.211 中 FDD LTE 的帧结构概览图如下所示：</p>
+<p>36.211 中 <code>FDD</code> <code>LTE</code> 的帧结构概览图如下所示：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
         
     </a><figcaption class="image-caption">FDD 帧结构</figcaption>
@@ -524,13 +524,13 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
     </figure>
 <p>可以观察到一个时隙由 7 个<code>符号</code>组成。（一个符号是信号的某个时间跨度，在 I/Q 星座中的一个点。）</p>
 <p>在符号的开头，还有一个很小的跨度，称为<code>循环前缀</code>，其余部分是真实的符号数据。</p>
-<p>LTE 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
+<p><code>LTE</code> 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
 <p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
         
     </a><figcaption class="image-caption">符号结构</figcaption>
     </figure>
-<p>此图中显示的长度不随采样率而变化，但是每个符号和 CP 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
+<p>此图中显示的长度不随采样率而变化，但是每个符号和 <code>CP</code> 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
 <p>关于上述子帧结构，需要注意的几件事是：</p>
 <ul>
 <li>
@@ -594,7 +594,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
         
     </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
     </figure>
-<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 LTE 信号分析器测量来自 LTE 网络模拟器的 LTE 信号的测量结果。这是在 LTE 网络正在传输 MIB/SIB 且 UE 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
+<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 <code>LTE</code> 信号分析器测量来自 <code>LTE</code> 网络模拟器的 <code>LTE</code> 信号的测量结果。这是在 <code>LTE</code> 网络正在传输 MIB/SIB 且 <code>UE</code> 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
 <p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
         
@@ -643,7 +643,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 </ol>
 <hr>
 <p>现在，让我们看一下由时域（横轴）和频域（竖轴）组成的单位。我们将此类型的单元称为二维单元。</p>
-<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 LTE 中协议侧和 RF 测量侧最重要的单元。</p>
+<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 <code>LTE</code> 中协议侧和 <code>RF</code> 测量侧最重要的单元。</p>
 <ol>
 <li>
 <p>一个资源块中有多少个符号？  7个符号。</p>
@@ -672,7 +672,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
         
     </a><figcaption class="image-caption">TDD 帧结构</figcaption>
     </figure>
-<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 TDD UL/DL 资源分配图。</p>
+<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 <code>TDD</code> <code>UL/DL</code> 资源分配图。</p>
 <table>
 <thead>
 <tr>
@@ -794,7 +794,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
     </figure>
 <h3 id="laa类型-3">LAA——类型 3</h3>
-<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 LTE-U 一样，这也是一种在未经许可的频率范围内传输 LTE 信号的技术。 然而，与 LTE-U 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 LTE 信号类似于 WLAN 突发，并使 LTE 信号更好地与现有的 WLAN 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
+<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 <code>LTE-U</code> 一样，这也是一种在未经许可的频率范围内传输 <code>LTE</code> 信号的技术。 然而，与 <code>LTE-U</code> 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 <code>LTE</code> 信号类似于 <code>WLAN</code> 突发，并使 <code>LTE</code> 信号更好地与现有的 <code>WLAN</code> 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
@@ -1570,7 +1570,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     <author>作者</author>
     <guid>https://www.techkoala.top/scp/</guid>
     <description><![CDATA[<blockquote>
-<p>SCP就是SSH协议的文件传输功能吗？</p>
+<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>
 <h2 id="什么是-scp">什么是 SCP</h2>
 <p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
@@ -1584,21 +1584,21 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
-<p>SCP 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。SCP 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
-<p>使用前需要首先配置到远程主机的 SSH 连接权限。SCP 的验证提示和 SSH 看起很像，因为 SCP 跑在 SSH 的上层，仅仅把它作为文件数据的管道。事实上，SSH 负责处理所有安全相关的任务，SCP 只是将一些文件扔到 SSH 连接上。</p>
-<p>维基百科上的条目讲述了 SCP 的历史，简而言之：在旧的 BSD 系统上曾经有一个叫 RCP 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 RCP 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 SSH 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
+<p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
+<p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
+<p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
 <h2 id="scp-工作原理">SCP 工作原理</h2>
-<p>SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
+<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
 <h3 id="建立连接">建立连接</h3>
-<p>实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似Unix管道。OpenSSH中包含两个程序来完成:<code>sshd</code>和<code>scp</code>。<code>sshd</code>是始终运行的服务器守护进程，接受新的SSH连接。<code>scp</code>是伪装成ssh的客户端程序，发送和接受文件。</p>
-<p>当<code>scp</code>运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的<code>scp</code>程序。你可以认为是<code>ssh exec scp [flags]</code>。主要的标志包含<code>-t</code>（&ldquo;to&rdquo;）和<code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而<code>-d</code>表示文件夹，<code>-r</code>表示递归。</p>
+<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
+<p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         
     </a><figcaption class="image-caption">建立连接</figcaption>
     </figure>
-<p>值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端<code>scp</code>开始运行后，实际的SCP协议命令开始通过<code>STDIN</code>和<code>STDOUT</code>运行。</p>
+<p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
 <h3 id="传输协议">传输协议</h3>
-<p>现在，安全的I/O通道建立起来，并且已经有效地切换到RCP协议上。该协议是<strong>顺序</strong>（一次一个操作）和<strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 ** 顺序 **（一次一个操作）和 ** 同步 **（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -1635,7 +1635,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
 <h2 id="scp-的问题">SCP 的问题</h2>
-<p>看起来，SCP 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
 <h3 id="性能">性能</h3>
 <p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
@@ -1664,11 +1664,11 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/ -type f <span class="p">|</span> wc -l
+$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
 <span class="m">10000</span>
 
 <span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/ server:/tmp/big_folder
+$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
 
 ________________________________________________________
 Executed in  882.99 millis	fish       	external
@@ -1676,7 +1676,7 @@ Executed in  882.99 millis	fish       	external
    sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
 
 <span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/ -f -&#39;&#34;</span>
+$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
 tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
 
 ________________________________________________________
@@ -1685,23 +1685,23 @@ Executed in  215.68 millis	fish       	external
    sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
 </code></pre></td></tr></table>
 </div>
-</div><p>在这种比较糟糕的情况下，tar&amp;ssh 的 215.68ms 对比 SCP 的 882.99ms，足足有四倍的速度提升。</p>
+</div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
 <h3 id="安全">安全</h3>
-<p>我们已经知道，SCP 靠 SSH 负担安全工作，因此它完全安全&hellip; 吗？</p>
-<p>OpenSSH 的发行说明提到：</p>
+<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<p><code>OpenSSH</code> 的发行说明提到：</p>
 <blockquote>
 <p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
 </blockquote>
-<p>如果远程端的 shell 打印出任何非交互式会话，则本地 scp 进程将愉快地将该输出解释为 SCP 命令。好的话，这仅仅是打破 SCP 协议中模糊的错误。但在最坏的情况下，远程 shell 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
-<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 SCP 实现（包括 OpenSSH）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于～/.ssh/authorized_keys 或～/.bashrc）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 CLI 应用程序的人来说都是一个很好的教训。</p>
+<p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
+<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
 <h2 id="scp-的替代方案">SCP 的替代方案</h2>
-<p>SFTP 被广泛认为是 SCP 的继承者。为了传输层安全性，它仍然在 SSH 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
-缺点是，您需要学习 SFTP 提示命令，协议本身尚未完全标准化（有很多 RFC 草稿，但作者最终放弃了）。</p>
-<p>Rsync 是另一个很好的选择。使用与 scp 命令完全相同 - 它也利用 SSH。Rsync 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
-<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 OpenSSH 不同，Rsync 在大多数系统上并不预安装。</p>
+<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
+<p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
+<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
 <h2 id="结论">结论</h2>
-<p>SCP 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，SCP 仍然适合。</p>
-<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 SCP 更可取。选择最适合您需求的，然后试着开始使用。</p>
+<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
+<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="see-also">See also</h2>
 <p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
 <h2 id="参考">参考</h2>
@@ -1878,7 +1878,7 @@ Executed in  215.68 millis	fish       	external
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">dig @NS-421.awsdNS-52.com github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
 </div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 DNS 服务器。</p>
@@ -1903,7 +1903,7 @@ Executed in  215.68 millis	fish       	external
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @198.41.0.4 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
 
 ...
 com.			172800	IN	NS	a.gtld-servers.net.
@@ -1927,7 +1927,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @192.5.6.30 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -1946,7 +1946,7 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @205.251.193.165 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -1975,7 +1975,7 @@ github.com.		60	IN	A	140.82.112.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @205.251.193.165 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -1990,7 +1990,7 @@ github.com.		60	IN	A	140.82.112.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @8.8.8.8 test.jvNS.ca
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -2003,7 +2003,7 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @8.8.8.8 test.jvNS.ca
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		144	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -2027,7 +2027,7 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @8.8.8.8 examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
 
 examplecat.com.		17	IN	A	104.248.50.87
 </code></pre></td></tr></table>
@@ -2040,7 +2040,7 @@ examplecat.com.		17	IN	A	104.248.50.87
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @1.1.1.1 examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
 
 examplecat.com.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -2055,7 +2055,7 @@ examplecat.com.		299	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
 
 examplecat.com.		300	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -2073,7 +2073,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @192.5.6.30 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -2091,7 +2091,7 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig NS @j.gtld-servers.net examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
 
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </code></pre></td></tr></table>

@@ -12,7 +12,7 @@
     <description><![CDATA[<blockquote>
 <p>概述 LTE 信息帧中的各类物理通道和信号</p>
 </blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 LTE 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
+<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
 <h2 id="pbch">PBCH</h2>
 <p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
 <ul>
@@ -306,7 +306,7 @@
 </blockquote>
 <h2 id="下行帧结构">下行帧结构</h2>
 <h3 id="fdd类型-1">FDD——类型 1</h3>
-<p>36.211 中 FDD LTE 的帧结构概览图如下所示：</p>
+<p>36.211 中 <code>FDD</code> <code>LTE</code> 的帧结构概览图如下所示：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
         
     </a><figcaption class="image-caption">FDD 帧结构</figcaption>
@@ -334,13 +334,13 @@
     </figure>
 <p>可以观察到一个时隙由 7 个<code>符号</code>组成。（一个符号是信号的某个时间跨度，在 I/Q 星座中的一个点。）</p>
 <p>在符号的开头，还有一个很小的跨度，称为<code>循环前缀</code>，其余部分是真实的符号数据。</p>
-<p>LTE 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
+<p><code>LTE</code> 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
 <p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
         
     </a><figcaption class="image-caption">符号结构</figcaption>
     </figure>
-<p>此图中显示的长度不随采样率而变化，但是每个符号和 CP 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
+<p>此图中显示的长度不随采样率而变化，但是每个符号和 <code>CP</code> 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
 <p>关于上述子帧结构，需要注意的几件事是：</p>
 <ul>
 <li>
@@ -404,7 +404,7 @@
         
     </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
     </figure>
-<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 LTE 信号分析器测量来自 LTE 网络模拟器的 LTE 信号的测量结果。这是在 LTE 网络正在传输 MIB/SIB 且 UE 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
+<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 <code>LTE</code> 信号分析器测量来自 <code>LTE</code> 网络模拟器的 <code>LTE</code> 信号的测量结果。这是在 <code>LTE</code> 网络正在传输 MIB/SIB 且 <code>UE</code> 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
 <p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
         
@@ -453,7 +453,7 @@
 </ol>
 <hr>
 <p>现在，让我们看一下由时域（横轴）和频域（竖轴）组成的单位。我们将此类型的单元称为二维单元。</p>
-<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 LTE 中协议侧和 RF 测量侧最重要的单元。</p>
+<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 <code>LTE</code> 中协议侧和 <code>RF</code> 测量侧最重要的单元。</p>
 <ol>
 <li>
 <p>一个资源块中有多少个符号？  7个符号。</p>
@@ -482,7 +482,7 @@
         
     </a><figcaption class="image-caption">TDD 帧结构</figcaption>
     </figure>
-<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 TDD UL/DL 资源分配图。</p>
+<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 <code>TDD</code> <code>UL/DL</code> 资源分配图。</p>
 <table>
 <thead>
 <tr>
@@ -604,7 +604,7 @@
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
     </figure>
 <h3 id="laa类型-3">LAA——类型 3</h3>
-<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 LTE-U 一样，这也是一种在未经许可的频率范围内传输 LTE 信号的技术。 然而，与 LTE-U 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 LTE 信号类似于 WLAN 突发，并使 LTE 信号更好地与现有的 WLAN 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
+<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 <code>LTE-U</code> 一样，这也是一种在未经许可的频率范围内传输 <code>LTE</code> 信号的技术。 然而，与 <code>LTE-U</code> 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 <code>LTE</code> 信号类似于 <code>WLAN</code> 突发，并使 <code>LTE</code> 信号更好地与现有的 <code>WLAN</code> 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>

@@ -11,7 +11,7 @@
 
 使用：
 
-```bash
+```shell
 $ Hugo server --bind xxx.xxx.xxx.xxx
 ```
 
@@ -21,19 +21,15 @@ $ Hugo server --bind xxx.xxx.xxx.xxx
 
 首先，启用 `git` 信息：
 
-```
-enableGitInfo = true
-```
+> enableGitInfo = true
 
 然后，启用 gitRepo 参数：
 
-```
-gitRepo = "/xxx/xxxx/.git/"
-```
+> gitRepo = "/xxx/xxxx/.git/"
 
 需要注意的是：
 
-- 这里 `.git` 应该 init 在 hugo 生成的项目根目录中
+- 这里 `.git` 应该 init 在 Hugo 生成的项目根目录中
 
 - 但是这样，如果只 push public 文件夹到 Github 上部署的话，网页上无法正确跳转对应的 commit 详情页。
 
@@ -41,7 +37,7 @@ gitRepo = "/xxx/xxxx/.git/"
 
 LoveIt Github Issue 提到该问题的{{< link href="https://github.com/dillonzq/LoveIt/issues/197" content=解决方案 title="%!(EXTRA string=Text) in some text" >}}
 
-但实际通过修改 config.toml 中的`defaultContentLanguage = "zh"`为`defaultContentLanguage = "zh-cn"`即可解决。
+但实际通过修改 `config.toml` 中的`defaultContentLanguage = "zh"`为`defaultContentLanguage = "zh-cn"`即可解决。
 
 ### 4.开启 Gitalk 评论
 
@@ -64,14 +60,13 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 然后找到博客项目根目录中的 `config.toml` ，修改以下字段：
 
-```
-[params.page.comment.gitalk]
-enable = true
-owner = "techkoala"  # 你的 Github 用户名
-repo = "commets_of_blog" # 用于存储评论的仓库名
-clientId = "xxxxxx"      # 请于 OAuth App 页面获取
-clientSecret = "xxxxxx"  # 请于 OAuth App 页面获取
-```
+> [params.page.comment.gitalk]
+> enable = true
+> owner = "techkoala"  # 你的 Github 用户名
+> repo = "commets_of_blog" # 用于存储评论的仓库名
+> clientId = "xxxxxx"      # 请于 OAuth App 页面获取
+> clientSecret = "xxxxxx"  # 请于 OAuth App 页面获取
+
 
 完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。
 
@@ -83,11 +78,8 @@ clientSecret = "xxxxxx"  # 请于 OAuth App 页面获取
 
 然后修改 `config.toml` 文件中的：
 
-```
-  # CSS 和 JS 文件的 CDN 设置
-  [params.cdn]
-  # CDN 数据文件名称, 默认不启用
-  # ("jsdelivr.yml")
-  data = "jsdelivr.yml"
-
-  ```
+>   # CSS 和 JS 文件的 CDN 设置
+>   [params.cdn]
+>  # CDN 数据文件名称, 默认不启用
+>   # ("jsdelivr.yml")
+>   data = "jsdelivr.yml"

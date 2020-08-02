@@ -2,7 +2,7 @@
 
    {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" >}} 
 
->记录一些常见的 Linux 服务器安全问题分析以及防护措施
+> 记录一些常见的 Linux 服务器安全问题分析以及防护措施
 
 <!--more-->
 
@@ -38,13 +38,13 @@
 
 ### 相关日志查看命令
 
-```bash
+```shell
 $ cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | awk '{print $2"="$1;}'
 ```
 
 查看尝试暴力登录 root 的 IP 及次数
 
-```bash
+```shell
 $ grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | more
 ```
 
@@ -56,7 +56,7 @@ $ grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort |
 
 #### 编辑 SSH 配置文件
 
-```bash
+```shell
 $ vim /etc/ssh/sshd_config
 ```
 
@@ -75,24 +75,24 @@ $ vim /etc/ssh/sshd_config
 
   在客户端生成密钥:
 
-  ```bash
+  ```shell
   $ ssh-keygen -t rsa
   ```
 
   把公钥拷贝至服务器:
 
-  ```bash
+  ```shell
   $ ssh-copy-id -i .ssh/id_rsa.pub server
   ```
 
   或手动将 id_rsa.pub 拷贝至服务器用户目录的.ssh 中，并修改访问权限：
 
-  ```bash
+  ```shell
   $ scp .shh/id_rsa.pub server:~/.ssh
   ```
   服务器中：
 
-  ```bash
+  ```shell
   $ chmod 400 authorized_keys
   ```
 
@@ -118,7 +118,7 @@ $ vim /etc/ssh/sshd_config
 
 **最后，重启 SSHD 服务**
 
-```bash
+```shell
 $ systemctl restart sshd
 ```
 
@@ -136,7 +136,7 @@ $ systemctl restart sshd
 
 使用如下命令检测空口令账户：
 
-```bash
+```shell
 $ awk -F: '$2=="!!" {print $1}' /etc/shadow
 ```
 
@@ -184,32 +184,32 @@ $ visudo
 
 **（1）查找系统中任何用户都有写权限的文件或目录**
 
-```bash
-查找文件：$ find /-type f -perm -2 -o -perm -20 |xargs ls -al
-查找目录：$ find /-type d -perm -2 -o -perm -20 |xargs ls –ld
+```shell
+$ find / -type f -perm -2 -o -perm -20 |xargs ls -al //查找文件
+$ find / -type d -perm -2 -o -perm -20 |xargs ls –ld //查找目录
 ```
 
 **（2）查找系统中所有含 “s” 位的程序**
 
-```bash
-find /-type f -perm -4000 -o -perm -2000 -print | xargs ls –al
+```shell
+$ find / -type f -perm -4000 -o -perm -2000 -print | xargs ls –al
 ```
 
 含有 “s” 位权限的程序对系统安全威胁很大，通过查找系统中所有具有 “s” 位权限的程序，可以把某些不必要的 “s” 位程序去掉，这样可以防止用户滥用权限或提升权限的可能性。
 
 **（3）检查系统中所有 suid 及 sgid 文件**
 
-```bash
-$ find /-user root -perm -2000 -print -exec md5sum {} ;
-$ find /-user root -perm -4000 -print -exec md5sum {} ;
+```shell
+$ find / -user root -perm -2000 -print -exec md5sum {} ;
+$ find / -user root -perm -4000 -print -exec md5sum {} ;
 ```
 
 将检查的结果保存到文件中，可在以后的系统检查中作为参考。
 
 **（4）检查系统中没有属主的文件**
 
-```bash
-$ find /-nouser -o –nogroup
+```shell
+$ find / -nouser -o –nogroup
 ```
 
 没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。

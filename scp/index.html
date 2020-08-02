@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>SCP 概览 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="SCP 概览" />
 <meta property="og:description" content="
-SCP就是SSH协议的文件传输功能吗？
+SCP 就是 SSH 协议的文件传输功能吗？
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/scp/" />
@@ -16,7 +16,7 @@ SCP就是SSH协议的文件传输功能吗？
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SCP 概览"/>
 <meta name="twitter:description" content="
-SCP就是SSH协议的文件传输功能吗？
+SCP 就是 SSH 协议的文件传输功能吗？
 "/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -30,7 +30,7 @@ SCP就是SSH协议的文件传输功能吗？
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/scp\/"
-        },"genre": "posts","keywords": "Software, Linux, Translation","wordcount":  2644 ,
+        },"genre": "posts","keywords": "Software, Linux, Translation","wordcount":  2610 ,
         "url": "https:\/\/www.techkoala.top\/scp\/","datePublished": "2020-07-18T10:28:05+08:00","dateModified": "2020-07-30T20:18:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@ SCP就是SSH协议的文件传输功能吗？
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">SCP 概览</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2644 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2610 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -136,7 +136,7 @@ SCP就是SSH协议的文件传输功能吗？
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
-<p>SCP就是SSH协议的文件传输功能吗？</p>
+<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>
 <h2 id="什么是-scp">什么是 SCP</h2>
 <p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
@@ -150,14 +150,14 @@ SCP就是SSH协议的文件传输功能吗？
 </code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
-<p>SCP 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。SCP 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
-<p>使用前需要首先配置到远程主机的 SSH 连接权限。SCP 的验证提示和 SSH 看起很像，因为 SCP 跑在 SSH 的上层，仅仅把它作为文件数据的管道。事实上，SSH 负责处理所有安全相关的任务，SCP 只是将一些文件扔到 SSH 连接上。</p>
-<p>维基百科上的条目讲述了 SCP 的历史，简而言之：在旧的 BSD 系统上曾经有一个叫 RCP 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 RCP 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 SSH 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
+<p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
+<p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
+<p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
 <h2 id="scp-工作原理">SCP 工作原理</h2>
-<p>SCP 并不是一个标准协议，并没有一个 RFC 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
+<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
 <h3 id="建立连接">建立连接</h3>
-<p>实际上，这并不是真正的连接。因为它只是利用 SSH 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似Unix管道。OpenSSH中包含两个程序来完成:<code>sshd</code>和<code>scp</code>。<code>sshd</code>是始终运行的服务器守护进程，接受新的SSH连接。<code>scp</code>是伪装成ssh的客户端程序，发送和接受文件。</p>
-<p>当<code>scp</code>运行时，他将开启一个新的SSH连接。在该连接上，它会在服务端执行另一个带有特殊标志的<code>scp</code>程序。你可以认为是<code>ssh exec scp [flags]</code>。主要的标志包含<code>-t</code>（&ldquo;to&rdquo;）和<code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而<code>-d</code>表示文件夹，<code>-r</code>表示递归。</p>
+<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
+<p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         <img
             class="lazyload"
@@ -168,9 +168,9 @@ SCP就是SSH协议的文件传输功能吗？
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" />
     </a><figcaption class="image-caption">建立连接</figcaption>
     </figure>
-<p>值得注意的是，SCP协议是单向的，一端发送文件，另一端接收文件。在远程端<code>scp</code>开始运行后，实际的SCP协议命令开始通过<code>STDIN</code>和<code>STDOUT</code>运行。</p>
+<p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
 <h3 id="传输协议">传输协议</h3>
-<p>现在，安全的I/O通道建立起来，并且已经有效地切换到RCP协议上。该协议是<strong>顺序</strong>（一次一个操作）和<strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 ** 顺序 **（一次一个操作）和 ** 同步 **（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -213,7 +213,7 @@ SCP就是SSH协议的文件传输功能吗？
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
 <h2 id="scp-的问题">SCP 的问题</h2>
-<p>看起来，SCP 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
 <h3 id="性能">性能</h3>
 <p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
@@ -242,11 +242,11 @@ SCP就是SSH协议的文件传输功能吗？
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/ -type f <span class="p">|</span> wc -l
+$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
 <span class="m">10000</span>
 
 <span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/ server:/tmp/big_folder
+$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
 
 ________________________________________________________
 Executed in  882.99 millis	fish       	external
@@ -254,7 +254,7 @@ Executed in  882.99 millis	fish       	external
    sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
 
 <span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/ -f -&#39;&#34;</span>
+$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
 tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
 
 ________________________________________________________
@@ -263,23 +263,23 @@ Executed in  215.68 millis	fish       	external
    sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
 </code></pre></td></tr></table>
 </div>
-</div><p>在这种比较糟糕的情况下，tar&amp;ssh 的 215.68ms 对比 SCP 的 882.99ms，足足有四倍的速度提升。</p>
+</div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
 <h3 id="安全">安全</h3>
-<p>我们已经知道，SCP 靠 SSH 负担安全工作，因此它完全安全&hellip; 吗？</p>
-<p>OpenSSH 的发行说明提到：</p>
+<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<p><code>OpenSSH</code> 的发行说明提到：</p>
 <blockquote>
 <p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
 </blockquote>
-<p>如果远程端的 shell 打印出任何非交互式会话，则本地 scp 进程将愉快地将该输出解释为 SCP 命令。好的话，这仅仅是打破 SCP 协议中模糊的错误。但在最坏的情况下，远程 shell 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
-<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 SCP 实现（包括 OpenSSH）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于～/.ssh/authorized_keys 或～/.bashrc）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 CLI 应用程序的人来说都是一个很好的教训。</p>
+<p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
+<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
 <h2 id="scp-的替代方案">SCP 的替代方案</h2>
-<p>SFTP 被广泛认为是 SCP 的继承者。为了传输层安全性，它仍然在 SSH 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
-缺点是，您需要学习 SFTP 提示命令，协议本身尚未完全标准化（有很多 RFC 草稿，但作者最终放弃了）。</p>
-<p>Rsync 是另一个很好的选择。使用与 scp 命令完全相同 - 它也利用 SSH。Rsync 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
-<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 OpenSSH 不同，Rsync 在大多数系统上并不预安装。</p>
+<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
+<p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
+<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
 <h2 id="结论">结论</h2>
-<p>SCP 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，SCP 仍然适合。</p>
-<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 SCP 更可取。选择最适合您需求的，然后试着开始使用。</p>
+<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
+<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="see-also">See also</h2>
 <p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
 <h2 id="参考">参考</h2>

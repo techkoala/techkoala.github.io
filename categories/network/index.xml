@@ -165,7 +165,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">dig @NS-421.awsdNS-52.com github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
 </div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 DNS 服务器。</p>
@@ -190,7 +190,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @198.41.0.4 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
 
 ...
 com.			172800	IN	NS	a.gtld-servers.net.
@@ -214,7 +214,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @192.5.6.30 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -233,7 +233,7 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @205.251.193.165 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -262,7 +262,7 @@ github.com.		60	IN	A	140.82.112.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @205.251.193.165 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -277,7 +277,7 @@ github.com.		60	IN	A	140.82.112.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @8.8.8.8 test.jvNS.ca
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -290,7 +290,7 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @8.8.8.8 test.jvNS.ca
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		144	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -314,7 +314,7 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @8.8.8.8 examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
 
 examplecat.com.		17	IN	A	104.248.50.87
 </code></pre></td></tr></table>
@@ -327,7 +327,7 @@ examplecat.com.		17	IN	A	104.248.50.87
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @1.1.1.1 examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
 
 examplecat.com.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -342,7 +342,7 @@ examplecat.com.		299	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
 
 examplecat.com.		300	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -360,7 +360,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig @192.5.6.30 github.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -378,7 +378,7 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ dig NS @j.gtld-servers.net examplecat.com
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
 
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </code></pre></td></tr></table>

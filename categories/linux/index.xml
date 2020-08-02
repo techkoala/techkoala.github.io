@@ -37,7 +37,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ cat /var/log/secure <span class="p">|</span> awk <span class="s1">&#39;/Failed/{print $(NF-3)}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> awk <span class="s1">&#39;{print $2&#34;=&#34;$1;}&#39;</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /var/log/secure <span class="p">|</span> awk <span class="s1">&#39;/Failed/{print $(NF-3)}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> awk <span class="s1">&#39;{print $2&#34;=&#34;$1;}&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>查看尝试暴力登录 root 的 IP 及次数</p>
@@ -46,7 +46,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep <span class="s2">&#34;Failed password for root&#34;</span> /var/log/auth.log <span class="p">|</span> awk <span class="s1">&#39;{print $11}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -nr <span class="p">|</span> more
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ grep <span class="s2">&#34;Failed password for root&#34;</span> /var/log/auth.log <span class="p">|</span> awk <span class="s1">&#39;{print $11}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -nr <span class="p">|</span> more
 </code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -58,7 +58,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ vim /etc/ssh/sshd_config
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/ssh/sshd_config
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>1、修改端口</strong></p>
@@ -75,7 +75,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh-keygen -t rsa
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-keygen -t rsa
 </code></pre></td></tr></table>
 </div>
 </div><p>把公钥拷贝至服务器:</p>
@@ -84,7 +84,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh-copy-id -i .ssh/id_rsa.pub server
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-copy-id -i .ssh/id_rsa.pub server
 </code></pre></td></tr></table>
 </div>
 </div><p>或手动将 id_rsa.pub 拷贝至服务器用户目录的.ssh 中，并修改访问权限：</p>
@@ -93,7 +93,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp .shh/id_rsa.pub server:~/.ssh
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp .shh/id_rsa.pub server:~/.ssh
 </code></pre></td></tr></table>
 </div>
 </div><p>服务器中：</p>
@@ -102,7 +102,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ chmod <span class="m">400</span> authorized_keys
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ chmod <span class="m">400</span> authorized_keys
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -123,7 +123,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ systemctl restart sshd
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ systemctl restart sshd
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="用户以及用户组管理">用户以及用户组管理</h3>
@@ -138,7 +138,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F: <span class="s1">&#39;$2==&#34;!!&#34; {print $1}&#39;</span> /etc/shadow
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ awk -F: <span class="s1">&#39;$2==&#34;!!&#34; {print $1}&#39;</span> /etc/shadow
 </code></pre></td></tr></table>
 </div>
 </div><p>然后查看 <code>/etc/passwd</code> 确认空口令用户是否可以登录，选择是否加固密码。</p>
@@ -184,8 +184,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">查找文件：$ find /-type f -perm -2 -o -perm -20 <span class="p">|</span>xargs ls -al
-查找目录：$ find /-type d -perm -2 -o -perm -20 <span class="p">|</span>xargs ls –ld
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ find / -type f -perm -2 -o -perm -20 <span class="p">|</span>xargs ls -al //查找文件
+$ find / -type d -perm -2 -o -perm -20 <span class="p">|</span>xargs ls –ld //查找目录
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>（2）查找系统中所有含 “s” 位的程序</strong></p>
@@ -194,7 +194,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">find /-type f -perm -4000 -o -perm -2000 -print <span class="p">|</span> xargs ls –al
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ find / -type f -perm -4000 -o -perm -2000 -print <span class="p">|</span> xargs ls –al
 </code></pre></td></tr></table>
 </div>
 </div><p>含有 “s” 位权限的程序对系统安全威胁很大，通过查找系统中所有具有 “s” 位权限的程序，可以把某些不必要的 “s” 位程序去掉，这样可以防止用户滥用权限或提升权限的可能性。</p>
@@ -205,8 +205,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ find /-user root -perm -2000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
-$ find /-user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ find / -user root -perm -2000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
+$ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>将检查的结果保存到文件中，可在以后的系统检查中作为参考。</p>
@@ -216,7 +216,7 @@ $ find /-user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <sp
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ find /-nouser -o –nogroup
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ find / -nouser -o –nogroup
 </code></pre></td></tr></table>
 </div>
 </div><p>没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。</p>

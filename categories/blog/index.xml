@@ -20,33 +20,23 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ Hugo server --bind xxx.xxx.xxx.xxx
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
 </code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机 IP，即可通过同网域机器访问该 web 服务</p>
 <h3 id="2-使用-git-信息生成文章上一次修改时间">2. 使用 git 信息生成文章上一次修改时间</h3>
 <p>首先，启用 <code>git</code> 信息：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">enableGitInfo = true
-</code></pre></td></tr></table>
-</div>
-</div><p>然后，启用 gitRepo 参数：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">gitRepo = &#34;/xxx/xxxx/.git/&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>需要注意的是：</p>
+<blockquote>
+<p>enableGitInfo = true</p>
+</blockquote>
+<p>然后，启用 gitRepo 参数：</p>
+<blockquote>
+<p>gitRepo = &ldquo;/xxx/xxxx/.git/&rdquo;</p>
+</blockquote>
+<p>需要注意的是：</p>
 <ul>
 <li>
-<p>这里 <code>.git</code> 应该 init 在 hugo 生成的项目根目录中</p>
+<p>这里 <code>.git</code> 应该 init 在 Hugo 生成的项目根目录中</p>
 </li>
 <li>
 <p>但是这样，如果只 push public 文件夹到 Github 上部署的话，网页上无法正确跳转对应的 commit 详情页。</p>
@@ -54,7 +44,7 @@
 </ul>
 <h3 id="3-页面出现-extra-stringxxxx">3. 页面出现 %!(EXTRA string=xxxx)</h3>
 <p>LoveIt Github Issue 提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreffer">解决方案</a></p>
-<p>但实际通过修改 config.toml 中的<code>defaultContentLanguage = &quot;zh&quot;</code>为<code>defaultContentLanguage = &quot;zh-cn&quot;</code>即可解决。</p>
+<p>但实际通过修改 <code>config.toml</code> 中的<code>defaultContentLanguage = &quot;zh&quot;</code>为<code>defaultContentLanguage = &quot;zh-cn&quot;</code>即可解决。</p>
 <h3 id="4开启-gitalk-评论">4.开启 Gitalk 评论</h3>
 <p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
 <p>因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。</p>
@@ -74,47 +64,25 @@
 </blockquote>
 <p>完成后，点击 <code>Register application</code> 完成注册。</p>
 <p>然后找到博客项目根目录中的 <code>config.toml</code> ，修改以下字段：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[params.page.comment.gitalk]
+<blockquote>
+<p>[params.page.comment.gitalk]
 enable = true
-owner = &#34;techkoala&#34;  # 你的 Github 用户名
-repo = &#34;commets_of_blog&#34; # 用于存储评论的仓库名
-clientId = &#34;xxxxxx&#34;      # 请于 OAuth App 页面获取
-clientSecret = &#34;xxxxxx&#34;  # 请于 OAuth App 页面获取
-</code></pre></td></tr></table>
-</div>
-</div><p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p>
+owner = &ldquo;techkoala&rdquo;  # 你的 Github 用户名
+repo = &ldquo;commets_of_blog&rdquo; # 用于存储评论的仓库名
+clientId = &ldquo;xxxxxx&rdquo;      # 请于 OAuth App 页面获取
+clientSecret = &ldquo;xxxxxx&rdquo;  # 请于 OAuth App 页面获取</p>
+</blockquote>
+<p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p>
 <h3 id="cdn-配置">CDN 配置</h3>
 <p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
 <p>将该目录下的 <code>jsdelivr.yml</code> 移动到你的项目下相同路径： <code>assets/data/cdn/</code>。（如果需要使用别的 <code>CDN</code>，可以执行参考 <code>CDN</code> 网站的配置说明对 <code>jsdelivr.yml</code> 进行修改</p>
 <p>然后修改 <code>config.toml</code> 文件中的：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  # CSS 和 JS 文件的 CDN 设置
-  [params.cdn]
-  # CDN 数据文件名称, 默认不启用
-  # (&#34;jsdelivr.yml&#34;)
-  data = &#34;jsdelivr.yml&#34;
-
-</code></pre></td></tr></table>
-</div>
-</div>]]></description>
+<blockquote>
+<h1 id="css-和-js-文件的-cdn-设置">CSS 和 JS 文件的 CDN 设置</h1>
+<p>[params.cdn]</p>
+<h1 id="cdn-数据文件名称-默认不启用">CDN 数据文件名称, 默认不启用</h1>
+<h1 id="jsdelivryml">(&ldquo;jsdelivr.yml&rdquo;)</h1>
+<p>data = &ldquo;jsdelivr.yml&rdquo;</p>
+</blockquote>]]></description>
 </item></channel>
 </rss>

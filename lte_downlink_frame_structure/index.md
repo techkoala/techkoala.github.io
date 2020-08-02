@@ -9,7 +9,7 @@
 
 ### FDD——类型 1
 
-36.211 中 FDD LTE 的帧结构概览图如下所示：
+36.211 中 `FDD` `LTE` 的帧结构概览图如下所示：
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" caption="FDD 帧结构">}} 
 
@@ -33,13 +33,13 @@
 
 在符号的开头，还有一个很小的跨度，称为`循环前缀`，其余部分是真实的符号数据。
 
-LTE 中有两种不同类型的循环前缀。一种是`普通循环前缀`；另一个是`扩展循环前缀`，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用`扩展循环前缀`，则一个时隙内则只能有 6 个符号）。
+`LTE` 中有两种不同类型的循环前缀。一种是`普通循环前缀`；另一个是`扩展循环前缀`，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用`扩展循环前缀`，则一个时隙内则只能有 6 个符号）。
 
 继续放大子帧以可以观察到确切的时间和采样，如下图所示：
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" caption="符号结构">}}
 
-此图中显示的长度不随采样率而变化，但是每个符号和 CP 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。
+此图中显示的长度不随采样率而变化，但是每个符号和 `CP` 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。
 
 关于上述子帧结构，需要注意的几件事是：
 
@@ -66,7 +66,7 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" caption="4天线帧结构和 RE 映射示例">}}
 
-实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 LTE 信号分析器测量来自 LTE 网络模拟器的 LTE 信号的测量结果。这是在 LTE 网络正在传输 MIB/SIB 且 UE 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。
+实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 `LTE` 信号分析器测量来自 `LTE` 网络模拟器的 `LTE` 信号的测量结果。这是在 `LTE` 网络正在传输 MIB/SIB 且 `UE` 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。
 
 现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：
 
@@ -107,7 +107,7 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 现在，让我们看一下由时域（横轴）和频域（竖轴）组成的单位。我们将此类型的单元称为二维单元。
 
-最小的二维单位是 RE，它由时域中的`一个符号`和频域中的`一个子载波`组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的`一个时隙`和频域中的 `12 个子载波`组成。RB 是 LTE 中协议侧和 RF 测量侧最重要的单元。
+最小的二维单位是 RE，它由时域中的`一个符号`和频域中的`一个子载波`组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的`一个时隙`和频域中的 `12 个子载波`组成。RB 是 `LTE` 中协议侧和 `RF` 测量侧最重要的单元。
 
 1. 一个资源块中有多少个符号？  7个符号。
 
@@ -127,7 +127,7 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" caption="TDD 帧结构">}}
 
-以下是使用 [Sandesh Dhagle's Resource Grid Tools](http://dhagle.in/LTE) 生成的各种配置的 TDD UL/DL 资源分配图。
+以下是使用 [Sandesh Dhagle's Resource Grid Tools](http://dhagle.in/LTE) 生成的各种配置的 `TDD` `UL/DL` 资源分配图。
 
 类别         |颜色
 ------------|---------
@@ -181,7 +181,7 @@ Guard Period| 灰色
 
 ### LAA——类型 3
 
-从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 LTE-U 一样，这也是一种在未经许可的频率范围内传输 LTE 信号的技术。 然而，与 LTE-U 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 LTE 信号类似于 WLAN 突发，并使 LTE 信号更好地与现有的 WLAN 业务共存。更多详情参见 [LAA](http://www.sharetechnote.com/html/Handbook_LTE_LAA.html)。
+从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 `LTE-U` 一样，这也是一种在未经许可的频率范围内传输 `LTE` 信号的技术。 然而，与 `LTE-U` 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 `LTE` 信号类似于 `WLAN` 突发，并使 `LTE` 信号更好地与现有的 `WLAN` 业务共存。更多详情参见 [LAA](http://www.sharetechnote.com/html/Handbook_LTE_LAA.html)。
 
 ## 参考
 
