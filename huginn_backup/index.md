@@ -22,13 +22,13 @@ $ docker exec -it  huginn mysqldump -u root -ppassword huginn_production > /root
 
 ### 恢复数据
 
-首先复制文件到 daocker 中：
+首先复制文件到 `docker` 中：
 
 ```shell
 $ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
 ```
 
-然后进入 docker：
+然后进入 `docker`：
 
 ```shell
 $ docker exec -ti huginn bash

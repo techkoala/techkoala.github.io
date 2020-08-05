@@ -10,29 +10,29 @@
 
 ### 常用日志文件
 
-**Debian** 以及 **RHEL** 系的系统日志是由一个名为 syslog 的服务管理的，如以下日志文件都是由 syslog 日志服务驱动的：
+`Debian` 以及 `RHEL` 系的系统日志是由一个名为 `syslog` 的服务管理的，如以下日志文件都是由 `syslog` 日志服务驱动的：
 
-`/var/log/boot.log`：记录了系统在引导过程中发生的事件，就是 Linux 系统开机自检过程显示的信息
+`/var/log/boot.log`：记录了系统在引导过程中发生的事件，就是 `Linux` 系统开机自检过程显示的信息
 
-`/var/log/lastlog` ：记录最后一次用户成功登陆的时间、登陆 IP 等信息
+`/var/log/lastlog` ：记录最后一次用户成功登陆的时间、登陆 `IP` 等信息
 
-`/var/log/messages` ：记录 Linux 操作系统常见的系统和服务错误信息
+`/var/log/messages` ：记录 `Linux` 操作系统常见的系统和服务错误信息
 
-`/var/log/secure` ：Linux 系统安全日志，记录用户和工作组变坏情况、用户登陆认证情况
+`/var/log/secure` ：`Linux` 系统安全日志，记录用户和工作组变坏情况、用户登陆认证情况
 
-`/var/log/syslog`：只记录警告信息，常常是系统出问题的信息，使用 lastlog 查看
+`/var/log/syslog`：只记录警告信息，常常是系统出问题的信息，使用 `lastlog` 查看
 
 `/var/log/wtmp`：该日志文件永久记录每个用户登录、注销及系统的启动、停机的事件，使用 last 命令查看
 
-`/var/run/utmp`：该日志文件记录有关当前登录的每个用户的信息。如 who、w、users、finger 等就需要访问这个文件
+`/var/run/utmp`：该日志文件记录有关当前登录的每个用户的信息。如 `who`、`w`、`users`、`finger` 等就需要访问这个文件
 
-**`/var/log/btmp`：记录 Linux 登陆失败的用户、时间以及远程 IP 地址**
+**`/var/log/btmp`：记录 `Linux` 登陆失败的用户、时间以及远程 `IP` 地址**
 
 **`/var/log/auth.log` 或 `/var/log/secure` 存储来自可插拔认证模块 (PAM) 的日志，包括成功的登录，失败的登录尝试和认证方式。**
 
->注：**Debian** 系在 /var/log/auth.log 中存储认证信息而 **RHEL** 系则在 /var/log/secure 中存储。
+> 注：`Debian` 系在 /var/log/auth.log 中存储认证信息而 `RHEL` 系则在 /var/log/secure 中存储。
 
-**Archlinux** 使用 `systemd` 提供的日志系统（logging system），称为 `journal`。使用 systemd 日志，无需额外安装日志服务（syslog）。
+**Archlinux** 使用 `systemd` 提供的日志系统（logging system），称为 `journal`。使用 `systemd` 日志，无需额外安装日志服务（`syslog`）。
 
 
 
@@ -148,7 +148,7 @@ $ awk -F: '$2=="!!" {print $1}' /etc/shadow
 
 #### 限制 root 权限
 
-可以为单个用户启用单个程序的 root 权限，而不用为了运行一个程序启用该用户对 root 的完整访问权。例如，要授予用户 alice 对特定程序的访问权限：
+可以为单个用户启用单个程序的 `root` 权限，而不用为了运行一个程序启用该用户对 `root` 的完整访问权。例如，要授予用户 `alice` 对特定程序的访问权限：
 
 编辑 `/etc/sudoers`
 
@@ -173,7 +173,7 @@ $ visudo
 
 ### 关闭不必要的服务
 
-**例如** 某台 Linux 服务器用于 www 应用，那么除了 httpd 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：
+**例如** 某台 `Linux` 服务器用于 `www` 应用，那么除了 `httpd` 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：
 
 `anacron、auditd、autofs、avahi-daemon、avahi-dnsconfd、bluetooth、cpuspeed、firstboot、gpm、haldaemon、hidd、ip6tables、ipsec、isdn、lpd、mcstrans、messagebus、netfs、nfs、nfslock、nscd、pcscd portmap、readahead_early、restorecond、rpcgssd、rpcidmapd、rstatd、sendmail、setroubleshoot、yppasswdd ypserv`
 
@@ -213,9 +213,6 @@ $ find / -nouser -o –nogroup
 ```
 
 没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。
-
-
-## 检测工具
 
 ## 参考
 - [1] Linux 服务器为什么被黑？

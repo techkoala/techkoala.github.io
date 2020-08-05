@@ -6,6 +6,258 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>rsync 概览</title>
+    <link>https://www.techkoala.top/rsync/</link>
+    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/rsync/</guid>
+    <description><![CDATA[<blockquote>
+<p>SCP 的绝佳替代者</p>
+</blockquote>
+<h2 id="什么是-rsync">什么是 rsync</h2>
+<p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
+<p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
+<p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
+<h2 id="rsync-算法">rsync 算法</h2>
+<blockquote>
+<p>此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+</blockquote>
+<p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
+<h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
+<p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
+<h3 id="传输算法">传输算法</h3>
+<p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
+<p><strong>但是</strong></p>
+<p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
+如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
+<h3 id="checksum-查找算法">checksum 查找算法</h3>
+<p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
+<h3 id="比对算法">比对算法</h3>
+<ol>
+<li>
+<p>取 <code>fileSrc</code> 的第一个文件块（我们假设的是 512 个长度），也就是从 <code>fileSrc</code> 的第 1 个字节到第 512 个字节，取出来后做 <code>rolling checksum</code> 计算。计算好的值到 <code>hash</code> 表中查询。</p>
+</li>
+<li>
+<p>如果查到了，说明发现在 <code>fileDst</code> 中有潜在相同的文件块，于是就再比较 · 的 <code>checksum</code>，因为 <code>rolling checksume</code> 太弱了，可能发生碰撞。于是还要算 <code>md5</code> 的 128 bits 的 <code>checksum</code>，这样一来，我们就有 $2^{-(32+128)} = 2^{-160} $ 的概率发生碰撞，这小到可以忽略。如果 <code>rolling checksum</code> 和 <code>md5 checksum</code> 都相同，那就可以说明在 <code>fileDst</code> 中有相同的块，记下这一块在 <code>fileDst</code> 下的文件编号。</p>
+</li>
+<li>
+<p>如果 <code>fileSrc</code> 的 <code>rolling checksum</code> 没有在 <code>hash table</code> 中找到，那就不用算 <code>md5 checksum</code> 了。表示这一块中有不同的信息。总之，只要 <code>rolling checksum</code> 或 <code>md5 checksum</code> 其中有一个在 <code>fileDst</code> 的 <code>checksum hash</code> 表中找不到匹配项，那么就会触发算法对 <code>fileSrc</code> 的 rolling 动作。于是，算法会住后 step 1 个字节，取 <code>fileSrc</code> 中字节 2-513 的文件块要做 <code>checksum</code>，然后继续第一步 – 这就是为什么叫 <code>rolling checksum</code> 。</p>
+</li>
+<li>
+<p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
+</li>
+</ol>
+<h2 id="rolling-checksum-算法">rolling checksum 算法</h2>
+<p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
+<p>其公式可以表示为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
+<p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+</code></pre></td></tr></table>
+</div>
+</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
+        
+    </a><figcaption class="image-caption">rsync 算法示意</figcaption>
+    </figure>
+<p>最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。</p>
+<h2 id="使用-rsync">使用 rsync</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
+<ul>
+<li>
+<p>拷贝本地文件。当 <code>SRC</code> 和 <code>DES</code> 路径信息都<strong>不包含</strong>有单个冒号 &ldquo;:&rdquo; 分隔符时就启动这种工作模式。如：<code>rsync -a /data/backup</code></p>
+</li>
+<li>
+<p>使用一个远程 <code>shell</code> 程序 (如 rsh、ssh) 来实现将本地机器的内容拷贝到远程机器。当 <code>DST</code> 路径地址<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz *.c foo:src</code></p>
+</li>
+<li>
+<p>使用一个远程 <code>shell</code> 程序 (如 <code>rsh</code>、<code>ssh</code>) 来实现将远程机器的内容拷贝到本地机器。当 <code>SRC</code> 地址路径<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz foo:src/bar/data</code></p>
+</li>
+<li>
+<p>从远程 <code>rsync</code> 服务器中拷贝文件到本地机。当 <code>SRC</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av root@192.168.78.192::www /databack</code></p>
+</li>
+<li>
+<p>从本地机器拷贝文件到远程 <code>rsync</code> 服务器中。当 <code>DST</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av /databack root@192.168.78.192::www</code></p>
+</li>
+<li>
+<p>列出远程主机的文件列表。这类似于 <code>rsync</code> 传输，不过只要在命令中省略掉本地机信息即可。如：<code>rsync -v rsync://192.168.78.192/www</code></p>
+</li>
+</ul>
+<p>可用选项如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
+-q, --quiet 精简输出模式。
+-C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
+-c, --checksum 打开校验开关，强制对文件传输进行校验。
+-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
+-r, --recursive 对子目录以递归模式处理。
+-R, --relative 使用相对路径信息。
+-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
+-u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
+-l, --links 保留软链结。
+-L, --copy-links 想对待常规文件一样处理软链结。
+-H, --hard-links 保留硬链结。
+-I, --ignore-times 不跳过那些有同样的时间和长度的文件。
+-p, --perms 保持文件权限。
+-o, --owner 保持文件属主信息。
+-g, --group 保持文件属组信息。
+-D, --devices 保持设备文件信息。
+-t, --times 保持文件时间信息。
+-S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
+-T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
+-n, --dry-run 现实哪些文件将被传输。
+-w, --whole-file 拷贝文件，不进行增量检测。
+-x, --one-file-system 不要跨越文件系统边界。
+-B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
+-e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
+-P 等同于 --partial。
+-z, --compress 对备份的文件在传输时进行压缩处理。
+-h, --help 显示帮助信息。
+--backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
+-suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
+--copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
+--safe-links 忽略指向 SRC 路径目录树以外的链结。
+--rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
+--existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
+--delete 删除那些 DST 中 SRC 没有的文件。
+--delete-excluded 同样删除接收端那些被该选项指定排除的文件。
+--delete-after 传输结束以后再删除。
+--ignore-errors 及时出现 IO 错误也进行删除。
+--max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
+--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
+--force 强制删除目录，即使不为空。
+--numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
+--timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
+--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
+--modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
+--compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
+--progress 显示备份过程。
+--exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
+--include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
+--exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
+--include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
+--version 打印版本信息。
+--address 绑定到特定的地址。
+--config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
+--port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
+--blocking-io 对远程 shell 使用阻塞 IO。
+-stats 给出某些文件的传输状态。
+--progress 在传输时现实传输过程。
+--log-format<span class="o">=</span>formAT 指定日志文件格式。
+--password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
+--bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
+</li>
+<li>
+<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+</li>
+<li>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
+</li>
+<li>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>Git Log 使用技巧</title>
     <link>https://www.techkoala.top/git_log/</link>
     <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate>
@@ -1631,6 +1883,53 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
         
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
+<h2 id="使用-scp">使用 SCP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
+</code></pre></td></tr></table>
+</div>
+</div><p>其中选项如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
+-2：使用ssh协议版本2；
+-4：使用ipv4；
+-6：使用ipv6；
+-B：以批处理模式运行；
+-C：使用压缩；
+-F：指定ssh配置文件；
+-l：指定宽带限制；
+-o：指定使用的ssh选项；
+-P：指定远程主机的端口号；
+-p：保留文件的最后修改时间，最后访问时间和权限模式；
+-q：不显示复制进度；
+-r：以递归方式复制。
+</code></pre></td></tr></table>
+</div>
+</div><p>参数分别为：</p>
+<ul>
+<li>源文件：指定要复制的源文件。</li>
+<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
+</ul>
 <h2 id="scp-的问题">SCP 的问题</h2>
 <p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
 <h3 id="性能">性能</h3>
@@ -1699,7 +1998,7 @@ Executed in  215.68 millis	fish       	external
 <h2 id="结论">结论</h2>
 <p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
-<h2 id="see-also">See also</h2>
+<h2 id="另见">另见</h2>
 <p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
 <h2 id="参考">参考</h2>
 <ul>
@@ -1711,6 +2010,9 @@ Executed in  215.68 millis	fish       	external
 </li>
 <li>
 <p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+</li>
+<li>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1724,9 +2026,9 @@ Executed in  215.68 millis	fish       	external
 </blockquote>
 <h2 id="问题">问题</h2>
 <p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 <code>P2P</code> 联机方式）时候给我们造成困扰。如果 <code>Xbox</code>、<code>PS</code>、<code>switch</code> 或者 <code>PC</code> 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
-<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 NAT 化的。但是，在 Internet 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 Xbox Live 或 PS 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
+<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 <code>NAT</code> 化的。但是，在 <code>Internet</code> 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 <code>Xbox Live</code> 或 <code>PS</code> 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
 <p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
-<p>那么，主机如何得知它位于 NAT 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
+<p>那么，主机如何得知它位于 <code>NAT</code> 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
 <h2 id="解决办法">解决办法</h2>
 <h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
 <p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
@@ -1735,7 +2037,7 @@ Executed in  215.68 millis	fish       	external
         
     </a><figcaption class="image-caption">STUN 算法</figcaption>
     </figure>
-<p>如果你还记得，除了对称型 NAT 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
+<p>如果你还记得，除了<code>对称型 NAT</code> 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
 <p>但在对称型 NAT 的情况下，每一个连接都有一个不同的映射，有一个不同的（随机生成的）端口，意味着连接到 STUN 服务器也将有它自己独特的映射，表现的就像一个新的设备接入一样。这意味着每个映射都有不同的端口，在这种情况下，STUN 检测到的端口现在已经没有用了，因为这个映射是 STUN 服务器独有的。无论映射到其他设备的端口是什么，都是未知的，STUN 也没有办法检测到它。由于你的主机无法得知每个映射到每个主机的公共 NAT 化端口，因此无法将这些信息传递给你，也就意味着没有设备可以连接到你的游戏，这就是对称型 NAT 导致如此多游戏联机问题的原因。</p>
 <h3 id="dmzdemilitarized-zone">DMZ（Demilitarized zone)</h3>
 <p>路由器上的外围网络（也称 DMZ）功能用于消除对 Internet 的限制。它主要是将你的设备移到你的网络防火墙之外的区域，将部分用于提供对外服务的服务器主机划分到一个特定的子网 —— DMZ 内，在 DMZ 的主机能与同处 DMZ 内的主机和外部网络的主机通信，而同内部网络主机的通信会被受到限制。这使 DMZ 的主机能被内部网络和外部网络所访问，而内部网络又能避免外部网络所得知。</p>
@@ -1767,11 +2069,11 @@ Executed in  215.68 millis	fish       	external
 <p>一文概览 NAT</p>
 </blockquote>
 <h2 id="nat">NAT</h2>
-<p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 IP 数据包通过路由器或防火墙时重写来源 IP 地址或目的 IP 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 IP 地址访问互联网的私有网络中。</p>
-<p>NAT 从大类上都可以分为两类：<code>静态 NAT</code> 和 <code>动态 NAT</code>。</p>
-<p><code>静态 NAT</code> 是管理员手动创建和维护映射，通常与 NAT 的入站类型相关联。</p>
-<p><code>动态 NAT</code> 是路由器根据需要自动创建和维护映射，通常与 NAT 的出站类型相关联。</p>
-<p>每个 TCP/IP 数据包都包含一个 <code>源 IP 地址</code>、<code>源端口</code>、<code>目的 IP 地址</code> 和 <code>目的端口</code>。所有类型的 NAT 都会使用这些值创建 NAT 映射。</p>
+<p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 <code>IP</code> 数据包通过路由器或防火墙时重写来源 <code>IP</code> 地址或目的 <code>IP</code> 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 <code>IP</code> 地址访问互联网的私有网络中。</p>
+<p><code>NAT</code> 从大类上都可以分为两类：<code>静态 NAT</code> 和 <code>动态 NAT</code>。</p>
+<p><code>静态 NAT</code> 是管理员手动创建和维护映射，通常与 <code>NAT</code> 的入站类型相关联。</p>
+<p><code>动态 NAT</code> 是路由器根据需要自动创建和维护映射，通常与 <code>NAT</code> 的出站类型相关联。</p>
+<p>每个 <code>TCP/IP</code> 数据包都包含一个 <code>源 IP 地址</code>、<code>源端口</code>、<code>目的 IP 地址</code> 和 <code>目的端口</code>。所有类型的 <code>NAT</code> 都会使用这些值创建 <code>NAT</code> 映射。</p>
 <blockquote>
 <p>例如，一个 IP 为 <code>192.168.0.1</code> 的内部客户机使用端口 <code>56876</code>，经过 NAT 转变后 IP 变为 <code>3.3.3.3</code>（翻译后的源 IP）和端口 <code>56876</code>（源端口）连接到 IP <code>2.2.2.2</code>（目的 IP 地址）的 <code>80</code> 端口（目的端口）。NAT 使用原始内部 IP 和端口、翻译后 IP 和端口这 4 个值创建一个映射。当数据包从网站返回到路由器时，使用与该映射相关值，NAT 将数据包转发到内部客户端。</p>
 </blockquote>
@@ -1781,26 +2083,26 @@ Executed in  215.68 millis	fish       	external
         
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
-<p>全锥型 NAT 是静态 NAT，也是唯一一种永久开放端口的 NAT，允许从 <strong>任何外部主机</strong> 进行入站连接。全锥型 NAT 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 NAT IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 NAT 也被称为端口转发。这是受限制最少的 NAT 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
+<p><code>全锥型 NAT</code> 是静态 NAT，也是唯一一种永久开放端口的 <code>NAT</code>，允许从 <strong>任何外部主机</strong> 进行入站连接。<code>全锥型 NAT</code> 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 <code>NAT </code>IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 <code>NAT</code> 也被称为端口转发。这是受限制最少的 <code>NAT</code> 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
 <blockquote>
-<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 NAT 转发到 <code>192.168.0.1 80</code> 端口。</p>
+<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
 </blockquote>
-<p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 NAT 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
+<p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
         
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
-<p>受限锥体 NAT 是动态 NAT，它的工作方式与全锥型 NAT 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
+<p><code>受限锥体 NAT</code> 是<code>动态 NAT</code>，它的工作方式与<code>全锥型 NAT</code> 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
 <blockquote>
-<p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 IP 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。NAT 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的源 IP 为 <code>56.45.34.78</code>（网站 IP）的数据包将被接受，接着网站返回数据至我的 PC。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 IP 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
+<p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 <code>IP</code> 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。<code>NAT</code> 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的<code>源 IP</code> 为 <code>56.45.34.78</code>（<code>网站 IP</code>）的数据包将被接受，接着网站返回数据至我的 <code>PC</code>。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 <code>IP</code> 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
 </blockquote>
 <h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
-<p>端口受限锥型 NAT 是动态 NAT，它的作用与受限锥形 NAT 完全相同，但同时对端口进行限制。受限锥形 NAT 接受来自外部主机任何源端口的连接，而端口受限锥型 NAT 则进一步要求外部主机的源端口是固定的。</p>
+<p><code>端口受限锥型 NAT</code> 是<code>动态 NAT</code>，它的作用与<code>受限锥形 NAT</code> 完全相同，但同时对端口进行限制。<code>受限锥形 NAT</code> 接受来自外部主机任何源端口的连接，而<code>端口受限锥型 NAT</code> 则进一步要求外部主机的源端口是固定的。</p>
 <blockquote>
 <p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
 </blockquote>
@@ -1809,39 +2111,39 @@ Executed in  215.68 millis	fish       	external
         
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>
-<p>对称型 NAT 是动态 NAT，它限制的方式与端口受限锥型 NAT 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 NAT 在 NAT 连接时都 <strong>不会改变源端口</strong>。</p>
+<p><code>对称型 NAT</code> 是<code>动态 NAT</code>，它限制的方式与<code>端口受限锥型 NAT</code> 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 <code>NAT</code> 在 <code>NAT</code> 连接时都 <strong>不会改变源端口</strong>。</p>
 <blockquote>
-<p>例如，当客户端使用 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 访问互联网时，NAT 将源 IP 改变为 <code>56.35.67.35</code>，但保持端口号不变，这被称为端口保留。</p>
+<p>例如，当客户端使用 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 访问互联网时，<code>NAT</code> 将源 <code>IP</code> 改变为 <code>56.35.67.35</code>，但保持端口号不变，这被称为端口保留。</p>
 </blockquote>
-<p>而对称型 NAT 会将端口改为 <strong>随机生成的新端口</strong>，甚至是同一客户端到不同目的地的连接也会发生。<strong>亦即为每个连接创建唯一的映射</strong></p>
+<p>而<code>对称型 NAT </code>会将端口改为 <strong>随机生成的新端口</strong>，甚至是同一客户端到不同目的地的连接也会发生。<strong>亦即为每个连接创建唯一的映射</strong></p>
 <blockquote>
-<p>例如，在端口受限锥型 NAT 的例子上进行扩展，我的 PC 向网站 IP <code>217.87.69.8</code> 和 <code>56.76.87.98</code> 建立两个出站连接。我的电脑使用源 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 进行两个连接。到目前为止，在所有类型的 NAT 上，这两个连接都会被 NAT 化，只改变源 IP 地址而保持源端口不变。然而这次，对称型 NAT 没有将源端口保留为 <code>56723</code>，而是将其中一个连接的源端口改为 <code>45765</code>，另一个连接的源端口改为 <code>53132</code>（随机）。这就为每个连接创建了唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 <code>217.87.69.8</code> 必须将数据包发送到目的端口 <code>45765</code>，<code>56.76.87.98</code> 必须将数据包发送到端口 <code>53132</code>，此外还需要遵循端口受限锥型 NAT 的要求。</p>
+<p>例如，在<code>端口受限锥型 NAT</code> 的例子上进行扩展，我的 <code>PC</code> 向网站 <code>IP</code> <code>217.87.69.8</code> 和 <code>56.76.87.98</code> 建立两个出站连接。我的电脑使用源 <code>IP</code> <code>192.168.0.1</code> 和源端口 <code>56723</code> 进行两个连接。到目前为止，在所有类型的 <code>NAT</code> 上，这两个连接都会被 <code>NAT</code> 化，只改变源 IP 地址而保持源端口不变。然而这次，<code>对称型 NAT</code> 没有将源端口保留为 <code>56723</code>，而是将其中一个连接的源端口改为 <code>45765</code>，另一个连接的源端口改为 <code>53132</code>（随机）。这就为每个连接创建了唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 <code>217.87.69.8</code> 必须将数据包发送到目的端口 <code>45765</code>，<code>56.76.87.98</code> 必须将数据包发送到端口 <code>53132</code>，此外还需要遵循<code>端口受限锥型 NAT</code> 的要求。</p>
 </blockquote>
 <h2 id="对-nat-的正面评价">对 NAT 的正面评价</h2>
 <ol>
 <li>
-<p>NAT 在一定程度上缓解了 IPv4 地址短缺的问题，让更多的设备（间接）接入了互联网。</p>
+<p><code>NAT</code> 在一定程度上缓解了 <code>IPv4</code> 地址短缺的问题，让更多的设备（间接）接入了互联网。</p>
 </li>
 <li>
-<p>NAT 全双工连接支持的缺少在一些情况下可以看作是一个有好处的特征而不是一个限制。在一定程度上，NAT 依赖于本地网络上的一台机器来初始化和路由器另一边的主机的任何连接，它可以阻止外部网络上的主机的恶意活动。这样就可以阻止网络蠕虫病毒来提高本地系统的可靠性，阻挡恶意浏览来提高本地系统的私密性。很多具有 NAT 功能的防火墙都是使用这种功能来提供核心保护的。另外，它也为 UDP 的跨局域网的传输提供了方便。</p>
+<p><code>NAT</code> 全双工连接支持的缺少在一些情况下可以看作是一个有好处的特征而不是一个限制。在一定程度上，NAT 依赖于本地网络上的一台机器来初始化和路由器另一边的主机的任何连接，它可以阻止外部网络上的主机的恶意活动。这样就可以阻止网络蠕虫病毒来提高本地系统的可靠性，阻挡恶意浏览来提高本地系统的私密性。很多具有 NAT 功能的防火墙都是使用这种功能来提供核心保护的。另外，它也为 UDP 的跨局域网的传输提供了方便。</p>
 </li>
 </ol>
 <h2 id="对-nat-的批评">对 NAT 的批评</h2>
 <ol>
 <li>
-<p>在一个具有 NAT 功能的路由器下的主机并没有获得真正的 IP 地址，并且不能参与一些因特网协议，一些需要初始化从外部网络创建的 TCP 连接和无状态协议（比如 UDP）无法实现。除非 NAT 路由器管理者预先设置了规则，否则送来的数据包将不能到达正确的目的地址。</p>
+<p>在一个具有 <code>NAT</code> 功能的路由器下的主机并没有获得真正的 IP 地址，并且不能参与一些因特网协议，一些需要初始化从外部网络创建的 TCP 连接和无状态协议（比如 UDP）无法实现。除非 <code>NAT</code> 路由器管理者预先设置了规则，否则送来的数据包将不能到达正确的目的地址。</p>
 </li>
 <li>
-<p>端对端连接是被 IAB 委员会（Internet Architecture Board）支持的核心因特网协议之一，因此有些人据此认为 NAT 是对公用因特网的一个破坏。一些因特网服务提供商（ISP）只向他们的客户提供本地 IP 地址，所以他们必须通过 NAT 来访问 ISP 网络以外的服务，并且这些公司能不能算的上真正的提供了因特网服务的话题也被谈起。</p>
+<p>端对端连接是被 IAB 委员会（Internet Architecture Board）支持的核心因特网协议之一，因此有些人据此认为 <code>NAT</code> 是对公用因特网的一个破坏。一些因特网服务提供商（ISP）只向他们的客户提供本地 IP 地址，所以他们必须通过 <code>NAT</code> 来访问 ISP 网络以外的服务，并且这些公司能不能算的上真正的提供了因特网服务的话题也被谈起。</p>
 </li>
 <li>
-<p>NAT 使得 IP 协议从面向无连接变成立面向连接。NAT 必须维护专用 IP 地址与公用 IP 地址以及端口号的映射关系。在 TCP/IP 协议体系中，如果一个路由器出现故障，不会影响到 TCP 协议的执行。因为只要几秒收不到应答，发送进程就会进入超时重传处理。而当存在 NAT 时，最初设计的 TCP/IP 协议过程将发生变化，Internet 可能变得非常脆弱。</p>
+<p><code>NAT</code> 使得 <code>IP</code> 协议从面向无连接变成立面向连接。<code>NAT</code> 必须维护专用 <code>IP</code> 地址与公用 IP 地址以及端口号的映射关系。在 <code>TCP/IP</code> 协议体系中，如果一个路由器出现故障，不会影响到 <code>TCP</code> 协议的执行。因为只要几秒收不到应答，发送进程就会进入超时重传处理。而当存在 <code>NAT</code> 时，最初设计的 <code>TCP/IP</code> 协议过程将发生变化，<code>Internet</code> 可能变得非常脆弱。</p>
 </li>
 <li>
-<p>NAT 违反了基本的网络分层结构模型的设计原则。因为在传统的网络分层结构模型中，第 N 层是不能修改第 N+1 层的报头内容的。NAT 破坏了这种各层独立的原则。</p>
+<p><code>NAT</code> 违反了基本的网络分层结构模型的设计原则。因为在传统的网络分层结构模型中，第 N 层是不能修改第 N+1 层的报头内容的。<code>NAT</code> 破坏了这种各层独立的原则。</p>
 </li>
 <li>
-<p>NAT 同时存在对高层协议和安全性的影响问题。RFC 对 NAT 存在的问题进行了讨论。NAT 的反对者认为这种临时性的缓解 IP 地址短缺的方案推迟了 IPv6 迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
+<p><code>NAT</code> 同时存在对高层协议和安全性的影响问题。<code>RFC</code> 对 <code>NAT</code> 存在的问题进行了讨论。NAT 的反对者认为这种临时性的缓解 <code>IP</code> 地址短缺的方案推迟了 <code>IPv6</code> 迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
 </li>
 </ol>
 <h2 id="参考">参考</h2>
@@ -1863,13 +2165,13 @@ Executed in  215.68 millis	fish       	external
     <author>作者</author>
     <guid>https://www.techkoala.top/dns_update/</guid>
     <description><![CDATA[<blockquote>
-<p>DNS 如何工作？当我们更新网站的 DNS 记录的时候到底发生了什么？更新后必须等待 48 小时才能生效吗？为什么有的人看到的是新 IP，有的人看到的是旧 IP？</p>
+<p>DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新后必须等待 48 小时才能生效吗？为什么有人看到的是新 IP，有人看到的是旧 IP？</p>
 </blockquote>
 <h2 id="dns-分类">DNS 分类</h2>
 <p>我们知道，DNS 服务器有两种：权威服务器（authoritative）和递归服务器（recursive）</p>
-<p><code>权威 DNS 服务器（也称为名称服务器，NS，nameserver）</code> 具有其所负责的每个域的 IP 地址数据库。</p>
-<p>例如，<code>github.com</code> 的权威 DNS 服务器是 <code>NS-421.awsdNS-52.com</code></p>
-<p>您可以像这样要求它提供 <code>github.com</code> 的 IP:</p>
+<p><code>权威 DNS 服务器（也称为名称服务器，NS，nameserver）</code> 具有其所负责的每个域的 <code>IP</code> 地址数据库。</p>
+<p>例如，<code>github.com</code> 的权威 <code>DNS</code> 服务器是 <code>NS-421.awsdNS-52.com</code></p>
+<p>您可以像这样要求它提供 <code>github.com</code> 的 <code>IP</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1878,16 +2180,16 @@ Executed in  215.68 millis	fish       	external
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
-</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 IP 地址。它们通过询问正确的权威 DNS 服务器，找出域名的 IP 地址，然后缓存这个 IP 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 DNS 服务器。</p>
-<p>当人们访问你的网站时，他们可能会向递归 DNS 服务器进行 DNS 查询。那么，递归 DNS 服务器是如何工作的呢？</p>
+</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 <code>IP</code> 地址。它们通过询问正确的权威 <code>DNS</code> 服务器，找出域名的 <code>IP</code> 地址，然后缓存这个 <code>IP</code> 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 <code>DNS</code> 服务器。</p>
+<p>当人们访问你的网站时，他们可能会向递归 <code>DNS</code> 服务器进行 <code>DNS</code> 查询。那么，递归 <code>DNS</code> 服务器是如何工作的呢？</p>
 <h3 id="递归-dns-服务器如何工作">递归 DNS 服务器如何工作</h3>
-<p>以 <code>8.8.8.8</code> 为例，如果我们向其请求 <code>github.com</code> 的 IP 地址（A 记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
+<p>以 <code>8.8.8.8</code> 为例，如果我们向其请求 <code>github.com</code> 的 <code>IP</code> 地址（A 记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
 <ol>
 <li>
-<p>递归服务器内部硬编码（hardcoded）有根 DNS 服务器 <code>.</code> 的 IP 地址（参见 [2][3]），选择一个根 DNS 服务器，例如 <code>198.41.0.4</code></p>
+<p>递归服务器内部硬编码（hardcoded）有根 <code>DNS</code> 服务器 <code>.</code> 的 <code>IP</code> 地址（参见 [2][3]），选择一个根 <code>DNS</code> 服务器，例如 <code>198.41.0.4</code></p>
 </li>
 <li>
-<p>询问根 DNS 服务器有关 <code>com.</code> 的 NS</p>
+<p>询问根 <code>DNS</code> 服务器有关 <code>com.</code> 的 <code>NS</code></p>
 <p>此步可以使用如下方法模拟：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1910,10 +2212,10 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看到，这里我们得到一个 <code>com.</code> 的权威 NS<code>a.gtld-servers.net.</code> 及其 IP 地址 <code>192.5.6.30</code></p>
-<p><strong>注</strong>：实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示 DNS 解析进程，我们假设这里没有得到。</p>
+<p><strong>注</strong>：实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示 <code>DNS</code> 解析进程，我们假设这里没有得到。</p>
 </li>
 <li>
-<p>询问该权威 NS 有关 <code>github.com</code> 的 NS</p>
+<p>询问该权威 <code>NS</code> 有关 <code>github.com</code> 的 <code>NS</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1932,10 +2234,10 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 ... 
 </code></pre></td></tr></table>
 </div>
-</div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 IP 地址 <code>205.251.193.165</code></p>
+</div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 <code>IP</code> 地址 <code>205.251.193.165</code></p>
 </li>
 <li>
-<p>询问该 NS 有关 <code>github.com</code> 的 A 记录</p>
+<p>询问该 <code>NS</code> 有关 <code>github.com</code> 的 A 记录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1948,12 +2250,12 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
 </div>
-</div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 <code>github.com</code> 的 IP 地址。</p>
+</div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 <code>github.com</code> 的 <code>IP</code> 地址。</p>
 </li>
 </ol>
 <p>此外，使用 <code>$ dig @8.8.8.8 +trace github.com</code> 可以一次性显示上述所有步骤。</p>
 <h2 id="更新-dns-记录">更新 DNS 记录</h2>
-<p>更新 DNS 记录时，有两种情况：</p>
+<p>更新 <code>DNS</code> 记录时，有两种情况：</p>
 <ol>
 <li>
 <p>保持相同的 NS</p>
@@ -1963,7 +2265,7 @@ github.com.		60	IN	A	140.82.112.4
 </li>
 </ol>
 <h3 id="首先谈谈生存时间ttlstime-to-live">首先谈谈生存时间（TTLs，time to live）</h3>
-<p>上面已经说到，DNS 服务器一般存有缓存，而控制缓存是否过期的参数就是 TTL。</p>
+<p>上面已经说到，<code>DNS</code> 服务器一般存有缓存，而控制缓存是否过期的参数就是 <code>TTL</code>。</p>
 <p>我们假设得到一个查询结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1977,9 +2279,9 @@ github.com.		60	IN	A	140.82.112.4
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
 </div>
-</div><p>这里的 60（秒）即表示 TTL，这是一个很短的 TTL。理论上，如果每个用户都遵循 DNS 标准，那么 <code>github.com</code> 在更改了 IP 地址后，每个用户都应该在 60 秒内得到这个新的地址。但实际上呢？</p>
+</div><p>这里的 60（秒）即表示 <code>TTL</code>，这是一个很短的 <code>TTL</code>。理论上，如果每个用户都遵循 <code>DNS</code> 标准，那么 <code>github.com</code> 在更改了 <code>IP</code> 地址后，每个用户都应该在 60 秒内得到这个新的地址。但实际上呢？</p>
 <h3 id="更新同一-ns-上的-dns-记录">更新同一 NS 上的 DNS 记录</h3>
-<p>假设我们已经在域名商处更新了新的 DNS 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
+<p>假设我们已经在域名商处更新了新的 <code>DNS</code> 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1992,7 +2294,7 @@ github.com.		60	IN	A	140.82.112.4
 test.jvNS.ca.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
-</div><p>如果此前没有设置过 DNS 记录，因为没有缓存，所以立刻生效了。这里可以看到 TTL 是 299。那么，修改 IP 为 <code>5.6.7.8</code> 呢。</p>
+</div><p>如果此前没有设置过 <code>DNS</code> 记录，因为没有缓存，所以立刻生效了。这里可以看到 <code>TTL</code> 是 299。那么，修改 <code>IP</code> 为 <code>5.6.7.8</code> 呢。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -2005,13 +2307,13 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 test.jvNS.ca.		144	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到，IP 并没有发生改变且 TTL 表示缓存还将存在 144 秒。而且，多次查询，你可能会发现，有时候可以得到新的 IP，但有的时候又是旧的 IP。</p>
-<p>这里是因为像 <code>8.8.8.8</code> 这样的 DNS 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
-<p>等待 5 分钟后，所有的缓存都更新了，再次查询，将会始终返回新 IP。</p>
+</div><p>可以看到，<code>IP</code> 并没有发生改变且 <code>TTL</code> 表示缓存还将存在 144 秒。而且，多次查询，你可能会发现，有时候可以得到新的 <code>IP</code>，但有的时候又是旧的 <code>IP</code>。</p>
+<p>这里是因为像 <code>8.8.8.8</code> 这样的 <code>DNS</code> 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
+<p>等待 5 分钟后，所有的缓存都更新了，再次查询，将会始终返回新 <code>IP</code>。</p>
 <h3 id="ttl-并非总是可靠">TTL 并非总是可靠</h3>
-<p>与大多数互联网协议一样，并不是所有的终端都服从 DNS 规范（包括 <code>8.8.8.8</code> 这样的大型 DNS 也不尊重 TTL）。一些 ISP 的 DNS 服务器会将缓存记录的时间比 TTL 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 <code>/etc/hosts</code> 中硬编码旧的 IP 地址。</p>
-<p>此外，应用程序（例如浏览器）都内置了自己的 DNS 缓存，或者本地网关也存在缓存。</p>
-<p>这也是为什么，即便正确地设置了对应的 TTL（大部分 DNS 将会在短时间内更新缓存），有些 DNS 服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的 IP 地址。</p>
+<p>与大多数互联网协议一样，并不是所有的终端都服从 <code>DNS</code> 规范（包括 <code>8.8.8.8</code> 这样的大型 <code>DNS</code> 也不尊重 <code>TTL</code>）。一些 ISP 的 <code>DNS</code> 服务器会将缓存记录的时间比 <code>TTL</code> 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 <code>/etc/hosts</code> 中硬编码旧的 <code>IP</code> 地址。</p>
+<p>此外，应用程序（例如浏览器）都内置了自己的 <code>DNS</code> 缓存，或者本地网关也存在缓存。</p>
+<p>这也是为什么，即便正确地设置了对应的 <code>TTL</code>（大部分 <code>DNS</code> 将会在短时间内更新缓存），有些 <code>DNS</code> 服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的 <code>IP</code> 地址。</p>
 <h3 id="连同-ns-一起更新">连同 NS 一起更新</h3>
 <p>假设此前的 NS 为 <code>dNS1.p01.NSone.net</code>，现在我们把他修改为谷歌的 NS<code>NS-cloud-b1.googledomaiNS.com</code>。</p>
 <p>通常，当你修改完成后，你的域名商会提示你：“修改将在 48 小时内生效”。</p>
@@ -2043,8 +2345,8 @@ examplecat.com.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
 </div><p><code>1.1.1.1</code> 更新了。</p>
-<p>造成这样不同结果的原因，可能是此前并没有人询问过 <code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的 IP。</p>
-<p>而如果我们向新的 NS 查询，肯定会得到新的 IP 记录：</p>
+<p>造成这样不同结果的原因，可能是此前并没有人询问过 <code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的 <code>IP</code>。</p>
+<p>而如果我们向新的 <code>NS</code> 查询，肯定会得到新的 <code>IP</code> 记录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -2058,7 +2360,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="ns-的-ttl-要长很多">NS 的 TTL 要长很多</h3>
-<p>域名商提示：“修改将在 48 小时内生效” 的原因是 NS 记录（告诉递归 NS 应该向哪个 NS 查询）的 TTL 要长的多。</p>
+<p>域名商提示：“修改将在 48 小时内生效” 的原因是 <code>NS</code> 记录（告诉<code>递归 NS</code> 应该向哪个 <code>NS</code> 查询）的 TTL 要长的多。</p>
 <p>回到上一节中，我们的查询结果显示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2078,9 +2380,9 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 ...
 </code></pre></td></tr></table>
 </div>
-</div><p>172800 秒是 48 小时！这就是为什么更改 NS 后需要更长的时间来生效。</p>
+</div><p>172800 秒是 48 小时！这就是为什么更改 <code>NS</code> 后需要更长的时间来生效。</p>
 <h3 id="ns-如何得到更新">NS 如何得到更新？</h3>
-<p>更新 NS 后，我们向根服务器查询的话就会到得到这样的结果：</p>
+<p>更新 <code>NS</code> 后，我们向根服务器查询的话就会到得到这样的结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -2093,10 +2395,10 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </code></pre></td></tr></table>
 </div>
-</div><p>你可能会疑惑，新的 NS 记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的 NS 后，他们会负责将这个给更改告知根服务器。</p>
-<p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（TLD）（非.com）可能速度稍微慢一些。</p>
+</div><p>你可能会疑惑，新的 <code>NS</code> 记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的 <code>NS</code> 后，他们会负责将这个给更改告知根服务器。</p>
+<p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（<code>TLD</code>）（非<code>.com</code>）可能速度稍微慢一些。</p>
 <h2 id="总结">总结</h2>
-<p>本文展示了 DNS 的解析过程以及我们更新 DNS 记录时发送了什么，希望有助于你理解这一过程。</p>
+<p>本文展示了 <code>DNS</code> 的解析过程以及我们更新 <code>DNS</code> 记录时发送了什么，希望有助于你理解这一过程。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
@@ -2107,81 +2409,6 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </li>
 <li>
 <p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">iana root files</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>Nagle 算法</title>
-    <link>https://www.techkoala.top/nagle/</link>
-    <pubDate>Sun, 28 Jun 2020 10:44:16 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/nagle/</guid>
-    <description><![CDATA[<blockquote>
-<p>简要介绍 Nagle 算法</p>
-</blockquote>
-<h2 id="nagle-算法">Nagle 算法</h2>
-<p>Nagle 算法通过减少网络发包频率从而提高 TCP/IP 网络的效率。</p>
-<p>主要解决由于 TCP 包头大小，导致频繁发送小数据包有效数据内容太少，开销过大段的问题。</p>
-<p>Nagle 算法是将大量等待发送的小数据包合并起来，然后一次性全部发送出去。具体地说，只要有一个发送方没有收到任何确认的数据包，发送方就应该一直缓冲它的输出，直到它有一个完整的数据包的输出，这样就允许一次发送所有的输出。</p>
-<p>其思路可以由下面的步骤所描述：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">if there is new data to send then
-    if the window size ≥ MSS and available data is ≥ MSS then
-        send complete MSS segment now
-    else
-        if there is unconfirmed data still in the pipe then
-            enqueue data in the buffer until an acknowledge is received
-        else
-            send data immediately
-        end if
-    end if
-end if
-</code></pre></td></tr></table>
-</div>
-</div><p>Nagle 算法可能导致期望实时响应和低延迟的应用程序体验不佳。</p>
-<p>诸如网络多人视频游戏或鼠标在远程控制的操作系统中移动等应用程序，期望立即发送操作，而算法故意延迟传输，以牺牲延迟为代价提高带宽效率。因此，具有低带宽时间敏感传输的应用程序通常用于绕过 Nagle 延迟的 ACK 延迟。</p>
-<h2 id="windows-下关闭-nagle-算法">Windows 下关闭 Nagle 算法</h2>
-<ol>
-<li>
-<p>打开注册表编辑器</p>
-</li>
-<li>
-<p>打开如下路径 <code>计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></p>
-</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" data-sub-html="<h2>注册表界面</h2>">
-        
-    </a><figcaption class="image-caption">注册表界面</figcaption>
-    </figure>
-<ol start="3">
-<li>
-<p>依次点击下方注册表项，检查右窗格中是否包含 <code>DhcpIPAddress</code> 值；</p>
-</li>
-<li>
-<p>在包含有 <code>DhcpIPAddress</code> 的子项下，分别建立两个 <code>DWORD (32)</code> 值，依次命名为 <code>TcpAckFrequency</code> 和 <code>TCPNoDelay</code>，键值全部设为 <code>1</code>。</p>
-<p><strong>注意</strong> 包含 <code>DhcpIPAddress</code> 的子项可能不只一个，所有的都要添加。</p>
-</li>
-</ol>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreffer">Nagel 算法维基百科</a></p>
-</li>
-<li>
-<p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreffer">RFC896</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

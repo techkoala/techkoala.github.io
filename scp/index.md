@@ -65,6 +65,34 @@ $ scp local_file remote_host:/home
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" caption="传输过程" >}} 
 
+## 使用 SCP
+
+```shell
+$ scp 选项 参数
+```
+
+其中选项如下：
+
+```shell
+-1：使用ssh协议版本1；
+-2：使用ssh协议版本2；
+-4：使用ipv4；
+-6：使用ipv6；
+-B：以批处理模式运行；
+-C：使用压缩；
+-F：指定ssh配置文件；
+-l：指定宽带限制；
+-o：指定使用的ssh选项；
+-P：指定远程主机的端口号；
+-p：保留文件的最后修改时间，最后访问时间和权限模式；
+-q：不显示复制进度；
+-r：以递归方式复制。
+```
+参数分别为：
+
+- 源文件：指定要复制的源文件。
+- 目标文件：格式为user@host：filename（文件名为目标文件的名称）。
+
 ## SCP 的问题
 
 看起来，`SCP` 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。
@@ -127,7 +155,7 @@ Executed in  215.68 millis	fish       	external
 
 但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 `SCP` 更可取。选择最适合您需求的，然后试着开始使用。
 
-## See also
+## 另见
 
 后面的文章将会进一步讲解 SFTP 以及 Rsync。
 
@@ -138,3 +166,5 @@ Executed in  215.68 millis	fish       	external
 - [2] [Wikipedia Secure copy](https://en.wikipedia.org/wiki/Secure_copy)
 
 - [3] [Call for testing: OpenSSH 8.0](https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html)
+
+- [4] [Scp](https://ningyu1.github.io/linux-command/c/scp.html)

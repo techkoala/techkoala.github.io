@@ -17,20 +17,20 @@
 </blockquote>
 <h2 id="日志分析">日志分析</h2>
 <h3 id="常用日志文件">常用日志文件</h3>
-<p><strong>Debian</strong> 以及 <strong>RHEL</strong> 系的系统日志是由一个名为 syslog 的服务管理的，如以下日志文件都是由 syslog 日志服务驱动的：</p>
-<p><code>/var/log/boot.log</code>：记录了系统在引导过程中发生的事件，就是 Linux 系统开机自检过程显示的信息</p>
-<p><code>/var/log/lastlog</code> ：记录最后一次用户成功登陆的时间、登陆 IP 等信息</p>
-<p><code>/var/log/messages</code> ：记录 Linux 操作系统常见的系统和服务错误信息</p>
-<p><code>/var/log/secure</code> ：Linux 系统安全日志，记录用户和工作组变坏情况、用户登陆认证情况</p>
-<p><code>/var/log/syslog</code>：只记录警告信息，常常是系统出问题的信息，使用 lastlog 查看</p>
+<p><code>Debian</code> 以及 <code>RHEL</code> 系的系统日志是由一个名为 <code>syslog</code> 的服务管理的，如以下日志文件都是由 <code>syslog</code> 日志服务驱动的：</p>
+<p><code>/var/log/boot.log</code>：记录了系统在引导过程中发生的事件，就是 <code>Linux</code> 系统开机自检过程显示的信息</p>
+<p><code>/var/log/lastlog</code> ：记录最后一次用户成功登陆的时间、登陆 <code>IP</code> 等信息</p>
+<p><code>/var/log/messages</code> ：记录 <code>Linux</code> 操作系统常见的系统和服务错误信息</p>
+<p><code>/var/log/secure</code> ：<code>Linux</code> 系统安全日志，记录用户和工作组变坏情况、用户登陆认证情况</p>
+<p><code>/var/log/syslog</code>：只记录警告信息，常常是系统出问题的信息，使用 <code>lastlog</code> 查看</p>
 <p><code>/var/log/wtmp</code>：该日志文件永久记录每个用户登录、注销及系统的启动、停机的事件，使用 last 命令查看</p>
-<p><code>/var/run/utmp</code>：该日志文件记录有关当前登录的每个用户的信息。如 who、w、users、finger 等就需要访问这个文件</p>
-<p><strong><code>/var/log/btmp</code>：记录 Linux 登陆失败的用户、时间以及远程 IP 地址</strong></p>
+<p><code>/var/run/utmp</code>：该日志文件记录有关当前登录的每个用户的信息。如 <code>who</code>、<code>w</code>、<code>users</code>、<code>finger</code> 等就需要访问这个文件</p>
+<p><strong><code>/var/log/btmp</code>：记录 <code>Linux</code> 登陆失败的用户、时间以及远程 <code>IP</code> 地址</strong></p>
 <p><strong><code>/var/log/auth.log</code> 或 <code>/var/log/secure</code> 存储来自可插拔认证模块 (PAM) 的日志，包括成功的登录，失败的登录尝试和认证方式。</strong></p>
 <blockquote>
-<p>注：<strong>Debian</strong> 系在 /var/log/auth.log 中存储认证信息而 <strong>RHEL</strong> 系则在 /var/log/secure 中存储。</p>
+<p>注：<code>Debian</code> 系在 /var/log/auth.log 中存储认证信息而 <code>RHEL</code> 系则在 /var/log/secure 中存储。</p>
 </blockquote>
-<p><strong>Archlinux</strong> 使用 <code>systemd</code> 提供的日志系统（logging system），称为 <code>journal</code>。使用 systemd 日志，无需额外安装日志服务（syslog）。</p>
+<p><strong>Archlinux</strong> 使用 <code>systemd</code> 提供的日志系统（logging system），称为 <code>journal</code>。使用 <code>systemd</code> 日志，无需额外安装日志服务（<code>syslog</code>）。</p>
 <h3 id="相关日志查看命令">相关日志查看命令</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -145,7 +145,7 @@
 <h4 id="登录失败后强制延时">登录失败后强制延时</h4>
 <p>在 <code>/etc/pam.d/system-login</code> 中添加 <code>auth optional pam_faildelay.so delay=4000000</code>，表示延时 4 秒（单位微秒）</p>
 <h4 id="限制-root-权限">限制 root 权限</h4>
-<p>可以为单个用户启用单个程序的 root 权限，而不用为了运行一个程序启用该用户对 root 的完整访问权。例如，要授予用户 alice 对特定程序的访问权限：</p>
+<p>可以为单个用户启用单个程序的 <code>root</code> 权限，而不用为了运行一个程序启用该用户对 <code>root</code> 的完整访问权。例如，要授予用户 <code>alice</code> 对特定程序的访问权限：</p>
 <p>编辑 <code>/etc/sudoers</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -173,7 +173,7 @@
 <p>添加：</p>
 <p><code>alice ALL = NOPASSWD: /path/to/program</code></p>
 <h3 id="关闭不必要的服务">关闭不必要的服务</h3>
-<p><strong>例如</strong> 某台 Linux 服务器用于 www 应用，那么除了 httpd 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：</p>
+<p><strong>例如</strong> 某台 <code>Linux</code> 服务器用于 <code>www</code> 应用，那么除了 <code>httpd</code> 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：</p>
 <p><code>anacron、auditd、autofs、avahi-daemon、avahi-dnsconfd、bluetooth、cpuspeed、firstboot、gpm、haldaemon、hidd、ip6tables、ipsec、isdn、lpd、mcstrans、messagebus、netfs、nfs、nfslock、nscd、pcscd portmap、readahead_early、restorecond、rpcgssd、rpcidmapd、rstatd、sendmail、setroubleshoot、yppasswdd ypserv</code></p>
 <h3 id="文件系统安全">文件系统安全</h3>
 <p><strong>文件权限检查和修改</strong></p>
@@ -220,7 +220,6 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 </code></pre></td></tr></table>
 </div>
 </div><p>没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。</p>
-<h2 id="检测工具">检测工具</h2>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
