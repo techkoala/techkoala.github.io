@@ -120,10 +120,6 @@ $ git log --pretty=format:"%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n"
 
 Git提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。
 
-上述命令会显示为下图样式：
-
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Github/GitLog/CustomPrettyOptions.jpg" caption="漂亮格式输出 Log" >}}
-
 ## 参考
 
 - [1] [Ten Useful Git Log Tricks](https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy)
