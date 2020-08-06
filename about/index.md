@@ -1,33 +1,33 @@
 # 关于
 
 
-## 我
+### :man_shrugging:我
 
 - 对`网络`知识有浓厚的兴趣
 
-- 会 `Python` 的`通信狗`
+- 会 `Python:snake:` 的`通信:dog2:`
 
-- 喜欢`瞎折腾`一些有用没用的技术
+- 喜欢`瞎折腾:man_technologist:`一些有用没用的技术
 
-- 不更新会死星人
+- 长期使用 `Linux(Arch & Ubuntu)` & `Windows` 工作学习
 
-- 长期使用 `Linux(Arch & Ubuntu)` & `Windows`工作学习
+### 这个网站
 
-## 这个网站
+本质上，就是我自己的笔记:notebook_with_decorative_cover:，某天突发奇想:thought_balloon:：做成网站也不错呀，随时都可以查看。于是就诞生了这网站。
 
-本质上，就是自己的笔记，某天突发奇想：做成网站也不错呀，随时都可以查看。于是就诞生了这网站。
+网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版，网页利用 [Hugo](https://gohugo.io/) 渲染生成，页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点。
 
-网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版，网页利用 [Hugo](https://gohugo.io/) 渲染生成，页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点。网站托管在 [Github Pages](https://pages.github.com/) 上，套用了 [Cloudflare](https://www.cloudflare.com/) & [jsDelivr](https://www.jsdelivr.com/) 的 `CDN` 。
+网站托管在 [Github Pages](https://pages.github.com/) 上，套用了 [Cloudflare](https://www.cloudflare.com/) & [jsDelivr](https://www.jsdelivr.com/) 的 `CDN` 。
 
 在此，**感谢** 各位开发者 & 公司。
 
-## 说明
+### 说明
 
 网站中含有 `Translation` 标签的文章，其 **主要内容** 来源于博主对优秀外文文章地翻译和校对，这里并不一定会遵循原文的叙述逻辑，内容上也会有一定的增删，原文请见文末参考。
 
 译文的目的仅为加深自己学习的印象，同时希望能够共享优质的内容。
 
-## 本站的内容授权
+### 本站的内容授权
 
 - 本站点发布内容默认采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）进行许可，即：
 
@@ -42,5 +42,4 @@
 - 转载作品另行声明，遵守原作者授权协议，所有权利归原作者所有
 
 - 如果我的文章能帮到你，那是我极大的荣幸
-
-
+   

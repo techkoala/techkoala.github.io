@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/nat/" />
 <meta property="article:published_time" content="2020-07-14T23:25:54+08:00" />
-<meta property="article:modified_time" content="2020-08-05T21:45:15+08:00" />
+<meta property="article:modified_time" content="2020-08-06T14:37:54+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NAT 1：认识 NAT"/>
 <meta name="twitter:description" content="
@@ -31,7 +31,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/nat\/"
         },"genre": "posts","keywords": "NAT, Translation","wordcount":  2749 ,
-        "url": "https:\/\/www.techkoala.top\/nat\/","datePublished": "2020-07-14T23:25:54+08:00","dateModified": "2020-08-05T21:45:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/nat\/","datePublished": "2020-07-14T23:25:54+08:00","dateModified": "2020-08-06T14:37:54+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -44,10 +44,10 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="TechKoala">TechKoala</a>
+            <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts"> Posts </a><a class="menu-item" href="/tags"> Tags </a><a class="menu-item" href="/categories"> Categories </a><a class="menu-item" href="/tools"> Tools </a><a class="menu-item" href="/softwares"> Softwares </a><a class="menu-item" href="/about"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> Posts </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> Tags </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> Categories </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> Tools </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> Softwares </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -68,7 +68,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="TechKoala">TechKoala</a>
+                <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -90,7 +90,7 @@
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts" title="">Posts</a><a class="menu-item" href="/tags" title="">Tags</a><a class="menu-item" href="/categories" title="">Categories</a><a class="menu-item" href="/tools" title="">Tools</a><a class="menu-item" href="/softwares" title="">Softwares</a><a class="menu-item" href="/about" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>Posts</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>Tags</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>Categories</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>Tools</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>Softwares</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -116,18 +116,22 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#nat">NAT</a></li>
-    <li><a href="#nat-的四种类型">NAT 的四种类型</a>
+    <li>
       <ul>
-        <li><a href="#全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</a></li>
-        <li><a href="#受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</a></li>
-        <li><a href="#端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</a></li>
-        <li><a href="#对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</a></li>
+        <li><a href="#nat">NAT</a></li>
+        <li><a href="#nat-的四种类型">NAT 的四种类型</a>
+          <ul>
+            <li><a href="#全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</a></li>
+            <li><a href="#受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</a></li>
+            <li><a href="#端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</a></li>
+            <li><a href="#对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</a></li>
+          </ul>
+        </li>
+        <li><a href="#对-nat-的正面评价">对 NAT 的正面评价</a></li>
+        <li><a href="#对-nat-的批评">对 NAT 的批评</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
-    <li><a href="#对-nat-的正面评价">对 NAT 的正面评价</a></li>
-    <li><a href="#对-nat-的批评">对 NAT 的批评</a></li>
-    <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
@@ -250,8 +254,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-08-05&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/59f04e6d0889df64a62dabd377963a928e57e017" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 59f04e6d0889df64a62dabd377963a928e57e017: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>59f04e6</a></span>
+                <span>更新于 2020-08-06&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/4da5b955773a07c19df164b583ba000ca5b181cf" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 4da5b955773a07c19df164b583ba000ca5b181cf: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>4da5b95</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

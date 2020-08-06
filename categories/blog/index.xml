@@ -3,7 +3,8 @@
         <title>Blog - 分类 - TechKoala</title>
         <link>https://www.techkoala.top/categories/blog/</link>
         <description>Blog - 分类 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 May 2020 21:54:02 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/blog/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 May 2020 21:54:02 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/blog/" rel="self" type="application/rss+xml" /><item>
     <title>Hugo 搭配 LoveIt 技巧总结</title>
     <link>https://www.techkoala.top/hugo_loveit_q_a/</link>
     <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
