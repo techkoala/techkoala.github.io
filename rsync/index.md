@@ -1,4 +1,4 @@
-# rsync 概览
+# 文件传输 2：rsync
 
 
 > SCP 的绝佳替代者
@@ -32,7 +32,7 @@ rsync 的算法如下：（假设源文件名为 `fileSrc`，目的文件叫 `fi
 如果我 `fileSrc` 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 `fileDst` 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
 如果这个 `checksum` 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？
 
-### checksum 查找算法
+### Checksum 查找算法
 
 同步源端拿到 `fileDst` 的 `checksum` 数组后，会把这个数据存到一个 `hash table` 中，用 `rolling checksum` 做 `hash`，以便获得 `O(1)` 时间复杂度的查找性能。这个 `hash table` 是 16 bits 的，所以，`hash table` 的尺寸是 2 的 16 次方，对 `rolling checksum` 的 `hash` 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。
 
@@ -46,7 +46,7 @@ rsync 的算法如下：（假设源文件名为 `fileSrc`，目的文件叫 `fi
 
 4. 这样，我们就可以找出 `fileSrc` 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。
 
-## rolling checksum 算法
+## Rolling Checksum 算法
 
 rolling checksum 算法也叫 `Rabin-Karp` 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 `checksum`，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 `checksum`，而是重用 [0，512] 的 `checksum` 直接算出来。
 

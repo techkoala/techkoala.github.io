@@ -3,8 +3,67 @@
         <title>Software - 标签 - TechKoala</title>
         <link>https://www.techkoala.top/tags/software/</link>
         <description>Software - 标签 - TechKoala</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
-    <title>rsync 概览</title>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
+    <title>文件传输 3：SFTP</title>
+    <link>https://www.techkoala.top/sftp/</link>
+    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/sftp/</guid>
+    <description><![CDATA[<blockquote>
+<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
+</blockquote>
+<h2 id="什么是-sftp">什么是 SFTP</h2>
+<p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
+<p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
+<p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
+<blockquote>
+<p>有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></p>
+</blockquote>
+<h2 id="使用-sftp">使用 SFTP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="选项">选项</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
+-l：使用 ssh 协议版本 1；
+-b：指定批处理文件；
+-C：使用压缩；
+-o：指定 ssh 选项；
+-F：指定 ssh 配置文件；
+-R：指定一次可以容忍多少请求数；
+-v：升高日志等级。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参数">参数</h3>
+<p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+</li>
+<li>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>文件传输 2：rsync</title>
     <link>https://www.techkoala.top/rsync/</link>
     <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
     <author>作者</author>
@@ -28,7 +87,7 @@
 <p><strong>但是</strong></p>
 <p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
 如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
-<h3 id="checksum-查找算法">checksum 查找算法</h3>
+<h3 id="checksum-查找算法">Checksum 查找算法</h3>
 <p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
 <h3 id="比对算法">比对算法</h3>
 <ol>
@@ -45,7 +104,7 @@
 <p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
 </li>
 </ol>
-<h2 id="rolling-checksum-算法">rolling checksum 算法</h2>
+<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
 <p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
@@ -256,7 +315,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </li>
 </ul>]]></description>
 </item><item>
-    <title>SCP 概览</title>
+    <title>文件传输 1：SCP</title>
     <link>https://www.techkoala.top/scp/</link>
     <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
     <author>作者</author>
@@ -290,7 +349,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
     </figure>
 <p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
 <h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 ** 顺序 **（一次一个操作）和 ** 同步 **（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -442,7 +501,10 @@ Executed in  215.68 millis	fish       	external
 <p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
-<p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
+<ul>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+</ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
@@ -457,482 +519,6 @@ Executed in  215.68 millis	fish       	external
 <li>
 <p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
 </li>
-</ul>]]></description>
-</item><item>
-    <title>使用中的软件</title>
-    <link>https://www.techkoala.top/softwares/</link>
-    <pubDate>Mon, 30 Dec 2019 17:14:18 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/softwares/</guid>
-    <description><![CDATA[<blockquote>
-<p>多平台软件记录与推荐</p>
-</blockquote>
-<h1 id="多平台软件使用记录">多平台软件使用记录：</h1>
-<ol>
-<li>
-<p><strong>粗体</strong> 表示在多平台使用的软件</p>
-</li>
-<li>
-<p><em>斜体</em> 表示优先选择表示商店版本(<code>Windows</code> &amp; <code>MacOS</code>)</p>
-</li>
-<li>
-<p><code>Linux</code> 优先选用对应包管理器安装</p>
-</li>
-</ol>
-<h3 id="浏览器">浏览器</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreffer">Chrome</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener noreffer">FireFox</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.microsoftedgeinsider.com/zh-cn/download" target="_blank" rel="noopener noreffer">Microsoft Edge</a></strong></p>
-<h4 id="浏览器插件">浏览器插件</h4>
-<ul>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei" target="_blank" rel="noopener noreffer">ClearURLs</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi" target="_blank" rel="noopener noreffer">Enpass extension</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd" target="_blank" rel="noopener noreffer">Feedbro</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde" target="_blank" rel="noopener noreffer">MONKNOW</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma" target="_blank" rel="noopener noreffer">OneNote Web Clipper</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe" target="_blank" rel="noopener noreffer">Proxy SwitchyOmega</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/save-to-pocket/jicacccodjjgmghnmekophahpmddeemd?hl=zh-CN" target="_blank" rel="noopener noreffer">Save to Pocket</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd" target="_blank" rel="noopener noreffer">Tampermonkey</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/ublock-origin/odfafepnkmbhccpbejgmiehpchacaeak" target="_blank" rel="noopener noreffer">uBlock Origin</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge" target="_blank" rel="noopener noreffer">京价保 - 京东价保助手</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm" target="_blank" rel="noopener noreffer">FireShot</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp" target="_blank" rel="noopener noreffer">沙拉查词-聚合词典划词翻译</a></p>
-</li>
-<li>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/%E9%9A%90%E7%A7%81%E7%8D%BE/mkejgcgkdlddbggjhhflekkondicpnop" target="_blank" rel="noopener noreffer">隐私獾</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/augmented-steam/dnhpnfgdlenaccegplpojghhmaamnnfp" target="_blank" rel="noopener noreffer">Augmented Steam</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp" target="_blank" rel="noopener noreffer">Free Download Manager</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab" target="_blank" rel="noopener noreffer">Imagus</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/little-star/kmjfdonmflchjdlmeoecbmebfpnafpec" target="_blank" rel="noopener noreffer">Little Star</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk" target="_blank" rel="noopener noreffer">Notion Web Clipper</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" target="_blank" rel="noopener noreffer">OneTab</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne" target="_blank" rel="noopener noreffer">Stylus</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha" target="_blank" rel="noopener noreffer">Unpaywall</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/reggy/pnneajlgffpejnabhionnhdfhibijihe" target="_blank" rel="noopener noreffer">Reggy</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="noopener noreffer">Vimium</a></p>
-</li>
-<li>
-<p><a href="https://chrome.google.com/webstore/detail/nooboss/aajodjghehmlpahhboidcpfjcncmcklf" target="_blank" rel="noopener noreffer">二管家</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="压缩解压缩">压缩/解压缩</h3>
-<ul>
-<li>
-<p><a href="https://en.bandisoft.com/bandizip/" target="_blank" rel="noopener noreffer">Bandizip</a><em>(7.0版本已增加付费,停留于6.26)</em></p>
-</li>
-<li>
-<p><strong><a href="https://www.7-zip.org/download.html" target="_blank" rel="noopener noreffer">7-zip</a></strong></p>
-</li>
-<li>
-<p><a href="https://www.peazip.org/" target="_blank" rel="noopener noreffer">Peazip</a></p>
-</li>
-</ul>
-<h3 id="下载软件">下载软件</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.freedownloadmanager.org/zh/" target="_blank" rel="noopener noreffer">FDM</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://motrix.app/" target="_blank" rel="noopener noreffer">Motrix</a></strong></p>
-</li>
-<li>
-<p><del>Eagleget</del> <em>(官方宣称是外国软件，查询证书为国产，原因不明)</em></p>
-</li>
-<li>
-<p><a href="https://www.internetdownloadmanager.com/" target="_blank" rel="noopener noreffer">IDM</a></p>
-</li>
-<li>
-<p><a href="https://aria2.github.io/" target="_blank" rel="noopener noreffer">Aria2</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mayswind/AriaNg" target="_blank" rel="noopener noreffer">Aria2NG</a></p>
-</li>
-<li>
-<p><a href="https://curl.haxx.se/" target="_blank" rel="noopener noreffer">Curl</a></p>
-</li>
-<li>
-<p><a href="https://www.gnu.org/software/wget/" target="_blank" rel="noopener noreffer">Wget</a></p>
-</li>
-</ul>
-<h3 id="游戏平台及工具">游戏平台及工具</h3>
-<ul>
-<li>
-<p><a href="https://www.blizzardgames.cn/zh/" target="_blank" rel="noopener noreffer">战网</a></p>
-</li>
-<li>
-<p><a href="https://store.steampowered.com/about/" target="_blank" rel="noopener noreffer">Steam</a></p>
-</li>
-<li>
-<p><a href="https://www.origin.com/sgp/en-us/store/download" target="_blank" rel="noopener noreffer">Origin</a></p>
-</li>
-<li>
-<p><a href="https://uplay.ubisoft.com/zh-cn" target="_blank" rel="noopener noreffer">Uplay</a></p>
-</li>
-<li>
-<p><a href="https://www.gog.com/" target="_blank" rel="noopener noreffer">GOG Galaxy</a></p>
-</li>
-<li>
-<p><a href="https://uu.163.com/" target="_blank" rel="noopener noreffer">网易UU</a></p>
-</li>
-<li>
-<p><a href="https://support.logi.com/hc/zh-cn/articles/360025298053" target="_blank" rel="noopener noreffer">Logitech鼠标驱动</a></p>
-</li>
-</ul>
-<h3 id="code">Code</h3>
-<ul>
-<li>
-<p><strong><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreffer">Visual studio code</a></strong></p>
-</li>
-<li>
-<p><a href="https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.google.com%2F" target="_blank" rel="noopener noreffer">Visual studio 2019</a></p>
-</li>
-<li>
-<p><strong><a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreffer">Python3</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://ww2.mathworks.cn/products/matlab.html" target="_blank" rel="noopener noreffer">Matlab</a></strong></p>
-</li>
-<li>
-<p><a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener noreffer">Pycharm-professional</a></p>
-</li>
-<li>
-<p><a href="https://www.jetbrains.com/go/" target="_blank" rel="noopener noreffer">Goland</a></p>
-</li>
-<li>
-<p><a href="https://golang.org/" target="_blank" rel="noopener noreffer">Go</a></p>
-</li>
-</ul>
-<h3 id="文档工具">文档工具</h3>
-<ul>
-<li>
-<p>Office 365</p>
-</li>
-<li>
-<p><a href="https://otp.landian.vip/zh-cn/" target="_blank" rel="noopener noreffer">Office tools plus</a><em>(office 套件管理工具)</em></p>
-</li>
-<li>
-<p><strong><a href="https://typora.io/" target="_blank" rel="noopener noreffer">Typora</a></strong></p>
-</li>
-<li>
-<p><a href="https://www.islide.cc/" target="_blank" rel="noopener noreffer">iSlide Tools</a></p>
-</li>
-<li>
-<p><em>DrawBoard PDF</em></p>
-</li>
-<li>
-<p><a href="https://get.adobe.com/cn/reader/otherversions/" target="_blank" rel="noopener noreffer">Adobe acrobat DC</a></p>
-</li>
-<li>
-<p><a href="http://cajviewer.cnki.net/" target="_blank" rel="noopener noreffer">CAJViewer</a></p>
-</li>
-<li>
-<p><a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener noreffer">Visio</a></p>
-</li>
-<li>
-<p><em>OneNote</em></p>
-</li>
-<li>
-<p><strong><a href="https://www.notion.so/" target="_blank" rel="noopener noreffer">Notion</a></strong></p>
-</li>
-</ul>
-<h3 id="视频音乐">视频&amp;音乐</h3>
-<ul>
-<li>
-<p><a href="https://potplayer.daum.net/" target="_blank" rel="noopener noreffer">Potplayer</a></p>
-</li>
-<li>
-<p><em>斗鱼</em></p>
-</li>
-<li>
-<p><em>网易云音乐</em></p>
-</li>
-<li>
-<p><em>Mp3tag</em> <em>(歌曲信息管理)</em></p>
-</li>
-<li>
-<p><em>foobar2000</em></p>
-</li>
-<li>
-<p><a href="https://www.videolan.org/vlc/index.html" target="_blank" rel="noopener noreffer">VLC</a></p>
-</li>
-<li>
-<p><a href="https://github.com/shakrmedia/petal" target="_blank" rel="noopener noreffer">Petal</a><em>(Linux 下豆瓣 FM 第三方客户端)</em></p>
-</li>
-</ul>
-<h3 id="网盘工具">网盘工具</h3>
-<ul>
-<li>
-<p>Onedrive</p>
-</li>
-<li>
-<p><a href="https://www.raidrive.com/" target="_blank" rel="noopener noreffer">RaiDrive</a></p>
-</li>
-<li>
-<p><strong><a href="https://rclone.org/downloads/" target="_blank" rel="noopener noreffer">Rclone</a></strong></p>
-</li>
-<li>
-<p><del>Speedpan</del> <em>(已转Pandownload)</em></p>
-</li>
-<li>
-<p><del><a href="https://pandownload.com/" target="_blank" rel="noopener noreffer">Pandownload</a></del> <em>(已失效，尽量避免使用百度网盘)</em></p>
-</li>
-<li>
-<p><a href="https://www.goodsync.com/" target="_blank" rel="noopener noreffer">Goodsync</a></p>
-</li>
-<li>
-<p><strong><a href="https://www.resilio.com/individuals-sync/" target="_blank" rel="noopener noreffer">Resilio Sync</a></strong></p>
-</li>
-</ul>
-<h3 id="即时通信">即时通信</h3>
-<ul>
-<li>
-<p><strong><a href="https://desktop.telegram.org/" target="_blank" rel="noopener noreffer">Telegram</a></strong></p>
-</li>
-<li>
-<p><em><del>Unigram</del></em> <em>(Telegram 第三方客户端，相较官方客户端增加了 PC 端的端到端加密聊天功能)</em></p>
-</li>
-<li>
-<p><em>微信</em></p>
-</li>
-<li>
-<p><em>QQ</em></p>
-</li>
-</ul>
-<h3 id="密码管理">密码管理</h3>
-<ul>
-<li><em><strong><a href="https://www.enpass.io/" target="_blank" rel="noopener noreffer">Enpass</a></strong></em></li>
-</ul>
-<h3 id="网络工具">网络工具</h3>
-<ul>
-<li>
-<p><del><a href="https://shadowsocks.org/en/download/servers.html" target="_blank" rel="noopener noreffer">Shadowsocks-libev</a></del> <em>(转向 vmess 协议)</em></p>
-</li>
-<li>
-<p><del>Sstap</del> <em>(停止更新)</em></p>
-</li>
-<li>
-<p><del><a href="https://github.com/2dust/v2rayN" target="_blank" rel="noopener noreffer">V2rayN</a></del> <em>(已转 Clash，支持更加灵活的规则和配置文件管理)</em></p>
-</li>
-<li>
-<p><a href="https://github.com/Dreamacro/clash" target="_blank" rel="noopener noreffer">Clash</a></p>
-</li>
-<li>
-<p><a href="https://github.com/Fndroid/clash_for_windows_pkg/releases" target="_blank" rel="noopener noreffer">Clash for Windows</a></p>
-</li>
-<li>
-<p><a href="https://github.com/yichengchen/clashX" target="_blank" rel="noopener noreffer">ClashX</a></p>
-</li>
-<li>
-<p><a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener noreffer">Fiddler</a></p>
-</li>
-<li>
-<p><a href="https://www.ipip.net/product/client.html" target="_blank" rel="noopener noreffer">Best Trace</a></p>
-</li>
-<li>
-<p><del><a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener noreffer">MobaXterm</a></del> <em>(已转 Termius,多端同步)</em></p>
-</li>
-<li>
-<p><strong><a href="https://termius.com/" target="_blank" rel="noopener noreffer">Termius</a></strong></p>
-</li>
-<li>
-<p><strong><a href="https://www.zerotier.com/" target="_blank" rel="noopener noreffer">ZeroTier One</a></strong></p>
-</li>
-<li>
-<p><a href="https://remmina.org/" target="_blank" rel="noopener noreffer">Remmina</a> <em>(Linux下远程桌面)</em></p>
-</li>
-<li>
-<p><strong><a href="https://www.wireshark.org/" target="_blank" rel="noopener noreffer">Wireshark</a></strong></p>
-</li>
-</ul>
-<h3 id="效率工具">效率工具</h3>
-<ul>
-<li>
-<p><del><a href="https://getquicker.net/" target="_blank" rel="noopener noreffer">Quicker</a></del> <em>(已转utools)</em></p>
-</li>
-<li>
-<p><del><a href="http://www.wox.one/" target="_blank" rel="noopener noreffer">Wox</a></del> <em>(已转utools)</em></p>
-</li>
-<li>
-<p><a href="http://www.yingdev.com/projects/wgestures" target="_blank" rel="noopener noreffer">WGestures</a> <em>(Windows 鼠标手势)</em></p>
-</li>
-<li>
-<p><a href="https://github.com/Mapaler/FastCopy-M" target="_blank" rel="noopener noreffer">Fastcopy-M</a> <em>(基于原版的二次开发)</em></p>
-</li>
-<li>
-<p><a href="https://www.voidtools.com/zh-cn/" target="_blank" rel="noopener noreffer">Everything</a></p>
-</li>
-<li>
-<p><em>Pollar</em></p>
-</li>
-<li>
-<p><a href="https://github.com/thjaeger/easystroke/wiki/BuildInstructions" target="_blank" rel="noopener noreffer">Easystroke</a><em>(Linux 鼠标手势)</em></p>
-</li>
-<li>
-<p><del><a href="https://www.scootersoftware.com/download.php" target="_blank" rel="noopener noreffer">Bcompare</a></del> <em>(已用 Meld 代替)</em></p>
-</li>
-<li>
-<p><strong><a href="https://meldmerge.org/" target="_blank" rel="noopener noreffer">Meld</a></strong> <em>(跨平台开源文件/文件夹对比软件)</em></p>
-</li>
-<li>
-<p><strong><a href="https://u.tools/" target="_blank" rel="noopener noreffer">Utools</a></strong></p>
-</li>
-<li>
-<p><a href="https://github.com/microsoft/PowerToys/" target="_blank" rel="noopener noreffer">PowerToys</a></p>
-</li>
-</ul>
-<h3 id="软件磁盘管理">软件&amp;磁盘管理</h3>
-<ul>
-<li>
-<p><del><a href="https://www.ccleaner.com/" target="_blank" rel="noopener noreffer">CCleaner</a></del></p>
-</li>
-<li>
-<p><a href="https://www.chuyu.me/" target="_blank" rel="noopener noreffer">Dism++</a></p>
-</li>
-<li>
-<p><a href="https://scoop.sh/" target="_blank" rel="noopener noreffer">Scoop</a> <em>(PowerShell 包管理器)</em></p>
-</li>
-<li>
-<p><a href="https://geekuninstaller.com/" target="_blank" rel="noopener noreffer">Geek Uninstaller</a></p>
-</li>
-<li>
-<p><a href="http://www.uderzo.it/main_products/space_sniffer/" target="_blank" rel="noopener noreffer">SpaceSniffer</a></p>
-</li>
-<li>
-<p><em>CrystalDiskMark</em></p>
-</li>
-<li>
-<p><a href="https://crystalmark.info/en/software/crystaldiskinfo/" target="_blank" rel="noopener noreffer">CrystalDiskInfo</a></p>
-</li>
-<li>
-<p><a href="http://www.diskgenius.cn/" target="_blank" rel="noopener noreffer">DiskGenius</a></p>
-</li>
-</ul>
-<h3 id="安全工具">安全工具</h3>
-<ul>
-<li>
-<p><a href="https://www.huorong.cn/" target="_blank" rel="noopener noreffer">火绒</a></p>
-</li>
-<li>
-<p><a href="https://www.sandboxie.com/" target="_blank" rel="noopener noreffer">Sandboxie</a></p>
-</li>
-</ul>
-<h3 id="虚拟机">虚拟机</h3>
-<ul>
-<li>
-<p><a href="https://www.vmware.com/cn.html" target="_blank" rel="noopener noreffer">VMware Workstation Pro</a></p>
-</li>
-<li>
-<p>Hyper-V</p>
-</li>
-</ul>
-<h3 id="阅读">阅读</h3>
-<ul>
-<li>
-<p><strong><del><a href="http://irreader.fatecore.com/" target="_blank" rel="noopener noreffer">irreader</a></del></strong></p>
-</li>
-<li>
-<p><a href="https://lzone.de/liferea/" target="_blank" rel="noopener noreffer">Liferea</a></p>
-</li>
-</ul>
-<h3 id="cli">Cli</h3>
-<ul>
-<li>
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH" target="_blank" rel="noopener noreffer">Zsh</a></p>
-</li>
-<li>
-<p><a href="https://ohmyz.sh/" target="_blank" rel="noopener noreffer">Oh-my-zsh</a> <em>(插件见配置文件)</em></p>
-</li>
-<li>
-<p><a href="https://github.com/denisidoro/navi" target="_blank" rel="noopener noreffer">Navi</a></p>
-</li>
-<li>
-<p><a href="https://github.com/KittyKatt/screenFetch" target="_blank" rel="noopener noreffer">Screenfetch</a></p>
-</li>
-<li>
-<p><a href="https://hisham.hm/htop/" target="_blank" rel="noopener noreffer">Htop</a></p>
-</li>
-</ul>
-<h3 id="系统工具">系统工具</h3>
-<ul>
-<li>
-<p><a href="https://www.bleachbit.org/" target="_blank" rel="noopener noreffer">BleachBit</a></p>
-</li>
-<li>
-<p><a href="https://github.com/jonls/redshift" target="_blank" rel="noopener noreffer">Redshift</a></p>
-</li>
-<li>
-<p>Deepin-wine</p>
-</li>
-<li>
-<p><a href="https://hub.docker.com/" target="_blank" rel="noopener noreffer">Docker</a></p>
-</li>
-<li>
-<p><a href="https://github.com/teejee2008/timeshift" target="_blank" rel="noopener noreffer">TimeShift</a><em>(系统备份)</em></p>
-</li>
-<li>
-<p><a href="https://better365.cn/" target="_blank" rel="noopener noreffer">Better and Better</a></p>
-</li>
-<li>
-<p><a href="https://bjango.com/mac/istatmenus/" target="_blank" rel="noopener noreffer">iStat Menus</a></p>
-</li>
-</ul>
-<h3 id="邮件">邮件</h3>
-<ul>
-<li><a href="https://www.thunderbird.net/zh-CN/" target="_blank" rel="noopener noreffer">Thunderbird</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

@@ -6,7 +6,66 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>rsync 概览</title>
+    <title>文件传输 3：SFTP</title>
+    <link>https://www.techkoala.top/sftp/</link>
+    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/sftp/</guid>
+    <description><![CDATA[<blockquote>
+<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
+</blockquote>
+<h2 id="什么是-sftp">什么是 SFTP</h2>
+<p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
+<p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
+<p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
+<blockquote>
+<p>有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></p>
+</blockquote>
+<h2 id="使用-sftp">使用 SFTP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="选项">选项</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
+-l：使用 ssh 协议版本 1；
+-b：指定批处理文件；
+-C：使用压缩；
+-o：指定 ssh 选项；
+-F：指定 ssh 配置文件；
+-R：指定一次可以容忍多少请求数；
+-v：升高日志等级。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参数">参数</h3>
+<p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+</li>
+<li>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>文件传输 2：rsync</title>
     <link>https://www.techkoala.top/rsync/</link>
     <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
     <author>作者</author>
@@ -30,7 +89,7 @@
 <p><strong>但是</strong></p>
 <p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
 如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
-<h3 id="checksum-查找算法">checksum 查找算法</h3>
+<h3 id="checksum-查找算法">Checksum 查找算法</h3>
 <p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
 <h3 id="比对算法">比对算法</h3>
 <ol>
@@ -47,7 +106,7 @@
 <p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
 </li>
 </ol>
-<h2 id="rolling-checksum-算法">rolling checksum 算法</h2>
+<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
 <p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
@@ -1813,7 +1872,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 </ul>]]></description>
 </item><item>
-    <title>SCP 概览</title>
+    <title>文件传输 1：SCP</title>
     <link>https://www.techkoala.top/scp/</link>
     <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
     <author>作者</author>
@@ -1847,7 +1906,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     </figure>
 <p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
 <h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 ** 顺序 **（一次一个操作）和 ** 同步 **（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -1999,7 +2058,10 @@ Executed in  215.68 millis	fish       	external
 <p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
-<p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
+<ul>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+</ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
@@ -2016,7 +2078,7 @@ Executed in  215.68 millis	fish       	external
 </li>
 </ul>]]></description>
 </item><item>
-    <title>NAT 系列 2：问题及解决方法</title>
+    <title>NAT 2：问题及解决方法</title>
     <link>https://www.techkoala.top/nat_issues_solutions/</link>
     <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
     <author>作者</author>
@@ -2060,7 +2122,7 @@ Executed in  215.68 millis	fish       	external
 </li>
 </ul>]]></description>
 </item><item>
-    <title>NAT 系列 1：认识 NAT</title>
+    <title>NAT 1：认识 NAT</title>
     <link>https://www.techkoala.top/nat/</link>
     <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
     <author>作者</author>
@@ -2156,259 +2218,6 @@ Executed in  215.68 millis	fish       	external
 </li>
 <li>
 <p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>深入浅出 DNS 解析</title>
-    <link>https://www.techkoala.top/dns_update/</link>
-    <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/dns_update/</guid>
-    <description><![CDATA[<blockquote>
-<p>DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新后必须等待 48 小时才能生效吗？为什么有人看到的是新 IP，有人看到的是旧 IP？</p>
-</blockquote>
-<h2 id="dns-分类">DNS 分类</h2>
-<p>我们知道，DNS 服务器有两种：权威服务器（authoritative）和递归服务器（recursive）</p>
-<p><code>权威 DNS 服务器（也称为名称服务器，NS，nameserver）</code> 具有其所负责的每个域的 <code>IP</code> 地址数据库。</p>
-<p>例如，<code>github.com</code> 的权威 <code>DNS</code> 服务器是 <code>NS-421.awsdNS-52.com</code></p>
-<p>您可以像这样要求它提供 <code>github.com</code> 的 <code>IP</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
-</code></pre></td></tr></table>
-</div>
-</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 <code>IP</code> 地址。它们通过询问正确的权威 <code>DNS</code> 服务器，找出域名的 <code>IP</code> 地址，然后缓存这个 <code>IP</code> 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 <code>DNS</code> 服务器。</p>
-<p>当人们访问你的网站时，他们可能会向递归 <code>DNS</code> 服务器进行 <code>DNS</code> 查询。那么，递归 <code>DNS</code> 服务器是如何工作的呢？</p>
-<h3 id="递归-dns-服务器如何工作">递归 DNS 服务器如何工作</h3>
-<p>以 <code>8.8.8.8</code> 为例，如果我们向其请求 <code>github.com</code> 的 <code>IP</code> 地址（A 记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
-<ol>
-<li>
-<p>递归服务器内部硬编码（hardcoded）有根 <code>DNS</code> 服务器 <code>.</code> 的 <code>IP</code> 地址（参见 [2][3]），选择一个根 <code>DNS</code> 服务器，例如 <code>198.41.0.4</code></p>
-</li>
-<li>
-<p>询问根 <code>DNS</code> 服务器有关 <code>com.</code> 的 <code>NS</code></p>
-<p>此步可以使用如下方法模拟：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
-
-...
-com.			172800	IN	NS	a.gtld-servers.net.
-...
-a.gtld-servers.net.	172800	IN	A	192.5.6.30
-...
-</code></pre></td></tr></table>
-</div>
-</div><p>可以看到，这里我们得到一个 <code>com.</code> 的权威 NS<code>a.gtld-servers.net.</code> 及其 IP 地址 <code>192.5.6.30</code></p>
-<p><strong>注</strong>：实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示 <code>DNS</code> 解析进程，我们假设这里没有得到。</p>
-</li>
-<li>
-<p>询问该权威 <code>NS</code> 有关 <code>github.com</code> 的 <code>NS</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
-
-...
-github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-... 
-</code></pre></td></tr></table>
-</div>
-</div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 <code>IP</code> 地址 <code>205.251.193.165</code></p>
-</li>
-<li>
-<p>询问该 <code>NS</code> 有关 <code>github.com</code> 的 A 记录</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
-
-github.com.		60	IN	A	140.82.112.4
-</code></pre></td></tr></table>
-</div>
-</div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 <code>github.com</code> 的 <code>IP</code> 地址。</p>
-</li>
-</ol>
-<p>此外，使用 <code>$ dig @8.8.8.8 +trace github.com</code> 可以一次性显示上述所有步骤。</p>
-<h2 id="更新-dns-记录">更新 DNS 记录</h2>
-<p>更新 <code>DNS</code> 记录时，有两种情况：</p>
-<ol>
-<li>
-<p>保持相同的 NS</p>
-</li>
-<li>
-<p>变更 NS</p>
-</li>
-</ol>
-<h3 id="首先谈谈生存时间ttlstime-to-live">首先谈谈生存时间（TTLs，time to live）</h3>
-<p>上面已经说到，<code>DNS</code> 服务器一般存有缓存，而控制缓存是否过期的参数就是 <code>TTL</code>。</p>
-<p>我们假设得到一个查询结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
-
-github.com.		60	IN	A	140.82.112.4
-</code></pre></td></tr></table>
-</div>
-</div><p>这里的 60（秒）即表示 <code>TTL</code>，这是一个很短的 <code>TTL</code>。理论上，如果每个用户都遵循 <code>DNS</code> 标准，那么 <code>github.com</code> 在更改了 <code>IP</code> 地址后，每个用户都应该在 60 秒内得到这个新的地址。但实际上呢？</p>
-<h3 id="更新同一-ns-上的-dns-记录">更新同一 NS 上的 DNS 记录</h3>
-<p>假设我们已经在域名商处更新了新的 <code>DNS</code> 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
-
-test.jvNS.ca.		299	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><p>如果此前没有设置过 <code>DNS</code> 记录，因为没有缓存，所以立刻生效了。这里可以看到 <code>TTL</code> 是 299。那么，修改 <code>IP</code> 为 <code>5.6.7.8</code> 呢。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
-
-test.jvNS.ca.		144	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><p>可以看到，<code>IP</code> 并没有发生改变且 <code>TTL</code> 表示缓存还将存在 144 秒。而且，多次查询，你可能会发现，有时候可以得到新的 <code>IP</code>，但有的时候又是旧的 <code>IP</code>。</p>
-<p>这里是因为像 <code>8.8.8.8</code> 这样的 <code>DNS</code> 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
-<p>等待 5 分钟后，所有的缓存都更新了，再次查询，将会始终返回新 <code>IP</code>。</p>
-<h3 id="ttl-并非总是可靠">TTL 并非总是可靠</h3>
-<p>与大多数互联网协议一样，并不是所有的终端都服从 <code>DNS</code> 规范（包括 <code>8.8.8.8</code> 这样的大型 <code>DNS</code> 也不尊重 <code>TTL</code>）。一些 ISP 的 <code>DNS</code> 服务器会将缓存记录的时间比 <code>TTL</code> 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 <code>/etc/hosts</code> 中硬编码旧的 <code>IP</code> 地址。</p>
-<p>此外，应用程序（例如浏览器）都内置了自己的 <code>DNS</code> 缓存，或者本地网关也存在缓存。</p>
-<p>这也是为什么，即便正确地设置了对应的 <code>TTL</code>（大部分 <code>DNS</code> 将会在短时间内更新缓存），有些 <code>DNS</code> 服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的 <code>IP</code> 地址。</p>
-<h3 id="连同-ns-一起更新">连同 NS 一起更新</h3>
-<p>假设此前的 NS 为 <code>dNS1.p01.NSone.net</code>，现在我们把他修改为谷歌的 NS<code>NS-cloud-b1.googledomaiNS.com</code>。</p>
-<p>通常，当你修改完成后，你的域名商会提示你：“修改将在 48 小时内生效”。</p>
-<p>然后设置一个新的 A 记录指向 <code>1.2.3.4</code></p>
-<p>dig 看看：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
-
-examplecat.com.		17	IN	A	104.248.50.87
-</code></pre></td></tr></table>
-</div>
-</div><p><code>8.8.8.8</code> 没有变化，询问别的 DNS：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
-
-examplecat.com.		299	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><p><code>1.1.1.1</code> 更新了。</p>
-<p>造成这样不同结果的原因，可能是此前并没有人询问过 <code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的 <code>IP</code>。</p>
-<p>而如果我们向新的 <code>NS</code> 查询，肯定会得到新的 <code>IP</code> 记录：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
-
-examplecat.com.		300	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="ns-的-ttl-要长很多">NS 的 TTL 要长很多</h3>
-<p>域名商提示：“修改将在 48 小时内生效” 的原因是 <code>NS</code> 记录（告诉<code>递归 NS</code> 应该向哪个 <code>NS</code> 查询）的 TTL 要长的多。</p>
-<p>回到上一节中，我们的查询结果显示：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
-
-...
-github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-...
-</code></pre></td></tr></table>
-</div>
-</div><p>172800 秒是 48 小时！这就是为什么更改 <code>NS</code> 后需要更长的时间来生效。</p>
-<h3 id="ns-如何得到更新">NS 如何得到更新？</h3>
-<p>更新 <code>NS</code> 后，我们向根服务器查询的话就会到得到这样的结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
-
-examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
-</code></pre></td></tr></table>
-</div>
-</div><p>你可能会疑惑，新的 <code>NS</code> 记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的 <code>NS</code> 后，他们会负责将这个给更改告知根服务器。</p>
-<p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（<code>TLD</code>）（非<code>.com</code>）可能速度稍微慢一些。</p>
-<h2 id="总结">总结</h2>
-<p>本文展示了 <code>DNS</code> 的解析过程以及我们更新 <code>DNS</code> 记录时发送了什么，希望有助于你理解这一过程。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreffer">What happens when you update your DNS?</a></p>
-</li>
-<li>
-<p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">unbound’s source code</a></p>
-</li>
-<li>
-<p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">iana root files</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

@@ -1,4 +1,4 @@
-# NAT 系列 1：认识 NAT
+# NAT 1：认识 NAT
 
 
 > 一文概览 NAT

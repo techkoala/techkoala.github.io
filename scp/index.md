@@ -1,4 +1,4 @@
-# SCP 概览
+# 文件传输 1：SCP
 
 
 > SCP 就是 SSH 协议的文件传输功能吗？
@@ -39,7 +39,7 @@ $ scp local_file remote_host:/home
 
 ### 传输协议
 
-现在，安全的 I/O 通道建立起来，并且已经有效地切换到 `RCP` 协议上。该协议是 ** 顺序 **（一次一个操作）和 ** 同步 **（每个命令执行完后才执行下一个命令）执行的。
+现在，安全的 I/O 通道建立起来，并且已经有效地切换到 `RCP` 协议上。该协议是 **顺序**（一次一个操作）和 **同步**（每个命令执行完后才执行下一个命令）执行的。
 
 命令格式大致为（不带括号或空格）：`[command type][arguments]\n [optional data]`
 
@@ -157,7 +157,8 @@ Executed in  215.68 millis	fish       	external
 
 ## 另见
 
-后面的文章将会进一步讲解 SFTP 以及 Rsync。
+- [rsync](https://www.techkoala.top/rsync/)
+- [SFTP](https://www.techkoala.top/sftp/)
 
 ## 参考
 

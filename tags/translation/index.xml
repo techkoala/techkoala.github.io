@@ -1374,7 +1374,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 </ul>]]></description>
 </item><item>
-    <title>SCP 概览</title>
+    <title>文件传输 1：SCP</title>
     <link>https://www.techkoala.top/scp/</link>
     <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
     <author>作者</author>
@@ -1408,7 +1408,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     </figure>
 <p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
 <h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 ** 顺序 **（一次一个操作）和 ** 同步 **（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -1560,7 +1560,10 @@ Executed in  215.68 millis	fish       	external
 <p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
-<p>后面的文章将会进一步讲解 SFTP 以及 Rsync。</p>
+<ul>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+</ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
@@ -1577,7 +1580,7 @@ Executed in  215.68 millis	fish       	external
 </li>
 </ul>]]></description>
 </item><item>
-    <title>NAT 系列 2：问题及解决方法</title>
+    <title>NAT 2：问题及解决方法</title>
     <link>https://www.techkoala.top/nat_issues_solutions/</link>
     <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
     <author>作者</author>
@@ -1621,7 +1624,7 @@ Executed in  215.68 millis	fish       	external
 </li>
 </ul>]]></description>
 </item><item>
-    <title>NAT 系列 1：认识 NAT</title>
+    <title>NAT 1：认识 NAT</title>
     <link>https://www.techkoala.top/nat/</link>
     <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
     <author>作者</author>
