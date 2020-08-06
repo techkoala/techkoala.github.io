@@ -3,15 +3,15 @@
 
 ## 我
 
-- 会 `Python` 的`通信狗`
+- 对`网络`知识有浓厚的兴趣
 
-- 对`网络`知识有着浓厚的兴趣
+- 会 `Python` 的`通信狗`
 
 - 喜欢`瞎折腾`一些有用没用的技术
 
 - 不更新会死星人
 
-- 长期使用 `Linux（Arch & Ubuntu)` & `Windows`工作学习
+- 长期使用 `Linux(Arch & Ubuntu)` & `Windows`工作学习
 
 ## 这个网站
 
@@ -19,7 +19,7 @@
 
 网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版，网页利用 [Hugo](https://gohugo.io/) 渲染生成，页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点。网站托管在 [Github Pages](https://pages.github.com/) 上，套用了 [Cloudflare](https://www.cloudflare.com/) & [jsDelivr](https://www.jsdelivr.com/) 的 `CDN` 。
 
-在此，**感谢**各位开发者 & 公司。
+在此，**感谢** 各位开发者 & 公司。
 
 ## 说明
 
