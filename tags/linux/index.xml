@@ -11,7 +11,7 @@
     <author>作者</author>
     <guid>https://www.techkoala.top/sftp/</guid>
     <description><![CDATA[<blockquote>
-<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
+<p>SCP 的继承者</p>
 </blockquote>
 <h2 id="什么是-sftp">什么是 SFTP</h2>
 <p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
@@ -70,7 +70,7 @@
     <author>作者</author>
     <guid>https://www.techkoala.top/rsync/</guid>
     <description><![CDATA[<blockquote>
-<p>SCP 的绝佳替代者</p>
+<p>SCP 的另一个绝佳替选</p>
 </blockquote>
 <h2 id="什么是-rsync">什么是 rsync</h2>
 <p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
