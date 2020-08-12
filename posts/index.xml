@@ -4,7 +4,100 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Aug 2020 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>利用 Netlify 搭建 Koodo Reader</title>
+    <link>https://www.techkoala.top/reader/</link>
+    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/reader/</guid>
+    <description><![CDATA[<blockquote>
+<p>搭建自己的在线 EPUB 阅读器</p>
+</blockquote>
+<h2 id="什么是-netlify">什么是 Netlify</h2>
+<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
+<blockquote>
+<p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
+</blockquote>
+<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供CI服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
+<h2 id="koodo-reader">Koodo Reader</h2>
+<p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
+        
+    </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" data-sub-html="<h2>Koodo Reader 阅读界面</h2>">
+        
+    </a><figcaption class="image-caption">Koodo Reader 阅读界面</figcaption>
+    </figure>
+<p>提供以下功能：</p>
+<blockquote>
+<p>📝 强大笔记和翻译功能，学习事半功倍</p>
+<p>🚩 使用书架来为你的图书分类</p>
+<p>🌎 支持 <strong>Windows</strong> ， <strong>MacOS</strong> 和 <strong>网页版</strong></p>
+<p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
+<p>💻 您所有的数据都支持导入导出</p>
+</blockquote>
+<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
+<h2 id="搭建">搭建</h2>
+<ol>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用Github登录，当然，你也可以选择其他方式。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
+        
+    </a><figcaption class="image-caption">Netlify 注册</figcaption>
+    </figure>
+<ol start="2">
+<li>注册登陆后，进入首页，点击右上角的 New Site from Git ，创建一个新的站点。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-sub-html="<h2>创建新站点</h2>">
+        
+    </a><figcaption class="image-caption">创建新站点</figcaption>
+    </figure>
+<ol start="3">
+<li>接下来，点击下方的 Github 进行授权，这里会弹出一个新的窗口，让你授权 Netlify 访问你的 Github 账户，完成授权后进去下一步。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-sub-html="<h2>使用Github 创建新站点</h2>">
+        
+    </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
+    </figure>
+<ol start="4">
+<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
+        
+    </a><figcaption class="image-caption">选择相应的 Repo</figcaption>
+    </figure>
+<ol start="5">
+<li>接着，配置 Build 选项。在该项目的部署中，需要修改 <code>Build name &gt; yarn build</code>，<code>Publish directory &gt; build/ </code>，其他保持默认即可。（如果配置其他项目，这里的参数可能不同，请参考具体项目的指导说明）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="6">
+<li>到这里，已经完成了整个部署工作，等待 Netlify 构建完成即刻。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="7">
+<li>Netlify 会给你默认分配一个二级域名用于访问，当然也支持自定义域名，这里我绑定了自己域名。除了在此处绑定外，还需要配置 DNS 等等，这个请自行完成。（由于搭建博客时，已经完成了相应设置，因此，我直接在 Cloudfalre 新建了一个 CNAME 指向 Netlify 给我的域名就好了）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="8">
+<li>大功告成，<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">来这里</a>看看书吧。</li>
+</ol>
+<h2 id="后续">后续</h2>
+<p>如果需要对网站进行更新，只需要关注你的 Github Repo 即可。每次 commit 之后，Netlify 都会自动拉取更新并生成。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
+</ul>]]></description>
+</item><item>
     <title>LTE 系列：上行链路帧结构</title>
     <link>https://www.techkoala.top/lte_uplink_frame_structure/</link>
     <pubDate>Mon, 10 Aug 2020 19:46:00 &#43;0800</pubDate>
@@ -2102,212 +2195,6 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 <li>
 <p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreffer">Unicode</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>文件传输 1：SCP</title>
-    <link>https://www.techkoala.top/scp/</link>
-    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/scp/</guid>
-    <description><![CDATA[<blockquote>
-<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
-</blockquote>
-<h2 id="什么是-scp">什么是 SCP</h2>
-<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
-<p>使用起来特别方便：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
-</code></pre></td></tr></table>
-</div>
-</div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
-<p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
-<p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
-<p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
-<h2 id="scp-工作原理">SCP 工作原理</h2>
-<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
-<h3 id="建立连接">建立连接</h3>
-<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
-<p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
-        
-    </a><figcaption class="image-caption">建立连接</figcaption>
-    </figure>
-<p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
-<h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
-<p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
-<ul>
-<li>
-<p>[command type] 通常是一个 ASCII 字符：</p>
-<ul>
-<li>&lsquo;C&rsquo;- 写入文件</li>
-<li>&lsquo;D&rsquo;- 输入目录</li>
-<li>&lsquo;E&rsquo;- 退出最后一个目录</li>
-<li>&lsquo;T&rsquo;- 设置下一个文件或目录的创建 / 更新时间戳</li>
-</ul>
-</li>
-<li>
-<p>[arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。&ldquo;E&rdquo; 命令没有参数。</p>
-</li>
-<li>
-<p>[optional data] 在上一个命令为 &ldquo;C&rdquo;（创建文件）时发送。数据的大小指定为 &ldquo;C&rdquo; 的参数。</p>
-</li>
-</ul>
-<p>此外，还有控制字节，这些字节是在没有新行的情况下自己发送的：</p>
-<ul>
-<li>
-<p>&lsquo;0x00&rsquo;-&ldquo;OK&rdquo;，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。</p>
-</li>
-<li>
-<p>&lsquo;0x00&rsquo;-&ldquo;警告&rdquo;，后面是要向用户显示的行（由新行终止）。</p>
-</li>
-<li>
-<p>&lsquo;0x00&rsquo;-&ldquo;错误&rdquo; 后跟随可选消息（和警告相同），但连接随后终止。</p>
-</li>
-</ul>
-<p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
-        
-    </a><figcaption class="image-caption">传输过程</figcaption>
-    </figure>
-<h2 id="使用-scp">使用 SCP</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
-</code></pre></td></tr></table>
-</div>
-</div><p>其中选项如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
--2：使用ssh协议版本2；
--4：使用ipv4；
--6：使用ipv6；
--B：以批处理模式运行；
--C：使用压缩；
--F：指定ssh配置文件；
--l：指定宽带限制；
--o：指定使用的ssh选项；
--P：指定远程主机的端口号；
--p：保留文件的最后修改时间，最后访问时间和权限模式；
--q：不显示复制进度；
--r：以递归方式复制。
-</code></pre></td></tr></table>
-</div>
-</div><p>参数分别为：</p>
-<ul>
-<li>源文件：指定要复制的源文件。</li>
-<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
-</ul>
-<h2 id="scp-的问题">SCP 的问题</h2>
-<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
-<h3 id="性能">性能</h3>
-<p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
-<p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
-<span class="m">10000</span>
-
-<span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
-
-________________________________________________________
-Executed in  882.99 millis	fish       	external
-   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
-   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
-
-<span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
-tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
-
-________________________________________________________
-Executed in  215.68 millis	fish       	external
-   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
-   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
-</code></pre></td></tr></table>
-</div>
-</div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
-<h3 id="安全">安全</h3>
-<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
-<p><code>OpenSSH</code> 的发行说明提到：</p>
-<blockquote>
-<p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
-</blockquote>
-<p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
-<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
-<h2 id="scp-的替代方案">SCP 的替代方案</h2>
-<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
-缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
-<p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
-<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
-<h2 id="结论">结论</h2>
-<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
-<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
-<h2 id="另见">另见</h2>
-<ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
-</ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
-</li>
-<li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
-</li>
-<li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
-</li>
-<li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

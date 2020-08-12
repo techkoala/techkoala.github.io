@@ -5,6 +5,10 @@
 
 - [DigitalOcean Nginx Tool](https://www.digitalocean.com/community/tools/nginx): Nginx Config 生成
 
+## Reading
+
+- [Epub在线阅读](https://reader.techkoala.top/)
+
 网站测速：
 
 - [BOCE](https://www.boce.com/)

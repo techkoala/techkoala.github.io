@@ -1,0 +1,101 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>EPUB - 标签 - TechKoala</title>
+        <link>https://www.techkoala.top/tags/epub/</link>
+        <description>EPUB - 标签 - TechKoala</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/epub/" rel="self" type="application/rss+xml" /><item>
+    <title>利用 Netlify 搭建 Koodo Reader</title>
+    <link>https://www.techkoala.top/reader/</link>
+    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/reader/</guid>
+    <description><![CDATA[<blockquote>
+<p>搭建自己的在线 EPUB 阅读器</p>
+</blockquote>
+<h2 id="什么是-netlify">什么是 Netlify</h2>
+<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
+<blockquote>
+<p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
+</blockquote>
+<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供CI服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
+<h2 id="koodo-reader">Koodo Reader</h2>
+<p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
+        
+    </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" data-sub-html="<h2>Koodo Reader 阅读界面</h2>">
+        
+    </a><figcaption class="image-caption">Koodo Reader 阅读界面</figcaption>
+    </figure>
+<p>提供以下功能：</p>
+<blockquote>
+<p>📝 强大笔记和翻译功能，学习事半功倍</p>
+<p>🚩 使用书架来为你的图书分类</p>
+<p>🌎 支持 <strong>Windows</strong> ， <strong>MacOS</strong> 和 <strong>网页版</strong></p>
+<p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
+<p>💻 您所有的数据都支持导入导出</p>
+</blockquote>
+<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
+<h2 id="搭建">搭建</h2>
+<ol>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用Github登录，当然，你也可以选择其他方式。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
+        
+    </a><figcaption class="image-caption">Netlify 注册</figcaption>
+    </figure>
+<ol start="2">
+<li>注册登陆后，进入首页，点击右上角的 New Site from Git ，创建一个新的站点。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-sub-html="<h2>创建新站点</h2>">
+        
+    </a><figcaption class="image-caption">创建新站点</figcaption>
+    </figure>
+<ol start="3">
+<li>接下来，点击下方的 Github 进行授权，这里会弹出一个新的窗口，让你授权 Netlify 访问你的 Github 账户，完成授权后进去下一步。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-sub-html="<h2>使用Github 创建新站点</h2>">
+        
+    </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
+    </figure>
+<ol start="4">
+<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
+        
+    </a><figcaption class="image-caption">选择相应的 Repo</figcaption>
+    </figure>
+<ol start="5">
+<li>接着，配置 Build 选项。在该项目的部署中，需要修改 <code>Build name &gt; yarn build</code>，<code>Publish directory &gt; build/ </code>，其他保持默认即可。（如果配置其他项目，这里的参数可能不同，请参考具体项目的指导说明）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="6">
+<li>到这里，已经完成了整个部署工作，等待 Netlify 构建完成即刻。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="7">
+<li>Netlify 会给你默认分配一个二级域名用于访问，当然也支持自定义域名，这里我绑定了自己域名。除了在此处绑定外，还需要配置 DNS 等等，这个请自行完成。（由于搭建博客时，已经完成了相应设置，因此，我直接在 Cloudfalre 新建了一个 CNAME 指向 Netlify 给我的域名就好了）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="8">
+<li>大功告成，<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">来这里</a>看看书吧。</li>
+</ol>
+<h2 id="后续">后续</h2>
+<p>如果需要对网站进行更新，只需要关注你的 Github Repo 即可。每次 commit 之后，Netlify 都会自动拉取更新并生成。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
+</ul>]]></description>
+</item></channel>
+</rss>
