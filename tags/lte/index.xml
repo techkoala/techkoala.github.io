@@ -4,10 +4,10 @@
         <link>https://www.techkoala.top/tags/lte/</link>
         <description>LTE - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Aug 2020 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/lte/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 10 Aug 2019 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/lte/" rel="self" type="application/rss+xml" /><item>
     <title>LTE 系列：上行链路帧结构</title>
     <link>https://www.techkoala.top/lte_uplink_frame_structure/</link>
-    <pubDate>Mon, 10 Aug 2020 19:46:00 &#43;0800</pubDate>
+    <pubDate>Sat, 10 Aug 2019 19:46:00 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/lte_uplink_frame_structure/</guid>
     <description><![CDATA[<blockquote>
@@ -76,7 +76,7 @@
 </item><item>
     <title>LTE 系列：帧中的物理信道和信号</title>
     <link>https://www.techkoala.top/lte_physical_channels_and_signals/</link>
-    <pubDate>Thu, 30 Jul 2020 22:49:22 &#43;0800</pubDate>
+    <pubDate>Tue, 30 Jul 2019 22:49:22 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/lte_physical_channels_and_signals/</guid>
     <description><![CDATA[<blockquote>
@@ -368,7 +368,7 @@
 </item><item>
     <title>LTE 系列：下行链路帧结构</title>
     <link>https://www.techkoala.top/lte_downlink_frame_structure/</link>
-    <pubDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</pubDate>
+    <pubDate>Mon, 29 Jul 2019 17:53:52 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/lte_downlink_frame_structure/</guid>
     <description><![CDATA[<blockquote>

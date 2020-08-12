@@ -94,75 +94,6 @@
 <li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
 </ul>]]></description>
 </item><item>
-    <title>LTE 系列：上行链路帧结构</title>
-    <link>https://www.techkoala.top/lte_uplink_frame_structure/</link>
-    <pubDate>Mon, 10 Aug 2020 19:46:00 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_uplink_frame_structure/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 上行链路帧结构详细讲解</p>
-</blockquote>
-<p>LTE 使用 SC (单载波)-FDMA 作为上行链路信号。</p>
-<h2 id="时隙结构">时隙结构</h2>
-<p>从下面的时隙结构可以看出，LTE上下行链路的时隙结构是相似的：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" data-sub-html="<h2>上行时隙结构</h2>">
-        
-    </a><figcaption class="image-caption">上行时隙结构</figcaption>
-    </figure>
-<p>与下行链路相同，上行链路中的帧时间和时隙时间与下行链路中相同。并且资源块结构和下行链路上也相同。如上所述，在一个时隙中的 7 个符号在上行链路和下行链路上也是相同的。</p>
-<p>你可能会注意到的一点区别是每个物理信道的位置。在下行链路情况下，信道通常占用整个带宽，但是上行链路时隙中的信道更局限。例如，PUCCH 仅位于整个带宽中的的最低端和最高端。</p>
-<h3 id="pucch-rs">PUCCH RS</h3>
-<p>携带解调 PUCCH 所需的参考信号。这意味着如果此部分配置不正确或 eNodeB 检测不到此部件，则 eNodeB 无法解码 PUCCH。</p>
-<h3 id="pucch">PUCCH</h3>
-<p>此信道可以承载大量信息(UCI)，但根据配置的不同，它只能承载以下信息中的一部分：</p>
-<ul>
-<li>ACK/NACK for the recieved PDSCH data</li>
-<li>CQI</li>
-<li>RI</li>
-<li>PMI</li>
-</ul>
-<p>正如你在时隙结构中看到的，PUCCH 以子帧内两个时隙之间交替的方式位于上行链路频域的两端，这意味着如果 PUCCH 是时隙 0 (第一个时隙) 中的频域的最低部分，并且它将位于时隙 1 (第二个时隙) 中的频域的最高部分。分配给 PUCCH 的资源元素的确切数量由网络确定，并且配置通过 SIB2 广播到 UE。</p>
-<p>详细的 PUCHH 结构参考：</p>
-<ul>
-<li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreffer">PUCCH Format</a></p>
-</li>
-<li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 1,1a,1b Location</a></p>
-</li>
-<li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 2,2a,2b Location</a></p>
-</li>
-</ul>
-<h3 id="pusch-rs">PUSCH RS</h3>
-<p>携带解调 PUSCH 所需的参考信号。</p>
-<h3 id="pusch">PUSCH</h3>
-<p>承载 UE 尝试发送的上行链路数据。并且除了上行链路数据之外，还可以携带 UE 接收的 PDSCH 的 ACK/NACK。</p>
-<h3 id="srs">SRS</h3>
-<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreffer">SRS in Quick Reference</a></p>
-<h2 id="上行资源网格">上行资源网格</h2>
-<p>具体来说，上行资源还有一种网格格式，如下所示:</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-sub-html="<h2>上行资源网格</h2>">
-        
-    </a><figcaption class="image-caption">上行资源网格</figcaption>
-    </figure>
-<p>最小的单元是 “资源元素 (RE)”，最小的资源分配单元是 RB (资源块)，它沿时域跨越 7 RE，沿频域跨越 12 RE。 这意味着一个 RB 有 84 个单元 (7x12)。</p>
-<h2 id="通信中的信道">通信中的信道</h2>
-<p>下图显示了上行/下行数据传输的总体顺序。你可以将数据传输序列图与 DL/UL 帧结构中每个通道的特定位置相关联。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" data-sub-html="<h2>LTE 上下行传输顺序图</h2>">
-        
-    </a><figcaption class="image-caption">LTE 上下行传输顺序图</figcaption>
-    </figure>
-<h2 id="帧结构总览">帧结构总览</h2>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" data-sub-html="<h2>上行帧结构概览</h2>">
-        
-    </a><figcaption class="image-caption">上行帧结构概览</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreffer">UL FrameStructure</a></li>
-</ul>]]></description>
-</item><item>
     <title>网络测试工具：iPerf</title>
     <link>https://www.techkoala.top/iperf/</link>
     <pubDate>Fri, 07 Aug 2020 17:45:55 &#43;0800</pubDate>
@@ -821,617 +752,6 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 </li>
 <li>
 <p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreffer">Git 基础 - 查看提交历史</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：帧中的物理信道和信号</title>
-    <link>https://www.techkoala.top/lte_physical_channels_and_signals/</link>
-    <pubDate>Thu, 30 Jul 2020 22:49:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_physical_channels_and_signals/</guid>
-    <description><![CDATA[<blockquote>
-<p>概述 LTE 信息帧中的各类物理通道和信号</p>
-</blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
-<h2 id="pbch">PBCH</h2>
-<p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
-<ul>
-<li>
-<p>它只携带 MIB (master information block，主系统信息块)</p>
-</li>
-<li>
-<p>它使用的是 QPSK</p>
-</li>
-<li>
-<p>映射到 6 个资源块（72 个子载波），以 0 号子帧中的 DC 子载波为中心</p>
-</li>
-<li>
-<p>映射到不为传输参考信号、PDCCH 或 PCHICH 而保留的资源元素</p>
-</li>
-<li>
-<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
-</li>
-</ul>
-<h2 id="pcfich">PCFICH</h2>
-<p><strong>Physical Control Format Indicator Channel，物理控制格式指示通道</strong></p>
-<ul>
-<li>
-<p>它映射到每个下行链路子帧中的第一个 OFDM 符号</p>
-</li>
-<li>
-<p>它包含了携带控制信道（PDCCH 和 PHICH）的 OFDM 符号数量的信息。UE 对该信道进行解码，以找出该帧中为控制信道（PDCCH 和 PHICH）分配了多少个 OFDM 符号</p>
-</li>
-<li>
-<p>它是子帧的第一个 OFDM 符号的 16 个数据子载波</p>
-</li>
-<li>
-<p>PCFICH 数据由 4 个 REG 承载，并且这 4 个 REG 均匀分布在整个频带上，与带宽无关</p>
-</li>
-<li>
-<p>PCFICH 的确切位置由小区 ID 和带宽确定</p>
-</li>
-<li>
-<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreffer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PCFICH</a> 页面</p>
-</li>
-</ul>
-<h2 id="pdcch">PDCCH</h2>
-<p><strong>Physical Downlink Control Channel，物理下行控制信道</strong></p>
-<ul>
-<li>
-<p>映射到下行链路每个子帧中前 L 个 OFDM 符号</p>
-</li>
-<li>
-<p>PDCCH 的符号数（L）可以是 1,2 或 3</p>
-</li>
-<li>
-<p>PDCCH 的符号数由 PCFICH 指定</p>
-</li>
-<li>
-<p>PDCCH 承载 DCI，而 DCI 承载传输格式，资源分配，与 DL-SCH，UL-SCH 和 PCH 相关的 H-ARQ 信息以及其他取决于 DCI 格式的信息</p>
-</li>
-<li>
-<p>PDCCH 还携带用于 UL 调度分配的 DCI 0（例如，UL 授权）</p>
-</li>
-<li>
-<p>可以在单个子帧中分配多个 PDCCH，并且 UE 对所有 PDCCH 进行盲解码</p>
-</li>
-<li>
-<p>调制方案是 QPSK</p>
-</li>
-<li>
-<p>PDCCH 类似于 HSDPA 的 HS-SCCH、R99 的 PDCCH 和 HSUPA 的 E-AGCH/E-RGCH</p>
-</li>
-<li>
-<p>即使 PDCCH 具有很多功能，但并非所有功能都同时使用，因此 PDCCH 配置应灵活设置</p>
-</li>
-<li>
-<p>如果您对该通道中的详细信息映射感兴趣，请参阅 36.211 中的 6.8.1。简要说明如下：</p>
-</li>
-</ul>
-<blockquote>
-<p>物理下行链路控制信道承载调度分配和其他控制信息。物理控制信道是在一个或几个连续的控制信道元素（CCE）的聚合上发送的，其中控制信道元素对应于 9 个资源元素组。未分配给 PCFICH 或 PHICH 的资源元素组的数量为 REG N。系统中可用的 CCE 从 0 和 N_CCE-1 编号，其中 N_CCE = floor（N_REG/9）。</p>
-</blockquote>
-<ul>
-<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDCCH</a> 页面</li>
-</ul>
-<h2 id="phich">PHICH</h2>
-<p><strong>Physical Hybrid ARQ Indicator Channel，物理 HARQ 指示信道</strong></p>
-<ul>
-<li>
-<p>对收到的 PUSCH 进行 H-ARQ 反馈</p>
-</li>
-<li>
-<p>UE 在 UL 中传输数据后，等待 PHICH 进行 ACK</p>
-</li>
-<li>
-<p>类似于 HSPA 中的 E-HICH</p>
-</li>
-<li>
-<p>某些情况下，几个 PHICH 使用相同的资源元素构成 PHICH 组</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreffer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PHICH </a> 页面</p>
-</li>
-</ul>
-<h2 id="pdsch">PDSCH</h2>
-<p><strong>Physical Downlink Shared Channel，物理下行共享信道</strong></p>
-<ul>
-<li>
-<p>携带用户特定的数据（DL 有效负载）</p>
-</li>
-<li>
-<p>携带随机访问响应消息</p>
-</li>
-<li>
-<p>它使用带有 QPSK，16 QAM，64 QAM，256 QAM 调制方案的 AMC（此调制方案由 DCI 承载的 MCS 确定）</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDSCH </a> 页面</p>
-</li>
-</ul>
-<h2 id="prach">PRACH</h2>
-<p><strong>Physical Random Access Channel，物理随机接入信道</strong></p>
-<ul>
-<li>
-<p>携带随机访问前导码</p>
-</li>
-<li>
-<p>它在频域中占用 72 个子载波（6 RB）的带宽</p>
-</li>
-<li>
-<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列</a> 生成</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreffer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PRACH</a> 页面</p>
-</li>
-</ul>
-<h2 id="p-ss">P-SS</h2>
-<p><strong>Primary Synchronization Signal，主同步信号</strong></p>
-<ul>
-<li>
-<p>映射到 72 个活动子载波（6 个资源块），以时隙 0（子帧 0）和时隙 10（子帧 5）中的 DC 子载波为中心。</p>
-</li>
-<li>
-<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列值</a> 组成</p>
-</li>
-<li>
-<p>用于下行帧同步</p>
-</li>
-<li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreffer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PSS</a> 页面</p>
-</li>
-</ul>
-<blockquote>
-<p>如何从基带捕获的 IQ 数据序列中找到 PSS 的确切位置？是定时同步中最重要的部分之一；也是理解 LTE 协议中非常棘手的部分之一，需要花费很长时间进行研究。</p>
-</blockquote>
-<h2 id="s-ss">S-SS</h2>
-<p><strong>Secondary Synchronization Signal，副同步信号</strong></p>
-<p>SSS 是用于无线电帧同步的特定物理层信号，它具有以下列出的特征：</p>
-<ul>
-<li>
-<p>映射到 72 个活动子载波（6 个资源块），以 FDD 中的时隙 0（子帧 0）和时隙 10（子帧 5）的 DC 子载波为中心</p>
-</li>
-<li>
-<p>子帧 0 中的 SSS 序列与子帧 5 中的 SSS 序列互不相同</p>
-</li>
-<li>
-<p>由 62 个加扰序列（基于 m 序列）组成</p>
-</li>
-<li>
-<p>奇偶索引的资源元素的值由不同方程生成</p>
-</li>
-<li>
-<p>用于下行帧同步</p>
-</li>
-<li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreffer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : SSS</a></p>
-</li>
-</ul>
-<h2 id="rs">RS</h2>
-<p><strong>Reference Signal，参考信号</strong></p>
-<p>大多数信道（例如，PDSCH，PDCCH，PBCH 等）都用于承载特殊信息（比特序列），它们与更高层的信道相连，但是参考信号是仅存在于 PHY 层的特殊信号，不用于传递任何特定信息。参考信号的目的是为下行链路功率提供参考点。</p>
-<p>当 UE 尝试计算 DL 功率（即，来自 eNode-B 的信号的功率）时，它将测量参考信号的功率并将其作为下行链路小区功率。</p>
-<p>这些参考信号由每个时隙中的多个特定资源元素承载，并且资源元素的具体位置由天线配置确定。</p>
-<h3 id="rs---cell-specific">RS - Cell Specific</h3>
-<p>在下图中，红色/蓝色/绿色/黄色是承载参考信号的部分，灰色标记的资源元素是为参考信号保留的部分，但未承载该特定天线的参考信号。（插图基于 36.211 的图 6.10.1.2-1： 下行链路参考信号的映射（正常循环前缀））</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" data-sub-html="<h2>小区特定参考信号</h2>">
-        
-    </a><figcaption class="image-caption">小区特定参考信号</figcaption>
-    </figure>
-<p>以下是 4 天线情况下物理信道配置和 RE（资源元素）映射的示例。测量结果来自 LTE 信号分析仪，它测量从 LTE 网络模拟器传出的 LTE 信号。它仅显示 20 Mhz 系统带宽中的一个 RB（RB0）（总共 100 个 RB），并且分别在 LTE 网络发送 MIB/SIB 和 UE 未连接时在天线端口 0、1、2、3 处捕获。你会注意到，每个天线的参考信号位置都不同。 由于此参考信号位置的差异，REG 分组可能由 PCFICH 的不同位置中略有不同。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" data-sub-html="<h2>各天线小区特定参考信号</h2>">
-        
-    </a><figcaption class="image-caption">各天线小区特定参考信号</figcaption>
-    </figure>
-<p>有两种不同类型的参考信号：小区特定参考信号和 UE 特定参考信号</p>
-<p>小区特定参考信号（CRS）：该参考信号在每个子帧处被发送，并且跨越整个工作带宽，通过天线端口 0、1、2、3 发送。</p>
-<p>UE 特定参考信号：此参考信号在仅分配给特定 UE 的资源块中传输，并通过天线端口 5 传输。</p>
-<p>特定于小区的参考信号的资源元素是否固定？</p>
-<p>否，位置会根据物理小区 ID 进行更改，如下所述：</p>
-<ul>
-<li>
-<p>参考信号的时域索引（l）= 固定（l = [0,4]）</p>
-</li>
-<li>
-<p>参考信号的频域索引 k 根据 36.211 6.10.1.2 映射到资源元素中指定的物理小区 ID 而变化。</p>
-<p>主要规则是：$k = 6m + (v + v_{shift})mod 6$，其中v_shift=物理小区ID mod6。详细信息参阅 36.211 6.10.1.2</p>
-</li>
-</ul>
-<p>下行参考信号携带什么样的值？</p>
-<p>该值是 36.211 6.10.1.1 序列生成中定义算法生成的伪随机序列。该序列的确定值之一是物理小区 ID，这意味着物理小区 ID 也影响参考信号的值。</p>
-<p>CRS 是否以任何子帧类型（类型 1、2、3）传输？</p>
-<p>对于帧结构类型 1，在所有下行链路子帧中发送 CRS。
-对于帧结构类型 2，在所有下行链路子帧和 DwPTS 中发送 CRS
-对于帧结构类型 3，CRS 在非空子帧中传输</p>
-<h3 id="rs---mbsfn">RS - MBSFN</h3>
-<p>下图基于 36.211 的图 6.10.2.2-1：MBSFN 参考信号的映射（扩展循环前缀，Δf= 15 kHz）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" data-sub-html="<h2>Reference Signal - MBSFN</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - MBSFN</figcaption>
-    </figure>
-<h3 id="rs---ue-specific">RS - UE Specific</h3>
-<p>下图基于 36.211 的图 6.10.3.2-1：特定于 UE 的参考信号，天线端口 5（正常循环前缀）的映射</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" data-sub-html="<h2>Reference Signal - UE Specific - Antenna Port 5</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - UE Specific - Antenna Port 5</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" data-sub-html="<h2>Reference Signal - UE Specific - Antenna Port 5</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - UE Specific - Antenna Port 5</figcaption>
-    </figure>
-<h3 id="rs---positioning">RS - Positioning</h3>
-<p>下图基于 36.211 的图 6.10.4.2-1：定位参考信号的映射（正常循环前缀）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" data-sub-html="<h2>Reference Signal - Positioning - Antenna Port 6</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - Positioning - Antenna Port 6</figcaption>
-    </figure>
-<h3 id="rs---csi">RS - CSI</h3>
-<p>下图基于 36.211 的图 6.10.5.2-1：CSI 参考信号的映射（CSI 配置 0，常规循环前缀）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" data-sub-html="<h2>Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22</figcaption>
-    </figure>
-<h2 id="全帧快照">全帧快照</h2>
-<p>下图展示了上述提及的所有物理信道在整个框架上的整体图像：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" data-sub-html="<h2>Full Frame</h2>">
-        
-    </a><figcaption class="image-caption">Full Frame</figcaption>
-    </figure>
-<h2 id="通信过程中的物理信道">通信过程中的物理信道</h2>
-<p>下图显示了上行/下行数据传输的总体顺序：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" data-sub-html="<h2>数据传输序列图</h2>">
-        
-    </a><figcaption class="image-caption">数据传输序列图</figcaption>
-    </figure>
-<h2 id="附加图">附加图</h2>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - Radio Frame</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Radio Frame</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - PBCH</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - PBCH</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - PSS/SSS</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - PSS/SSS</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - Each Symbol</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Physical Channels and Signals</a></p>
-</li>
-<li>
-<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE的信道</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：下行链路帧结构</title>
-    <link>https://www.techkoala.top/lte_downlink_frame_structure/</link>
-    <pubDate>Wed, 29 Jul 2020 17:53:52 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_downlink_frame_structure/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 下行链路帧结构详细讲解</p>
-</blockquote>
-<h2 id="下行帧结构">下行帧结构</h2>
-<h3 id="fdd类型-1">FDD——类型 1</h3>
-<p>36.211 中 <code>FDD</code> <code>LTE</code> 的帧结构概览图如下所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
-        
-    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
-    </figure>
-<p>上图仅显示了帧在时域上的结构，而没有显示频域上的结构。</p>
-<p>从图中可以看处：</p>
-<ul>
-<li>
-<p>一帧（一个无线帧，一个系统帧）的持续时间是 10 ms。</p>
-</li>
-<li>
-<p>一帧（10 毫秒）的样本数是 307200（307.200 K）。</p>
-</li>
-<li>
-<p>一帧中有 10 个子帧。</p>
-</li>
-<li>
-<p>一个子帧中有 2 个时隙。</p>
-</li>
-</ul>
-<p>那么一个时隙是时域上最小的结构吗？不，如果进一步放大此结构，则会得到下图：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-sub-html="<h2>时隙结构</h2>">
-        
-    </a><figcaption class="image-caption">时隙结构</figcaption>
-    </figure>
-<p>可以观察到一个时隙由 7 个<code>符号</code>组成。（一个符号是信号的某个时间跨度，在 I/Q 星座中的一个点。）</p>
-<p>在符号的开头，还有一个很小的跨度，称为<code>循环前缀</code>，其余部分是真实的符号数据。</p>
-<p><code>LTE</code> 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
-<p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
-        
-    </a><figcaption class="image-caption">符号结构</figcaption>
-    </figure>
-<p>此图中显示的长度不随采样率而变化，但是每个符号和 <code>CP</code> 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
-<p>关于上述子帧结构，需要注意的几件事是：</p>
-<ul>
-<li>
-<p>时隙中的第一个 OFDM 符号比剩下的 OFDM 符号长一些。</p>
-</li>
-<li>
-<p>上图中显示的样本数基于以下参数设置：采样率为 30.72M 个样本/秒和 2048 个 bin/IFFT（$N_{ifft}$）。实际采样率和 $N_{ifft}$ 可能会随系统带宽而变化，需要根据特定带宽来缩放。</p>
-</li>
-<li>
-<p>每种系统带宽的典型 $N_{ifft}$ 如下:</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>System BW</th>
-<th>Number of RBs</th>
-<th>$N_{ifft}$ (bins/IFFT)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.4</td>
-<td>6</td>
-<td>128</td>
-</tr>
-<tr>
-<td>3.0</td>
-<td>15</td>
-<td>256</td>
-</tr>
-<tr>
-<td>5.0</td>
-<td>25</td>
-<td>512</td>
-</tr>
-<tr>
-<td>10.0</td>
-<td>50</td>
-<td>1024</td>
-</tr>
-<tr>
-<td>15.0</td>
-<td>75</td>
-<td>2048</td>
-</tr>
-<tr>
-<td>20.0</td>
-<td>100</td>
-<td>2048</td>
-</tr>
-</tbody>
-</table>
-<p>下图是<code>LTE 资源网格</code>的总体子帧结构：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-sub-html="<h2>LTE 资源网格</h2>">
-        
-    </a><figcaption class="image-caption">LTE 资源网格</figcaption>
-    </figure>
-<p>以下显示所有 4 个天线信号叠加（重叠）的理想情况下的下行链路帧结构和 RE（Resource Element，资源元素）映射的示例。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-sub-html="<h2>4天线帧结构和 RE 映射示例</h2>">
-        
-    </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
-    </figure>
-<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 <code>LTE</code> 信号分析器测量来自 <code>LTE</code> 网络模拟器的 <code>LTE</code> 信号的测量结果。这是在 <code>LTE</code> 网络正在传输 MIB/SIB 且 <code>UE</code> 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
-<p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
-        
-    </a><figcaption class="image-caption">下行帧结构物理信道</figcaption>
-    </figure>
-<p>如上所述，我们可以在二维图中表示LTE信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。</p>
-<hr>
-<p>首先让我们看一下频域结构：</p>
-<ul>
-<li>
-<p>LTE（无论 OFDM/OFDMA）频带由多个小间隔信道组成，这些小信道称为<code>子载波</code>。</p>
-</li>
-<li>
-<p>无论 LTE 频带的系统带宽是多少，<code>子载波</code>间隔都相同。</p>
-</li>
-<li>
-<p>如果 LTE 信道的系统带宽发生变化，则信道数（子载波）会发生变化，但信道之间的间隔不会发生变化。</p>
-</li>
-</ul>
-<ol>
-<li>
-<p>子载波和下一个子载波之间的空间是多少？ 15 Khz</p>
-</li>
-<li>
-<p>20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200个子载波。</p>
-</li>
-<li>
-<p>10 Mhz LTE 频段的信道（子载波）数量是多少？ 600个子载波。</p>
-</li>
-<li>
-<p>5 Mhz LTE 频段的信道（子载波）数量是多少？ 300个子载波。</p>
-</li>
-</ol>
-<hr>
-<p>接着我们看一下横轴（即时域）的上的基本组成单位。时域上的最小单位是符号，长度为 66.7 us。无论带宽如何，符号长度都不会改变。</p>
-<ol>
-<li>
-<p>一个时隙中有多少个符号？ A&gt; 7 个符号。</p>
-</li>
-<li>
-<p>一个子帧中有多少个符号？ A&gt; 14 个符号。</p>
-</li>
-<li>
-<p>一个帧中有几个时隙？ A&gt; 20个时隙。</p>
-</li>
-</ol>
-<hr>
-<p>现在，让我们看一下由时域（横轴）和频域（竖轴）组成的单位。我们将此类型的单元称为二维单元。</p>
-<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 <code>LTE</code> 中协议侧和 <code>RF</code> 测量侧最重要的单元。</p>
-<ol>
-<li>
-<p>一个资源块中有多少个符号？  7个符号。</p>
-</li>
-<li>
-<p>一个资源块中有多少个子载波？  12个子载波。</p>
-</li>
-<li>
-<p>一个资源块中有多少资源元素？  84个资源元素。</p>
-</li>
-</ol>
-<p>那么</p>
-<ol start="4">
-<li>
-<p>20 Mhz频带中有多少资源块？  100个资源块。</p>
-</li>
-<li>
-<p>10 Mhz频带中有多少资源块？  50个资源块。</p>
-</li>
-<li>
-<p>5 Mhz频带中有多少资源块？  25个资源块。</p>
-</li>
-</ol>
-<h3 id="tdd类型-2">TDD——类型 2</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-sub-html="<h2>TDD 帧结构</h2>">
-        
-    </a><figcaption class="image-caption">TDD 帧结构</figcaption>
-    </figure>
-<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 <code>TDD</code> <code>UL/DL</code> 资源分配图。</p>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>颜色</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PDCCH</td>
-<td>橙色</td>
-</tr>
-<tr>
-<td>PBCH</td>
-<td>蓝色</td>
-</tr>
-<tr>
-<td>PSS</td>
-<td>紫色</td>
-</tr>
-<tr>
-<td>SSS</td>
-<td>浅蓝色</td>
-</tr>
-<tr>
-<td>PDSCH</td>
-<td>白色</td>
-</tr>
-<tr>
-<td>Reserved</td>
-<td>黑色</td>
-</tr>
-<tr>
-<td>Ref Signal</td>
-<td>红色</td>
-</tr>
-<tr>
-<td>PCFICH</td>
-<td>浅绿色</td>
-</tr>
-<tr>
-<td>PHICH</td>
-<td>黄色</td>
-</tr>
-<tr>
-<td>TDD Uplink</td>
-<td>绿色</td>
-</tr>
-<tr>
-<td>Guard Period</td>
-<td>灰色</td>
-</tr>
-</tbody>
-</table>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 1, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 1, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 2, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 2, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 3, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 3, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 4, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 4, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 5, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 5, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 6, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 6, Special Subframe Config 0</figcaption>
-    </figure>
-<hr>
-<p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧0和子帧6中的符号结构如何变化。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 1</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 1</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 2</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 2</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 3</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 3</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 4</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 4</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 5</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 5</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 6</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 6</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 7</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 7</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 8</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
-    </figure>
-<h3 id="laa类型-3">LAA——类型 3</h3>
-<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 <code>LTE-U</code> 一样，这也是一种在未经许可的频率范围内传输 <code>LTE</code> 信号的技术。 然而，与 <code>LTE-U</code> 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 <code>LTE</code> 信号类似于 <code>WLAN</code> 突发，并使 <code>LTE</code> 信号更好地与现有的 <code>WLAN</code> 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
-</li>
-<li>
-<p>[2] <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -2191,6 +1511,355 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 <li>
 <p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreffer">Unicode</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>文件传输 1：SCP</title>
+    <link>https://www.techkoala.top/scp/</link>
+    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/scp/</guid>
+    <description><![CDATA[<blockquote>
+<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
+</blockquote>
+<h2 id="什么是-scp">什么是 SCP</h2>
+<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
+<p>使用起来特别方便：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+</code></pre></td></tr></table>
+</div>
+</div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
+<p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
+<p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
+<p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
+<h2 id="scp-工作原理">SCP 工作原理</h2>
+<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
+<h3 id="建立连接">建立连接</h3>
+<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
+<p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
+        
+    </a><figcaption class="image-caption">建立连接</figcaption>
+    </figure>
+<p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
+<h3 id="传输协议">传输协议</h3>
+<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
+<ul>
+<li>
+<p>[command type] 通常是一个 ASCII 字符：</p>
+<ul>
+<li>&lsquo;C&rsquo;- 写入文件</li>
+<li>&lsquo;D&rsquo;- 输入目录</li>
+<li>&lsquo;E&rsquo;- 退出最后一个目录</li>
+<li>&lsquo;T&rsquo;- 设置下一个文件或目录的创建 / 更新时间戳</li>
+</ul>
+</li>
+<li>
+<p>[arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。&ldquo;E&rdquo; 命令没有参数。</p>
+</li>
+<li>
+<p>[optional data] 在上一个命令为 &ldquo;C&rdquo;（创建文件）时发送。数据的大小指定为 &ldquo;C&rdquo; 的参数。</p>
+</li>
+</ul>
+<p>此外，还有控制字节，这些字节是在没有新行的情况下自己发送的：</p>
+<ul>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;OK&rdquo;，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。</p>
+</li>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;警告&rdquo;，后面是要向用户显示的行（由新行终止）。</p>
+</li>
+<li>
+<p>&lsquo;0x00&rsquo;-&ldquo;错误&rdquo; 后跟随可选消息（和警告相同），但连接随后终止。</p>
+</li>
+</ul>
+<p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
+        
+    </a><figcaption class="image-caption">传输过程</figcaption>
+    </figure>
+<h2 id="使用-scp">使用 SCP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
+</code></pre></td></tr></table>
+</div>
+</div><p>其中选项如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
+-2：使用ssh协议版本2；
+-4：使用ipv4；
+-6：使用ipv6；
+-B：以批处理模式运行；
+-C：使用压缩；
+-F：指定ssh配置文件；
+-l：指定宽带限制；
+-o：指定使用的ssh选项；
+-P：指定远程主机的端口号；
+-p：保留文件的最后修改时间，最后访问时间和权限模式；
+-q：不显示复制进度；
+-r：以递归方式复制。
+</code></pre></td></tr></table>
+</div>
+</div><p>参数分别为：</p>
+<ul>
+<li>源文件：指定要复制的源文件。</li>
+<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
+</ul>
+<h2 id="scp-的问题">SCP 的问题</h2>
+<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<h3 id="性能">性能</h3>
+<p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
+<p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
+<span class="m">10000</span>
+
+<span class="c1"># Using scp</span>
+$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
+
+________________________________________________________
+Executed in  882.99 millis	fish       	external
+   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
+   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
+
+<span class="c1"># Using tar over ssh</span>
+$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
+tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
+
+________________________________________________________
+Executed in  215.68 millis	fish       	external
+   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
+   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
+</code></pre></td></tr></table>
+</div>
+</div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
+<h3 id="安全">安全</h3>
+<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<p><code>OpenSSH</code> 的发行说明提到：</p>
+<blockquote>
+<p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
+</blockquote>
+<p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
+<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
+<h2 id="scp-的替代方案">SCP 的替代方案</h2>
+<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
+<p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
+<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
+<h2 id="结论">结论</h2>
+<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
+<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+</li>
+<li>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+</li>
+<li>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+</li>
+<li>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>NAT 2：问题及解决方法</title>
+    <link>https://www.techkoala.top/nat_issues_solutions/</link>
+    <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/nat_issues_solutions/</guid>
+    <description><![CDATA[<blockquote>
+<p>NAT 引发的问题以及解决方法</p>
+</blockquote>
+<h2 id="问题">问题</h2>
+<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 <code>P2P</code> 联机方式）时候给我们造成困扰。如果 <code>Xbox</code>、<code>PS</code>、<code>switch</code> 或者 <code>PC</code> 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
+<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 <code>NAT</code> 化的。但是，在 <code>Internet</code> 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 <code>Xbox Live</code> 或 <code>PS</code> 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
+<p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
+<p>那么，主机如何得知它位于 <code>NAT</code> 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
+<h2 id="解决办法">解决办法</h2>
+<h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
+<p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
+<p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
+        
+    </a><figcaption class="image-caption">STUN 算法</figcaption>
+    </figure>
+<p>如果你还记得，除了<code>对称型 NAT</code> 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
+<p>但在对称型 NAT 的情况下，每一个连接都有一个不同的映射，有一个不同的（随机生成的）端口，意味着连接到 STUN 服务器也将有它自己独特的映射，表现的就像一个新的设备接入一样。这意味着每个映射都有不同的端口，在这种情况下，STUN 检测到的端口现在已经没有用了，因为这个映射是 STUN 服务器独有的。无论映射到其他设备的端口是什么，都是未知的，STUN 也没有办法检测到它。由于你的主机无法得知每个映射到每个主机的公共 NAT 化端口，因此无法将这些信息传递给你，也就意味着没有设备可以连接到你的游戏，这就是对称型 NAT 导致如此多游戏联机问题的原因。</p>
+<h3 id="dmzdemilitarized-zone">DMZ（Demilitarized zone)</h3>
+<p>路由器上的外围网络（也称 DMZ）功能用于消除对 Internet 的限制。它主要是将你的设备移到你的网络防火墙之外的区域，将部分用于提供对外服务的服务器主机划分到一个特定的子网 —— DMZ 内，在 DMZ 的主机能与同处 DMZ 内的主机和外部网络的主机通信，而同内部网络主机的通信会被受到限制。这使 DMZ 的主机能被内部网络和外部网络所访问，而内部网络又能避免外部网络所得知。</p>
+<p><strong>注意</strong> 当你设置外围网络时在主机上使用静态 IP 地址十分重要。要设置静态 IP 地址，请使用路由器的 DHCP 预留功能（如果可用）。如果该功能不可用，你将需要在你的设备 上配置手动 IP 设置。</p>
+<h3 id="upnpuniversal-plug-and-play">UPnP（Universal Plug and Play）</h3>
+<p>UPnP（Universal Plug and Play）是帮助路由器有效通信的一个标准。如果路由器或网关支持 UPnP，则它在默认情况下可能已启用。开启 UPnP 功能后，局域网中的计算机可以请求路由器自动进行端口转换。这样，互联网上的计算机就能在需要时访问局域网计算机上的资源（如 MSN Messenger 或迅雷、BT、PPLive 等支持 UPnP 协议的应用程序）。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="www.think-like-a-computer.com/2011/09/19/symmetric-nat/" rel="">Symmetric NAT and It’s Problems | Think Like A Computer</a></p>
+</li>
+<li>
+<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreffer">Wikipedia STUN</a></p>
+</li>
+<li>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreffer">Wikipedia DMZ</a></p>
+</li>
+<li>
+<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreffer">解决 NAT 错误和多人游戏问题</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>NAT 1：认识 NAT</title>
+    <link>https://www.techkoala.top/nat/</link>
+    <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/nat/</guid>
+    <description><![CDATA[<blockquote>
+<p>一文概览 NAT</p>
+</blockquote>
+<h2 id="nat">NAT</h2>
+<p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 <code>IP</code> 数据包通过路由器或防火墙时重写来源 <code>IP</code> 地址或目的 <code>IP</code> 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 <code>IP</code> 地址访问互联网的私有网络中。</p>
+<p><code>NAT</code> 从大类上都可以分为两类：<code>静态 NAT</code> 和 <code>动态 NAT</code>。</p>
+<p><code>静态 NAT</code> 是管理员手动创建和维护映射，通常与 <code>NAT</code> 的入站类型相关联。</p>
+<p><code>动态 NAT</code> 是路由器根据需要自动创建和维护映射，通常与 <code>NAT</code> 的出站类型相关联。</p>
+<p>每个 <code>TCP/IP</code> 数据包都包含一个 <code>源 IP 地址</code>、<code>源端口</code>、<code>目的 IP 地址</code> 和 <code>目的端口</code>。所有类型的 <code>NAT</code> 都会使用这些值创建 <code>NAT</code> 映射。</p>
+<blockquote>
+<p>例如，一个 IP 为 <code>192.168.0.1</code> 的内部客户机使用端口 <code>56876</code>，经过 NAT 转变后 IP 变为 <code>3.3.3.3</code>（翻译后的源 IP）和端口 <code>56876</code>（源端口）连接到 IP <code>2.2.2.2</code>（目的 IP 地址）的 <code>80</code> 端口（目的端口）。NAT 使用原始内部 IP 和端口、翻译后 IP 和端口这 4 个值创建一个映射。当数据包从网站返回到路由器时，使用与该映射相关值，NAT 将数据包转发到内部客户端。</p>
+</blockquote>
+<h2 id="nat-的四种类型">NAT 的四种类型</h2>
+<h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
+        
+    </a><figcaption class="image-caption">全锥型 NAT</figcaption>
+    </figure>
+<p><code>全锥型 NAT</code> 是静态 NAT，也是唯一一种永久开放端口的 <code>NAT</code>，允许从 <strong>任何外部主机</strong> 进行入站连接。<code>全锥型 NAT</code> 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 <code>NAT </code>IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 <code>NAT</code> 也被称为端口转发。这是受限制最少的 <code>NAT</code> 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
+<blockquote>
+<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
+</blockquote>
+<p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
+<h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
+        
+    </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
+    </figure>
+<p><code>受限锥体 NAT</code> 是<code>动态 NAT</code>，它的工作方式与<code>全锥型 NAT</code> 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
+<blockquote>
+<p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 <code>IP</code> 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。<code>NAT</code> 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的<code>源 IP</code> 为 <code>56.45.34.78</code>（<code>网站 IP</code>）的数据包将被接受，接着网站返回数据至我的 <code>PC</code>。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 <code>IP</code> 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
+</blockquote>
+<h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
+        
+    </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
+    </figure>
+<p><code>端口受限锥型 NAT</code> 是<code>动态 NAT</code>，它的作用与<code>受限锥形 NAT</code> 完全相同，但同时对端口进行限制。<code>受限锥形 NAT</code> 接受来自外部主机任何源端口的连接，而<code>端口受限锥型 NAT</code> 则进一步要求外部主机的源端口是固定的。</p>
+<blockquote>
+<p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
+</blockquote>
+<h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
+        
+    </a><figcaption class="image-caption">对称型 NAT</figcaption>
+    </figure>
+<p><code>对称型 NAT</code> 是<code>动态 NAT</code>，它限制的方式与<code>端口受限锥型 NAT</code> 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 <code>NAT</code> 在 <code>NAT</code> 连接时都 <strong>不会改变源端口</strong>。</p>
+<blockquote>
+<p>例如，当客户端使用 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 访问互联网时，<code>NAT</code> 将源 <code>IP</code> 改变为 <code>56.35.67.35</code>，但保持端口号不变，这被称为端口保留。</p>
+</blockquote>
+<p>而<code>对称型 NAT </code>会将端口改为 <strong>随机生成的新端口</strong>，甚至是同一客户端到不同目的地的连接也会发生。<strong>亦即为每个连接创建唯一的映射</strong></p>
+<blockquote>
+<p>例如，在<code>端口受限锥型 NAT</code> 的例子上进行扩展，我的 <code>PC</code> 向网站 <code>IP</code> <code>217.87.69.8</code> 和 <code>56.76.87.98</code> 建立两个出站连接。我的电脑使用源 <code>IP</code> <code>192.168.0.1</code> 和源端口 <code>56723</code> 进行两个连接。到目前为止，在所有类型的 <code>NAT</code> 上，这两个连接都会被 <code>NAT</code> 化，只改变源 IP 地址而保持源端口不变。然而这次，<code>对称型 NAT</code> 没有将源端口保留为 <code>56723</code>，而是将其中一个连接的源端口改为 <code>45765</code>，另一个连接的源端口改为 <code>53132</code>（随机）。这就为每个连接创建了唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 <code>217.87.69.8</code> 必须将数据包发送到目的端口 <code>45765</code>，<code>56.76.87.98</code> 必须将数据包发送到端口 <code>53132</code>，此外还需要遵循<code>端口受限锥型 NAT</code> 的要求。</p>
+</blockquote>
+<h2 id="对-nat-的正面评价">对 NAT 的正面评价</h2>
+<ol>
+<li>
+<p><code>NAT</code> 在一定程度上缓解了 <code>IPv4</code> 地址短缺的问题，让更多的设备（间接）接入了互联网。</p>
+</li>
+<li>
+<p><code>NAT</code> 全双工连接支持的缺少在一些情况下可以看作是一个有好处的特征而不是一个限制。在一定程度上，NAT 依赖于本地网络上的一台机器来初始化和路由器另一边的主机的任何连接，它可以阻止外部网络上的主机的恶意活动。这样就可以阻止网络蠕虫病毒来提高本地系统的可靠性，阻挡恶意浏览来提高本地系统的私密性。很多具有 NAT 功能的防火墙都是使用这种功能来提供核心保护的。另外，它也为 UDP 的跨局域网的传输提供了方便。</p>
+</li>
+</ol>
+<h2 id="对-nat-的批评">对 NAT 的批评</h2>
+<ol>
+<li>
+<p>在一个具有 <code>NAT</code> 功能的路由器下的主机并没有获得真正的 IP 地址，并且不能参与一些因特网协议，一些需要初始化从外部网络创建的 TCP 连接和无状态协议（比如 UDP）无法实现。除非 <code>NAT</code> 路由器管理者预先设置了规则，否则送来的数据包将不能到达正确的目的地址。</p>
+</li>
+<li>
+<p>端对端连接是被 IAB 委员会（Internet Architecture Board）支持的核心因特网协议之一，因此有些人据此认为 <code>NAT</code> 是对公用因特网的一个破坏。一些因特网服务提供商（ISP）只向他们的客户提供本地 IP 地址，所以他们必须通过 <code>NAT</code> 来访问 ISP 网络以外的服务，并且这些公司能不能算的上真正的提供了因特网服务的话题也被谈起。</p>
+</li>
+<li>
+<p><code>NAT</code> 使得 <code>IP</code> 协议从面向无连接变成立面向连接。<code>NAT</code> 必须维护专用 <code>IP</code> 地址与公用 IP 地址以及端口号的映射关系。在 <code>TCP/IP</code> 协议体系中，如果一个路由器出现故障，不会影响到 <code>TCP</code> 协议的执行。因为只要几秒收不到应答，发送进程就会进入超时重传处理。而当存在 <code>NAT</code> 时，最初设计的 <code>TCP/IP</code> 协议过程将发生变化，<code>Internet</code> 可能变得非常脆弱。</p>
+</li>
+<li>
+<p><code>NAT</code> 违反了基本的网络分层结构模型的设计原则。因为在传统的网络分层结构模型中，第 N 层是不能修改第 N+1 层的报头内容的。<code>NAT</code> 破坏了这种各层独立的原则。</p>
+</li>
+<li>
+<p><code>NAT</code> 同时存在对高层协议和安全性的影响问题。<code>RFC</code> 对 <code>NAT</code> 存在的问题进行了讨论。NAT 的反对者认为这种临时性的缓解 <code>IP</code> 地址短缺的方案推迟了 <code>IPv6</code> 迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
+</li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreffer">Wikipedia NAT</a></p>
+</li>
+<li>
+<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreffer">What you need to know about symmetric NAT | Think Like A Computer</a></p>
+</li>
+<li>
+<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
