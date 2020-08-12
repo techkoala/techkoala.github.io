@@ -19,8 +19,6 @@ Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" caption="Koodo Reader 首页" >}} 
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" caption="Koodo Reader 阅读界面" >}} 
-
 提供以下功能：
 
 >📝 强大笔记和翻译功能，学习事半功倍
@@ -65,7 +63,7 @@ Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" caption="配置" >}}
 
-8. 大功告成，[来这里](https://reader.techkoala.top/)看看书吧。
+8. 大功告成，来[这里](https://reader.techkoala.top/)看看书吧。
 
 ## 后续
 

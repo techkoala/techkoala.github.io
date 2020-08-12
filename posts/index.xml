@@ -25,10 +25,6 @@
         
     </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
     </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo2.webp" data-sub-html="<h2>Koodo Reader 阅读界面</h2>">
-        
-    </a><figcaption class="image-caption">Koodo Reader 阅读界面</figcaption>
-    </figure>
 <p>提供以下功能：</p>
 <blockquote>
 <p>📝 强大笔记和翻译功能，学习事半功倍</p>
@@ -89,7 +85,7 @@
     </a><figcaption class="image-caption">配置</figcaption>
     </figure>
 <ol start="8">
-<li>大功告成，<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">来这里</a>看看书吧。</li>
+<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
 </ol>
 <h2 id="后续">后续</h2>
 <p>如果需要对网站进行更新，只需要关注你的 Github Repo 即可。每次 commit 之后，Netlify 都会自动拉取更新并生成。</p>
