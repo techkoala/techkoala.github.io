@@ -4,7 +4,235 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>如何高效搜索？</title>
+    <link>https://www.techkoala.top/how_to_search/</link>
+    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/how_to_search/</guid>
+    <description><![CDATA[<blockquote>
+<p>如何在互联网上高效地找到自己想要的东西？</p>
+</blockquote>
+<p>搜索引擎方便了我们搜索资料，但是由于各种垃圾内容、网站地出现，实际上，搜索过程往往是十分低效的（特别是使用中文搜索）。因此，值得学习一些提升搜索效率必要的小技巧。</p>
+<p>废话不多说，直接分类讲解：</p>
+<h2 id="搜索语法">搜索语法</h2>
+<p>首先总结一下常用的语法表达式：</p>
+<table>
+<thead>
+<tr>
+<th>operator</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;phrase&rdquo;</td>
+<td>结果必须包含 &ldquo;phrase&rdquo;</td>
+</tr>
+<tr>
+<td>- phrase</td>
+<td>结果排除 phrase</td>
+</tr>
+<tr>
+<td>A AND B</td>
+<td>A 和 B 必须同时包含</td>
+</tr>
+<tr>
+<td>A OR B</td>
+<td>必须包括 A 和 B 之一（或两者）</td>
+</tr>
+<tr>
+<td>site:example.com</td>
+<td>在网站中搜索</td>
+</tr>
+<tr>
+<td>filetype:jpg</td>
+<td>结果必须包含类型 .jpg</td>
+</tr>
+</tbody>
+</table>
+<h2 id="实例展示">实例展示</h2>
+<h3 id="网页">网页</h3>
+<p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
+</code></pre></td></tr></table>
+</div>
+</div><p>查找必须在标题文本中包含短语的特定页面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
+</code></pre></td></tr></table>
+</div>
+</div><p>查找类似网站（仅谷歌搜索）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以将运算符链接在一起 （例如：在 Url 中查找具有安全性或错误赏金）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以限制为某些顶级域（例如：教师列表）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="email">Email</h3>
+<p>查找 Gmail 帐户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>查找工作帐户（您需要先找到他们的域）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>模糊搜索的情况下，可以尝试猜测电子邮件的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在网站上查找电子邮件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在网页上查找您访问的每封电子邮件，适用于每个网站，将其注入 Chrome 开发工具</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
+var re = new RegExp (&#34;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&#34;);
+for (var i = 0; i &lt; elems.length; i++) {
+    if (re.test (elems [i].innerHTML)) {
+        console.log (elems [i].innerHTML);
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>这将记录找到的每封电子邮件，而无需扫描整个页面。</p>
+<h3 id="文件">文件</h3>
+<p>查找电子表格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
+</code></pre></td></tr></table>
+</div>
+</div><p>查找谷歌文档和谷歌表格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="seo">SEO</h3>
+<p>在锚文本中查找具有特定关键字的网站</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>研究标题中包含特定关键字的博客帖子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>查找反向链接 (例如：链接到特定博客帖子的其他网站)。注意：链接运算符 <code>link</code> 现在已弃用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
+</code></pre></td></tr></table>
+</div>
+</div><p>使用通配符运算符查找关键字排列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
+</code></pre></td></tr></table>
+</div>
+</div><p>使用给定的 widget 查找公司</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="待更新">待更新&hellip;</h1>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
+</li>
+<li>
+<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>利用 Netlify 搭建 Koodo Reader</title>
     <link>https://www.techkoala.top/reader/</link>
     <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
@@ -1761,105 +1989,6 @@ Executed in  215.68 millis	fish       	external
 </li>
 <li>
 <p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreffer">解决 NAT 错误和多人游戏问题</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>NAT 1：认识 NAT</title>
-    <link>https://www.techkoala.top/nat/</link>
-    <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/nat/</guid>
-    <description><![CDATA[<blockquote>
-<p>一文概览 NAT</p>
-</blockquote>
-<h2 id="nat">NAT</h2>
-<p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 <code>IP</code> 数据包通过路由器或防火墙时重写来源 <code>IP</code> 地址或目的 <code>IP</code> 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 <code>IP</code> 地址访问互联网的私有网络中。</p>
-<p><code>NAT</code> 从大类上都可以分为两类：<code>静态 NAT</code> 和 <code>动态 NAT</code>。</p>
-<p><code>静态 NAT</code> 是管理员手动创建和维护映射，通常与 <code>NAT</code> 的入站类型相关联。</p>
-<p><code>动态 NAT</code> 是路由器根据需要自动创建和维护映射，通常与 <code>NAT</code> 的出站类型相关联。</p>
-<p>每个 <code>TCP/IP</code> 数据包都包含一个 <code>源 IP 地址</code>、<code>源端口</code>、<code>目的 IP 地址</code> 和 <code>目的端口</code>。所有类型的 <code>NAT</code> 都会使用这些值创建 <code>NAT</code> 映射。</p>
-<blockquote>
-<p>例如，一个 IP 为 <code>192.168.0.1</code> 的内部客户机使用端口 <code>56876</code>，经过 NAT 转变后 IP 变为 <code>3.3.3.3</code>（翻译后的源 IP）和端口 <code>56876</code>（源端口）连接到 IP <code>2.2.2.2</code>（目的 IP 地址）的 <code>80</code> 端口（目的端口）。NAT 使用原始内部 IP 和端口、翻译后 IP 和端口这 4 个值创建一个映射。当数据包从网站返回到路由器时，使用与该映射相关值，NAT 将数据包转发到内部客户端。</p>
-</blockquote>
-<h2 id="nat-的四种类型">NAT 的四种类型</h2>
-<h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
-        
-    </a><figcaption class="image-caption">全锥型 NAT</figcaption>
-    </figure>
-<p><code>全锥型 NAT</code> 是静态 NAT，也是唯一一种永久开放端口的 <code>NAT</code>，允许从 <strong>任何外部主机</strong> 进行入站连接。<code>全锥型 NAT</code> 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 <code>NAT </code>IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 <code>NAT</code> 也被称为端口转发。这是受限制最少的 <code>NAT</code> 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
-<blockquote>
-<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
-</blockquote>
-<p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
-<h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
-        
-    </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
-    </figure>
-<p><code>受限锥体 NAT</code> 是<code>动态 NAT</code>，它的工作方式与<code>全锥型 NAT</code> 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
-<blockquote>
-<p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 <code>IP</code> 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。<code>NAT</code> 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的<code>源 IP</code> 为 <code>56.45.34.78</code>（<code>网站 IP</code>）的数据包将被接受，接着网站返回数据至我的 <code>PC</code>。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 <code>IP</code> 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
-</blockquote>
-<h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
-        
-    </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
-    </figure>
-<p><code>端口受限锥型 NAT</code> 是<code>动态 NAT</code>，它的作用与<code>受限锥形 NAT</code> 完全相同，但同时对端口进行限制。<code>受限锥形 NAT</code> 接受来自外部主机任何源端口的连接，而<code>端口受限锥型 NAT</code> 则进一步要求外部主机的源端口是固定的。</p>
-<blockquote>
-<p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
-</blockquote>
-<h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
-        
-    </a><figcaption class="image-caption">对称型 NAT</figcaption>
-    </figure>
-<p><code>对称型 NAT</code> 是<code>动态 NAT</code>，它限制的方式与<code>端口受限锥型 NAT</code> 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 <code>NAT</code> 在 <code>NAT</code> 连接时都 <strong>不会改变源端口</strong>。</p>
-<blockquote>
-<p>例如，当客户端使用 IP <code>192.168.0.1</code> 和源端口 <code>56723</code> 访问互联网时，<code>NAT</code> 将源 <code>IP</code> 改变为 <code>56.35.67.35</code>，但保持端口号不变，这被称为端口保留。</p>
-</blockquote>
-<p>而<code>对称型 NAT </code>会将端口改为 <strong>随机生成的新端口</strong>，甚至是同一客户端到不同目的地的连接也会发生。<strong>亦即为每个连接创建唯一的映射</strong></p>
-<blockquote>
-<p>例如，在<code>端口受限锥型 NAT</code> 的例子上进行扩展，我的 <code>PC</code> 向网站 <code>IP</code> <code>217.87.69.8</code> 和 <code>56.76.87.98</code> 建立两个出站连接。我的电脑使用源 <code>IP</code> <code>192.168.0.1</code> 和源端口 <code>56723</code> 进行两个连接。到目前为止，在所有类型的 <code>NAT</code> 上，这两个连接都会被 <code>NAT</code> 化，只改变源 IP 地址而保持源端口不变。然而这次，<code>对称型 NAT</code> 没有将源端口保留为 <code>56723</code>，而是将其中一个连接的源端口改为 <code>45765</code>，另一个连接的源端口改为 <code>53132</code>（随机）。这就为每个连接创建了唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 <code>217.87.69.8</code> 必须将数据包发送到目的端口 <code>45765</code>，<code>56.76.87.98</code> 必须将数据包发送到端口 <code>53132</code>，此外还需要遵循<code>端口受限锥型 NAT</code> 的要求。</p>
-</blockquote>
-<h2 id="对-nat-的正面评价">对 NAT 的正面评价</h2>
-<ol>
-<li>
-<p><code>NAT</code> 在一定程度上缓解了 <code>IPv4</code> 地址短缺的问题，让更多的设备（间接）接入了互联网。</p>
-</li>
-<li>
-<p><code>NAT</code> 全双工连接支持的缺少在一些情况下可以看作是一个有好处的特征而不是一个限制。在一定程度上，NAT 依赖于本地网络上的一台机器来初始化和路由器另一边的主机的任何连接，它可以阻止外部网络上的主机的恶意活动。这样就可以阻止网络蠕虫病毒来提高本地系统的可靠性，阻挡恶意浏览来提高本地系统的私密性。很多具有 NAT 功能的防火墙都是使用这种功能来提供核心保护的。另外，它也为 UDP 的跨局域网的传输提供了方便。</p>
-</li>
-</ol>
-<h2 id="对-nat-的批评">对 NAT 的批评</h2>
-<ol>
-<li>
-<p>在一个具有 <code>NAT</code> 功能的路由器下的主机并没有获得真正的 IP 地址，并且不能参与一些因特网协议，一些需要初始化从外部网络创建的 TCP 连接和无状态协议（比如 UDP）无法实现。除非 <code>NAT</code> 路由器管理者预先设置了规则，否则送来的数据包将不能到达正确的目的地址。</p>
-</li>
-<li>
-<p>端对端连接是被 IAB 委员会（Internet Architecture Board）支持的核心因特网协议之一，因此有些人据此认为 <code>NAT</code> 是对公用因特网的一个破坏。一些因特网服务提供商（ISP）只向他们的客户提供本地 IP 地址，所以他们必须通过 <code>NAT</code> 来访问 ISP 网络以外的服务，并且这些公司能不能算的上真正的提供了因特网服务的话题也被谈起。</p>
-</li>
-<li>
-<p><code>NAT</code> 使得 <code>IP</code> 协议从面向无连接变成立面向连接。<code>NAT</code> 必须维护专用 <code>IP</code> 地址与公用 IP 地址以及端口号的映射关系。在 <code>TCP/IP</code> 协议体系中，如果一个路由器出现故障，不会影响到 <code>TCP</code> 协议的执行。因为只要几秒收不到应答，发送进程就会进入超时重传处理。而当存在 <code>NAT</code> 时，最初设计的 <code>TCP/IP</code> 协议过程将发生变化，<code>Internet</code> 可能变得非常脆弱。</p>
-</li>
-<li>
-<p><code>NAT</code> 违反了基本的网络分层结构模型的设计原则。因为在传统的网络分层结构模型中，第 N 层是不能修改第 N+1 层的报头内容的。<code>NAT</code> 破坏了这种各层独立的原则。</p>
-</li>
-<li>
-<p><code>NAT</code> 同时存在对高层协议和安全性的影响问题。<code>RFC</code> 对 <code>NAT</code> 存在的问题进行了讨论。NAT 的反对者认为这种临时性的缓解 <code>IP</code> 地址短缺的方案推迟了 <code>IPv6</code> 迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
-</li>
-</ol>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreffer">Wikipedia NAT</a></p>
-</li>
-<li>
-<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreffer">What you need to know about symmetric NAT | Think Like A Computer</a></p>
-</li>
-<li>
-<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

@@ -4,7 +4,235 @@
         <link>https://www.techkoala.top/categories/web/</link>
         <description>Web - 分类 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/web/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/web/" rel="self" type="application/rss+xml" /><item>
+    <title>如何高效搜索？</title>
+    <link>https://www.techkoala.top/how_to_search/</link>
+    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/how_to_search/</guid>
+    <description><![CDATA[<blockquote>
+<p>如何在互联网上高效地找到自己想要的东西？</p>
+</blockquote>
+<p>搜索引擎方便了我们搜索资料，但是由于各种垃圾内容、网站地出现，实际上，搜索过程往往是十分低效的（特别是使用中文搜索）。因此，值得学习一些提升搜索效率必要的小技巧。</p>
+<p>废话不多说，直接分类讲解：</p>
+<h2 id="搜索语法">搜索语法</h2>
+<p>首先总结一下常用的语法表达式：</p>
+<table>
+<thead>
+<tr>
+<th>operator</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;phrase&rdquo;</td>
+<td>结果必须包含 &ldquo;phrase&rdquo;</td>
+</tr>
+<tr>
+<td>- phrase</td>
+<td>结果排除 phrase</td>
+</tr>
+<tr>
+<td>A AND B</td>
+<td>A 和 B 必须同时包含</td>
+</tr>
+<tr>
+<td>A OR B</td>
+<td>必须包括 A 和 B 之一（或两者）</td>
+</tr>
+<tr>
+<td>site:example.com</td>
+<td>在网站中搜索</td>
+</tr>
+<tr>
+<td>filetype:jpg</td>
+<td>结果必须包含类型 .jpg</td>
+</tr>
+</tbody>
+</table>
+<h2 id="实例展示">实例展示</h2>
+<h3 id="网页">网页</h3>
+<p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
+</code></pre></td></tr></table>
+</div>
+</div><p>查找必须在标题文本中包含短语的特定页面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
+</code></pre></td></tr></table>
+</div>
+</div><p>查找类似网站（仅谷歌搜索）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以将运算符链接在一起 （例如：在 Url 中查找具有安全性或错误赏金）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以限制为某些顶级域（例如：教师列表）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="email">Email</h3>
+<p>查找 Gmail 帐户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>查找工作帐户（您需要先找到他们的域）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>模糊搜索的情况下，可以尝试猜测电子邮件的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在网站上查找电子邮件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在网页上查找您访问的每封电子邮件，适用于每个网站，将其注入 Chrome 开发工具</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
+var re = new RegExp (&#34;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&#34;);
+for (var i = 0; i &lt; elems.length; i++) {
+    if (re.test (elems [i].innerHTML)) {
+        console.log (elems [i].innerHTML);
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>这将记录找到的每封电子邮件，而无需扫描整个页面。</p>
+<h3 id="文件">文件</h3>
+<p>查找电子表格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
+</code></pre></td></tr></table>
+</div>
+</div><p>查找谷歌文档和谷歌表格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="seo">SEO</h3>
+<p>在锚文本中查找具有特定关键字的网站</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>研究标题中包含特定关键字的博客帖子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>查找反向链接 (例如：链接到特定博客帖子的其他网站)。注意：链接运算符 <code>link</code> 现在已弃用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
+</code></pre></td></tr></table>
+</div>
+</div><p>使用通配符运算符查找关键字排列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
+</code></pre></td></tr></table>
+</div>
+</div><p>使用给定的 widget 查找公司</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="待更新">待更新&hellip;</h1>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
+</li>
+<li>
+<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>利用 Netlify 搭建 Koodo Reader</title>
     <link>https://www.techkoala.top/reader/</link>
     <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
