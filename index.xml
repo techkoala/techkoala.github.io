@@ -7,6 +7,323 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>HTTPS 工作原理</title>
+    <link>https://www.techkoala.top/how_https_works/</link>
+    <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/how_https_works/</guid>
+    <description><![CDATA[<blockquote>
+<p>理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理</p>
+</blockquote>
+<blockquote>
+<p>注：本文系全文转载，原文信息如下：</p>
+<p>作者：猫尾博客</p>
+<p>链接：https://cattail.me/tech/2015/11/30/how-https-works.html</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>读完本文，你能明白</p>
+<ul>
+<li>什么是 HTTPS，TLS (SSL)，TLS 和 HTTPS 是什么关系</li>
+<li>什么是证书和数字签名，它们是如何传递信任的</li>
+<li>HTTPS 有什么样的功能，它是如何实现这样的功能的</li>
+</ul>
+<h2 id="简介">简介</h2>
+<p>HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示为 SSL 3.1，TLS 1.1 为 SSL 3.2，TLS 1.2 为 SSL 3.3。本文着重描述 TLS 协议的 1.2 版本</p>
+<p>下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/tcp-ip-model.webp" title="/images/Network/HTTPS/tcp-ip-model.webp" data-thumbnail="/images/Network/HTTPS/tcp-ip-model.webp" data-sub-html="<h2>Credit: Kaushal Kumar Panday From: SSL Handshake and HTTPS Bindings on IIS</h2>">
+        
+    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
+    </figure>
+<p>其中 Handshake protocol，Change Ciper Spec protocol 和 Alert protocol 组成了 SSL Handshaking Protocols。</p>
+<p>HTTPS 和 HTTP 协议相比提供了:</p>
+<ol>
+<li>数据完整性：内容传输经过完整性校验</li>
+<li>数据隐私性：内容经过对称加密，每个连接生成一个唯一的加密密钥</li>
+<li>身份认证：第三方无法伪造服务端（客户端）身份</li>
+</ol>
+<p>其中，数据完整性和隐私性由 TLS Record Protocol 保证，身份认证由 TLS Handshaking Protocols 实现。</p>
+<h2 id="总览">总览</h2>
+<p>使用 RSA 算法的 SSL 握手过程是这样的:</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/ssl_handshake_rsa.webp" title="/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </figure>
+<ol>
+<li>[明文] 客户端发送随机数 client_random 和支持的加密方式列表</li>
+<li>[明文] 服务器返回随机数 server_random ，选择的加密方式和服务器证书链</li>
+<li>[RSA] 客户端验证服务器证书，使用证书中的公钥加密 premaster secret 发送给服务端</li>
+<li>服务端使用私钥解密 premaster secret</li>
+<li>两端分别通过 client_random，server_random 和 premaster secret 生成 master secret，用于对称加密后续通信内容</li>
+</ol>
+<h3 id="证书digital-certificate">证书（Digital certificate）</h3>
+<p>那么什么是证书呢？</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/certificate.webp" title="/images/Network/HTTPS/certificate.webp" data-thumbnail="/images/Network/HTTPS/certificate.webp" data-sub-html="<h2>证书信息</h2>">
+        
+    </a><figcaption class="image-caption">证书信息</figcaption>
+    </figure>
+<h3 id="证书中包含了以下信息">证书中包含了以下信息</h3>
+<ol>
+<li>证书信息：过期时间和序列号</li>
+<li>所有者信息：姓名等</li>
+<li>所有者公钥</li>
+<li>为什么服务端要发送证书给客户端</li>
+</ol>
+<p>互联网有太多的服务需要使用证书来验证身份，以至于客户端（操作系统或浏览器等）无法内置所有证书，需要通过服务端将证书发送给客户端。</p>
+<h3 id="客户端为什么要验证接收到的证书">客户端为什么要验证接收到的证书</h3>
+<p><strong>中间人攻击</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
+        伪造证书            拦截请求
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="客户端如何验证接收到的证书">客户端如何验证接收到的证书</h3>
+<p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
+| A digital signature |
+|(not to be confused  |
+|with a digital       |
+|certificate)         |            +---------+              +--------+
+| is a mathematical   |---- 哈希 ---&gt;| 消息摘要  |--- 私钥加密 ---&gt;| 数字签名 |
+|technique used       |            +---------+              +--------+
+|to validate the      |
+|authenticity and     |
+|integrity of a       |
+|message, software    |
+|or digital document. |
++---------------------+
+</code></pre></td></tr></table>
+</div>
+</div><p>将一段文本通过哈希（hash）和私钥加密处理后生成数字签名。</p>
+<p>假设消息传递在 Bob，Susan 和 Pat 三人之间发生。Susan 将消息连同数字签名一起发送给 Bob，Bob 接收到消息后，可以这样验证接收到的消息就是 Susan 发送的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
+| A digital signature |
+|(not to be confused  |
+|with a digital       |
+|certificate)         |              +---------+
+| is a mathematical   |---- 哈希 ---&gt;|  消息摘要 |
+|technique used       |              +---------+
+|to validate the      |                 |
+|authenticity and     |                 |
+|integrity of a       |                 |
+|message, software    |                 对
+|or digital document. |                 比
++---------------------+                 |
+                                        |
+                                        |
+        +---------+               +----------+
+        | 数字签名 |--- 公钥解密 ---&gt;|  消息摘要 |
+        +---------+               +----------+
+</code></pre></td></tr></table>
+</div>
+</div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
+<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreffer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
+<p>Susan 将证书发送给 Bob 后，Bob 通过 CA 证书的公钥验证证书签名。</p>
+<p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
+<p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
+<h2 id="tls-协议">TLS 协议</h2>
+<p>TLS 协议包括 TLS Record Protocol 和 TLS Handshake Protocol。总览中的流程图仅涉及到 TLS Handshake Protocol。</p>
+<h3 id="tls-record-protocol">TLS Record Protocol</h3>
+<p>在 TLS 协议中，有四种子协议运行于 Record protocol 之上</p>
+<ul>
+<li>Handshake protocol</li>
+<li>Alert protocol</li>
+<li>Change cipher spec protocol</li>
+<li>Application data protocol</li>
+</ul>
+<p>Record protocol 起到了这样的作用</p>
+<ul>
+<li>在发送端：将数据（Record）分段，压缩，增加 MAC (Message Authentication Code) 和加密</li>
+<li>在接收端：将数据（Record）解密，验证 MAC，解压并重组</li>
+</ul>
+<blockquote>
+<p>值得一提的是，Record protocol 提供了数据完整性和隐私性保证，但 Record 类型（type）和长度（length）是公开传输的</p>
+</blockquote>
+<p>Record Protocol 有三个连接状态 (Connection State)，连接状态定义了压缩，加密和 MAC 算法。所有的 Record 都是被当前状态（Current State）确定的算法处理的。</p>
+<p><code>TLS Handshake Protocol</code> 和 <code>Change Ciper Spec Protocol</code> 会导致 <code>Record Protocol</code> 状态切换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">empty state -------------------&gt; pending state ------------------&gt; current state
+             Handshake Protocol                Change Cipher Spec
+</code></pre></td></tr></table>
+</div>
+</div><p>初始当前状态（Current State）没有指定加密，压缩和 MAC 算法，因而在完成 TLS Handshaking Protocols 一系列动作之前，客户端和服务端的数据都是<strong>明文传输</strong>的；当 TLS 完成握手过程后，客户端和服务端确定了加密，压缩和 MAC 算法及其参数，数据（Record）会通过指定算法处理。</p>
+<blockquote>
+<p>其中，Record 首先被加密，然后添加 MAC（message authentication code）以保证数据完整性。</p>
+</blockquote>
+<h3 id="tls-handshaking-protocols">TLS Handshaking Protocols</h3>
+<p>Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。</p>
+<p>使用 RSA 算法的握手过程是这样的（已在总览中提到）</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/ssl_handshake_rsa.webp" title="/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </figure>
+<p>客户端和服务端在握手 hello 消息中明文交换了 client_random 和 server_random ，使用 RSA 公钥加密传输 premaster secret ，最后通过算法，客户端和服务端分别计算 master secret。其中，不直接使用 premaster secret 的原因是：保证 secret 的随机性不受任意一方的影响。</p>
+<p>除了使用 RSA 算法在公共信道交换密钥，还可以通过 Diffie–Hellman 算法。Diffie–Hellman 算法的原理是这样的</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" title="/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-thumbnail="/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-sub-html="<h2>By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</h2>">
+        
+    </a><figcaption class="image-caption">By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</figcaption>
+    </figure>
+<p>使用 Diffie–Hellman 算法交换 <code>premaster secret</code> 的流程</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </figure>
+<h2 id="小结">小结</h2>
+<p>TLS Handshaking Protocols 协商了 TLS Record Protocol 使用的算法和所需参数，并验证了服务端身份；</p>
+<p>TLS Record Protocol 在协商后保证应用层数据的完整性和隐私性。</p>
+<p>TLS Handshaking Protocol 的核心是在公开信道上传递 premaster secret。</p>
+<h2 id="qa">Q&amp;A</h2>
+<h3 id="为什么传输内容不直接使用非对称加密">为什么传输内容不直接使用非对称加密？</h3>
+<p>因为性能限制。</p>
+<h3 id="https-能保证正常连接">HTTPS 能保证正常连接？</h3>
+<p>不能。</p>
+<blockquote>
+<p>There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</p>
+</blockquote>
+<p>攻击者甚至可以直接丢弃双方的数据包</p>
+<h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
+<p>通过 Client Certificate</p>
+<blockquote>
+<p>This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</p>
+</blockquote>
+<h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
+<p>Closure Alerts：防止 Truncation Attack</p>
+<blockquote>
+<p>In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</p>
+</blockquote>
+<p>Error Alerts：错误处理</p>
+<h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
+                      ClientHello.random + ServerHello.random)
+                      [0..47];
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="加密压缩和-mac-算法参数是如何计算的">加密，压缩和 MAC 算法参数是如何计算的</h3>
+<p>Handshaking Protocols 使得客户端和服务端交换了三个参数：client_random，server_random 和 master_secret，通过以下算法生成算法所需要的参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">To generate the key material, compute
+
+  key_block = PRF (SecurityParameters.master_secret,
+                  &#34;key expansion&#34;,
+                  SecurityParameters.`server_random` +
+                  SecurityParameters.`client_random`);
+
+until enough output has been generated.  Then, the key_block is
+partitioned as follows:
+
+  client_write_MAC_key [SecurityParameters.mac_key_length]
+  server_write_MAC_key [SecurityParameters.mac_key_length]
+  client_write_key [SecurityParameters.enc_key_length]
+  server_write_key [SecurityParameters.enc_key_length]
+  client_write_IV [SecurityParameters.fixed_iv_length]
+  server_write_IV [SecurityParameters.fixed_iv_length]
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</p>
+</blockquote>
+<p>使用 Diffie-Hellman 算法的 TLS 握手细节</p>
+<figure><a class="lightgallery" href="/images/Network/HTTPS/dh-detail.webp" title="/images/Network/HTTPS/dh-detail.webp" data-thumbnail="/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/">https://cipherstuff.wordpress.com/</a></figcaption>
+    </figure>
+<h2 id="拓展阅读">拓展阅读</h2>
+<ul>
+<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
+<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
+<li>Session resume</li>
+<li>证书Revoke</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2规范</a></p>
+</li>
+<li>
+<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI规范</a></p>
+</li>
+<li>
+<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>
+</li>
+<li>
+<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>如何高效搜索？</title>
     <link>https://www.techkoala.top/how_to_search/</link>
     <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
@@ -1947,50 +2264,6 @@ Executed in  215.68 millis	fish       	external
 </li>
 <li>
 <p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>NAT 2：问题及解决方法</title>
-    <link>https://www.techkoala.top/nat_issues_solutions/</link>
-    <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/nat_issues_solutions/</guid>
-    <description><![CDATA[<blockquote>
-<p>NAT 引发的问题以及解决方法</p>
-</blockquote>
-<h2 id="问题">问题</h2>
-<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 <code>P2P</code> 联机方式）时候给我们造成困扰。如果 <code>Xbox</code>、<code>PS</code>、<code>switch</code> 或者 <code>PC</code> 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
-<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 <code>NAT</code> 化的。但是，在 <code>Internet</code> 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 <code>Xbox Live</code> 或 <code>PS</code> 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
-<p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
-<p>那么，主机如何得知它位于 <code>NAT</code> 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
-<h2 id="解决办法">解决办法</h2>
-<h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
-<p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
-<p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
-        
-    </a><figcaption class="image-caption">STUN 算法</figcaption>
-    </figure>
-<p>如果你还记得，除了<code>对称型 NAT</code> 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
-<p>但在对称型 NAT 的情况下，每一个连接都有一个不同的映射，有一个不同的（随机生成的）端口，意味着连接到 STUN 服务器也将有它自己独特的映射，表现的就像一个新的设备接入一样。这意味着每个映射都有不同的端口，在这种情况下，STUN 检测到的端口现在已经没有用了，因为这个映射是 STUN 服务器独有的。无论映射到其他设备的端口是什么，都是未知的，STUN 也没有办法检测到它。由于你的主机无法得知每个映射到每个主机的公共 NAT 化端口，因此无法将这些信息传递给你，也就意味着没有设备可以连接到你的游戏，这就是对称型 NAT 导致如此多游戏联机问题的原因。</p>
-<h3 id="dmzdemilitarized-zone">DMZ（Demilitarized zone)</h3>
-<p>路由器上的外围网络（也称 DMZ）功能用于消除对 Internet 的限制。它主要是将你的设备移到你的网络防火墙之外的区域，将部分用于提供对外服务的服务器主机划分到一个特定的子网 —— DMZ 内，在 DMZ 的主机能与同处 DMZ 内的主机和外部网络的主机通信，而同内部网络主机的通信会被受到限制。这使 DMZ 的主机能被内部网络和外部网络所访问，而内部网络又能避免外部网络所得知。</p>
-<p><strong>注意</strong> 当你设置外围网络时在主机上使用静态 IP 地址十分重要。要设置静态 IP 地址，请使用路由器的 DHCP 预留功能（如果可用）。如果该功能不可用，你将需要在你的设备 上配置手动 IP 设置。</p>
-<h3 id="upnpuniversal-plug-and-play">UPnP（Universal Plug and Play）</h3>
-<p>UPnP（Universal Plug and Play）是帮助路由器有效通信的一个标准。如果路由器或网关支持 UPnP，则它在默认情况下可能已启用。开启 UPnP 功能后，局域网中的计算机可以请求路由器自动进行端口转换。这样，互联网上的计算机就能在需要时访问局域网计算机上的资源（如 MSN Messenger 或迅雷、BT、PPLive 等支持 UPnP 协议的应用程序）。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="www.think-like-a-computer.com/2011/09/19/symmetric-nat/" rel="">Symmetric NAT and It’s Problems | Think Like A Computer</a></p>
-</li>
-<li>
-<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreffer">Wikipedia STUN</a></p>
-</li>
-<li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreffer">Wikipedia DMZ</a></p>
-</li>
-<li>
-<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreffer">解决 NAT 错误和多人游戏问题</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
