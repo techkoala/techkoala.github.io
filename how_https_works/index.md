@@ -27,7 +27,7 @@ HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示
 
 {{< image src="/images/Network/HTTPS/tcp-ip-model.webp" caption="Credit: [Kaushal Kumar Panday](https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx) From: [SSL Handshake and HTTPS Bindings on IIS](https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx)" >}} 
 
-其中 Handshake protocol，Change Ciper Spec protocol 和 Alert protocol 组成了 SSL Handshaking Protocols。
+其中 `Handshake protocol`，`Change Ciper Spec protocol` 和 `Alert protocol` 组成了 `SSL Handshaking Protocols`。
 
 HTTPS 和 HTTP 协议相比提供了:
 
@@ -60,7 +60,8 @@ HTTPS 和 HTTP 协议相比提供了:
 1. 证书信息：过期时间和序列号
 2. 所有者信息：姓名等
 3. 所有者公钥
-4. 为什么服务端要发送证书给客户端
+
+**为什么服务端要发送证书给客户端?**
 
 互联网有太多的服务需要使用证书来验证身份，以至于客户端（操作系统或浏览器等）无法内置所有证书，需要通过服务端将证书发送给客户端。
 
@@ -82,9 +83,9 @@ HTTPS 和 HTTP 协议相比提供了:
 | A digital signature |
 |(not to be confused  |
 |with a digital       |
-|certificate)         |            +---------+              +--------+
+|certificate)         |              +---------+                +--------+
 | is a mathematical   |---- 哈希 --->| 消息摘要  |--- 私钥加密 --->| 数字签名 |
-|technique used       |            +---------+              +--------+
+|technique used       |              +---------+                +--------+
 |to validate the      |
 |authenticity and     |
 |integrity of a       |

@@ -7,6 +7,286 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>网络分析工具：NetCat</title>
+    <link>https://www.techkoala.top/netcat/</link>
+    <pubDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/netcat/</guid>
+    <description><![CDATA[<blockquote>
+<p>网络上的瑞士军刀 —— NetCAT</p>
+</blockquote>
+<h2 id="什么是-netcat">什么是 NetCat</h2>
+<p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
+<p>nc 主要功能</p>
+<p>nc 可以在两台设备上面相互交互，即侦听模式 / 传输模式</p>
+<ul>
+<li>Telnet 功能</li>
+<li>获取 banner 信息</li>
+<li>传输文本信息</li>
+<li>传输文件 / 目录</li>
+<li>加密传输文件，默认不加密</li>
+<li>远程控制</li>
+<li>加密所有流量</li>
+<li>流媒体服务器</li>
+<li>远程克隆硬盘</li>
+</ul>
+<h2 id="使用-netcat">使用 NetCat</h2>
+<p>一般来说，nc 的命令行包括如下几个部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="命令选项">命令选项</h3>
+<blockquote>
+<p>本文内容基于 OpenBSD 社区的变种（也叫 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD netcat</a>，部分命令与原版有差异。 ）</p>
+</blockquote>
+<p>下面列举了一些常用选项，更多选项参见 man 手册</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">选项	   是否有 “选项值”	   说明
+-h	   NO	           输出 nc 的帮助
+-v	   NO	           在网络通讯时，显示详细的输出信息
+-n	   NO	           对命令行中的主机，不进行域名解析，如果主机是 IP 地址，需要用该选项
+-p	  YES	           指定端口号
+-l	  NO	           开启监听模式，nc 作为服务端，如不加，nc 默认作为客户端
+-u	  NO	           使用 UDP 协，如不加该选项，默认是 TCP 协议
+-w	  YES	           设置连接的超时间隔（N 秒）
+-q	  YES	           让 nc 延时（N 秒）再退出
+-z	  NO	           开启 zero-I/O 模式，该选项仅用于端口扫描
+-k	  NO	           配合 -l 选项使用，可以重复接受客户端连接
+-X	  YES	           指定代理的类型
+-x	  YES	           以 IP:port 的格式指定代理
+-d    NO               后台模式
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="主机">主机</h3>
+<p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
+<h3 id="端口">端口</h3>
+<p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
+<h2 id="常用使用场景示例">常用使用场景示例</h2>
+<h3 id="测试某个远程主机的监听端口是否可达">测试某个远程主机的监听端口是否可达</h3>
+<p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
+<ol>
+<li>监听端口没开启</li>
+<li>监听端口虽然开启，但是被防火墙阻拦了</li>
+</ol>
+<p>对第 1 个原因，（如果你能在该主机上运行命令）可以直接用 <code>netstat</code> 这个命令查看监听端口是否开启；但对于第 2 个原因，<code>netstat</code> 就用不上了，这时候就可以用 nc 来帮你搞定。</p>
+<p>用如下命令可以测试某个 IP 地址上的某个监听端口是否开启:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv ip port
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注：</strong>　默认情况下 nc 会等待很久，然后才告诉你连接失败。如果你所处的网络环境稳定且高速（比如：局域网内），那么，你可以追加 <code>-w</code> 选项，设置一个比较小的超时值。在下面的例子中，超时值设为 3 秒。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</h3>
+<p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
+<p>为了叙述方便，设想如下场景：
+有两台主机 ——<code>主机 C</code> 充当客户端，<code>主机 S</code> 充当服务端。
+然后要判断<code>主机 S</code> 上的防火墙是否会拦截其它主机对 8080 TCP 端口的连接。</p>
+<p>在<code>主机 S</code> 上运行 nc，让它在 8080 端口，命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -lv -p <span class="m">8080</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
+<p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
+<h3 id="用-nc-进行端口扫描">用 nc 进行端口扫描</h3>
+<p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024
+</code></pre></td></tr></table>
+</div>
+</div><p>选项 -z
+是指开启 <code>zero-I/O 模式</code>。该模式 nc 只判断某个监听端口是否能连上，连上后<strong>不</strong>与对端进行数据通讯。</p>
+<p>**注：**端口扫描的时候，<code>-v</code> 选项会把成功/失败的结果统统打印出来。通常关注的都是 “扫描成功” 的那些端口。因此，可以用可以配合使用 <code>grep</code> 过滤一下，只打印扫出来的端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
+</code></pre></td></tr></table>
+</div>
+</div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
+<p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
+<h3 id="用-nc-探测服务器类型和软件版本">用 nc 探测服务器类型和软件版本</h3>
+<p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
+OR
+<span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="基于-nc-的端口转发">基于 nc 的端口转发</h3>
+<p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
+<p>步骤 1：创建命名管道</p>
+<p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkfifo nc_pipe
+</code></pre></td></tr></table>
+</div>
+</div><p>步骤 2：同时启动两个 nc</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
+</code></pre></td></tr></table>
+</div>
+</div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
+<h3 id="用-nc-传输文件">用 nc 传输文件</h3>
+<p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端 B 主机运行如下命令
+nc -l -p port &gt; file2
+
+然后在发送端 A 主机运行如下命令
+nc ip port &lt; file1
+</code></pre></td></tr></table>
+</div>
+</div><p>两者端口号要相同</p>
+<h3 id="用-nc-远程备份整个磁盘">用 nc 远程备份整个磁盘</h3>
+<p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端（B 主机）运行如下命令
+nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sdb
+
+然后在发送端 A 主机运行如下命令
+dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="远程控制">远程控制</h3>
+<p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">A:
+nc -lp port -c bash
+
+B:
+nc ip port
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="流媒体服务">流媒体服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">A:
+cat test.mp4 <span class="p">|</span> nc -lp port
+
+B:
+nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4000</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>A 让 test.MP4 这个文件成为<code>流</code>的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。</p>
+<h3 id="信息收集">信息收集</h3>
+<p>收集目标机上的进程信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p port &gt; ps.txt
+将远程发送过来的内容保存在本地
+
+Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
+标准输入完成后 delay 一秒钟，会发送到侦听端
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreffer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
+</li>
+<li>
+<p>[2] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>HTTPS 工作原理</title>
     <link>https://www.techkoala.top/how_https_works/</link>
     <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate>
@@ -34,7 +314,7 @@
         
     </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
     </figure>
-<p>其中 Handshake protocol，Change Ciper Spec protocol 和 Alert protocol 组成了 SSL Handshaking Protocols。</p>
+<p>其中 <code>Handshake protocol</code>，<code>Change Ciper Spec protocol</code> 和 <code>Alert protocol</code> 组成了 <code>SSL Handshaking Protocols</code>。</p>
 <p>HTTPS 和 HTTP 协议相比提供了:</p>
 <ol>
 <li>数据完整性：内容传输经过完整性校验</li>
@@ -66,8 +346,8 @@
 <li>证书信息：过期时间和序列号</li>
 <li>所有者信息：姓名等</li>
 <li>所有者公钥</li>
-<li>为什么服务端要发送证书给客户端</li>
 </ol>
+<p><strong>为什么服务端要发送证书给客户端?</strong></p>
 <p>互联网有太多的服务需要使用证书来验证身份，以至于客户端（操作系统或浏览器等）无法内置所有证书，需要通过服务端将证书发送给客户端。</p>
 <h3 id="客户端为什么要验证接收到的证书">客户端为什么要验证接收到的证书</h3>
 <p><strong>中间人攻击</strong></p>
@@ -104,9 +384,9 @@
 | A digital signature |
 |(not to be confused  |
 |with a digital       |
-|certificate)         |            +---------+              +--------+
+|certificate)         |              +---------+                +--------+
 | is a mathematical   |---- 哈希 ---&gt;| 消息摘要  |--- 私钥加密 ---&gt;| 数字签名 |
-|technique used       |            +---------+              +--------+
+|technique used       |              +---------+                +--------+
 |to validate the      |
 |authenticity and     |
 |integrity of a       |
@@ -2058,212 +2338,6 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 <li>
 <p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreffer">Unicode</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>文件传输 1：SCP</title>
-    <link>https://www.techkoala.top/scp/</link>
-    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/scp/</guid>
-    <description><![CDATA[<blockquote>
-<p>SCP 就是 SSH 协议的文件传输功能吗？</p>
-</blockquote>
-<h2 id="什么是-scp">什么是 SCP</h2>
-<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
-<p>使用起来特别方便：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
-</code></pre></td></tr></table>
-</div>
-</div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
-<p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
-<p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
-<p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
-<h2 id="scp-工作原理">SCP 工作原理</h2>
-<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
-<h3 id="建立连接">建立连接</h3>
-<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
-<p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
-        
-    </a><figcaption class="image-caption">建立连接</figcaption>
-    </figure>
-<p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
-<h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
-<p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
-<ul>
-<li>
-<p>[command type] 通常是一个 ASCII 字符：</p>
-<ul>
-<li>&lsquo;C&rsquo;- 写入文件</li>
-<li>&lsquo;D&rsquo;- 输入目录</li>
-<li>&lsquo;E&rsquo;- 退出最后一个目录</li>
-<li>&lsquo;T&rsquo;- 设置下一个文件或目录的创建 / 更新时间戳</li>
-</ul>
-</li>
-<li>
-<p>[arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。&ldquo;E&rdquo; 命令没有参数。</p>
-</li>
-<li>
-<p>[optional data] 在上一个命令为 &ldquo;C&rdquo;（创建文件）时发送。数据的大小指定为 &ldquo;C&rdquo; 的参数。</p>
-</li>
-</ul>
-<p>此外，还有控制字节，这些字节是在没有新行的情况下自己发送的：</p>
-<ul>
-<li>
-<p>&lsquo;0x00&rsquo;-&ldquo;OK&rdquo;，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。</p>
-</li>
-<li>
-<p>&lsquo;0x00&rsquo;-&ldquo;警告&rdquo;，后面是要向用户显示的行（由新行终止）。</p>
-</li>
-<li>
-<p>&lsquo;0x00&rsquo;-&ldquo;错误&rdquo; 后跟随可选消息（和警告相同），但连接随后终止。</p>
-</li>
-</ul>
-<p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
-        
-    </a><figcaption class="image-caption">传输过程</figcaption>
-    </figure>
-<h2 id="使用-scp">使用 SCP</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
-</code></pre></td></tr></table>
-</div>
-</div><p>其中选项如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
--2：使用ssh协议版本2；
--4：使用ipv4；
--6：使用ipv6；
--B：以批处理模式运行；
--C：使用压缩；
--F：指定ssh配置文件；
--l：指定宽带限制；
--o：指定使用的ssh选项；
--P：指定远程主机的端口号；
--p：保留文件的最后修改时间，最后访问时间和权限模式；
--q：不显示复制进度；
--r：以递归方式复制。
-</code></pre></td></tr></table>
-</div>
-</div><p>参数分别为：</p>
-<ul>
-<li>源文件：指定要复制的源文件。</li>
-<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
-</ul>
-<h2 id="scp-的问题">SCP 的问题</h2>
-<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
-<h3 id="性能">性能</h3>
-<p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
-<p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
-<span class="m">10000</span>
-
-<span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
-
-________________________________________________________
-Executed in  882.99 millis	fish       	external
-   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
-   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
-
-<span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
-tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
-
-________________________________________________________
-Executed in  215.68 millis	fish       	external
-   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
-   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
-</code></pre></td></tr></table>
-</div>
-</div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
-<h3 id="安全">安全</h3>
-<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
-<p><code>OpenSSH</code> 的发行说明提到：</p>
-<blockquote>
-<p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
-</blockquote>
-<p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
-<p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
-<h2 id="scp-的替代方案">SCP 的替代方案</h2>
-<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
-缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
-<p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
-<p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
-<h2 id="结论">结论</h2>
-<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
-<p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
-<h2 id="另见">另见</h2>
-<ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
-</ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
-</li>
-<li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
-</li>
-<li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
-</li>
-<li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
