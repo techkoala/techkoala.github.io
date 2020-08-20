@@ -1,7 +1,7 @@
 # 网络分析工具：NetCat
 
 
-> 网络上的瑞士军刀 —— NetCAT
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" caption="网络瑞士军刀 —— NetCat">}} 
 
 <!--more-->
 
@@ -9,9 +9,9 @@
 
 简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 `传输层协议`（TCP ＆ UDP）
 
-nc 主要功能
+nc 可以在两台设备上面相互交互，即`侦听模式`/`传输模式`
 
-nc 可以在两台设备上面相互交互，即侦听模式 / 传输模式
+nc 包含以下主要功能：
 
 - Telnet 功能
 - 获取 banner 信息
@@ -33,9 +33,9 @@ nc 命令选项 主机 端口
 
 ### 命令选项
 
-> 本文内容基于 OpenBSD 社区的变种（也叫 [OpenBSD netcat](https://man.openbsd.org/nc.1)，部分命令与原版有差异。 ）
+> 本文内容基于 OpenBSD 社区的变种（也叫 OpenBSD netcat，部分命令与原版有差异。 ）
 
-下面列举了一些常用选项，更多选项参见 man 手册
+下面列举了一些常用选项，更多选项参见 [OpenBSD manual page](https://man.openbsd.org/nc.1)
 
 ```
 选项	   是否有 “选项值”	   说明
@@ -220,6 +220,8 @@ Ps aux |nc -nv ip port -q 1
 
 ## 参考
 
-- [1] [扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”](https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15)
+- [1] [netcat manual page](https://man.openbsd.org/nc.1)
 
-- [2] [NetCat 使用指南](https://www.jianshu.com/p/cb26a0f6c622)
+- [2] [扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”](https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15)
+
+- [3] [NetCat 使用指南](https://www.jianshu.com/p/cb26a0f6c622)
