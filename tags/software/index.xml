@@ -124,7 +124,7 @@
 </div>
 </div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
 <p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
-<h3 id="用-nc-进行端口扫描">用 nc 进行端口扫描</h3>
+<h3 id="端口扫描">端口扫描</h3>
 <p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -147,7 +147,7 @@
 </div>
 </div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
 <p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
-<h3 id="用-nc-探测服务器类型和软件版本">用 nc 探测服务器类型和软件版本</h3>
+<h3 id="探测服务器类型和软件版本">探测服务器类型和软件版本</h3>
 <p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -161,7 +161,7 @@ OR
 <span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="基于-nc-的端口转发">基于 nc 的端口转发</h3>
+</div><h3 id="端口转发">端口转发</h3>
 <p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
 <p>步骤 1：创建命名管道</p>
 <p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
@@ -183,7 +183,7 @@ OR
 </code></pre></td></tr></table>
 </div>
 </div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
-<h3 id="用-nc-传输文件">用 nc 传输文件</h3>
+<h3 id="传输文件">传输文件</h3>
 <p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -202,7 +202,7 @@ nc ip port &lt; file1
 </code></pre></td></tr></table>
 </div>
 </div><p>两者端口号要相同</p>
-<h3 id="用-nc-远程备份整个磁盘">用 nc 远程备份整个磁盘</h3>
+<h3 id="远程备份整个磁盘">远程备份整个磁盘</h3>
 <p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

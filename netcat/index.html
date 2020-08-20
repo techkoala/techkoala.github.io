@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/netcat/" />
 <meta property="article:published_time" content="2020-08-19T23:15:35+08:00" />
-<meta property="article:modified_time" content="2020-08-20T00:29:29+08:00" />
+<meta property="article:modified_time" content="2020-08-20T12:41:13+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="网络分析工具：NetCat"/>
 <meta name="twitter:description" content="
@@ -32,8 +32,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/netcat\/"
-        },"genre": "posts","keywords": "Software","wordcount":  2079 ,
-        "url": "https:\/\/www.techkoala.top\/netcat\/","datePublished": "2020-08-19T23:15:35+08:00","dateModified": "2020-08-20T00:29:29+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "Software","wordcount":  2065 ,
+        "url": "https:\/\/www.techkoala.top\/netcat\/","datePublished": "2020-08-19T23:15:35+08:00","dateModified": "2020-08-20T12:41:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -109,7 +109,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">网络分析工具：NetCat</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2079 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2065 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -132,11 +132,11 @@
           <ul>
             <li><a href="#测试某个远程主机的监听端口是否可达">测试某个远程主机的监听端口是否可达</a></li>
             <li><a href="#判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</a></li>
-            <li><a href="#用-nc-进行端口扫描">用 nc 进行端口扫描</a></li>
-            <li><a href="#用-nc-探测服务器类型和软件版本">用 nc 探测服务器类型和软件版本</a></li>
-            <li><a href="#基于-nc-的端口转发">基于 nc 的端口转发</a></li>
-            <li><a href="#用-nc-传输文件">用 nc 传输文件</a></li>
-            <li><a href="#用-nc-远程备份整个磁盘">用 nc 远程备份整个磁盘</a></li>
+            <li><a href="#端口扫描">端口扫描</a></li>
+            <li><a href="#探测服务器类型和软件版本">探测服务器类型和软件版本</a></li>
+            <li><a href="#端口转发">端口转发</a></li>
+            <li><a href="#传输文件">传输文件</a></li>
+            <li><a href="#远程备份整个磁盘">远程备份整个磁盘</a></li>
             <li><a href="#远程控制">远程控制</a></li>
             <li><a href="#流媒体服务">流媒体服务</a></li>
             <li><a href="#信息收集">信息收集</a></li>
@@ -267,7 +267,7 @@
 </div>
 </div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
 <p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
-<h3 id="用-nc-进行端口扫描">用 nc 进行端口扫描</h3>
+<h3 id="端口扫描">端口扫描</h3>
 <p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -290,7 +290,7 @@
 </div>
 </div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
 <p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
-<h3 id="用-nc-探测服务器类型和软件版本">用 nc 探测服务器类型和软件版本</h3>
+<h3 id="探测服务器类型和软件版本">探测服务器类型和软件版本</h3>
 <p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -304,7 +304,7 @@ OR
 <span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="基于-nc-的端口转发">基于 nc 的端口转发</h3>
+</div><h3 id="端口转发">端口转发</h3>
 <p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
 <p>步骤 1：创建命名管道</p>
 <p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
@@ -326,7 +326,7 @@ OR
 </code></pre></td></tr></table>
 </div>
 </div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
-<h3 id="用-nc-传输文件">用 nc 传输文件</h3>
+<h3 id="传输文件">传输文件</h3>
 <p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -345,7 +345,7 @@ nc ip port &lt; file1
 </code></pre></td></tr></table>
 </div>
 </div><p>两者端口号要相同</p>
-<h3 id="用-nc-远程备份整个磁盘">用 nc 远程备份整个磁盘</h3>
+<h3 id="远程备份整个磁盘">远程备份整个磁盘</h3>
 <p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -434,8 +434,8 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-08-20&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/19cf205fb075d8d95e3c5244a6f8d13ed01763fe" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 19cf205fb075d8d95e3c5244a6f8d13ed01763fe: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>19cf205</a></span>
+                <span>更新于 2020-08-20&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/9044546d8122e7ddfe7fb3d73ff9994dce004069" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 9044546d8122e7ddfe7fb3d73ff9994dce004069: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>9044546</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
