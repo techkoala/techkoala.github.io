@@ -1,4 +1,4 @@
-# DNS_List
+# DNS 列表
 
 
 > 列举国内外常用的 DNS
