@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>DNS_List - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="DNS_List" />
+<meta property="og:description" content="
+列举国内外常用的 DNS
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.techkoala.top/dns_list/" />
+<meta property="article:published_time" content="2020-08-21T18:44:20+08:00" />
+<meta property="article:modified_time" content="2020-08-21T18:44:20+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DNS_List"/>
+<meta name="twitter:description" content="
+列举国内外常用的 DNS
+"/>
+<meta name="application-name" content="TechKoala">
+<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/dns_list/" /><link rel="prev" href="https://www.techkoala.top/netcat/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "DNS_List",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.techkoala.top\/dns_list\/"
+        },"genre": "posts","keywords": "DNS","wordcount":  1009 ,
+        "url": "https:\/\/www.techkoala.top\/dns_list\/","datePublished": "2020-08-21T18:44:20+08:00","dateModified": "2020-08-21T18:44:20+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "TechKoala"},"author": {
+                "@type": "Person",
+                "name": "TechKoala"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> Posts </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> Tags </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> Categories </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> Tools </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> Softwares </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>Posts</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>Tags</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>Categories</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>Tools</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>Softwares</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">DNS_List</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-21">2020-08-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1009 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ipv4">IPv4</a>
+          <ul>
+            <li><a href="#国内">国内</a>
+              <ul>
+                <li><a href="#知名-dns-服务">知名 DNS 服务</a></li>
+                <li><a href="#全国各地电信-dns-服务器-ip-地址">全国各地电信 DNS 服务器 IP 地址</a></li>
+                <li><a href="#全国各地联通-dns-服务器-ip-地址">全国各地联通 DNS 服务器 IP 地址</a></li>
+                <li><a href="#全国各地移动-dns-服务器-ip-地址">全国各地移动 DNS 服务器 IP 地址</a></li>
+              </ul>
+            </li>
+            <li><a href="#香港地区">香港地区</a></li>
+            <li><a href="#台湾地区">台湾地区</a></li>
+            <li><a href="#韩国">韩国</a></li>
+            <li><a href="#美国">美国</a></li>
+            <li><a href="#其他地区">其他地区</a></li>
+          </ul>
+        </li>
+        <li><a href="#ipv6">IPv6</a>
+          <ul>
+            <li><a href="#国内-1">国内</a>
+              <ul>
+                <li><a href="#高校">高校</a></li>
+              </ul>
+            </li>
+            <li><a href="#台湾地区-1">台湾地区</a></li>
+            <li><a href="#美国-1">美国</a></li>
+            <li><a href="#其他地区-1">其他地区</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>列举国内外常用的 DNS</p>
+</blockquote>
+<h2 id="ipv4">IPv4</h2>
+<h3 id="国内">国内</h3>
+<h4 id="知名-dns-服务">知名 DNS 服务</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>114 常规 DNS</td>
+<td>114.114.114.114</td>
+<td>114.114.115.115</td>
+</tr>
+<tr>
+<td>114 拦截钓鱼病毒木马网站</td>
+<td>114.114.114.119</td>
+<td>114.114.115.119</td>
+</tr>
+<tr>
+<td>114 拦截色情网站</td>
+<td>114.114.114.110</td>
+<td>114.114.115.110</td>
+</tr>
+<tr>
+<td>阿里 AliDNS</td>
+<td>223.5.5.5</td>
+<td>223.6.6.6</td>
+</tr>
+<tr>
+<td>百度 BaiduDNS</td>
+<td>180.76.76.76</td>
+<td></td>
+</tr>
+<tr>
+<td>DNSPod DNS+</td>
+<td>119.29.29.29</td>
+<td>182.254.116.116</td>
+</tr>
+<tr>
+<td>CNNIC SDNS</td>
+<td>1.2.4.8</td>
+<td>210.2.4.8</td>
+</tr>
+<tr>
+<td>oneDNS</td>
+<td>117.50.11.11</td>
+<td>52.80.66.66</td>
+</tr>
+<tr>
+<td>DNS派电信/移动/铁通</td>
+<td>101.226.4.6</td>
+<td>218.30.118.6</td>
+</tr>
+<tr>
+<td>DNS派联通</td>
+<td>123.125.81.6</td>
+<td>140.207.198.6</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地电信-dns-服务器-ip-地址">全国各地电信 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安徽电信 DNS</td>
+<td>61.132.163.68</td>
+<td>202.102.213.68</td>
+</tr>
+<tr>
+<td>北京电信 DNS</td>
+<td>219.141.136.10</td>
+<td>219.141.140.10</td>
+</tr>
+<tr>
+<td>重庆电信 DNS</td>
+<td>61.128.192.68</td>
+<td>61.128.128.68</td>
+</tr>
+<tr>
+<td>福建电信 DNS</td>
+<td>218.85.152.99</td>
+<td>218.85.157.99</td>
+</tr>
+<tr>
+<td>甘肃电信 DNS</td>
+<td>202.100.64.68</td>
+<td>61.178.0.93</td>
+</tr>
+<tr>
+<td>广东电信 DNS</td>
+<td>202.96.128.86</td>
+<td>202.96.128.166</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.134.33</td>
+<td>202.96.128.68</td>
+</tr>
+<tr>
+<td>广西电信 DNS</td>
+<td>202.103.225.68</td>
+<td>202.103.224.68</td>
+</tr>
+<tr>
+<td>贵州电信 DNS</td>
+<td>202.98.192.67</td>
+<td>202.98.198.167</td>
+</tr>
+<tr>
+<td>河南电信 DNS</td>
+<td>222.88.88.88</td>
+<td>222.85.85.85</td>
+</tr>
+<tr>
+<td>黑龙江电信</td>
+<td>219.147.198.230</td>
+<td>219.147.198.242</td>
+</tr>
+<tr>
+<td>湖北电信 DNS</td>
+<td>202.103.24.68</td>
+<td>202.103.0.68</td>
+</tr>
+<tr>
+<td>湖南电信 DNS</td>
+<td>222.246.129.80</td>
+<td>59.51.78.211</td>
+</tr>
+<tr>
+<td>江苏电信 DNS</td>
+<td>218.2.2.2</td>
+<td>218.4.4.4</td>
+</tr>
+<tr>
+<td></td>
+<td>61.147.37.1</td>
+<td>218.2.135.1</td>
+</tr>
+<tr>
+<td>江西电信 DNS</td>
+<td>202.101.224.69</td>
+<td>202.101.226.68</td>
+</tr>
+<tr>
+<td>内蒙古电信</td>
+<td>219.148.162.31</td>
+<td>222.74.39.50</td>
+</tr>
+<tr>
+<td>山东电信 DNS</td>
+<td>219.146.1.66</td>
+<td>219.147.1.66</td>
+</tr>
+<tr>
+<td>陕西电信 DNS</td>
+<td>218.30.19.40</td>
+<td>61.134.1.4</td>
+</tr>
+<tr>
+<td>上海电信 DNS</td>
+<td>202.96.209.133</td>
+<td>116.228.111.118</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.209.5</td>
+<td>180.168.255.118</td>
+</tr>
+<tr>
+<td>四川电信 DNS</td>
+<td>61.139.2.69</td>
+<td>218.6.200.139</td>
+</tr>
+<tr>
+<td>天津电信 DNS</td>
+<td>219.150.32.132</td>
+<td>219.146.0.132</td>
+</tr>
+<tr>
+<td>云南电信 DNS</td>
+<td>222.172.200.68</td>
+<td>61.166.150.123</td>
+</tr>
+<tr>
+<td>浙江电信 DNS</td>
+<td>202.101.172.35</td>
+<td>61.153.177.196</td>
+</tr>
+<tr>
+<td></td>
+<td>61.153.81.75</td>
+<td>60.191.244.5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地联通-dns-服务器-ip-地址">全国各地联通 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京联通 DNS</td>
+<td>123.123.123.123</td>
+<td>123.123.123.124</td>
+</tr>
+<tr>
+<td></td>
+<td>202.106.0.20</td>
+<td>202.106.195.68</td>
+</tr>
+<tr>
+<td>重庆联通 DNS</td>
+<td>221.5.203.98</td>
+<td>221.7.92.98</td>
+</tr>
+<tr>
+<td>广东联通 DNS</td>
+<td>210.21.196.6</td>
+<td>221.5.88.88</td>
+</tr>
+<tr>
+<td>河北联通 DNS</td>
+<td>202.99.160.68</td>
+<td>202.99.166.4</td>
+</tr>
+<tr>
+<td>河南联通 DNS</td>
+<td>202.102.224.68</td>
+<td>202.102.227.68</td>
+</tr>
+<tr>
+<td>黑龙江联通</td>
+<td>202.97.224.69</td>
+<td>202.97.224.68</td>
+</tr>
+<tr>
+<td>吉林联通 DNS</td>
+<td>202.98.0.68</td>
+<td>202.98.5.68</td>
+</tr>
+<tr>
+<td>江苏联通 DNS</td>
+<td>221.6.4.66</td>
+<td>221.6.4.67</td>
+</tr>
+<tr>
+<td>内蒙古联通</td>
+<td>202.99.224.68</td>
+<td>202.99.224.8</td>
+</tr>
+<tr>
+<td>山东联通 DNS</td>
+<td>202.102.128.68</td>
+<td>202.102.152.3</td>
+</tr>
+<tr>
+<td></td>
+<td>202.102.134.68</td>
+<td>202.102.154.3</td>
+</tr>
+<tr>
+<td>山西联通 DNS</td>
+<td>202.99.192.66</td>
+<td>202.99.192.68</td>
+</tr>
+<tr>
+<td>陕西联通 DNS</td>
+<td>221.11.1.67</td>
+<td>221.11.1.68</td>
+</tr>
+<tr>
+<td>上海联通 DNS</td>
+<td>210.22.70.3</td>
+<td>210.22.84.3</td>
+</tr>
+<tr>
+<td>四川联通 DNS</td>
+<td>119.6.6.6</td>
+<td>124.161.87.155</td>
+</tr>
+<tr>
+<td>天津联通 DNS</td>
+<td>202.99.104.68</td>
+<td>202.99.96.68</td>
+</tr>
+<tr>
+<td>浙江联通 DNS</td>
+<td>221.12.1.227</td>
+<td>221.12.33.227</td>
+</tr>
+<tr>
+<td>辽宁联通 DNS</td>
+<td>202.96.69.38</td>
+<td>202.96.64.68</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地移动-dns-服务器-ip-地址">全国各地移动 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>江苏移动 DNS</td>
+<td>221.131.143.69</td>
+<td>112.4.0.55</td>
+</tr>
+<tr>
+<td>安徽移动 DNS</td>
+<td>211.138.180.2</td>
+<td>211.138.180.3</td>
+</tr>
+<tr>
+<td>山东移动 DNS</td>
+<td>218.201.96.130</td>
+<td>211.137.191.26</td>
+</tr>
+</tbody>
+</table>
+<h3 id="香港地区">香港地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>香港宽频 DNS</td>
+<td>203.80.96.10</td>
+<td></td>
+</tr>
+<tr>
+<td>和记环球电讯 DNS</td>
+<td>202.45.84.58</td>
+<td>202.45.84.59</td>
+</tr>
+<tr>
+<td>Pacific SuperNet DNS</td>
+<td>202.14.67.4</td>
+<td>202.14.67.14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信 DNS</td>
+<td>168.95.1.1</td>
+<td>168.95.192.1</td>
+</tr>
+<tr>
+<td>数位联合电信 DNS</td>
+<td>139.175.252.16</td>
+<td>139.175.55.244</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>101.101.101.101</td>
+<td>101.102.103.104</td>
+</tr>
+</tbody>
+</table>
+<h3 id="韩国">韩国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT olleh DNS</td>
+<td>168.126.63.1</td>
+<td>168.126.63.2</td>
+</tr>
+<tr>
+<td>SK Broadband DNS</td>
+<td>210.220.163.82</td>
+<td>219.250.36.130</td>
+</tr>
+<tr>
+<td>LG U+ DNS</td>
+<td>164.124.101.2</td>
+<td>203.248.252.2</td>
+</tr>
+<tr>
+<td></td>
+<td>164.124.107.9</td>
+<td>203.248.242.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloudflare DNS</td>
+<td>1.1.1.1</td>
+<td>1.0.0.1</td>
+</tr>
+<tr>
+<td>Google DNS</td>
+<td>8.8.8.8</td>
+<td>8.8.4.4</td>
+</tr>
+<tr>
+<td>IBM Quad9</td>
+<td>9.9.9.9</td>
+<td>149.112.112.112</td>
+</tr>
+<tr>
+<td>DNS.SB</td>
+<td>185.222.222.222</td>
+<td>185.184.222.222</td>
+</tr>
+<tr>
+<td>OpenDNS</td>
+<td>208.67.222.222</td>
+<td>208.67.220.220</td>
+</tr>
+<tr>
+<td>V2EX DNS</td>
+<td>199.91.73.222</td>
+<td>178.79.131.110</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>74.82.42.42</td>
+<td>66.220.18.42</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>77.88.8.8</td>
+<td>77.88.8.1</td>
+</tr>
+<tr>
+<td>俄罗斯 SafeDNS</td>
+<td>195.46.39.39</td>
+<td>195.46.39.40</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>84.200.69.80</td>
+<td>84.200.70.40</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>77.109.148.136</td>
+<td>77.109.148.137</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>91.239.100.100</td>
+<td>89.233.43.71</td>
+</tr>
+<tr>
+<td>荷兰 Freenom World Public DNS</td>
+<td>80.80.80.80</td>
+<td>80.80.81.81</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ipv6">IPv6</h2>
+<h3 id="国内-1">国内</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百度</td>
+<td>2400:da00::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>阿里</td>
+<td>2400:3200::1</td>
+<td>2400:3200:baba::1</td>
+</tr>
+<tr>
+<td>CNNIC</td>
+<td>2001:dc7:1000::1</td>
+<td></td>
+</tr>
+<tr>
+<td>下一代互联网北京研究中心</td>
+<td>240C::6666</td>
+<td>240C::6644</td>
+</tr>
+</tbody>
+</table>
+<h4 id="高校">高校</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京邮电大学</td>
+<td>2001:da8:202:10::36</td>
+<td>2001:da8:202:10::37</td>
+</tr>
+<tr>
+<td>上海交通大学</td>
+<td>2001:da8:8000:1:202:120:2:100</td>
+<td>2001:da8:8000:1:202:120:2:101</td>
+</tr>
+<tr>
+<td>中科院网络信息中心</td>
+<td>2001:cc0:2fff:1::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京交通大学</td>
+<td>2001:da8:205:2060::188</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学</td>
+<td>2001:da8:ff:305:20c:29ff:fe1f:a92a</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学 TUNA 协会</td>
+<td>2001:da8::666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京科技大学</td>
+<td>2001:da8:208:10::6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区-1">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信</td>
+<td>2001:b000:168::1</td>
+<td>2001:b000:168::2</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>2001:de4::101</td>
+<td>2001:de4::102</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国-1">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOOGLE</td>
+<td>2001:4860:4860::8888</td>
+<td>2001:4860:4860::8844</td>
+</tr>
+<tr>
+<td>CloudFlare DNS</td>
+<td>2606:4700:4700::1111</td>
+<td>2606:4700:4700::1001</td>
+</tr>
+<tr>
+<td>IBM</td>
+<td>2620:fe::fe</td>
+<td>2620:fe::9</td>
+</tr>
+<tr>
+<td>Cisco OpenDNS</td>
+<td>2620:0:ccc::2</td>
+<td>2620:0:ccd::2</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>2001:470:20::2</td>
+<td>2001:470:0:9d::2</td>
+</tr>
+<tr>
+<td>Verisign Public DNS</td>
+<td>2620:74:1b::1:1</td>
+<td>2620:74:1c::2:2</td>
+</tr>
+<tr>
+<td>Neustar Recursive DNS</td>
+<td>2610:a1:1018::1</td>
+<td>2610:a1:1019::1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区-1">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>2a02:6b8::feed:0ff</td>
+<td>2a02:6b8:0:1::feed:0ff</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>2001:1608:10:25::1c04:b12f</td>
+<td>2001:1608:10:25::9249:d69b</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>2001:1620:2078:136::</td>
+<td>2001:1620:2078:137::</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>2001:67c:28a4::</td>
+<td>2a01:3a0:53:53::</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreffer">全球免费公共 DNS 解析服务器 IP 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
+</li>
+<li>
+<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 DNS 服务器 IP 地址</a></p>
+</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-08-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/dns_list/" data-title="DNS_List" data-hashtags="DNS"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/dns_list/" data-hashtag="DNS"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/dns_list/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/dns_list/" data-title="DNS_List"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/dns_list/" data-title="DNS_List"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/dns/">DNS</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/netcat/" class="prev" rel="prev" title="网络分析工具：NetCat"><i class="fas fa-angle-left fa-fw"></i>网络分析工具：NetCat</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/dillonzq/LoveIt">LoveIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-21T18:44:20+08:00","owner":"techkoala","repo":"commets_of_blog","title":"DNS_List"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>
+</html>

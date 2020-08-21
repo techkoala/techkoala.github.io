@@ -1,6 +1,6 @@
 # Linux 安全分析与加固
 
-   {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" >}} 
+   {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" caption="Linux">}} 
 
 > 记录一些常见的 Linux 服务器安全问题分析以及防护措施
 

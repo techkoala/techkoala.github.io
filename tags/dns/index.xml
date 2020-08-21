@@ -4,7 +4,721 @@
         <link>https://www.techkoala.top/tags/dns/</link>
         <description>DNS - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/dns/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/dns/" rel="self" type="application/rss+xml" /><item>
+    <title>DNS_List</title>
+    <link>https://www.techkoala.top/dns_list/</link>
+    <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/dns_list/</guid>
+    <description><![CDATA[<blockquote>
+<p>列举国内外常用的 DNS</p>
+</blockquote>
+<h2 id="ipv4">IPv4</h2>
+<h3 id="国内">国内</h3>
+<h4 id="知名-dns-服务">知名 DNS 服务</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>114 常规 DNS</td>
+<td>114.114.114.114</td>
+<td>114.114.115.115</td>
+</tr>
+<tr>
+<td>114 拦截钓鱼病毒木马网站</td>
+<td>114.114.114.119</td>
+<td>114.114.115.119</td>
+</tr>
+<tr>
+<td>114 拦截色情网站</td>
+<td>114.114.114.110</td>
+<td>114.114.115.110</td>
+</tr>
+<tr>
+<td>阿里 AliDNS</td>
+<td>223.5.5.5</td>
+<td>223.6.6.6</td>
+</tr>
+<tr>
+<td>百度 BaiduDNS</td>
+<td>180.76.76.76</td>
+<td></td>
+</tr>
+<tr>
+<td>DNSPod DNS+</td>
+<td>119.29.29.29</td>
+<td>182.254.116.116</td>
+</tr>
+<tr>
+<td>CNNIC SDNS</td>
+<td>1.2.4.8</td>
+<td>210.2.4.8</td>
+</tr>
+<tr>
+<td>oneDNS</td>
+<td>117.50.11.11</td>
+<td>52.80.66.66</td>
+</tr>
+<tr>
+<td>DNS派电信/移动/铁通</td>
+<td>101.226.4.6</td>
+<td>218.30.118.6</td>
+</tr>
+<tr>
+<td>DNS派联通</td>
+<td>123.125.81.6</td>
+<td>140.207.198.6</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地电信-dns-服务器-ip-地址">全国各地电信 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安徽电信 DNS</td>
+<td>61.132.163.68</td>
+<td>202.102.213.68</td>
+</tr>
+<tr>
+<td>北京电信 DNS</td>
+<td>219.141.136.10</td>
+<td>219.141.140.10</td>
+</tr>
+<tr>
+<td>重庆电信 DNS</td>
+<td>61.128.192.68</td>
+<td>61.128.128.68</td>
+</tr>
+<tr>
+<td>福建电信 DNS</td>
+<td>218.85.152.99</td>
+<td>218.85.157.99</td>
+</tr>
+<tr>
+<td>甘肃电信 DNS</td>
+<td>202.100.64.68</td>
+<td>61.178.0.93</td>
+</tr>
+<tr>
+<td>广东电信 DNS</td>
+<td>202.96.128.86</td>
+<td>202.96.128.166</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.134.33</td>
+<td>202.96.128.68</td>
+</tr>
+<tr>
+<td>广西电信 DNS</td>
+<td>202.103.225.68</td>
+<td>202.103.224.68</td>
+</tr>
+<tr>
+<td>贵州电信 DNS</td>
+<td>202.98.192.67</td>
+<td>202.98.198.167</td>
+</tr>
+<tr>
+<td>河南电信 DNS</td>
+<td>222.88.88.88</td>
+<td>222.85.85.85</td>
+</tr>
+<tr>
+<td>黑龙江电信</td>
+<td>219.147.198.230</td>
+<td>219.147.198.242</td>
+</tr>
+<tr>
+<td>湖北电信 DNS</td>
+<td>202.103.24.68</td>
+<td>202.103.0.68</td>
+</tr>
+<tr>
+<td>湖南电信 DNS</td>
+<td>222.246.129.80</td>
+<td>59.51.78.211</td>
+</tr>
+<tr>
+<td>江苏电信 DNS</td>
+<td>218.2.2.2</td>
+<td>218.4.4.4</td>
+</tr>
+<tr>
+<td></td>
+<td>61.147.37.1</td>
+<td>218.2.135.1</td>
+</tr>
+<tr>
+<td>江西电信 DNS</td>
+<td>202.101.224.69</td>
+<td>202.101.226.68</td>
+</tr>
+<tr>
+<td>内蒙古电信</td>
+<td>219.148.162.31</td>
+<td>222.74.39.50</td>
+</tr>
+<tr>
+<td>山东电信 DNS</td>
+<td>219.146.1.66</td>
+<td>219.147.1.66</td>
+</tr>
+<tr>
+<td>陕西电信 DNS</td>
+<td>218.30.19.40</td>
+<td>61.134.1.4</td>
+</tr>
+<tr>
+<td>上海电信 DNS</td>
+<td>202.96.209.133</td>
+<td>116.228.111.118</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.209.5</td>
+<td>180.168.255.118</td>
+</tr>
+<tr>
+<td>四川电信 DNS</td>
+<td>61.139.2.69</td>
+<td>218.6.200.139</td>
+</tr>
+<tr>
+<td>天津电信 DNS</td>
+<td>219.150.32.132</td>
+<td>219.146.0.132</td>
+</tr>
+<tr>
+<td>云南电信 DNS</td>
+<td>222.172.200.68</td>
+<td>61.166.150.123</td>
+</tr>
+<tr>
+<td>浙江电信 DNS</td>
+<td>202.101.172.35</td>
+<td>61.153.177.196</td>
+</tr>
+<tr>
+<td></td>
+<td>61.153.81.75</td>
+<td>60.191.244.5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地联通-dns-服务器-ip-地址">全国各地联通 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京联通 DNS</td>
+<td>123.123.123.123</td>
+<td>123.123.123.124</td>
+</tr>
+<tr>
+<td></td>
+<td>202.106.0.20</td>
+<td>202.106.195.68</td>
+</tr>
+<tr>
+<td>重庆联通 DNS</td>
+<td>221.5.203.98</td>
+<td>221.7.92.98</td>
+</tr>
+<tr>
+<td>广东联通 DNS</td>
+<td>210.21.196.6</td>
+<td>221.5.88.88</td>
+</tr>
+<tr>
+<td>河北联通 DNS</td>
+<td>202.99.160.68</td>
+<td>202.99.166.4</td>
+</tr>
+<tr>
+<td>河南联通 DNS</td>
+<td>202.102.224.68</td>
+<td>202.102.227.68</td>
+</tr>
+<tr>
+<td>黑龙江联通</td>
+<td>202.97.224.69</td>
+<td>202.97.224.68</td>
+</tr>
+<tr>
+<td>吉林联通 DNS</td>
+<td>202.98.0.68</td>
+<td>202.98.5.68</td>
+</tr>
+<tr>
+<td>江苏联通 DNS</td>
+<td>221.6.4.66</td>
+<td>221.6.4.67</td>
+</tr>
+<tr>
+<td>内蒙古联通</td>
+<td>202.99.224.68</td>
+<td>202.99.224.8</td>
+</tr>
+<tr>
+<td>山东联通 DNS</td>
+<td>202.102.128.68</td>
+<td>202.102.152.3</td>
+</tr>
+<tr>
+<td></td>
+<td>202.102.134.68</td>
+<td>202.102.154.3</td>
+</tr>
+<tr>
+<td>山西联通 DNS</td>
+<td>202.99.192.66</td>
+<td>202.99.192.68</td>
+</tr>
+<tr>
+<td>陕西联通 DNS</td>
+<td>221.11.1.67</td>
+<td>221.11.1.68</td>
+</tr>
+<tr>
+<td>上海联通 DNS</td>
+<td>210.22.70.3</td>
+<td>210.22.84.3</td>
+</tr>
+<tr>
+<td>四川联通 DNS</td>
+<td>119.6.6.6</td>
+<td>124.161.87.155</td>
+</tr>
+<tr>
+<td>天津联通 DNS</td>
+<td>202.99.104.68</td>
+<td>202.99.96.68</td>
+</tr>
+<tr>
+<td>浙江联通 DNS</td>
+<td>221.12.1.227</td>
+<td>221.12.33.227</td>
+</tr>
+<tr>
+<td>辽宁联通 DNS</td>
+<td>202.96.69.38</td>
+<td>202.96.64.68</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地移动-dns-服务器-ip-地址">全国各地移动 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>江苏移动 DNS</td>
+<td>221.131.143.69</td>
+<td>112.4.0.55</td>
+</tr>
+<tr>
+<td>安徽移动 DNS</td>
+<td>211.138.180.2</td>
+<td>211.138.180.3</td>
+</tr>
+<tr>
+<td>山东移动 DNS</td>
+<td>218.201.96.130</td>
+<td>211.137.191.26</td>
+</tr>
+</tbody>
+</table>
+<h3 id="香港地区">香港地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>香港宽频 DNS</td>
+<td>203.80.96.10</td>
+<td></td>
+</tr>
+<tr>
+<td>和记环球电讯 DNS</td>
+<td>202.45.84.58</td>
+<td>202.45.84.59</td>
+</tr>
+<tr>
+<td>Pacific SuperNet DNS</td>
+<td>202.14.67.4</td>
+<td>202.14.67.14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信 DNS</td>
+<td>168.95.1.1</td>
+<td>168.95.192.1</td>
+</tr>
+<tr>
+<td>数位联合电信 DNS</td>
+<td>139.175.252.16</td>
+<td>139.175.55.244</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>101.101.101.101</td>
+<td>101.102.103.104</td>
+</tr>
+</tbody>
+</table>
+<h3 id="韩国">韩国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT olleh DNS</td>
+<td>168.126.63.1</td>
+<td>168.126.63.2</td>
+</tr>
+<tr>
+<td>SK Broadband DNS</td>
+<td>210.220.163.82</td>
+<td>219.250.36.130</td>
+</tr>
+<tr>
+<td>LG U+ DNS</td>
+<td>164.124.101.2</td>
+<td>203.248.252.2</td>
+</tr>
+<tr>
+<td></td>
+<td>164.124.107.9</td>
+<td>203.248.242.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloudflare DNS</td>
+<td>1.1.1.1</td>
+<td>1.0.0.1</td>
+</tr>
+<tr>
+<td>Google DNS</td>
+<td>8.8.8.8</td>
+<td>8.8.4.4</td>
+</tr>
+<tr>
+<td>IBM Quad9</td>
+<td>9.9.9.9</td>
+<td>149.112.112.112</td>
+</tr>
+<tr>
+<td>DNS.SB</td>
+<td>185.222.222.222</td>
+<td>185.184.222.222</td>
+</tr>
+<tr>
+<td>OpenDNS</td>
+<td>208.67.222.222</td>
+<td>208.67.220.220</td>
+</tr>
+<tr>
+<td>V2EX DNS</td>
+<td>199.91.73.222</td>
+<td>178.79.131.110</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>74.82.42.42</td>
+<td>66.220.18.42</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>77.88.8.8</td>
+<td>77.88.8.1</td>
+</tr>
+<tr>
+<td>俄罗斯 SafeDNS</td>
+<td>195.46.39.39</td>
+<td>195.46.39.40</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>84.200.69.80</td>
+<td>84.200.70.40</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>77.109.148.136</td>
+<td>77.109.148.137</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>91.239.100.100</td>
+<td>89.233.43.71</td>
+</tr>
+<tr>
+<td>荷兰 Freenom World Public DNS</td>
+<td>80.80.80.80</td>
+<td>80.80.81.81</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ipv6">IPv6</h2>
+<h3 id="国内-1">国内</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百度</td>
+<td>2400:da00::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>阿里</td>
+<td>2400:3200::1</td>
+<td>2400:3200:baba::1</td>
+</tr>
+<tr>
+<td>CNNIC</td>
+<td>2001:dc7:1000::1</td>
+<td></td>
+</tr>
+<tr>
+<td>下一代互联网北京研究中心</td>
+<td>240C::6666</td>
+<td>240C::6644</td>
+</tr>
+</tbody>
+</table>
+<h4 id="高校">高校</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京邮电大学</td>
+<td>2001:da8:202:10::36</td>
+<td>2001:da8:202:10::37</td>
+</tr>
+<tr>
+<td>上海交通大学</td>
+<td>2001:da8:8000:1:202:120:2:100</td>
+<td>2001:da8:8000:1:202:120:2:101</td>
+</tr>
+<tr>
+<td>中科院网络信息中心</td>
+<td>2001:cc0:2fff:1::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京交通大学</td>
+<td>2001:da8:205:2060::188</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学</td>
+<td>2001:da8:ff:305:20c:29ff:fe1f:a92a</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学 TUNA 协会</td>
+<td>2001:da8::666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京科技大学</td>
+<td>2001:da8:208:10::6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区-1">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信</td>
+<td>2001:b000:168::1</td>
+<td>2001:b000:168::2</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>2001:de4::101</td>
+<td>2001:de4::102</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国-1">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOOGLE</td>
+<td>2001:4860:4860::8888</td>
+<td>2001:4860:4860::8844</td>
+</tr>
+<tr>
+<td>CloudFlare DNS</td>
+<td>2606:4700:4700::1111</td>
+<td>2606:4700:4700::1001</td>
+</tr>
+<tr>
+<td>IBM</td>
+<td>2620:fe::fe</td>
+<td>2620:fe::9</td>
+</tr>
+<tr>
+<td>Cisco OpenDNS</td>
+<td>2620:0:ccc::2</td>
+<td>2620:0:ccd::2</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>2001:470:20::2</td>
+<td>2001:470:0:9d::2</td>
+</tr>
+<tr>
+<td>Verisign Public DNS</td>
+<td>2620:74:1b::1:1</td>
+<td>2620:74:1c::2:2</td>
+</tr>
+<tr>
+<td>Neustar Recursive DNS</td>
+<td>2610:a1:1018::1</td>
+<td>2610:a1:1019::1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区-1">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>2a02:6b8::feed:0ff</td>
+<td>2a02:6b8:0:1::feed:0ff</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>2001:1608:10:25::1c04:b12f</td>
+<td>2001:1608:10:25::9249:d69b</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>2001:1620:2078:136::</td>
+<td>2001:1620:2078:137::</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>2001:67c:28a4::</td>
+<td>2a01:3a0:53:53::</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreffer">全球免费公共 DNS 解析服务器 IP 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
+</li>
+<li>
+<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 DNS 服务器 IP 地址</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>深入浅出 DNS 解析</title>
     <link>https://www.techkoala.top/dns_update/</link>
     <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>

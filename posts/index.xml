@@ -4,7 +4,721 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DNS_List</title>
+    <link>https://www.techkoala.top/dns_list/</link>
+    <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/dns_list/</guid>
+    <description><![CDATA[<blockquote>
+<p>列举国内外常用的 DNS</p>
+</blockquote>
+<h2 id="ipv4">IPv4</h2>
+<h3 id="国内">国内</h3>
+<h4 id="知名-dns-服务">知名 DNS 服务</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>114 常规 DNS</td>
+<td>114.114.114.114</td>
+<td>114.114.115.115</td>
+</tr>
+<tr>
+<td>114 拦截钓鱼病毒木马网站</td>
+<td>114.114.114.119</td>
+<td>114.114.115.119</td>
+</tr>
+<tr>
+<td>114 拦截色情网站</td>
+<td>114.114.114.110</td>
+<td>114.114.115.110</td>
+</tr>
+<tr>
+<td>阿里 AliDNS</td>
+<td>223.5.5.5</td>
+<td>223.6.6.6</td>
+</tr>
+<tr>
+<td>百度 BaiduDNS</td>
+<td>180.76.76.76</td>
+<td></td>
+</tr>
+<tr>
+<td>DNSPod DNS+</td>
+<td>119.29.29.29</td>
+<td>182.254.116.116</td>
+</tr>
+<tr>
+<td>CNNIC SDNS</td>
+<td>1.2.4.8</td>
+<td>210.2.4.8</td>
+</tr>
+<tr>
+<td>oneDNS</td>
+<td>117.50.11.11</td>
+<td>52.80.66.66</td>
+</tr>
+<tr>
+<td>DNS派电信/移动/铁通</td>
+<td>101.226.4.6</td>
+<td>218.30.118.6</td>
+</tr>
+<tr>
+<td>DNS派联通</td>
+<td>123.125.81.6</td>
+<td>140.207.198.6</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地电信-dns-服务器-ip-地址">全国各地电信 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安徽电信 DNS</td>
+<td>61.132.163.68</td>
+<td>202.102.213.68</td>
+</tr>
+<tr>
+<td>北京电信 DNS</td>
+<td>219.141.136.10</td>
+<td>219.141.140.10</td>
+</tr>
+<tr>
+<td>重庆电信 DNS</td>
+<td>61.128.192.68</td>
+<td>61.128.128.68</td>
+</tr>
+<tr>
+<td>福建电信 DNS</td>
+<td>218.85.152.99</td>
+<td>218.85.157.99</td>
+</tr>
+<tr>
+<td>甘肃电信 DNS</td>
+<td>202.100.64.68</td>
+<td>61.178.0.93</td>
+</tr>
+<tr>
+<td>广东电信 DNS</td>
+<td>202.96.128.86</td>
+<td>202.96.128.166</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.134.33</td>
+<td>202.96.128.68</td>
+</tr>
+<tr>
+<td>广西电信 DNS</td>
+<td>202.103.225.68</td>
+<td>202.103.224.68</td>
+</tr>
+<tr>
+<td>贵州电信 DNS</td>
+<td>202.98.192.67</td>
+<td>202.98.198.167</td>
+</tr>
+<tr>
+<td>河南电信 DNS</td>
+<td>222.88.88.88</td>
+<td>222.85.85.85</td>
+</tr>
+<tr>
+<td>黑龙江电信</td>
+<td>219.147.198.230</td>
+<td>219.147.198.242</td>
+</tr>
+<tr>
+<td>湖北电信 DNS</td>
+<td>202.103.24.68</td>
+<td>202.103.0.68</td>
+</tr>
+<tr>
+<td>湖南电信 DNS</td>
+<td>222.246.129.80</td>
+<td>59.51.78.211</td>
+</tr>
+<tr>
+<td>江苏电信 DNS</td>
+<td>218.2.2.2</td>
+<td>218.4.4.4</td>
+</tr>
+<tr>
+<td></td>
+<td>61.147.37.1</td>
+<td>218.2.135.1</td>
+</tr>
+<tr>
+<td>江西电信 DNS</td>
+<td>202.101.224.69</td>
+<td>202.101.226.68</td>
+</tr>
+<tr>
+<td>内蒙古电信</td>
+<td>219.148.162.31</td>
+<td>222.74.39.50</td>
+</tr>
+<tr>
+<td>山东电信 DNS</td>
+<td>219.146.1.66</td>
+<td>219.147.1.66</td>
+</tr>
+<tr>
+<td>陕西电信 DNS</td>
+<td>218.30.19.40</td>
+<td>61.134.1.4</td>
+</tr>
+<tr>
+<td>上海电信 DNS</td>
+<td>202.96.209.133</td>
+<td>116.228.111.118</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.209.5</td>
+<td>180.168.255.118</td>
+</tr>
+<tr>
+<td>四川电信 DNS</td>
+<td>61.139.2.69</td>
+<td>218.6.200.139</td>
+</tr>
+<tr>
+<td>天津电信 DNS</td>
+<td>219.150.32.132</td>
+<td>219.146.0.132</td>
+</tr>
+<tr>
+<td>云南电信 DNS</td>
+<td>222.172.200.68</td>
+<td>61.166.150.123</td>
+</tr>
+<tr>
+<td>浙江电信 DNS</td>
+<td>202.101.172.35</td>
+<td>61.153.177.196</td>
+</tr>
+<tr>
+<td></td>
+<td>61.153.81.75</td>
+<td>60.191.244.5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地联通-dns-服务器-ip-地址">全国各地联通 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京联通 DNS</td>
+<td>123.123.123.123</td>
+<td>123.123.123.124</td>
+</tr>
+<tr>
+<td></td>
+<td>202.106.0.20</td>
+<td>202.106.195.68</td>
+</tr>
+<tr>
+<td>重庆联通 DNS</td>
+<td>221.5.203.98</td>
+<td>221.7.92.98</td>
+</tr>
+<tr>
+<td>广东联通 DNS</td>
+<td>210.21.196.6</td>
+<td>221.5.88.88</td>
+</tr>
+<tr>
+<td>河北联通 DNS</td>
+<td>202.99.160.68</td>
+<td>202.99.166.4</td>
+</tr>
+<tr>
+<td>河南联通 DNS</td>
+<td>202.102.224.68</td>
+<td>202.102.227.68</td>
+</tr>
+<tr>
+<td>黑龙江联通</td>
+<td>202.97.224.69</td>
+<td>202.97.224.68</td>
+</tr>
+<tr>
+<td>吉林联通 DNS</td>
+<td>202.98.0.68</td>
+<td>202.98.5.68</td>
+</tr>
+<tr>
+<td>江苏联通 DNS</td>
+<td>221.6.4.66</td>
+<td>221.6.4.67</td>
+</tr>
+<tr>
+<td>内蒙古联通</td>
+<td>202.99.224.68</td>
+<td>202.99.224.8</td>
+</tr>
+<tr>
+<td>山东联通 DNS</td>
+<td>202.102.128.68</td>
+<td>202.102.152.3</td>
+</tr>
+<tr>
+<td></td>
+<td>202.102.134.68</td>
+<td>202.102.154.3</td>
+</tr>
+<tr>
+<td>山西联通 DNS</td>
+<td>202.99.192.66</td>
+<td>202.99.192.68</td>
+</tr>
+<tr>
+<td>陕西联通 DNS</td>
+<td>221.11.1.67</td>
+<td>221.11.1.68</td>
+</tr>
+<tr>
+<td>上海联通 DNS</td>
+<td>210.22.70.3</td>
+<td>210.22.84.3</td>
+</tr>
+<tr>
+<td>四川联通 DNS</td>
+<td>119.6.6.6</td>
+<td>124.161.87.155</td>
+</tr>
+<tr>
+<td>天津联通 DNS</td>
+<td>202.99.104.68</td>
+<td>202.99.96.68</td>
+</tr>
+<tr>
+<td>浙江联通 DNS</td>
+<td>221.12.1.227</td>
+<td>221.12.33.227</td>
+</tr>
+<tr>
+<td>辽宁联通 DNS</td>
+<td>202.96.69.38</td>
+<td>202.96.64.68</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地移动-dns-服务器-ip-地址">全国各地移动 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>江苏移动 DNS</td>
+<td>221.131.143.69</td>
+<td>112.4.0.55</td>
+</tr>
+<tr>
+<td>安徽移动 DNS</td>
+<td>211.138.180.2</td>
+<td>211.138.180.3</td>
+</tr>
+<tr>
+<td>山东移动 DNS</td>
+<td>218.201.96.130</td>
+<td>211.137.191.26</td>
+</tr>
+</tbody>
+</table>
+<h3 id="香港地区">香港地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>香港宽频 DNS</td>
+<td>203.80.96.10</td>
+<td></td>
+</tr>
+<tr>
+<td>和记环球电讯 DNS</td>
+<td>202.45.84.58</td>
+<td>202.45.84.59</td>
+</tr>
+<tr>
+<td>Pacific SuperNet DNS</td>
+<td>202.14.67.4</td>
+<td>202.14.67.14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信 DNS</td>
+<td>168.95.1.1</td>
+<td>168.95.192.1</td>
+</tr>
+<tr>
+<td>数位联合电信 DNS</td>
+<td>139.175.252.16</td>
+<td>139.175.55.244</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>101.101.101.101</td>
+<td>101.102.103.104</td>
+</tr>
+</tbody>
+</table>
+<h3 id="韩国">韩国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT olleh DNS</td>
+<td>168.126.63.1</td>
+<td>168.126.63.2</td>
+</tr>
+<tr>
+<td>SK Broadband DNS</td>
+<td>210.220.163.82</td>
+<td>219.250.36.130</td>
+</tr>
+<tr>
+<td>LG U+ DNS</td>
+<td>164.124.101.2</td>
+<td>203.248.252.2</td>
+</tr>
+<tr>
+<td></td>
+<td>164.124.107.9</td>
+<td>203.248.242.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloudflare DNS</td>
+<td>1.1.1.1</td>
+<td>1.0.0.1</td>
+</tr>
+<tr>
+<td>Google DNS</td>
+<td>8.8.8.8</td>
+<td>8.8.4.4</td>
+</tr>
+<tr>
+<td>IBM Quad9</td>
+<td>9.9.9.9</td>
+<td>149.112.112.112</td>
+</tr>
+<tr>
+<td>DNS.SB</td>
+<td>185.222.222.222</td>
+<td>185.184.222.222</td>
+</tr>
+<tr>
+<td>OpenDNS</td>
+<td>208.67.222.222</td>
+<td>208.67.220.220</td>
+</tr>
+<tr>
+<td>V2EX DNS</td>
+<td>199.91.73.222</td>
+<td>178.79.131.110</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>74.82.42.42</td>
+<td>66.220.18.42</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>77.88.8.8</td>
+<td>77.88.8.1</td>
+</tr>
+<tr>
+<td>俄罗斯 SafeDNS</td>
+<td>195.46.39.39</td>
+<td>195.46.39.40</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>84.200.69.80</td>
+<td>84.200.70.40</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>77.109.148.136</td>
+<td>77.109.148.137</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>91.239.100.100</td>
+<td>89.233.43.71</td>
+</tr>
+<tr>
+<td>荷兰 Freenom World Public DNS</td>
+<td>80.80.80.80</td>
+<td>80.80.81.81</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ipv6">IPv6</h2>
+<h3 id="国内-1">国内</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百度</td>
+<td>2400:da00::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>阿里</td>
+<td>2400:3200::1</td>
+<td>2400:3200:baba::1</td>
+</tr>
+<tr>
+<td>CNNIC</td>
+<td>2001:dc7:1000::1</td>
+<td></td>
+</tr>
+<tr>
+<td>下一代互联网北京研究中心</td>
+<td>240C::6666</td>
+<td>240C::6644</td>
+</tr>
+</tbody>
+</table>
+<h4 id="高校">高校</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京邮电大学</td>
+<td>2001:da8:202:10::36</td>
+<td>2001:da8:202:10::37</td>
+</tr>
+<tr>
+<td>上海交通大学</td>
+<td>2001:da8:8000:1:202:120:2:100</td>
+<td>2001:da8:8000:1:202:120:2:101</td>
+</tr>
+<tr>
+<td>中科院网络信息中心</td>
+<td>2001:cc0:2fff:1::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京交通大学</td>
+<td>2001:da8:205:2060::188</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学</td>
+<td>2001:da8:ff:305:20c:29ff:fe1f:a92a</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学 TUNA 协会</td>
+<td>2001:da8::666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京科技大学</td>
+<td>2001:da8:208:10::6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区-1">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信</td>
+<td>2001:b000:168::1</td>
+<td>2001:b000:168::2</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>2001:de4::101</td>
+<td>2001:de4::102</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国-1">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOOGLE</td>
+<td>2001:4860:4860::8888</td>
+<td>2001:4860:4860::8844</td>
+</tr>
+<tr>
+<td>CloudFlare DNS</td>
+<td>2606:4700:4700::1111</td>
+<td>2606:4700:4700::1001</td>
+</tr>
+<tr>
+<td>IBM</td>
+<td>2620:fe::fe</td>
+<td>2620:fe::9</td>
+</tr>
+<tr>
+<td>Cisco OpenDNS</td>
+<td>2620:0:ccc::2</td>
+<td>2620:0:ccd::2</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>2001:470:20::2</td>
+<td>2001:470:0:9d::2</td>
+</tr>
+<tr>
+<td>Verisign Public DNS</td>
+<td>2620:74:1b::1:1</td>
+<td>2620:74:1c::2:2</td>
+</tr>
+<tr>
+<td>Neustar Recursive DNS</td>
+<td>2610:a1:1018::1</td>
+<td>2610:a1:1019::1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区-1">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>2a02:6b8::feed:0ff</td>
+<td>2a02:6b8:0:1::feed:0ff</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>2001:1608:10:25::1c04:b12f</td>
+<td>2001:1608:10:25::9249:d69b</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>2001:1620:2078:136::</td>
+<td>2001:1620:2078:137::</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>2001:67c:28a4::</td>
+<td>2a01:3a0:53:53::</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreffer">全球免费公共 DNS 解析服务器 IP 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
+</li>
+<li>
+<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 DNS 服务器 IP 地址</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>网络分析工具：NetCat</title>
     <link>https://www.techkoala.top/netcat/</link>
     <pubDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</pubDate>
@@ -2212,134 +2926,6 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 <li>
 <p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreffer">SHA-2</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>哈希函数简介</title>
-    <link>https://www.techkoala.top/hash_functions/</link>
-    <pubDate>Sat, 25 Jul 2020 16:30:31 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/hash_functions/</guid>
-    <description><![CDATA[<blockquote>
-<p>哈希函数入门介绍。</p>
-</blockquote>
-<h2 id="哈希函数hash-function用来做什么">哈希函数（Hash Function）用来做什么？</h2>
-<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，Qvault 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">点击这里</a> 查看哈希函数用于何处。</p>
-<h2 id="重要特性">重要特性</h2>
-<p>哈希函数的拥有如下三个重要特性，这些特性可以说是最重要的特性：</p>
-<ul>
-<li>
-<p>哈希函数对数据进行确定性加扰。</p>
-</li>
-<li>
-<p>无论输入是什么，哈希函数的输出始终具有相同的长度（大小）。</p>
-</li>
-<li>
-<p>无法从加扰数据中检索原始数据（单向函数）。</p>
-</li>
-</ul>
-<h3 id="确定性加扰">确定性加扰</h3>
-<p>想象一下，如果随机扭动一个魔方，到最后会得到一些和开始时不一样的东西。但是，如果重新开始，并做完全相同的一系列动作，那么将能够反复得到完全相同的结果。尽管结果可能看起来是随机的，但它其实是严格按照一定的规则进行变幻地，这就是<strong>确定性加扰</strong>的含义。</p>
-<p>确定性对于安全存储密码很重要。例如，假设我的密码是 <code>iLoveBitcoin</code>，我可以使用哈希函数对其进行加扰：</p>
-<blockquote>
-<p>iLoveBitcoin → &ldquo;2f5sfsdfs5s1fsfsdf98ss4f84sfs6d5fs2d1fdf15&rdquo;</p>
-</blockquote>
-<p>现在，任何人看到加扰后的版本，他们都不会知道我的原始密码！这一点很重要，因为这意味着作为一个网站开发人员，我只需要存储我用户密码的哈希(加扰数据)就可以验证它们。当用户注册时，我将用户密码进行哈希运算然后将其存储在我的数据库中。当用户登录时，我只是对他们输入的内容再次进行哈希运算，并比较两个哈希值。因为给定的输入总是生成相同的哈希值，所以能够很方便地进行验证。</p>
-<h3 id="输出定长">输出定长</h3>
-<p>如果对<strong>单个单词</strong>进行哈希处理，则输出将具有一定的大小（对于 <code>SHA-256</code>，则为特定的哈希函数，大小为 256 位）。即便我对<strong>一本书</strong>进行哈希处理，输出同样将是相同的大小。</p>
-<p>这是另一个重要的功能，因为它可以节省我们的计算时间。 一个典型的例子是使用哈希作为数据映射中的键。 数据映射是计算机科学中用来存储数据的一种简单结构。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/Hash/key-map.webp" data-sub-html="<h2>数据映射</h2>">
-        
-    </a><figcaption class="image-caption">数据映射</figcaption>
-    </figure>
-<p>当程序在映射中存储数据时，会为映射指定一个键和值。当程序想要访问该值时，它只要提供适当的键就能接收相应的值。数据映射很好，因为它们可以立即找到数据。计算机通过键可以立即找到对应的值，而不是花费数小时在数百万条记录中搜索。</p>
-<p>因为键类似于地址，所以它们不能太大。如果我想将图书存储在数据映射中，我可以对图书的内容进行哈希，并使用该哈希作为键。</p>
-<h2 id="哈希处理如何进行">哈希处理如何进行？</h2>
-<p>接下来，以 <code>LANEHASH</code> 算法为例，简要讲解哈希处理是如何完成的。</p>
-<ol>
-<li>
-<p>首先，选取下面的数据进行哈希处理</p>
-<blockquote>
-<p>iLoveBitcoin</p>
-</blockquote>
-</li>
-<li>
-<p>将字母转换成二进制</p>
-<blockquote>
-<p>iLoveBitcoin→ 100010100000101111</p>
-</blockquote>
-<p><strong>注:</strong> 在这一步中，我们通过各种预定的步骤来转换我们的原始数据。转换方式可以采用各种方式，但重要的是，每当我们使用 LANEHASH 时，都需要使用相同的步骤，以便我们的算法是确定性的。</p>
-</li>
-<li>
-<p>将比特前四位从左移到右边</p>
-<blockquote>
-<p><strong>1000</strong>10100000101111 → 10100000101111<strong>1000</strong></p>
-</blockquote>
-</li>
-<li>
-<p>奇偶分离比特</p>
-<blockquote>
-<p><strong>1</strong>0<strong>1</strong>0<strong>0</strong>0<strong>0</strong>0<strong>1</strong>0<strong>1</strong>1<strong>1</strong>1<strong>1</strong>0<strong>0</strong>0 → 110011110 &amp; 000001100</p>
-</blockquote>
-</li>
-<li>
-<p>分别转化为十进制数</p>
-<blockquote>
-<p>110011110 → 414</p>
-</blockquote>
-<blockquote>
-<p>000001100→ 12</p>
-</blockquote>
-</li>
-<li>
-<p>两数相乘</p>
-<blockquote>
-<p>414 *12 = 4968</p>
-</blockquote>
-</li>
-<li>
-<p>乘积平方</p>
-<blockquote>
-<p>4968 ^ 2 = 24681024</p>
-</blockquote>
-</li>
-<li>
-<p>再次转换为二进制</p>
-<blockquote>
-<p>24681024 →1011110001001101001000000</p>
-</blockquote>
-</li>
-<li>
-<p>剥离右边的9个比特以得到16位比特</p>
-<blockquote>
-<p>1011110001001101<strong>001000000</strong> → 1011110001001101</p>
-</blockquote>
-</li>
-<li>
-<p>转换回字母/数字</p>
-<blockquote>
-<p>1011110001001101 → &ldquo;8sj209dsns02k2&rdquo;</p>
-</blockquote>
-</li>
-</ol>
-<p>正如你所看到的，如果在开始时使用相同的单词，则在结束时将始终得到相同的输出。然而，即使你改了一个字母，结果也会发生很大的变化。</p>
-<h2 id="注意">注意</h2>
-<p>本文中英文和二进制之间的相互转换并没有遵循任何模式，请读者不要纠结于这一点。当然，实际中，有很多方法用于将我们熟知的字符（例如中文、英语等）转换为二进制（十六进制），如果感兴趣，可以点击下面的参考中的内容</p>
-<h2 id="总结">总结</h2>
-<p>哈希函数实际上就是按照特定的规则将数据进行一系列转换，最后得到一串键值用来代替/指代原始数据，但是需要注意的是，哈希函数需要满足确定性、定长性、不可逆性。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://qvault.io/2020/01/01/very-basic-intro-to-hash-functions-sha-256-md-5-etc/" target="_blank" rel="noopener noreffer">(Very) Basic Intro to Hash Functions (SHA-256, MD5, etc)</a></p>
-</li>
-<li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">Hash Function</a></p>
-</li>
-<li>
-<p>[3] <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener noreffer">ASCII</a></p>
-</li>
-<li>
-<p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreffer">Unicode</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

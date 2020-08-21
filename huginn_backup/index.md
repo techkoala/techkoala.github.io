@@ -1,6 +1,6 @@
 # Huginn（Docker）数据备份与恢复
 
-   {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" >}} 
+   {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" caption="Huginn" >}} 
    
 > 简单介绍使用 Docker 运行的 Huginn 数据的备份与恢复
 

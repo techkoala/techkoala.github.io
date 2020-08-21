@@ -527,9 +527,10 @@ Executed in  215.68 millis	fish       	external
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/huginn_backup/</guid>
-    <description><![CDATA[<a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png">
+    <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-sub-html="<h2>Huginn</h2>">
         
-    </a>
+    </a><figcaption class="image-caption">Huginn</figcaption>
+    </figure>
 <blockquote>
 <p>简单介绍使用 Docker 运行的 Huginn 数据的备份与恢复</p>
 </blockquote>
