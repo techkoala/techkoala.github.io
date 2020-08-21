@@ -3,11 +3,9 @@
 
 ## Network
 
+Web:
+
 - [DigitalOcean Nginx Tool](https://www.digitalocean.com/community/tools/nginx): Nginx Config 生成
-
-## Reading
-
-- [Epub在线阅读](https://reader.techkoala.top/)
 
 网站测速：
 
@@ -33,9 +31,17 @@ IP&DNS 测试：
 
 IPv6:
 
+- [IPv6 连接测试](https://test-ipv6.com/)
+
+- [IPv6 Test](https://ipv6-test.com/)
+
 - [国家 IPv6 发展检测平台](https://www.china-ipv6.cn/#/index)
 
 - [IPv6 发展监测平台目录服务](https://ipv6c.cngi.edu.cn/mainPage.do)
+
+## Reading
+
+- [Epub在线阅读](https://reader.techkoala.top/)
 
 ## Wireless Communication
 
@@ -49,9 +55,13 @@ IPv6:
 
 - [webp2jpg](https://renzhezhilu.github.io/webp2jpg-online/)：图片格式转换
 
+- [squoosh](https://squoosh.app/)：谷歌图片压缩
+
 - [sm.ms](https://sm.ms/)：图床
 
 - [Favicon Generator](https://realfavicongenerator.net/)：网站图标生成
+
+- [isoflow](https://isoflow.io/)：好看的拓扑图绘制
 
 ## Security
 
