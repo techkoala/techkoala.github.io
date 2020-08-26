@@ -5,11 +5,11 @@
 
 - 对`网络`知识有浓厚的兴趣
 
-- 会 `Python:snake:` 的`通信:dog2:`
+- 一只会 `Python:snake:` 的`通信:dog2:`
 
-- 喜欢`瞎折腾:man_technologist:`一些有用没用的技术
+- 喜欢`瞎折腾:man_technologist:`一些有用没用的东西
 
-- 长期使用 `Linux(Arch & Ubuntu)` & `Windows` 工作学习
+- 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 10` 工作学习
 
 ### 这个网站
 
@@ -20,6 +20,8 @@
 网站托管在 [Github Pages](https://pages.github.com/) 上，套用了 [Cloudflare](https://www.cloudflare.com/) & [jsDelivr](https://www.jsdelivr.com/) 的 `CDN` 。
 
 在此，**感谢** 各位开发者 & 公司。
+
+> update:网站已于 2020-8-26 迁移至 [vercel](https://vercel.com) 以获得国内更快的访问速度。
 
 ### 说明
 
@@ -42,4 +44,4 @@
 - 转载作品另行声明，遵守原作者授权协议，所有权利归原作者所有
 
 - 如果我的文章能帮到你，那是我极大的荣幸
-   
+

@@ -1,11 +1,11 @@
 # 软件
 
 
- 1. **粗体** 表示在多平台中使用的软件
+1.  **粗体** 表示在多平台中使用的软件
 
- 2. *斜体* 表示优先选择表示商店版本(`Windows` & `MacOS`)
+2.  _斜体_ 表示优先选择表示商店版本(`Windows` & `MacOS`)
 
- 3. `Linux` 优先选用对应包管理器安装
+3.  `Linux` 优先选用对应包管理器安装
 
 ## 浏览器
 
@@ -18,40 +18,35 @@
   ### 浏览器插件
 
   - [ClearURLs](https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei)
-    
   - [Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)
-    
-  - [Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)：RSS阅读器
+  - [Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)：RSS 阅读器
 
-  - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)：美化新建标签页  
+  - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)：美化新建标签页
 
   - [OneNote Web Clipper](https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma)
-    
-  - [Proxy SwitchyOmega](https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe) 
+  - [Proxy SwitchyOmega](https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe)
 
   - [Save to Pocket](https://microsoftedge.microsoft.com/addons/detail/save-to-pocket/jicacccodjjgmghnmekophahpmddeemd?hl=zh-CN)
-    
   - [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
-      
   - [uBlock Origin](https://microsoftedge.microsoft.com/addons/detail/ublock-origin/odfafepnkmbhccpbejgmiehpchacaeak)
 
-  - [京价保 - 京东价保助手](https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge)  
+  - [京价保 - 京东价保助手](https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge)
 
-  - [FireShot](https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm)   
+  - [FireShot](https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm)
 
-  - [沙拉查词-聚合词典划词翻译](https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp)   
+  - [沙拉查词-聚合词典划词翻译](https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp)
 
-  - [隐私獾](https://microsoftedge.microsoft.com/addons/detail/%E9%9A%90%E7%A7%81%E7%8D%BE/mkejgcgkdlddbggjhhflekkondicpnop)  
+  - [隐私獾](https://microsoftedge.microsoft.com/addons/detail/%E9%9A%90%E7%A7%81%E7%8D%BE/mkejgcgkdlddbggjhhflekkondicpnop)
 
   - [Augmented Steam](https://chrome.google.com/webstore/detail/augmented-steam/dnhpnfgdlenaccegplpojghhmaamnnfp)：steam 增强
 
-  - [Free Download Manager](https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp)  
+  - [Free Download Manager](https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp)
 
-  - [Imagus](https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab)：鼠标悬停放大图片 
+  - [Imagus](https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab)：鼠标悬停放大图片
 
   - [Little Star](https://chrome.google.com/webstore/detail/little-star/kmjfdonmflchjdlmeoecbmebfpnafpec)：Github 分类管理
 
-  - [Notion Web Clipper](https://chrome.google.com/webstore/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk)  
+  - [Notion Web Clipper](https://chrome.google.com/webstore/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk)
 
   - [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall)
 
@@ -67,7 +62,7 @@
 
 ## 压缩&解压缩
 
-- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0版本已增加付费,停留于6.26
+- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费,停留于 6.26
 
 - **[7-zip](https://www.7-zip.org/download.html)**
 
@@ -91,7 +86,6 @@
 
 - [Wget](https://www.gnu.org/software/wget/)
 
-
 ## 游戏平台及工具
 
 - [战网](https://www.blizzardgames.cn/zh/)
@@ -104,9 +98,9 @@
 
 - [GOG Galaxy](https://www.gog.com/)
 
-- [网易UU](https://uu.163.com/)
+- [网易 UU](https://uu.163.com/)
 
-- [Logitech鼠标驱动](https://support.logi.com/hc/zh-cn/articles/360025298053)
+- [Logitech 鼠标驱动](https://support.logi.com/hc/zh-cn/articles/360025298053)
 
 ## Code
 
@@ -136,7 +130,7 @@
 
 - [iSlide Tools](https://www.islide.cc/)
 
-- *DrawBoard PDF*
+- _DrawBoard PDF_
 
 - [Adobe acrobat DC](https://get.adobe.com/cn/reader/otherversions/)
 
@@ -144,7 +138,7 @@
 
 - [Visio](https://msdn.itellyou.cn/)
 
-- *OneNote*
+- _OneNote_
 
 - **[Notion](https://www.notion.so/)**
 
@@ -152,13 +146,13 @@
 
 - [Potplayer](https://potplayer.daum.net/)
 
-- *斗鱼*
+- _斗鱼_
 
-- *网易云音乐*
+- _网易云音乐_
 
-- *Mp3tag* *(歌曲信息管理)*
+- _Mp3tag_ _(歌曲信息管理)_
 
-- *foobar2000*
+- _foobar2000_
 
 - [VLC](https://www.videolan.org/vlc/index.html)
 
@@ -184,15 +178,15 @@
 
 - **[Telegram](https://desktop.telegram.org/)**
 
-- *~~Unigram~~* ：Telegram 第三方客户端，相较官方客户端增加了 PC 端的端到端加密聊天功能
+- _~~Unigram~~_ ：Telegram 第三方客户端，相较官方客户端增加了 PC 端的端到端加密聊天功能
 
-- *微信*
+- _微信_
 
-- *QQ*
+- _QQ_
 
 ## 密码管理
 
-- ***[Enpass](https://www.enpass.io/)***
+- **_[Enpass](https://www.enpass.io/)_**
 
 ## 网络工具
 
@@ -218,14 +212,15 @@
 
 - **[ZeroTier One](https://www.zerotier.com/)**
 
-- [Remmina](https://remmina.org/) ：Linux下远程桌面
+- [Remmina](https://remmina.org/) ：Linux 下远程桌面
 
 - **[Wireshark](https://www.wireshark.org/)**
 
 ## 效率工具
-- ~~[Quicker](https://getquicker.net/)~~：已转utools
 
-- ~~[Wox](http://www.wox.one/)~~：已转utools
+- ~~[Quicker](https://getquicker.net/)~~：已转 utools
+
+- ~~[Wox](http://www.wox.one/)~~：已转 utools
 
 - [WGestures](http://www.yingdev.com/projects/wgestures) ：Windows 鼠标手势
 
@@ -233,7 +228,7 @@
 
 - [Everything](https://www.voidtools.com/zh-cn/)
 
-- *Pollar*
+- _Pollar_
 
 - [Easystroke](https://github.com/thjaeger/easystroke/wiki/BuildInstructions)：Linux 鼠标手势
 
@@ -257,7 +252,7 @@
 
 - [SpaceSniffer](http://www.uderzo.it/main_products/space_sniffer/)
 
-- *CrystalDiskMark*
+- _CrystalDiskMark_
 
 - [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo/)
 
@@ -277,7 +272,7 @@
 
 ## 阅读
 
-- **~~[irreader](http://irreader.fatecore.com/)~~** 
+- **~~[irreader](http://irreader.fatecore.com/)~~**
 
 - [Liferea](https://lzone.de/liferea/)
 
@@ -315,8 +310,3 @@
 
 - [Outlook](https://outlook.live.com)
 
-
-
-
-
-  

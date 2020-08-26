@@ -41,7 +41,7 @@ IPv6:
 
 ## Reading
 
-- [Epub在线阅读](https://reader.techkoala.top/)
+- [Epub 在线阅读](https://reader.techkoala.top/)
 
 ## Wireless Communication
 
@@ -49,7 +49,7 @@ IPv6:
 
 ## Linux
 
-- [Linux Command](https://ningyu1.github.io/linux-command/)：Linux命令搜索引擎命令
+- [Linux Command](https://ningyu1.github.io/linux-command/)：Linux 命令搜索引擎命令
 
 ## Pics
 
