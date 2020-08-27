@@ -11,7 +11,7 @@
 
 ## Why
 
-鉴于目前 Github 以及 Cloudflare 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助显示的需求，于是顺着[帖子](https://www.v2ex.com/t/701487)的推荐选择了 Vercel。
+鉴于目前 Github 以及 Cloudflare 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着[帖子](https://www.v2ex.com/t/701487)的推荐选择了 Vercel。
 
 ## What
 
@@ -43,7 +43,7 @@
 
 4. 来到 Cloudflare 的 DNS 配置页面，首先删除此前指向 Github Pages 的两个解析，然后添加一个`CNAME`类型的解析，设置名字设置为`www`,内容填入`cname.vercel-dns.com`；
 
-   **注：** 关键一步是，这里一定要设置`Proxy Status`为`DNS only`，否则，你的网站依然会像下图一样，经过 Cloudflare 的代理来访问的。
+   **注：** 关键一步是，这里一定要设置`Proxy Status`为`DNS only`，否则，你的网站依然会经过 Cloudflare 的代理来访问。
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" caption="Cloudflare DNS 配置" >}}
 

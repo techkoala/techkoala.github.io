@@ -16,7 +16,7 @@
 <h2 id="when">When</h2>
 <p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">vercel</a></p>
 <h2 id="why">Why</h2>
-<p>鉴于目前 Github 以及 Cloudflare 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助显示的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 Vercel。</p>
+<p>鉴于目前 Github 以及 Cloudflare 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 Vercel。</p>
 <h2 id="what">What</h2>
 <p>下面是 Vercel 官网的介绍：</p>
 <blockquote>
@@ -57,7 +57,7 @@
 <ol start="4">
 <li>
 <p>来到 Cloudflare 的 DNS 配置页面，首先删除此前指向 Github Pages 的两个解析，然后添加一个<code>CNAME</code>类型的解析，设置名字设置为<code>www</code>,内容填入<code>cname.vercel-dns.com</code>；</p>
-<p><strong>注：</strong> 关键一步是，这里一定要设置<code>Proxy Status</code>为<code>DNS only</code>，否则，你的网站依然会像下图一样，经过 Cloudflare 的代理来访问的。</p>
+<p><strong>注：</strong> 关键一步是，这里一定要设置<code>Proxy Status</code>为<code>DNS only</code>，否则，你的网站依然会经过 Cloudflare 的代理来访问。</p>
 </li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-sub-html="<h2>Cloudflare DNS 配置</h2>">
