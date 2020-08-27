@@ -431,7 +431,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </div><p>参数分别为：</p>
 <ul>
 <li>源文件：指定要复制的源文件。</li>
-<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
+<li>目标文件：格式为 user@host：filename（文件名为目标文件的名称）。</li>
 </ul>
 <h2 id="scp-的问题">SCP 的问题</h2>
 <p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>

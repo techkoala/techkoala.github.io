@@ -302,7 +302,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <blockquote>
 <p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
 </blockquote>
-<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供CI服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
+<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供 CI 服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
 <h2 id="koodo-reader">Koodo Reader</h2>
 <p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
@@ -320,7 +320,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
 <h2 id="搭建">搭建</h2>
 <ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用Github登录，当然，你也可以选择其他方式。</li>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 Github 登录，当然，你也可以选择其他方式。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
         
@@ -485,7 +485,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 -t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
 -n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
 -k, --blockcount    	要传输的块（数据包）数
--l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。 
+-l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
 -P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
 -R, --reverse	        以反向模式运行（服务器发送，客户端接收）
 -w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
@@ -969,7 +969,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </div><p>参数分别为：</p>
 <ul>
 <li>源文件：指定要复制的源文件。</li>
-<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
+<li>目标文件：格式为 user@host：filename（文件名为目标文件的名称）。</li>
 </ul>
 <h2 id="scp-的问题">SCP 的问题</h2>
 <p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>

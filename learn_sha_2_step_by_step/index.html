@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/"
-        },"genre": "posts","keywords": "SHA-2, SHA-256, Hash, Translation","wordcount":  2987 ,
+        },"genre": "posts","keywords": "SHA-2, SHA-256, Hash, Translation","wordcount":  2984 ,
         "url": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/","datePublished": "2020-07-28T16:19:03+08:00","dateModified": "2020-08-01T23:14:03+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">逐步详解 SHA-2 算法（以 SHA-256 为例）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>Algorithm</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-28">2020-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2987 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-28">2020-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2984 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -326,11 +326,13 @@
 </blockquote>
 <blockquote>
 <p>w[16] = w[0] + s0 + w[9] + s1</p>
-<p>= 01101000011001010110110001101100 <br>
-+ 11001110111000011001010111001011 <br>
-+ 00000000000000000000000000000000 <br>
-+ 00000000000000000000000000000000 <br>
-= 00110111010001110000001000110111</p>
+<p>= 01101000011001010110110001101100</p>
+<ul>
+<li>11001110111000011001010111001011</li>
+<li>00000000000000000000000000000000</li>
+<li>00000000000000000000000000000000<br>
+= 00110111010001110000001000110111</li>
+</ul>
 <p>// addition is calculated modulo $ 2^{32} $</p>
 </blockquote>
 <p>总的结果就是：</p>
@@ -468,11 +470,7 @@
 </blockquote>
 <blockquote>
 <p>temp1 = h + S1 + ch + k[i] + w[i]</p>
-<p>= 01011011111000001100110100011001
-+ 00110101100001110010011100101011
-+ 00011111100001011100100110001100
-+ 1000010100010100010111110011000
-+ 01101000011001010110110001101100
+<p>= 01011011111000001100110100011001 + 00110101100001110010011100101011 + 00011111100001011100100110001100 + 1000010100010100010111110011000 + 01101000011001010110110001101100
 = 01011011110111010101100111010100</p>
 </blockquote>
 <blockquote>
@@ -571,7 +569,7 @@
        = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
 </code></pre></td></tr></table>
 </div>
-</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步🙂。</p>
+</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步 🙂。</p>
 <h2 id="附录">附录</h2>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
         <img
@@ -736,7 +734,7 @@ for each chunk
         S0 := (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
         maj := (a and b) xor (a and c) xor (b and c)
         temp2 := S0 + maj
- 
+
         h := g
         g := f
         f := e

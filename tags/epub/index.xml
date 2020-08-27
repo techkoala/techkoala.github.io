@@ -18,7 +18,7 @@
 <blockquote>
 <p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
 </blockquote>
-<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供CI服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
+<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供 CI 服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
 <h2 id="koodo-reader">Koodo Reader</h2>
 <p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
@@ -36,7 +36,7 @@
 <p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
 <h2 id="搭建">搭建</h2>
 <ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用Github登录，当然，你也可以选择其他方式。</li>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 Github 登录，当然，你也可以选择其他方式。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
         

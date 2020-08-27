@@ -198,11 +198,13 @@
 </blockquote>
 <blockquote>
 <p>w[16] = w[0] + s0 + w[9] + s1</p>
-<p>= 01101000011001010110110001101100 <br>
-+ 11001110111000011001010111001011 <br>
-+ 00000000000000000000000000000000 <br>
-+ 00000000000000000000000000000000 <br>
-= 00110111010001110000001000110111</p>
+<p>= 01101000011001010110110001101100</p>
+<ul>
+<li>11001110111000011001010111001011</li>
+<li>00000000000000000000000000000000</li>
+<li>00000000000000000000000000000000<br>
+= 00110111010001110000001000110111</li>
+</ul>
 <p>// addition is calculated modulo $ 2^{32} $</p>
 </blockquote>
 <p>总的结果就是：</p>
@@ -340,11 +342,7 @@
 </blockquote>
 <blockquote>
 <p>temp1 = h + S1 + ch + k[i] + w[i]</p>
-<p>= 01011011111000001100110100011001
-+ 00110101100001110010011100101011
-+ 00011111100001011100100110001100
-+ 1000010100010100010111110011000
-+ 01101000011001010110110001101100
+<p>= 01011011111000001100110100011001 + 00110101100001110010011100101011 + 00011111100001011100100110001100 + 1000010100010100010111110011000 + 01101000011001010110110001101100
 = 01011011110111010101100111010100</p>
 </blockquote>
 <blockquote>
@@ -443,7 +441,7 @@
        = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
 </code></pre></td></tr></table>
 </div>
-</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步🙂。</p>
+</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步 🙂。</p>
 <h2 id="附录">附录</h2>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
         
@@ -602,7 +600,7 @@ for each chunk
         S0 := (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
         maj := (a and b) xor (a and c) xor (b and c)
         temp2 := S0 + maj
- 
+
         h := g
         g := f
         f := e
@@ -731,7 +729,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </blockquote>
 </li>
 <li>
-<p>剥离右边的9个比特以得到16位比特</p>
+<p>剥离右边的 9 个比特以得到 16 位比特</p>
 <blockquote>
 <p>1011110001001101<strong>001000000</strong> → 1011110001001101</p>
 </blockquote>

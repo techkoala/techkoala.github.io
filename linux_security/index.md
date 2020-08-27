@@ -1,6 +1,7 @@
 # Linux 安全分析与加固
 
-   {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" caption="Linux">}} 
+
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" caption="Linux">}}
 
 > 记录一些常见的 Linux 服务器安全问题分析以及防护措施
 
@@ -34,8 +35,6 @@
 
 **Archlinux** 使用 `systemd` 提供的日志系统（logging system），称为 `journal`。使用 `systemd` 日志，无需额外安装日志服务（`syslog`）。
 
-
-
 ### 相关日志查看命令
 
 ```shell
@@ -48,7 +47,7 @@ $ cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | awk '{p
 $ grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | more
 ```
 
----- 
+---
 
 ## 常见防护措施
 
@@ -63,7 +62,6 @@ $ vim /etc/ssh/sshd_config
 **1、修改端口**
 
 `#Port 22 —> Port xxxx`
-
 
 **2、关闭 root 登录**
 
@@ -90,6 +88,7 @@ $ vim /etc/ssh/sshd_config
   ```shell
   $ scp .shh/id_rsa.pub server:~/.ssh
   ```
+
   服务器中：
 
   ```shell
@@ -106,7 +105,7 @@ $ vim /etc/ssh/sshd_config
 
 验证文件路径：
 
-`AuthorizedKeysFile    .ssh/authorized_keys`
+`AuthorizedKeysFile .ssh/authorized_keys`
 
 禁止密码认证：
 
@@ -156,27 +155,25 @@ $ awk -F: '$2=="!!" {print $1}' /etc/shadow
 $ visudo
 ```
 
-  - 若要指定 visudo 的默认编辑器，最好是修改 `/etc/sudoers` 中的 `Defaults editor=xxxx`
-  
-    而不是使用
+- 若要指定 visudo 的默认编辑器，最好是修改 `/etc/sudoers` 中的 `Defaults editor=xxxx`
 
-    ```shell
-    $ EDITOR=nano visudo
-    ```
+  而不是使用
 
-    因为任何程序都可以通过该命令指定作为编辑器，存在风险。
+  ```shell
+  $ EDITOR=nano visudo
+  ```
+
+  因为任何程序都可以通过该命令指定作为编辑器，存在风险。
 
 添加：
 
 `alice ALL = NOPASSWD: /path/to/program`
-
 
 ### 关闭不必要的服务
 
 **例如** 某台 `Linux` 服务器用于 `www` 应用，那么除了 `httpd` 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：
 
 `anacron、auditd、autofs、avahi-daemon、avahi-dnsconfd、bluetooth、cpuspeed、firstboot、gpm、haldaemon、hidd、ip6tables、ipsec、isdn、lpd、mcstrans、messagebus、netfs、nfs、nfslock、nscd、pcscd portmap、readahead_early、restorecond、rpcgssd、rpcidmapd、rstatd、sendmail、setroubleshoot、yppasswdd ypserv`
-
 
 ### 文件系统安全
 
@@ -215,8 +212,10 @@ $ find / -nouser -o –nogroup
 没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。
 
 ## 参考
+
 - [1] Linux 服务器为什么被黑？
 
 - [2] [linux 系统安全加固 -- 账号相关](https://www.cnblogs.com/doublexi/p/9636506.html)
 
 - [3] [Security - Archlinux Wiki](https://wiki.archlinux.org/index.php/Security)
+

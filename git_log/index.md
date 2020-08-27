@@ -18,6 +18,7 @@ $ git log —oneline
 ```shell
 $ git log -p
 ```
+
 此命令会显示更新的详细更改信息，方便查阅。
 
 ## 根据时间筛选
@@ -61,6 +62,7 @@ $ git log --after="1 week ago" --author="techkoala" -p
 ```shell
 $ git log --grep="ISSUE-43560"
 ```
+
 需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 `-i` 选项。
 
 此外，还支持正则表达式：
@@ -91,7 +93,7 @@ $ git log -i --grep="fix " Git_Log.md Github_Issue.md
 
 ## 根据文件内容筛选
 
-```shell 
+```shell
 $ git log -S"function login()"
 ```
 
@@ -102,6 +104,7 @@ $ git log -S"function login()"
 ```shell
 $ git log --merges
 ```
+
 该命令显示当前分支上合并的提交。
 
 ## 显示不同分支间的区别
@@ -118,10 +121,11 @@ $ git log master..develop
 $ git log --pretty=format:"%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n"
 ```
 
-Git提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。
+Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。
 
 ## 参考
 
 - [1] [Ten Useful Git Log Tricks](https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy)
 
 - [2] [Git 基础 - 查看提交历史](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2)
+

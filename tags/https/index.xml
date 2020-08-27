@@ -304,15 +304,15 @@ partitioned as follows:
 <li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
 <li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
 <li>Session resume</li>
-<li>证书Revoke</li>
+<li>证书 Revoke</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2规范</a></p>
+<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2 规范</a></p>
 </li>
 <li>
-<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI规范</a></p>
+<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI 规范</a></p>
 </li>
 <li>
 <p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>

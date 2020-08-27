@@ -38,17 +38,18 @@ end if
 1. 打开注册表编辑器
 
 2. 打开如下路径 `计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces`
-   
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" caption="注册表界面" >}} 
+
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" caption="注册表界面" >}}
 
 3. 依次点击下方注册表项，检查右窗格中是否包含 `DhcpIPAddress` 值；
 
 4. 在包含有 `DhcpIPAddress` 的子项下，分别建立两个 `DWORD (32)` 值，依次命名为 `TcpAckFrequency` 和 `TCPNoDelay`，键值全部设为 `1`。
 
-    **注意** 包含 `DhcpIPAddress` 的子项可能不只一个，所有的都要添加。
+   **注意** 包含 `DhcpIPAddress` 的子项可能不只一个，所有的都要添加。
 
 ## 参考
 
 - [1] [Nagel 算法维基百科](https://en.wikipedia.org/wiki/Nagle%27s_algorithm)
 
 - [2] [RFC896](https://www.ietf.org/rfc/rfc896.txt)
+

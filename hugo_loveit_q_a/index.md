@@ -47,12 +47,12 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 接着打开 `Settings > Developer settings > OAuth Apps` ，点击 `New OAuth App`
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" caption="新建 OAuth App" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" caption="新建 OAuth App" >}}
 
 然后填写信息：
 
 > - Application name : 随便填写
-> - Homepage URL     : 随便填写
+> - Homepage URL : 随便填写
 > - Application description : 随便填写
 > - Authorization callback URL : 一定要填写你的博客地址
 
@@ -62,11 +62,10 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 > [params.page.comment.gitalk]
 > enable = true
-> owner = "techkoala"  # 你的 Github 用户名
+> owner = "techkoala" # 你的 Github 用户名
 > repo = "commets_of_blog" # 用于存储评论的仓库名
-> clientId = "xxxxxx"      # 请于 OAuth App 页面获取
-> clientSecret = "xxxxxx"  # 请于 OAuth App 页面获取
-
+> clientId = "xxxxxx" # 请于 OAuth App 页面获取
+> clientSecret = "xxxxxx" # 请于 OAuth App 页面获取
 
 完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。
 
@@ -78,8 +77,13 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 然后修改 `config.toml` 文件中的：
 
->   # CSS 和 JS 文件的 CDN 设置
->   [params.cdn]
->  # CDN 数据文件名称, 默认不启用
->   # ("jsdelivr.yml")
->   data = "jsdelivr.yml"
+> # CSS 和 JS 文件的 CDN 设置
+>
+> [params.cdn]
+>
+> # CDN 数据文件名称, 默认不启用
+>
+> # ("jsdelivr.yml")
+>
+> data = "jsdelivr.yml"
+

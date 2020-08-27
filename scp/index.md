@@ -33,7 +33,7 @@ $ scp local_file remote_host:/home
 
 当 `SCP` 运行时，他将开启一个新的 `SSH` 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 `SCP` 程序。你可以认为是 `ssh exec scp [flags]`。主要的标志包含 `-t`（"to"）和 `-f`（"from"）用于代表接受和发送，而 `-d` 表示文件夹，`-r` 表示递归。
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" caption="建立连接" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" caption="建立连接" >}}
 
 值得注意的是，`SCP` 协议是单向的，一端发送文件，另一端接收文件。在远程端 `SCP` 开始运行后，实际的 `SCP` 协议命令开始通过 `STDIN` 和 `STDOUT` 运行。
 
@@ -43,27 +43,28 @@ $ scp local_file remote_host:/home
 
 命令格式大致为（不带括号或空格）：`[command type][arguments]\n [optional data]`
 
- - [command type] 通常是一个 ASCII 字符：
-    - 'C'- 写入文件
-    - 'D'- 输入目录
-    - 'E'- 退出最后一个目录
-    - 'T'- 设置下一个文件或目录的创建 / 更新时间戳
+- [command type] 通常是一个 ASCII 字符：
 
- - [arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。"E" 命令没有参数。
+  - 'C'- 写入文件
+  - 'D'- 输入目录
+  - 'E'- 退出最后一个目录
+  - 'T'- 设置下一个文件或目录的创建 / 更新时间戳
 
- - [optional data] 在上一个命令为 "C"（创建文件）时发送。数据的大小指定为 "C" 的参数。
+- [arguments] 是特定于命令的，如文件 / 目录名称、文件大小或时间戳。"E" 命令没有参数。
+
+- [optional data] 在上一个命令为 "C"（创建文件）时发送。数据的大小指定为 "C" 的参数。
 
 此外，还有控制字节，这些字节是在没有新行的情况下自己发送的：
 
-  - '0x00'-"OK"，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。
+- '0x00'-"OK"，确认完成最后一个命令（如编写本地文件）。接收方也会在启动时发送此消息，让发送方知道它已准备好接收命令。
 
-  - '0x00'-"警告"，后面是要向用户显示的行（由新行终止）。
+- '0x00'-"警告"，后面是要向用户显示的行（由新行终止）。
 
-  - '0x00'-"错误" 后跟随可选消息（和警告相同），但连接随后终止。
+- '0x00'-"错误" 后跟随可选消息（和警告相同），但连接随后终止。
 
 下面这个带有注释的图片实例，详细讲述了这个过程：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" caption="传输过程" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" caption="传输过程" >}}
 
 ## 使用 SCP
 
@@ -88,10 +89,11 @@ $ scp 选项 参数
 -q：不显示复制进度；
 -r：以递归方式复制。
 ```
+
 参数分别为：
 
 - 源文件：指定要复制的源文件。
-- 目标文件：格式为user@host：filename（文件名为目标文件的名称）。
+- 目标文件：格式为 user@host：filename（文件名为目标文件的名称）。
 
 ## SCP 的问题
 
@@ -169,3 +171,4 @@ Executed in  215.68 millis	fish       	external
 - [3] [Call for testing: OpenSSH 8.0](https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html)
 
 - [4] [Scp](https://ningyu1.github.io/linux-command/c/scp.html)
+

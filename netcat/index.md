@@ -1,7 +1,7 @@
 # 网络分析工具：NetCat
 
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" caption="网络瑞士军刀 —— NetCat">}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" caption="网络瑞士军刀 —— NetCat">}}
 
 <!--more-->
 
@@ -53,6 +53,7 @@ nc 命令选项 主机 端口
 -x	  YES	           以 IP:port 的格式指定代理
 -d    NO               后台模式
 ```
+
 ### 主机
 
 这部分可以没有，可以以 `IP 地址` 形式表示，也可以以 `域名` 形式表示。
@@ -113,7 +114,6 @@ nc -znv ip 1-1024
 选项 -z
 是指开启 `zero-I/O 模式`。该模式 nc 只判断某个监听端口是否能连上，连上后**不**与对端进行数据通讯。
 
-
 **注：**端口扫描的时候，`-v` 选项会把成功/失败的结果统统打印出来。通常关注的都是 “扫描成功” 的那些端口。因此，可以用可以配合使用 `grep` 过滤一下，只打印扫出来的端口
 
 ```shell
@@ -136,7 +136,7 @@ echo "EXIT" | nc -vq 5 domain 22
 
 ### 端口转发
 
-用 nc 进行端口转发，需要运行两个 nc 进程，一个充当`服务端`，另一个是`客户端`，然后用管道让把两个进程的`标准输入输出``交叉配对`。所谓的`交叉配对`就是——每一个 nc 进程的`标准输出`都对接到另一个 nc 进程的`标准输入`。如此一来，就可以完美地建立双向通讯。
+用 nc 进行端口转发，需要运行两个 nc 进程，一个充当`服务端`，另一个是`客户端`，然后用管道让把两个进程的` 标准输入输出``交叉配对 `。所谓的`交叉配对`就是——每一个 nc 进程的`标准输出`都对接到另一个 nc 进程的`标准输入`。如此一来，就可以完美地建立双向通讯。
 
 步骤 1：创建命名管道
 
@@ -204,7 +204,6 @@ nc -nv ip port | mplayer -vo x11 -cache 4000
 
 A 让 test.MP4 这个文件成为`流`的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。
 
-
 ### 信息收集
 
 收集目标机上的进程信息
@@ -225,3 +224,4 @@ Ps aux |nc -nv ip port -q 1
 - [2] [扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”](https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15)
 
 - [3] [NetCat 使用指南](https://www.jianshu.com/p/cb26a0f6c622)
+

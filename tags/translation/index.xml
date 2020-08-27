@@ -198,11 +198,13 @@
 </blockquote>
 <blockquote>
 <p>w[16] = w[0] + s0 + w[9] + s1</p>
-<p>= 01101000011001010110110001101100 <br>
-+ 11001110111000011001010111001011 <br>
-+ 00000000000000000000000000000000 <br>
-+ 00000000000000000000000000000000 <br>
-= 00110111010001110000001000110111</p>
+<p>= 01101000011001010110110001101100</p>
+<ul>
+<li>11001110111000011001010111001011</li>
+<li>00000000000000000000000000000000</li>
+<li>00000000000000000000000000000000<br>
+= 00110111010001110000001000110111</li>
+</ul>
 <p>// addition is calculated modulo $ 2^{32} $</p>
 </blockquote>
 <p>总的结果就是：</p>
@@ -340,11 +342,7 @@
 </blockquote>
 <blockquote>
 <p>temp1 = h + S1 + ch + k[i] + w[i]</p>
-<p>= 01011011111000001100110100011001
-+ 00110101100001110010011100101011
-+ 00011111100001011100100110001100
-+ 1000010100010100010111110011000
-+ 01101000011001010110110001101100
+<p>= 01011011111000001100110100011001 + 00110101100001110010011100101011 + 00011111100001011100100110001100 + 1000010100010100010111110011000 + 01101000011001010110110001101100
 = 01011011110111010101100111010100</p>
 </blockquote>
 <blockquote>
@@ -443,7 +441,7 @@
        = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
 </code></pre></td></tr></table>
 </div>
-</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步🙂。</p>
+</div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步 🙂。</p>
 <h2 id="附录">附录</h2>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
         
@@ -602,7 +600,7 @@ for each chunk
         S0 := (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
         maj := (a and b) xor (a and c) xor (b and c)
         temp2 := S0 + maj
- 
+
         h := g
         g := f
         f := e
@@ -731,7 +729,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </blockquote>
 </li>
 <li>
-<p>剥离右边的9个比特以得到16位比特</p>
+<p>剥离右边的 9 个比特以得到 16 位比特</p>
 <blockquote>
 <p>1011110001001101<strong>001000000</strong> → 1011110001001101</p>
 </blockquote>
@@ -879,7 +877,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </div><p>参数分别为：</p>
 <ul>
 <li>源文件：指定要复制的源文件。</li>
-<li>目标文件：格式为user@host：filename（文件名为目标文件的名称）。</li>
+<li>目标文件：格式为 user@host：filename（文件名为目标文件的名称）。</li>
 </ul>
 <h2 id="scp-的问题">SCP 的问题</h2>
 <p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
@@ -1039,7 +1037,7 @@ Executed in  215.68 millis	fish       	external
     </figure>
 <p><code>全锥型 NAT</code> 是静态 NAT，也是唯一一种永久开放端口的 <code>NAT</code>，允许从 <strong>任何外部主机</strong> 进行入站连接。<code>全锥型 NAT</code> 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 <code>NAT </code>IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 <code>NAT</code> 也被称为端口转发。这是受限制最少的 <code>NAT</code> 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
 <blockquote>
-<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
+<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的 WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
 </blockquote>
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
@@ -1185,7 +1183,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
 NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-... 
+...
 </code></pre></td></tr></table>
 </div>
 </div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 <code>IP</code> 地址 <code>205.251.193.165</code></p>

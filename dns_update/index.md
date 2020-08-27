@@ -9,8 +9,8 @@
 
 我们知道，DNS 服务器有两种：权威服务器（authoritative）和递归服务器（recursive）
 
-`权威 DNS 服务器（也称为名称服务器，NS，nameserver）` 具有其所负责的每个域的 `IP` 地址数据库。 
-    
+`权威 DNS 服务器（也称为名称服务器，NS，nameserver）` 具有其所负责的每个域的 `IP` 地址数据库。
+
 例如，`github.com` 的权威 `DNS` 服务器是 `NS-421.awsdNS-52.com`
 
 您可以像这样要求它提供 `github.com` 的 `IP`:
@@ -30,45 +30,45 @@ $ dig @NS-421.awsdNS-52.com github.com
 1. 递归服务器内部硬编码（hardcoded）有根 `DNS` 服务器 `.` 的 `IP` 地址（参见 [2][3]），选择一个根 `DNS` 服务器，例如 `198.41.0.4`
 
 2. 询问根 `DNS` 服务器有关 `com.` 的 `NS`
-    
-    此步可以使用如下方法模拟：
 
-    ```shell
-    $ dig @198.41.0.4 github.com
+   此步可以使用如下方法模拟：
 
-    ...
-    com.			172800	IN	NS	a.gtld-servers.net.
-    ...
-    a.gtld-servers.net.	172800	IN	A	192.5.6.30
-    ...
-    ```
+   ```shell
+   $ dig @198.41.0.4 github.com
 
-    可以看到，这里我们得到一个 `com.` 的权威 NS`a.gtld-servers.net.` 及其 IP 地址 `192.5.6.30`
+   ...
+   com.			172800	IN	NS	a.gtld-servers.net.
+   ...
+   a.gtld-servers.net.	172800	IN	A	192.5.6.30
+   ...
+   ```
 
-    **注**：实际上，99.99% 的情况下，此步我们就将得到 `github.com` 的 A 记录，但为了展示 `DNS` 解析进程，我们假设这里没有得到。
+   可以看到，这里我们得到一个 `com.` 的权威 NS`a.gtld-servers.net.` 及其 IP 地址 `192.5.6.30`
+
+   **注**：实际上，99.99% 的情况下，此步我们就将得到 `github.com` 的 A 记录，但为了展示 `DNS` 解析进程，我们假设这里没有得到。
 
 3. 询问该权威 `NS` 有关 `github.com` 的 `NS`
 
-    ```shell
-    $ dig @192.5.6.30 github.com
+   ```shell
+   $ dig @192.5.6.30 github.com
 
-    ...
-    github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-    NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-    ... 
-    ```
+   ...
+   github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
+   NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
+   ...
+   ```
 
-    这里，我们得到的 `github.com.`NS`NS-421.awsdNS-52.com.` 及其 `IP` 地址 `205.251.193.165`
+   这里，我们得到的 `github.com.`NS`NS-421.awsdNS-52.com.` 及其 `IP` 地址 `205.251.193.165`
 
 4. 询问该 `NS` 有关 `github.com` 的 A 记录
 
-    ```shell
-    $ dig @205.251.193.165 github.com
+   ```shell
+   $ dig @205.251.193.165 github.com
 
-    github.com.		60	IN	A	140.82.112.4
-    ```
+   github.com.		60	IN	A	140.82.112.4
+   ```
 
-    至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 `github.com` 的 `IP` 地址。
+   至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 `github.com` 的 `IP` 地址。
 
 此外，使用 `$ dig @8.8.8.8 +trace github.com` 可以一次性显示上述所有步骤。
 
@@ -204,3 +204,4 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 - [2] [unbound’s source code](https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131)
 
 - [3] [iana root files](https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131)
+

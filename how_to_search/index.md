@@ -13,14 +13,14 @@
 
 首先总结一下常用的语法表达式：
 
-|operator          |description|
-|   ---            |    ---    |
-|"phrase"          | 结果必须包含 "phrase"|
-|- phrase          | 结果排除 phrase|
-|A AND B           |A 和 B 必须同时包含 |
-|A OR B            | 必须包括 A 和 B 之一（或两者）|
-|site:example.com  | 在网站中搜索 |
-|filetype:jpg      | 结果必须包含类型 .jpg|
+| operator         | description                    |
+| ---------------- | ------------------------------ |
+| "phrase"         | 结果必须包含 "phrase"          |
+| - phrase         | 结果排除 phrase                |
+| A AND B          | A 和 B 必须同时包含            |
+| A OR B           | 必须包括 A 和 B 之一（或两者） |
+| site:example.com | 在网站中搜索                   |
+| filetype:jpg     | 结果必须包含类型 .jpg          |
 
 ## 实例展示
 
@@ -93,6 +93,7 @@ for (var i = 0; i < elems.length; i++) {
     }
 }
 ```
+
 这将记录找到的每封电子邮件，而无需扫描整个页面。
 
 ### 文件
@@ -148,3 +149,4 @@ intext:"Powered by Intercom" -site:intercom.com
 - [1] [dorking (how to find anything on the Internet)](https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html)
 
 - [2] [Google Search Operators: The Complete List (42 Advanced Operators)](https://ahrefs.com/blog/google-advanced-search-operators/)
+

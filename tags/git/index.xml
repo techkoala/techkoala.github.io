@@ -179,7 +179,7 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Git提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>
+</div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>

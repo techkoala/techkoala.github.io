@@ -17,7 +17,7 @@
 
 ## 解决办法
 
-### STUN（Session Traversal Utilities） 
+### STUN（Session Traversal Utilities）
 
 STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。
 
@@ -48,3 +48,4 @@ UPnP（Universal Plug and Play）是帮助路由器有效通信的一个标准�
 - [3] [Wikipedia DMZ](https://zh.wikipedia.org/wiki/DMZ)
 
 - [4] [解决 NAT 错误和多人游戏问题](https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error)
+

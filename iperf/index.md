@@ -15,7 +15,7 @@ iPerf 是一个用于测量网络最大带宽的小工具。iPerf 可以测试�
 
 ## 安装 iPerf
 
-iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，[官网](https://iperf.fr/iperf-download.php)提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等） 
+iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，[官网](https://iperf.fr/iperf-download.php)提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）
 
 类 UNIX 系统直接使用包管理进行安装即可，例如：
 
@@ -53,7 +53,7 @@ $ sudo apt install iperf3
 
 客户端特有参数:
 
-```shell   
+```shell
 -c, --client host	    在客户端模式下运行 iPerf
 --sctp	                使用 SCTP 而不是 TCP
 -u, --udp	            使用 UDP 而不是 TCP
@@ -61,7 +61,7 @@ $ sudo apt install iperf3
 -t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 10 秒
 -n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 10 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
 -k, --blockcount    	要传输的块（数据包）数
--l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 128 KB，UDP 的默认值为 8 KB。 
+-l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 128 KB，UDP 的默认值为 8 KB。
 -P, --parallel  	    与服务器同时建立的连接数，默认值为 1
 -R, --reverse	        以反向模式运行（服务器发送，客户端接收）
 -w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
@@ -95,10 +95,11 @@ $ iperf3 -s -p 12345 -i 1
 $ iperf3 -c 192.168.1.43 -p 12345 -i 1 -t 20 -w 100k
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" caption="iPerf 使用实例">}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" caption="iPerf 使用实例">}}
 
 ## 参考
 
 - [1] [iPerf user docs](https://iperf.fr/iperf-doc.php)
 
 - [2] [iPerf Github](https://github.com/esnet/iperf)
+

@@ -6,11 +6,11 @@
 <!--more-->
 
 > 注：本文系全文转载，原文信息如下：
-> 
+>
 > 作者：猫尾博客
-> 
+>
 > 链接：https://cattail.me/tech/2015/11/30/how-https-works.html
-> 
+>
 > 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 读完本文，你能明白
@@ -25,7 +25,7 @@ HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示
 
 下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" caption="Credit: [Kaushal Kumar Panday](https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx) From: [SSL Handshake and HTTPS Bindings on IIS](https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx)" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" caption="Credit: [Kaushal Kumar Panday](https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx) From: [SSL Handshake and HTTPS Bindings on IIS](https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx)" >}}
 
 其中 `Handshake protocol`，`Change Ciper Spec protocol` 和 `Alert protocol` 组成了 `SSL Handshaking Protocols`。
 
@@ -41,7 +41,7 @@ HTTPS 和 HTTP 协议相比提供了:
 
 使用 RSA 算法的 SSL 握手过程是这样的:
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
 1. [明文] 客户端发送随机数 client_random 和支持的加密方式列表
 2. [明文] 服务器返回随机数 server_random ，选择的加密方式和服务器证书链
@@ -168,7 +168,7 @@ Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Ha
 
 使用 RSA 算法的握手过程是这样的（已在总览中提到）
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}} 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
 客户端和服务端在握手 hello 消息中明文交换了 client_random 和 server_random ，使用 RSA 公钥加密传输 premaster secret ，最后通过算法，客户端和服务端分别计算 master secret。其中，不直接使用 premaster secret 的原因是：保证 secret 的随机性不受任意一方的影响。
 
@@ -258,14 +258,15 @@ partitioned as follows:
 - [Keyless](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)
 - [Let’s Encrypt](https://letsencrypt.org/)
 - Session resume
-- 证书Revoke
+- 证书 Revoke
 
 ## 参考
 
-- [1] [TLS1.2规范](https://tools.ietf.org/html/rfc5246)
+- [1] [TLS1.2 规范](https://tools.ietf.org/html/rfc5246)
 
-- [2] [PKI规范](https://tools.ietf.org/html/rfc5280)
+- [2] [PKI 规范](https://tools.ietf.org/html/rfc5280)
 
 - [3] [证书和数字签名](http://www.youdzone.com/signature.html)
 
 - [4] [TLS Handshake](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)
+

@@ -74,7 +74,7 @@
     </figure>
 <p><code>全锥型 NAT</code> 是静态 NAT，也是唯一一种永久开放端口的 <code>NAT</code>，允许从 <strong>任何外部主机</strong> 进行入站连接。<code>全锥型 NAT</code> 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 <code>NAT </code>IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 <code>NAT</code> 也被称为端口转发。这是受限制最少的 <code>NAT</code> 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
 <blockquote>
-<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
+<p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的 WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
 </blockquote>
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
