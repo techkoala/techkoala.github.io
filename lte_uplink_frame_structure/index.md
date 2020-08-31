@@ -9,7 +9,7 @@ LTE 使用 SC (单载波)-FDMA 作为上行链路信号。
 
 ## 时隙结构
 
-从下面的时隙结构可以看出，LTE上下行链路的时隙结构是相似的：
+从下面的时隙结构可以看出，LTE 上下行链路的时隙结构是相似的：
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" caption="上行时隙结构">}}
 
@@ -73,3 +73,4 @@ LTE 使用 SC (单载波)-FDMA 作为上行链路信号。
 ## 参考
 
 - [1] [UL FrameStructure](http://www.sharetechnote.com/html/FrameStructure_UL.html)
+

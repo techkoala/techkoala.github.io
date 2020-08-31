@@ -4,7 +4,39 @@
         <link>https://www.techkoala.top/categories/wirelesscommunication/</link>
         <description>WirelessCommunication - 分类 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 12 Aug 2019 23:14:44 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 31 Aug 2020 13:17:02 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系统的总体架构</title>
+    <link>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</link>
+    <pubDate>Mon, 31 Aug 2020 13:17:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</guid>
+    <description><![CDATA[<p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>FDD 帧结构</h2>">
+        
+    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
+    </figure>
+<p><strong>核心网</strong>包括<code>移动性管理实体</code>（MME）、<code>服务网关</code>（S-GW）和<code>分组数据网网关</code>（P-GW）；</p>
+<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
+<ul>
+<li>
+<p>核心网的 <code>MME</code> 实体负责移动性管理相关的控制功能，包括对终端位置跟踪区域列表的管理，对处于空闲状态的终端发起寻呼，为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code>，漫游和鉴权功能，非接入层（Non-Access Stratum，NAS）信令功能、信令安全和接入层（Access Stratum，AS）的安全控制，接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择），以及网络承载管理的功能；</p>
+</li>
+<li>
+<p>核心网的服务网关（S-GW）负责数据承载的相关功能，包括数据包的路由和转发，E-NodeB 之间切换或者 E-NodeB 和 GSM/WCDMA/TD-SCDMA 系统的不同接入网之间切换时的数据锚点，上下行传输层数据包的优先级标识，运营商内部和运营商之间的终端计费，以及对用户通信进行合法侦听的功能。</p>
+</li>
+<li>
+<p>PDN 网关（P-GW）是核心网与外部因特网的接口，完成的主要功能包括针对每个用户的数据包过滤，终端的 IP 地址分配，基于业务的计费功能，门控和速率强制功能，下行传输层数据包的优先级标识，以及进行合法侦听的功能；</p>
+</li>
+<li>
+<p>E-NodeB 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），IP 头压缩和用户数据加密，为附着的终端选择进行控制功能的 MME 实体，将用户数据路由至 S-GW 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。E-NodeB 之间通过 X2 接口进行互连，X2 接口主要用于支持终端在 E-NodeB 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，X2 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
+</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>LTE-Advanced 关键技术详解</li>
+</ul>
+]]></description>
+</item><item>
     <title>5G 如何做到空口 &lt;1ms 的延迟</title>
     <link>https://www.techkoala.top/5g_time_delay/</link>
     <pubDate>Mon, 12 Aug 2019 23:14:44 &#43;0800</pubDate>
@@ -298,7 +330,7 @@
 </blockquote>
 <p>LTE 使用 SC (单载波)-FDMA 作为上行链路信号。</p>
 <h2 id="时隙结构">时隙结构</h2>
-<p>从下面的时隙结构可以看出，LTE上下行链路的时隙结构是相似的：</p>
+<p>从下面的时隙结构可以看出，LTE 上下行链路的时隙结构是相似的：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" data-sub-html="<h2>上行时隙结构</h2>">
         
     </a><figcaption class="image-caption">上行时隙结构</figcaption>
@@ -573,7 +605,7 @@
 </li>
 <li>
 <p>参考信号的频域索引 k 根据 36.211 6.10.1.2 映射到资源元素中指定的物理小区 ID 而变化。</p>
-<p>主要规则是：$k = 6m + (v + v_{shift})mod 6$，其中v_shift=物理小区ID mod6。详细信息参阅 36.211 6.10.1.2</p>
+<p>主要规则是：$k = 6m + (v + v_{shift})mod 6$，其中 v_shift=物理小区 ID mod6。详细信息参阅 36.211 6.10.1.2</p>
 </li>
 </ul>
 <p>下行参考信号携带什么样的值？</p>
@@ -645,7 +677,7 @@
 <p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Physical Channels and Signals</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE的信道</a></p>
+<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE 的信道</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -763,7 +795,7 @@
         
     </a><figcaption class="image-caption">下行帧结构物理信道</figcaption>
     </figure>
-<p>如上所述，我们可以在二维图中表示LTE信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。</p>
+<p>如上所述，我们可以在二维图中表示 LTE 信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。</p>
 <hr>
 <p>首先让我们看一下频域结构：</p>
 <ul>
@@ -782,13 +814,13 @@
 <p>子载波和下一个子载波之间的空间是多少？ 15 Khz</p>
 </li>
 <li>
-<p>20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200个子载波。</p>
+<p>20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200 个子载波。</p>
 </li>
 <li>
-<p>10 Mhz LTE 频段的信道（子载波）数量是多少？ 600个子载波。</p>
+<p>10 Mhz LTE 频段的信道（子载波）数量是多少？ 600 个子载波。</p>
 </li>
 <li>
-<p>5 Mhz LTE 频段的信道（子载波）数量是多少？ 300个子载波。</p>
+<p>5 Mhz LTE 频段的信道（子载波）数量是多少？ 300 个子载波。</p>
 </li>
 </ol>
 <hr>
@@ -801,7 +833,7 @@
 <p>一个子帧中有多少个符号？ A&gt; 14 个符号。</p>
 </li>
 <li>
-<p>一个帧中有几个时隙？ A&gt; 20个时隙。</p>
+<p>一个帧中有几个时隙？ A&gt; 20 个时隙。</p>
 </li>
 </ol>
 <hr>
@@ -809,25 +841,25 @@
 <p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 <code>LTE</code> 中协议侧和 <code>RF</code> 测量侧最重要的单元。</p>
 <ol>
 <li>
-<p>一个资源块中有多少个符号？  7个符号。</p>
+<p>一个资源块中有多少个符号？ 7 个符号。</p>
 </li>
 <li>
-<p>一个资源块中有多少个子载波？  12个子载波。</p>
+<p>一个资源块中有多少个子载波？ 12 个子载波。</p>
 </li>
 <li>
-<p>一个资源块中有多少资源元素？  84个资源元素。</p>
+<p>一个资源块中有多少资源元素？ 84 个资源元素。</p>
 </li>
 </ol>
 <p>那么</p>
 <ol start="4">
 <li>
-<p>20 Mhz频带中有多少资源块？  100个资源块。</p>
+<p>20 Mhz 频带中有多少资源块？ 100 个资源块。</p>
 </li>
 <li>
-<p>10 Mhz频带中有多少资源块？  50个资源块。</p>
+<p>10 Mhz 频带中有多少资源块？ 50 个资源块。</p>
 </li>
 <li>
-<p>5 Mhz频带中有多少资源块？  25个资源块。</p>
+<p>5 Mhz 频带中有多少资源块？ 25 个资源块。</p>
 </li>
 </ol>
 <h3 id="tdd类型-2">TDD——类型 2</h3>
@@ -919,7 +951,7 @@
     </a><figcaption class="image-caption">Configuration 6, Special Subframe Config 0</figcaption>
     </figure>
 <hr>
-<p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧0和子帧6中的符号结构如何变化。</p>
+<p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧 0 和子帧 6 中的符号结构如何变化。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
         
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>

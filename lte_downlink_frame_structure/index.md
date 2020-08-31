@@ -11,23 +11,23 @@
 
 36.211 中 `FDD` `LTE` 的帧结构概览图如下所示：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" caption="FDD 帧结构">}} 
+{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" caption="FDD 帧结构">}}
 
 上图仅显示了帧在时域上的结构，而没有显示频域上的结构。
 
-从图中可以看处： 
+从图中可以看处：
 
-- 一帧（一个无线帧，一个系统帧）的持续时间是 10 ms。 
+- 一帧（一个无线帧，一个系统帧）的持续时间是 10 ms。
 
 - 一帧（10 毫秒）的样本数是 307200（307.200 K）。
 
-- 一帧中有 10 个子帧。 
+- 一帧中有 10 个子帧。
 
 - 一个子帧中有 2 个时隙。
 
 那么一个时隙是时域上最小的结构吗？不，如果进一步放大此结构，则会得到下图：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" caption="时隙结构">}} 
+{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" caption="时隙结构">}}
 
 可以观察到一个时隙由 7 个`符号`组成。（一个符号是信号的某个时间跨度，在 I/Q 星座中的一个点。）
 
@@ -49,14 +49,14 @@
 
 - 每种系统带宽的典型 $N_{ifft}$ 如下:
 
-System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
-------------|---------------|-----------------------
-1.4         | 6             | 128 
-3.0         | 15            | 256
-5.0         | 25            | 512
-10.0        | 50            | 1024
-15.0        | 75            | 2048
-20.0        | 100           | 2048
+| System BW | Number of RBs | $N_{ifft}$ (bins/IFFT) |
+| --------- | ------------- | ---------------------- |
+| 1.4       | 6             | 128                    |
+| 3.0       | 15            | 256                    |
+| 5.0       | 25            | 512                    |
+| 10.0      | 50            | 1024                   |
+| 15.0      | 75            | 2048                   |
+| 20.0      | 100           | 2048                   |
 
 下图是`LTE 资源网格`的总体子帧结构：
 
@@ -72,8 +72,7 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" caption="下行帧结构物理信道">}}
 
-
-如上所述，我们可以在二维图中表示LTE信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。
+如上所述，我们可以在二维图中表示 LTE 信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。
 
 ---
 
@@ -87,11 +86,11 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 1. 子载波和下一个子载波之间的空间是多少？ 15 Khz
 
-2. 20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200个子载波。
- 
-3. 10 Mhz LTE 频段的信道（子载波）数量是多少？ 600个子载波。
+2. 20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200 个子载波。
 
-4. 5 Mhz LTE 频段的信道（子载波）数量是多少？ 300个子载波。
+3. 10 Mhz LTE 频段的信道（子载波）数量是多少？ 600 个子载波。
+
+4. 5 Mhz LTE 频段的信道（子载波）数量是多少？ 300 个子载波。
 
 ---
 
@@ -101,7 +100,7 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 2. 一个子帧中有多少个符号？ A> 14 个符号。
 
-3. 一个帧中有几个时隙？ A> 20个时隙。
+3. 一个帧中有几个时隙？ A> 20 个时隙。
 
 ---
 
@@ -109,19 +108,19 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 最小的二维单位是 RE，它由时域中的`一个符号`和频域中的`一个子载波`组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的`一个时隙`和频域中的 `12 个子载波`组成。RB 是 `LTE` 中协议侧和 `RF` 测量侧最重要的单元。
 
-1. 一个资源块中有多少个符号？  7个符号。
+1. 一个资源块中有多少个符号？ 7 个符号。
 
-2. 一个资源块中有多少个子载波？  12个子载波。
+2. 一个资源块中有多少个子载波？ 12 个子载波。
 
-3. 一个资源块中有多少资源元素？  84个资源元素。
+3. 一个资源块中有多少资源元素？ 84 个资源元素。
 
 那么
 
-4. 20 Mhz频带中有多少资源块？  100个资源块。
+4. 20 Mhz 频带中有多少资源块？ 100 个资源块。
 
-5. 10 Mhz频带中有多少资源块？  50个资源块。
+5. 10 Mhz 频带中有多少资源块？ 50 个资源块。
 
-6. 5 Mhz频带中有多少资源块？  25个资源块。
+6. 5 Mhz 频带中有多少资源块？ 25 个资源块。
 
 ### TDD——类型 2
 
@@ -129,19 +128,19 @@ System BW   | Number of RBs | $N_{ifft}$ (bins/IFFT)
 
 以下是使用 [Sandesh Dhagle's Resource Grid Tools](http://dhagle.in/LTE) 生成的各种配置的 `TDD` `UL/DL` 资源分配图。
 
-类别         |颜色
-------------|---------
-PDCCH       | 橙色
-PBCH        | 蓝色	
-PSS         | 紫色	
-SSS         | 浅蓝色	
-PDSCH       | 白色	
-Reserved    | 黑色	
-Ref Signal  | 红色	
-PCFICH      | 浅绿色	
-PHICH       | 黄色	
-TDD Uplink  | 绿色	
-Guard Period| 灰色
+| 类别         | 颜色   |
+| ------------ | ------ |
+| PDCCH        | 橙色   |
+| PBCH         | 蓝色   |
+| PSS          | 紫色   |
+| SSS          | 浅蓝色 |
+| PDSCH        | 白色   |
+| Reserved     | 黑色   |
+| Ref Signal   | 红色   |
+| PCFICH       | 浅绿色 |
+| PHICH        | 黄色   |
+| TDD Uplink   | 绿色   |
+| Guard Period | 灰色   |
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" caption="Configuration 0, Special Subframe Config 0">}}
 
@@ -159,7 +158,7 @@ Guard Period| 灰色
 
 ---
 
-下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧0和子帧6中的符号结构如何变化。
+下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧 0 和子帧 6 中的符号结构如何变化。
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" caption="Configuration 0, Special Subframe Config 0">}}
 
@@ -188,3 +187,4 @@ Guard Period| 灰色
 - [1] [Frame Structure - Downlink](http://www.sharetechnote.com/html/FrameStructure_DL.html)
 
 - [2] [Sandesh Dhagle's Resource Grid Tools](http://dhagle.in/LTE)
+

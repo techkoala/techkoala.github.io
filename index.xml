@@ -7,6 +7,38 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>LTE 系统的总体架构</title>
+    <link>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</link>
+    <pubDate>Mon, 31 Aug 2020 13:17:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</guid>
+    <description><![CDATA[<p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>FDD 帧结构</h2>">
+        
+    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
+    </figure>
+<p><strong>核心网</strong>包括<code>移动性管理实体</code>（MME）、<code>服务网关</code>（S-GW）和<code>分组数据网网关</code>（P-GW）；</p>
+<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
+<ul>
+<li>
+<p>核心网的 <code>MME</code> 实体负责移动性管理相关的控制功能，包括对终端位置跟踪区域列表的管理，对处于空闲状态的终端发起寻呼，为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code>，漫游和鉴权功能，非接入层（Non-Access Stratum，NAS）信令功能、信令安全和接入层（Access Stratum，AS）的安全控制，接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择），以及网络承载管理的功能；</p>
+</li>
+<li>
+<p>核心网的服务网关（S-GW）负责数据承载的相关功能，包括数据包的路由和转发，E-NodeB 之间切换或者 E-NodeB 和 GSM/WCDMA/TD-SCDMA 系统的不同接入网之间切换时的数据锚点，上下行传输层数据包的优先级标识，运营商内部和运营商之间的终端计费，以及对用户通信进行合法侦听的功能。</p>
+</li>
+<li>
+<p>PDN 网关（P-GW）是核心网与外部因特网的接口，完成的主要功能包括针对每个用户的数据包过滤，终端的 IP 地址分配，基于业务的计费功能，门控和速率强制功能，下行传输层数据包的优先级标识，以及进行合法侦听的功能；</p>
+</li>
+<li>
+<p>E-NodeB 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），IP 头压缩和用户数据加密，为附着的终端选择进行控制功能的 MME 实体，将用户数据路由至 S-GW 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。E-NodeB 之间通过 X2 接口进行互连，X2 接口主要用于支持终端在 E-NodeB 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，X2 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
+</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>LTE-Advanced 关键技术详解</li>
+</ul>
+]]></description>
+</item><item>
     <title>全站迁移到 Vercel</title>
     <link>https://www.techkoala.top/migrated_to_vercel/</link>
     <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate>
@@ -2179,191 +2211,6 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </li>
 <li>
 <p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>Git Log 使用技巧</title>
-    <link>https://www.techkoala.top/git_log/</link>
-    <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/git_log/</guid>
-    <description><![CDATA[<blockquote>
-<p>最常用的 Git Log 技巧令总结</p>
-</blockquote>
-<h2 id="概览提交历史">概览提交历史</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令帮助您以更清晰的方式查看提交。每个提交仅显示为一行，并且只有最少量的信息，比如提交哈希、提交消息。</p>
-<h2 id="显示详细更改信息">显示详细更改信息</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
-</code></pre></td></tr></table>
-</div>
-</div><p>此命令会显示更新的详细更改信息，方便查阅。</p>
-<h2 id="根据时间筛选">根据时间筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
-
-$ git log --before<span class="o">=</span><span class="s2">&#34;10 day ago&#34;</span> // 显示最近十天的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> // 显示上周以来的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;</span> // 显示近两个月的提交
-</code></pre></td></tr></table>
-</div>
-</div><p>上述命令将按给定的时间段过滤出提交。 例如，<code>--after</code> 将仅筛选给定时间段之后的提交，而 <code>--before</code> 将仅筛选给定时间段之前的提交。</p>
-<h2 id="根据作者筛选">根据作者筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令会显示由 techkoala 提交的更改。当然，可以结合上面介绍的命令，进行更加精确的筛选，例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="根据-log-信息筛选">根据 log 信息筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 <code>-i</code> 选项。</p>
-<p>此外，还支持正则表达式：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="根据文件筛选">根据文件筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令显示针对特定文件的的提交历史。</p>
-<p>当然，可以传入多个文件：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
-</code></pre></td></tr></table>
-</div>
-</div><p>同样的，结合别的命令可以做出更精确的筛选，例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="根据文件内容筛选">根据文件内容筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>上述命令帮你在源代码中搜索已添加到提交历史记录中的特定字符串。同样的，加上 <code>-i</code> 可以不区分大小写。</p>
-<h2 id="仅显示合并提交">仅显示合并提交</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令显示当前分支上合并的提交。</p>
-<h2 id="显示不同分支间的区别">显示不同分支间的区别</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令将显示所有来自 <code>develop</code> 但不在 <code>master</code> 分支的提交。</p>
-<h2 id="自定义-log-信息格式">自定义 log 信息格式</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy" target="_blank" rel="noopener noreffer">Ten Useful Git Log Tricks</a></p>
-</li>
-<li>
-<p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreffer">Git 基础 - 查看提交历史</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
