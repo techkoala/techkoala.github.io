@@ -1,11 +1,11 @@
 # 软件
 
 
-1.  **粗体** 表示在多平台中使用的软件
-
-2.  _斜体_ 表示优先选择表示商店版本(`Windows` & `MacOS`)
-
-3.  `Linux` 优先选用对应包管理器安装
+> 1.  **粗体** 表示在多平台中使用的软件
+>
+> 2.  _斜体_ 表示优先选择表示商店版本(`Windows` & `MacOS`)
+>
+> 3.  `Linux` 优先选用对应包管理器安装
 
 ## 浏览器
 
@@ -21,7 +21,7 @@
   - [Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)
   - [Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)：RSS 阅读器
 
-  - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)：美化新建标签页
+  - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)：新建标签页美化
 
   - [OneNote Web Clipper](https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma)
   - [Proxy SwitchyOmega](https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe)
@@ -62,7 +62,7 @@
 
 ## 压缩&解压缩
 
-- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费,停留于 6.26
+- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费，停留于 6.26
 
 - **[7-zip](https://www.7-zip.org/download.html)**
 
@@ -124,7 +124,7 @@
 
 - Office 365
 
-- [Office tools plus](https://otp.landian.vip/zh-cn/)：office 套件管理工具
+- [Office tools plus](https://otp.landian.vip/zh-cn/)：Office 套件管理工具
 
 - **[Typora](https://typora.io/)**
 
@@ -194,7 +194,7 @@
 
 - ~~Sstap~~ ：停止更新
 
-- ~~[V2rayN](https://github.com/2dust/v2rayN)~~ ：已转 Clash，支持更加灵活的规则和配置文件管理
+- ~~[V2rayN](https://github.com/2dust/v2rayN)~~ ：已转用 Clash，支持更加灵活的规则和配置文件管理
 
 - [Clash](https://github.com/Dreamacro/clash)
 
@@ -206,7 +206,7 @@
 
 - [Best Trace](https://www.ipip.net/product/client.html)
 
-- ~~[MobaXterm](https://mobaxterm.mobatek.net/)~~ ：已转 Termius,多端同步
+- ~~[MobaXterm](https://mobaxterm.mobatek.net/)~~ ：已转用 Termius，多端同步
 
 - **[Termius](https://termius.com/)**
 
@@ -218,9 +218,9 @@
 
 ## 效率工具
 
-- ~~[Quicker](https://getquicker.net/)~~：已转 utools
+- ~~[Quicker](https://getquicker.net/)~~：已转用 utools
 
-- ~~[Wox](http://www.wox.one/)~~：已转 utools
+- ~~[Wox](http://www.wox.one/)~~：已转用 utools
 
 - [WGestures](http://www.yingdev.com/projects/wgestures) ：Windows 鼠标手势
 
@@ -280,7 +280,7 @@
 
 - [Zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
 
-- [Oh-my-zsh](https://ohmyz.sh/)：插件见配置文件
+- [Oh-my-zsh](https://ohmyz.sh/)
 
 - [Navi](https://github.com/denisidoro/navi)
 
