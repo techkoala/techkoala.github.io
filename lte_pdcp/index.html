@@ -12,7 +12,7 @@ LTE PDCP 层详解
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/lte_pdcp/" />
 <meta property="article:published_time" content="2020-08-31T21:00:19+08:00" />
-<meta property="article:modified_time" content="2020-08-31T21:00:19+08:00" />
+<meta property="article:modified_time" content="2020-08-31T21:20:43+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="LTE 系列：PDCP 层详解"/>
 <meta name="twitter:description" content="
@@ -31,7 +31,7 @@ LTE PDCP 层详解
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/lte_pdcp\/"
         },"genre": "posts","keywords": "LTE","wordcount":  357 ,
-        "url": "https:\/\/www.techkoala.top\/lte_pdcp\/","datePublished": "2020-08-31T21:00:19+08:00","dateModified": "2020-08-31T21:00:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/lte_pdcp\/","datePublished": "2020-08-31T21:00:19+08:00","dateModified": "2020-08-31T21:20:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -130,20 +130,20 @@ LTE PDCP 层详解
 <h2 id="分组数据会聚协议pdcp">分组数据会聚协议（PDCP）</h2>
 <p>分组数据会聚协议（Packet Data Convergence Protocol，PDCP）层的主要功能是进行 <code>IP 数据包头压缩</code>、<code>数据加密</code>和<code>控制信令的完整性保护</code>。</p>
 <p>对于来自上层的数据包，将针对<strong>每一个</strong>无线承载建立一个 <code>PDCP 实体</code>。首先对数据包进行编号，然后根据配置对数据包进行 <strong>IP 包头压缩</strong>，<strong>数据加密</strong>和<strong>控制信令完整性保护</strong>的操作，形成 <code>PDCP 服务数据单元</code>（Service Data Unit，SDU），最后添加包含编号的 <code>PDCP 包头</code>，形成 <code>PDCP 协议数据单元</code>（Protocol Data Unit，PDU）作为 <code>PDCP</code> 子层协议功能的处理结果向下层 <code>RLC</code> 子层输出。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-sub-html="<h2>PDCP 协议数据单元格式</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-sub-html="<h2>PDCP 协议数据单元格式</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp"
-            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" />
     </a><figcaption class="image-caption">PDCP 协议数据单元格式</figcaption>
     </figure>
 <ul>
-<li>R 表示预留的字段，都填充为 0</li>
-<li>D/C 字段指示控制面或者数据面的 PDCP 包，控制面为 0，数据面为 1</li>
-<li>MAC-I 是控制信令完整性保护的字段，在不使用完整性保护功能的时候，都填充为 0</li>
+<li><code>R</code> 表示预留的字段，都填充为 <code>0</code></li>
+<li><code>D/C</code> 字段指示控制面或者数据面的 <code>PDCP 包</code>，控制面为 <code>0</code>，数据面为 <code>1</code></li>
+<li><code>MAC-I</code> 是控制信令完整性保护的字段，在不使用完整性保护功能的时候，都填充为 <code>0</code></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
@@ -152,7 +152,8 @@ LTE PDCP 层详解
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-08-31</span>
+                <span>更新于 2020-08-31&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/9a9343f78c5317151c3e0b64ff9392c35cc75184" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 9a9343f78c5317151c3e0b64ff9392c35cc75184: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>9a9343f</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

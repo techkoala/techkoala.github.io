@@ -14,7 +14,12 @@
 <p>LTE RRC 层详解</p>
 </blockquote>
 <h2 id="无线资源控制rrc">无线资源控制（RRC）</h2>
-<p>无线资源控制（Radio Resource Control，RRC）层是 LTE 无线接入网协议中控制面部分的主要内容。RRC 协议消息采用抽象语法描述（Abstract Syntax Notation，ASN.1）的方式进行描述。ASN.1 是国际电联（ITU-T）建议的一种标记语言，用于描述计算机之间交互的结构化信息，它定义了传送数据的表示方式，即传送语法。用户终端在进行数据通信之前，需要与网络建立承载信令消息的连接，通过信令消息的交互，控制数据通信的过程。因此，“是否与网络建立了 RRC 连接”是终端状态的判断依据。已经与网络建立了 RRC 连接的终端处于连接状态，即 RRC 连接状态。如果没有与网络建立 RRC 连接，那么终端处于空闲状态，即 RRC 空闲状态。“RRC 连接状态”和“RRC 空闲状态”是 LTE 无线接入网中终端可能的两种状态，在 RRC 连接状态下，终端可以进行数据的传输、系统信息的接收，以及邻小区的测量上报和小区切换。RRC 空闲状态下，终端不进行数据的传输，仍然需要执行的功能包括：系统信息的接收、侦听寻呼，以及邻小区测量和小区重选。</p>
+<p>无线资源控制（Radio Resource Control，RRC）层是 LTE 无线接入网协议中<strong>控制面</strong>部分的主要内容。</p>
+<p>用户终端在进行数据通信之前，需要与网络建立承载信令消息的连接，通过信令消息的交互，控制数据通信的过程。因此，<strong>是否与网络建立了 RRC 连接</strong>是终端状态的判断依据。</p>
+<ul>
+<li><strong>RRC 连接状态</strong>即已经与网络建立了 RRC 连接的终端处于连接状态，此时终端可以进行<strong>数据传输</strong>、<strong>系统信息接收</strong>，以及<strong>邻小区的测量上报和小区切换</strong></li>
+<li><strong>RRC 空闲状态</strong>即没有与网络建立 RRC 连接，那么终端处于空闲状态，此时终端<strong>不进行数据的传输</strong>，仍然需要执行的功能包括：<strong>系统信息的接收</strong>、<strong>侦听寻呼</strong>，以及<strong>邻小区测量和小区重选</strong></li>
+</ul>
 <p>RRC 协议包括以下的主要功能：</p>
 <ul>
 <li>系统信息的广播，包括接入网的系统广播消息，以及核心网非接入层（NAS）系统信息的广播</li>
@@ -24,110 +29,187 @@
 <li>NAS 信令直接传输的功能</li>
 </ul>
 <h3 id="系统信息的广播">系统信息的广播</h3>
-<p>系统信息描述网络的基本情况，采用广播的方式进行发送，对应于广播控制逻辑信道（BCCH）。终端通过对系统信息的接收，获得为了在系统中进行通信所需要的网络基本参数。</p>
+<p>系统信息描述网络的基本情况，采用广播的方式进行发送，对应于广播控制逻辑信道（BCCH）。终端通过对系统信息的接收，获得在系统中进行通信所需要的基本网络参数。</p>
 <p>LTE 的系统信息分为：</p>
 <ul>
 <li>
-<p>主信息块（Master Information Block，MIB）</p>
-<p>主信息块（MIB）包括小区最基本的物理层信息，例如：系统下行信号的带宽、无线帧序号和发送天线的数目。终端需要获得这些基本的信息才能够进一步接收系统的其他信息。MIB 信息在专门定义的广播传输信道（BCH）上，采用物理层广播信道（PBCH）在固定的时间和频率位置进行传输。MIB 采用 40ms 的周期重复发送，每个周期之内包括 4 次间隔为 10ms 的传输，在序号 SFN%4=0 无线帧的第 0 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个无线帧的第 0 个子帧的位置。</p>
+<p><code>主信息块</code>（Master Information Block，MIB）</p>
+<p><strong>主信息块</strong>（MIB）包括小区最基本的物理层信息，例如：系统下行信号的带宽、无线帧序号和发送天线的数目。终端需要获得这些基本的信息才能够进一步接收系统的其他信息。</p>
+<p><code>MIB</code> 信息在专门定义的广播传输信道（BCH）上，采用物理层广播信道（PBCH）在固定的时间和频率位置进行传输。<code>MIB</code> 采用 40ms 的周期重复发送，每个周期之内包括 4 次间隔为 10ms 的传输，在序号 SFN%4=0 无线帧的第 0 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个无线帧的第 0 个子帧的位置。</p>
 </li>
 <li>
-<p>系统信息块（System Information Block，SIB）</p>
-<p>系统信息块（SIB）映射在下行共享传输信道（DL-SCH）上进行传输，采用 SI-RNTI 进行指示。根据所传输信息的不同，SIB 分为多种类型：Type 1 ～ Type 12。Type 1 信息（SIB1）包括了是否允许终端接入小区的相关信息，例如系统的公众网络标识（PLMN）、小区标识、关闭的用户组（CSG）信息以及 TDD 系统上下行时隙比例的配置信息。SIB1 中还承载了其他系统信息块（SIB2 ～ SIB13）的调度信息。SIB2 承载用于所有终端公共的无线资源配置信息，例如系统上行信号的频率／带宽、MBSFN 子帧、随机接入信道、寻呼信道、上行 sounding 导频和上行功率控制等的配置情况。SIB3 ～ SIB8 承载用于终端进行小区重选的相关参数，分别针对于同频、异频和异系统 3G/GSM/cdma2000 各种不同的情况。SIB9 指示关于家庭基站名字的信息。SIB10 ～ SIB12：用于公共灾害的警示服务，即地震和海啸警报系统（Earthquake and Tsunami Warning System，ETWS）和商用移动警报服务（Commercial MobileAlert Service，CMAS）。</p>
+<p><code>系统信息块</code>（System Information Block，SIB）</p>
+<p><strong>系统信息块</strong>（SIB）映射在下行共享传输信道（DL-SCH）上进行传输，采用 <code>SI-RNTI</code> 进行指示。根据所传输信息的不同，<code>SIB</code> 分为多种类型：<code>Type 1</code> ～ <code>Type 12</code></p>
+<ul>
+<li><code>SIB1</code>（Type 1 信息）：包括了是否允许终端接入小区的相关信息，例如系统的公众网络标识（PLMN）、小区标识、关闭的用户组（CSG）信息以及 TDD 系统上下行时隙比例的配置信息。SIB1 中还承载了其他系统信息块（SIB2 ～ SIB13）的调度信息</li>
+<li><code>SIB2</code>：承载用于所有终端公共的无线资源配置信息，例如系统上行信号的频率／带宽、MBSFN 子帧、随机接入信道、寻呼信道、上行 sounding 导频和上行功率控制等的配置情况</li>
+<li><code>SIB3</code> ～ <code>SIB8</code>：承载用于终端进行小区重选的相关参数，分别针对于同频、异频和异系统 3G/GSM/cdma2000 各种不同的情况。SIB9 指示关于家庭基站名字的信息</li>
+<li><code>SIB10</code> ～ <code>SIB12</code>：用于公共灾害的警示服务，即地震和海啸警报系统（Earthquake and Tsunami Warning System，ETWS）和商用移动警报服务（Commercial MobileAlert Service，CMAS）</li>
+</ul>
 </li>
 </ul>
-<p>SIB1 信息使用固定的时间位置进行传输，采用 80ms 的周期重复发送，每个周期之内包括 4 次间隔为 20ms 的传输，在序号 SFN%8=0 无线帧的第 5 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个序号为偶数的无线帧的第 5 个子帧的位置。除了 SIB1 之外，其余的 SIB 消息映射在系统信息（System Information，SI）上进行传输，它们的映射关系可以进行灵活的配置，由 SIB1 中承载的调度信息进行指示。一个 SIB 消息只能映射在一个 SI 上进行传输，而一个 SI 可以包含多个具有相同周期的 SIB 消息。</p>
-<p>系统广播信息向传输信道的映射如图所示</p>
+<p><code>SIB1</code> 信息使用固定的时间位置进行传输，采用 80ms 的周期重复发送，每个周期之内包括 4 次间隔为 20ms 的传输，在序号 SFN%8=0 无线帧的第 5 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个序号为偶数的无线帧的第 5 个子帧的位置。</p>
+<p>除了 <code>SIB1</code> 之外，其余的 <code>SIB</code> 消息映射在系统信息（System Information，SI）上进行传输，它们的映射关系可以进行灵活的配置，由 <code>SIB1</code> 中承载的调度信息进行指示。一个 <code>SIB</code> 消息只能映射在一个 <code>SI</code> 上进行传输，而一个 <code>SI</code> 可以包含多个具有相同周期的 <code>SIB</code> 消息。</p>
+<p>系统广播信息向传输信道的映射如图所示:</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" data-sub-html="<h2>系统广播信息向传输信道的映射</h2>">
         
     </a><figcaption class="image-caption">系统广播信息向传输信道的映射</figcaption>
     </figure>
-<p>系统广播信息的更新采用“更新提示”和“信息更新”两个阶段的方式。根据系统配置的更新周期（最小值为 640ms），当需要对系统广播消息进行更新的时候，系统在前一个更新周期使用寻呼消息提示用户，系统广播消息将发生改变，但是在这个更新周期中，仍然发送原来的系统信息。在下一个更新周期，将发送改变之后的系统信息，终端根据该信息进行更新。</p>
+<p>系统广播信息的更新采用<code>更新提示</code>和<code>信息更新</code>两个阶段的方式。</p>
+<p>根据系统配置的更新周期（最小值为 640ms），当需要对系统广播消息进行更新的时候，系统在前一个更新周期使用寻呼消息提示用户，系统广播消息将发生改变，但是在这个更新周期中，仍然发送原来的系统信息。在下一个更新周期，将发送改变之后的系统信息，终端根据该信息进行更新。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" data-sub-html="<h2>系统广播信息的更新</h2>">
         
     </a><figcaption class="image-caption">系统广播信息的更新</figcaption>
     </figure>
 <h3 id="对连接的控制">对连接的控制</h3>
-<p>连接控制指的是对接入网中的无线承载进行控制的功能，包括信令承载的建立／重配置／重建立／释放、数据承载的建立／配置／释放，以及相关的完整性保护和数据加密的通信安全机制。</p>
-<h4 id="rrc-连接的管理">RRC 连接的管理</h4>
+<p><strong>连接控制</strong>指的是对接入网中的无线承载进行控制的功能，包括<strong>信令承载的建立</strong>／<strong>重配置</strong>／<strong>重建立</strong>／<strong>释放</strong>、<strong>数据承载的建立</strong>／<strong>配置</strong>／<strong>释放</strong>，以及相关的<strong>完整性保护</strong>和<strong>数据加密</strong>的通信安全机制。</p>
+<h4 id="连接管理">连接管理</h4>
 <p>LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer，SRB）：</p>
 <ul>
 <li>
-<p>SRB0 用于承载公用控制逻辑信道（CCCH）的 RRC 消息</p>
+<p><code>SRB0</code> 用于承载公用控制逻辑信道（CCCH）的 RRC 消息</p>
 </li>
 <li>
-<p>SRB1 主要用于承载专用控制逻辑信道（DCCH）的 RRC 消息</p>
+<p><code>SRB1</code> 主要用于承载专用控制逻辑信道（DCCH）的 RRC 消息</p>
 <p>通常所说的建立 RRC 连接指的是信令无线承载 SRB1 的建立。</p>
 </li>
 <li>
-<p>SRB2 用于承载专用控制逻辑信道（DCCH）的核心网非接入层（NAS）控制信息。</p>
+<p><code>SRB2</code> 用于承载专用控制逻辑信道（DCCH）的核心网非接入层（NAS）控制信息。</p>
 </li>
 </ul>
-<p>终端开机在网络中进行注册之后处于空闲状态，在一个通常的通信过程中，空闲状态的终端首先需要与网络建立 RRC 连接，进入 RRC 连接状态，才能进行数据的通信。在这个过程中，建立传输 RRC 消息的信令承载 SRB1，终端进入 RRC 连接状态。然后，系统建立传输 NAS 消息的信令无线承载 SRB2 和传输数据的无线承载 DRB，由此可以开始进行数据的通信。</p>
+<p>终端开机在网络中进行注册之后处于空闲状态，终端首先建立传输 <code>RRC</code> 消息的信令承载 <code>SRB1</code>，终端进入 <code>RRC 连接状态</code>，然后，系统建立传输 <code>NAS</code> 消息的信令无线承载 <code>SRB2</code> 和传输数据的无线承载 <code>DRB</code>，由此可以开始进行数据的通信。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" data-sub-html="<h2>RRC 连接建立的过程</h2>">
         
     </a><figcaption class="image-caption">RRC 连接建立的过程</figcaption>
     </figure>
-<p>进入 RRC 连接状态之后，采用 RRC 连接重配置的过程来进行 SRB2 和 DRB 的建立和管理。重配置过程在连接状态下对 RRC 连接进行更改，包括建立／更改／释放无线承载，进行小区切换的过程，以及建立／更改／释放终端的测量和上报。对应于这些功能，RRC 连接重配置消息中可能携带的信息包括无线资源的配置情况（无线承载、MAC 层和物理层），移动性控制的相关参数，以及无线测量的配置信息。其中，无线资源的配置信息包括公共的配置信息和专用的配置信息。公共的配置信息描述了移动性控制信息和系统信息中公共的无线资源配置情况，例如随机接入信道的参数、系统上行 sounding 导频配置和上行功率控制参数等静态的物理层配置信息。专用的配置信息用于无线承载的管理，例如 MAC 层配置、SPS 调度以及专用的物理层配置等。</p>
+<p>进入 <code>RRC 连接状态</code>之后，采用 <code>RRC 连接重配置</code>的过程来进行 <code>SRB2</code> 和 <code>DRB</code> 的建立和管理。</p>
+<p>重配置过程在连接状态下对 RRC 连接进行更改，包括：</p>
+<ul>
+<li>建立／更改／释放无线承载，</li>
+<li>进行小区切换的过程</li>
+<li>建立／更改／释放终端的测量和上报</li>
+</ul>
+<p>对应于这些功能，RRC 连接重配置消息中可能携带的信息包括：</p>
+<ul>
+<li>无线资源的配置情况（无线承载、MAC 层和物理层），其中含有如下信息：
+<ul>
+<li>公共的配置信息，描述了移动性控制信息和系统信息中公共的无线资源配置情况，例如随机接入信道的参数、系统上行 sounding 导频配置和上行功率控制参数等静态的物理层配置信息</li>
+<li>专用的配置信息，专用的配置信息用于无线承载的管理，例如<code> MAC 层</code>配置、<code>SPS 调度</code>以及专用的物理层配置等</li>
+</ul>
+</li>
+<li>移动性控制的相关参数</li>
+<li>无线测量的配置信息</li>
+</ul>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" data-sub-html="<h2>RRC 连接重配置的过程</h2>">
         
     </a><figcaption class="image-caption">RRC 连接重配置的过程</figcaption>
     </figure>
-<p>按照 RRC 连接重配置消息中携带的配置信息，无线承载建立的过程包括建立一个 PDCP 实体、建立一个 RLC 实体，以及按照指定的逻辑信道标识建立一个逻辑信道。与建立的过程相对应，当 RRC 连接重配置消息指示释放某个无线承载的时候，将释放相应的 PDCP 实体、RLC 实体和逻辑信道。</p>
-<p>通过 RRC 连接释放的过程，终端由 RRC 连接状态转变为空闲状态。这个过程释放 RRC 连接，包括所有已经建立的信令和数据的无线承载，以及所有的无线资源。</p>
+<p>按照 <code>RRC 连接重配置</code>消息中携带的配置信息，无线承载建立的过程包括建立一个 <code>PDCP 实体</code>、建立一个 <code>RLC 实体</code>，以及按照指定的逻辑信道标识建立一个逻辑信道。</p>
+<p>与建立的过程相对应，当 <code>RRC 连接重配置</code>消息指示释放某个无线承载的时候，将释放相应的 <code>PDCP 实体</code>、<code>RLC 实体</code>和<code>逻辑信道</code>。通过 <code>RRC 连接</code>释放的过程，终端由 <code>RRC 连接状态</code>转变为<code>空闲状态</code>。这个过程释放 <code>RRC 连接</code>，包括所有已经建立的信令和数据的无线承载，以及所有的无线资源。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" data-sub-html="<h2>RRC连接释放的过程</h2>">
         
     </a><figcaption class="image-caption">RRC连接释放的过程</figcaption>
     </figure>
 <h4 id="通信安全的功能">通信安全的功能</h4>
-<p>为了保证通信的安全，防止窃听、伪装等恶意行为，无线接入网的连接控制中包含安全通信的相关功能，包括信令消息的完整性保护，以及信令和数据消息的加密。</p>
-<p>在 RRC 连接建立的过程中，无线接入网从核心网取得终端用户的相关信息，然后可以使用安全模式激活（如图 2-28 所示）的 RRC 消息设置用户密钥和加密算法，开启信令完整性保护和加密的功能，从而保证后续通信过程的安全（包括 SRB2 和 DRB 的建立等）。</p>
+<p>为了保证通信的安全，防止窃听、伪装等恶意行为，无线接入网的连接控制中包含安全通信的相关功能，包括：</p>
+<ul>
+<li>信令消息的完整性保护</li>
+<li>信令消息加密</li>
+<li>数据消息的加密</li>
+</ul>
+<p>在 <code>RRC</code> 连接建立的过程中，无线接入网从核心网取得终端用户的相关信息，然后可以使用安全模式激活的 RRC 消息设置用户密钥和加密算法，开启信令完整性保护和加密的功能，从而保证后续通信过程的安全（包括 <code>SRB2</code> 和 <code>DRB</code> 的建立等）。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" data-sub-html="<h2>安全模式激活的过程</h2>">
         
     </a><figcaption class="image-caption">安全模式激活的过程</figcaption>
     </figure>
-<p>在通信的过程中还可以通过计数器检查（counter check）的 RRC 消息防止采用“中间人（man in the middle）”方式的恶意攻击。在计数器检查的过程中，网络发送计数器检查消息要求终端确认在每个数据无线承载 DRB 上发送和接收数据的数量，通过这样的方法可以排除“中间人”可能进行的伪装通信。</p>
+<p>在通信的过程中还可以通过计数器检查（counter check）的 <code>RRC 消息</code>防止<code>中间人</code>（man in the middle）攻击。在计数器检查的过程中，网络发送计数器检查消息要求终端确认在每个数据无线承载 <code>DRB</code> 上发送和接收数据的数量，通过这样的方法可以排除<code>中间人</code>可能进行的伪装通信。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" data-sub-html="<h2>计数器检查的过程</h2>">
         
     </a><figcaption class="image-caption">计数器检查的过程</figcaption>
     </figure>
 <h3 id="终端移动性的管理">终端移动性的管理</h3>
-<p>终端移动性的管理是 LTE 作为移动通信系统一个重要的控制功能，实现相关功能的协议包括终端与无线接入网之间的 RRC 控制协议，以及终端与核心网之间非接入层（NAS）控制协议。</p>
+<p>终端移动性的管理是 LTE 作为移动通信系统一个重要的控制功能，实现相关功能的协议包括:</p>
+<ul>
+<li>终端与无线接入网之间的 RRC 控制协议</li>
+<li>终端与核心网之间非接入层（NAS）控制协议</li>
+</ul>
 <h4 id="空闲状态终端的移动性管理">空闲状态终端的移动性管理</h4>
-<p>处于 RRC 空闲状态的终端与无线接入网没有建立 RRC 连接，终端的信息在核心网中注册并且分配有 IP 地址，无线接入网中不存储空闲状态终端的信息。终端进行自身的移动性管理，发起小区选择／重选，当跟踪区位置发生改变的时候向核心网进行登记。核心网记录终端所处的跟踪区位置（TrackingArea，TA，通常由相邻覆盖的若干个小区组成），核心网可以发起对终端的寻呼，终端根据核心网配置的 DRX 周期监听可能的寻呼消息。空闲状态的终端不能进行单播数据的传输。</p>
-<p>在终端开机的过程中，首先根据 PLMN（公众网络标识）进行网络的选择，选定例如某个运营商的网络，之后终端进行小区选择，确定所驻留的小区，侦听该小区的控制信道。然后采用跟踪区改变的流程向核心网注册终端所处的跟踪区位置。终端在移动的过程中，可能由一个小区无线信号的覆盖范围进入另一个小区的覆盖范围，这时候终端将进行小区重选的操作，改变所驻留侦听控制信道的小区。如果这个小区与前一个小区属于不同的跟踪区，那么在小区重选之后，终端将发起跟踪区改变的流程，使用非接入层（NAS）信令向核心网注册新的跟踪区位置。</p>
+<p>处于 <code>RRC 空闲状态</code>的终端与无线接入网没有建立 <code>RRC</code> 连接，终端的信息在核心网中注册并且分配有 <code>IP</code> 地址，无线接入网中不存储空闲状态终端的信息。终端进行自身的移动性管理，发起小区选择／重选，当跟踪区位置发生改变的时候向核心网进行登记。核心网记录终端所处的跟踪区位置（TrackingArea，TA，通常由相邻覆盖的若干个小区组成），核心网可以发起对终端的寻呼，终端根据核心网配置的 <code>DRX</code> 周期监听可能的寻呼消息。空闲状态的终端<strong>不能进行</strong>单播数据的传输。</p>
+<p>在终端开机的过程中，首先根据 <code>PLMN</code>（公众网络标识）进行网络的选择，选定例如某个运营商的网络，之后终端进行小区选择，确定所驻留的小区，侦听该小区的控制信道。然后采用跟踪区改变的流程向核心网注册终端所处的跟踪区位置。</p>
+<p>终端在移动的过程中，可能由一个小区无线信号的覆盖范围进入另一个小区的覆盖范围，这时候终端将进行小区重选的操作，改变所驻留侦听控制信道的小区。如果这个小区与前一个小区属于不同的跟踪区，那么在小区重选之后，终端将发起跟踪区改变的流程，使用非接入层（NAS）信令向核心网注册新的跟踪区位置。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-sub-html="<h2>空闲状态终端的寻呼和跟踪区改变</h2>">
         
     </a><figcaption class="image-caption">空闲状态终端的寻呼和跟踪区改变</figcaption>
     </figure>
-<p>当有呼叫到达或者是系统消息改变需要向空闲状态的终端发送寻呼消息的时候，核心网移动控制实体（MME）根据终端所注册的跟踪区位置，找到相对应的跟踪区列表，然后在列表中所有的跟踪区（内的所有小区）上，发送针对该终端的寻呼消息。</p>
+<p>当有呼叫到达或者是系统消息改变需要向空闲状态的终端发送寻呼消息的时候，核心网<code>移动控制实体</code>（MME）根据终端所注册的跟踪区位置，找到相对应的跟踪区列表，然后在列表中所有的跟踪区上，发送针对该终端的寻呼消息。</p>
 <h4 id="连接状态终端的移动性管理">连接状态终端的移动性管理</h4>
-<p>处于 RRC 连接状态的终端与无线接入网建立了 RRC 连接，终端的信息在核心网和无线接入网中都进行存储和管理。网络登记终端所处的小区位置，终端的移动性由网络采用切换的流程进行管理。RRC 连接状态的终端可以进行单播数据的传输。为了节省耗电，终端可以采用由无线接入网配置的 DRX 功能。</p>
-<p>RRC 连接状态终端的移动性由网络进行控制，网络根据无线接口的情况决定是否改变终端的服务小区，即切换的过程是由网络触发的。为了获取关于无线接口情况的信息，网络可以配置终端进行相关的测量和上报，然后根据上报的结果，触发切换的流程，关于测量和上报的内容，将在下一节中进行介绍。另外，没有收到终端的测量与上报，网络也可以自行触发进行切换。</p>
+<p>处于 <code>RRC 连接状态</code>的终端与无线接入网建立了 <code>RRC</code> 连接，终端的信息在核心网和无线接入网中都进行存储和管理。网络登记终端所处的小区位置，终端的移动性由网络采用切换的流程进行管理。<code>RRC 连接状态</code>的终端<strong>可以进行</strong>单播数据的传输。为了节省耗电，终端可以采用由无线接入网配置的 <code>DRX</code> 功能。</p>
+<p><code>RRC 连接状态</code>终端的移动性由网络进行控制，网络根据无线接口的情况决定是否改变终端的服务小区，即切换的过程是由网络触发的。为了获取关于无线接口情况的信息，网络可以配置终端进行相关的测量和上报，然后根据上报的结果，触发切换的流程。另外，没有收到终端的测量与上报，网络也可以自行触发进行切换。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-sub-html="<h2>连接状态终端的小区间切换</h2>">
         
     </a><figcaption class="image-caption">连接状态终端的小区间切换</figcaption>
     </figure>
-<p>为了进行切换过程的控制，首先由源服务小区配置终端进行相关的测量和上报，根据上报的信息，源服务小区判断终端是否需要进行切换并且选择目标小区，然后触发切换的信令流程。通过 eNodeB 之间互联的 X2 接口，源小区向目标小区发送切换请求的消息，该消息中包含了对于目标小区无线资源需求情况的信息。根据这样的信息，如果目标小区确定可以接受终端进行切换，那么目标小区根据要求进行无线资源的准备，并向源小区反馈切换请求确认的消息，该消息包含终端接入目标小区时需要的信息，例如新的 C-RNTI 标识、目标小区的系统信息，以及分配的专用随机接入序列等。源服务小区在收到目标小区对于切换请求的确认消息后，采用带有移动性控制信息的 RRC 连接重配置消息将这些来自目标小区的接入配置信息转发给终端，并且命令终端向目标小区进行切换。此时，因为来自核心网数据的传输路由还没有发生改变，源基站还可能负责将数据转发给目标基站。收到 RRC 连接重配置消息的切换命令后，终端根据指示的信息，向目标小区发起接入，采用随机接入的过程获得与目标小区的上行同步以及上行资源的分配。然后，在所分配的上行无线资源上，终端向目标小区发送 RRC 连接重配置完成消息，确认终端已经完成了切换，目标基站已经成为终端的服务基站，可以开始向终端发送数据。无线接入网的切换完成后，目标基站将向核心网的移动控制实体（MME）发送路径切换请求，并由 MME 协调数据网管（SGW）完成用户数据传输路径的改变，核心网将数据路径转移到目标小区。完成数据路径的转换后，目标小区向源小区发送终端上下文释放的消息，以此来确认成功地完成了整个切换的过程，源小区释放对应于该终端用户的相关资源。</p>
+<h5 id="切换过程">切换过程</h5>
+<p>首先，由源服务小区配置终端进行相关的测量和上报，根据上报的信息，源服务小区判断终端是否需要进行切换并且选择目标小区，触发切换的信令流程：</p>
+<ol>
+<li>通过 <code>eNodeB</code> 之间互联的 <code>X2</code> 接口，源小区向目标小区发送切换请求的消息，该消息中包含了对于目标小区无线资源需求情况的信息。</li>
+<li>如果目标小区确定可以接受终端进行切换，那么目标小区根据要求进行无线资源的准备，并向源小区反馈切换请求确认的消息，该消息包含终端接入目标小区时需要的信息，例如新的 <code>C-RNTI</code> 标识、目标小区的系统信息，以及分配的专用随机接入序列等。</li>
+<li>源服务小区在收到目标小区对于切换请求的确认消息后，采用带有移动性控制信息的 <code>RRC</code> 连接重配置消息将这些来自目标小区的接入配置信息转发给终端，并且命令终端向目标小区进行切换。(<strong>注：</strong> 此时，因为来自核心网数据的传输路由还没有发生改变，源基站还可能负责将数据转发给目标基站。)</li>
+<li>收到 RRC 连接重配置消息的切换命令后，终端根据指示的信息，向目标小区发起接入，采用随机接入的过程获得与目标小区的上行同步以及上行资源的分配。然后，在所分配的上行无线资源上，终端向目标小区发送 RRC 连接重配置完成消息，确认终端已经完成了切换，目标基站已经成为终端的服务基站，可以开始向终端发送数据。</li>
+<li>无线接入网的切换完成后，目标基站将向核心网的<code>移动控制实体</code>（MME）发送<strong>路径切换请求</strong>，并由 <code>MME</code> 协调数据网管（SGW）完成用户数据传输路径的改变，核心网将数据路径转移到目标小区。</li>
+<li>完成数据路径的转换后，目标小区向源小区发送终端上下文释放的消息，以此来确认成功地完成了整个切换的过程，源小区释放对应于该终端用户的相关资源。</li>
+</ol>
 <h4 id="配置终端的测量和上报">配置终端的测量和上报</h4>
-<p>为了进行移动性管理的操作，终端需要根据网络的配置对无线信道的情况进行测量，包括同频、异频或者异系统的测量场景。网络可以通过广播或者专用的控制信息配置终端的测量，对于空闲状态的终端，通过网络广播消息中配置的测量参数，终端完成小区选择／重选等移动性功能。对于 RRC 连接状态的终端，通过 RRC 信令（即 RRC 连接重配置消息）可以对终端进行专门的测量配置，终端向网络上报测量结果，协助网络进行小区切换的移动性管理。</p>
-<p>在进行测量时，如果终端的源服务小区与目标小区工作在相同的载波频率，那么称为同频测量，例如采用频率复用系数等于 1 的同频组网的情况。进行同频测量，不需要测量间隔，也就是说，在对同频目标小区进行测量的时候，终端不需要中断对源服务小区的信号接收。源服务小区和目标小区工作在不同载波频率的场景属于异频测量，为了对异频的目标小区进行测量，通常情况下需要配置测量间隔，终端中断对源小区的信号接收，将接收频率调整到目标小区进行测量。</p>
-<p>对终端的测量进行配置的消息内容主要包括“测量的对象”和“测量上报的配置”。其中，每一个测量的对象对应于 LTE 系统内同频或者异频的一个载波频率，或者某一个载波频率上异系统 WCDMA 的一个小区列表。而每一个测量上报的配置包括测量上报的格式，例如上报多少个目标小区的测量结果，以及上报的触发条件，包括周期性上报和事件触发两种可能性。为了支持终端在同频、异频和异系统各种不同场景情况下的移动性，在 LTE Release 8 中一共定义了 7 种可以触发终端进行测量上报的事件，可以根据需要进行配置。适用于 LTE 系统内同频或者异频的场景一共定义有 5 种事件，包括：A1 事件，服务小区的信号质量优于某个设定的门限；A2 事件，服务小区的信号质量差于某个设定的门限；A3 事件，相邻小区的信号质量优于服务小区超过某个设定的门限；A4 事件，相邻小区的信号质量优于某个设定的门限；A5，服务小区的信号质量差于某个设定的门限的同时，相邻小区的信号质量优于某个设定的门限。另外，针对与异系统之间的移动性操作，定义了两种事件：B1 事件，异系统相邻小区的信号质量优于某个设定的门限；B2 事件，服务小区的信号质量差于某个设定的门限的同时，异系统相邻小区的信号质量优于某个设定的门限。</p>
+<p>为了进行移动性管理的操作，终端需要根据网络的配置对无线信道的情况进行测量，包括：</p>
+<ul>
+<li>同频测量场景</li>
+<li>异频测量场景</li>
+<li>异系统的测量场景</li>
+</ul>
+<p>网络可以通过广播或者专用的控制信息配置终端的测量，对于空闲状态的终端，通过网络广播消息中配置的测量参数，终端完成小区选择／重选等移动性功能。对于 <code>RRC 连接状态</code>的终端，通过 <code>RRC 信令</code>（即 <code>RRC 连接重配置消息</code>）可以对终端进行专门的测量配置，终端向网络上报测量结果，协助网络进行小区切换的移动性管理。</p>
+<p>在进行测量时，如果终端的源服务小区与目标小区工作在相同的载波频率，那么称为<code>同频测量</code>，例如采用频率复用系数等于 1 的同频组网的情况。进行同频测量，<strong>不需要测量间隔</strong>，也就是说，在对同频目标小区进行测量的时候，终端<strong>不需要中断</strong>对源服务小区的信号接收。</p>
+<p>源服务小区和目标小区工作在不同载波频率的场景属于<code>异频测量</code>，为了对异频的目标小区进行测量，通常情况下需要配置测量间隔，终端<strong>中断</strong>对源小区的信号接收，将接收频率调整到目标小区进行测量。</p>
+<p>对终端的测量进行配置的消息内容主要包括<code>测量的对象</code>和<code>测量上报的配置</code>。其中，每一个测量的对象对应于 LTE 系统内同频或者异频的一个载波频率，或者某一个载波频率上异系统 WCDMA 的一个小区列表。而每一个测量上报的配置包括测量上报的格式，例如上报多少个目标小区的测量结果，以及上报的触发条件，包括周期性上报和事件触发两种可能性。</p>
+<p>适用于 LTE 系统内同频或者异频的场景一共定义有 5 种事件，包括：</p>
+<ul>
+<li>A1 事件，服务小区的信号质量优于某个设定的门限</li>
+<li>A2 事件，服务小区的信号质量差于某个设定的门限</li>
+<li>A3 事件，相邻小区的信号质量优于服务小区超过某个设定的门限</li>
+<li>A4 事件，相邻小区的信号质量优于某个设定的门限</li>
+<li>A5，服务小区的信号质量差于某个设定的门限的同时，相邻小区的信号质量优于某个设定的门限</li>
+</ul>
+<p>另外，针对与异系统之间的移动性操作，定义了两种事件：</p>
+<ul>
+<li>B1 事件，异系统相邻小区的信号质量优于某个设定的门限</li>
+<li>B2 事件，服务小区的信号质量差于某个设定的门限的同时，异系统相邻小区的信号质量优于某个设定的门限</li>
+</ul>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" data-sub-html="<h2>终端测量上报的过程</h2>">
         
     </a><figcaption class="image-caption">终端测量上报的过程</figcaption>
     </figure>
 <h3 id="服务质量qos管理">服务质量（QoS）管理</h3>
-<p>LTE 系统中采用 EPS 承载为单位进行端到端的服务质量（QoS）管理。EPS（Evolved Packet System）承载是终端和分组数据网网关（P-GW）之间的连接，1 个 EPS 承载包括：1 个无线承载，即终端和 eNodeB 基站之间的连接；1 个 S1 承载，即 eNodeB 和服务网关（S-GW）</p>
-<p>之间的连接；以及 1 个 S5/S8 承载，即 S-GW 和 P-GW 之间的连接，如图 2-33 所示。对于一个终端，网络可以建立多个 EPS 承载，每个 EPS 承载可以有不同的 QoS 参数，因此除了在不同用户之间实现不同的 QoS，属于同一个用户的多个 EPS 承载也可以实现不同的 QoS，用于一个用户在同时进行的不同业务。</p>
+<p>LTE 系统中采用 <code>EPS 承载</code>为单位进行端到端的服务质量（QoS）管理。</p>
+<p><code>EPS</code>（Evolved Packet System）承载是终端和分组数据网网关（P-GW）之间的连接，1 个 <code>EPS 承载</code>包括：</p>
+<ul>
+<li>1 个无线承载，即终端和 eNodeB 基站之间的连接</li>
+<li>1 个 S1 承载，即 eNodeB 和服务网关（S-GW）之间的连接</li>
+<li>1 个 S5/S8 承载，即 S-GW 和 P-GW 之间的连接。</li>
+</ul>
+<p>对于一个终端，网络可以建立<strong>多个</strong> <code>EPS 承载</code>，每个 <code>EPS 承载</code>可以有不同的 <code>QoS</code> 参数，因此除了在不同用户之间实现不同的 <code>QoS</code>，属于同一个用户的多个 <code>EPS 承载</code>也可以实现不同的 <code>QoS</code>，用于一个用户在同时进行的不同业务。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>LTE 系统中的承载</h2>">
         
     </a><figcaption class="image-caption">LTE 系统中的承载</figcaption>
     </figure>
-<p>针对每一个 EPS 承载，由核心网分配 QoS 参数，包括“QoS 类别标识（QoS Class Identifier，QCI）”和“分配和滞留优先级（Allocation and Retention Priority，ARP）”。其中，QCI 参数描述了承载的 QoS 类别，每一种 QoS 类别都对应于一系列影响数据服务质量的具体系统参数，例如调度的加权、准入门限和排队门限，等等。ARP 参数描述了承载的优先级，包括在资源受限的情况下是否允许建立承载，或者是否丢弃某个优先级较低的承载。另外还有“保证数据速率（Guaranteed Bit Rate，GBR）”和“最大数据速率（Maximum Bit Rate，MBR）”，这两个参数用于具有保证速率属性的承载。而对于不具有保证速率属性的承载，使用参数“最大总速率（Aggregated Maximum Bit Rate，AMBR）”来限制一个终端的所有不具有保证速率属性的承载的最大总速率。</p>
-<p>根据核心网确定的 QoS 参数，无线接入网负责执行无线承载部分的 QoS 管理，例如无线资源的调度策略和排队管理策略等。RRC 协议可以执行一部分 QoS 管理的功能，主要包括半持续资源调度的配置，以及通过配置终端上行逻辑信道的优先级，实现对一个终端内多个上行承载的速率控制。</p>
+<p>针对每一个 <code>EPS 承载</code>，由核心网分配 <code>QoS 参数</code>，包括<code>QoS 类别标识</code>（QoS Class Identifier，QCI）和<code>分配和滞留优先级</code>（Allocation and Retention Priority，ARP）。</p>
+<ul>
+<li>QCI 参数描述了承载的 QoS 类别，每一种 QoS 类别都对应于一系列影响数据服务质量的具体系统参数，例如调度的加权、准入门限和排队门限，等等。</li>
+<li>ARP 参数描述了承载的优先级，包括在资源受限的情况下是否允许建立承载，或者是否丢弃某个优先级较低的承载</li>
+</ul>
+<p>另外还有<code>保证数据速率</code>（Guaranteed Bit Rate，GBR）和<code>最大数据速率</code>（Maximum Bit Rate，MBR），这两个参数用于具有保证速率属性的承载。而对于不具有保证速率属性的承载，使用参数<code>最大总速率</code>（Aggregated Maximum Bit Rate，AMBR）来限制一个终端的所有不具有保证速率属性的承载的最大总速率。</p>
+<p>根据核心网确定的 <code>QoS</code> 参数，无线接入网负责执行无线承载部分的 <code>QoS</code> 管理，例如无线资源的调度策略和排队管理策略等。</p>
+<p>RRC 协议可以执行一部分 <code>QoS</code> 管理的功能，主要包括：半持续资源调度的配置，以及通过配置终端上行逻辑信道的优先级，实现对一个终端内多个上行承载的速率控制。</p>
 <h3 id="核心网信令的直接传输">核心网信令的直接传输</h3>
-<p>除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过“隧道打包”的方式，在终端用户和网络核心网之间传输 NAS 信息。</p>
+<p>除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过<code>隧道打包</code>的方式，在终端用户和网络核心网之间传输 NAS 信息。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>上行（NAS）信息的直接传输</h2>">
         
     </a><figcaption class="image-caption">上行（NAS）信息的直接传输</figcaption>
@@ -146,13 +228,13 @@
 <p>LTE MAC 层详解</p>
 </blockquote>
 <h2 id="媒体接入控制mac">媒体接入控制（MAC）</h2>
-<p>媒体接入控制（Medium Access Control，MAC）层接收来自上层的 RLC 层的逻辑信道，经过处理后，以传输信道的方式输出到下层的物理层。</p>
+<p>媒体接入控制（Medium Access Control，MAC）层接收来自上层的 <code>RLC</code> 层的逻辑信道，经过处理后，以传输信道的方式输出到下层的物理层。</p>
 <p>MAC 层的主要功能包括：</p>
 <ul>
 <li>逻辑信道向传输信道的映射与复用</li>
 <li>根据不同优先级进行动态的资源调度</li>
 <li>选择传输格式实现动态的速率自适应</li>
-<li>混合自动重传（HybridAutomatic Repeat reQuest，HARQ）的纠错功能。</li>
+<li>混合自动重传（HybridAutomatic Repeat reQuest，HARQ）的纠错功能</li>
 </ul>
 <h3 id="逻辑信道">逻辑信道</h3>
 <p>逻辑信道根据所传输的信息的类型进行定义。LTE 定义的逻辑信道包括：</p>
@@ -163,13 +245,13 @@
 <li>用于传输用户数据信息的<strong>专用业务信道</strong>（Dedicated Traffic CHannel，DTCH）</li>
 </ul>
 <h3 id="传输信道">传输信道</h3>
-<p>传输信道根据信息传输的方式进行定义。传输信道以传输块为单位在发送时间间隔（Transmission Time Interval，TTI）所定义的时间长度内进行每一次的发送，LTE 中设计的 TTI 长度是 1ms。每个传输块都有定义的传输格式，它由网络的调度功能动态地确定，包括传输块大小、调制方式和多天线方案等。</p>
+<p>传输信道根据信息传输的方式进行定义。传输信道以<strong>传输块</strong>为单位在发送时间间隔（Transmission Time Interval，TTI）所定义的时间长度内进行每一次的发送，LTE 中设计的 <code>TTI</code> 长度是 1ms。每个传输块都有定义的传输格式，它由网络的调度功能动态地确定，包括传输块大小、调制方式和多天线方案等。</p>
 <p>LTE 定义的传输信道包括：</p>
 <ul>
 <li><strong>广播信道</strong>（Paging CHannel，PCH），采用固定的传输格式，用于传输广播控制信道；</li>
 <li><strong>上行共享信道／下行共享信道</strong>（Downlink/Uplink Shared CHannel，DL-SCH/UL-SCH），支持基于无线信道状态的实时调度、动态的速率自适应、HARQ 软合并和多天线空间复用的传输方式，是 LTE 进行上行和下行数据传输的主要的传输信道。</li>
 </ul>
-<p>在 LTE 空中接口 MAC 层协议功能的处理过程中，逻辑信道向传输信道以及最终的物理信道的映射关系如下所示：</p>
+<p>在 LTE 空中接口 <code>MAC 层</code>协议功能的处理过程中，逻辑信道向传输信道以及最终的物理信道的映射关系如下所示：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" data-sub-html="<h2>下行信道映射</h2>">
         
     </a><figcaption class="image-caption">下行信道映射</figcaption>
@@ -179,7 +261,7 @@
     </a><figcaption class="image-caption">上行信道映射</figcaption>
     </figure>
 <h3 id="mac-协议数据单元格式">MAC 协议数据单元格式</h3>
-<p>MAC 包头可以包含多个子包头，每个子包头对应于 MAC PDU 负荷部分的 1 个 MAC 控制单元、MAC SDU 或者填充比特字段。</p>
+<p><code>MAC 包头</code>可以包含多个子包头，每个子包头对应于 <code>MAC PDU</code> 负荷部分的 1 个 <code>MAC 控制单元</code>、<code>MAC SDU</code> 或者填充比特字段。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-sub-html="<h2>MAC 协议数据单元 PDU 的格式</h2>">
         
     </a><figcaption class="image-caption">MAC 协议数据单元 PDU 的格式</figcaption>
@@ -190,31 +272,35 @@
     </a><figcaption class="image-caption">MAC 层的子包头</figcaption>
     </figure>
 <ul>
-<li>LCID 字段指示所对应的 MAC 负荷的类型，对于长度固定的 MAC 控制单元或者是 MAC 负荷的最后一个部分，不需要指示 MAC 子包头所对应的 MAC 负荷的长度。在其他情况下，子包头需要 F 和 L 字段，来指示所对应的负荷的长度。因此存在带有负荷长度指示和不带有负荷长度指示，即是否带有 F 和 L 字段的两种类型的 MAC 子包头</li>
-<li>R（Reserve）字段为保留字段，数值设为 0</li>
-<li>E（Extension）字段指示本子包头后面是否还有其他的子包头，或者是包头部分已经结束，将要开始 MAC 控制单元或者 MAC SDU 的传输</li>
-<li>LCID（Logical Channel ID）字段指示 MAC SDU 所属逻辑信道的标识、MAC 控制单元的类型或者是填充比特</li>
-<li>F（Format）字段指示随后的 L 字段的长度，7 个比特或者 15 个比特</li>
-<li>L（Length）字段指示与子包头相对应的 MAC SDU 或者 MAC 控制单元的字节长度</li>
+<li><code>R</code>（Reserve）字段为保留字段，数值设为 <code>0</code></li>
+<li><code>E</code>（Extension）字段指示本子包头后面是否还有其他的子包头，或者是包头部分已经结束，将要开始 <code>MAC 控制单</code>元或者 MAC SDU 的传输</li>
+<li><code>LCID</code>（Logical Channel ID）字段指示 <code>MAC SDU</code> 所属逻辑信道的标识、<code>MAC 控制单元</code>的类型或者是填充比特</li>
+<li><code>F</code>（Format）字段指示随后的 <code>L</code> 字段的长度，7 个比特或者 15 个比特</li>
+<li><code>L</code>（Length）字段指示与子包头相对应的 <code>MAC SDU</code> 或者 <code>MAC 控制单元</code>的字节长度</li>
 </ul>
 <h3 id="mac-层功能和-mac-控制单元">MAC 层功能和 MAC 控制单元</h3>
-<p>下面介绍 MAC 层的主要功能，以及在完成这些功能过程中所需要的 MAC 控制单元。所介绍的 MAC 层功能包括随机接入，以及数据调度和传输的过程。</p>
+<p>下面介绍 MAC 层的主要功能，以及在完成这些功能过程中所需要的 MAC 控制单元。</p>
 <h4 id="随机接入过程">随机接入过程</h4>
 <p>随机接入是由 MAC 层控制的一项功能，空闲状态的终端通过随机接入过程与网络建立连接。</p>
-<p>首先建立执行控制功能的连接（即 RRC 连接），终端由空闲状态转变为连接状态$\Longrightarrow$然后通过 RRC 控制功能建立数据通信的连接，开始进行数据的通信。</p>
-<p>对于连接状态的终端，也可能因为长时间没有进行上行信号的发送而失去上行同步，此时如果有上行或者下行的数据需要进行发送，终端需要进行随机接入的过程，与基站重新建立上行同步。随机接入过程可以由终端发起，也可以由网络侧通过物理层下行控制信道（PDCCH）触发终端发起随机接入。</p>
+<p>首先建立<strong>执行控制功能的连接</strong>（即 <code>RRC 连接</code>），终端由空闲状态转变为连接状态$\Longrightarrow$然后通过 <code>RRC 控制功能</code>建立数据通信的连接，开始进行数据的通信。(对于连接状态的终端，也可能因为长时间没有发送上行信号而失去上行同步，此时如果有数据需要进行发送，终端需要进行随机接入的过程，与基站重新建立上行同步。随机接入过程可以由终端发起，也可以由网络侧通过物理层下行控制信道（PDCCH）触发终端发起随机接入)</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-sub-html="<h2>随机接入过程</h2>">
         
     </a><figcaption class="image-caption">随机接入过程</figcaption>
     </figure>
-<p>在随机接入过程中，终端选择 1 个随机接入序列通过物理层随机接入信道（PRACH）进行发送（在网络侧触发的情况下，由触发消息指示终端所使用的随机接入序列）$\Longrightarrow$基站检测到随机接入序列的信号后，在下行方向上发送随机接入响应，该消息指示了基站所检测到的随机接入序列的编号、为发起随机接入的终端分配的上行资源位置和上行信号发送时间的调整量。</p>
+<p>在随机接入过程中，终端选择 1 个随机接入序列通过物理层随机接入信道（PRACH）进行发送（在网络侧触发的情况下，由触发消息指示终端所使用的随机接入序列）$\Longrightarrow$基站检测到随机接入序列的信号后，在下行方向上发送随机接入响应，该消息指示了：</p>
+<ul>
+<li>基站所检测到的随机接入序列的编号</li>
+<li>发起随机接入的终端分配的上行资源位置</li>
+<li>上行信号发送时间的调整量</li>
+</ul>
 <h5 id="冲突解决">冲突解决</h5>
-<p>如果多个终端选择了相同的随机接入序列并且在相同的时间进行发送，那么多个终端可能针对随机接入响应的接收发生冲突，所以需要冲突解决的过程。在收到随机接入响应的消息后，终端根据消息指示的内容进行上行信号的发送（又称为“消息 3”），对应于图中的步骤 3，该信号中可能包含终端的唯一标识。随后基站根据接收到的上行信息，向唯一标识所对应的成功接入的终端返回冲突解决消息，这样完成了冲突解决的过程。</p>
+<p>如果多个终端选择了<strong>相同的随机接入序列</strong>并且在<strong>相同的时间</strong>进行发送，那么多个终端可能针对随机接入响应的接收发生冲突，所以需要冲突解决的过程。</p>
+<p>在收到随机接入响应的消息后，终端根据消息指示的内容进行上行信号的发送（又称为“消息 3”），对应于图中的步骤 3，该信号中可能包含终端的唯一标识。随后基站根据接收到的上行信息，向唯一标识所对应的成功接入的终端返回冲突解决消息，完成冲突解决的过程。</p>
 <ul>
 <li>
 <p>小区无线网络临时标识。</p>
-<p>收到基站的随机接入响应消息后，终端发送上行消息（即“消息 3”）开始冲突解决的过程。对于连接状态的终端发起随机接入过程的情况，该消息中包含终端的唯一标识：小区无线网络临时标识（Cell-Radio Network Temporary Identifier，C-RNTI）。具体来说，“消息 3”中使用 MAC 控制单元来指示 C-RNTI 的信息。</p>
-<p>C-RNTI 的 MAC 控制单元仅包含一个字段，即 16 比特 C-RNTI。</p>
+<p>收到基站的随机接入响应消息后，终端发送上行消息（即<code>消息 3</code>）开始冲突解决的过程。对于连接状态的终端发起随机接入过程的情况，该消息中包含终端的唯一标识：小区无线网络临时标识（Cell-Radio Network Temporary Identifier，C-RNTI）。具体来说，“消息 3”中使用 <code>MAC 控制单元</code>来指示 <code>C-RNTI</code> 的信息。</p>
+<p><code>C-RNTI</code> 的 <code>MAC 控制单元</code>仅包含一个字段，即 16 比特 <code>C-RNTI</code>。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" data-sub-html="<h2>MAC 控制单元——C-RNTI</h2>">
         
     </a><figcaption class="image-caption">MAC 控制单元——C-RNTI</figcaption>
@@ -222,8 +308,8 @@
 </li>
 <li>
 <p>终端冲突解决标识。</p>
-<p>在上行随机接入过程中，终端发送上行消息（即“消息 3”）开始冲突解决的过程，对于连接状态的终端发起随机接入的情况，“消息 3”中指示终端的唯一标识 C-RNTI，在随后的下行发送中，网络通过物理层下行控制信道（PDCCH）指示该 C-RNTI 即可完成冲突解决。在另一种情况下，对于空闲状态的终端发起随机接入过程的情况，网络在随机接入响应消息中向终端分配“临时 RNTI”，但是因为还存在可能发生冲突的情况，所以在随后的“消息 3”中终端不使用“临时 RNTI”，而是传输上行公用控制信道（CCCH）的 RRC 连接建立请求消息。与此相对应的，基站在随后的下行发送中通过终端冲突解决标识的 MAC 控制单元完成冲突解决的过程。成功地完成冲突解决之后，终端将使用网络分配的“临时 RNTI”作为 C-RNTI。</p>
-<p>终端冲突解决标识的 MAC 控制单元仅包含一个字段：终端冲突解决标识，这个字段包含上行随机接入冲突解决过程中，终端在 Message 3 消息中发送的上行公用控制信道的服务数据单元（CCCH SDU）。</p>
+<p>在上行随机接入过程中，终端发送上行消息（即<code>消息 3</code>）开始冲突解决的过程，对于连接状态的终端发起随机接入的情况，“消息 3”中指示终端的唯一标识 <code>C-RNTI</code>，在随后的下行发送中，网络通过物理层<code>下行控制信道</code>（PDCCH）指示该 <code>C-RNTI</code> 即可完成冲突解决。在另一种情况下，对于空闲状态的终端发起随机接入过程的情况，网络在随机接入响应消息中向终端分配<code>临时 RNTI</code>，但是因为还存在可能发生冲突的情况，所以在随后的<code>消息 3</code>中终端不使用<code>临时 RNTI</code>，而是传输<code>上行公用控制信道</code>（CCCH）的 <code>RRC</code> 连接建立请求消息。与此相对应的，基站在随后的下行发送中通过终端冲突解决标识的 <code>MAC 控制单元</code>完成冲突解决的过程。成功地完成冲突解决之后，终端将使用网络分配的<code>临时 RNTI</code>作为 <code>C-RNTI</code>。</p>
+<p>终端冲突解决标识的 <code>MAC 控制单元</code>仅包含一个字段：<code>终端冲突解决标识</code>，这个字段包含上行随机接入冲突解决过程中，终端在<code>消息 3</code>中发送的<code>上行公用控制信道</code>的服务数据单元（CCCH SDU）。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" data-sub-html="<h2>MAC 控制单元——终端冲突解决标识</h2>">
         
     </a><figcaption class="image-caption">MAC 控制单元——终端冲突解决标识</figcaption>
@@ -231,53 +317,89 @@
 </li>
 </ul>
 <h4 id="数据的调度和传输">数据的调度和传输</h4>
-<p>数据的调度和传输是 MAC 层控制的另一项主要功能。对于数据信息的传输，即传输信道中的上行／下行共享信道（DL/UL-SCH），可以根据无线信道状态将无线资源在用户间进行自适应的调度分配，实现系统资源的优化利用，同时满足各个用户的 QoS 要求。主要采用动态调度的方式，也可以支持半持续调度（Semi-Persistent Scheduling，SPS）的方式。在动态调度的情况下，根据无线信道状态和用户优先级等信息，基站按照长度等于 1ms 的发送时间间隔（TTI）作为单位，在每个 1ms 对各个终端所使用的无线资源进行分配，并且选择合适的数据传输格式。在半持续调度的情况下，基站一次性为终端分配较长时间的无线资源，可以节省进行资源调度的控制信息。</p>
+<p><strong>数据的调度和传输</strong>是 MAC 层控制的另一项主要功能。</p>
+<p>对于数据信息的传输，即传输信道中的上行／下行共享信道（DL/UL-SCH），可以根据无线信道状态将无线资源在用户间进行自适应的调度分配，实现系统资源的优化利用，同时满足各个用户的 <code>QoS</code> 要求。主要采用<code>动态调度</code>的方式，也支持<code>半持续调度</code>（Semi-Persistent Scheduling，SPS）的方式。</p>
+<ul>
+<li>动态调度的情况下，根据无线信道状态和用户优先级等信息，基站按照长度等于 1ms 的 <code>TTI</code> 作为单位，在每个 1ms 对各个终端所使用的无线资源进行分配，并且选择合适的数据传输格式</li>
+<li>半持续调度的情况下，基站一次性为终端分配较长时间的无线资源，可以节省进行资源调度的控制信息</li>
+</ul>
 <h5 id="半持续调度">半持续调度</h5>
-<p>LTE 支持“半持续（Semi-Persistent Scheduling，SPS）”的调度方式。对于某些业务量不大而且比较规则的业务（例如 VoIP），一次性的对较长时间内的资源使用进行分配，而不需要在每次传输的时候都进行动态分配，通过这样的机制，节省了为终端进行资源调度的 PDCCH 控制信令的开销。</p>
-<p>对于半持续调度，为了减小调度信令的开销，基站一次为终端分配一段时间内预先定义好的无线资源和相应的传输格式，主要参数是“半持续调度的时间间隔”。例如，根据 VoIP 业务的流量特点，设置半持续调度的时间间隔等于 20ms，为用户分配一段时间内间隔为 20ms、相同频域位置和大小的无线资源。</p>
+<p>LTE 支持<code>半持续</code>（Semi-Persistent Scheduling，SPS）的调度方式。对于某些业务量不大而且比较规则的业务（例如 VoIP），一次性的对较长时间内的资源使用进行分配，而不需要在每次传输的时候都进行动态分配，通过这样的机制，节省了为终端进行资源调度的 <code>PDCCH</code> 控制信令的开销。</p>
+<p>对于半持续调度，为了减小调度信令的开销，基站一次为终端分配一段时间内预先定义好的无线资源和相应的传输格式，主要参数是<code>半持续调度的时间间隔</code>。例如，根据 VoIP 业务的流量特点，设置半持续调度的时间间隔等于 20ms，为用户分配一段时间内间隔为 20ms、相同频域位置和大小的无线资源。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-sub-html="<h2>半持续调度</h2>">
         
     </a><figcaption class="image-caption">半持续调度</figcaption>
     </figure>
 <h5 id="harq">HARQ</h5>
-<p>MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的“停—等”机制的 HARQ 进程（如图 2-18 所示），每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-sub-html="<h2>多个并行的“停——等”机制的 HARQ 进程</h2>">
+<p>MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的<code>停——等</code>机制的 HARQ 进程，每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-sub-html="<h2>多个并行的 停——等 机制的 HARQ 进程</h2>">
         
-    </a><figcaption class="image-caption">多个并行的“停——等”机制的 HARQ 进程</figcaption>
+    </a><figcaption class="image-caption">多个并行的 停——等 机制的 HARQ 进程</figcaption>
     </figure>
-<p>在下行的数据传输中，每个 HARQ 进程内部采用异步、自适应的机制。其中，异步指的是对于 1 个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间没有固定的定时关系。也就是说，对于需要重传的数据包，在满足与这个数据包上一次传输之间的时间间隔不小于规定的最小值（8ms）的条件的基础上，调度器可以灵活地选择进行重传的时间。自适应指的是在各次传输之间，调度器可以灵活地选择不同位置／大小的物理资源，以及不同的传输格式（包括调制方式和信道编码速率等）。与异步、自适应的 HARQ 机制相匹配，下行数据包的传输伴随有下行调度信令，调度信令中指示当前所传输的下行数据包的资源位置、传输格式和所对应的 HARQ 进程号码，用户终端通过检测下行调度信令，可以进行下行数据包的接收、重传数据包的合并以及数据解调的操作。</p>
-<p>对于上行数据的传输，每个 HARQ 进程内部采用同步的机制。与下行方向采用的异步机制不同，上行采用的同步机制指的是对于上行 HARQ 过程中一个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间采用固定的定时关系。例如：在时刻 0 进行初传的数据包，如果出现接收错误需要进行重新传输，那么第一次重传将发生在时刻 8，如果仍然接收错误需要继续重传，那么第二次重传将发生在时刻 16，以此类推。根据这样的同步的定时关系，对于上行 HARQ 过程的数据重新传输，基站可以不对重传的数据包进行调度。此时，终端仅收到网络侧基站反馈的关于数据接收出错的消息，终端将根据固定的定时关系，在规定的时间采用与第一次传输相同的频率资源位置和传输格式进行重传，这种方式称为同步、非自适应的 HARQ 机制。上行方向还可以支持同步、自适应的 HARQ 机制，网络侧基站反馈关于数据接收出错的消息的同时可以发送对于重传数据包的上行调度信息，该调度信息不改变重传数据包的传输时间，即仍然是同步的机制，但是可以调度不同位置和大小的频率资源，以及不同的传输格式，也就是说，实现自适应的 HARQ 机制。</p>
+<p>在下行的数据传输中，每个 <code>HARQ</code> 进程内部采用<code>异步</code>、<code>自适应</code>的机制。</p>
+<ul>
+<li>异步指的是对于 1 个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间没有固定的定时关系。也就是说，对于需要重传的数据包，在满足与这个数据包上一次传输之间的时间间隔不小于规定的最小值（8ms）的条件的基础上，调度器可以灵活地选择进行重传的时间</li>
+<li>自适应指的是在各次传输之间，调度器可以灵活地选择不同位置／大小的物理资源，以及不同的传输格式（包括调制方式和信道编码速率等）</li>
+</ul>
+<p>与异步、自适应的 <code>HARQ</code> 机制相匹配，下行数据包的传输伴随有下行调度信令，调度信令中指示当前所传输的下行数据包的资源位置、传输格式和所对应的 <code>ARQ</code> 进程号码，用户终端通过检测下行调度信令，可以进行下行数据包的接收、重传数据包的合并以及数据解调的操作</p>
+<p>对于上行数据的传输，每个 <code>HARQ</code> 进程内部采用同步的机制。与下行方向采用的异步机制不同，上行采用的同步机制指的是对于上行 <code>HARQ</code> 过程中一个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间采用固定的定时关系。</p>
+<blockquote>
+<p>例如：在时刻 0 进行初传的数据包，如果出现接收错误需要进行重新传输，那么第一次重传将发生在时刻 8，如果仍然接收错误需要继续重传，那么第二次重传将发生在时刻 16，以此类推。根据这样的同步的定时关系，对于上行 HARQ 过程的数据重新传输，基站可以不对重传的数据包进行调度。此时，终端仅收到网络侧基站反馈的关于数据接收出错的消息，终端将根据固定的定时关系，在规定的时间采用与第一次传输相同的频率资源位置和传输格式进行重传，这种方式称为同步、非自适应的 HARQ 机制。</p>
+</blockquote>
+<p>上行方向还可以支持同步、自适应的 <code>HARQ</code> 机制，网络侧基站反馈关于数据接收出错的消息的同时可以发送对于重传数据包的上行调度信息，该调度信息不改变重传数据包的传输时间，即仍然是同步的机制，但是可以调度不同位置和大小的频率资源，以及不同的传输格式，也就是说，实现自适应的 <code>HARQ</code> 机制。</p>
 <h5 id="上行缓存状态报告">上行缓存状态报告</h5>
-<p>终端的上行发送是根据基站的调度进行的，因此，终端的缓存中等待进行发送的数据的数量是基站进行调度时需要的参考信息。例如，如果终端的缓存中没有等待发送的数据，那么基站就不应该对该终端进行上行发送的调度。</p>
-<p>终端通过发送缓存状态报告（Buffer Status Report，BSR），向服务基站报告终端的上行缓存中等待发送的数据的数量。根据 RRC 信令的配置，终端将上行逻辑信道进行分组，采用逻辑信道组（Logical Channel Group，LCG）为单位进行缓存状态的报告。</p>
-<p>终端缓存状态报告的 MAC 控制单元包括两种格式—短格式／截断格式，或者长格式。短格式进行 1 个逻辑信道组对应的缓存状态报告，相应的 MAC 控制单元由逻辑信道组标识（LCG ID）和缓存数据量大小组成。长格式进行 4 个逻辑信道组的缓存状态报告，发送的 4 个关于缓存大小的消息分别对应于编号 0 到编号 3 的 4 个逻辑信道组。</p>
+<p>终端的上行发送是根据基站的调度进行的，因此，终端的缓存中等待进行发送的数据的数量是基站进行调度时需要的参考信息。</p>
+<blockquote>
+<p>例如，如果终端的缓存中没有等待发送的数据，那么基站就不应该对该终端进行上行发送的调度。</p>
+</blockquote>
+<p>终端通过发送缓存状态报告（Buffer Status Report，BSR），向服务基站报告终端的上行缓存中等待发送的数据的数量。根据 <code>RRC 信令</code>的配置，终端将上行逻辑信道进行分组，采用逻辑信道组（Logical Channel Group，LCG）为单位进行缓存状态的报告。</p>
+<p>终端缓存状态报告的 <code>MAC 控制单元</code>包括两种格式——<code>短格式／截断格式</code>，或者<code>长格式</code>。</p>
+<ul>
+<li>短格式进行 1 个逻辑信道组对应的缓存状态报告，相应的 <code>MAC 控制单</code>元由逻辑信道组标识（LCG ID）和缓存数据量大小组成</li>
+<li>长格式进行 4 个逻辑信道组的缓存状态报告，发送的 4 个关于缓存大小的消息分别对应于编号 0 到编号 3 的 4 个逻辑信道组</li>
+</ul>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" data-sub-html="<h2>MAC 控制单元——缓存状态报告</h2>">
         
     </a><figcaption class="image-caption">MAC 控制单元——缓存状态报告</figcaption>
     </figure>
 <h5 id="功率余量报告">功率余量报告</h5>
-<p>上行信号的发送受到终端最大发射功率的限制，所以基站在调度终端进行上行发送的时候需要参考终端发射功率的情况。例如：如果终端处于小区边缘，已经接近最大发射功率的限制，在这种情况下，基站如果调度这个终端使用大量资源进行大数据量的上行发送，而终端由于最大发射功率的限制可能无法保证发射信号的质量，因而导致信息传输的错误。所以基站需要根据对终端发射功率情况的了解，避免出现这样的情况。</p>
-<p>通过功率余量报告，终端向基站报告上行数据信道当前的发射功率距离终端上行最大发射功率之间的余量，该信息作为基站进行上行功率控制和上行资源调度的参考。功率余量报告的传输由 RRC 信令进行配置，包括周期性的方式或者传播损耗的变化超过设定的门限都可以触发功率余量消息的上报。</p>
-<p>功率余量报告的 MAC 控制单元包括 2 个比特的预留字段和 6 个比特的功率余量（Power Headroom，PH）信息，指示从 −23dB 到 40dB 范围之内的数值。</p>
+<p>上行信号的发送受到终端最大发射功率的限制，所以基站在调度终端进行上行发送的时候需要参考终端发射功率的情况。</p>
+<blockquote>
+<p>例如：如果终端处于小区边缘，已经接近最大发射功率的限制，在这种情况下，基站如果调度这个终端使用大量资源进行大数据量的上行发送，而终端由于最大发射功率的限制可能无法保证发射信号的质量，因而导致信息传输的错误。所以基站需要根据对终端发射功率情况的了解，避免出现这样的情况。</p>
+</blockquote>
+<p>通过功率余量报告，终端向基站报告上行数据信道当前的发射功率距离终端上行最大发射功率之间的余量，该信息作为基站进行上行功率控制和上行资源调度的参考。功率余量报告的传输由 <code>RRC 信令</code>进行配置，包括周期性的方式或者传播损耗的变化超过设定的门限都可以触发功率余量消息的上报。</p>
+<p>功率余量报告的 <code>MAC 控制单元</code>包括 2 个比特的预留字段和 6 个比特的功率余量（Power Headroom，PH）信息，指示从 −23dB 到 40dB 范围之内的数值。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" data-sub-html="<h2>MAC 控制单元——功率余量报告</h2>">
         
     </a><figcaption class="image-caption">MAC 控制单元——功率余量报告</figcaption>
     </figure>
 <h4 id="上行时间同步的保持">上行时间同步的保持</h4>
 <p>在下行方向上，终端通过检测基站的同步和导频信号，与基站下行信号的发送时间取得同步，实现下行信号的接收。与此相类似，为了实现上行信号的传输，终端需要与基站取得上行方向的同步。在获得上行同步的过程中，终端根据基站的指示调整上行信号的发送时间，使得无论终端距离基站是远或者是近，它们发送的上行信号到达基站的时间是对齐的，并且符合基站的定时关系，这样方便基站对用户信号的接收，以及对多个用户信号之间干扰的管理和控制。</p>
-<p>对于空闲状态或者处于连接状态但上行已经失去同步的终端，需要通过前面章节中所描述的上行随机接入过程，获得上行同步。对处于连接状态，上行没有失去同步的终端，基站使用 MAC 控制单元向终端指示定时提前（Time Advanced，TA）命令，对终端的上行发送时间进行调整，实现终端与系统之间上行时间同步的保持。</p>
-<p>定时提前命令的 MAC 控制单元包括 2 个比特的预留字段和 6 个比特的 TA 命令信息。定时调整的精度是 16Ts ，即 16×1/(15×1 000×2 048)s 约等于 0.52μs。因为 6 个比特 TA 命令表示的是从 −31 到+32 的范围，所以每个定时提前命令能够调整的时间范围是 −16.15 ～+16.67μs。</p>
+<ul>
+<li>对于<strong>空闲状态</strong>或者处于<strong>连接状态但上行已经失去同步</strong>的终端，需要通过上行随机接入过程，获得上行同步。</li>
+<li>对处于<strong>连接状态</strong>，上行没有失去同步的终端，基站使用 MAC 控制单元向终端指示定时提前（Time Advanced，TA）命令，对终端的上行发送时间进行调整，实现终端与系统之间上行时间同步的保持。</li>
+</ul>
+<p>定时提前命令的 <code>MAC 控制单元</code>包括 2 个比特的预留字段和 6 个比特的 TA 命令信息。定时调整的精度是 16Ts ，即 16×1/(15×1 000×2 048)s 约等于 0.52μs。因为 6 个比特 TA 命令表示的是从 −31 到+32 的范围，所以每个定时提前命令能够调整的时间范围是 −16.15 ～+16.67μs。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" data-sub-html="<h2>MAC 控制单元——定时提前命令</h2>">
         
     </a><figcaption class="image-caption">MAC 控制单元——定时提前命令</figcaption>
     </figure>
 <h4 id="不连续接收功能">不连续接收功能</h4>
-<p>不连续接收（Discontinuous Reception，DRX）是一种用于实现终端省电的功能。根据 RRC 信令进行配置的 DRX 功能，可以对处于连接状态的终端监测物理层下行控制信道（PDCCH）的方式进行控制。在不使用 DRX 功能的时候，终端需要对 PDCCH 信道进行连续的监测，在每一个 TTI（1ms），终端都需要对 PDCCH 信道进行监测，寻找其中可能属于自己的数据调度信息。通过配置 DRX 功能，设置了“激活”时间和“休眠”时间。在激活的时间里，终端需要对 PDCCH 信道进行监测；而在休眠的时间中，终端不需要对 PDCCH 信道进行监测，基站也不会向该终端进行数据传输的调度，所以可以节省终端的耗电。</p>
+<p><strong>不连续接收</strong>（Discontinuous Reception，DRX）是一种用于实现<strong>终端省电</strong>的功能。</p>
+<p>根据 <code>RRC 信令</code>进行配置的 <code>DRX</code> 功能，可以对处于连接状态的终端监测物理层<code>下行控制信道</code>（PDCCH）的方式进行控制。在不使用 <code>DRX</code> 功能的时候，终端需要对 <code>PDCCH</code> 信道进行连续的监测，在每一个 <code>TTI</code>（1ms），终端都需要对 <code>PDCCH</code> 信道进行监测，寻找其中可能属于自己的数据调度信息。通过配置 <code>DRX</code> 功能，设置了<code>激活”时间</code>和<code>休眠时间</code>。</p>
+<ul>
+<li>在激活的时间里，终端需要对 <code>PDCCH</code> 信道进行监测</li>
+<li>在休眠的时间中，终端不需要对 <code>PDCCH</code> 信道进行监测，基站也不会向该终端进行数据传输的调度，所以可以节省终端的耗电。</li>
+</ul>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" data-sub-html="<h2>不连续接收（DRX）功能</h2>">
         
     </a><figcaption class="image-caption">不连续接收（DRX）功能</figcaption>
     </figure>
-<p>关于终端使用 DRX 功能的过程，首先通过高层 RRC 信令对终端设置 DRX 的相关配置，包括 DRX 周期、激活和休眠时间等。在工作过程中，采用 MAC 层控制信令开启或者关闭终端的 DRX 功能。MAC 层 DRX 命令采用类型为 DRX 命令的 MAC 控制单元进行指示，所对应的 MAC PDU 子包头指示 MAC 控制单元的类型是 DRX 命令，因为除了指示存在 DRX 命令之外，不需要其他的信息，所以相应的 MAC 控制单元部分的长度是 0。</p>]]></description>
+<p>关于终端使用 <code>DRX</code> 功能的过程，首先通过高层 RRC 信令对终端设置 <code>DRX</code> 的相关配置，包括 <code>DRX 周期</code>、激活和休眠时间等。在工作过程中，采用 <code>MAC 层控制信令</code>开启或者关闭终端的 <code>DRX</code> 功能。<code>MAC 层</code> <code>DRX</code> 命令采用类型为 <code>DRX</code> 命令的 <code>MAC 控制单元</code>进行指示，所对应的 <code>MAC PDU</code> 子包头指示 MAC 控制单元的类型是 <code>DRX</code> 命令，因为除了指示存在 <code>DRX</code> 命令之外，不需要其他的信息，所以相应的 <code>MAC 控制单元</code>部分的长度是 <code>0</code>。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
 </item><item>
     <title>LTE 系列：RLC 层详解</title>
     <link>https://www.techkoala.top/lte_rlc/</link>
@@ -294,66 +416,67 @@
 <li>数据包的顺序传输和重复性检测</li>
 <li>自动重传请求（Automatic Repeat Request，ARQ）的数据纠错</li>
 </ul>
-<p>针对<strong>每一个</strong>无线承载配置一个 RLC 实体，经过 RLC 层协议功能的处理后，数据以逻辑信道的方式输出到下层的 MAC 层。根据所传输消息的不同特点，RLC 实体有 3 种工作模式：</p>
+<p>针对<strong>每一个</strong>无线承载配置一个 <code>RLC 实体</code>，经过 <code>RLC</code> 层协议功能的处理后，数据以逻辑信道的方式输出到下层的 <code>MAC 层</code>。根据所传输消息的不同特点，<code>RLC 实体</code>有 3 种工作模式：</p>
 <ul>
-<li>透明模式（Transparent Mode，TM）</li>
-<li>确认模式（Acknowledged Mode，AM）</li>
-<li>非确认模式（Unacknowledged Mode，UM）</li>
+<li><strong>透明模式</strong>（Transparent Mode，TM）</li>
+<li><strong>确认模式</strong>（Acknowledged Mode，AM）</li>
+<li><strong>非确认模式</strong>（Unacknowledged Mode，UM）</li>
 </ul>
 <h3 id="透明模式tm">透明模式（TM）</h3>
-<p>此模式下，RLC 子层是完全透明的，<strong>不执行任何功能</strong>，例如不添加 RLC 包头、不进行数据分段或者连接，即来自上层的数据在 RLC 层<strong>不进行任何处理</strong>，“透明”地传输到下层的 MAC 层。透明模式用于广播、寻呼和公用控制信道等信息需要传输给多个用户的情况，相对应于广播、上下行公用控制和寻呼等逻辑信道。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-sub-html="<h2>TM 模式数据消息的 RLC PDU 格式</h2>">
+<p>此模式下，<code>RLC</code> 子层是完全透明的，<strong>不执行任何功能</strong>，例如不添加 <code>RLC 包头</code>、不进行数据分段或者连接，即来自上层的数据在 <code>RLC</code> 层<strong>不进行任何处理</strong>，“透明”地传输到下层的 <code>MAC 层</code>。透明模式用于广播、寻呼和公用控制信道等信息需要传输给多个用户的情况，相对应于广播、上下行公用控制和寻呼等逻辑信道。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-sub-html="<h2>TM 模式数据消息的 RLC PDU 格式</h2>">
         
     </a><figcaption class="image-caption">TM 模式数据消息的 RLC PDU 格式</figcaption>
     </figure>
 <h3 id="确认模式am">确认模式（AM）</h3>
-<p>此模式用于提供高可靠性的数据传输服务，例如 TCP/IP 数据业务或者 RRC 控制信令的传输，包括承载上下行专用数据信息和专用控制信息的逻辑信道。</p>
-<p>在此模式下，RLC 子层<strong>执行所有功能</strong>，包括：</p>
+<p>此模式用于提供高可靠性的数据传输服务，例如 <code>TCP/IP</code> 数据业务或者 <code>RRC</code> 控制信令的传输，包括承载上下行专用数据信息和专用控制信息的逻辑信道。</p>
+<p>在此模式下，<code>RLC 子层</code><strong>执行所有功能</strong>，包括：</p>
 <ul>
 <li>数据包的连接、分段和重组</li>
 <li>数据包的顺序传输和重复性检测</li>
 <li>基于滑动窗进行错误数据包重新传输的 ARQ 纠错机制</li>
 </ul>
-<p>AM 模式的 RLC PDU 由 RLC 包头和 RLC SDU 组成，RLC 包头包括 D/C，RF，P，FI， E 和 SN 字段。如果 RLC PDU 中包含多于 1 个数据字段，那么相对应的 RLC 包头还将包括 E 和 LI 字段，以分别对应于各个数据字段。以下是 RLC 包头各个字段的具体含义。</p>
+<p><code>AM 模式</code>的 <code>RLC PDU</code> 由 <code>RLC 包头</code>和 <code>RLC SDU</code> 组成，<code>RLC 包头</code>包括 <code>D/C</code>，<code>RF</code>，<code>P</code>，<code>FI</code>， <code>E</code> 和 <code>SN</code> 字段。如果 <code>RLC PDU</code> 中包含多于 1 个数据字段，那么相对应的 <code>RLC 包头</code>还将包括 <code>E</code> 和 <code>LI</code> 字段，以分别对应于各个数据字段。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 格式</h2>">
         
     </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 格式</figcaption>
     </figure>
+<p>以下是 <code>RLC 包头</code>各个字段的具体含义:</p>
 <ul>
-<li>D/C（Data/Control）字段指示该 RLC PDU 是“RLC 数据 PDU”还是“RLC 控制 PDU”，在 Release 8 版本中，RLC 控制 PDU 只有 1 种，即 RLC 状态 PDU。</li>
-<li>RF（Re-segmentation Flag）字段指示该 RLC PDU 是一个 AM 模式 PDU，还是一个 AM 模式的 PDU 分段。因为，在 AM 模式的情况，数据包进行 ARQ 重传的时候，可能需要对初次传输时的 AM PDU 进行分段，因而形成 AM PDU 分段。</li>
-<li>P（Polling）字段指示是否要求接收端对等的 RLC 实体进行 1 次 RLC 状态的报告。</li>
-<li>FI（Framing Indicator）字段指示 RLC PDU 的数据字段是否是 RLC SDU 的开始或者结尾部分。2 个比特的信息指示了“是开始不是结尾”、“是结尾不是开始”、“既不是结尾也不是开始”、“既包含了结尾也包含了开始”一共 4 种可能的状态。</li>
-<li>E（Extension）字段指示后面是否还有 E 和 LI 字段。</li>
-<li>SN（Sequence Number）字段指示 RLC PDU 的序号，序号采用递增的方式。对于 AM 模式下重传的 AM PDU 或者 AM PDU 分段，采用初传的 AM PDU 所对应的序号。</li>
-<li>LI（Length Indicator）字段指示对应的数据字段的字节长度。</li>
+<li><code>D/C</code>（Data/Control）字段：指示该 <code>RLC PDU</code> 是<code>RLC 数据 PDU</code>还是<code>RLC 控制 PDU</code></li>
+<li><code>RF</code>（Re-segmentation Flag）字段：指示该 <code>RLC PDU</code> 是一个 <code>AM 模式``PDU</code>，还是一个 <code>AM 模式</code>的 <code>PDU 分段</code>。因为，在 <code>AM</code> 模式的情况，数据包进行 <code>ARQ</code> 重传的时候，可能需要对初次传输时的 <code>AM PDU</code> 进行分段，因而形成 <code>AM PDU 分段</code></li>
+<li><code>P</code>（Polling）字段指示是否要求接收端对等的 <code>RLC 实体</code>进行 1 次 <code>RLC 状态</code>的报告</li>
+<li><code>FI</code>（Framing Indicator）字段：指示 <code>RLC PDU </code>的数据字段是否是 <code>RLC SDU</code> 的开始或者结尾部分。2 个比特的信息指示了<strong>是开始不是结尾</strong>、<strong>是结尾不是开始</strong>、<strong>既不是结尾也不是开始</strong>、<strong>既包含了结尾也包含了开始</strong>一共 4 种可能的状态</li>
+<li><code>E</code>（Extension）字段指示后面是否还有 <code>E</code> 和 <code>LI</code> 字段</li>
+<li><code>SN</code>（Sequence Number）字段：指示 <code>RLC PDU</code> 的序号，序号采用递增的方式。对于 <code>AM 模式</code>下重传的 <code>AM PDU</code> 或者 <code>AM PDU 分段</code>，采用初传的 AM PDU 所对应的序号</li>
+<li><code>LI</code>（Length Indicator）字段：指示对应的数据字段的字节长度</li>
 </ul>
-<p>在 AM 模式下，RLC 层使用 ARQ 纠错机制对传输错误的数据包进行重传，由于下层指示的数据包传输大小可能与初次传输时候的情况有所不同，可能需要对初次传输的 AM PDU 进行分段，因此形成了“AM PDU 分段”的格式。与 AM PDU 相比较，AM PDU 分段在包头部分多了两个字段：LSF 和 SO。</p>
+<p>在 <code>AM 模式</code>下，<code>RLC</code> 层使用 <code>ARQ</code> 纠错机制对传输错误的数据包进行重传，由于下层指示的数据包传输大小可能与初次传输时候的情况有所不同，可能需要对初次传输的 <code>AM PDU</code> 进行分段，因此形成了<code>AM PDU 分段</code>的格式。与 <code>AM PDU</code> 相比较，<code>AM PDU</code> 分段在包头部分多了两个字段：<code>LSF</code> 和 <code>SO</code>。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 分段的格式</h2>">
         
     </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 分段的格式</figcaption>
     </figure>
 <ul>
-<li>LSF（Last Segment Flag）字段指示这个 AM PDU 分段是否是所对应的初次传输的 AM PDU 的最后一个分段。</li>
-<li>SO（Segment Offset）字段指示这个 AM PDU 分段在所对应的初次传输的 AM PDU 中的位置，具体是“这个 AM PDU 分段的第 1 个字节”在所对应的初次传输的 AM PDU 中的字节位置。</li>
+<li><code>LSF</code>（Last Segment Flag）字段指示这个 <code>AM PDU</code> 分段是否是所对应的初次传输的 <code>AM PDU</code> 的最后一个分段。</li>
+<li><code>SO</code>（Segment Offset）字段指示这个 <code>AM PDU</code> 分段在所对应的初次传输的 <code>AM PDU</code> 中的位置，具体<strong>是这个 AM PDU 分段的第 1 个字节</strong>在所对应的初次传输的 <code>AM PDU</code> 中的字节位置。</li>
 </ul>
-<p>除了 RLC 数据 PDU 之外，AM 模式下还可能传输 RLC 控制 PDU，进行 RLC 状态的报告。由数据接收方的 RLC 实体向数据发送方对等的 RLC 实体发送 RLC 状态 PDU，报告 AM PDU 数据包的接收状态，包括正确接收的数据包的最后序号，以及接收错误的数据包的序号。</p>
+<p>除了 <code>RLC 数据 PDU</code> 之外，<code>AM 模式</code>下还可能传输 <code>RLC 控制 PDU</code>，进行 <code>RLC 状态</code>的报告。由数据接收方的 <code>RLC 实体</code>向数据发送方对等的 <code>RLC 实体</code>发送 <code>RLC 状态 PDU</code>，报告 <code>AM PDU</code> 数据包的接收状态，包括正确接收的数据包的最后序号，以及接收错误的数据包的序号。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-sub-html="<h2>RLC 状态 PDU</h2>">
         
     </a><figcaption class="image-caption">RLC 状态 PDU</figcaption>
     </figure>
 <ul>
-<li>CPT（Control PDU Type）字段指示该 RLC 控制 PDU 的类型</li>
-<li>ACK_SN（Acknowledgement SN）字段指示接收正确的数据包的最后一个序列号，不包含 ACK_SN 本身所指示的数据包，以及由 NACK_SN 所指出的接收错误的数据包</li>
-<li>E1（Extension bit 1）字段指示后面是否跟随有 NACK_SN，E1 和 E2 字段</li>
-<li>NACK_SN（Negative Acknowledgement SN）字段指示接收错误或者部分出错的 AM PDU 数据包的序列号</li>
-<li>E2（Extension bit 2）字段指示这个 NACK_SN 后面是否跟随有 SOstart 和 SOend 字段</li>
-<li>SOstart：在 AM PDU 数据包部分出错的情况下，SOstart 字段指示出错部分的第一个字节在 AM PDU 数据包中的位置</li>
-<li>SOend 在 AM PDU 数据包部分出错的情况下，SOend 字段指示出错部分的最后一个字节在 AM PDU 数据包中的位置</li>
+<li><code>CPT</code>（Control PDU Type）字段指示该 <code>RLC 控制 PDU</code> 的类型</li>
+<li><code>ACK_SN</code>（Acknowledgement SN）字段指示接收正确的数据包的最后一个序列号，不包含 <code>ACK_SN</code> 本身所指示的数据包，以及由 <code>NACK_SN</code> 所指出的接收错误的数据包</li>
+<li><code>E1</code>（Extension bit 1）字段指示后面是否跟随有 <code>NACK_SN</code>，<code>E1</code> 和 <code>E2</code> 字段</li>
+<li><code>NACK_SN</code>（Negative Acknowledgement SN）字段指示接收错误或者部分出错的 <code>AM PDU</code> 数据包的序列号</li>
+<li><code>E2</code>（Extension bit 2）字段指示这个 <code>NACK_SN</code> 后面是否跟随有 <code>SOstart</code> 和 <code>SOend</code> 字段</li>
+<li><code>SOstart</code> 在 <code>AM PDU</code> 数据包部分出错的情况下，<code>SOstart</code> 字段指示出错部分的第一个字节在 <code>AM PDU</code> 数据包中的位置</li>
+<li><code>SOend</code> 在 <code>AM PDU</code> 数据包部分出错的情况下，<code>SOend</code> 字段指示出错部分的最后一个字节在 <code>AM PDU</code> 数据包中的位置</li>
 </ul>
 <h3 id="非确认模式um">非确认模式（UM）</h3>
-<p>此模式与确认模式的区别是<strong>不进行</strong>错误数据包重传的 ARQ 纠错。UM 模式主要用于对数据传输正确性的要求不是很高的场景，例如广播信道或者 VoIP 业务，包括上下行专用数据逻辑信道和多媒体广播多播业务（Multimedia Broadcast Multicast Service，MBMS）专用的控制和数据逻辑信道。非确认模式 RLC 子层仍然执行数据包的连接、分段和重组，数据包的顺序传输和重复性检测的功能。</p>
-<p>与 AM 模式相比较，UM 模式的 RLC PUD 少了 3 个字段：D/C、RF 和 P。因为 RLC 控制 PDU 只在 AM 模式进行传输，UM 模式仅传输 RLC 数据 PDU，因此不需要指示 RLC 控制或者 RLC 数据信息的 D/C 字段。UM 模式不进行 ARQ 纠错的重传，因此不会出现数据包重传需要重新分段的情况，所以不需要指示数据分段的 RF 字段。P 字段所指示的 RLC 状态报告也仅适用于 AM 模式，因此 UM 模式的情况下不需要这个字段。</p>
+<p>此模式与确认模式的区别是<strong>不进行</strong>错误数据包重传的 <code>ARQ</code> 纠错。<code>UM 模式</code>主要用于对数据传输正确性的要求不是很高的场景，例如广播信道或者 <code>VoIP</code> 业务，包括上下行专用数据逻辑信道和多媒体广播多播业务（Multimedia Broadcast Multicast Service，MBMS）专用的控制和数据逻辑信道。<code>UM 模式</code> <code>RLC 子层</code>仍然执行数据包的连接、分段和重组，数据包的顺序传输和重复性检测的功能。</p>
+<p>与 <code>AM 模式</code>相比较，<code>UM 模式</code>的 <code>RLC PUD</code> 少了 3 个字段：<code>D/C</code>、<code>RF</code> 和 <code>P</code>。因为 <code>RLC 控制 PDU</code> 只在 <code>AM 模式</code>进行传输，<code>UM 模式</code>仅传输 <code>RLC 数据 PDU</code>，因此不需要指示 <code>RLC 控制</code>或者 <code>RLC 数据信息</code>的 <code>D/C</code> 字段。<code>UM 模式</code>不进行 <code>ARQ</code> 纠错的重传，因此不会出现数据包重传需要重新分段的情况，所以不需要指示数据分段的 <code>RF</code> 字段。P 字段所指示的 <code>RLC 状态报告</code>也仅适用于 <code>AM 模式</code>，因此 <code>UM 模式</code>的情况下不需要这个字段。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-sub-html="<h2>UM 模式数据消息的 RLC PDU 格式</h2>">
         
     </a><figcaption class="image-caption">UM 模式数据消息的 RLC PDU 格式</figcaption>
@@ -374,14 +497,14 @@
 <h2 id="分组数据会聚协议pdcp">分组数据会聚协议（PDCP）</h2>
 <p>分组数据会聚协议（Packet Data Convergence Protocol，PDCP）层的主要功能是进行 <code>IP 数据包头压缩</code>、<code>数据加密</code>和<code>控制信令的完整性保护</code>。</p>
 <p>对于来自上层的数据包，将针对<strong>每一个</strong>无线承载建立一个 <code>PDCP 实体</code>。首先对数据包进行编号，然后根据配置对数据包进行 <strong>IP 包头压缩</strong>，<strong>数据加密</strong>和<strong>控制信令完整性保护</strong>的操作，形成 <code>PDCP 服务数据单元</code>（Service Data Unit，SDU），最后添加包含编号的 <code>PDCP 包头</code>，形成 <code>PDCP 协议数据单元</code>（Protocol Data Unit，PDU）作为 <code>PDCP</code> 子层协议功能的处理结果向下层 <code>RLC</code> 子层输出。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-sub-html="<h2>PDCP 协议数据单元格式</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-sub-html="<h2>PDCP 协议数据单元格式</h2>">
         
     </a><figcaption class="image-caption">PDCP 协议数据单元格式</figcaption>
     </figure>
 <ul>
-<li>R 表示预留的字段，都填充为 0</li>
-<li>D/C 字段指示控制面或者数据面的 PDCP 包，控制面为 0，数据面为 1</li>
-<li>MAC-I 是控制信令完整性保护的字段，在不使用完整性保护功能的时候，都填充为 0</li>
+<li><code>R</code> 表示预留的字段，都填充为 <code>0</code></li>
+<li><code>D/C</code> 字段指示控制面或者数据面的 <code>PDCP 包</code>，控制面为 <code>0</code>，数据面为 <code>1</code></li>
+<li><code>MAC-I</code> 是控制信令完整性保护的字段，在不使用完整性保护功能的时候，都填充为 <code>0</code></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
