@@ -5,29 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>LTE 系统的总体架构 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系统的总体架构" />
-<meta property="og:description" content="LTE 系统可以分为核心网和无线接入网两个部分，如下图所示： FDD 帧结构&#34; FDD 帧结构 核心网包括移动性管理实体（MME）、服务网关（S-GW）和分组数据网" />
+        <title>LTE 系列：系统总体架构 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：系统总体架构" />
+<meta property="og:description" content="
+LTE 系统总体架构分解
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" />
 <meta property="article:published_time" content="2020-08-31T13:17:02+08:00" />
-<meta property="article:modified_time" content="2020-08-31T13:17:02+08:00" />
+<meta property="article:modified_time" content="2020-08-31T13:39:46+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="LTE 系统的总体架构"/>
-<meta name="twitter:description" content="LTE 系统可以分为核心网和无线接入网两个部分，如下图所示： FDD 帧结构&#34; FDD 帧结构 核心网包括移动性管理实体（MME）、服务网关（S-GW）和分组数据网"/>
+<meta name="twitter:title" content="LTE 系列：系统总体架构"/>
+<meta name="twitter:description" content="
+LTE 系统总体架构分解
+"/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" /><link rel="prev" href="https://www.techkoala.top/migrated_to_vercel/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" /><link rel="prev" href="https://www.techkoala.top/migrated_to_vercel/" /><link rel="next" href="https://www.techkoala.top/upper_layer_protocol/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "LTE 系统的总体架构",
+        "headline": "LTE 系列：系统总体架构",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/the_overall_architecture_of_the_lte_system\/"
-        },"genre": "posts","keywords": "LTE","wordcount":  971 ,
-        "url": "https:\/\/www.techkoala.top\/the_overall_architecture_of_the_lte_system\/","datePublished": "2020-08-31T13:17:02+08:00","dateModified": "2020-08-31T13:17:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "LTE","wordcount":  1301 ,
+        "url": "https:\/\/www.techkoala.top\/the_overall_architecture_of_the_lte_system\/","datePublished": "2020-08-31T13:17:02+08:00","dateModified": "2020-08-31T13:39:46+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -101,10 +105,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系统的总体架构</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系列：系统总体架构</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-31">2020-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 971 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-31">2020-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1301 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -114,13 +118,35 @@
   <ul>
     <li>
       <ul>
+        <li><a href="#系统架构演进">系统架构演进</a></li>
+        <li><a href="#系统架构">系统架构</a>
+          <ul>
+            <li><a href="#核心网">核心网</a></li>
+            <li><a href="#无线接入网">无线接入网</a></li>
+          </ul>
+        </li>
         <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>FDD 帧结构</h2>">
+            </div><div class="content" id="content"><blockquote>
+<p>LTE 系统总体架构分解</p>
+</blockquote>
+<h2 id="系统架构演进">系统架构演进</h2>
+<p>系统架构演进（又名 SAE，System Architecture Evolution）是 3GPP 所制定的 LTE 无线通信的核心网络标准。</p>
+<p><code>SAE</code> 是基于 <code>GPRS</code> 核心网的演进，其主要差别为：</p>
+<ul>
+<li>简化架构</li>
+<li>全 <code>IP</code> 网络（<code>AIPN</code>）</li>
+<li>支持提供更高吞吐量和更低延迟的接入网</li>
+<li>多个异构接入网络的互通，包括 <code>E-UTRA</code>（LTE 和 LTE 升级版的接入网），3GPP 已有系统（例如 <code>GPRS</code> 和 <code>UMTS</code> 的接入网 <code>GERAN</code> 和 <code>UTRAN</code>），也支持与非 3GPP 系统之间的互通（例如 <code>WiMAX</code>、<code>CDMA2000</code> 或 <code>WIFI</code>）</li>
+</ul>
+<p><code>SAE</code> 是的传输使用全 <code>IP</code> 网络，从而支持系统的控制平面和用户平面的分离。</p>
+<p><code>SAE</code> 体系结构的主要组成部分是核心分组网演进（EPC，Evolved Packet Core )，也被称为 <code>SAE</code> 核心。<code>EPC</code> 作用与 <code>GPRS</code> 网络相似，包含移动性管理组件（<code>MME</code>），服务网关（<code>S-GW</code>）和 <code>PDN</code> 网关（PDN Gateway）等网元。</p>
+<h2 id="系统架构">系统架构</h2>
+<p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>LTE 系统总体架构图</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -128,40 +154,79 @@
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp 2x"
             data-sizes="auto"
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" />
-    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
+    </a><figcaption class="image-caption">LTE 系统总体架构图</figcaption>
     </figure>
-<p><strong>核心网</strong>包括<code>移动性管理实体</code>（MME）、<code>服务网关</code>（S-GW）和<code>分组数据网网关</code>（P-GW）；</p>
-<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
+<h3 id="核心网">核心网</h3>
+<p><strong>核心网</strong>包括：</p>
 <ul>
 <li>
-<p>核心网的 <code>MME</code> 实体负责移动性管理相关的控制功能，包括对终端位置跟踪区域列表的管理，对处于空闲状态的终端发起寻呼，为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code>，漫游和鉴权功能，非接入层（Non-Access Stratum，NAS）信令功能、信令安全和接入层（Access Stratum，AS）的安全控制，接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择），以及网络承载管理的功能；</p>
+<p><code>移动性管理实体</code>（MME）</p>
 </li>
 <li>
-<p>核心网的服务网关（S-GW）负责数据承载的相关功能，包括数据包的路由和转发，E-NodeB 之间切换或者 E-NodeB 和 GSM/WCDMA/TD-SCDMA 系统的不同接入网之间切换时的数据锚点，上下行传输层数据包的优先级标识，运营商内部和运营商之间的终端计费，以及对用户通信进行合法侦听的功能。</p>
+<p><code>服务网关</code>（S-GW）</p>
 </li>
 <li>
-<p>PDN 网关（P-GW）是核心网与外部因特网的接口，完成的主要功能包括针对每个用户的数据包过滤，终端的 IP 地址分配，基于业务的计费功能，门控和速率强制功能，下行传输层数据包的优先级标识，以及进行合法侦听的功能；</p>
+<p><code>分组数据网网关</code>（P-GW）</p>
+<p><code>MME</code>实体负责移动性管理相关的控制功能，包括：</p>
+<ul>
+<li>对终端位置跟踪区域列表的管理</li>
+<li>对处于空闲状态的终端发起寻呼</li>
+<li>为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code></li>
+<li>漫游和鉴权功能</li>
+<li>非接入层（Non-Access Stratum，NAS）信令功能</li>
+<li>信令安全和接入层（Access Stratum，AS）的安全控制</li>
+<li>接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择）</li>
+<li>网络承载管理的功能</li>
+</ul>
+<p>服务网关（<code>S-GW</code>）负责数据承载的相关功能，包括：</p>
+<ul>
+<li>数据包的路由和转发，<code>E-NodeB</code> 之间切换或者 <code>E-NodeB</code> 和 <code>GSM/WCDMA/TD-SCDMA</code> 系统的不同接入网之间切换时的数据锚点</li>
+<li>上下行传输层数据包的优先级标识</li>
+<li>运营商内部和运营商之间的终端计费</li>
+<li>对用户通信进行合法侦听的功能</li>
+</ul>
+<p>PDN 网关（<code>P-GW</code>）是核心网与外部因特网的接口，完成的主要功能包括</p>
+<ul>
+<li>针对每个用户的数据包过滤</li>
+<li>终端的 <code>IP</code> 地址分配</li>
+<li>基于业务的计费功能</li>
+<li>门控和速率强制功能</li>
+<li>下行传输层数据包的优先级标识</li>
+<li>进行合法侦听的功能</li>
+</ul>
+</li>
+</ul>
+<h3 id="无线接入网">无线接入网</h3>
+<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）：</p>
+<ul>
+<li>
+<p><code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
 </li>
 <li>
-<p>E-NodeB 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），IP 头压缩和用户数据加密，为附着的终端选择进行控制功能的 MME 实体，将用户数据路由至 S-GW 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。E-NodeB 之间通过 X2 接口进行互连，X2 接口主要用于支持终端在 E-NodeB 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，X2 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
+<p><code>E-NodeB</code> 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），<code>IP</code> 头压缩和用户数据加密，为附着的终端选择进行控制功能的 <code>MME</code> 实体，将用户数据路由至 <code>S-GW</code> 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>X2</code> 接口主要用于支持终端在 <code>E-NodeB</code> 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，<code>X2</code> 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
 </li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>LTE-Advanced 关键技术详解</li>
-</ul>
-</div><div class="post-footer" id="post-footer">
+<li>
+<p>[1] <a href="https://zh.wikipedia.org/wiki/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B" target="_blank" rel="noopener noreffer">SAE</a></p>
+</li>
+<li>
+<p>[2] LTE-Advanced 关键技术详解</p>
+</li>
+</ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-08-31</span>
+                <span>更新于 2020-08-31&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/37bb5a0dfc92cdac4cd94ae0cdbcff51e323bd19" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 37bb5a0dfc92cdac4cd94ae0cdbcff51e323bd19: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>37bb5a0</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-title="LTE 系统的总体架构" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-title="LTE 系统的总体架构"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-title="LTE 系统的总体架构"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-title="LTE 系列：系统总体架构" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-title="LTE 系列：系统总体架构"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/the_overall_architecture_of_the_lte_system/" data-title="LTE 系列：系统总体架构"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -173,7 +238,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/migrated_to_vercel/" class="prev" rel="prev" title="全站迁移到 Vercel"><i class="fas fa-angle-left fa-fw"></i>全站迁移到 Vercel</a></div>
+    <div class="post-nav"><a href="/migrated_to_vercel/" class="prev" rel="prev" title="全站迁移到 Vercel"><i class="fas fa-angle-left fa-fw"></i>全站迁移到 Vercel</a>
+            <a href="/upper_layer_protocol/" class="next" rel="next" title="LTE 系列：无线接入网上层协议">LTE 系列：无线接入网上层协议<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -188,7 +254,7 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-31T13:17:02+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系统的总体架构"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-31T13:17:02+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系列：系统总体架构"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>

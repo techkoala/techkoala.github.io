@@ -2,12 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://www.techkoala.top/categories/</loc><lastmod>2020-08-31T13:17:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/lte/</loc><lastmod>2020-08-31T13:17:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</loc><lastmod>2020-08-31T13:17:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/posts/</loc><lastmod>2020-08-31T13:17:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/</loc><lastmod>2020-08-31T13:17:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/categories/wirelesscommunication/</loc><lastmod>2020-08-31T13:17:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/</loc><lastmod>2020-08-31T21:00:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/lte/</loc><lastmod>2020-08-31T21:00:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/lte_rrc/</loc><lastmod>2020-08-31T21:00:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/posts/</loc><lastmod>2020-08-31T21:00:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/</loc><lastmod>2020-08-31T21:00:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/wirelesscommunication/</loc><lastmod>2020-08-31T21:00:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/lte_mac/</loc><lastmod>2020-08-31T21:00:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/lte_rlc/</loc><lastmod>2020-08-31T21:00:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/lte_pdcp/</loc><lastmod>2020-08-31T21:00:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/upper_layer_protocol/</loc><lastmod>2020-08-31T16:09:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</loc><lastmod>2020-08-31T13:39:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/vercel/</loc><lastmod>2020-08-27T16:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/categories/web/</loc><lastmod>2020-08-27T16:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/migrated_to_vercel/</loc><lastmod>2020-08-27T16:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -36,7 +41,7 @@
             <loc>https://www.techkoala.top/tags/hash/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/sha-2/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/sha-256/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/translation/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/translation/</loc><lastmod>2020-08-31T13:39:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/learn_sha_2_step_by_step/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/hash_functions/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/scp/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -63,9 +68,9 @@
             <loc>https://www.techkoala.top/about/</loc><lastmod>2020-08-31T13:10:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/5g/</loc><lastmod>2020-08-13T00:23:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://www.techkoala.top/5g_time_delay/</loc><lastmod>2020-08-13T00:23:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/lte_uplink_frame_structure/</loc><lastmod>2020-08-13T00:23:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/lte_physical_channels_and_signals/</loc><lastmod>2020-08-13T00:23:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/lte_downlink_frame_structure/</loc><lastmod>2020-08-13T00:23:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/lte_uplink_frame_structure/</loc><lastmod>2020-08-31T13:39:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/lte_physical_channels_and_signals/</loc><lastmod>2020-08-31T13:39:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/lte_downlink_frame_structure/</loc><lastmod>2020-08-31T13:39:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/categories/chitchat/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/qrcode/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/brief_history_of_qrcode/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>

@@ -4,38 +4,520 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 31 Aug 2020 13:17:02 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>LTE 系统的总体架构</title>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 31 Aug 2020 21:00:39 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系列：RRC 层详解</title>
+    <link>https://www.techkoala.top/lte_rrc/</link>
+    <pubDate>Mon, 31 Aug 2020 21:00:39 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_rrc/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE RRC 层详解</p>
+</blockquote>
+<h2 id="无线资源控制rrc">无线资源控制（RRC）</h2>
+<p>无线资源控制（Radio Resource Control，RRC）层是 LTE 无线接入网协议中控制面部分的主要内容。RRC 协议消息采用抽象语法描述（Abstract Syntax Notation，ASN.1）的方式进行描述。ASN.1 是国际电联（ITU-T）建议的一种标记语言，用于描述计算机之间交互的结构化信息，它定义了传送数据的表示方式，即传送语法。用户终端在进行数据通信之前，需要与网络建立承载信令消息的连接，通过信令消息的交互，控制数据通信的过程。因此，“是否与网络建立了 RRC 连接”是终端状态的判断依据。已经与网络建立了 RRC 连接的终端处于连接状态，即 RRC 连接状态。如果没有与网络建立 RRC 连接，那么终端处于空闲状态，即 RRC 空闲状态。“RRC 连接状态”和“RRC 空闲状态”是 LTE 无线接入网中终端可能的两种状态，在 RRC 连接状态下，终端可以进行数据的传输、系统信息的接收，以及邻小区的测量上报和小区切换。RRC 空闲状态下，终端不进行数据的传输，仍然需要执行的功能包括：系统信息的接收、侦听寻呼，以及邻小区测量和小区重选。</p>
+<p>RRC 协议包括以下的主要功能：</p>
+<ul>
+<li>系统信息的广播，包括接入网的系统广播消息，以及核心网非接入层（NAS）系统信息的广播</li>
+<li>连接控制，包括信令承载（即 RRC 连接）的建立／重配置／重建立／释放、数据无线承载的建立／配置／释放，以及相关的完整性保护的数据加密的安全机制</li>
+<li>移动性管理，包括配置终端的测量和上报，以及终端的小区选择、重选、寻呼和切换过程</li>
+<li>服务质量（QoS）管理</li>
+<li>NAS 信令直接传输的功能</li>
+</ul>
+<h3 id="系统信息的广播">系统信息的广播</h3>
+<p>系统信息描述网络的基本情况，采用广播的方式进行发送，对应于广播控制逻辑信道（BCCH）。终端通过对系统信息的接收，获得为了在系统中进行通信所需要的网络基本参数。</p>
+<p>LTE 的系统信息分为：</p>
+<ul>
+<li>
+<p>主信息块（Master Information Block，MIB）</p>
+<p>主信息块（MIB）包括小区最基本的物理层信息，例如：系统下行信号的带宽、无线帧序号和发送天线的数目。终端需要获得这些基本的信息才能够进一步接收系统的其他信息。MIB 信息在专门定义的广播传输信道（BCH）上，采用物理层广播信道（PBCH）在固定的时间和频率位置进行传输。MIB 采用 40ms 的周期重复发送，每个周期之内包括 4 次间隔为 10ms 的传输，在序号 SFN%4=0 无线帧的第 0 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个无线帧的第 0 个子帧的位置。</p>
+</li>
+<li>
+<p>系统信息块（System Information Block，SIB）</p>
+<p>系统信息块（SIB）映射在下行共享传输信道（DL-SCH）上进行传输，采用 SI-RNTI 进行指示。根据所传输信息的不同，SIB 分为多种类型：Type 1 ～ Type 12。Type 1 信息（SIB1）包括了是否允许终端接入小区的相关信息，例如系统的公众网络标识（PLMN）、小区标识、关闭的用户组（CSG）信息以及 TDD 系统上下行时隙比例的配置信息。SIB1 中还承载了其他系统信息块（SIB2 ～ SIB13）的调度信息。SIB2 承载用于所有终端公共的无线资源配置信息，例如系统上行信号的频率／带宽、MBSFN 子帧、随机接入信道、寻呼信道、上行 sounding 导频和上行功率控制等的配置情况。SIB3 ～ SIB8 承载用于终端进行小区重选的相关参数，分别针对于同频、异频和异系统 3G/GSM/cdma2000 各种不同的情况。SIB9 指示关于家庭基站名字的信息。SIB10 ～ SIB12：用于公共灾害的警示服务，即地震和海啸警报系统（Earthquake and Tsunami Warning System，ETWS）和商用移动警报服务（Commercial MobileAlert Service，CMAS）。</p>
+</li>
+</ul>
+<p>SIB1 信息使用固定的时间位置进行传输，采用 80ms 的周期重复发送，每个周期之内包括 4 次间隔为 20ms 的传输，在序号 SFN%8=0 无线帧的第 5 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个序号为偶数的无线帧的第 5 个子帧的位置。除了 SIB1 之外，其余的 SIB 消息映射在系统信息（System Information，SI）上进行传输，它们的映射关系可以进行灵活的配置，由 SIB1 中承载的调度信息进行指示。一个 SIB 消息只能映射在一个 SI 上进行传输，而一个 SI 可以包含多个具有相同周期的 SIB 消息。</p>
+<p>系统广播信息向传输信道的映射如图所示</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" data-sub-html="<h2>系统广播信息向传输信道的映射</h2>">
+        
+    </a><figcaption class="image-caption">系统广播信息向传输信道的映射</figcaption>
+    </figure>
+<p>系统广播信息的更新采用“更新提示”和“信息更新”两个阶段的方式。根据系统配置的更新周期（最小值为 640ms），当需要对系统广播消息进行更新的时候，系统在前一个更新周期使用寻呼消息提示用户，系统广播消息将发生改变，但是在这个更新周期中，仍然发送原来的系统信息。在下一个更新周期，将发送改变之后的系统信息，终端根据该信息进行更新。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" data-sub-html="<h2>系统广播信息的更新</h2>">
+        
+    </a><figcaption class="image-caption">系统广播信息的更新</figcaption>
+    </figure>
+<h3 id="对连接的控制">对连接的控制</h3>
+<p>连接控制指的是对接入网中的无线承载进行控制的功能，包括信令承载的建立／重配置／重建立／释放、数据承载的建立／配置／释放，以及相关的完整性保护和数据加密的通信安全机制。</p>
+<h4 id="rrc-连接的管理">RRC 连接的管理</h4>
+<p>LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer，SRB）：</p>
+<ul>
+<li>
+<p>SRB0 用于承载公用控制逻辑信道（CCCH）的 RRC 消息</p>
+</li>
+<li>
+<p>SRB1 主要用于承载专用控制逻辑信道（DCCH）的 RRC 消息</p>
+<p>通常所说的建立 RRC 连接指的是信令无线承载 SRB1 的建立。</p>
+</li>
+<li>
+<p>SRB2 用于承载专用控制逻辑信道（DCCH）的核心网非接入层（NAS）控制信息。</p>
+</li>
+</ul>
+<p>终端开机在网络中进行注册之后处于空闲状态，在一个通常的通信过程中，空闲状态的终端首先需要与网络建立 RRC 连接，进入 RRC 连接状态，才能进行数据的通信。在这个过程中，建立传输 RRC 消息的信令承载 SRB1，终端进入 RRC 连接状态。然后，系统建立传输 NAS 消息的信令无线承载 SRB2 和传输数据的无线承载 DRB，由此可以开始进行数据的通信。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" data-sub-html="<h2>RRC 连接建立的过程</h2>">
+        
+    </a><figcaption class="image-caption">RRC 连接建立的过程</figcaption>
+    </figure>
+<p>进入 RRC 连接状态之后，采用 RRC 连接重配置的过程来进行 SRB2 和 DRB 的建立和管理。重配置过程在连接状态下对 RRC 连接进行更改，包括建立／更改／释放无线承载，进行小区切换的过程，以及建立／更改／释放终端的测量和上报。对应于这些功能，RRC 连接重配置消息中可能携带的信息包括无线资源的配置情况（无线承载、MAC 层和物理层），移动性控制的相关参数，以及无线测量的配置信息。其中，无线资源的配置信息包括公共的配置信息和专用的配置信息。公共的配置信息描述了移动性控制信息和系统信息中公共的无线资源配置情况，例如随机接入信道的参数、系统上行 sounding 导频配置和上行功率控制参数等静态的物理层配置信息。专用的配置信息用于无线承载的管理，例如 MAC 层配置、SPS 调度以及专用的物理层配置等。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" data-sub-html="<h2>RRC 连接重配置的过程</h2>">
+        
+    </a><figcaption class="image-caption">RRC 连接重配置的过程</figcaption>
+    </figure>
+<p>按照 RRC 连接重配置消息中携带的配置信息，无线承载建立的过程包括建立一个 PDCP 实体、建立一个 RLC 实体，以及按照指定的逻辑信道标识建立一个逻辑信道。与建立的过程相对应，当 RRC 连接重配置消息指示释放某个无线承载的时候，将释放相应的 PDCP 实体、RLC 实体和逻辑信道。</p>
+<p>通过 RRC 连接释放的过程，终端由 RRC 连接状态转变为空闲状态。这个过程释放 RRC 连接，包括所有已经建立的信令和数据的无线承载，以及所有的无线资源。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" data-sub-html="<h2>RRC连接释放的过程</h2>">
+        
+    </a><figcaption class="image-caption">RRC连接释放的过程</figcaption>
+    </figure>
+<h4 id="通信安全的功能">通信安全的功能</h4>
+<p>为了保证通信的安全，防止窃听、伪装等恶意行为，无线接入网的连接控制中包含安全通信的相关功能，包括信令消息的完整性保护，以及信令和数据消息的加密。</p>
+<p>在 RRC 连接建立的过程中，无线接入网从核心网取得终端用户的相关信息，然后可以使用安全模式激活（如图 2-28 所示）的 RRC 消息设置用户密钥和加密算法，开启信令完整性保护和加密的功能，从而保证后续通信过程的安全（包括 SRB2 和 DRB 的建立等）。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" data-sub-html="<h2>安全模式激活的过程</h2>">
+        
+    </a><figcaption class="image-caption">安全模式激活的过程</figcaption>
+    </figure>
+<p>在通信的过程中还可以通过计数器检查（counter check）的 RRC 消息防止采用“中间人（man in the middle）”方式的恶意攻击。在计数器检查的过程中，网络发送计数器检查消息要求终端确认在每个数据无线承载 DRB 上发送和接收数据的数量，通过这样的方法可以排除“中间人”可能进行的伪装通信。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" data-sub-html="<h2>计数器检查的过程</h2>">
+        
+    </a><figcaption class="image-caption">计数器检查的过程</figcaption>
+    </figure>
+<h3 id="终端移动性的管理">终端移动性的管理</h3>
+<p>终端移动性的管理是 LTE 作为移动通信系统一个重要的控制功能，实现相关功能的协议包括终端与无线接入网之间的 RRC 控制协议，以及终端与核心网之间非接入层（NAS）控制协议。</p>
+<h4 id="空闲状态终端的移动性管理">空闲状态终端的移动性管理</h4>
+<p>处于 RRC 空闲状态的终端与无线接入网没有建立 RRC 连接，终端的信息在核心网中注册并且分配有 IP 地址，无线接入网中不存储空闲状态终端的信息。终端进行自身的移动性管理，发起小区选择／重选，当跟踪区位置发生改变的时候向核心网进行登记。核心网记录终端所处的跟踪区位置（TrackingArea，TA，通常由相邻覆盖的若干个小区组成），核心网可以发起对终端的寻呼，终端根据核心网配置的 DRX 周期监听可能的寻呼消息。空闲状态的终端不能进行单播数据的传输。</p>
+<p>在终端开机的过程中，首先根据 PLMN（公众网络标识）进行网络的选择，选定例如某个运营商的网络，之后终端进行小区选择，确定所驻留的小区，侦听该小区的控制信道。然后采用跟踪区改变的流程向核心网注册终端所处的跟踪区位置。终端在移动的过程中，可能由一个小区无线信号的覆盖范围进入另一个小区的覆盖范围，这时候终端将进行小区重选的操作，改变所驻留侦听控制信道的小区。如果这个小区与前一个小区属于不同的跟踪区，那么在小区重选之后，终端将发起跟踪区改变的流程，使用非接入层（NAS）信令向核心网注册新的跟踪区位置。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-sub-html="<h2>空闲状态终端的寻呼和跟踪区改变</h2>">
+        
+    </a><figcaption class="image-caption">空闲状态终端的寻呼和跟踪区改变</figcaption>
+    </figure>
+<p>当有呼叫到达或者是系统消息改变需要向空闲状态的终端发送寻呼消息的时候，核心网移动控制实体（MME）根据终端所注册的跟踪区位置，找到相对应的跟踪区列表，然后在列表中所有的跟踪区（内的所有小区）上，发送针对该终端的寻呼消息。</p>
+<h4 id="连接状态终端的移动性管理">连接状态终端的移动性管理</h4>
+<p>处于 RRC 连接状态的终端与无线接入网建立了 RRC 连接，终端的信息在核心网和无线接入网中都进行存储和管理。网络登记终端所处的小区位置，终端的移动性由网络采用切换的流程进行管理。RRC 连接状态的终端可以进行单播数据的传输。为了节省耗电，终端可以采用由无线接入网配置的 DRX 功能。</p>
+<p>RRC 连接状态终端的移动性由网络进行控制，网络根据无线接口的情况决定是否改变终端的服务小区，即切换的过程是由网络触发的。为了获取关于无线接口情况的信息，网络可以配置终端进行相关的测量和上报，然后根据上报的结果，触发切换的流程，关于测量和上报的内容，将在下一节中进行介绍。另外，没有收到终端的测量与上报，网络也可以自行触发进行切换。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-sub-html="<h2>连接状态终端的小区间切换</h2>">
+        
+    </a><figcaption class="image-caption">连接状态终端的小区间切换</figcaption>
+    </figure>
+<p>为了进行切换过程的控制，首先由源服务小区配置终端进行相关的测量和上报，根据上报的信息，源服务小区判断终端是否需要进行切换并且选择目标小区，然后触发切换的信令流程。通过 eNodeB 之间互联的 X2 接口，源小区向目标小区发送切换请求的消息，该消息中包含了对于目标小区无线资源需求情况的信息。根据这样的信息，如果目标小区确定可以接受终端进行切换，那么目标小区根据要求进行无线资源的准备，并向源小区反馈切换请求确认的消息，该消息包含终端接入目标小区时需要的信息，例如新的 C-RNTI 标识、目标小区的系统信息，以及分配的专用随机接入序列等。源服务小区在收到目标小区对于切换请求的确认消息后，采用带有移动性控制信息的 RRC 连接重配置消息将这些来自目标小区的接入配置信息转发给终端，并且命令终端向目标小区进行切换。此时，因为来自核心网数据的传输路由还没有发生改变，源基站还可能负责将数据转发给目标基站。收到 RRC 连接重配置消息的切换命令后，终端根据指示的信息，向目标小区发起接入，采用随机接入的过程获得与目标小区的上行同步以及上行资源的分配。然后，在所分配的上行无线资源上，终端向目标小区发送 RRC 连接重配置完成消息，确认终端已经完成了切换，目标基站已经成为终端的服务基站，可以开始向终端发送数据。无线接入网的切换完成后，目标基站将向核心网的移动控制实体（MME）发送路径切换请求，并由 MME 协调数据网管（SGW）完成用户数据传输路径的改变，核心网将数据路径转移到目标小区。完成数据路径的转换后，目标小区向源小区发送终端上下文释放的消息，以此来确认成功地完成了整个切换的过程，源小区释放对应于该终端用户的相关资源。</p>
+<h4 id="配置终端的测量和上报">配置终端的测量和上报</h4>
+<p>为了进行移动性管理的操作，终端需要根据网络的配置对无线信道的情况进行测量，包括同频、异频或者异系统的测量场景。网络可以通过广播或者专用的控制信息配置终端的测量，对于空闲状态的终端，通过网络广播消息中配置的测量参数，终端完成小区选择／重选等移动性功能。对于 RRC 连接状态的终端，通过 RRC 信令（即 RRC 连接重配置消息）可以对终端进行专门的测量配置，终端向网络上报测量结果，协助网络进行小区切换的移动性管理。</p>
+<p>在进行测量时，如果终端的源服务小区与目标小区工作在相同的载波频率，那么称为同频测量，例如采用频率复用系数等于 1 的同频组网的情况。进行同频测量，不需要测量间隔，也就是说，在对同频目标小区进行测量的时候，终端不需要中断对源服务小区的信号接收。源服务小区和目标小区工作在不同载波频率的场景属于异频测量，为了对异频的目标小区进行测量，通常情况下需要配置测量间隔，终端中断对源小区的信号接收，将接收频率调整到目标小区进行测量。</p>
+<p>对终端的测量进行配置的消息内容主要包括“测量的对象”和“测量上报的配置”。其中，每一个测量的对象对应于 LTE 系统内同频或者异频的一个载波频率，或者某一个载波频率上异系统 WCDMA 的一个小区列表。而每一个测量上报的配置包括测量上报的格式，例如上报多少个目标小区的测量结果，以及上报的触发条件，包括周期性上报和事件触发两种可能性。为了支持终端在同频、异频和异系统各种不同场景情况下的移动性，在 LTE Release 8 中一共定义了 7 种可以触发终端进行测量上报的事件，可以根据需要进行配置。适用于 LTE 系统内同频或者异频的场景一共定义有 5 种事件，包括：A1 事件，服务小区的信号质量优于某个设定的门限；A2 事件，服务小区的信号质量差于某个设定的门限；A3 事件，相邻小区的信号质量优于服务小区超过某个设定的门限；A4 事件，相邻小区的信号质量优于某个设定的门限；A5，服务小区的信号质量差于某个设定的门限的同时，相邻小区的信号质量优于某个设定的门限。另外，针对与异系统之间的移动性操作，定义了两种事件：B1 事件，异系统相邻小区的信号质量优于某个设定的门限；B2 事件，服务小区的信号质量差于某个设定的门限的同时，异系统相邻小区的信号质量优于某个设定的门限。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" data-sub-html="<h2>终端测量上报的过程</h2>">
+        
+    </a><figcaption class="image-caption">终端测量上报的过程</figcaption>
+    </figure>
+<h3 id="服务质量qos管理">服务质量（QoS）管理</h3>
+<p>LTE 系统中采用 EPS 承载为单位进行端到端的服务质量（QoS）管理。EPS（Evolved Packet System）承载是终端和分组数据网网关（P-GW）之间的连接，1 个 EPS 承载包括：1 个无线承载，即终端和 eNodeB 基站之间的连接；1 个 S1 承载，即 eNodeB 和服务网关（S-GW）</p>
+<p>之间的连接；以及 1 个 S5/S8 承载，即 S-GW 和 P-GW 之间的连接，如图 2-33 所示。对于一个终端，网络可以建立多个 EPS 承载，每个 EPS 承载可以有不同的 QoS 参数，因此除了在不同用户之间实现不同的 QoS，属于同一个用户的多个 EPS 承载也可以实现不同的 QoS，用于一个用户在同时进行的不同业务。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>LTE 系统中的承载</h2>">
+        
+    </a><figcaption class="image-caption">LTE 系统中的承载</figcaption>
+    </figure>
+<p>针对每一个 EPS 承载，由核心网分配 QoS 参数，包括“QoS 类别标识（QoS Class Identifier，QCI）”和“分配和滞留优先级（Allocation and Retention Priority，ARP）”。其中，QCI 参数描述了承载的 QoS 类别，每一种 QoS 类别都对应于一系列影响数据服务质量的具体系统参数，例如调度的加权、准入门限和排队门限，等等。ARP 参数描述了承载的优先级，包括在资源受限的情况下是否允许建立承载，或者是否丢弃某个优先级较低的承载。另外还有“保证数据速率（Guaranteed Bit Rate，GBR）”和“最大数据速率（Maximum Bit Rate，MBR）”，这两个参数用于具有保证速率属性的承载。而对于不具有保证速率属性的承载，使用参数“最大总速率（Aggregated Maximum Bit Rate，AMBR）”来限制一个终端的所有不具有保证速率属性的承载的最大总速率。</p>
+<p>根据核心网确定的 QoS 参数，无线接入网负责执行无线承载部分的 QoS 管理，例如无线资源的调度策略和排队管理策略等。RRC 协议可以执行一部分 QoS 管理的功能，主要包括半持续资源调度的配置，以及通过配置终端上行逻辑信道的优先级，实现对一个终端内多个上行承载的速率控制。</p>
+<h3 id="核心网信令的直接传输">核心网信令的直接传输</h3>
+<p>除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过“隧道打包”的方式，在终端用户和网络核心网之间传输 NAS 信息。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>上行（NAS）信息的直接传输</h2>">
+        
+    </a><figcaption class="image-caption">上行（NAS）信息的直接传输</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" data-sub-html="<h2>下行（NAS）信息的直接传输</h2>">
+        
+    </a><figcaption class="image-caption">下行（NAS）信息的直接传输</figcaption>
+    </figure>]]></description>
+</item><item>
+    <title>LTE 系列：MAC 层详解</title>
+    <link>https://www.techkoala.top/lte_mac/</link>
+    <pubDate>Mon, 31 Aug 2020 21:00:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_mac/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE MAC 层详解</p>
+</blockquote>
+<h2 id="媒体接入控制mac">媒体接入控制（MAC）</h2>
+<p>媒体接入控制（Medium Access Control，MAC）层接收来自上层的 RLC 层的逻辑信道，经过处理后，以传输信道的方式输出到下层的物理层。</p>
+<p>MAC 层的主要功能包括：</p>
+<ul>
+<li>逻辑信道向传输信道的映射与复用</li>
+<li>根据不同优先级进行动态的资源调度</li>
+<li>选择传输格式实现动态的速率自适应</li>
+<li>混合自动重传（HybridAutomatic Repeat reQuest，HARQ）的纠错功能。</li>
+</ul>
+<h3 id="逻辑信道">逻辑信道</h3>
+<p>逻辑信道根据所传输的信息的类型进行定义。LTE 定义的逻辑信道包括：</p>
+<ul>
+<li>用于传输系统广播消息的<strong>广播控制信道</strong>（Broadcast Control CHannel，BCCH）</li>
+<li>用于传输寻呼消息的<strong>寻呼控制信道</strong>（Paging Control CHannel，PCCH）</li>
+<li>分别用于空闲状态和连接状态的终端传输控制信息的<strong>公用和专用控制信道</strong>（Common/ Dedicated Control CHannel，CCCH/DCCH）</li>
+<li>用于传输用户数据信息的<strong>专用业务信道</strong>（Dedicated Traffic CHannel，DTCH）</li>
+</ul>
+<h3 id="传输信道">传输信道</h3>
+<p>传输信道根据信息传输的方式进行定义。传输信道以传输块为单位在发送时间间隔（Transmission Time Interval，TTI）所定义的时间长度内进行每一次的发送，LTE 中设计的 TTI 长度是 1ms。每个传输块都有定义的传输格式，它由网络的调度功能动态地确定，包括传输块大小、调制方式和多天线方案等。</p>
+<p>LTE 定义的传输信道包括：</p>
+<ul>
+<li><strong>广播信道</strong>（Paging CHannel，PCH），采用固定的传输格式，用于传输广播控制信道；</li>
+<li><strong>上行共享信道／下行共享信道</strong>（Downlink/Uplink Shared CHannel，DL-SCH/UL-SCH），支持基于无线信道状态的实时调度、动态的速率自适应、HARQ 软合并和多天线空间复用的传输方式，是 LTE 进行上行和下行数据传输的主要的传输信道。</li>
+</ul>
+<p>在 LTE 空中接口 MAC 层协议功能的处理过程中，逻辑信道向传输信道以及最终的物理信道的映射关系如下所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" data-sub-html="<h2>下行信道映射</h2>">
+        
+    </a><figcaption class="image-caption">下行信道映射</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" data-sub-html="<h2>上行信道映射</h2>">
+        
+    </a><figcaption class="image-caption">上行信道映射</figcaption>
+    </figure>
+<h3 id="mac-协议数据单元格式">MAC 协议数据单元格式</h3>
+<p>MAC 包头可以包含多个子包头，每个子包头对应于 MAC PDU 负荷部分的 1 个 MAC 控制单元、MAC SDU 或者填充比特字段。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-sub-html="<h2>MAC 协议数据单元 PDU 的格式</h2>">
+        
+    </a><figcaption class="image-caption">MAC 协议数据单元 PDU 的格式</figcaption>
+    </figure>
+<p>子包头的格式如图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" data-sub-html="<h2>MAC 层的子包头</h2>">
+        
+    </a><figcaption class="image-caption">MAC 层的子包头</figcaption>
+    </figure>
+<ul>
+<li>LCID 字段指示所对应的 MAC 负荷的类型，对于长度固定的 MAC 控制单元或者是 MAC 负荷的最后一个部分，不需要指示 MAC 子包头所对应的 MAC 负荷的长度。在其他情况下，子包头需要 F 和 L 字段，来指示所对应的负荷的长度。因此存在带有负荷长度指示和不带有负荷长度指示，即是否带有 F 和 L 字段的两种类型的 MAC 子包头</li>
+<li>R（Reserve）字段为保留字段，数值设为 0</li>
+<li>E（Extension）字段指示本子包头后面是否还有其他的子包头，或者是包头部分已经结束，将要开始 MAC 控制单元或者 MAC SDU 的传输</li>
+<li>LCID（Logical Channel ID）字段指示 MAC SDU 所属逻辑信道的标识、MAC 控制单元的类型或者是填充比特</li>
+<li>F（Format）字段指示随后的 L 字段的长度，7 个比特或者 15 个比特</li>
+<li>L（Length）字段指示与子包头相对应的 MAC SDU 或者 MAC 控制单元的字节长度</li>
+</ul>
+<h3 id="mac-层功能和-mac-控制单元">MAC 层功能和 MAC 控制单元</h3>
+<p>下面介绍 MAC 层的主要功能，以及在完成这些功能过程中所需要的 MAC 控制单元。所介绍的 MAC 层功能包括随机接入，以及数据调度和传输的过程。</p>
+<h4 id="随机接入过程">随机接入过程</h4>
+<p>随机接入是由 MAC 层控制的一项功能，空闲状态的终端通过随机接入过程与网络建立连接。</p>
+<p>首先建立执行控制功能的连接（即 RRC 连接），终端由空闲状态转变为连接状态$\Longrightarrow$然后通过 RRC 控制功能建立数据通信的连接，开始进行数据的通信。</p>
+<p>对于连接状态的终端，也可能因为长时间没有进行上行信号的发送而失去上行同步，此时如果有上行或者下行的数据需要进行发送，终端需要进行随机接入的过程，与基站重新建立上行同步。随机接入过程可以由终端发起，也可以由网络侧通过物理层下行控制信道（PDCCH）触发终端发起随机接入。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-sub-html="<h2>随机接入过程</h2>">
+        
+    </a><figcaption class="image-caption">随机接入过程</figcaption>
+    </figure>
+<p>在随机接入过程中，终端选择 1 个随机接入序列通过物理层随机接入信道（PRACH）进行发送（在网络侧触发的情况下，由触发消息指示终端所使用的随机接入序列）$\Longrightarrow$基站检测到随机接入序列的信号后，在下行方向上发送随机接入响应，该消息指示了基站所检测到的随机接入序列的编号、为发起随机接入的终端分配的上行资源位置和上行信号发送时间的调整量。</p>
+<h5 id="冲突解决">冲突解决</h5>
+<p>如果多个终端选择了相同的随机接入序列并且在相同的时间进行发送，那么多个终端可能针对随机接入响应的接收发生冲突，所以需要冲突解决的过程。在收到随机接入响应的消息后，终端根据消息指示的内容进行上行信号的发送（又称为“消息 3”），对应于图中的步骤 3，该信号中可能包含终端的唯一标识。随后基站根据接收到的上行信息，向唯一标识所对应的成功接入的终端返回冲突解决消息，这样完成了冲突解决的过程。</p>
+<ul>
+<li>
+<p>小区无线网络临时标识。</p>
+<p>收到基站的随机接入响应消息后，终端发送上行消息（即“消息 3”）开始冲突解决的过程。对于连接状态的终端发起随机接入过程的情况，该消息中包含终端的唯一标识：小区无线网络临时标识（Cell-Radio Network Temporary Identifier，C-RNTI）。具体来说，“消息 3”中使用 MAC 控制单元来指示 C-RNTI 的信息。</p>
+<p>C-RNTI 的 MAC 控制单元仅包含一个字段，即 16 比特 C-RNTI。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" data-sub-html="<h2>MAC 控制单元——C-RNTI</h2>">
+        
+    </a><figcaption class="image-caption">MAC 控制单元——C-RNTI</figcaption>
+    </figure>
+</li>
+<li>
+<p>终端冲突解决标识。</p>
+<p>在上行随机接入过程中，终端发送上行消息（即“消息 3”）开始冲突解决的过程，对于连接状态的终端发起随机接入的情况，“消息 3”中指示终端的唯一标识 C-RNTI，在随后的下行发送中，网络通过物理层下行控制信道（PDCCH）指示该 C-RNTI 即可完成冲突解决。在另一种情况下，对于空闲状态的终端发起随机接入过程的情况，网络在随机接入响应消息中向终端分配“临时 RNTI”，但是因为还存在可能发生冲突的情况，所以在随后的“消息 3”中终端不使用“临时 RNTI”，而是传输上行公用控制信道（CCCH）的 RRC 连接建立请求消息。与此相对应的，基站在随后的下行发送中通过终端冲突解决标识的 MAC 控制单元完成冲突解决的过程。成功地完成冲突解决之后，终端将使用网络分配的“临时 RNTI”作为 C-RNTI。</p>
+<p>终端冲突解决标识的 MAC 控制单元仅包含一个字段：终端冲突解决标识，这个字段包含上行随机接入冲突解决过程中，终端在 Message 3 消息中发送的上行公用控制信道的服务数据单元（CCCH SDU）。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" data-sub-html="<h2>MAC 控制单元——终端冲突解决标识</h2>">
+        
+    </a><figcaption class="image-caption">MAC 控制单元——终端冲突解决标识</figcaption>
+    </figure>
+</li>
+</ul>
+<h4 id="数据的调度和传输">数据的调度和传输</h4>
+<p>数据的调度和传输是 MAC 层控制的另一项主要功能。对于数据信息的传输，即传输信道中的上行／下行共享信道（DL/UL-SCH），可以根据无线信道状态将无线资源在用户间进行自适应的调度分配，实现系统资源的优化利用，同时满足各个用户的 QoS 要求。主要采用动态调度的方式，也可以支持半持续调度（Semi-Persistent Scheduling，SPS）的方式。在动态调度的情况下，根据无线信道状态和用户优先级等信息，基站按照长度等于 1ms 的发送时间间隔（TTI）作为单位，在每个 1ms 对各个终端所使用的无线资源进行分配，并且选择合适的数据传输格式。在半持续调度的情况下，基站一次性为终端分配较长时间的无线资源，可以节省进行资源调度的控制信息。</p>
+<h5 id="半持续调度">半持续调度</h5>
+<p>LTE 支持“半持续（Semi-Persistent Scheduling，SPS）”的调度方式。对于某些业务量不大而且比较规则的业务（例如 VoIP），一次性的对较长时间内的资源使用进行分配，而不需要在每次传输的时候都进行动态分配，通过这样的机制，节省了为终端进行资源调度的 PDCCH 控制信令的开销。</p>
+<p>对于半持续调度，为了减小调度信令的开销，基站一次为终端分配一段时间内预先定义好的无线资源和相应的传输格式，主要参数是“半持续调度的时间间隔”。例如，根据 VoIP 业务的流量特点，设置半持续调度的时间间隔等于 20ms，为用户分配一段时间内间隔为 20ms、相同频域位置和大小的无线资源。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-sub-html="<h2>半持续调度</h2>">
+        
+    </a><figcaption class="image-caption">半持续调度</figcaption>
+    </figure>
+<h5 id="harq">HARQ</h5>
+<p>MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的“停—等”机制的 HARQ 进程（如图 2-18 所示），每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-sub-html="<h2>多个并行的“停——等”机制的 HARQ 进程</h2>">
+        
+    </a><figcaption class="image-caption">多个并行的“停——等”机制的 HARQ 进程</figcaption>
+    </figure>
+<p>在下行的数据传输中，每个 HARQ 进程内部采用异步、自适应的机制。其中，异步指的是对于 1 个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间没有固定的定时关系。也就是说，对于需要重传的数据包，在满足与这个数据包上一次传输之间的时间间隔不小于规定的最小值（8ms）的条件的基础上，调度器可以灵活地选择进行重传的时间。自适应指的是在各次传输之间，调度器可以灵活地选择不同位置／大小的物理资源，以及不同的传输格式（包括调制方式和信道编码速率等）。与异步、自适应的 HARQ 机制相匹配，下行数据包的传输伴随有下行调度信令，调度信令中指示当前所传输的下行数据包的资源位置、传输格式和所对应的 HARQ 进程号码，用户终端通过检测下行调度信令，可以进行下行数据包的接收、重传数据包的合并以及数据解调的操作。</p>
+<p>对于上行数据的传输，每个 HARQ 进程内部采用同步的机制。与下行方向采用的异步机制不同，上行采用的同步机制指的是对于上行 HARQ 过程中一个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间采用固定的定时关系。例如：在时刻 0 进行初传的数据包，如果出现接收错误需要进行重新传输，那么第一次重传将发生在时刻 8，如果仍然接收错误需要继续重传，那么第二次重传将发生在时刻 16，以此类推。根据这样的同步的定时关系，对于上行 HARQ 过程的数据重新传输，基站可以不对重传的数据包进行调度。此时，终端仅收到网络侧基站反馈的关于数据接收出错的消息，终端将根据固定的定时关系，在规定的时间采用与第一次传输相同的频率资源位置和传输格式进行重传，这种方式称为同步、非自适应的 HARQ 机制。上行方向还可以支持同步、自适应的 HARQ 机制，网络侧基站反馈关于数据接收出错的消息的同时可以发送对于重传数据包的上行调度信息，该调度信息不改变重传数据包的传输时间，即仍然是同步的机制，但是可以调度不同位置和大小的频率资源，以及不同的传输格式，也就是说，实现自适应的 HARQ 机制。</p>
+<h5 id="上行缓存状态报告">上行缓存状态报告</h5>
+<p>终端的上行发送是根据基站的调度进行的，因此，终端的缓存中等待进行发送的数据的数量是基站进行调度时需要的参考信息。例如，如果终端的缓存中没有等待发送的数据，那么基站就不应该对该终端进行上行发送的调度。</p>
+<p>终端通过发送缓存状态报告（Buffer Status Report，BSR），向服务基站报告终端的上行缓存中等待发送的数据的数量。根据 RRC 信令的配置，终端将上行逻辑信道进行分组，采用逻辑信道组（Logical Channel Group，LCG）为单位进行缓存状态的报告。</p>
+<p>终端缓存状态报告的 MAC 控制单元包括两种格式—短格式／截断格式，或者长格式。短格式进行 1 个逻辑信道组对应的缓存状态报告，相应的 MAC 控制单元由逻辑信道组标识（LCG ID）和缓存数据量大小组成。长格式进行 4 个逻辑信道组的缓存状态报告，发送的 4 个关于缓存大小的消息分别对应于编号 0 到编号 3 的 4 个逻辑信道组。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" data-sub-html="<h2>MAC 控制单元——缓存状态报告</h2>">
+        
+    </a><figcaption class="image-caption">MAC 控制单元——缓存状态报告</figcaption>
+    </figure>
+<h5 id="功率余量报告">功率余量报告</h5>
+<p>上行信号的发送受到终端最大发射功率的限制，所以基站在调度终端进行上行发送的时候需要参考终端发射功率的情况。例如：如果终端处于小区边缘，已经接近最大发射功率的限制，在这种情况下，基站如果调度这个终端使用大量资源进行大数据量的上行发送，而终端由于最大发射功率的限制可能无法保证发射信号的质量，因而导致信息传输的错误。所以基站需要根据对终端发射功率情况的了解，避免出现这样的情况。</p>
+<p>通过功率余量报告，终端向基站报告上行数据信道当前的发射功率距离终端上行最大发射功率之间的余量，该信息作为基站进行上行功率控制和上行资源调度的参考。功率余量报告的传输由 RRC 信令进行配置，包括周期性的方式或者传播损耗的变化超过设定的门限都可以触发功率余量消息的上报。</p>
+<p>功率余量报告的 MAC 控制单元包括 2 个比特的预留字段和 6 个比特的功率余量（Power Headroom，PH）信息，指示从 −23dB 到 40dB 范围之内的数值。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" data-sub-html="<h2>MAC 控制单元——功率余量报告</h2>">
+        
+    </a><figcaption class="image-caption">MAC 控制单元——功率余量报告</figcaption>
+    </figure>
+<h4 id="上行时间同步的保持">上行时间同步的保持</h4>
+<p>在下行方向上，终端通过检测基站的同步和导频信号，与基站下行信号的发送时间取得同步，实现下行信号的接收。与此相类似，为了实现上行信号的传输，终端需要与基站取得上行方向的同步。在获得上行同步的过程中，终端根据基站的指示调整上行信号的发送时间，使得无论终端距离基站是远或者是近，它们发送的上行信号到达基站的时间是对齐的，并且符合基站的定时关系，这样方便基站对用户信号的接收，以及对多个用户信号之间干扰的管理和控制。</p>
+<p>对于空闲状态或者处于连接状态但上行已经失去同步的终端，需要通过前面章节中所描述的上行随机接入过程，获得上行同步。对处于连接状态，上行没有失去同步的终端，基站使用 MAC 控制单元向终端指示定时提前（Time Advanced，TA）命令，对终端的上行发送时间进行调整，实现终端与系统之间上行时间同步的保持。</p>
+<p>定时提前命令的 MAC 控制单元包括 2 个比特的预留字段和 6 个比特的 TA 命令信息。定时调整的精度是 16Ts ，即 16×1/(15×1 000×2 048)s 约等于 0.52μs。因为 6 个比特 TA 命令表示的是从 −31 到+32 的范围，所以每个定时提前命令能够调整的时间范围是 −16.15 ～+16.67μs。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" data-sub-html="<h2>MAC 控制单元——定时提前命令</h2>">
+        
+    </a><figcaption class="image-caption">MAC 控制单元——定时提前命令</figcaption>
+    </figure>
+<h4 id="不连续接收功能">不连续接收功能</h4>
+<p>不连续接收（Discontinuous Reception，DRX）是一种用于实现终端省电的功能。根据 RRC 信令进行配置的 DRX 功能，可以对处于连接状态的终端监测物理层下行控制信道（PDCCH）的方式进行控制。在不使用 DRX 功能的时候，终端需要对 PDCCH 信道进行连续的监测，在每一个 TTI（1ms），终端都需要对 PDCCH 信道进行监测，寻找其中可能属于自己的数据调度信息。通过配置 DRX 功能，设置了“激活”时间和“休眠”时间。在激活的时间里，终端需要对 PDCCH 信道进行监测；而在休眠的时间中，终端不需要对 PDCCH 信道进行监测，基站也不会向该终端进行数据传输的调度，所以可以节省终端的耗电。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" data-sub-html="<h2>不连续接收（DRX）功能</h2>">
+        
+    </a><figcaption class="image-caption">不连续接收（DRX）功能</figcaption>
+    </figure>
+<p>关于终端使用 DRX 功能的过程，首先通过高层 RRC 信令对终端设置 DRX 的相关配置，包括 DRX 周期、激活和休眠时间等。在工作过程中，采用 MAC 层控制信令开启或者关闭终端的 DRX 功能。MAC 层 DRX 命令采用类型为 DRX 命令的 MAC 控制单元进行指示，所对应的 MAC PDU 子包头指示 MAC 控制单元的类型是 DRX 命令，因为除了指示存在 DRX 命令之外，不需要其他的信息，所以相应的 MAC 控制单元部分的长度是 0。</p>]]></description>
+</item><item>
+    <title>LTE 系列：RLC 层详解</title>
+    <link>https://www.techkoala.top/lte_rlc/</link>
+    <pubDate>Mon, 31 Aug 2020 21:00:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_rlc/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE RLC 层详解</p>
+</blockquote>
+<h2 id="无线链路控制rlc">无线链路控制（RLC）</h2>
+<p>无线链路控制（Radio Link Control，RLC）层的主要功能是：</p>
+<ul>
+<li>根据下层指示的数据包传输大小对来自上层的数据包进行连接、分段和重组</li>
+<li>数据包的顺序传输和重复性检测</li>
+<li>自动重传请求（Automatic Repeat Request，ARQ）的数据纠错</li>
+</ul>
+<p>针对<strong>每一个</strong>无线承载配置一个 RLC 实体，经过 RLC 层协议功能的处理后，数据以逻辑信道的方式输出到下层的 MAC 层。根据所传输消息的不同特点，RLC 实体有 3 种工作模式：</p>
+<ul>
+<li>透明模式（Transparent Mode，TM）</li>
+<li>确认模式（Acknowledged Mode，AM）</li>
+<li>非确认模式（Unacknowledged Mode，UM）</li>
+</ul>
+<h3 id="透明模式tm">透明模式（TM）</h3>
+<p>此模式下，RLC 子层是完全透明的，<strong>不执行任何功能</strong>，例如不添加 RLC 包头、不进行数据分段或者连接，即来自上层的数据在 RLC 层<strong>不进行任何处理</strong>，“透明”地传输到下层的 MAC 层。透明模式用于广播、寻呼和公用控制信道等信息需要传输给多个用户的情况，相对应于广播、上下行公用控制和寻呼等逻辑信道。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-sub-html="<h2>TM 模式数据消息的 RLC PDU 格式</h2>">
+        
+    </a><figcaption class="image-caption">TM 模式数据消息的 RLC PDU 格式</figcaption>
+    </figure>
+<h3 id="确认模式am">确认模式（AM）</h3>
+<p>此模式用于提供高可靠性的数据传输服务，例如 TCP/IP 数据业务或者 RRC 控制信令的传输，包括承载上下行专用数据信息和专用控制信息的逻辑信道。</p>
+<p>在此模式下，RLC 子层<strong>执行所有功能</strong>，包括：</p>
+<ul>
+<li>数据包的连接、分段和重组</li>
+<li>数据包的顺序传输和重复性检测</li>
+<li>基于滑动窗进行错误数据包重新传输的 ARQ 纠错机制</li>
+</ul>
+<p>AM 模式的 RLC PDU 由 RLC 包头和 RLC SDU 组成，RLC 包头包括 D/C，RF，P，FI， E 和 SN 字段。如果 RLC PDU 中包含多于 1 个数据字段，那么相对应的 RLC 包头还将包括 E 和 LI 字段，以分别对应于各个数据字段。以下是 RLC 包头各个字段的具体含义。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 格式</h2>">
+        
+    </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 格式</figcaption>
+    </figure>
+<ul>
+<li>D/C（Data/Control）字段指示该 RLC PDU 是“RLC 数据 PDU”还是“RLC 控制 PDU”，在 Release 8 版本中，RLC 控制 PDU 只有 1 种，即 RLC 状态 PDU。</li>
+<li>RF（Re-segmentation Flag）字段指示该 RLC PDU 是一个 AM 模式 PDU，还是一个 AM 模式的 PDU 分段。因为，在 AM 模式的情况，数据包进行 ARQ 重传的时候，可能需要对初次传输时的 AM PDU 进行分段，因而形成 AM PDU 分段。</li>
+<li>P（Polling）字段指示是否要求接收端对等的 RLC 实体进行 1 次 RLC 状态的报告。</li>
+<li>FI（Framing Indicator）字段指示 RLC PDU 的数据字段是否是 RLC SDU 的开始或者结尾部分。2 个比特的信息指示了“是开始不是结尾”、“是结尾不是开始”、“既不是结尾也不是开始”、“既包含了结尾也包含了开始”一共 4 种可能的状态。</li>
+<li>E（Extension）字段指示后面是否还有 E 和 LI 字段。</li>
+<li>SN（Sequence Number）字段指示 RLC PDU 的序号，序号采用递增的方式。对于 AM 模式下重传的 AM PDU 或者 AM PDU 分段，采用初传的 AM PDU 所对应的序号。</li>
+<li>LI（Length Indicator）字段指示对应的数据字段的字节长度。</li>
+</ul>
+<p>在 AM 模式下，RLC 层使用 ARQ 纠错机制对传输错误的数据包进行重传，由于下层指示的数据包传输大小可能与初次传输时候的情况有所不同，可能需要对初次传输的 AM PDU 进行分段，因此形成了“AM PDU 分段”的格式。与 AM PDU 相比较，AM PDU 分段在包头部分多了两个字段：LSF 和 SO。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 分段的格式</h2>">
+        
+    </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 分段的格式</figcaption>
+    </figure>
+<ul>
+<li>LSF（Last Segment Flag）字段指示这个 AM PDU 分段是否是所对应的初次传输的 AM PDU 的最后一个分段。</li>
+<li>SO（Segment Offset）字段指示这个 AM PDU 分段在所对应的初次传输的 AM PDU 中的位置，具体是“这个 AM PDU 分段的第 1 个字节”在所对应的初次传输的 AM PDU 中的字节位置。</li>
+</ul>
+<p>除了 RLC 数据 PDU 之外，AM 模式下还可能传输 RLC 控制 PDU，进行 RLC 状态的报告。由数据接收方的 RLC 实体向数据发送方对等的 RLC 实体发送 RLC 状态 PDU，报告 AM PDU 数据包的接收状态，包括正确接收的数据包的最后序号，以及接收错误的数据包的序号。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-sub-html="<h2>RLC 状态 PDU</h2>">
+        
+    </a><figcaption class="image-caption">RLC 状态 PDU</figcaption>
+    </figure>
+<ul>
+<li>CPT（Control PDU Type）字段指示该 RLC 控制 PDU 的类型</li>
+<li>ACK_SN（Acknowledgement SN）字段指示接收正确的数据包的最后一个序列号，不包含 ACK_SN 本身所指示的数据包，以及由 NACK_SN 所指出的接收错误的数据包</li>
+<li>E1（Extension bit 1）字段指示后面是否跟随有 NACK_SN，E1 和 E2 字段</li>
+<li>NACK_SN（Negative Acknowledgement SN）字段指示接收错误或者部分出错的 AM PDU 数据包的序列号</li>
+<li>E2（Extension bit 2）字段指示这个 NACK_SN 后面是否跟随有 SOstart 和 SOend 字段</li>
+<li>SOstart：在 AM PDU 数据包部分出错的情况下，SOstart 字段指示出错部分的第一个字节在 AM PDU 数据包中的位置</li>
+<li>SOend 在 AM PDU 数据包部分出错的情况下，SOend 字段指示出错部分的最后一个字节在 AM PDU 数据包中的位置</li>
+</ul>
+<h3 id="非确认模式um">非确认模式（UM）</h3>
+<p>此模式与确认模式的区别是<strong>不进行</strong>错误数据包重传的 ARQ 纠错。UM 模式主要用于对数据传输正确性的要求不是很高的场景，例如广播信道或者 VoIP 业务，包括上下行专用数据逻辑信道和多媒体广播多播业务（Multimedia Broadcast Multicast Service，MBMS）专用的控制和数据逻辑信道。非确认模式 RLC 子层仍然执行数据包的连接、分段和重组，数据包的顺序传输和重复性检测的功能。</p>
+<p>与 AM 模式相比较，UM 模式的 RLC PUD 少了 3 个字段：D/C、RF 和 P。因为 RLC 控制 PDU 只在 AM 模式进行传输，UM 模式仅传输 RLC 数据 PDU，因此不需要指示 RLC 控制或者 RLC 数据信息的 D/C 字段。UM 模式不进行 ARQ 纠错的重传，因此不会出现数据包重传需要重新分段的情况，所以不需要指示数据分段的 RF 字段。P 字段所指示的 RLC 状态报告也仅适用于 AM 模式，因此 UM 模式的情况下不需要这个字段。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-sub-html="<h2>UM 模式数据消息的 RLC PDU 格式</h2>">
+        
+    </a><figcaption class="image-caption">UM 模式数据消息的 RLC PDU 格式</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：PDCP 层详解</title>
+    <link>https://www.techkoala.top/lte_pdcp/</link>
+    <pubDate>Mon, 31 Aug 2020 21:00:19 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_pdcp/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE PDCP 层详解</p>
+</blockquote>
+<h2 id="分组数据会聚协议pdcp">分组数据会聚协议（PDCP）</h2>
+<p>分组数据会聚协议（Packet Data Convergence Protocol，PDCP）层的主要功能是进行 <code>IP 数据包头压缩</code>、<code>数据加密</code>和<code>控制信令的完整性保护</code>。</p>
+<p>对于来自上层的数据包，将针对<strong>每一个</strong>无线承载建立一个 <code>PDCP 实体</code>。首先对数据包进行编号，然后根据配置对数据包进行 <strong>IP 包头压缩</strong>，<strong>数据加密</strong>和<strong>控制信令完整性保护</strong>的操作，形成 <code>PDCP 服务数据单元</code>（Service Data Unit，SDU），最后添加包含编号的 <code>PDCP 包头</code>，形成 <code>PDCP 协议数据单元</code>（Protocol Data Unit，PDU）作为 <code>PDCP</code> 子层协议功能的处理结果向下层 <code>RLC</code> 子层输出。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@masterhttps://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-sub-html="<h2>PDCP 协议数据单元格式</h2>">
+        
+    </a><figcaption class="image-caption">PDCP 协议数据单元格式</figcaption>
+    </figure>
+<ul>
+<li>R 表示预留的字段，都填充为 0</li>
+<li>D/C 字段指示控制面或者数据面的 PDCP 包，控制面为 0，数据面为 1</li>
+<li>MAC-I 是控制信令完整性保护的字段，在不使用完整性保护功能的时候，都填充为 0</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：无线接入网上层协议</title>
+    <link>https://www.techkoala.top/upper_layer_protocol/</link>
+    <pubDate>Mon, 31 Aug 2020 16:09:24 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/upper_layer_protocol/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE PDCP 协议详解</p>
+</blockquote>
+<h2 id="无线接入网">无线接入网</h2>
+<p>由 E-NodeB 组成的无线接入网是系统与终端用户进行通信的接口，它的功能分为<code>数据面</code>和<code>控制面</code>两个部分：</p>
+<ul>
+<li><strong>数据面</strong>负责用户数据信息的传输</li>
+<li><strong>控制面</strong>负责系统控制功能以及相关信息的传输和处理</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" data-sub-html="<h2>LTE 接入网协议架构</h2>">
+        
+    </a><figcaption class="image-caption">LTE 接入网协议架构</figcaption>
+    </figure>
+<ul>
+<li><a href="https://www.techkoala.top/lte_pdcp/" target="_blank" rel="noopener noreffer">分组数据会聚协议（PDCP）</a></li>
+<li><a href="https://www.techkoala.top/lte_rlc/" target="_blank" rel="noopener noreffer">无线链路控制（RLC）</a></li>
+<li><a href="https://www.techkoala.top/lte_mac/" target="_blank" rel="noopener noreffer">媒体接入控制（MAC）</a></li>
+<li><a href="https://www.techkoala.top/lte_rrc/" target="_blank" rel="noopener noreffer">无线资源控制（RRC）</a></li>
+</ul>
+<p>无线接入网向核心网提供<strong>无线承载</strong>服务。</p>
+<p>针对每一个用户可以建立 1 个或者多个的无线承载，来自核心网 <code>S1</code> 接口的 <code>IP</code> 数据包根据不同的服务质量要求（Quality of Service，QoS）可以映射在不同的无线承载上。然后，数据包将分别经过 <code>PDCP</code>$\Longrightarrow$<code>RLC</code>$\Longrightarrow$<code>MAC</code> 各层协议地处理：</p>
+<ul>
+<li><code>PDCP</code> 层完成的功能包括 <code>IP</code> 数据包的头压缩、数据加密以及控制信令的完整性保护。</li>
+<li><code>RLC</code> 层主要进行自动重传请求（Automatic Repeat Request，ARQ）的功能。</li>
+<li><code>MAC</code> 层的主要功能包括动态资源调度、逻辑信道复用以及混合自动重传（Hybrid Automatic Repeat Request，HARQ）。</li>
+</ul>
+<p>经过 <code>MAC</code> 层协议的处理后，形成 1 个或者多个传输信道。最终通过物理层的处理在无线信号上进行传输。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" data-sub-html="<h2>LTE 接入网协议功能和数据处理流程</h2>">
+        
+    </a><figcaption class="image-caption">LTE 接入网协议功能和数据处理流程</figcaption>
+    </figure>
+<p>控制面主要的控制功能包括：</p>
+<ul>
+<li>无线接入网的无线资源管理（Radio Resource Control，RRC）。无线资源管理（RRC）的主要功能包括<strong>系统信息的广播</strong>、<strong>终端的移动性管理</strong>，以及<strong>信令和数据的连接控制</strong>。</li>
+<li>来自核心网移动性管理实体（MME）的非接入层（NAS）消息的控制功能，包括 <strong>EPS 系统承载</strong>（Evolved Packet System，EPS）的管理，<strong>空闲状态终端的移动性处理和寻呼</strong>，<strong>终端鉴权</strong>以及<strong>安全性</strong>方面的控制。</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：系统总体架构</title>
     <link>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</link>
     <pubDate>Mon, 31 Aug 2020 13:17:02 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</guid>
-    <description><![CDATA[<p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>FDD 帧结构</h2>">
+    <description><![CDATA[<blockquote>
+<p>LTE 系统总体架构分解</p>
+</blockquote>
+<h2 id="系统架构演进">系统架构演进</h2>
+<p>系统架构演进（又名 SAE，System Architecture Evolution）是 3GPP 所制定的 LTE 无线通信的核心网络标准。</p>
+<p><code>SAE</code> 是基于 <code>GPRS</code> 核心网的演进，其主要差别为：</p>
+<ul>
+<li>简化架构</li>
+<li>全 <code>IP</code> 网络（<code>AIPN</code>）</li>
+<li>支持提供更高吞吐量和更低延迟的接入网</li>
+<li>多个异构接入网络的互通，包括 <code>E-UTRA</code>（LTE 和 LTE 升级版的接入网），3GPP 已有系统（例如 <code>GPRS</code> 和 <code>UMTS</code> 的接入网 <code>GERAN</code> 和 <code>UTRAN</code>），也支持与非 3GPP 系统之间的互通（例如 <code>WiMAX</code>、<code>CDMA2000</code> 或 <code>WIFI</code>）</li>
+</ul>
+<p><code>SAE</code> 是的传输使用全 <code>IP</code> 网络，从而支持系统的控制平面和用户平面的分离。</p>
+<p><code>SAE</code> 体系结构的主要组成部分是核心分组网演进（EPC，Evolved Packet Core )，也被称为 <code>SAE</code> 核心。<code>EPC</code> 作用与 <code>GPRS</code> 网络相似，包含移动性管理组件（<code>MME</code>），服务网关（<code>S-GW</code>）和 <code>PDN</code> 网关（PDN Gateway）等网元。</p>
+<h2 id="系统架构">系统架构</h2>
+<p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>LTE 系统总体架构图</h2>">
         
-    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
+    </a><figcaption class="image-caption">LTE 系统总体架构图</figcaption>
     </figure>
-<p><strong>核心网</strong>包括<code>移动性管理实体</code>（MME）、<code>服务网关</code>（S-GW）和<code>分组数据网网关</code>（P-GW）；</p>
-<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
+<h3 id="核心网">核心网</h3>
+<p><strong>核心网</strong>包括：</p>
 <ul>
 <li>
-<p>核心网的 <code>MME</code> 实体负责移动性管理相关的控制功能，包括对终端位置跟踪区域列表的管理，对处于空闲状态的终端发起寻呼，为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code>，漫游和鉴权功能，非接入层（Non-Access Stratum，NAS）信令功能、信令安全和接入层（Access Stratum，AS）的安全控制，接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择），以及网络承载管理的功能；</p>
+<p><code>移动性管理实体</code>（MME）</p>
 </li>
 <li>
-<p>核心网的服务网关（S-GW）负责数据承载的相关功能，包括数据包的路由和转发，E-NodeB 之间切换或者 E-NodeB 和 GSM/WCDMA/TD-SCDMA 系统的不同接入网之间切换时的数据锚点，上下行传输层数据包的优先级标识，运营商内部和运营商之间的终端计费，以及对用户通信进行合法侦听的功能。</p>
+<p><code>服务网关</code>（S-GW）</p>
 </li>
 <li>
-<p>PDN 网关（P-GW）是核心网与外部因特网的接口，完成的主要功能包括针对每个用户的数据包过滤，终端的 IP 地址分配，基于业务的计费功能，门控和速率强制功能，下行传输层数据包的优先级标识，以及进行合法侦听的功能；</p>
+<p><code>分组数据网网关</code>（P-GW）</p>
+<p><code>MME</code>实体负责移动性管理相关的控制功能，包括：</p>
+<ul>
+<li>对终端位置跟踪区域列表的管理</li>
+<li>对处于空闲状态的终端发起寻呼</li>
+<li>为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code></li>
+<li>漫游和鉴权功能</li>
+<li>非接入层（Non-Access Stratum，NAS）信令功能</li>
+<li>信令安全和接入层（Access Stratum，AS）的安全控制</li>
+<li>接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择）</li>
+<li>网络承载管理的功能</li>
+</ul>
+<p>服务网关（<code>S-GW</code>）负责数据承载的相关功能，包括：</p>
+<ul>
+<li>数据包的路由和转发，<code>E-NodeB</code> 之间切换或者 <code>E-NodeB</code> 和 <code>GSM/WCDMA/TD-SCDMA</code> 系统的不同接入网之间切换时的数据锚点</li>
+<li>上下行传输层数据包的优先级标识</li>
+<li>运营商内部和运营商之间的终端计费</li>
+<li>对用户通信进行合法侦听的功能</li>
+</ul>
+<p>PDN 网关（<code>P-GW</code>）是核心网与外部因特网的接口，完成的主要功能包括</p>
+<ul>
+<li>针对每个用户的数据包过滤</li>
+<li>终端的 <code>IP</code> 地址分配</li>
+<li>基于业务的计费功能</li>
+<li>门控和速率强制功能</li>
+<li>下行传输层数据包的优先级标识</li>
+<li>进行合法侦听的功能</li>
+</ul>
+</li>
+</ul>
+<h3 id="无线接入网">无线接入网</h3>
+<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）：</p>
+<ul>
+<li>
+<p><code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
 </li>
 <li>
-<p>E-NodeB 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），IP 头压缩和用户数据加密，为附着的终端选择进行控制功能的 MME 实体，将用户数据路由至 S-GW 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。E-NodeB 之间通过 X2 接口进行互连，X2 接口主要用于支持终端在 E-NodeB 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，X2 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
+<p><code>E-NodeB</code> 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），<code>IP</code> 头压缩和用户数据加密，为附着的终端选择进行控制功能的 <code>MME</code> 实体，将用户数据路由至 <code>S-GW</code> 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>X2</code> 接口主要用于支持终端在 <code>E-NodeB</code> 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，<code>X2</code> 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
 </li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>LTE-Advanced 关键技术详解</li>
-</ul>
-]]></description>
+<li>
+<p>[1] <a href="https://zh.wikipedia.org/wiki/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B" target="_blank" rel="noopener noreffer">SAE</a></p>
+</li>
+<li>
+<p>[2] LTE-Advanced 关键技术详解</p>
+</li>
+</ul>]]></description>
 </item><item>
     <title>全站迁移到 Vercel</title>
     <link>https://www.techkoala.top/migrated_to_vercel/</link>
@@ -1416,799 +1898,6 @@ partitioned as follows:
 </li>
 <li>
 <p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>如何高效搜索？</title>
-    <link>https://www.techkoala.top/how_to_search/</link>
-    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/how_to_search/</guid>
-    <description><![CDATA[<blockquote>
-<p>如何在互联网上高效地找到自己想要的东西？</p>
-</blockquote>
-<p>搜索引擎方便了我们搜索资料，但是由于各种垃圾内容、网站地出现，实际上，搜索过程往往是十分低效的（特别是使用中文搜索）。因此，值得学习一些提升搜索效率必要的小技巧。</p>
-<p>废话不多说，直接分类讲解：</p>
-<h2 id="搜索语法">搜索语法</h2>
-<p>首先总结一下常用的语法表达式：</p>
-<table>
-<thead>
-<tr>
-<th>operator</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&ldquo;phrase&rdquo;</td>
-<td>结果必须包含 &ldquo;phrase&rdquo;</td>
-</tr>
-<tr>
-<td>- phrase</td>
-<td>结果排除 phrase</td>
-</tr>
-<tr>
-<td>A AND B</td>
-<td>A 和 B 必须同时包含</td>
-</tr>
-<tr>
-<td>A OR B</td>
-<td>必须包括 A 和 B 之一（或两者）</td>
-</tr>
-<tr>
-<td>site:example.com</td>
-<td>在网站中搜索</td>
-</tr>
-<tr>
-<td>filetype:jpg</td>
-<td>结果必须包含类型 .jpg</td>
-</tr>
-</tbody>
-</table>
-<h2 id="实例展示">实例展示</h2>
-<h3 id="网页">网页</h3>
-<p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
-</code></pre></td></tr></table>
-</div>
-</div><p>查找必须在标题文本中包含短语的特定页面</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
-</code></pre></td></tr></table>
-</div>
-</div><p>查找类似网站（仅谷歌搜索）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
-</code></pre></td></tr></table>
-</div>
-</div><p>您可以将运算符链接在一起 （例如：在 Url 中查找具有安全性或错误赏金）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>您可以限制为某些顶级域（例如：教师列表）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="email">Email</h3>
-<p>查找 Gmail 帐户</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>查找工作帐户（您需要先找到他们的域）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>模糊搜索的情况下，可以尝试猜测电子邮件的格式</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>在网站上查找电子邮件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>在网页上查找您访问的每封电子邮件，适用于每个网站，将其注入 Chrome 开发工具</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
-var re = new RegExp (&#34;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&#34;);
-for (var i = 0; i &lt; elems.length; i++) {
-    if (re.test (elems [i].innerHTML)) {
-        console.log (elems [i].innerHTML);
-    }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>这将记录找到的每封电子邮件，而无需扫描整个页面。</p>
-<h3 id="文件">文件</h3>
-<p>查找电子表格</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
-</code></pre></td></tr></table>
-</div>
-</div><p>查找谷歌文档和谷歌表格</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="seo">SEO</h3>
-<p>在锚文本中查找具有特定关键字的网站</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>研究标题中包含特定关键字的博客帖子</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>查找反向链接 (例如：链接到特定博客帖子的其他网站)。注意：链接运算符 <code>link</code> 现在已弃用</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
-</code></pre></td></tr></table>
-</div>
-</div><p>使用通配符运算符查找关键字排列</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
-</code></pre></td></tr></table>
-</div>
-</div><p>使用给定的 widget 查找公司</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="待更新">待更新&hellip;</h1>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
-</li>
-<li>
-<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>利用 Netlify 搭建 Koodo Reader</title>
-    <link>https://www.techkoala.top/reader/</link>
-    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/reader/</guid>
-    <description><![CDATA[<blockquote>
-<p>搭建自己的在线 EPUB 阅读器</p>
-</blockquote>
-<h2 id="什么是-netlify">什么是 Netlify</h2>
-<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
-<blockquote>
-<p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
-</blockquote>
-<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供 CI 服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
-<h2 id="koodo-reader">Koodo Reader</h2>
-<p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
-        
-    </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
-    </figure>
-<p>提供以下功能：</p>
-<blockquote>
-<p>📝 强大笔记和翻译功能，学习事半功倍</p>
-<p>🚩 使用书架来为你的图书分类</p>
-<p>🌎 支持 <strong>Windows</strong> ， <strong>MacOS</strong> 和 <strong>网页版</strong></p>
-<p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
-<p>💻 您所有的数据都支持导入导出</p>
-</blockquote>
-<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
-<h2 id="搭建">搭建</h2>
-<ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 Github 登录，当然，你也可以选择其他方式。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
-        
-    </a><figcaption class="image-caption">Netlify 注册</figcaption>
-    </figure>
-<ol start="2">
-<li>注册登陆后，进入首页，点击右上角的 New Site from Git ，创建一个新的站点。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-sub-html="<h2>创建新站点</h2>">
-        
-    </a><figcaption class="image-caption">创建新站点</figcaption>
-    </figure>
-<ol start="3">
-<li>接下来，点击下方的 Github 进行授权，这里会弹出一个新的窗口，让你授权 Netlify 访问你的 Github 账户，完成授权后进去下一步。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-sub-html="<h2>使用Github 创建新站点</h2>">
-        
-    </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
-    </figure>
-<ol start="4">
-<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
-        
-    </a><figcaption class="image-caption">选择相应的 Repo</figcaption>
-    </figure>
-<ol start="5">
-<li>接着，配置 Build 选项。在该项目的部署中，需要修改 <code>Build name &gt; yarn build</code>，<code>Publish directory &gt; build/ </code>，其他保持默认即可。（如果配置其他项目，这里的参数可能不同，请参考具体项目的指导说明）</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-sub-html="<h2>配置</h2>">
-        
-    </a><figcaption class="image-caption">配置</figcaption>
-    </figure>
-<ol start="6">
-<li>到这里，已经完成了整个部署工作，等待 Netlify 构建完成即刻。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-sub-html="<h2>配置</h2>">
-        
-    </a><figcaption class="image-caption">配置</figcaption>
-    </figure>
-<ol start="7">
-<li>Netlify 会给你默认分配一个二级域名用于访问，当然也支持自定义域名，这里我绑定了自己域名。除了在此处绑定外，还需要配置 DNS 等等，这个请自行完成。（由于搭建博客时，已经完成了相应设置，因此，我直接在 Cloudfalre 新建了一个 CNAME 指向 Netlify 给我的域名就好了）</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-sub-html="<h2>配置</h2>">
-        
-    </a><figcaption class="image-caption">配置</figcaption>
-    </figure>
-<ol start="8">
-<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
-</ol>
-<h2 id="后续">后续</h2>
-<p>如果需要对网站进行更新，只需要关注你的 Github Repo 即可。每次 commit 之后，Netlify 都会自动拉取更新并生成。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
-</ul>]]></description>
-</item><item>
-    <title>网络测试工具：iPerf</title>
-    <link>https://www.techkoala.top/iperf/</link>
-    <pubDate>Fri, 07 Aug 2020 17:45:55 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/iperf/</guid>
-    <description><![CDATA[<blockquote>
-<p>TCP、UDP 和 SCTP 的终极速度测试工具</p>
-</blockquote>
-<h2 id="什么是-iperf">什么是 iPerf</h2>
-<p>iPerf 是一个用于测量网络最大带宽的小工具。iPerf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。对于每个测试，它都会报告带宽，丢包和其他参数。</p>
-<p>现在的版本也称 iPerf3，这是对 NLANR/DAST 开发的原始版本的重新设计。</p>
-<p><strong>注意</strong>：iPerf3 与此前版本的 iPerf 不兼容。</p>
-<h2 id="安装-iperf">安装 iPerf</h2>
-<p>iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreffer">官网</a>提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）</p>
-<p>类 UNIX 系统直接使用包管理进行安装即可，例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="使用-iperf">使用 iPerf</h2>
-<p>首先，介绍服务端和客户端共有的参数：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
---cport n         指定客户端端口
--f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
--i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
--F, --file name   客户端：从文件读取并写入网络，而不是使用随机数据；服务器端：从网络读取并写入文件，而不是丢弃数据。
--A, --affinity    如果可以，设置 CPU 关联（仅限 Linux 和 FreeBSD）。
--B, --bind host   绑定到主机。对于客户端，这将设置出站接口。对于服务器，这将设置传入接口。这只适用于具有多个网络接口的多宿主主机。
--V, --verbose     提供更详细的输出
--J, --json        以 JSON 格式输出
---logfile file    输出到日志文件
---d, --debug      发出调试输出
--v, --version     输出版本信息
--h, --help        输出帮助信息
-</code></pre></td></tr></table>
-</div>
-</div><p>服务端特有参数：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
--D, --daemon      将服务器作为守护进程在后台运行
--I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
-</code></pre></td></tr></table>
-</div>
-</div><p>客户端特有参数:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
---sctp	                使用 SCTP 而不是 TCP
--u, --udp	            使用 UDP 而不是 TCP
--b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
--t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
--n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
--k, --blockcount    	要传输的块（数据包）数
--l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
--P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
--R, --reverse	        以反向模式运行（服务器发送，客户端接收）
--w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
--M, --set-mss  	        尝试设置 TCP 最大段大小（MSS）。MSS 通常是 MTU-TCP/IP 标头的 <span class="m">40</span> 个字节。对于以太网，MSS 为 <span class="m">1460</span> 字节（1500 字节 MTU）
--N, --no-delay	        设置 “TCP no delay” 选项，禁用 Nagle 的算法。通常，仅对交互式应用程序（如 telnet）禁用此功能
--4, --version4	        仅使用 IPv4.
--6, --version4	        仅使用 IPv6.
--S, --tos               传出数据包的服务类型。<span class="o">(</span>许多路由器会忽略TOS字段。）可以使用十六进制值（0x）作为前缀，使用八进制数（0）作为前缀，或者使用十进制来指定值。 例如，<span class="s1">&#39;0x10&#39;</span><span class="nv">十六进制</span><span class="o">=</span><span class="s1">&#39;020&#39;</span><span class="nv">八进制</span><span class="o">=</span><span class="s1">&#39;16&#39;</span>十进制。RFC 1349中指定的TOS编号为：
-                        IPTOS_LOWDELAY     minimize delay        0x10
-                        IPTOS_THROUGHPUT   maximize throughput   0x08
-                        IPTOS_RELIABILITY  maximize reliability  0x04
-                        IPTOS_LOWCOST      minimize cost         0x02
--L, --flowlabel  	    设置 IPv6 流标签（当前仅在 Linux 上受支持）
--Z, --zerocopy	        使用 “零拷贝” 方法发送数据，如 sendfile（2），而不是通常的 write（2）。这样可以占用更少的 CPU
--O, --omit  	        省略测试的前 n 秒，以跳过 TCP TCP 慢启动周期
--T, --title             为每个输出行添加此字符串前缀
--C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p><strong>注意：</strong> 从客户端专有选项可以看出，iPerf 默认测试的是从客户端发送到服务端，相对于客户端来说，测试就是上行链路的带宽，对于一般参考意义更大的下行链路需要加上 <code>-R</code> 选项。</p>
-</blockquote>
-<p>常用启用参数：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">服务端
-$ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">客户端
-$ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
-</code></pre></td></tr></table>
-</div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-sub-html="<h2>iPerf 使用实例</h2>">
-        
-    </a><figcaption class="image-caption">iPerf 使用实例</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener noreffer">iPerf user docs</a></p>
-</li>
-<li>
-<p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreffer">iPerf Github</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>文件传输 3：SFTP</title>
-    <link>https://www.techkoala.top/sftp/</link>
-    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/sftp/</guid>
-    <description><![CDATA[<blockquote>
-<p>SCP 的继承者</p>
-</blockquote>
-<h2 id="什么是-sftp">什么是 SFTP</h2>
-<p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
-<p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
-<p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
-<blockquote>
-<p>有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></p>
-</blockquote>
-<h2 id="使用-sftp">使用 SFTP</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="选项">选项</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
--l：使用 ssh 协议版本 1；
--b：指定批处理文件；
--C：使用压缩；
--o：指定 ssh 选项；
--F：指定 ssh 配置文件；
--R：指定一次可以容忍多少请求数；
--v：升高日志等级。
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="参数">参数</h3>
-<p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
-</li>
-<li>
-<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>文件传输 2：rsync</title>
-    <link>https://www.techkoala.top/rsync/</link>
-    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/rsync/</guid>
-    <description><![CDATA[<blockquote>
-<p>SCP 的另一个绝佳替选</p>
-</blockquote>
-<h2 id="什么是-rsync">什么是 rsync</h2>
-<p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
-<p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
-<p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
-<h2 id="rsync-算法">rsync 算法</h2>
-<blockquote>
-<p>此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
-</blockquote>
-<p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
-<h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
-<p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
-<h3 id="传输算法">传输算法</h3>
-<p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
-<p><strong>但是</strong></p>
-<p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
-如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
-<h3 id="checksum-查找算法">Checksum 查找算法</h3>
-<p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
-<h3 id="比对算法">比对算法</h3>
-<ol>
-<li>
-<p>取 <code>fileSrc</code> 的第一个文件块（我们假设的是 512 个长度），也就是从 <code>fileSrc</code> 的第 1 个字节到第 512 个字节，取出来后做 <code>rolling checksum</code> 计算。计算好的值到 <code>hash</code> 表中查询。</p>
-</li>
-<li>
-<p>如果查到了，说明发现在 <code>fileDst</code> 中有潜在相同的文件块，于是就再比较 · 的 <code>checksum</code>，因为 <code>rolling checksume</code> 太弱了，可能发生碰撞。于是还要算 <code>md5</code> 的 128 bits 的 <code>checksum</code>，这样一来，我们就有 $2^{-(32+128)} = 2^{-160} $ 的概率发生碰撞，这小到可以忽略。如果 <code>rolling checksum</code> 和 <code>md5 checksum</code> 都相同，那就可以说明在 <code>fileDst</code> 中有相同的块，记下这一块在 <code>fileDst</code> 下的文件编号。</p>
-</li>
-<li>
-<p>如果 <code>fileSrc</code> 的 <code>rolling checksum</code> 没有在 <code>hash table</code> 中找到，那就不用算 <code>md5 checksum</code> 了。表示这一块中有不同的信息。总之，只要 <code>rolling checksum</code> 或 <code>md5 checksum</code> 其中有一个在 <code>fileDst</code> 的 <code>checksum hash</code> 表中找不到匹配项，那么就会触发算法对 <code>fileSrc</code> 的 rolling 动作。于是，算法会住后 step 1 个字节，取 <code>fileSrc</code> 中字节 2-513 的文件块要做 <code>checksum</code>，然后继续第一步 – 这就是为什么叫 <code>rolling checksum</code> 。</p>
-</li>
-<li>
-<p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
-</li>
-</ol>
-<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
-<p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
-<p>其公式可以表示为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
-</code></pre></td></tr></table>
-</div>
-</div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
-<p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
-</code></pre></td></tr></table>
-</div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
-        
-    </a><figcaption class="image-caption">rsync 算法示意</figcaption>
-    </figure>
-<p>最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。</p>
-<h2 id="使用-rsync">使用 rsync</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
-<ul>
-<li>
-<p>拷贝本地文件。当 <code>SRC</code> 和 <code>DES</code> 路径信息都<strong>不包含</strong>有单个冒号 &ldquo;:&rdquo; 分隔符时就启动这种工作模式。如：<code>rsync -a /data/backup</code></p>
-</li>
-<li>
-<p>使用一个远程 <code>shell</code> 程序 (如 rsh、ssh) 来实现将本地机器的内容拷贝到远程机器。当 <code>DST</code> 路径地址<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz *.c foo:src</code></p>
-</li>
-<li>
-<p>使用一个远程 <code>shell</code> 程序 (如 <code>rsh</code>、<code>ssh</code>) 来实现将远程机器的内容拷贝到本地机器。当 <code>SRC</code> 地址路径<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz foo:src/bar/data</code></p>
-</li>
-<li>
-<p>从远程 <code>rsync</code> 服务器中拷贝文件到本地机。当 <code>SRC</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av root@192.168.78.192::www /databack</code></p>
-</li>
-<li>
-<p>从本地机器拷贝文件到远程 <code>rsync</code> 服务器中。当 <code>DST</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av /databack root@192.168.78.192::www</code></p>
-</li>
-<li>
-<p>列出远程主机的文件列表。这类似于 <code>rsync</code> 传输，不过只要在命令中省略掉本地机信息即可。如：<code>rsync -v rsync://192.168.78.192/www</code></p>
-</li>
-</ul>
-<p>可用选项如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
--q, --quiet 精简输出模式。
--C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
--c, --checksum 打开校验开关，强制对文件传输进行校验。
--a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
--r, --recursive 对子目录以递归模式处理。
--R, --relative 使用相对路径信息。
--b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
--u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
--l, --links 保留软链结。
--L, --copy-links 想对待常规文件一样处理软链结。
--H, --hard-links 保留硬链结。
--I, --ignore-times 不跳过那些有同样的时间和长度的文件。
--p, --perms 保持文件权限。
--o, --owner 保持文件属主信息。
--g, --group 保持文件属组信息。
--D, --devices 保持设备文件信息。
--t, --times 保持文件时间信息。
--S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
--T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
--n, --dry-run 现实哪些文件将被传输。
--w, --whole-file 拷贝文件，不进行增量检测。
--x, --one-file-system 不要跨越文件系统边界。
--B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
--e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
--P 等同于 --partial。
--z, --compress 对备份的文件在传输时进行压缩处理。
--h, --help 显示帮助信息。
---backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
--suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
---copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
---safe-links 忽略指向 SRC 路径目录树以外的链结。
---rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
---existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
---delete 删除那些 DST 中 SRC 没有的文件。
---delete-excluded 同样删除接收端那些被该选项指定排除的文件。
---delete-after 传输结束以后再删除。
---ignore-errors 及时出现 IO 错误也进行删除。
---max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
---partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
---force 强制删除目录，即使不为空。
---numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
---timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
---size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
---modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
---compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
---progress 显示备份过程。
---exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
---include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
---exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
---include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
---version 打印版本信息。
---address 绑定到特定的地址。
---config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
---port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
---blocking-io 对远程 shell 使用阻塞 IO。
--stats 给出某些文件的传输状态。
---progress 在传输时现实传输过程。
---log-format<span class="o">=</span>formAT 指定日志文件格式。
---password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
---bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
-</li>
-<li>
-<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
-</li>
-<li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
-</li>
-<li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
