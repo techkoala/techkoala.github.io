@@ -1,4 +1,4 @@
-# LTE 系列：MAC 层详解
+# LTE 系列：MAC 层
 
 
 > LTE MAC 层详解

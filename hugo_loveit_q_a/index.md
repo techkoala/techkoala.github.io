@@ -69,7 +69,7 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。
 
-### CDN 配置
+### 5.CDN 配置
 
 `LoveIt` 的默认的 `CDN` 数据文件位于 `themes/LoveIt/assets/data/cdn/` 目录。
 
@@ -77,13 +77,23 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 然后修改 `config.toml` 文件中的：
 
-> # CSS 和 JS 文件的 CDN 设置
+> CSS 和 JS 文件的 CDN 设置
 >
 > [params.cdn]
 >
-> # CDN 数据文件名称, 默认不启用
+> CDN 数据文件名称, 默认不启用
 >
-> # ("jsdelivr.yml")
+> ("jsdelivr.yml")
 >
 > data = "jsdelivr.yml"
+
+### 6.Hugo 矩阵渲染
+
+因为 hugo 默认的 Markdown 引擎先处理 Markdown，而反斜杠\在 Markdown 中代表转义字符，所以双斜杠无法正确渲染矩阵，
+
+$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&0 \\ 0&1\end{bmatrix}$
+
+解决办法是在 `Katex` 原始语法再加入一个斜杠就好了
+
+$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&0 \\\ 0&1\end{bmatrix}$
 

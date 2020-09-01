@@ -458,16 +458,21 @@ clientId = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取
 clientSecret = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取</p>
 </blockquote>
 <p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p>
-<h3 id="cdn-配置">CDN 配置</h3>
+<h3 id="5cdn-配置">5.CDN 配置</h3>
 <p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
 <p>将该目录下的 <code>jsdelivr.yml</code> 移动到你的项目下相同路径： <code>assets/data/cdn/</code>。（如果需要使用别的 <code>CDN</code>，可以执行参考 <code>CDN</code> 网站的配置说明对 <code>jsdelivr.yml</code> 进行修改</p>
 <p>然后修改 <code>config.toml</code> 文件中的：</p>
 <blockquote>
-<h1 id="css-和-js-文件的-cdn-设置">CSS 和 JS 文件的 CDN 设置</h1>
+<p>CSS 和 JS 文件的 CDN 设置</p>
 <p>[params.cdn]</p>
-<h1 id="cdn-数据文件名称-默认不启用">CDN 数据文件名称, 默认不启用</h1>
-<h1 id="jsdelivryml">(&ldquo;jsdelivr.yml&rdquo;)</h1>
+<p>CDN 数据文件名称, 默认不启用</p>
+<p>(&ldquo;jsdelivr.yml&rdquo;)</p>
 <p>data = &ldquo;jsdelivr.yml&rdquo;</p>
-</blockquote>]]></description>
+</blockquote>
+<h3 id="6hugo-矩阵渲染">6.Hugo 矩阵渲染</h3>
+<p>因为 hugo 默认的 Markdown 引擎先处理 Markdown，而反斜杠\在 Markdown 中代表转义字符，所以双斜杠无法正确渲染矩阵，</p>
+<p>$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \ 0&amp;1\end{bmatrix}$</p>
+<p>解决办法是在 <code>Katex</code> 原始语法再加入一个斜杠就好了</p>
+<p>$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \\ 0&amp;1\end{bmatrix}$</p>]]></description>
 </item></channel>
 </rss>

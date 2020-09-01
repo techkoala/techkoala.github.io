@@ -1,4 +1,4 @@
-# LTE 系列：PDCP 层详解
+# LTE 系列：PDCP 层
 
 
 > LTE PDCP 层详解

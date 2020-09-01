@@ -4,1322 +4,960 @@
         <link>https://www.techkoala.top/tags/lte/</link>
         <description>LTE - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 31 Aug 2020 21:00:39 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/lte/" rel="self" type="application/rss+xml" /><item>
-    <title>LTE 系列：RRC 层详解</title>
-    <link>https://www.techkoala.top/lte_rrc/</link>
-    <pubDate>Mon, 31 Aug 2020 21:00:39 &#43;0800</pubDate>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 01 Sep 2020 21:16:56 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/lte/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系列：功率控制</title>
+    <link>https://www.techkoala.top/lte_power_control/</link>
+    <pubDate>Tue, 01 Sep 2020 21:16:56 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/lte_rrc/</guid>
+    <guid>https://www.techkoala.top/lte_power_control/</guid>
     <description><![CDATA[<blockquote>
-<p>LTE RRC 层详解</p>
+<p>LTE 功率控制</p>
 </blockquote>
-<h2 id="无线资源控制rrc">无线资源控制（RRC）</h2>
-<p>无线资源控制（Radio Resource Control，RRC）层是 LTE 无线接入网协议中<strong>控制面</strong>部分的主要内容。</p>
-<p>用户终端在进行数据通信之前，需要与网络建立承载信令消息的连接，通过信令消息的交互，控制数据通信的过程。因此，<strong>是否与网络建立了 RRC 连接</strong>是终端状态的判断依据。</p>
-<ul>
-<li><strong>RRC 连接状态</strong>即已经与网络建立了 RRC 连接的终端处于连接状态，此时终端可以进行<strong>数据传输</strong>、<strong>系统信息接收</strong>，以及<strong>邻小区的测量上报和小区切换</strong></li>
-<li><strong>RRC 空闲状态</strong>即没有与网络建立 RRC 连接，那么终端处于空闲状态，此时终端<strong>不进行数据的传输</strong>，仍然需要执行的功能包括：<strong>系统信息的接收</strong>、<strong>侦听寻呼</strong>，以及<strong>邻小区测量和小区重选</strong></li>
-</ul>
-<p>RRC 协议包括以下的主要功能：</p>
-<ul>
-<li>系统信息的广播，包括接入网的系统广播消息，以及核心网非接入层（NAS）系统信息的广播</li>
-<li>连接控制，包括信令承载（即 RRC 连接）的建立／重配置／重建立／释放、数据无线承载的建立／配置／释放，以及相关的完整性保护的数据加密的安全机制</li>
-<li>移动性管理，包括配置终端的测量和上报，以及终端的小区选择、重选、寻呼和切换过程</li>
-<li>服务质量（QoS）管理</li>
-<li>NAS 信令直接传输的功能</li>
-</ul>
-<h3 id="系统信息的广播">系统信息的广播</h3>
-<p>系统信息描述网络的基本情况，采用广播的方式进行发送，对应于广播控制逻辑信道（BCCH）。终端通过对系统信息的接收，获得在系统中进行通信所需要的基本网络参数。</p>
-<p>LTE 的系统信息分为：</p>
+<h2 id="功率控制">功率控制</h2>
+<p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
 <ul>
 <li>
-<p><code>主信息块</code>（Master Information Block，MIB）</p>
-<p><strong>主信息块</strong>（MIB）包括小区最基本的物理层信息，例如：系统下行信号的带宽、无线帧序号和发送天线的数目。终端需要获得这些基本的信息才能够进一步接收系统的其他信息。</p>
-<p><code>MIB</code> 信息在专门定义的广播传输信道（BCH）上，采用物理层广播信道（PBCH）在固定的时间和频率位置进行传输。<code>MIB</code> 采用 40ms 的周期重复发送，每个周期之内包括 4 次间隔为 10ms 的传输，在序号 SFN%4=0 无线帧的第 0 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个无线帧的第 0 个子帧的位置。</p>
+<p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
 </li>
 <li>
-<p><code>系统信息块</code>（System Information Block，SIB）</p>
-<p><strong>系统信息块</strong>（SIB）映射在下行共享传输信道（DL-SCH）上进行传输，采用 <code>SI-RNTI</code> 进行指示。根据所传输信息的不同，<code>SIB</code> 分为多种类型：<code>Type 1</code> ～ <code>Type 12</code></p>
-<ul>
-<li><code>SIB1</code>（Type 1 信息）：包括了是否允许终端接入小区的相关信息，例如系统的公众网络标识（PLMN）、小区标识、关闭的用户组（CSG）信息以及 TDD 系统上下行时隙比例的配置信息。SIB1 中还承载了其他系统信息块（SIB2 ～ SIB13）的调度信息</li>
-<li><code>SIB2</code>：承载用于所有终端公共的无线资源配置信息，例如系统上行信号的频率／带宽、MBSFN 子帧、随机接入信道、寻呼信道、上行 sounding 导频和上行功率控制等的配置情况</li>
-<li><code>SIB3</code> ～ <code>SIB8</code>：承载用于终端进行小区重选的相关参数，分别针对于同频、异频和异系统 3G/GSM/cdma2000 各种不同的情况。SIB9 指示关于家庭基站名字的信息</li>
-<li><code>SIB10</code> ～ <code>SIB12</code>：用于公共灾害的警示服务，即地震和海啸警报系统（Earthquake and Tsunami Warning System，ETWS）和商用移动警报服务（Commercial MobileAlert Service，CMAS）</li>
-</ul>
+<p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
 </li>
 </ul>
-<p><code>SIB1</code> 信息使用固定的时间位置进行传输，采用 80ms 的周期重复发送，每个周期之内包括 4 次间隔为 20ms 的传输，在序号 SFN%8=0 无线帧的第 5 个子帧开始每个周期的第一次传输，其余 3 次传输发生在随后 3 个序号为偶数的无线帧的第 5 个子帧的位置。</p>
-<p>除了 <code>SIB1</code> 之外，其余的 <code>SIB</code> 消息映射在系统信息（System Information，SI）上进行传输，它们的映射关系可以进行灵活的配置，由 <code>SIB1</code> 中承载的调度信息进行指示。一个 <code>SIB</code> 消息只能映射在一个 <code>SI</code> 上进行传输，而一个 <code>SI</code> 可以包含多个具有相同周期的 <code>SIB</code> 消息。</p>
-<p>系统广播信息向传输信道的映射如图所示:</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" data-sub-html="<h2>系统广播信息向传输信道的映射</h2>">
-        
-    </a><figcaption class="image-caption">系统广播信息向传输信道的映射</figcaption>
-    </figure>
-<p>系统广播信息的更新采用<code>更新提示</code>和<code>信息更新</code>两个阶段的方式。</p>
-<p>根据系统配置的更新周期（最小值为 640ms），当需要对系统广播消息进行更新的时候，系统在前一个更新周期使用寻呼消息提示用户，系统广播消息将发生改变，但是在这个更新周期中，仍然发送原来的系统信息。在下一个更新周期，将发送改变之后的系统信息，终端根据该信息进行更新。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" data-sub-html="<h2>系统广播信息的更新</h2>">
-        
-    </a><figcaption class="image-caption">系统广播信息的更新</figcaption>
-    </figure>
-<h3 id="对连接的控制">对连接的控制</h3>
-<p><strong>连接控制</strong>指的是对接入网中的无线承载进行控制的功能，包括<strong>信令承载的建立</strong>／<strong>重配置</strong>／<strong>重建立</strong>／<strong>释放</strong>、<strong>数据承载的建立</strong>／<strong>配置</strong>／<strong>释放</strong>，以及相关的<strong>完整性保护</strong>和<strong>数据加密</strong>的通信安全机制。</p>
-<h4 id="连接管理">连接管理</h4>
-<p>LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer，SRB）：</p>
+<h3 id="上行功率控制">上行功率控制</h3>
+<p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
+<p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
+<center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
+<p>其中：</p>
 <ul>
-<li>
-<p><code>SRB0</code> 用于承载公用控制逻辑信道（CCCH）的 RRC 消息</p>
-</li>
-<li>
-<p><code>SRB1</code> 主要用于承载专用控制逻辑信道（DCCH）的 RRC 消息</p>
-<p>通常所说的建立 RRC 连接指的是信令无线承载 SRB1 的建立。</p>
-</li>
-<li>
-<p><code>SRB2</code> 用于承载专用控制逻辑信道（DCCH）的核心网非接入层（NAS）控制信息。</p>
-</li>
+<li>$P_{CMAX}$ 表示终端的最大发射功率</li>
+<li>$M_{PUSCH}(i)$ 表示 <code>PUSCH</code> 的传输带宽（RB 数目）</li>
+<li>$PL$ 是终端测量得到的下行大尺度损耗</li>
+<li>$∆TF (i)$ 表示由调制编码方式和数据类型（控制信息或者数据信息）所确定的功率偏移量。</li>
+<li>$KS＝1.25$ 或者 0，表示是否针对不同的调制方式进行补偿</li>
+<li>$f(i)$ 是由终端闭环功率控制所形成的调整值。它的数值根据 <code>PDCCH Format0/3/3A</code> 上的功率控制命令进行调整</li>
 </ul>
-<p>终端开机在网络中进行注册之后处于空闲状态，终端首先建立传输 <code>RRC</code> 消息的信令承载 <code>SRB1</code>，终端进入 <code>RRC 连接状态</code>，然后，系统建立传输 <code>NAS</code> 消息的信令无线承载 <code>SRB2</code> 和传输数据的无线承载 <code>DRB</code>，由此可以开始进行数据的通信。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" data-sub-html="<h2>RRC 连接建立的过程</h2>">
-        
-    </a><figcaption class="image-caption">RRC 连接建立的过程</figcaption>
-    </figure>
-<p>进入 <code>RRC 连接状态</code>之后，采用 <code>RRC 连接重配置</code>的过程来进行 <code>SRB2</code> 和 <code>DRB</code> 的建立和管理。</p>
-<p>重配置过程在连接状态下对 RRC 连接进行更改，包括：</p>
+<p>物理层有两种闭环功率控制类型：</p>
 <ul>
-<li>建立／更改／释放无线承载，</li>
-<li>进行小区切换的过程</li>
-<li>建立／更改／释放终端的测量和上报</li>
+<li><strong>累计型（accumulation）</strong></li>
+<li><strong>绝对值型（absolute）</strong></li>
 </ul>
-<p>对应于这些功能，RRC 连接重配置消息中可能携带的信息包括：</p>
+<p>与上行数据调度相类似</p>
 <ul>
-<li>无线资源的配置情况（无线承载、MAC 层和物理层），其中含有如下信息：
+<li>在 <code>FDD</code> 情况下，<code>PDCCH Format 0/3/3A</code> 功率控制命令和相应的 <code>PUSCH</code> 发送之间的时延是 4ms</li>
+<li>在 <code>TDD</code> 情况下，该时延的数值根据上下行时间分配比例的不同而有所不同</li>
+</ul>
+<p>与功率控制相结合，可以通过小区之间交换干扰情况的信息，进行协调的调度，抑制小区间的同频干扰，小区间 X2 接口上交互的信息有两种：</p>
 <ul>
-<li>公共的配置信息，描述了移动性控制信息和系统信息中公共的无线资源配置情况，例如随机接入信道的参数、系统上行 sounding 导频配置和上行功率控制参数等静态的物理层配置信息</li>
-<li>专用的配置信息，专用的配置信息用于无线承载的管理，例如<code> MAC 层</code>配置、<code>SPS 调度</code>以及专用的物理层配置等</li>
+<li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
+<li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
 </ul>
-</li>
-<li>移动性控制的相关参数</li>
-<li>无线测量的配置信息</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" data-sub-html="<h2>RRC 连接重配置的过程</h2>">
-        
-    </a><figcaption class="image-caption">RRC 连接重配置的过程</figcaption>
-    </figure>
-<p>按照 <code>RRC 连接重配置</code>消息中携带的配置信息，无线承载建立的过程包括建立一个 <code>PDCP 实体</code>、建立一个 <code>RLC 实体</code>，以及按照指定的逻辑信道标识建立一个逻辑信道。</p>
-<p>与建立的过程相对应，当 <code>RRC 连接重配置</code>消息指示释放某个无线承载的时候，将释放相应的 <code>PDCP 实体</code>、<code>RLC 实体</code>和<code>逻辑信道</code>。通过 <code>RRC 连接</code>释放的过程，终端由 <code>RRC 连接状态</code>转变为<code>空闲状态</code>。这个过程释放 <code>RRC 连接</code>，包括所有已经建立的信令和数据的无线承载，以及所有的无线资源。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" data-sub-html="<h2>RRC连接释放的过程</h2>">
-        
-    </a><figcaption class="image-caption">RRC连接释放的过程</figcaption>
-    </figure>
-<h4 id="通信安全的功能">通信安全的功能</h4>
-<p>为了保证通信的安全，防止窃听、伪装等恶意行为，无线接入网的连接控制中包含安全通信的相关功能，包括：</p>
+<h3 id="下行功率分配">下行功率分配</h3>
+<p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
+<p>下行功率分配中包括了</p>
 <ul>
-<li>信令消息的完整性保护</li>
-<li>信令消息加密</li>
-<li>数据消息的加密</li>
+<li>提高导频信号的发射功率（即 power boosting）</li>
+<li>用户调度相结合实现小区间干扰抑制的相关机制</li>
 </ul>
-<p>在 <code>RRC</code> 连接建立的过程中，无线接入网从核心网取得终端用户的相关信息，然后可以使用安全模式激活的 RRC 消息设置用户密钥和加密算法，开启信令完整性保护和加密的功能，从而保证后续通信过程的安全（包括 <code>SRB2</code> 和 <code>DRB</code> 的建立等）。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" data-sub-html="<h2>安全模式激活的过程</h2>">
-        
-    </a><figcaption class="image-caption">安全模式激活的过程</figcaption>
-    </figure>
-<p>在通信的过程中还可以通过计数器检查（counter check）的 <code>RRC 消息</code>防止<code>中间人</code>（man in the middle）攻击。在计数器检查的过程中，网络发送计数器检查消息要求终端确认在每个数据无线承载 <code>DRB</code> 上发送和接收数据的数量，通过这样的方法可以排除<code>中间人</code>可能进行的伪装通信。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" data-sub-html="<h2>计数器检查的过程</h2>">
-        
-    </a><figcaption class="image-caption">计数器检查的过程</figcaption>
-    </figure>
-<h3 id="终端移动性的管理">终端移动性的管理</h3>
-<p>终端移动性的管理是 LTE 作为移动通信系统一个重要的控制功能，实现相关功能的协议包括:</p>
+<p>小区公用导频信号（CRS）在频率上和时间上采用<strong>恒定</strong>的发射功率，基站通过高层信令指示该发射功率的数值，在接收端，终端通过测量该信号的平均接收功率并与信令指示的发射功率进行比较，获得<strong>大尺度衰落</strong>的数值。</p>
+<p>下行共享信道 <code>PDSCH</code> 的发射功率表示为 <code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值，即 $ρA$ 和 $ρB$ 。其中</p>
 <ul>
-<li>终端与无线接入网之间的 RRC 控制协议</li>
-<li>终端与核心网之间非接入层（NAS）控制协议</li>
+<li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
+<li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
 </ul>
-<h4 id="空闲状态终端的移动性管理">空闲状态终端的移动性管理</h4>
-<p>处于 <code>RRC 空闲状态</code>的终端与无线接入网没有建立 <code>RRC</code> 连接，终端的信息在核心网中注册并且分配有 <code>IP</code> 地址，无线接入网中不存储空闲状态终端的信息。终端进行自身的移动性管理，发起小区选择／重选，当跟踪区位置发生改变的时候向核心网进行登记。核心网记录终端所处的跟踪区位置（TrackingArea，TA，通常由相邻覆盖的若干个小区组成），核心网可以发起对终端的寻呼，终端根据核心网配置的 <code>DRX</code> 周期监听可能的寻呼消息。空闲状态的终端<strong>不能进行</strong>单播数据的传输。</p>
-<p>在终端开机的过程中，首先根据 <code>PLMN</code>（公众网络标识）进行网络的选择，选定例如某个运营商的网络，之后终端进行小区选择，确定所驻留的小区，侦听该小区的控制信道。然后采用跟踪区改变的流程向核心网注册终端所处的跟踪区位置。</p>
-<p>终端在移动的过程中，可能由一个小区无线信号的覆盖范围进入另一个小区的覆盖范围，这时候终端将进行小区重选的操作，改变所驻留侦听控制信道的小区。如果这个小区与前一个小区属于不同的跟踪区，那么在小区重选之后，终端将发起跟踪区改变的流程，使用非接入层（NAS）信令向核心网注册新的跟踪区位置。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-sub-html="<h2>空闲状态终端的寻呼和跟踪区改变</h2>">
+<h4 id="提高-crs-导频信号的发射功率即-power-boosting">提高 CRS 导频信号的发射功率（即 power boosting）</h4>
+<p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
+<blockquote>
+<p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
+<p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-sub-html="<h2>两种情况下天线端口 #0 的信号功率</h2>">
         
-    </a><figcaption class="image-caption">空闲状态终端的寻呼和跟踪区改变</figcaption>
+    </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
     </figure>
-<p>当有呼叫到达或者是系统消息改变需要向空闲状态的终端发送寻呼消息的时候，核心网<code>移动控制实体</code>（MME）根据终端所注册的跟踪区位置，找到相对应的跟踪区列表，然后在列表中所有的跟踪区上，发送针对该终端的寻呼消息。</p>
-<h4 id="连接状态终端的移动性管理">连接状态终端的移动性管理</h4>
-<p>处于 <code>RRC 连接状态</code>的终端与无线接入网建立了 <code>RRC</code> 连接，终端的信息在核心网和无线接入网中都进行存储和管理。网络登记终端所处的小区位置，终端的移动性由网络采用切换的流程进行管理。<code>RRC 连接状态</code>的终端<strong>可以进行</strong>单播数据的传输。为了节省耗电，终端可以采用由无线接入网配置的 <code>DRX</code> 功能。</p>
-<p><code>RRC 连接状态</code>终端的移动性由网络进行控制，网络根据无线接口的情况决定是否改变终端的服务小区，即切换的过程是由网络触发的。为了获取关于无线接口情况的信息，网络可以配置终端进行相关的测量和上报，然后根据上报的结果，触发切换的流程。另外，没有收到终端的测量与上报，网络也可以自行触发进行切换。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-sub-html="<h2>连接状态终端的小区间切换</h2>">
-        
-    </a><figcaption class="image-caption">连接状态终端的小区间切换</figcaption>
-    </figure>
-<h5 id="切换过程">切换过程</h5>
-<p>首先，由源服务小区配置终端进行相关的测量和上报，根据上报的信息，源服务小区判断终端是否需要进行切换并且选择目标小区，触发切换的信令流程：</p>
-<ol>
-<li>通过 <code>eNodeB</code> 之间互联的 <code>X2</code> 接口，源小区向目标小区发送切换请求的消息，该消息中包含了对于目标小区无线资源需求情况的信息。</li>
-<li>如果目标小区确定可以接受终端进行切换，那么目标小区根据要求进行无线资源的准备，并向源小区反馈切换请求确认的消息，该消息包含终端接入目标小区时需要的信息，例如新的 <code>C-RNTI</code> 标识、目标小区的系统信息，以及分配的专用随机接入序列等。</li>
-<li>源服务小区在收到目标小区对于切换请求的确认消息后，采用带有移动性控制信息的 <code>RRC</code> 连接重配置消息将这些来自目标小区的接入配置信息转发给终端，并且命令终端向目标小区进行切换。(<strong>注：</strong> 此时，因为来自核心网数据的传输路由还没有发生改变，源基站还可能负责将数据转发给目标基站。)</li>
-<li>收到 RRC 连接重配置消息的切换命令后，终端根据指示的信息，向目标小区发起接入，采用随机接入的过程获得与目标小区的上行同步以及上行资源的分配。然后，在所分配的上行无线资源上，终端向目标小区发送 RRC 连接重配置完成消息，确认终端已经完成了切换，目标基站已经成为终端的服务基站，可以开始向终端发送数据。</li>
-<li>无线接入网的切换完成后，目标基站将向核心网的<code>移动控制实体</code>（MME）发送<strong>路径切换请求</strong>，并由 <code>MME</code> 协调数据网管（SGW）完成用户数据传输路径的改变，核心网将数据路径转移到目标小区。</li>
-<li>完成数据路径的转换后，目标小区向源小区发送终端上下文释放的消息，以此来确认成功地完成了整个切换的过程，源小区释放对应于该终端用户的相关资源。</li>
-</ol>
-<h4 id="配置终端的测量和上报">配置终端的测量和上报</h4>
-<p>为了进行移动性管理的操作，终端需要根据网络的配置对无线信道的情况进行测量，包括：</p>
+</blockquote>
+<h4 id="用户功率分配和小区间干扰协调">用户功率分配和小区间干扰协调</h4>
+<p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
+<center>$ρ_A =δ_{power-offset} +P_A$</center>
+<p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
+<h2 id="参考">参考</h2>
 <ul>
-<li>同频测量场景</li>
-<li>异频测量场景</li>
-<li>异系统的测量场景</li>
-</ul>
-<p>网络可以通过广播或者专用的控制信息配置终端的测量，对于空闲状态的终端，通过网络广播消息中配置的测量参数，终端完成小区选择／重选等移动性功能。对于 <code>RRC 连接状态</code>的终端，通过 <code>RRC 信令</code>（即 <code>RRC 连接重配置消息</code>）可以对终端进行专门的测量配置，终端向网络上报测量结果，协助网络进行小区切换的移动性管理。</p>
-<p>在进行测量时，如果终端的源服务小区与目标小区工作在相同的载波频率，那么称为<code>同频测量</code>，例如采用频率复用系数等于 1 的同频组网的情况。进行同频测量，<strong>不需要测量间隔</strong>，也就是说，在对同频目标小区进行测量的时候，终端<strong>不需要中断</strong>对源服务小区的信号接收。</p>
-<p>源服务小区和目标小区工作在不同载波频率的场景属于<code>异频测量</code>，为了对异频的目标小区进行测量，通常情况下需要配置测量间隔，终端<strong>中断</strong>对源小区的信号接收，将接收频率调整到目标小区进行测量。</p>
-<p>对终端的测量进行配置的消息内容主要包括<code>测量的对象</code>和<code>测量上报的配置</code>。其中，每一个测量的对象对应于 LTE 系统内同频或者异频的一个载波频率，或者某一个载波频率上异系统 WCDMA 的一个小区列表。而每一个测量上报的配置包括测量上报的格式，例如上报多少个目标小区的测量结果，以及上报的触发条件，包括周期性上报和事件触发两种可能性。</p>
-<p>适用于 LTE 系统内同频或者异频的场景一共定义有 5 种事件，包括：</p>
-<ul>
-<li>A1 事件，服务小区的信号质量优于某个设定的门限</li>
-<li>A2 事件，服务小区的信号质量差于某个设定的门限</li>
-<li>A3 事件，相邻小区的信号质量优于服务小区超过某个设定的门限</li>
-<li>A4 事件，相邻小区的信号质量优于某个设定的门限</li>
-<li>A5，服务小区的信号质量差于某个设定的门限的同时，相邻小区的信号质量优于某个设定的门限</li>
-</ul>
-<p>另外，针对与异系统之间的移动性操作，定义了两种事件：</p>
-<ul>
-<li>B1 事件，异系统相邻小区的信号质量优于某个设定的门限</li>
-<li>B2 事件，服务小区的信号质量差于某个设定的门限的同时，异系统相邻小区的信号质量优于某个设定的门限</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" data-sub-html="<h2>终端测量上报的过程</h2>">
-        
-    </a><figcaption class="image-caption">终端测量上报的过程</figcaption>
-    </figure>
-<h3 id="服务质量qos管理">服务质量（QoS）管理</h3>
-<p>LTE 系统中采用 <code>EPS 承载</code>为单位进行端到端的服务质量（QoS）管理。</p>
-<p><code>EPS</code>（Evolved Packet System）承载是终端和分组数据网网关（P-GW）之间的连接，1 个 <code>EPS 承载</code>包括：</p>
-<ul>
-<li>1 个无线承载，即终端和 eNodeB 基站之间的连接</li>
-<li>1 个 S1 承载，即 eNodeB 和服务网关（S-GW）之间的连接</li>
-<li>1 个 S5/S8 承载，即 S-GW 和 P-GW 之间的连接。</li>
-</ul>
-<p>对于一个终端，网络可以建立<strong>多个</strong> <code>EPS 承载</code>，每个 <code>EPS 承载</code>可以有不同的 <code>QoS</code> 参数，因此除了在不同用户之间实现不同的 <code>QoS</code>，属于同一个用户的多个 <code>EPS 承载</code>也可以实现不同的 <code>QoS</code>，用于一个用户在同时进行的不同业务。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>LTE 系统中的承载</h2>">
-        
-    </a><figcaption class="image-caption">LTE 系统中的承载</figcaption>
-    </figure>
-<p>针对每一个 <code>EPS 承载</code>，由核心网分配 <code>QoS 参数</code>，包括<code>QoS 类别标识</code>（QoS Class Identifier，QCI）和<code>分配和滞留优先级</code>（Allocation and Retention Priority，ARP）。</p>
-<ul>
-<li>QCI 参数描述了承载的 QoS 类别，每一种 QoS 类别都对应于一系列影响数据服务质量的具体系统参数，例如调度的加权、准入门限和排队门限，等等。</li>
-<li>ARP 参数描述了承载的优先级，包括在资源受限的情况下是否允许建立承载，或者是否丢弃某个优先级较低的承载</li>
-</ul>
-<p>另外还有<code>保证数据速率</code>（Guaranteed Bit Rate，GBR）和<code>最大数据速率</code>（Maximum Bit Rate，MBR），这两个参数用于具有保证速率属性的承载。而对于不具有保证速率属性的承载，使用参数<code>最大总速率</code>（Aggregated Maximum Bit Rate，AMBR）来限制一个终端的所有不具有保证速率属性的承载的最大总速率。</p>
-<p>根据核心网确定的 <code>QoS</code> 参数，无线接入网负责执行无线承载部分的 <code>QoS</code> 管理，例如无线资源的调度策略和排队管理策略等。</p>
-<p>RRC 协议可以执行一部分 <code>QoS</code> 管理的功能，主要包括：半持续资源调度的配置，以及通过配置终端上行逻辑信道的优先级，实现对一个终端内多个上行承载的速率控制。</p>
-<h3 id="核心网信令的直接传输">核心网信令的直接传输</h3>
-<p>除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过<code>隧道打包</code>的方式，在终端用户和网络核心网之间传输 NAS 信息。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>上行（NAS）信息的直接传输</h2>">
-        
-    </a><figcaption class="image-caption">上行（NAS）信息的直接传输</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" data-sub-html="<h2>下行（NAS）信息的直接传输</h2>">
-        
-    </a><figcaption class="image-caption">下行（NAS）信息的直接传输</figcaption>
-    </figure>]]></description>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
 </item><item>
-    <title>LTE 系列：MAC 层详解</title>
-    <link>https://www.techkoala.top/lte_mac/</link>
-    <pubDate>Mon, 31 Aug 2020 21:00:31 &#43;0800</pubDate>
+    <title>LTE 系列：共享信道传输与接收</title>
+    <link>https://www.techkoala.top/lte_transmission_and_reception/</link>
+    <pubDate>Tue, 01 Sep 2020 21:14:52 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/lte_mac/</guid>
+    <guid>https://www.techkoala.top/lte_transmission_and_reception/</guid>
     <description><![CDATA[<blockquote>
-<p>LTE MAC 层详解</p>
+<p>LTE 物理层概要</p>
 </blockquote>
-<h2 id="媒体接入控制mac">媒体接入控制（MAC）</h2>
-<p>媒体接入控制（Medium Access Control，MAC）层接收来自上层的 <code>RLC</code> 层的逻辑信道，经过处理后，以传输信道的方式输出到下层的物理层。</p>
-<p>MAC 层的主要功能包括：</p>
+<h2 id="下行共享信道的传输与接收">下行共享信道的传输与接收</h2>
+<p>物理层下行数据传输包含了链路自适应的过程，基站根据终端所上报的<strong>链路质量信息</strong>（CQI/PMI/RI）选择适当的物理资源和相应的编码调制方式进行下行数据的发送，实现对系统下行无线资源的优化利用，达到最佳的性能。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" data-sub-html="<h2>信道状态信息反馈和下行链路自适应传输</h2>">
+        
+    </a><figcaption class="image-caption">信道状态信息反馈和下行链路自适应传输</figcaption>
+    </figure>
+<p>物理层下行共享信道的传输包括了</p>
 <ul>
-<li>逻辑信道向传输信道的映射与复用</li>
-<li>根据不同优先级进行动态的资源调度</li>
-<li>选择传输格式实现动态的速率自适应</li>
-<li>混合自动重传（HybridAutomatic Repeat reQuest，HARQ）的纠错功能</li>
+<li>调度信息（PDCCH）</li>
+<li>数据信息（PDSCH）</li>
 </ul>
-<h3 id="逻辑信道">逻辑信道</h3>
-<p>逻辑信道根据所传输的信息的类型进行定义。LTE 定义的逻辑信道包括：</p>
+<p>在长度为 <code>1ms</code> 的子帧结构中，前面的 1 ～ 3 个 <code>OFDM</code> 符号用于传输下行控制信息，其中包括了传输数据调度信息的 <code>PDCCH</code>；而子帧中剩余的符号用于传输数据信息（PDSCH）。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_45.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_45.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_45.webp" data-sub-html="<h2>下行数据传输的子帧结构</h2>">
+        
+    </a><figcaption class="image-caption">下行数据传输的子帧结构</figcaption>
+    </figure>
+<p>在下行数据接收的过程中，终端对当前子帧中所有 <code>PDCCH</code> 信道进行<strong>盲检测</strong>，如果发现属于自己的调度信息，那么终端将根据该调度信息的指示（包括资源位置、编码调制方法等）解调接收当前子帧中属于自己的 <code>PDSCH</code> 数据信息。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_46.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_46.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_46.webp" data-sub-html="<h2>下行数据的调度与传输</h2>">
+        
+    </a><figcaption class="image-caption">下行数据的调度与传输</figcaption>
+    </figure>
+<p>物理层下行支持 29 种调制编码格式，其中包括了 <code>QPSK</code>、<code>16QAM</code> 和 <code>64QAM</code> 3 种不同的调制方式和不同的信道编码速率（范围是 0.16 ～ 0.92）。根据这样的原则，针对每一种物理资源 <code>PRB</code> 的占用数目，规范中定义了 29 种<strong>传输块大小</strong>（Tranport block size）。</p>
+<p>在进行下行数据传输时，下行调度信息中使用 5 个比特对所调度数据使用的<strong>编码调制格式</strong>（MCS）进行指示。接收端根据该信息可以确定数据所使用的调制方式；</p>
+<p>同时，将这 5 比特 <code>MCS</code> 信息和调度信息中所分配的 <code>PRB</code> 数目相结合，可以查表确定传输块大小，即信道编码数据源大小的信息，由此实现下行数据的正确传输与接收。</p>
+<h2 id="上行共享信道的调度与传输">上行共享信道的调度与传输</h2>
+<p>物理层上行数据的传输包含了链路自适应的调度过程。</p>
+<p>首先，终端在上行发送 <code>Sounding 导频</code> 信号，基站利用该信号对用户上行信道的质量进行测量，根据测量的结果选择适当的物理资源和相应的编码调制方式，在上行资源调度信息中进行指示，终端根据基站的指示进行上行数据的发送，实现对系统上行无线资源的优化利用。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" data-sub-html="<h2>Sounding 导频和上行链路自适应</h2>">
+        
+    </a><figcaption class="image-caption">Sounding 导频和上行链路自适应</figcaption>
+    </figure>
+<p>上行共享信道的传输包括</p>
 <ul>
-<li>用于传输系统广播消息的<strong>广播控制信道</strong>（Broadcast Control CHannel，BCCH）</li>
-<li>用于传输寻呼消息的<strong>寻呼控制信道</strong>（Paging Control CHannel，PCCH）</li>
-<li>分别用于空闲状态和连接状态的终端传输控制信息的<strong>公用和专用控制信道</strong>（Common/ Dedicated Control CHannel，CCCH/DCCH）</li>
-<li>用于传输用户数据信息的<strong>专用业务信道</strong>（Dedicated Traffic CHannel，DTCH）</li>
+<li>上行调度信息（PDCCH）</li>
+<li>数据信息（PUSCH）</li>
 </ul>
-<h3 id="传输信道">传输信道</h3>
-<p>传输信道根据信息传输的方式进行定义。传输信道以<strong>传输块</strong>为单位在发送时间间隔（Transmission Time Interval，TTI）所定义的时间长度内进行每一次的发送，LTE 中设计的 <code>TTI</code> 长度是 1ms。每个传输块都有定义的传输格式，它由网络的调度功能动态地确定，包括传输块大小、调制方式和多天线方案等。</p>
-<p>LTE 定义的传输信道包括：</p>
+<p>根据 <code>PDCCH</code> 上行调度信息的指示，终端使用相应的资源进行上行数据的发送。与下行情况不同的是，在下行共享信道的传输过程中，<strong>调度信息</strong>与对应的<strong>数据信息</strong>处于<strong>同一个子帧内</strong>。而在上行的情况中，终端需要根据 <code>PDCCH</code> 调度信息的指示，进行上行数据的发送，因此二者之间<strong>存在一定的时延</strong>，考虑无线传播和设备处理时间的因素</p>
 <ul>
-<li><strong>广播信道</strong>（Paging CHannel，PCH），采用固定的传输格式，用于传输广播控制信道；</li>
-<li><strong>上行共享信道／下行共享信道</strong>（Downlink/Uplink Shared CHannel，DL-SCH/UL-SCH），支持基于无线信道状态的实时调度、动态的速率自适应、HARQ 软合并和多天线空间复用的传输方式，是 LTE 进行上行和下行数据传输的主要的传输信道。</li>
+<li><code>FDD</code> 中定义该时延的数值为 <code>4ms</code>，即对于在子帧 <code>n</code> 中接收到的 <code>PDCCH</code> 上行调度信息，终端将在子帧 <code>n+4</code> 进行对应的上行数据传输。</li>
+<li><code>TDD</code> 的情况中，在时延最小值等于 <code>4ms</code> 的前提下，还需要区分是上行或者下行子帧，因为只有在属于上行子帧的时间才能进行上行数据的发送。</li>
 </ul>
-<p>在 LTE 空中接口 <code>MAC 层</code>协议功能的处理过程中，逻辑信道向传输信道以及最终的物理信道的映射关系如下所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" data-sub-html="<h2>下行信道映射</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_48.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_48.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_48.webp" data-sub-html="<h2>上行数据的调度与传输</h2>">
+        
+    </a><figcaption class="image-caption">上行数据的调度与传输</figcaption>
+    </figure>
+<p>与下行类似，物理层上行支持 29 种调制编码格式，其中包括了 <code>QPSK</code>、<code>16QAM</code> 和 <code>64QAM</code> 3 种不同的调制方式和不同的信道编码速率（范围是 0.16 ～ 0.92），使用与下行相同的传输块大小的表格定义，规定了在各种 <code>PRB</code> 数目的情况下，所对应的 29 种<strong>传输块大小</strong>（Transport block size）。</p>
+<p>在进行上行数据传输时，上行调度信息中使用 5 个比特指示数据的调制编码格式（MCS），终端根据该信息可以确定所使用的调制方法（QPSK/16QAM/64QAM）；同时，将这 5 比特 <code>MCS</code> 信息和调度信息中所分配的 <code>PRB</code> 数目相结合，可以查表确定传输块大小，即信道编码数据源的大小。最后，终端进行信道编码、速率匹配的信号处理过程，实现上行数据的发送。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：物理信道</title>
+    <link>https://www.techkoala.top/lte_physical_channels/</link>
+    <pubDate>Tue, 01 Sep 2020 21:06:48 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_physical_channels/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 物理信道详解</p>
+</blockquote>
+<h2 id="广播信道pbch">广播信道（PBCH）</h2>
+<p>物理广播信道（Physical Broadcast CHannel，PBCH）用于承载系统的 MIB 广播信息。</p>
+<p>LTE 系统广播信息分为</p>
+<ul>
+<li>
+<p><strong>MIB（Master Information Block）</strong></p>
+<p>系统基本的配置信息，在 <code>PBCH</code> 固定的物理资源上进行传输 <code>MIB</code> 数据块的总长度为 40 比特，包含 24 个信息比特和 16 个 <code>CRC</code> 比特（以加扰的方式携带关于基站发射天线数目（1/2/4）的信息）。信息比特中包括：</p>
+<ul>
+<li>下行系统带宽指示（3 比特）</li>
+<li>PHICH 资源指示（3 比特）</li>
+<li>系统帧号 SFN（8 比特）</li>
+<li>预留的 10 个比特</li>
+</ul>
+<p><code>MIB</code> 信息的传输周期 <code>TTI=40ms</code>，在位于每个 <code>10ms</code> 无线帧的第一个子帧的 <code>PBCH</code> 信道上传输。<code>MIB</code> 数据块经过信道编码、速率匹配和加扰后，得到 1920 比特，映射到 <code>40ms</code> 内，间隔为 <code>10ms</code> 的 4 个子帧的 <code>PBCH</code> 信道的物理资源上。其中，每一个 <code>PBCH</code> 子帧都是可自解码的，也就是说假设信道质量足够好的话，终端可以通过 4 次中的任意一次的接收即可解调出 <code>MIB</code> 信息。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" data-sub-html="<h2>LTE 物理广播信道</h2>">
+        
+    </a><figcaption class="image-caption">LTE 物理广播信道</figcaption>
+    </figure>
+</li>
+<li>
+<p><strong>SIB（System Information Block）</strong></p>
+</li>
+</ul>
+<p><code>PBCH</code> 信道位于每个 <code>10ms</code> 无线帧的第一个子帧，占用 4 个连续的 <code>OFDM</code> 符号，在频域上占用下行频带中心 <code>1.08MHz</code> 的带宽。也就是说，对于各种不同的系统带宽（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），物理广播信道 <code>PBCH</code> 的传输带宽相同，总是占用频带中心的 1.08MHz 带宽（72 个子载波）。物理广播信道 PBCH 频域结构。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" data-sub-html="<h2>物理广播信道 PBCH 频域结构</h2>">
+        
+    </a><figcaption class="image-caption">物理广播信道 PBCH 频域结构</figcaption>
+    </figure>
+<p>当发射天线为 2/4 的时候，<code>PBCH</code> 采用<strong>发送分集</strong>（SFBC/SFBC+FSTD）的方式。在资源映射的时候，为了方便终端在不知道发射天线数目情况下的<strong>盲检测</strong>，对 1、2 或者 4 的发射天线数目，使用相同的物理资源映射方式，即总是空出 4 天线的小区公用导频 <code>CRS</code> 资源。</p>
+<h2 id="下行共享信道pdsch">下行共享信道（PDSCH）</h2>
+<p>下行物理共享信道（Physical Downlink Shared CHannel，PDSCH）用于下行数据的调度传输，是 LTE 物理层主要的下行<strong>数据承载信道</strong>，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
+<ul>
+<li>寻呼信息</li>
+<li>广播信息</li>
+<li>控制信息和业务数据信息</li>
+</ul>
+<p>作为决定物理层性能的关键因素之一，PDSCH 的传输支持各种物理层机制，包括信道自适应的调度，<code>HARQ</code> 和各种 <code>MIMO</code> 机制。</p>
+<h3 id="控制格式指示信道pcfich">控制格式指示信道（PCFICH）</h3>
+<p>物理控制格式指示信道（Physical Control Format Indicator CHannel，PCFICH）指示物理层控制信道的格式。</p>
+<p>在 LTE 中，物理层控制信道（PDCCH）在每个子帧的前几个 <code>OFDM</code> 符号上传输，根据系统物理层控制信息负载情况的不同，该数值可能是 1、2 或者 3（在使用最小值 <code>1.4MHz</code> 的系统带宽的时候，为了提供足够的物理层控制信息的容量，也可以设置为 4）。<code>PCFICH</code> 信道正是对该数值进行了指示，即在当前子帧中，前几个 <code>OFDM</code> 符号用于物理层控制信道 <code>PDCCH</code> 的传输。</p>
+<p><code>PCFICH</code> 指示当前子帧中 <code>PDCCH</code> 的符号数目：1、2、3（当系统带宽 1.4MHz 的时候，取值为 2、3、4）。</p>
+<p><code>PCFICH</code> 的基带处理过程如图所示，其携带的 3 种可能性通过编码映射得到 32 比特的信息，经过 <code>QPSK</code> 调制后形成 16 个调制符号，这 16 个调制符号将映射到子帧第 1 个 <code>OFDM</code> 符号上的 4 个资源单元组 <code>REG</code> 上（每个 <code>REG</code> 包含 4 个 <code>RE</code>，可以承载 4 个调制符号）。为了获得充分的分集增益，这 4 个 <code>REG</code> 均匀地分布在系统下行带宽上。可以注意到，其中频域的起始位置 k 与小区 ID 相关，因此不同小区的 <code>PCFICH</code> 将形成相对的频域偏移，避免不同小区的 <code>PCFICH</code> 之间的干扰。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" data-sub-html="<h2>物理控制信道格式指示信道（PCFICH）</h2>">
+        
+    </a><figcaption class="image-caption">物理控制信道格式指示信道（PCFICH）</figcaption>
+    </figure>
+<p><code>PCFICH</code> 信道采用的发射天线与 <code>PBCH</code> 相同，即 1、2 或者 4。当发射天线数目为 2 或者 4 的时候，使用 <code>SFBC</code>/<code>SFBC+FSTD</code> 的发送分集方式。</p>
+<h3 id="harq-指示信道phich">HARQ 指示信道（PHICH）</h3>
+<p>物理 HARQ 指示信道（Physical HARQ Indicator CHannel，PHICH）承载对上行数据传输的 <code>HARQ</code> <code>ACK</code>/<code>NACK</code> 反馈信息。</p>
+<p>物理层 <code>PHICH</code> 信道的传输以 <code>PHICH</code> 组的形式来组织，1 个 <code>PHICH</code> 信道由 <code>PHICH</code> <strong>组编号</strong>和<strong>组内编号</strong>共同确定。</p>
+<p>1 个 <code>PHICH</code> 组内的多个 <code>PHICH</code> 信道占用<strong>相同</strong>的时频域物理资源，采用<strong>正交扩频序列</strong>的复用方式。</p>
+<ul>
+<li>在 <code>Normal CP</code> 的情况下，采用扩频因子为 4 结合 <code>I/Q</code> 两路 <code>BPSK</code> 调制的复用方式，1 个 <code>PHICH </code>组占用 12 个调制符号（3 个 <code>REG</code>），可以复用 8 个 <code>PHICH</code> 信道</li>
+<li>在 <code>Extended CP</code> 时，针对频率选择性较强的无线信道，采用扩频因子为 2 结合 <code>I/Q </code>两路 <code>BPSK</code> 调制的复用方式，1 个 <code>PHICH</code> 组占用 6 个调制符号，可以复用 4 个 <code>PHICH</code> 信道，此时，2 个 <code>PHICH</code> 组共同占用 3 个 <code>REG</code> 的物理资源</li>
+</ul>
+<p><code>PHICH</code> 信道的基带处理过程如图所示，1 个比特的 <code>ACK</code>/<code>NACK</code>（0/1）信息使用重复编码的方式得到 3 个比特的编码后信息，然后经过 <code>BPSK</code> 调制以及系数为 4 的扩频操作，得到 12 个符号，映射在 <code>PHICH</code> 组所对应的 3 个 <code>REG</code> 的物理资源位置上。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" data-sub-html="<h2>物理 HARQ 指示信道（PHICH）</h2>">
+        
+    </a><figcaption class="image-caption">物理 HARQ 指示信道（PHICH）</figcaption>
+    </figure>
+<ul>
+<li>在频域上，1 个 <code>PHICH</code> 组对应的 3 个 <code>REG</code> 采用分布式的映射方式，以获得分集增益</li>
+<li>在时间上，<code>PHICH</code> 有<strong>正常</strong>（normal）和<strong>扩展</strong>（extended）两种资源映射方式
+<ul>
+<li>在采用正常方式的时候，<code>PHICH</code> 信道映射在子帧的第一个 <code>OFDM</code> 符号上；</li>
+<li>当 <code>PDCCH</code> 的长度为 3 时（在混合载波的 MBSFN 子帧或者 <code>TDD</code> 特殊子帧中，<code>PDCCH</code> 长度为 2 时），<code>PHICH</code> 可以配置为采用扩展的方式，此时每 1 个 <code>PHICH</code> 信道将分布在 <code>PDCCH</code> 所占用的多个 <code>OFDM</code> 符号上。</li>
+</ul>
+</li>
+</ul>
+<p>在 <code>PCFICH</code> 所指示的前 n 个 <code>OFDM </code>符号中，除了用于 <code>PCFICH</code> 和 <code>PHICH</code> 传输的资源外，其余的将用于 <code>PDCCH</code> 的传输。</p>
+<p>为了确定用于 <code>PDCCH</code> 的资源，需要先确定用于 <code>PCFICH</code> 和 <code>PHICH</code> 的资源，其中 <code>PCFICH</code> 的资源是<strong>固定的</strong>，而用于 <code>PHICH</code> 传输的资源数目则由系统在 <code>PBCH </code>广播信息进行半静态的指示。<code>MIB</code> 信息中有 3 个比特用于 <code>PHICH</code> 资源的指示，其中包括了正常或者扩展两种时间长度以及 <code>PHICH </code>组数目 4 种可能性的指示。</p>
+<p><code>PHICH</code> 信道发射天线的数目与 <code>PBCH</code> <strong>相同</strong>，当发射天线数目为 2、4 的时候采用<code> SFBC</code>/<code>SFBC+FSTD</code> 的<strong>发送分集</strong>方式。</p>
+<p><code>PHICH</code> 信道的<strong>索引号</strong>与上行数据传输的资源位置<strong>相对应</strong>，也就是说，<strong>不需要</strong>采用信令进行指示，根据上行 <code>PUSCH</code> 数据传输的资源位置就可以确定下行 <code>PHICH</code> 信号的索引号。</p>
+<p>具体来说，由相应的上行 <code>PUSCH</code> 数据传输使用的第 1 个物理资源块 <code>PRB</code> 的序号所确定。另外，为了使得各个 <code>PHICH</code> 组中实际使用的 <code>PHICH</code> 信道数量的负载均衡，相邻的上行 <code>PRB</code> 位置对应于不同 <code>PHICH</code> 组中的 <code>PHICH</code> 信道。</p>
+<h2 id="下行控制信道pdcch">下行控制信道（PDCCH）</h2>
+<p>下行物理控制信道（Physical Downlink Control CHannel，PDCCH）用于承载物理层的下行控制消息，包括：</p>
+<ul>
+<li>上／下行数据传输的调度信息</li>
+<li>上行功率控制命令信息</li>
+</ul>
+<p><code>PDCCH</code> 信道的传输以控制信道单元（Control Channel Element，CCE）的形式来组织，1 个 CCE 由 9 个 REG 组成（即 9×4=36 个 RE）。根据所占用的 <code>CCE</code> 数目的不同，标准中定义了 4 种 <code>PDCCH</code> 格式，分别占用 1、2、4、8 个 CCE，相应的数值又称为 <code>PDCCH</code> 的聚合等级（Aggregation Level）。</p>
+<p>一个下行子帧可以承载多个 <code>PDCCH</code> 信道，各个 <code>PDCCH</code> 信道进行独立的 <code>CRC</code> 计算、加扰、信道编码并根据 Aggregation Level 进行速率匹配。然后，一个子帧中所有的 <code>PDCCH </code>信道将复用为 1 个数据比特流，对该数据流进行填充，使各个 <code>PDCCH</code> 信道符合定义的 <code>CCE</code> 起始位置的规则（Aggregation Level 为 n 的 <code>PDCCH</code> 的起始位置为 n 整数倍的 <code>CCE</code> 位置）；并且使填充后的数据比特流长度能够充满分配给 <code>PDCCH</code> 的 <code>OFDM</code> 符号的所有资源（除去 <code>PCFICH</code> 和 <code>PHICH</code>）。然后，对形成的数据流进行加扰、调制和多天线映射。最后映射到分配给 <code>PDCCH</code> 的物理资源上。</p>
+<p>在 <code>PDCCH</code> 数据流向物理资源的映射过程中，包含了交织的操作，数据流以 <code>REG</code>（4 个调制符号）为单位进行交织。通过交织的资源映射，每个 <code>PDCCH</code> 信道能够获得充分的分集增益。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" data-sub-html="<h2>下行物理控制信道（PDCCH）</h2>">
+        
+    </a><figcaption class="image-caption">下行物理控制信道（PDCCH）</figcaption>
+    </figure>
+<p><code>PDCCH</code> 信道的发射天线与 <code>PBCH</code> 相同，即 1、2 或者 4。当发射天线数目为 2、4 的时候采用 <code>SFBC</code>/<code>SFBC+FSTD</code> 的发送分集方式。</p>
+<p>终端对 <code>PDCCH</code> 信道的接收采用<strong>盲检测</strong>的方式，即终端根据所使用的下行控制信息（DCI）的格式，解调所有可能属于自己的下行 <code>PDCCH</code> 信道，搜索属于自己的信息。</p>
+<h2 id="随机接入信道prach">随机接入信道（PRACH）</h2>
+<p>物理随机接入信道（Physical RandomAccess CHannel，PRACH）用于终端上行发送随机接入信号（random access preamble），启动随机接入的过程。</p>
+<p>随机接入信号由</p>
+<ul>
+<li><strong>循环前缀（Cyclic Prefix，CP）</strong></li>
+<li><strong>接入序列（Sequence）</strong></li>
+<li>**保护时间（Guard Time，GT）
+**
+3 个部分组成。</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" data-sub-html="<h2>物理随机接入信道</h2>">
+        
+    </a><figcaption class="image-caption">物理随机接入信道</figcaption>
+    </figure>
+<p>根据适用的场景的不同（例如：小区半径和链路的功率预算），LTE 物理层支持 5 种随机接入信号格式，具体使用过程中，由高层信令指示小区所使用的随机接入信道的配置。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" data-sub-html="<h2>随机接入信号格式</h2>">
+        
+    </a><figcaption class="image-caption">随机接入信号格式</figcaption>
+    </figure>
+<p>其中格式 4 的随机接入信号仅用于 <code>TDD Type 2</code> 中，当 <code>TDD</code> 配置特殊时隙 <code>UpPTS</code> 的长度为 2 个 <code>OFDM</code> 符号时，可以在 <code>UpPTS</code> 的位置发送格式 4 的随机接入信号，以较小的开销实现随机接入的功能。</p>
+<p>在频域上，<code>PRACH</code> 占用 6 个 PRB（1.08MHz）的带宽。以 <code>Format 0</code> 为例，<code>PRACH</code> 信号的生成方式如图所示，信号占用的带宽为 <code>1 048.75kHz</code>，不足 <code>1.08MHz</code> 的部分作为频域的保护带。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" data-sub-html="<h2>PRACH preamble 生成方法（Format 0）</h2>">
+        
+    </a><figcaption class="image-caption">PRACH preamble 生成方法（Format 0）</figcaption>
+    </figure>
+<p>LTE 物理层使用 <code>Zadoff-Chu</code> 序列作为生成随机接入信号的序列。每个小区有 64 个可用的序列，由小区的下行广播进行指示。</p>
+<p>小区中分配给上行随机接入信道的物理资源位置由高层信令进行指示。在关于小区随机接入信道配置的信息中，指示了使用的 <code>PRACH</code> 格式以及物理资源的位置。</p>
+<p>对于 <code>FDD Type 1</code>，每个时刻最多传输一个 <code>PRACH</code> 信道，即没有频分复用。结合配置信息中指示的<strong>PRACH 信道的时间位置</strong>和<strong>PRACH 信道频率位置</strong>的信息，可以确定小区中 <code>PRACH</code> 信道的时频资源位置。</p>
+<blockquote>
+<p>例如：设置使用 PRACH Format 0，周期等于 10ms，时间偏移量等于 1 个子帧，频率位置等于 1，那么小区中用于 PRACH 信道的物理资源位置</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" data-sub-html="<h2>随机接入信道的物理资源位置</h2>">
+        
+    </a><figcaption class="image-caption">随机接入信道的物理资源位置</figcaption>
+    </figure>
+</blockquote>
+<p>对于 <code>TDD Type 2</code>，除了在 <code>UpPTS</code> 上支持 <code>PRACH Format 4</code> 的发送之外，同一个时刻还可能传输多个频分的 <code>PRACH</code> 信道。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" data-sub-html="<h2>TDD Type 2 中频分的 PRACH 信道</h2>">
+        
+    </a><figcaption class="image-caption">TDD Type 2 中频分的 PRACH 信道</figcaption>
+    </figure>
+<p>因为 <code>TDD</code> 支持不同的上下行时间比例的配置，在某些配置情况下上行时间较少，所以可能需要在同一个时刻支持多个 <code>PRACH</code> 信道，以提供足够的随机接入信道的容量。在普通子帧中，由于上行两边频带存在 <code>PUCCH</code> 控制信道，而中间是 <code>PUSCH</code> 数据信道，因此 <code>PRACH</code> 信道采用频率偏移结合上下交错的分配方式为 <code>PUCCH</code> 和 <code>PUSCH</code> 信道留出物理资源空间。而对于 <code>PRACH Format 4</code>，由于特殊时隙 <code>UpPTS</code> 上不存在 <code>PUCCH</code> 或者 <code>PUSCH</code> 信道，因此采用了不同的机制：从上行频域的边际开始，连续分布，在两次 <code>UpPTS</code> 之间采用跳频的方式，即交替地从上边带或者下边带开始，这样可以在随机接入信号需要多次传输的时候获得频率分集的增益。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" data-sub-html="<h2>TDD Type 2 中 PRACH Format 4 的频分与跳频</h2>">
+        
+    </a><figcaption class="image-caption">TDD Type 2 中 PRACH Format 4 的频分与跳频</figcaption>
+    </figure>
+<h2 id="上行控制信道pucch">上行控制信道（PUCCH）</h2>
+<p>上行物理控制信道（Physical Uplink Control CHannel，PUCCH）传输物理层上行控制信息，包括<strong>上行调度请求</strong>、<strong>对下行数据的 ACK/NACK 信息</strong>和<strong>信道状态信息 CSI 反馈（包括 CQI/PMI/RI）</strong>。</p>
+<p>每 1 组 <code>PUCCH</code> 信道占用 1 个 <code>RB-pair</code> 的物理资源，采用时隙跳频的方式，在系统上行频带的两边进行传输，而上行频带的中间部分用于传输上行共享信道（PUSCH）的数据。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" data-sub-html="<h2>PUCCH 信道的资源分布</h2>">
+        
+    </a><figcaption class="image-caption">PUCCH 信道的资源分布</figcaption>
+    </figure>
+<p>根据所承载的上行控制信息，物理层设计了不同的 <code>PUCCH</code> 格式，对应于不同的发送方法。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" data-sub-html="<h2>PUCCH 信道不同的格式</h2>">
+        
+    </a><figcaption class="image-caption">PUCCH 信道不同的格式</figcaption>
+    </figure>
+<p>根据不同格式的 <code>PUCCH</code> 信道的特点，它们在频域的分布情况如图所示。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" data-sub-html="<h2>不同格式 PUCCH 信道在频域的分布情况</h2>">
+        
+    </a><figcaption class="image-caption">不同格式 PUCCH 信道在频域的分布情况</figcaption>
+    </figure>
+<ul>
+<li>PUCCH 2/2a/2b 承载的是信道状态 <code>CSI</code> 的反馈信息，在系统配置中，这一部分资源的数量是相对固定的，因此将它们分布在频带的最外侧，资源的具体数量通过高层信令进行半静态的指示。</li>
+<li><code>PUCCH 1/1a/1b</code> 承载的是调度请求信息和对下行数据的 <code>ACK</code> 信息，资源数量是动态变化的，与小区中发送的下行数据的数量相关，因此将这一部分资源放置在稍靠近频率中心的位置，方便将系统剩余的频率资源用于上行共享信道 <code>PUSCH</code> 的传输。</li>
+</ul>
+<p>在所占用的 1 个 <code>RB-pair</code> 的时频域资源中，<code>PUCCH 1/1a/1b</code> 和 <code>PUCCH 2/2a/2b</code> 都采用了码分的方式进一步地复用多个 <code>PUCCH</code> 信道。因此当配置的 <code>PUCCH 2/2a/2b</code> 信道数量所占用的资源数目不是 <code>RB-pair</code> 整数倍的时候，在 <code>PUCCH 2/2a/2b</code> 和 <code>PUCCH 1/1a/1b</code> 频域的交界处将出现它们在某 1 个 <code>RB-pair</code> 内以码分的方式混合传输的情况。</p>
+<h3 id="pucch-格式-11a1b">PUCCH 格式 1/1a/1b</h3>
+<p><code>PUCCH</code> 格式 <code>1/1a/1b</code> 用于终端发送<strong>调度请求信息</strong>或者<strong>1、2 比特的 ACK/NACK 信息</strong>。</p>
+<p>使用一个调制符号 $d(0)$ 来表示 <code>PUCCH 1/1a/1b</code> 发送的信息。对于 <code>PUCCH 1</code> 的<strong>调度请求信息</strong>，基站侧仅需要检测是否存在这样的发送，此时的 $d(0)$ 设置为预定义的固定值（d(0)=1）。对于 <code>PUCCH 1a/1b</code> 的 <code>ACK</code> 信息，$d(0)$ 为 <code>BPSK</code> 或者 <code>QPSK</code> 调制符号，分别对应于 1 比特或者 2 比特的 <code>ACK</code> 信息。</p>
+<p>在信息的发送过程中，首先使用正交扩频序列 $w(m)$ 进行扩频，将信息分散在一个时隙内用于 PUCCH 传输的多个上行符号上；然后，在每个上行符号上使用 1 个长度为 12 的 <code>Zadoff-Chu</code> 序列 $r_{u,v}^{\alpha}$ 进行调制，得到长度为 12 的复数序列对应于 1 个 <code>RB</code> 内的 12 个子载波。因此，<code>PUCCH 1/1a/1b</code> 的发送包含了**正交扩频序列**和**Zadoff-Chu 序列**两次码扩频的过程，可以复用的信道数目为二者的乘积。</p>
+<blockquote>
+<p>例如：在使用 Normal CP 的情况下有 3 个正交扩频序列，而所使用的 Zadoff-Chu 序列的长度为 12，假设设置 Zadoff-Chu 序列循环移位（Cyclic Shift）的复用间隔为 2，那么 1 个 RB-pair 上可以复用 3×6=18 个 PUCCH 1/1a/1b 信道。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" data-sub-html="<h2>PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）</h2>">
+        
+    </a><figcaption class="image-caption">PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）</figcaption>
+    </figure>
+</blockquote>
+<p>为了增强信号的随机性，在 <code>PUCCH 1/1a/1b</code> 的发送过程中包含了<strong>跳频</strong>的概念。包括两种跳频：</p>
+<ul>
+<li>子帧内的 2 个时隙使用不同的正交扩频序列 $w(m)$，即<strong>正交序列跳频</strong></li>
+<li>时隙内的不同上行符号之间使用 <code>Zadoff-Chu</code> 序列不同的循环移位，即<strong>Cyclic Shift 跳频</strong></li>
+</ul>
+<h3 id="pucch-format-22a2b">PUCCH Format 2/2a/2b</h3>
+<p><code>PUCCH</code> 格式 2 用于终端发送信道状态信息（Channel State Information，CSI），包括：</p>
+<ul>
+<li><strong>信道质量指示（Channel Quality Indicator，CQI）</strong></li>
+<li><strong>预编码向量指示（Precoding Matrix Indicator，PMI）</strong></li>
+<li><strong>复用秩的指示（Rank Indicator，RI）</strong></li>
+</ul>
+<p>在 <code>Normal CP</code> 的情况下，<code>PUCCH 格式 2</code> 还可以扩展成 <code>PUCCH 格式 2a/2b</code>，在这两种格式中，通过对 <code>PUCCH 格式 2</code> 中的导频符号进行调制，在 <code>CSI</code> 信息的基础上，进一步承载 1 或者 2 比特的 <code>ACK</code>/<code>NACK</code> 信息。</p>
+<p><code>CSI</code> 信息经过信道编码和加扰后形成长度为 20 比特的数据流，经过 <code>QPSK</code> 调制后形成 10 个调制符号（d(0)，…，d(9)），在 <code>PUCCH Format 2/2a/2b</code> 上发送。</p>
+<p><code>PUCCH Format 2/2a/2b</code> 信息的发送过程与 <code>PUCCH Format 1/1a/1b</code> 类似，只是<strong>没有了扩频的操作</strong>，因为要<strong>发送更多</strong>的比特信息。</p>
+<p>对于要发送的调制符号信息 d(0)，…，d(9)，在每个符号上使用长度为 12 的 <code>Zadoff-Chu</code> 序列 $r_{u,v}^{\alpha}$ 进行调制，然后将各个符号调制的结果映射在子帧内相应上行符号 1 个 <code>RB</code> 内的 12 个子载波上。通过长度为 12 的 <code>Zadoff-Chu</code> 序列的不同循环移位来进行同一个 RB 内不同 <code>PUCCH 2/2a/2b</code> 信道的复用。</p>
+<blockquote>
+<p>假设设置 <code>Zadoff-Chu</code> 序列循环移位的复用间隔为 2，那么 1 个 <code>RB-pair</code> 上可以复用 6 个 <code>PUCCH 2/2a/2b</code> 信道。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" data-sub-html="<h2>PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）</h2>">
+        
+    </a><figcaption class="image-caption">PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）</figcaption>
+    </figure>
+</blockquote>
+<p>在 <code>PUCCH 2a/2b</code> 中，除了 20 个比特的 <code>CSI</code> 信息之外，还承载 1 或者 2 比特的 <code>ACK</code> 信息。该 <code>ACK</code> 信息将通过 <code>BPSK</code> 或者 <code>QPSK</code> 的调制，形成一个调制符号 d(10)，然后调制在导频符号上进行传输。</p>
+<p><code>PUCCH 2a/2b</code> <strong>仅适用</strong>于 <code>Normal CP</code> 的情况，对于 <code>Extended CP</code> 的情况，由于 <code>PUCCH 格式 2</code> 的每个时隙内只有 1 列上行导频，难以将 <code>ACK</code>/<code>NAK</code> 信息调制在导频中。所以，在这种情况下，如果 <code>ACK</code>/<code>NAK</code> 和 <code>CQI</code> 需要<strong>同时</strong>传输，那么将对它们进行<strong>联合编码</strong>，形成 20 比特的编码后数据，采用 <code>Extended CP</code> 的 <code>PUCCH 格式 2</code> 进行发送。</p>
+<h2 id="上行共享信道pusch">上行共享信道（PUSCH）</h2>
+<p>上行物理共享信道（Physical Uplink Shared CHannel，PUSCH）用于上行数据的调度传输，是物理层主要的上行数据承载信道，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
+<ul>
+<li>控制信息</li>
+<li>用户业务信息</li>
+</ul>
+<p>与下行物理共享信道 <code>PDSCH</code> 相似，<code>PUSCH</code> 信道是决定系统上行数据传输性能的关键，因此，<code>PUSCH</code> 的传输支持各种物理层机制，包括<strong>信道自适应的调度</strong>、<strong>HARQ</strong> 等。</p>
+<p><strong>值得一提的是</strong>，上行物理层采用单载波（DFT-SOFDM）作为多址方式，这样的多址方式对终端上行功率效率方面带来好处的同时也带来了一些<strong>限制</strong>。</p>
+<blockquote>
+<p>例如：为了保持上行单载波的特性，LTE Release 8 物理层不支持单用户的上行共享信道（PUSCH）和上行控制信道（PUCCH）的频分复用，即 1 个用户不能在一个时刻同时发送 <code>PUSCH</code> 信道和 <code>PUCCH</code> 信道。当用户有上行数据 <code>PUSCH</code> 正在发送的时候，如果需要同时发送物理层上行控制信息（CSI、ACK 或者 RI），那么这些信息不能在 <code>PUCCH</code> 信道上传输，而是将这些控制信息与数据信息一起复用在 <code>PUSCH</code> 信道上进行传输。</p>
+</blockquote>
+<p>另外，单载波（DFT-SOFDM）多址方式的处理过程中包含了 <code>DFT</code> 的操作，为了降低 <code>DFT</code> 运算的复杂度，便于使用类似 <code>FFT</code> 的快速算法，标准中对上行 <code>PUSCH</code> 信道子载波分配的数目进行了规定，即上行分配的 RB 数目的数值必须能够被 2、3、5 这 3 个质数所分解，即必须满足条件$=2_{α2}、3_{α3}、5_{α5}$，其中 $α2 、α3 和 α5$ 是非负整数。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：物理信号</title>
+    <link>https://www.techkoala.top/lte_physical_signals/</link>
+    <pubDate>Tue, 01 Sep 2020 21:02:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_physical_signals/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 物理信号详解</p>
+</blockquote>
+<h2 id="导频信号">导频信号</h2>
+<h3 id="下行导频信号">下行导频信号</h3>
+<p>物理层定义了 3 种下行导频信号（Reference Signal，RS），包括：</p>
+<ul>
+<li>
+<p><strong>普通子帧的小区导频信号（Cell-specific RS，CRS）</strong></p>
+<p>指的是小区在下行<strong>普通子帧</strong>中<strong>全频带广播发送</strong>的导频信号，该信号以<strong>小区为单位</strong>，可以作为小区内用户进行<strong>下行测量</strong>、<strong>同步</strong>以及<strong>数据解调</strong>的参考符号</p>
+</li>
+<li>
+<p><strong>MBSFN 导频信号</strong></p>
+<p>指的是小区在下行 <strong>MBSFN 子帧</strong>中<strong>全频带广播发送</strong>的导频符号，该信号以 <strong>MBSFN 小区</strong>或<strong>小区集合为单位</strong>，可以用作对<strong>广播／多播（Malticast/Broadcast）业务情况下的下行测量</strong>、<strong>同步</strong>以及<strong>数据解调</strong>的参考符号</p>
+</li>
+<li>
+<p><strong>用户专用导频信号（UE-specific RS，又称为 DRS，Dedicated RS）</strong></p>
+<p>指的是小区在下行<strong>普通子帧</strong>中发送的<strong>用户专用</strong>的导频信号，该信号以<strong>用户为单位</strong>，通过高层信令指示是否发送了该信号并且用作<strong>用户下行数据解调</strong>的参考符号。DRS 仅在承载该用户数据的资源块上传输。</p>
+</li>
+</ul>
+<h4 id="导频序列">导频序列</h4>
+<p>使用 <code>gold 序列</code> 生成的<code>伪随机（PN）序列</code>作为物理层下行导频信号（CRS/MBSFN RS/DRS）使用的复数序列，序列的数学表达式是：</p>
+<center>$r_{l,n_s}=\frac{1}{\sqrt{2}}(1-2c(2m))+j\frac{1}{\sqrt{2}}(1-2c(2m+1))$</center>
+<p>其中，$c(n)$是寄存器长度为 31 的 <code>gold 序列</code>，生成的序列由初始值 <code>cinit</code> 所确定。</p>
+<p>3 种下行导频信号，根据各自的特性，序列的初始值有相应的设置方法。</p>
+<ul>
+<li>对于<strong>普通子帧的小区导频信号</strong>，即 <code>CRS</code>。信号的发送以小区为单位，每个小区有各自的导频序列，序列的初始值与 <code>小区 ID</code>（$N_{ID}^{cell}$ ，0 ～ 503）相关。为了保证导频序列具有充分的随机性，在每个包含 <code>CRS</code> 的 <code>OFDM</code> 符号上，根据 <code>OFDM</code> 符号的位置（时隙在无线帧中的编号 ns ：0 ～ 19、OFDM 符号在时隙内的序号：0 ～ 6/0 ～ 5）、小区使用的 <code>CP</code> 选项（NCP =1/0：Normal CP/Extended CP）结合前面提到的 <code>小区 ID</code>（$N_{ID}^{cell}$）共同确定该符号上所使用的 <code>CRS</code> 导频序列的初始值。具体的数学表达式为：</li>
+</ul>
+<center>$c_{init}=2^{10}(7(n_s+1)+l+1)(2N_{ID}^{cell}+1)+2N_{ID}^{cell}+N_{CP}$</center>
+<ul>
+<li>对于 <strong>MBSFN 导频信号</strong>，信号的发送以 <code>MBSFN</code> 小区／小区集合为单位。序列的初始值与 <code>MBSFN ID</code> 相关，在每个包含 <code>MBSFN</code> 导频的 <code>OFDM 符号</code> 上，根据 <code>OFDM 符号</code> 的位置和 <code>MBSFN ID</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
+</ul>
+<center>$c_{init}=2^9(7(n_s+1)+l+1)(2N_{ID}^{MBSFN}+1)+N_{ID}^{MBSFN}$</center>
+<ul>
+<li><strong>用户专用导频信号</strong>，即 <code>DRS</code>。信号的发送以用户为单位，每个用户有各自的导频。序列以子帧为单位进行初始化，在每个子帧的开始，根据 <code>子帧的位置</code>、<code>小区 ID</code>（alt ）以及 <code>用户的 RNTI</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
+</ul>
+<center>$c_{init}=(\left\lfloor\frac{n_s}{2}\right\rfloor)(2N_{ID}^{cell}+1)2^{16}+n_{RNTI}$</center>
+<h4 id="导频图案">导频图案</h4>
+<p>导频信号在<strong>时频域</strong>的图案规定了放置导频符号的<strong>时频域资源位置</strong>，LTE 物理层导频图案采用了<strong>二维</strong>的设计方法，规定了下行各个天线端口（Antenna port）导频信号的时频域位置，包括：</p>
+<ul>
+<li><strong>普通子帧的小区公用导频信号</strong>（CRS）支持 1 ～ 4 个发送天线使用的 Antenna port 0 ～ 3</li>
+<li>用于 <strong>MBSFN</strong> 发送的 Antenna port 4</li>
+<li>用于<strong>用户专用导频</strong>（DRS）的 Antenna port 5</li>
+</ul>
+<h5 id="小区公用导频信号">小区公用导频信号</h5>
+<p>小区公用导频信号支持<strong>最多 4 个</strong>天线端口的发送（port 0 ～ 3）</p>
+<ul>
+<li>对于前 2 个天线端口（port 0 ～ 1），每个时隙有 2 个 <code>OFDM</code> 符号携带导频符号</li>
+<li>对于后 2 个天线端口（port 2 ～ 3），每个时隙有 1 个 <code>OFDM</code> 符号携带导频符号</li>
+</ul>
+<p>在每个 <code>OFDM</code> 符号内导频符号的频域间隔为 6 个子载波，采用交错放置的方式。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" data-sub-html="<h2>下行正常子帧小区导频信号图案（CRS）</h2>">
+        
+    </a><figcaption class="image-caption">下行正常子帧小区导频信号图案（CRS）</figcaption>
+    </figure>
+<p>为了避免同基站不同发射天线端口之间导频与数据的干扰，在某一天线端口的导频位置上，同一基站的其他天线端口空出相应的时频资源。小区 CRS 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的<strong>相对偏移</strong>，避免<strong>不同小区</strong>的导频之间的<strong>同频干扰</strong>。</p>
+<h5 id="mbsfn-导频">MBSFN 导频</h5>
+<p><code>MBSFN</code> 导频采用单天线端口的发送，即 port 4。由于 MBSFN 广播／多播的业务特性，较大的小区半径和多小区信号的合并带来的时延扩展增加了无线信道的频率选择性。为了适应这样的特点，导频采用<strong>较小的频域间隔</strong>，即每 2 个子载波放置 1 个导频符号（在 MBSFN 专用载波采用 7.5kHz 子载波间隔时，每 4 个子载波放置 1 个导频符号）。另外，根据广播业务的移动性特点，适当地降低了导频信号在时间上的密度。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-sub-html="<h2>下行 MBSFN 导频图案</h2>">
+        
+    </a><figcaption class="image-caption">下行 MBSFN 导频图案</figcaption>
+    </figure>
+<p><code>MBSFN</code> 导频<strong>只</strong>支持在 <code>Extended CP</code> 情况下发送。MBSFN 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>无关</strong>，<strong>各小区</strong>导频在<strong>相同的频域位置</strong>，实现 MBSFN 集合内的<strong>不同小区</strong>导频信号的<strong>宏分集接收</strong>。</p>
+<h5 id="用户专用导频">用户专用导频</h5>
+<p>LTE Release 8 中用户专用导频信号采用<strong>单天线端口</strong>的发送，即天线端口 5。通过高层信令的指示，通知终端在数据传输中是否使用了用户专用导频，以及终端是否应该使用用户专用导频进行下行数据的解调。（DRS 主要用于支持下行波束赋形，即 BeamForming 操作）</p>
+<p>在发送 <code>UE specific</code> 的专用导频时，保持<strong>小区公用导频信号</strong>（CRS）不变，插入用户专用导频符号，每个 <code>PRB pair</code> 中发送 12 个用户专用导频符号。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-sub-html="<h2>下行用户专用导频图案</h2>">
+        
+    </a><figcaption class="image-caption">下行用户专用导频图案</figcaption>
+    </figure>
+<p>用户专用导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的相对偏移，避免导频之间的<strong>同频干扰</strong>。</p>
+<p>在专用导频与物理信道／信号（PBCH/PSS/SSS）<strong>发生位置冲突</strong>的时候，将<strong>丢弃</strong>冲突位置的专用导频的传输，即对专用导频进行<strong>打孔</strong>。因为仅在有数据发送时才进行 <code>DRS</code> 的传输，而小区导频 <code>CRS</code> 是<strong>始终</strong>在传输的，因此，即使用户数据的发送使用了 <code>DRS</code>，用户对于下行信道质量，即 <code>CQI</code> 的测量将<strong>始终</strong>基于小区 <code>CRS</code> 导频。</p>
+<h3 id="上行导频信号">上行导频信号</h3>
+<p>物理层定义了两种上行导频信号，包括：</p>
+<ul>
+<li>
+<p><strong>数据解调导频（DeModulation RS，DMRS）</strong></p>
+<p>指的是终端在<strong>上行共享信道</strong>或者<strong>上行控制信道</strong>（PUSCH/PUCCH）中发送的导频信号，用于基站接收上行数据／控制信息时进行解调的参考符号</p>
+</li>
+<li>
+<p><strong>Sounding 导频（Sounding RS，SRS）</strong></p>
+<p>指的是终端在上行发送的用于<strong>信道状态测量</strong>的导频信号，基站通过接收该信号测量上行信道的状态，相关的信息用于对上行数据传输的自适应调度。在 <code>TDD</code> 的情况下，由于同频段上下行信道的对称性，通过对上行 <code>SRS</code> 的测量还可以获得下行信道状态的信息，可用于辅助下行传输</p>
+</li>
+</ul>
+<h4 id="导频序列-1">导频序列</h4>
+<p>使用具有<strong>衡包络零自相关</strong>（ConstantAmplitude ZeroAutoCorrelation，CAZAC）特性的序列作为上行导频序列（DMRS/SRS），长度为 $M_{SC}^{RS}$ 的导频序列的数学表达式为：</p>
+<center>$r_{u,v}^{(α)}=e^{jan}\bar{r}_{u,v}(n) , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
+<p>其中 $\bar{r}_{u,v}(n)$ 表示基序列，由<code>基序列组的编号 u</code>和<code>组内的基序列编号 v</code>共同确定。$α$ 是对基序列的<strong>循环移位</strong>（Cyclic Shift），相同基序列的不同移位将形成不同的导频序列。</p>
+<ul>
+<li>
+<p>对于长度大于或者等于 36 的导频序列，使用长度为质数的 <code>Zadoff-Chu</code> 序列生成基序列，以保证良好的自相关和互相关特性，序列的数学表达式是：</p>
+<center>$\bar{r}_{u,v}(n)=x_q(n mod N_{ZC}^{RS} , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
+<p>其中 $x_q$ 是序号为 q、长度是 $N_{ZC}^{RS}$ 的 <code>Zadoff-Chu</code> 根序列，即 $x_q(m)=e^-j\frac{\pi qm(m+1)}{N_{ZC}^{RS}}$ 。序号 q 由基序列的编号 $\frac{u}{v}$ 确定，长度 $N_{ZC}^{RS}$ 是小于导频序列长度 $M_{SC}^{RS}$ 的最大质数。</p>
+</li>
+<li>
+<p>对于长度小于 36，即长度为 12 或者 24 的导频序列，使用计算机搜索的方法以获得自相关／互相关特性最优的序列。序列的数学表达式为：</p>
+<center>$\bar{r}_{u,v}(n)=e^{jϕ（n）\pi/4} , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
+<p>其中 $ϕ(n)$采用计算机搜索的方式进行查找，在标准中以列表的形式给出了确定的数值。</p>
+</li>
+</ul>
+<h4 id="导频图案-1">导频图案</h4>
+<ul>
+<li><strong>上行解调导频</strong>（DMRS）在用户发送数据或者控制信息的资源上发送
+<ul>
+<li>在共享信道 <code>PUSCH</code> 上，每个时隙内 <code>DMRS</code> 占用 1 个 <code>OFDM</code> 符号</li>
+<li>在控制信道 PUCCH 上，根据控制信息格式的不同，每个时隙内 DMRS 占用 2 ～ 3 个 OFDM 符号。</li>
+</ul>
+</li>
+<li><strong>上行 Sounding 导频</strong>（SRS）与用户发送数据的资源位置<strong>无关</strong>，由系统调度，终端在预定义的、需要进行测量的频率位置上进行发送，发送时将占用子帧的最后一个 <code>OFDM</code> 符号，小区内不同用户在相同时刻发送的 <code>SRS</code> 采用频分和码分（基序列不同的循环移位）的方式进行区分。</li>
+</ul>
+<h5 id="上行共享信道-pusch-的解调导频">上行共享信道 PUSCH 的解调导频</h5>
+<p>上行共享信道 <code>PUSCH</code> 的解调导频在每个时隙内占用 1 个 <code>OFDM</code> 符号，在用户发送上行数据的资源上发送，用于共享信道（PUSCH）数据的解调。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-sub-html="<h2>上行 PUSCH 数据解调导频</h2>">
+        
+    </a><figcaption class="image-caption">上行 PUSCH 数据解调导频</figcaption>
+    </figure>
+<p>每个时隙的导频符号采用 12 或者 24 的导频序列。其中 $M_{SC}^{RS}$ 是导频序列的长度，等于频域子载波的个数。导频序列由小区在该时隙的上行导频基序列 $\bar{r}_{u,v}(n)$ 和本次发送采用的循环移位 $α$共同确定。</p>
+<h5 id="上行控制信道-pucch-的解调导频">上行控制信道 PUCCH 的解调导频</h5>
+<p>上行控制信道 <code>PUCCH</code> 的解调导频根据上行控制信道格式的不同在每个时隙内占用 2 或者 3 个 <code>OFDM</code> 符号，用于控制信道（PUCCH）数据的解调。</p>
+<ul>
+<li>
+<p><code>PUCCH </code>格式 1/1a/1b 的导频发送格式。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" data-sub-html="<h2>PUCCH Format1/1a/1b 的解调导频（Normal CP）</h2>">
+        
+    </a><figcaption class="image-caption">PUCCH Format1/1a/1b 的解调导频（Normal CP）</figcaption>
+    </figure>
+<p>其中 $\bar{w}(m)$ 是长度为 3 的正交扩频序列。$r_{u,v}^{\alpha}$ 表示基序列序号为 $u,v$，循环移位为 $α$ 的导频序列，长度是 12，映射在 1 个 PRB 内的子载波上。</p>
+<p><code>PUCCH</code> Format1/1a/1b 中导频映射的过程包括：时隙内采用正交序列的块扩频，然后与长度为 12 的导频 <code>CACAZ</code> 序列相乘，最后映射在上行控制信息 <code>PUCCH</code> 所对应的 <code>PRB</code> 资源的 12 个子载波上。</p>
+</li>
+<li>
+<p>PUCCH 格式 2/2a/2b 的导频发送格式。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" data-sub-html="<h2>PUCCH Format2/2a/2b 的解调导频（Normal CP）</h2>">
+        
+    </a><figcaption class="image-caption">PUCCH Format2/2a/2b 的解调导频（Normal CP）</figcaption>
+    </figure>
+</li>
+</ul>
+<h5 id="上行-sounding-导频信号">上行 Sounding 导频信号</h5>
+<p>上行 Sounding 导频信号的发送与上行物理信道<strong>无关</strong>，是独立的的上行信号，根据<strong>预定义</strong>的周期、终端在需要进行信道测量的频域位置上进行发送。</p>
+<p>上行 Sounding 导频（SRS）在子帧的最后一个 <code>OFDM</code> 符号上发送。在每个小区，采用配置小区 <code>SRS</code> 子帧周期 <code>TSFC</code> 和偏移量 <code>∆SFC</code> 的方式，定义了小区内可用于发送上行 Sounding 导频符号的子帧时间位置，标准中列表给出了各种可能的配置选项，在系统广播消息 SIB 中使用 4 个比特进行指示。</p>
+<blockquote>
+<p>例如，假设配置 $T_{SFC} =5，∆SFC ={0,1}$，那么小区 <code>SRS</code> 子帧的时间位置如图所示。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" data-sub-html="<h2>小区的 SRS 子帧时间位置</h2>">
+        
+    </a><figcaption class="image-caption">小区的 SRS 子帧时间位置</figcaption>
+    </figure>
+</blockquote>
+<p>在定义小区 <code>SRS </code>子帧位置的基础上，采用类似的方法进一步定义了小区内某个用户发送上行 SRS 导频的子帧位置，即通过配置用户发送 <code>SRS</code> 导频的子帧周期 <code>TSRS</code> 和偏移量 <code>Toffset</code> ，可以确定该用户发送上行 <code>SRS</code> 导频的子帧位置。</p>
+<blockquote>
+<p>假设，在以上举例的小区 SRS 子帧配置的基础上，配置用户 x 的 $T_{SRS} =10，Toffset =1$，可以得到该用户 SRS 导频的发送时间位置如图所示。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" data-sub-html="<h2>用户的 SRS 子帧时间位置</h2>">
+        
+    </a><figcaption class="image-caption">用户的 SRS 子帧时间位置</figcaption>
+    </figure>
+</blockquote>
+<p>Sounding 导频（SRS）使用与解调导频相似的基序列生成方法，只是它的循环移位的数值改由高层信令<strong>直接进行配置</strong>。</p>
+<p>在导频序列向物理资源的映射上，<code>SRS</code> 导频采用 2 个子载波的频域间隔，形成<strong>梳状</strong>的<strong>频域结构</strong>，根据起始位置的不同（奇数或者偶数，kTC =0/1），可以频分复用 2 个<strong>梳状</strong>。相同的<strong>梳状</strong>内可以通过基序列不同的循环移位（8 种），以码分的方式进行更多的复用。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" data-sub-html="<h2>Sounding 导频图案</h2>">
+        
+    </a><figcaption class="image-caption">Sounding 导频图案</figcaption>
+    </figure>
+<p>其中 <code>SRS</code> 导频带宽 $m_{SRS,b}$ 以资源块（RB）为单位，并且是 4 的整数倍。同时，可以容易地看出，导频序列的长度是 SRS 导频所占用子载波宽度的一半。</p>
+<h2 id="同步信号psssss">同步信号（PSS/SSS）</h2>
+<p>下行同步信号用于支持物理层的小区搜索，实现用户终端对小区的识别以及对系统下行信号的频率和时间同步。</p>
+<p>同步信号包括：</p>
+<ul>
+<li><strong>主同步信号（Primary Synchronization Signal，PSS）</strong></li>
+<li><strong>辅同步信号（Secondary Synchronization Signal，SSS）</strong></li>
+</ul>
+<p><code>PSS</code> 和 <code>SSS</code> 的传输周期都是 <code>5ms</code>，每个同步信号的时间长度为 1 个 <code>OFDM</code> 符号，在频域上占用下行频带中心 <code>1.08MHz</code> 的带宽。</p>
+<p><code>PSS</code>/<code>SSS</code> 信号使用的序列与物理层小区 <code>ID</code> 相关，因此可用于终端对<strong>小区的识别</strong>。</p>
+<p>物理层支持 504 个小区 ID：分为 168 个组（0 ～ 167），每个组包含 3 个小区 ID（0 ～ 2）。</p>
+<ul>
+<li>主同步信号 PSS 序列包含 3 种可能性，指示小区的组内 ID</li>
+<li>辅同步信号 SSS 序列包含 168 种可能性，指示小区的组 ID</li>
+</ul>
+<p><code>FDD Type 1</code> 和 <code>TDD Type 2</code> 帧结构中，同步信号具有不同的时间位置。</p>
+<ul>
+<li>在 <code>FDD Type 1</code> 帧结构中，PSS/SSS 信号位于第 0 和第 5 子帧</li>
+<li>在 <code>TDD Type 2</code> 中，<code>PSS</code> 信号位于第 1 和第 6 子帧（即特殊子帧），<code>SSS</code> 信号位于第 0 和第 5 子帧。</li>
+</ul>
+<p>因此，两种帧结构下 <code>PSS</code> 与 <code>SSS</code> 的<strong>相对位置有所不同</strong>：</p>
+<ul>
+<li><code>FDD Type 1</code> 帧结构中，<code>PSS</code>/<code>SSS</code> 位于两个<strong>连续</strong>的 <code>OFDM</code> 符号</li>
+<li><code>TDD Type 2</code> 帧结构中，<code>PSS</code>/<code>SSS</code> 之间有两个 <code>OFDM</code> 符号的<strong>间隔</strong></li>
+</ul>
+<p>这种同步信号相对位置的区别，可用于终端在小区搜索的最初阶段<strong>检测</strong> LTE 系统的<strong>双工方式</strong>。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" data-sub-html="<h2>LTE 下行同步信号（FDD Type 1 帧结构）</h2>">
+        
+    </a><figcaption class="image-caption">LTE 下行同步信号（FDD Type 1 帧结构）</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" data-sub-html="<h2>LTE 下行同步信号（TDD Type 2 帧结构）</h2>">
+        
+    </a><figcaption class="image-caption">LTE 下行同步信号（TDD Type 2 帧结构）</figcaption>
+    </figure>
+<p><code>PSS</code> 和 <code>SSS</code> 在<strong>相同</strong>的某一根<strong>天线</strong>上发送，对于各种<strong>不同的系统带宽</strong>（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），同步信号的传输带宽<strong>相同</strong>：</p>
+<ul>
+<li>占用频带中心的 <code>1.08MHz</code> 带宽，其中同步序列占用 62 个子载波，两边各预留 5 个子载波作为保护带。</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" data-sub-html="<h2>同步信号 PSS/SSS 频域结构</h2>">
+        
+    </a><figcaption class="image-caption">同步信号 PSS/SSS 频域结构</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：编码、复用和交织</title>
+    <link>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</link>
+    <pubDate>Tue, 01 Sep 2020 20:54:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 数据的编码、复用和交织</p>
+</blockquote>
+<h2 id="数据的编码复用和交织">数据的编码、复用和交织</h2>
+<p>为了进行传输信道向物理信道的映射，提高数据传输的性能，并且将数据是否正确传输的情况向高层报告，物理层需要对传输信道的数据进行一系列信道编码相关的处理，通常的过程包括：</p>
+<ul>
+<li>码字 <code>CRC</code> 计算</li>
+<li>码块分割和码块 <code>CRC</code> 计算</li>
+<li>码块信道编码</li>
+<li>码块交织和速率匹配</li>
+<li>码块连接的过程</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" data-sub-html="<h2>传输块物理层信道编码的过程</h2>">
+        
+    </a><figcaption class="image-caption">传输块物理层信道编码的过程</figcaption>
+    </figure>
+<h3 id="crc-计算">CRC 计算</h3>
+<p>循环冗余校验码（Cyclic Redundancy Check，CRC）是数据通信领域中最常用的一种差错校验码，接收端通过对所接收到的数据信息和相应的 CRC 信息进行校验，可以判断接收到的数据是否正确。</p>
+<p>物理层提供了 4 种 CRC 计算方法，分别用于不同信息的处理过程，其中包括 2 种长度为 24 比特的 <code>CRC</code> 计算方法，1 种长度为 16 比特的 <code>CRC</code> 计算方法，和 1 种长度为 8 比特的 <code>CRC</code> 计算方法。</p>
+<ul>
+<li>长度为 24 比特的 <code>CRC</code> 用于<code>下行共享信道（DL-SCH）</code>、<code>寻呼信道（PCH</code>）、<code>多播信道（MCH）</code>和<code>上行共享信道（UL-SCH）</code>等传输信道信息的处理过程</li>
+<li>长度为 16 比特的 <code>CRC</code> 用于<code>广播信道（BCH）</code>和<code>下行控制信息（DCI）</code>的处理过程</li>
+<li>长度为 8 比特的 <code>CRC</code> 用于<code>上行控制信息（UCI）</code>在<code>上行物理共享信道（PUSCH）</code>中传输时可能需要的 <code>CRC</code> 操作，对应的计算多项式为：</li>
+</ul>
+<center>$gCRC8 (D)=[D8 +D7 +D4 +D3 +D+1]$</center>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" data-sub-html="<h2>CRC 计算（gCRC8）</h2>">
+        
+    </a><figcaption class="image-caption">CRC 计算（gCRC8）</figcaption>
+    </figure>
+<h3 id="码块分割">码块分割</h3>
+<p>传输信道中的 1 个<code>传输块</code>（transport block）对应于物理层的 1 个<code>码字</code>（codeword），码字是物理层进行信道编码等相关操作的单位。</p>
+<p>当收到来自 <code>MAC</code> 层的 1 个传输块后，物理层将其对应为 1 个码字，首先对<strong>整个码字</strong>进行 <code>CRC</code> 的计算，得到<strong>添加</strong>了 <code>CRC</code> 比特后的码字数据流。</p>
+<p>考虑到信道纠错编码的性能与处理时延的因素，标准中定义了最大的编码长度为 6144。也就是说，如果添加 CRC 比特后 1 个码字数据流的长度<strong>大于</strong> 6144 个比特，那么需要对码字进行<strong>分割</strong>，将 1 个码字分割为<strong>若干个</strong><code>码块</code>（code block），这时候需要对每个码块<strong>再添加</strong>相应的 CRC 比特，然后以<strong>码块为单位</strong>进行后续的信道纠错编码，以满足信道纠错编码最大长度的限制。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" data-sub-html="<h2>码块分割</h2>">
+        
+    </a><figcaption class="image-caption">码块分割</figcaption>
+    </figure>
+<p>物理层采用的 <code>Turbo 编码</code>的内交织器对数据的长度有一定的要求，标准中以列表的方式给出了所支持的数值，因此，在分块过程中，可能需要进行<strong>一定的填充</strong>，保证每一个码块的长度符合内交织器的要求。</p>
+<h3 id="信道编码">信道编码</h3>
+<p>物理层支持包括<code>块编码</code>、<code>截尾的卷积编码</code>和 <code>Turbo 码</code> 3 种不同的信道纠错编码方法。</p>
+<ul>
+<li><code>Turbo 码</code>由于其良好的性能，用于大部分传输信道数据信息的信道编码方法</li>
+<li><code>卷积码</code>的译码<strong>复杂度比较低</strong>，另外在码长<strong>比较短</strong>的时候，卷积码的性能与 Turbo 码相近，因此采用<code>截尾的卷积码</code>作为<code>广播信道</code>和<code>物理层下行控制信息</code>主要的信道编码方法</li>
+<li>使用<code>块编码</code>作为一些<strong>长度更短</strong>的信息的信道编码方法，包括<code>控制格式指示信息（PCFICH）</code>、<code>下行 HARQ 指示信息（PHICH）</code>和<code>物理层上行控制信息</code>（上行 ACK 信息、CQI 信息等）。</li>
+</ul>
+<h3 id="速率匹配">速率匹配</h3>
+<p>在速率匹配的过程中，对信道编码后形成的比特流进行选取，以匹配于最终实际使用的物理资源。根据所选取的数据数量的不同，形成不同的编码速率。在这个过程中，以信道编码的每个<strong>码块为单位</strong>。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" data-sub-html="<h2>Turbo 码速率匹配的数据选择</h2>">
+        
+    </a><figcaption class="image-caption">Turbo 码速率匹配的数据选择</figcaption>
+    </figure>
+<h3 id="码块连接">码块连接</h3>
+<p>在完成以码块为单位的信道编码和速率匹配的过程之后，将对 1 个码字内所有的码块进行<strong>串行连接</strong>，形成<strong>码字</strong>（即传输块）所对应的传输序列，然后就可以进一步地进行信号调制相关的处理与发送了。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" data-sub-html="<h2>码块连接</h2>">
+        
+    </a><figcaption class="image-caption">码块连接</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：基本物理资源</title>
+    <link>https://www.techkoala.top/lte_basic_physical_resource/</link>
+    <pubDate>Tue, 01 Sep 2020 20:49:05 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_basic_physical_resource/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 基本物理资源及分配方法</p>
+</blockquote>
+<h2 id="基本物理资源">基本物理资源</h2>
+<h3 id="物理资源块prb">物理资源块（PRB）</h3>
+<p>物理层定义了物理资源块（Physical Resource Block，PRB）作为空中接口物理资源分配的单位。1 个 <code>PRB</code> 在<strong>频域</strong>上包含 <strong>12 个连续的子载波</strong>，在<strong>时域</strong>上包含 <strong>7 个连续的 OFDM 符号</strong>（在 Extended CP 的情况下为 6 个），即 1 个 <code>PRB</code> 包括了<strong>频域宽度</strong>等于 <code>180kHz</code>、<strong>时间长度</strong>等于 <code>0.5ms</code>（1 个时隙）的物理资源。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-sub-html="<h2>物理资源块（PRB）的结构</h2>">
+        
+    </a><figcaption class="image-caption">物理资源块（PRB）的结构</figcaption>
+    </figure>
+<p>通过设置不同的子载波数目可以映射到不同的资源块（PRB）数目。LTE Release 8 版本定义的 6 种不同的系统带宽与子载波数目以及 PRB 数目之间的对应关系如下表所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-sub-html="<h2>系统带宽与资源块数目</h2>">
+        
+    </a><figcaption class="image-caption">系统带宽与资源块数目</figcaption>
+    </figure>
+<h3 id="逻辑资源块vrb">逻辑资源块（VRB）</h3>
+<p>为了方便物理信道向空中接口物理资源的映射，在物理资源块（PRB）的基础上还定义了逻辑资源块（Virtual Resource Block，VRB）。</p>
+<p>逻辑资源块的大小与物理资源块相同，即 <strong>1 个时隙</strong>（0.5ms）、<strong>12 个子载波</strong>。逻辑资源块主要定义了资源的分配方式，位于 1 个子帧内 2 个时隙的 2 个 <code>VRB</code>（即 VRB pair）是物理资源分配信令的指示单位。</p>
+<p>逻辑资源块和物理资源块分别对应有各自的资源块序号 <code>nVRB</code> 和 <code>nPRB</code> 。</p>
+<ul>
+<li>物理资源块 <code>PRB</code> 的序号 <code>nPRB</code> 按照频域的物理位置进行顺序编号</li>
+<li>逻辑资源块 <code>VRB</code> 的序号 <code>nVRB</code> 是系统进行资源分配时所指示的逻辑序号，通过它与 <code>PRB</code> 序号之间的映射关系来进一步地确定实际物理资源的位置</li>
+</ul>
+<p>物理层定义了两种类型的逻辑资源块：</p>
+<ul>
+<li>
+<p><code>集中式 VRB</code>（Localized VRB，LVRB）</p>
+<p><code>LVRB</code> 直接映射到 <code>PRB</code> 上，即 <strong>nPRB =nVRB</strong></p>
+</li>
+<li>
+<p><code>分布式 VRB</code>（Distributed VRB，DVRB）</p>
+<p><code>DVRB</code> 逻辑资源序号与物理资源序号具有一定的<strong>映射关系</strong>，可以表示为 <strong>nPRB =f(nVRB ，ns )</strong>，其中 <strong>0≤ns ≤19</strong> 是 1 个无线帧内的时隙序号。通常情况下，<strong>连续</strong>的 <code>DVBR</code> 序号将映射到<strong>不连续</strong>的 <code>PRB</code> 序号上，并且 1 个子帧内的 2 个时隙也有着不同的映射关系，即属于 1 个 <code>DVRB pair</code> 的两个具有相同逻辑序号的 DVRB 将映射到两个时隙不同频率位置的 PRB 上。通过这样的机制实现了<strong>分布式</strong>的资源分配</p>
+</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-sub-html="<h2>基于 VRB 的资源分配</h2>">
+        
+    </a><figcaption class="image-caption">基于 VRB 的资源分配</figcaption>
+    </figure>
+<ul>
+<li><strong>下行方向</strong>的信号传输，支持 LVRB 和 DVRB 的分配，具体采用的方式在下行资源的调度信令中进行指示</li>
+<li><strong>上行方向</strong>的信号传输，<strong>仅支持</strong> LVRB 方式的资源分配</li>
+</ul>
+<h3 id="资源单元组reg">资源单元组（REG）</h3>
+<p><code>PRB</code> 和 <code>VRB</code> 用于数据信道的资源分配和映射，物理层还定义了 <code>REG</code>（Resource Element Group）的概念，用于物理层下行控制信道的资源映射。</p>
+<p><strong>1 个</strong> <code>REG</code> 对应除掉导频符号之外在频域上连续的 <strong>4 个</strong>物理资源。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-sub-html="<h2>资源单元组（Resource Element Group，REG）</h2>">
+        
+    </a><figcaption class="image-caption">资源单元组（Resource Element Group，REG）</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：多址方式</title>
+    <link>https://www.techkoala.top/lte_multiple_access/</link>
+    <pubDate>Tue, 01 Sep 2020 20:45:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_multiple_access/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 多址方式详解</p>
+</blockquote>
+<h2 id="多址方式">多址方式</h2>
+<p>LTE 的空中接口采用以 <code>OFDM</code> 技术为基础的多址方式，使用 <code>15kHz</code> 的子载波宽度，通过不同的子载波数目（72 ～ 1200 ）实现了从 1.4 ～ 20MHz 之间多种可变的系统带宽。另外，考虑到在不同应用场景的情况下，无线信道的多径传输具有不同的时延扩展特性，所以 LTE 支持两种不同循环前缀（Cyclic Prefix，CP）长度的配置：<code>Normal CP</code> 和 <code>Extend CP</code>，它们的长度分别约为 <code>4.7μs</code> 和 <code>16.7μs</code>。</p>
+<p>在 <code>OFDM</code> 技术的基础上，根据下行和上行两个方向通信的不同特点，LTE 分别选择了<code>多载波 OFDM</code> 和<code>单载波 SC-FDMA</code>（即 DFT-SOFDM）作为多址方式的具体实现方法。</p>
+<h3 id="下行多址方式">下行多址方式</h3>
+<p>LTE 采用 <code>OFDM</code>（Orthogonal Frequency Division Multiplexing）作为下行无线信号传输的多址方式。<code>OFDM</code> 是一种<strong>多载波调制</strong>的传输技术，将数据流经过<strong>串并变换</strong>，形成多路<strong>子数据流</strong>（N 路），使用它们分别去调制 N 路子载波后<strong>并行传输</strong>。通过这样的处理，子数据流的速率是原来的 1/N，即符号周期是原来的 N 倍，使得该符号周期远<strong>大于</strong>信道的时延扩展，从而实现了将一个宽带频率选择性信道划分成 N 个<strong>窄带平坦衰落信道</strong>，因此 OFDM 信号具有很强的<strong>抗无线信道多径衰落</strong>和<strong>抗脉冲干扰</strong>的能力，并且由于实现方式简单，所以特别适用于高速无线数据传输。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-sub-html="<h2>OFDM 调制的信号处理流程</h2>">
+        
+    </a><figcaption class="image-caption">OFDM 调制的信号处理流程</figcaption>
+    </figure>
+<h3 id="上行多址方式">上行多址方式</h3>
+<p>上行方向上，LTE 采用<code>单载波 SC-FDMA</code>（即 DFT-SOFDM） 作为多址方式。其中，同样采用了 <code>15kHz</code> 的子载波带宽，不同子载波数目实现不同的系统带宽。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-sub-html="<h2>DFT-SOFDM 调制的信号处理流程</h2>">
+        
+    </a><figcaption class="image-caption">DFT-SOFDM 调制的信号处理流程</figcaption>
+    </figure>
+<p>与 <code>ODFM</code> 中信号直接映射到频域的子载波上形成多载波信号不同，<code>DFT-SOFDM</code> 中信号由<strong>时域</strong>输入，通过 <code>DFT</code> 的操作转换到频域后再进行子载波的调制，因此 <code>DFT-SOFDM</code> 属于单载波的调制方式，其发射信号也具有单载波的特性。</p>
+<p>在 <code>OFDM</code> 多载波调制中，由于多路信号在频域的并行传输，叠加后形成的时域输出信号具有<strong>较大峰均比</strong>。由于基站功率放大器的能力较强，因此在下行峰均比不会成为影响系统性能的主要问题。在上行方向上，考虑到终端的成本和功率效率，使用具有单载波特性的发送信号，这是<strong>因为较低的信号峰均比具有重要的意义</strong>。根据调制方式的不同（<code>QPSK</code>、<code>16QAM</code>），与 <code>OFDM</code> 相比较，单载波信号具有 1.5 ～ 2.5dB 的峰均比增益，这也是 LTE 选择<code>单载波 SC-FDMA</code> 作为上行多址方式的<strong>主要原因</strong>。</p>
+<p>另一方面，为了使信号真正具有单载波的特性，<code>DFT-SOFDM</code> 调制过程中对于子载波的映射需要满足一定的限制。除了集中式的映射之外（此时，<code>DFT-SOFDM</code> 的信号处理过程相当于对输入信号进行时域的过采样），在分布式的映射中，为了保持单载波特性，<code>DFT-SOFDM</code> 调制必须采用等间隔的子载波映射，即 <strong>L1 =L2 =…=LN</strong> （此时，<code>DFT-SOFDM</code> 的处理过程相当于对输入信号进行时域的块重复），而不能够使用间隔不相等的分布式映射，因为那将破坏输出信号的单载波特性。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" data-sub-html="<h2>OFDM/DFT-SOFDM 的子载波映射</h2>">
+        
+    </a><figcaption class="image-caption">OFDM/DFT-SOFDM 的子载波映射</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：无线帧结构</title>
+    <link>https://www.techkoala.top/lte_frame_structure/</link>
+    <pubDate>Tue, 01 Sep 2020 20:37:14 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_frame_structure/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 无线帧结构详解</p>
+</blockquote>
+<h2 id="无线帧结构">无线帧结构</h2>
+<p>物理层定义了无线帧的结构，LTE 支持两种帧结构：</p>
+<ul>
+<li>Type 1 ，用于 FDD</li>
+<li>Type 2，用于 TDD</li>
+</ul>
+<p>1 个<strong>无线帧</strong>的长度为 <code>10ms</code>，分为 <code>10</code> 个长度等于 <code>1ms</code> 的<strong>子帧</strong>。</p>
+<p>LTE 空中接口物理资源分配的<strong>最小时间单位</strong>是 1 个<code>传输时间间隔</code>（Transmission Time Interval，TTI），1 个 <code>TTI</code> 的长度是 1 个子<strong>帧</strong>，即 <code>1ms</code>。</p>
+<p>在 <code>Type 1 FDD</code> 帧结构中，1 个 1<code>0ms</code> 的<strong>无线帧</strong>分为 10 个长度为 <code>1ms</code> 的<strong>子帧</strong>（Subframe），每个子帧由<strong>两个</strong>长度为 <code>0.5ms</code> 的<strong>时隙</strong>（Slot）组成。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" data-sub-html="<h2>Type 1 FDD 帧结构</h2>">
+        
+    </a><figcaption class="image-caption">Type 1 FDD 帧结构</figcaption>
+    </figure>
+<p>在 <code>Type 2 TDD</code> 帧结构中，1 个 <code>10ms</code> 的<strong>无线帧</strong>分为两个长度为 <code>5ms</code> 的<strong>半帧</strong>（Half Frame），每个<strong>半帧</strong>由 5 个长度为 <code>1ms</code> 的<strong>子帧</strong>组成，其中包括 4 个<strong>普通子帧</strong>和 1 个<strong>特殊子帧</strong>。<strong>普通子帧</strong>由两个 0.5ms 的<strong>时隙</strong>组成，而<strong>特殊子帧</strong>由 3 个<strong>特殊时隙</strong>（UpPTS、GP 和 DwPTS）组成。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" data-sub-html="<h2>Type 2 TDD 帧结构</h2>">
+        
+    </a><figcaption class="image-caption">Type 2 TDD 帧结构</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" data-sub-html="<h2>Type 2 TDD 的特殊时隙</h2>">
+        
+    </a><figcaption class="image-caption">Type 2 TDD 的特殊时隙</figcaption>
+    </figure>
+<ul>
+<li>
+<p><code>GP</code>（Guard Period）是 TDD <strong>上下行转换</strong>的<strong>保护间隔</strong>。 TDD 双工方式的系统中，由于<code>信号的传输时延</code>和<code>设备收发的转换时延</code>，为了避免上下行信号之间的干扰，需要在上下行转换的时候设置一定的保护时间间隔。</p>
+<ul>
+<li>设备收发的转换时延：指的是终端／基站在发送／接收状态间转换的设备时延，典型值在 10 ～ 20μs 之间</li>
+<li>信号的传输时延：主要与小区的覆盖半径相关，需要根据系统规划进行相应的设置。在 Release 8 版本的系统设计中，支持 GP 长度在 71 ～ 714μs 范围之内的不同设置，相对应的最大小区半径为 7 ～ 100km</li>
+</ul>
+</li>
+<li>
+<p><code>DwPTS</code>（Downlink Pilot Time Slot）用于下行信号的发送，根据不同的配置，<code>DwPTS</code> 的长度可以是 3 ～ 12 个 <code>OFDM</code> 符号。<code>LTE TDD</code> 系统的主同步信号位于它的第 3 个符号，<code>DwPTS</code> 中的其他资源用作正常的下行控制信道和下行共享信道的发送。</p>
+</li>
+<li>
+<p><code>UpPTS</code>（Uplink Pilot Time Slot）用于上行信号的发送，它的长度可以配置为 1 ～ 2 个 <code>OFDM</code> 符号，<code>UpPTS</code> 可以用于承载物理随机接入信道（PRACH Format 4）和 Sounding 导频信号。</p>
+</li>
+</ul>
+<p><code>Type 2 TDD</code> 帧结构支持 7 种不同的上下行时间比例分配（即配置 0 ～ 6），可以根据系统业务量的特性进行设置。</p>
+<p>这 7 种配置包括 3 种 <code>5ms</code> 周期和 4 种 <code>10ms</code> 周期的情况:</p>
+<ul>
+<li><code>5ms</code> 周期的配置中，每个长度为 <code>5ms</code> 半帧包含 1 个下行到上行的转换时间间隔 <code>GP</code></li>
+<li><code>10ms</code> 周期的配置中，每个长度为 <code>10ms</code> 的无线帧包含 1 个或者 2 个下行到上行的转换时间间隔 GP</li>
+</ul>
+<p>在系统广播消息 <code>SIB1</code> 中使用 3 个比特指示 <code>TDD</code> 上下行时间比例的配置信息。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" data-sub-html="<h2>LTE Type 2 TDD 上下行时间配比的配置</h2>">
+        
+    </a><figcaption class="image-caption">LTE Type 2 TDD 上下行时间配比的配置</figcaption>
+    </figure>
+<h2 id="另见">另见</h2>
+<p><a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">LTE 系列：下行链路帧结构</a></p>
+<p><a href="https://www.techkoala.top/lte_uplink_frame_structure/" target="_blank" rel="noopener noreffer">LTE 系列：上行链路帧结构</a></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：多天线技术（MIMO）</title>
+    <link>https://www.techkoala.top/lte_mimo/</link>
+    <pubDate>Tue, 01 Sep 2020 20:33:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_mimo/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 多天线技术（MIMO）详解</p>
+</blockquote>
+<h2 id="多天线技术mimo">多天线技术（MIMO）</h2>
+<p>在收到信道编码后的数据（codeword）之后，物理层进一步的处理过程包括<code>加扰</code>、<code>调制</code>、<code>层映射</code>、<code>预编码</code>（precoding）以及针对各个物理天线端口的<code>资源映射</code>和 <code>OFDM</code> 信号生成的过程。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" data-sub-html="<h2>物理层数据处理过程</h2>">
+        
+    </a><figcaption class="image-caption">物理层数据处理过程</figcaption>
+    </figure>
+<ul>
+<li>加扰操作是指使用扰码对经过信道编码后的数据进行<strong>逐比特的加扰</strong>，实现数据间<strong>干扰的随机化</strong>。采用<strong>伪随机码</strong>作为<strong>扰码</strong>，在每个子帧的起始位置，根据 <code>RNTI</code>（Radio Network Temporary Identifier）、<code>Cell ID</code>、<code>Codeword</code> 的编号以及无线帧内的时隙编号等信息，对扰码的 <code>PN 序列</code> 进行初始化。</li>
+<li>调制指的是对比特数据进行复数调制，包括 <code>QPSK</code>、<code>16QAM</code> 或者 <code>64QAM</code>。</li>
+</ul>
+<p>在完成调制后，物理层的基带处理过程将进行 MIMO 相关的处理，包括 <code>层映射</code> 和 <code>预编码</code> 。LTE Release 8 版本支持不同的发射天线数目（1 / 2 / 4），以及多种不同的 MIMO 方案，包括<code>单天线发送</code>、<code>空间复用</code>和<code>发送分集</code>。</p>
+<h3 id="层映射">层映射</h3>
+<p>层映射实现信道编码之后的<strong>码字</strong>（Codeword）向空间多天线形成的多个<strong>层</strong>（layer）之间的映射。</p>
+<ul>
+<li>对于单天线的情况，直观地可以得到：物理层使用 1 个码字，并且这个码字直接映射到单天线的 1 个层上</li>
+<li>对于多天线实现空间复用的情况，当空间复用的层数目大于 1 的时候，可以同时发送 2 个码字</li>
+</ul>
+<blockquote>
+<p>以 4×4 天线配置的情况为例，根据无线信道的情况可以支持 1、2、3 或者 4 个层的空间复用，当空间复用的层数目大于 1 的时候，可以将 2 个码字映射在这些层上采用空间复用的方式同时进行发送。对于发送分集的情况，使用 1 个码字，按照发送天线数目的不同（2 或者 4），对应于 2 或者 4 个层，此时这 1 个码字将以逐比特转换的方式映射到这些层上。</p>
+</blockquote>
+<h3 id="预编码">预编码</h3>
+<p>预编码（precoding）实现<strong>层</strong>到<strong>物理天线端口</strong>的<strong>映射</strong>。物理层使用不同的预编码方案，实现不同的 <code>MIMO</code> 模式：<code>单天线发送</code>、<code>空间复用</code>或者<code>发送分集</code>。</p>
+<h4 id="单天线发送">单天线发送</h4>
+<p>对于单天线发送的情况，直观的可以得出，1 个<strong>层</strong>将直接映射到 1 个<strong>物理天线端口</strong>上。</p>
+<h4 id="空间复用">空间复用</h4>
+<p>对于多天线实现空间复用的情况，LTE 中采用基于<code>码本</code>（codebook）进行预编码向量选择的机制，分为<code>开环</code>和<code>闭环</code>两种复用传输模式，分别采用<code>无循环延迟的预编码</code>和<code>大循环延迟的预编码</code>。</p>
+<p>在 2 个发送天线的情况时，基站一般使用<strong>线性阵列</strong>（Uniform LinearArray，ULA）的天线配置，因此，相对应地采用基于 DFT 正交距阵的码本设计方法。</p>
+<ul>
+<li>对应于 1 个<strong>层</strong>的传输，设计了 4 个可供选择的预编码向量</li>
+<li>对应于 2 个<strong>层</strong>的传输，设计了 3 个可供选择的预编码向量。</li>
+<li>对于 4 个发送天线的情况，天线的部署要更为复杂，实际情况下可能不使用线性阵列的天线配置，而采用例如双极化天线
+所以，基于对各种场景下的性能和复杂度等因素的综合考虑，选择了采用基于 <code>householder 变换</code> 的码本设计方法。对应于 1/2/3/4 个<strong>层</strong>的传输，均有 16 个可供选择的预编码向量。</li>
+</ul>
+<p>预编码向量选取常用的两个准则：</p>
+<ul>
+<li><strong>信噪比最大化</strong>，对应于容量最大化。将每个可选择的项代入，得到一个等效信道矩阵，计算等效信噪比，选择对应 SNR 最大的向量元素。</li>
+<li><strong>最小码距</strong>，对应于最小误码率。计算信道信息给出的加权矩阵与码本中元素的距离，选择距离最小的作为预编码向量。</li>
+</ul>
+<p><code>无循环延迟的预编码</code>用于<code>闭环</code>的 MIMO 空间复用。闭环模式下，终端通过对下行信道状态的测量选择适当的空间复用的层数目，并且从码本集合中选择预编码向量，分别表示为 <code>RI</code>（Rank Indicator）和 <code>PMI</code>（Precoding Matrix Indicator）的形式<strong>通过上行链路反馈给基站</strong>。基站根据这些信息进行预测，确定随后的下行发送中将采用的空间复用方案（包括采用的层数目和预编码向量）。</p>
+<p><code>大循环延迟的预编码</code>用于<code>开环</code>的 MIMO 空间复用。开环模式下，终端<strong>不再向基站反馈</strong>预编码向量 <code>PMI</code> 的信息，但仍可以根据基站的配置测量并且<strong>反馈</strong>下行信道的 <code>RI</code> 信息，即空间复用的层数目。基站根据终端上报的 <code>RI</code> 信息或者自行确定的层数目，选择在下行发送中所采用的预编码方案，包括采用发送分集，或者空间复用以及相应的层数目。</p>
+<p>在开环空间复用中，采用的预编码向量是<strong>固定</strong>的。</p>
+<ul>
+<li>在使用 2 个发送天线的情况下
+<ul>
+<li>当选择层数目 RI=1 时，采用发送分集的预编码方案。</li>
+<li>当选择 RI=2 时，采用对应码本的第一个元素，即 $W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \\ 0&amp;1\end{bmatrix}$ 作为预编码向量。</li>
+</ul>
+</li>
+<li>在使用 4 个发送天线的情况下
+<ul>
+<li>当选择层数目 RI=1 时，采用发送分集的预编码方案</li>
+<li>当选择 RI=2/3/4 时，采用对应的码本，以发送时刻为单位，固定的循环使用码本中序号为 12/13/14/15 的元素作为预编码向量。</li>
+</ul>
+</li>
+</ul>
+<p>对于<code>大循环延迟的预编码</code>，除了预编码向量 $W (i)$ 之外，有两个用于完成循环延迟（Cyclic Delay Diversity，CDD）功能的矩阵，即 $U$ 和 $D (i)$。</p>
+<p>假设层数目为 v，那么这两个矩阵的大小都是 $v×v$ 的，其中</p>
+<ul>
+<li>$U$ 是 <code>DFT 矩阵</code>，通过对输入信号进行 <code>DFT</code> 变换实现<code>层</code>到<code>虚拟天线</code>的映射，将每个层的信号能量均匀地分布在虚拟天线上</li>
+<li>$D (i)$是 <code>CDD 矩阵</code>，实现虚拟天线间增量为 $\frac{1}{v}$ 的时延。</li>
+</ul>
+<h4 id="发送分集">发送分集</h4>
+<p>对于多天线实现发送分集的情况，分别采用 <code>SFBC</code>（Space Frequency Block Codiing）和 <code>SFBC+FSTD</code>（Frequency Switched Transmit Diversity）的方案支持 2 和 4 个发送天线的场景。</p>
+<ul>
+<li>在 2 个发送天线时，使用 SFBC 的发送分集方案，实现“层”到物理天线映射的预编码操作。</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" data-sub-html="<h2>SFBC 发送分集</h2>">
+        
+    </a><figcaption class="image-caption">SFBC 发送分集</figcaption>
+    </figure>
+<ul>
+<li>在 4 个发送天线时，使用 SFBC+FSTD 的发送分集方案。相应地，实现层到物理天线映射的预编码操作可以表示为下图所示的形式，即 SFBC 结合 FSTD 在天线间频域的位置转换。</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" data-sub-html="<h2>SFBC&#43;FSTD 发送分集</h2>">
+        
+    </a><figcaption class="image-caption">SFBC+FSTD 发送分集</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
+    <title>LTE 系列：物理层概要</title>
+    <link>https://www.techkoala.top/lte_physical_layer/</link>
+    <pubDate>Tue, 01 Sep 2020 11:19:04 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_physical_layer/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 物理层概要综列</p>
+</blockquote>
+<h2 id="物理层的功能">物理层的功能</h2>
+<p>物理层位于无线接入网协议的<strong>最底层</strong>，以传输信道为接口，通过传输信道向物理信道的映射，物理层向上层提供数据传输的服务。</p>
+<p>物理层的主要功能包括：</p>
+<ul>
+<li>传输信道向物理信道的映射</li>
+<li>调制与解调</li>
+<li>纠错编码与速率匹配</li>
+<li>向高层报告数据是否正确传输</li>
+<li>多天线的处理</li>
+<li>功率控制</li>
+<li>频率和时间的同步</li>
+<li>射频信号的生成</li>
+</ul>
+<h2 id="物理层的关键技术">物理层的关键技术</h2>
+<p>物理层的包含以下关键技术：</p>
+<ul>
+<li>多址方式</li>
+<li>无线帧结构</li>
+<li>基本物理资源及分配方法</li>
+<li>数据的编码、复用和交织</li>
+<li>多天线技术（MIMO）</li>
+</ul>
+<h2 id="物理层信号和信道的设计">物理层信号和信道的设计</h2>
+<p>出于对 <code>MAC</code> 层的传输信道以及物理层内部处理过程的需要，物理层定义了一系列的物理信道。</p>
+<p>下行方向的物理信道包括：</p>
+<ul>
+<li>物理广播信道（PBCH）</li>
+<li>物理下行共享信道（PDSCH）</li>
+<li>物理多播信道（PMCH）</li>
+<li>物理下行控制信道（PDCCH）</li>
+<li>物理控制格式指示信道（PCFICH）</li>
+<li>物理 HARQ 指示信道（PHICH）</li>
+</ul>
+<p>上行方向的物理信道包括：</p>
+<ul>
+<li>物理随机接入信道（PRACH）</li>
+<li>物理上行共享信道（PUSCH）</li>
+<li>物理上行控制信道（PUCCH）</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_12.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_12.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_12.webp" data-sub-html="<h2>下行信道映射</h2>">
         
     </a><figcaption class="image-caption">下行信道映射</figcaption>
     </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" data-sub-html="<h2>上行信道映射</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_13.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_13.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_13.webp" data-sub-html="<h2>上行信道映射</h2>">
         
     </a><figcaption class="image-caption">上行信道映射</figcaption>
     </figure>
-<h3 id="mac-协议数据单元格式">MAC 协议数据单元格式</h3>
-<p><code>MAC 包头</code>可以包含多个子包头，每个子包头对应于 <code>MAC PDU</code> 负荷部分的 1 个 <code>MAC 控制单元</code>、<code>MAC SDU</code> 或者填充比特字段。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-sub-html="<h2>MAC 协议数据单元 PDU 的格式</h2>">
-        
-    </a><figcaption class="image-caption">MAC 协议数据单元 PDU 的格式</figcaption>
-    </figure>
-<p>子包头的格式如图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" data-sub-html="<h2>MAC 层的子包头</h2>">
-        
-    </a><figcaption class="image-caption">MAC 层的子包头</figcaption>
-    </figure>
+<p>物理信号主要包括：</p>
 <ul>
-<li><code>R</code>（Reserve）字段为保留字段，数值设为 <code>0</code></li>
-<li><code>E</code>（Extension）字段指示本子包头后面是否还有其他的子包头，或者是包头部分已经结束，将要开始 <code>MAC 控制单</code>元或者 MAC SDU 的传输</li>
-<li><code>LCID</code>（Logical Channel ID）字段指示 <code>MAC SDU</code> 所属逻辑信道的标识、<code>MAC 控制单元</code>的类型或者是填充比特</li>
-<li><code>F</code>（Format）字段指示随后的 <code>L</code> 字段的长度，7 个比特或者 15 个比特</li>
-<li><code>L</code>（Length）字段指示与子包头相对应的 <code>MAC SDU</code> 或者 <code>MAC 控制单元</code>的字节长度</li>
+<li>导频信号</li>
+<li>同步信号（PSS/SSS）</li>
 </ul>
-<h3 id="mac-层功能和-mac-控制单元">MAC 层功能和 MAC 控制单元</h3>
-<p>下面介绍 MAC 层的主要功能，以及在完成这些功能过程中所需要的 MAC 控制单元。</p>
-<h4 id="随机接入过程">随机接入过程</h4>
-<p>随机接入是由 MAC 层控制的一项功能，空闲状态的终端通过随机接入过程与网络建立连接。</p>
-<p>首先建立<strong>执行控制功能的连接</strong>（即 <code>RRC 连接</code>），终端由空闲状态转变为连接状态$\Longrightarrow$然后通过 <code>RRC 控制功能</code>建立数据通信的连接，开始进行数据的通信。(对于连接状态的终端，也可能因为长时间没有发送上行信号而失去上行同步，此时如果有数据需要进行发送，终端需要进行随机接入的过程，与基站重新建立上行同步。随机接入过程可以由终端发起，也可以由网络侧通过物理层下行控制信道（PDCCH）触发终端发起随机接入)</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-sub-html="<h2>随机接入过程</h2>">
-        
-    </a><figcaption class="image-caption">随机接入过程</figcaption>
-    </figure>
-<p>在随机接入过程中，终端选择 1 个随机接入序列通过物理层随机接入信道（PRACH）进行发送（在网络侧触发的情况下，由触发消息指示终端所使用的随机接入序列）$\Longrightarrow$基站检测到随机接入序列的信号后，在下行方向上发送随机接入响应，该消息指示了：</p>
+<h2 id="物理层过程">物理层过程</h2>
+<p>讲解典型的物理层过程包括：</p>
 <ul>
-<li>基站所检测到的随机接入序列的编号</li>
-<li>发起随机接入的终端分配的上行资源位置</li>
-<li>上行信号发送时间的调整量</li>
-</ul>
-<h5 id="冲突解决">冲突解决</h5>
-<p>如果多个终端选择了<strong>相同的随机接入序列</strong>并且在<strong>相同的时间</strong>进行发送，那么多个终端可能针对随机接入响应的接收发生冲突，所以需要冲突解决的过程。</p>
-<p>在收到随机接入响应的消息后，终端根据消息指示的内容进行上行信号的发送（又称为“消息 3”），对应于图中的步骤 3，该信号中可能包含终端的唯一标识。随后基站根据接收到的上行信息，向唯一标识所对应的成功接入的终端返回冲突解决消息，完成冲突解决的过程。</p>
-<ul>
-<li>
-<p>小区无线网络临时标识。</p>
-<p>收到基站的随机接入响应消息后，终端发送上行消息（即<code>消息 3</code>）开始冲突解决的过程。对于连接状态的终端发起随机接入过程的情况，该消息中包含终端的唯一标识：小区无线网络临时标识（Cell-Radio Network Temporary Identifier，C-RNTI）。具体来说，“消息 3”中使用 <code>MAC 控制单元</code>来指示 <code>C-RNTI</code> 的信息。</p>
-<p><code>C-RNTI</code> 的 <code>MAC 控制单元</code>仅包含一个字段，即 16 比特 <code>C-RNTI</code>。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" data-sub-html="<h2>MAC 控制单元——C-RNTI</h2>">
-        
-    </a><figcaption class="image-caption">MAC 控制单元——C-RNTI</figcaption>
-    </figure>
-</li>
-<li>
-<p>终端冲突解决标识。</p>
-<p>在上行随机接入过程中，终端发送上行消息（即<code>消息 3</code>）开始冲突解决的过程，对于连接状态的终端发起随机接入的情况，“消息 3”中指示终端的唯一标识 <code>C-RNTI</code>，在随后的下行发送中，网络通过物理层<code>下行控制信道</code>（PDCCH）指示该 <code>C-RNTI</code> 即可完成冲突解决。在另一种情况下，对于空闲状态的终端发起随机接入过程的情况，网络在随机接入响应消息中向终端分配<code>临时 RNTI</code>，但是因为还存在可能发生冲突的情况，所以在随后的<code>消息 3</code>中终端不使用<code>临时 RNTI</code>，而是传输<code>上行公用控制信道</code>（CCCH）的 <code>RRC</code> 连接建立请求消息。与此相对应的，基站在随后的下行发送中通过终端冲突解决标识的 <code>MAC 控制单元</code>完成冲突解决的过程。成功地完成冲突解决之后，终端将使用网络分配的<code>临时 RNTI</code>作为 <code>C-RNTI</code>。</p>
-<p>终端冲突解决标识的 <code>MAC 控制单元</code>仅包含一个字段：<code>终端冲突解决标识</code>，这个字段包含上行随机接入冲突解决过程中，终端在<code>消息 3</code>中发送的<code>上行公用控制信道</code>的服务数据单元（CCCH SDU）。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" data-sub-html="<h2>MAC 控制单元——终端冲突解决标识</h2>">
-        
-    </a><figcaption class="image-caption">MAC 控制单元——终端冲突解决标识</figcaption>
-    </figure>
-</li>
-</ul>
-<h4 id="数据的调度和传输">数据的调度和传输</h4>
-<p><strong>数据的调度和传输</strong>是 MAC 层控制的另一项主要功能。</p>
-<p>对于数据信息的传输，即传输信道中的上行／下行共享信道（DL/UL-SCH），可以根据无线信道状态将无线资源在用户间进行自适应的调度分配，实现系统资源的优化利用，同时满足各个用户的 <code>QoS</code> 要求。主要采用<code>动态调度</code>的方式，也支持<code>半持续调度</code>（Semi-Persistent Scheduling，SPS）的方式。</p>
-<ul>
-<li>动态调度的情况下，根据无线信道状态和用户优先级等信息，基站按照长度等于 1ms 的 <code>TTI</code> 作为单位，在每个 1ms 对各个终端所使用的无线资源进行分配，并且选择合适的数据传输格式</li>
-<li>半持续调度的情况下，基站一次性为终端分配较长时间的无线资源，可以节省进行资源调度的控制信息</li>
-</ul>
-<h5 id="半持续调度">半持续调度</h5>
-<p>LTE 支持<code>半持续</code>（Semi-Persistent Scheduling，SPS）的调度方式。对于某些业务量不大而且比较规则的业务（例如 VoIP），一次性的对较长时间内的资源使用进行分配，而不需要在每次传输的时候都进行动态分配，通过这样的机制，节省了为终端进行资源调度的 <code>PDCCH</code> 控制信令的开销。</p>
-<p>对于半持续调度，为了减小调度信令的开销，基站一次为终端分配一段时间内预先定义好的无线资源和相应的传输格式，主要参数是<code>半持续调度的时间间隔</code>。例如，根据 VoIP 业务的流量特点，设置半持续调度的时间间隔等于 20ms，为用户分配一段时间内间隔为 20ms、相同频域位置和大小的无线资源。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-sub-html="<h2>半持续调度</h2>">
-        
-    </a><figcaption class="image-caption">半持续调度</figcaption>
-    </figure>
-<h5 id="harq">HARQ</h5>
-<p>MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的<code>停——等</code>机制的 HARQ 进程，每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-sub-html="<h2>多个并行的 停——等 机制的 HARQ 进程</h2>">
-        
-    </a><figcaption class="image-caption">多个并行的 停——等 机制的 HARQ 进程</figcaption>
-    </figure>
-<p>在下行的数据传输中，每个 <code>HARQ</code> 进程内部采用<code>异步</code>、<code>自适应</code>的机制。</p>
-<ul>
-<li>异步指的是对于 1 个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间没有固定的定时关系。也就是说，对于需要重传的数据包，在满足与这个数据包上一次传输之间的时间间隔不小于规定的最小值（8ms）的条件的基础上，调度器可以灵活地选择进行重传的时间</li>
-<li>自适应指的是在各次传输之间，调度器可以灵活地选择不同位置／大小的物理资源，以及不同的传输格式（包括调制方式和信道编码速率等）</li>
-</ul>
-<p>与异步、自适应的 <code>HARQ</code> 机制相匹配，下行数据包的传输伴随有下行调度信令，调度信令中指示当前所传输的下行数据包的资源位置、传输格式和所对应的 <code>ARQ</code> 进程号码，用户终端通过检测下行调度信令，可以进行下行数据包的接收、重传数据包的合并以及数据解调的操作</p>
-<p>对于上行数据的传输，每个 <code>HARQ</code> 进程内部采用同步的机制。与下行方向采用的异步机制不同，上行采用的同步机制指的是对于上行 <code>HARQ</code> 过程中一个数据包的多次传输（包括第一次的初传和随后可能的多次重传），各次传输之间采用固定的定时关系。</p>
-<blockquote>
-<p>例如：在时刻 0 进行初传的数据包，如果出现接收错误需要进行重新传输，那么第一次重传将发生在时刻 8，如果仍然接收错误需要继续重传，那么第二次重传将发生在时刻 16，以此类推。根据这样的同步的定时关系，对于上行 HARQ 过程的数据重新传输，基站可以不对重传的数据包进行调度。此时，终端仅收到网络侧基站反馈的关于数据接收出错的消息，终端将根据固定的定时关系，在规定的时间采用与第一次传输相同的频率资源位置和传输格式进行重传，这种方式称为同步、非自适应的 HARQ 机制。</p>
-</blockquote>
-<p>上行方向还可以支持同步、自适应的 <code>HARQ</code> 机制，网络侧基站反馈关于数据接收出错的消息的同时可以发送对于重传数据包的上行调度信息，该调度信息不改变重传数据包的传输时间，即仍然是同步的机制，但是可以调度不同位置和大小的频率资源，以及不同的传输格式，也就是说，实现自适应的 <code>HARQ</code> 机制。</p>
-<h5 id="上行缓存状态报告">上行缓存状态报告</h5>
-<p>终端的上行发送是根据基站的调度进行的，因此，终端的缓存中等待进行发送的数据的数量是基站进行调度时需要的参考信息。</p>
-<blockquote>
-<p>例如，如果终端的缓存中没有等待发送的数据，那么基站就不应该对该终端进行上行发送的调度。</p>
-</blockquote>
-<p>终端通过发送缓存状态报告（Buffer Status Report，BSR），向服务基站报告终端的上行缓存中等待发送的数据的数量。根据 <code>RRC 信令</code>的配置，终端将上行逻辑信道进行分组，采用逻辑信道组（Logical Channel Group，LCG）为单位进行缓存状态的报告。</p>
-<p>终端缓存状态报告的 <code>MAC 控制单元</code>包括两种格式——<code>短格式／截断格式</code>，或者<code>长格式</code>。</p>
-<ul>
-<li>短格式进行 1 个逻辑信道组对应的缓存状态报告，相应的 <code>MAC 控制单</code>元由逻辑信道组标识（LCG ID）和缓存数据量大小组成</li>
-<li>长格式进行 4 个逻辑信道组的缓存状态报告，发送的 4 个关于缓存大小的消息分别对应于编号 0 到编号 3 的 4 个逻辑信道组</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" data-sub-html="<h2>MAC 控制单元——缓存状态报告</h2>">
-        
-    </a><figcaption class="image-caption">MAC 控制单元——缓存状态报告</figcaption>
-    </figure>
-<h5 id="功率余量报告">功率余量报告</h5>
-<p>上行信号的发送受到终端最大发射功率的限制，所以基站在调度终端进行上行发送的时候需要参考终端发射功率的情况。</p>
-<blockquote>
-<p>例如：如果终端处于小区边缘，已经接近最大发射功率的限制，在这种情况下，基站如果调度这个终端使用大量资源进行大数据量的上行发送，而终端由于最大发射功率的限制可能无法保证发射信号的质量，因而导致信息传输的错误。所以基站需要根据对终端发射功率情况的了解，避免出现这样的情况。</p>
-</blockquote>
-<p>通过功率余量报告，终端向基站报告上行数据信道当前的发射功率距离终端上行最大发射功率之间的余量，该信息作为基站进行上行功率控制和上行资源调度的参考。功率余量报告的传输由 <code>RRC 信令</code>进行配置，包括周期性的方式或者传播损耗的变化超过设定的门限都可以触发功率余量消息的上报。</p>
-<p>功率余量报告的 <code>MAC 控制单元</code>包括 2 个比特的预留字段和 6 个比特的功率余量（Power Headroom，PH）信息，指示从 −23dB 到 40dB 范围之内的数值。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" data-sub-html="<h2>MAC 控制单元——功率余量报告</h2>">
-        
-    </a><figcaption class="image-caption">MAC 控制单元——功率余量报告</figcaption>
-    </figure>
-<h4 id="上行时间同步的保持">上行时间同步的保持</h4>
-<p>在下行方向上，终端通过检测基站的同步和导频信号，与基站下行信号的发送时间取得同步，实现下行信号的接收。与此相类似，为了实现上行信号的传输，终端需要与基站取得上行方向的同步。在获得上行同步的过程中，终端根据基站的指示调整上行信号的发送时间，使得无论终端距离基站是远或者是近，它们发送的上行信号到达基站的时间是对齐的，并且符合基站的定时关系，这样方便基站对用户信号的接收，以及对多个用户信号之间干扰的管理和控制。</p>
-<ul>
-<li>对于<strong>空闲状态</strong>或者处于<strong>连接状态但上行已经失去同步</strong>的终端，需要通过上行随机接入过程，获得上行同步。</li>
-<li>对处于<strong>连接状态</strong>，上行没有失去同步的终端，基站使用 MAC 控制单元向终端指示定时提前（Time Advanced，TA）命令，对终端的上行发送时间进行调整，实现终端与系统之间上行时间同步的保持。</li>
-</ul>
-<p>定时提前命令的 <code>MAC 控制单元</code>包括 2 个比特的预留字段和 6 个比特的 TA 命令信息。定时调整的精度是 16Ts ，即 16×1/(15×1 000×2 048)s 约等于 0.52μs。因为 6 个比特 TA 命令表示的是从 −31 到+32 的范围，所以每个定时提前命令能够调整的时间范围是 −16.15 ～+16.67μs。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" data-sub-html="<h2>MAC 控制单元——定时提前命令</h2>">
-        
-    </a><figcaption class="image-caption">MAC 控制单元——定时提前命令</figcaption>
-    </figure>
-<h4 id="不连续接收功能">不连续接收功能</h4>
-<p><strong>不连续接收</strong>（Discontinuous Reception，DRX）是一种用于实现<strong>终端省电</strong>的功能。</p>
-<p>根据 <code>RRC 信令</code>进行配置的 <code>DRX</code> 功能，可以对处于连接状态的终端监测物理层<code>下行控制信道</code>（PDCCH）的方式进行控制。在不使用 <code>DRX</code> 功能的时候，终端需要对 <code>PDCCH</code> 信道进行连续的监测，在每一个 <code>TTI</code>（1ms），终端都需要对 <code>PDCCH</code> 信道进行监测，寻找其中可能属于自己的数据调度信息。通过配置 <code>DRX</code> 功能，设置了<code>激活”时间</code>和<code>休眠时间</code>。</p>
-<ul>
-<li>在激活的时间里，终端需要对 <code>PDCCH</code> 信道进行监测</li>
-<li>在休眠的时间中，终端不需要对 <code>PDCCH</code> 信道进行监测，基站也不会向该终端进行数据传输的调度，所以可以节省终端的耗电。</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" data-sub-html="<h2>不连续接收（DRX）功能</h2>">
-        
-    </a><figcaption class="image-caption">不连续接收（DRX）功能</figcaption>
-    </figure>
-<p>关于终端使用 <code>DRX</code> 功能的过程，首先通过高层 RRC 信令对终端设置 <code>DRX</code> 的相关配置，包括 <code>DRX 周期</code>、激活和休眠时间等。在工作过程中，采用 <code>MAC 层控制信令</code>开启或者关闭终端的 <code>DRX</code> 功能。<code>MAC 层</code> <code>DRX</code> 命令采用类型为 <code>DRX</code> 命令的 <code>MAC 控制单元</code>进行指示，所对应的 <code>MAC PDU</code> 子包头指示 MAC 控制单元的类型是 <code>DRX</code> 命令，因为除了指示存在 <code>DRX</code> 命令之外，不需要其他的信息，所以相应的 <code>MAC 控制单元</code>部分的长度是 <code>0</code>。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：RLC 层详解</title>
-    <link>https://www.techkoala.top/lte_rlc/</link>
-    <pubDate>Mon, 31 Aug 2020 21:00:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_rlc/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE RLC 层详解</p>
-</blockquote>
-<h2 id="无线链路控制rlc">无线链路控制（RLC）</h2>
-<p>无线链路控制（Radio Link Control，RLC）层的主要功能是：</p>
-<ul>
-<li>根据下层指示的数据包传输大小对来自上层的数据包进行连接、分段和重组</li>
-<li>数据包的顺序传输和重复性检测</li>
-<li>自动重传请求（Automatic Repeat Request，ARQ）的数据纠错</li>
-</ul>
-<p>针对<strong>每一个</strong>无线承载配置一个 <code>RLC 实体</code>，经过 <code>RLC</code> 层协议功能的处理后，数据以逻辑信道的方式输出到下层的 <code>MAC 层</code>。根据所传输消息的不同特点，<code>RLC 实体</code>有 3 种工作模式：</p>
-<ul>
-<li><strong>透明模式</strong>（Transparent Mode，TM）</li>
-<li><strong>确认模式</strong>（Acknowledged Mode，AM）</li>
-<li><strong>非确认模式</strong>（Unacknowledged Mode，UM）</li>
-</ul>
-<h3 id="透明模式tm">透明模式（TM）</h3>
-<p>此模式下，<code>RLC</code> 子层是完全透明的，<strong>不执行任何功能</strong>，例如不添加 <code>RLC 包头</code>、不进行数据分段或者连接，即来自上层的数据在 <code>RLC</code> 层<strong>不进行任何处理</strong>，“透明”地传输到下层的 <code>MAC 层</code>。透明模式用于广播、寻呼和公用控制信道等信息需要传输给多个用户的情况，相对应于广播、上下行公用控制和寻呼等逻辑信道。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-sub-html="<h2>TM 模式数据消息的 RLC PDU 格式</h2>">
-        
-    </a><figcaption class="image-caption">TM 模式数据消息的 RLC PDU 格式</figcaption>
-    </figure>
-<h3 id="确认模式am">确认模式（AM）</h3>
-<p>此模式用于提供高可靠性的数据传输服务，例如 <code>TCP/IP</code> 数据业务或者 <code>RRC</code> 控制信令的传输，包括承载上下行专用数据信息和专用控制信息的逻辑信道。</p>
-<p>在此模式下，<code>RLC 子层</code><strong>执行所有功能</strong>，包括：</p>
-<ul>
-<li>数据包的连接、分段和重组</li>
-<li>数据包的顺序传输和重复性检测</li>
-<li>基于滑动窗进行错误数据包重新传输的 ARQ 纠错机制</li>
-</ul>
-<p><code>AM 模式</code>的 <code>RLC PDU</code> 由 <code>RLC 包头</code>和 <code>RLC SDU</code> 组成，<code>RLC 包头</code>包括 <code>D/C</code>，<code>RF</code>，<code>P</code>，<code>FI</code>， <code>E</code> 和 <code>SN</code> 字段。如果 <code>RLC PDU</code> 中包含多于 1 个数据字段，那么相对应的 <code>RLC 包头</code>还将包括 <code>E</code> 和 <code>LI</code> 字段，以分别对应于各个数据字段。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 格式</h2>">
-        
-    </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 格式</figcaption>
-    </figure>
-<p>以下是 <code>RLC 包头</code>各个字段的具体含义:</p>
-<ul>
-<li><code>D/C</code>（Data/Control）字段：指示该 <code>RLC PDU</code> 是<code>RLC 数据 PDU</code>还是<code>RLC 控制 PDU</code></li>
-<li><code>RF</code>（Re-segmentation Flag）字段：指示该 <code>RLC PDU</code> 是一个 <code>AM 模式``PDU</code>，还是一个 <code>AM 模式</code>的 <code>PDU 分段</code>。因为，在 <code>AM</code> 模式的情况，数据包进行 <code>ARQ</code> 重传的时候，可能需要对初次传输时的 <code>AM PDU</code> 进行分段，因而形成 <code>AM PDU 分段</code></li>
-<li><code>P</code>（Polling）字段指示是否要求接收端对等的 <code>RLC 实体</code>进行 1 次 <code>RLC 状态</code>的报告</li>
-<li><code>FI</code>（Framing Indicator）字段：指示 <code>RLC PDU </code>的数据字段是否是 <code>RLC SDU</code> 的开始或者结尾部分。2 个比特的信息指示了<strong>是开始不是结尾</strong>、<strong>是结尾不是开始</strong>、<strong>既不是结尾也不是开始</strong>、<strong>既包含了结尾也包含了开始</strong>一共 4 种可能的状态</li>
-<li><code>E</code>（Extension）字段指示后面是否还有 <code>E</code> 和 <code>LI</code> 字段</li>
-<li><code>SN</code>（Sequence Number）字段：指示 <code>RLC PDU</code> 的序号，序号采用递增的方式。对于 <code>AM 模式</code>下重传的 <code>AM PDU</code> 或者 <code>AM PDU 分段</code>，采用初传的 AM PDU 所对应的序号</li>
-<li><code>LI</code>（Length Indicator）字段：指示对应的数据字段的字节长度</li>
-</ul>
-<p>在 <code>AM 模式</code>下，<code>RLC</code> 层使用 <code>ARQ</code> 纠错机制对传输错误的数据包进行重传，由于下层指示的数据包传输大小可能与初次传输时候的情况有所不同，可能需要对初次传输的 <code>AM PDU</code> 进行分段，因此形成了<code>AM PDU 分段</code>的格式。与 <code>AM PDU</code> 相比较，<code>AM PDU</code> 分段在包头部分多了两个字段：<code>LSF</code> 和 <code>SO</code>。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 分段的格式</h2>">
-        
-    </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 分段的格式</figcaption>
-    </figure>
-<ul>
-<li><code>LSF</code>（Last Segment Flag）字段指示这个 <code>AM PDU</code> 分段是否是所对应的初次传输的 <code>AM PDU</code> 的最后一个分段。</li>
-<li><code>SO</code>（Segment Offset）字段指示这个 <code>AM PDU</code> 分段在所对应的初次传输的 <code>AM PDU</code> 中的位置，具体<strong>是这个 AM PDU 分段的第 1 个字节</strong>在所对应的初次传输的 <code>AM PDU</code> 中的字节位置。</li>
-</ul>
-<p>除了 <code>RLC 数据 PDU</code> 之外，<code>AM 模式</code>下还可能传输 <code>RLC 控制 PDU</code>，进行 <code>RLC 状态</code>的报告。由数据接收方的 <code>RLC 实体</code>向数据发送方对等的 <code>RLC 实体</code>发送 <code>RLC 状态 PDU</code>，报告 <code>AM PDU</code> 数据包的接收状态，包括正确接收的数据包的最后序号，以及接收错误的数据包的序号。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-sub-html="<h2>RLC 状态 PDU</h2>">
-        
-    </a><figcaption class="image-caption">RLC 状态 PDU</figcaption>
-    </figure>
-<ul>
-<li><code>CPT</code>（Control PDU Type）字段指示该 <code>RLC 控制 PDU</code> 的类型</li>
-<li><code>ACK_SN</code>（Acknowledgement SN）字段指示接收正确的数据包的最后一个序列号，不包含 <code>ACK_SN</code> 本身所指示的数据包，以及由 <code>NACK_SN</code> 所指出的接收错误的数据包</li>
-<li><code>E1</code>（Extension bit 1）字段指示后面是否跟随有 <code>NACK_SN</code>，<code>E1</code> 和 <code>E2</code> 字段</li>
-<li><code>NACK_SN</code>（Negative Acknowledgement SN）字段指示接收错误或者部分出错的 <code>AM PDU</code> 数据包的序列号</li>
-<li><code>E2</code>（Extension bit 2）字段指示这个 <code>NACK_SN</code> 后面是否跟随有 <code>SOstart</code> 和 <code>SOend</code> 字段</li>
-<li><code>SOstart</code> 在 <code>AM PDU</code> 数据包部分出错的情况下，<code>SOstart</code> 字段指示出错部分的第一个字节在 <code>AM PDU</code> 数据包中的位置</li>
-<li><code>SOend</code> 在 <code>AM PDU</code> 数据包部分出错的情况下，<code>SOend</code> 字段指示出错部分的最后一个字节在 <code>AM PDU</code> 数据包中的位置</li>
-</ul>
-<h3 id="非确认模式um">非确认模式（UM）</h3>
-<p>此模式与确认模式的区别是<strong>不进行</strong>错误数据包重传的 <code>ARQ</code> 纠错。<code>UM 模式</code>主要用于对数据传输正确性的要求不是很高的场景，例如广播信道或者 <code>VoIP</code> 业务，包括上下行专用数据逻辑信道和多媒体广播多播业务（Multimedia Broadcast Multicast Service，MBMS）专用的控制和数据逻辑信道。<code>UM 模式</code> <code>RLC 子层</code>仍然执行数据包的连接、分段和重组，数据包的顺序传输和重复性检测的功能。</p>
-<p>与 <code>AM 模式</code>相比较，<code>UM 模式</code>的 <code>RLC PUD</code> 少了 3 个字段：<code>D/C</code>、<code>RF</code> 和 <code>P</code>。因为 <code>RLC 控制 PDU</code> 只在 <code>AM 模式</code>进行传输，<code>UM 模式</code>仅传输 <code>RLC 数据 PDU</code>，因此不需要指示 <code>RLC 控制</code>或者 <code>RLC 数据信息</code>的 <code>D/C</code> 字段。<code>UM 模式</code>不进行 <code>ARQ</code> 纠错的重传，因此不会出现数据包重传需要重新分段的情况，所以不需要指示数据分段的 <code>RF</code> 字段。P 字段所指示的 <code>RLC 状态报告</code>也仅适用于 <code>AM 模式</code>，因此 <code>UM 模式</code>的情况下不需要这个字段。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-sub-html="<h2>UM 模式数据消息的 RLC PDU 格式</h2>">
-        
-    </a><figcaption class="image-caption">UM 模式数据消息的 RLC PDU 格式</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：PDCP 层详解</title>
-    <link>https://www.techkoala.top/lte_pdcp/</link>
-    <pubDate>Mon, 31 Aug 2020 21:00:19 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_pdcp/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE PDCP 层详解</p>
-</blockquote>
-<h2 id="分组数据会聚协议pdcp">分组数据会聚协议（PDCP）</h2>
-<p>分组数据会聚协议（Packet Data Convergence Protocol，PDCP）层的主要功能是进行 <code>IP 数据包头压缩</code>、<code>数据加密</code>和<code>控制信令的完整性保护</code>。</p>
-<p>对于来自上层的数据包，将针对<strong>每一个</strong>无线承载建立一个 <code>PDCP 实体</code>。首先对数据包进行编号，然后根据配置对数据包进行 <strong>IP 包头压缩</strong>，<strong>数据加密</strong>和<strong>控制信令完整性保护</strong>的操作，形成 <code>PDCP 服务数据单元</code>（Service Data Unit，SDU），最后添加包含编号的 <code>PDCP 包头</code>，形成 <code>PDCP 协议数据单元</code>（Protocol Data Unit，PDU）作为 <code>PDCP</code> 子层协议功能的处理结果向下层 <code>RLC</code> 子层输出。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_3.webp" data-sub-html="<h2>PDCP 协议数据单元格式</h2>">
-        
-    </a><figcaption class="image-caption">PDCP 协议数据单元格式</figcaption>
-    </figure>
-<ul>
-<li><code>R</code> 表示预留的字段，都填充为 <code>0</code></li>
-<li><code>D/C</code> 字段指示控制面或者数据面的 <code>PDCP 包</code>，控制面为 <code>0</code>，数据面为 <code>1</code></li>
-<li><code>MAC-I</code> 是控制信令完整性保护的字段，在不使用完整性保护功能的时候，都填充为 <code>0</code></li>
+<li>终端的小区搜索和下行同步</li>
+<li>功率控制的方法</li>
+<li>上/下行共享信道的传输与接收</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：无线接入网上层协议</title>
-    <link>https://www.techkoala.top/upper_layer_protocol/</link>
-    <pubDate>Mon, 31 Aug 2020 16:09:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/upper_layer_protocol/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE PDCP 协议详解</p>
-</blockquote>
-<h2 id="无线接入网">无线接入网</h2>
-<p>由 E-NodeB 组成的无线接入网是系统与终端用户进行通信的接口，它的功能分为<code>数据面</code>和<code>控制面</code>两个部分：</p>
-<ul>
-<li><strong>数据面</strong>负责用户数据信息的传输</li>
-<li><strong>控制面</strong>负责系统控制功能以及相关信息的传输和处理</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" data-sub-html="<h2>LTE 接入网协议架构</h2>">
-        
-    </a><figcaption class="image-caption">LTE 接入网协议架构</figcaption>
-    </figure>
-<ul>
-<li><a href="https://www.techkoala.top/lte_pdcp/" target="_blank" rel="noopener noreffer">分组数据会聚协议（PDCP）</a></li>
-<li><a href="https://www.techkoala.top/lte_rlc/" target="_blank" rel="noopener noreffer">无线链路控制（RLC）</a></li>
-<li><a href="https://www.techkoala.top/lte_mac/" target="_blank" rel="noopener noreffer">媒体接入控制（MAC）</a></li>
-<li><a href="https://www.techkoala.top/lte_rrc/" target="_blank" rel="noopener noreffer">无线资源控制（RRC）</a></li>
-</ul>
-<p>无线接入网向核心网提供<strong>无线承载</strong>服务。</p>
-<p>针对每一个用户可以建立 1 个或者多个的无线承载，来自核心网 <code>S1</code> 接口的 <code>IP</code> 数据包根据不同的服务质量要求（Quality of Service，QoS）可以映射在不同的无线承载上。然后，数据包将分别经过 <code>PDCP</code>$\Longrightarrow$<code>RLC</code>$\Longrightarrow$<code>MAC</code> 各层协议地处理：</p>
-<ul>
-<li><code>PDCP</code> 层完成的功能包括 <code>IP</code> 数据包的头压缩、数据加密以及控制信令的完整性保护。</li>
-<li><code>RLC</code> 层主要进行自动重传请求（Automatic Repeat Request，ARQ）的功能。</li>
-<li><code>MAC</code> 层的主要功能包括动态资源调度、逻辑信道复用以及混合自动重传（Hybrid Automatic Repeat Request，HARQ）。</li>
-</ul>
-<p>经过 <code>MAC</code> 层协议的处理后，形成 1 个或者多个传输信道。最终通过物理层的处理在无线信号上进行传输。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" data-sub-html="<h2>LTE 接入网协议功能和数据处理流程</h2>">
-        
-    </a><figcaption class="image-caption">LTE 接入网协议功能和数据处理流程</figcaption>
-    </figure>
-<p>控制面主要的控制功能包括：</p>
-<ul>
-<li>无线接入网的无线资源管理（Radio Resource Control，RRC）。无线资源管理（RRC）的主要功能包括<strong>系统信息的广播</strong>、<strong>终端的移动性管理</strong>，以及<strong>信令和数据的连接控制</strong>。</li>
-<li>来自核心网移动性管理实体（MME）的非接入层（NAS）消息的控制功能，包括 <strong>EPS 系统承载</strong>（Evolved Packet System，EPS）的管理，<strong>空闲状态终端的移动性处理和寻呼</strong>，<strong>终端鉴权</strong>以及<strong>安全性</strong>方面的控制。</li>
-</ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：系统总体架构</title>
-    <link>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</link>
-    <pubDate>Mon, 31 Aug 2020 13:17:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/the_overall_architecture_of_the_lte_system/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 系统总体架构分解</p>
-</blockquote>
-<h2 id="系统架构演进">系统架构演进</h2>
-<p>系统架构演进（又名 SAE，System Architecture Evolution）是 3GPP 所制定的 LTE 无线通信的核心网络标准。</p>
-<p><code>SAE</code> 是基于 <code>GPRS</code> 核心网的演进，其主要差别为：</p>
-<ul>
-<li>简化架构</li>
-<li>全 <code>IP</code> 网络（<code>AIPN</code>）</li>
-<li>支持提供更高吞吐量和更低延迟的接入网</li>
-<li>多个异构接入网络的互通，包括 <code>E-UTRA</code>（LTE 和 LTE 升级版的接入网），3GPP 已有系统（例如 <code>GPRS</code> 和 <code>UMTS</code> 的接入网 <code>GERAN</code> 和 <code>UTRAN</code>），也支持与非 3GPP 系统之间的互通（例如 <code>WiMAX</code>、<code>CDMA2000</code> 或 <code>WIFI</code>）</li>
-</ul>
-<p><code>SAE</code> 是的传输使用全 <code>IP</code> 网络，从而支持系统的控制平面和用户平面的分离。</p>
-<p><code>SAE</code> 体系结构的主要组成部分是核心分组网演进（EPC，Evolved Packet Core )，也被称为 <code>SAE</code> 核心。<code>EPC</code> 作用与 <code>GPRS</code> 网络相似，包含移动性管理组件（<code>MME</code>），服务网关（<code>S-GW</code>）和 <code>PDN</code> 网关（PDN Gateway）等网元。</p>
-<h2 id="系统架构">系统架构</h2>
-<p>LTE 系统可以分为<code>核心网</code>和<code>无线接入网</code>两个部分，如下图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" data-sub-html="<h2>LTE 系统总体架构图</h2>">
-        
-    </a><figcaption class="image-caption">LTE 系统总体架构图</figcaption>
-    </figure>
-<h3 id="核心网">核心网</h3>
-<p><strong>核心网</strong>包括：</p>
-<ul>
-<li>
-<p><code>移动性管理实体</code>（MME）</p>
-</li>
-<li>
-<p><code>服务网关</code>（S-GW）</p>
-</li>
-<li>
-<p><code>分组数据网网关</code>（P-GW）</p>
-<p><code>MME</code>实体负责移动性管理相关的控制功能，包括：</p>
-<ul>
-<li>对终端位置跟踪区域列表的管理</li>
-<li>对处于空闲状态的终端发起寻呼</li>
-<li>为终端选择接入的 <code>P-GW</code> 和 <code>S-GW</code></li>
-<li>漫游和鉴权功能</li>
-<li>非接入层（Non-Access Stratum，NAS）信令功能</li>
-<li>信令安全和接入层（Access Stratum，AS）的安全控制</li>
-<li>接入网之间的移动性管理（包括接入网内切换时的 MME 选择，向 2G 或者 3G 的不同接入网切换时的 SGSN 选择）</li>
-<li>网络承载管理的功能</li>
-</ul>
-<p>服务网关（<code>S-GW</code>）负责数据承载的相关功能，包括：</p>
-<ul>
-<li>数据包的路由和转发，<code>E-NodeB</code> 之间切换或者 <code>E-NodeB</code> 和 <code>GSM/WCDMA/TD-SCDMA</code> 系统的不同接入网之间切换时的数据锚点</li>
-<li>上下行传输层数据包的优先级标识</li>
-<li>运营商内部和运营商之间的终端计费</li>
-<li>对用户通信进行合法侦听的功能</li>
-</ul>
-<p>PDN 网关（<code>P-GW</code>）是核心网与外部因特网的接口，完成的主要功能包括</p>
-<ul>
-<li>针对每个用户的数据包过滤</li>
-<li>终端的 <code>IP</code> 地址分配</li>
-<li>基于业务的计费功能</li>
-<li>门控和速率强制功能</li>
-<li>下行传输层数据包的优先级标识</li>
-<li>进行合法侦听的功能</li>
-</ul>
-</li>
-</ul>
-<h3 id="无线接入网">无线接入网</h3>
-<p><strong>无线接入网</strong>是系统与移动用户终端进行通信的接口，LTE 无线接入网采用扁平的网络结构，仅包含一种网络节点，即 <code>E-NodeB</code>（LTE 基站）：</p>
-<ul>
-<li>
-<p><code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>E-NodeB</code> 通过 <code>S1</code> 接口与核心网进行连接，分为 <code>S1-MME</code> 和 <code>S1-U</code> 接口分别与核心网的 <code>MME</code> 和 <code>S-GW</code> 设备进行连接。为了实现负荷分担和容灾备份的功能，<code>E-NodeB</code> 和 <code>MME/S-GW</code> 之间可以进行多对多的连接，即 1 个 <code>MME/S-GW</code> 可以和多个 <code>E-NodeB</code> 连接，1 个 <code>E-NodeB</code> 也可以和多个 <code>MME/S-GW</code> 连接。</p>
-</li>
-<li>
-<p><code>E-NodeB</code> 负责无线接入网部分的功能，主要包括：无线资源管理（包括无线承载控制、无线接入控制、连接的移动性控制、动态的资源调度），<code>IP</code> 头压缩和用户数据加密，为附着的终端选择进行控制功能的 <code>MME</code> 实体，将用户数据路由至 <code>S-GW</code> 服务网关，寻呼、广播和公共报警消息的调度与传输，以及配置用于终端移动性管理和数据调度的物理层信号测量和测量的上报。<code>E-NodeB</code> 之间通过 <code>X2</code> 接口进行互连，<code>X2</code> 接口主要用于支持终端在 <code>E-NodeB</code> 之间的切换，包括信令的交互以及切换过程中可能进行的数据转发，<code>X2</code> 接口还可以用于在小区之间交互无线资源管理的消息，实现小区间协调进行干扰抑制的功能。</p>
-</li>
-</ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://zh.wikipedia.org/wiki/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B" target="_blank" rel="noopener noreffer">SAE</a></p>
-</li>
-<li>
-<p>[2] LTE-Advanced 关键技术详解</p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：上行链路帧结构</title>
-    <link>https://www.techkoala.top/lte_uplink_frame_structure/</link>
-    <pubDate>Sat, 10 Aug 2019 19:46:00 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_uplink_frame_structure/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 上行链路帧结构详细讲解</p>
-</blockquote>
-<p>LTE 使用 SC (单载波)-FDMA 作为上行链路信号。</p>
-<h2 id="时隙结构">时隙结构</h2>
-<p>从下面的时隙结构可以看出，LTE 上下行链路的时隙结构是相似的：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" data-sub-html="<h2>上行时隙结构</h2>">
-        
-    </a><figcaption class="image-caption">上行时隙结构</figcaption>
-    </figure>
-<p>与下行链路相同，上行链路中的帧时间和时隙时间与下行链路中相同。并且资源块结构和下行链路上也相同。如上所述，在一个时隙中的 7 个符号在上行链路和下行链路上也是相同的。</p>
-<p>你可能会注意到的一点区别是每个物理信道的位置。在下行链路情况下，信道通常占用整个带宽，但是上行链路时隙中的信道更局限。例如，PUCCH 仅位于整个带宽中的的最低端和最高端。</p>
-<h3 id="pucch-rs">PUCCH RS</h3>
-<p>携带解调 PUCCH 所需的参考信号。这意味着如果此部分配置不正确或 eNodeB 检测不到此部件，则 eNodeB 无法解码 PUCCH。</p>
-<h3 id="pucch">PUCCH</h3>
-<p>此信道可以承载大量信息(UCI)，但根据配置的不同，它只能承载以下信息中的一部分：</p>
-<ul>
-<li>ACK/NACK for the recieved PDSCH data</li>
-<li>CQI</li>
-<li>RI</li>
-<li>PMI</li>
-</ul>
-<p>正如你在时隙结构中看到的，PUCCH 以子帧内两个时隙之间交替的方式位于上行链路频域的两端，这意味着如果 PUCCH 是时隙 0 (第一个时隙) 中的频域的最低部分，并且它将位于时隙 1 (第二个时隙) 中的频域的最高部分。分配给 PUCCH 的资源元素的确切数量由网络确定，并且配置通过 SIB2 广播到 UE。</p>
-<p>详细的 PUCHH 结构参考：</p>
-<ul>
-<li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreffer">PUCCH Format</a></p>
-</li>
-<li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 1,1a,1b Location</a></p>
-</li>
-<li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 2,2a,2b Location</a></p>
-</li>
-</ul>
-<h3 id="pusch-rs">PUSCH RS</h3>
-<p>携带解调 PUSCH 所需的参考信号。</p>
-<h3 id="pusch">PUSCH</h3>
-<p>承载 UE 尝试发送的上行链路数据。并且除了上行链路数据之外，还可以携带 UE 接收的 PDSCH 的 ACK/NACK。</p>
-<h3 id="srs">SRS</h3>
-<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreffer">SRS in Quick Reference</a></p>
-<h2 id="上行资源网格">上行资源网格</h2>
-<p>具体来说，上行资源还有一种网格格式，如下所示:</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-sub-html="<h2>上行资源网格</h2>">
-        
-    </a><figcaption class="image-caption">上行资源网格</figcaption>
-    </figure>
-<p>最小的单元是 “资源元素 (RE)”，最小的资源分配单元是 RB (资源块)，它沿时域跨越 7 RE，沿频域跨越 12 RE。 这意味着一个 RB 有 84 个单元 (7x12)。</p>
-<h2 id="通信中的信道">通信中的信道</h2>
-<p>下图显示了上行/下行数据传输的总体顺序。你可以将数据传输序列图与 DL/UL 帧结构中每个通道的特定位置相关联。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" data-sub-html="<h2>LTE 上下行传输顺序图</h2>">
-        
-    </a><figcaption class="image-caption">LTE 上下行传输顺序图</figcaption>
-    </figure>
-<h2 id="帧结构总览">帧结构总览</h2>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" data-sub-html="<h2>上行帧结构概览</h2>">
-        
-    </a><figcaption class="image-caption">上行帧结构概览</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreffer">UL FrameStructure</a></li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：帧中的物理信道和信号</title>
-    <link>https://www.techkoala.top/lte_physical_channels_and_signals/</link>
-    <pubDate>Tue, 30 Jul 2019 22:49:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_physical_channels_and_signals/</guid>
-    <description><![CDATA[<blockquote>
-<p>概述 LTE 信息帧中的各类物理通道和信号</p>
-</blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
-<h2 id="pbch">PBCH</h2>
-<p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
-<ul>
-<li>
-<p>它只携带 MIB (master information block，主系统信息块)</p>
-</li>
-<li>
-<p>它使用的是 QPSK</p>
-</li>
-<li>
-<p>映射到 6 个资源块（72 个子载波），以 0 号子帧中的 DC 子载波为中心</p>
-</li>
-<li>
-<p>映射到不为传输参考信号、PDCCH 或 PCHICH 而保留的资源元素</p>
-</li>
-<li>
-<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
-</li>
-</ul>
-<h2 id="pcfich">PCFICH</h2>
-<p><strong>Physical Control Format Indicator Channel，物理控制格式指示通道</strong></p>
-<ul>
-<li>
-<p>它映射到每个下行链路子帧中的第一个 OFDM 符号</p>
-</li>
-<li>
-<p>它包含了携带控制信道（PDCCH 和 PHICH）的 OFDM 符号数量的信息。UE 对该信道进行解码，以找出该帧中为控制信道（PDCCH 和 PHICH）分配了多少个 OFDM 符号</p>
-</li>
-<li>
-<p>它是子帧的第一个 OFDM 符号的 16 个数据子载波</p>
-</li>
-<li>
-<p>PCFICH 数据由 4 个 REG 承载，并且这 4 个 REG 均匀分布在整个频带上，与带宽无关</p>
-</li>
-<li>
-<p>PCFICH 的确切位置由小区 ID 和带宽确定</p>
-</li>
-<li>
-<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreffer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PCFICH</a> 页面</p>
-</li>
-</ul>
-<h2 id="pdcch">PDCCH</h2>
-<p><strong>Physical Downlink Control Channel，物理下行控制信道</strong></p>
-<ul>
-<li>
-<p>映射到下行链路每个子帧中前 L 个 OFDM 符号</p>
-</li>
-<li>
-<p>PDCCH 的符号数（L）可以是 1,2 或 3</p>
-</li>
-<li>
-<p>PDCCH 的符号数由 PCFICH 指定</p>
-</li>
-<li>
-<p>PDCCH 承载 DCI，而 DCI 承载传输格式，资源分配，与 DL-SCH，UL-SCH 和 PCH 相关的 H-ARQ 信息以及其他取决于 DCI 格式的信息</p>
-</li>
-<li>
-<p>PDCCH 还携带用于 UL 调度分配的 DCI 0（例如，UL 授权）</p>
-</li>
-<li>
-<p>可以在单个子帧中分配多个 PDCCH，并且 UE 对所有 PDCCH 进行盲解码</p>
-</li>
-<li>
-<p>调制方案是 QPSK</p>
-</li>
-<li>
-<p>PDCCH 类似于 HSDPA 的 HS-SCCH、R99 的 PDCCH 和 HSUPA 的 E-AGCH/E-RGCH</p>
-</li>
-<li>
-<p>即使 PDCCH 具有很多功能，但并非所有功能都同时使用，因此 PDCCH 配置应灵活设置</p>
-</li>
-<li>
-<p>如果您对该通道中的详细信息映射感兴趣，请参阅 36.211 中的 6.8.1。简要说明如下：</p>
-</li>
-</ul>
-<blockquote>
-<p>物理下行链路控制信道承载调度分配和其他控制信息。物理控制信道是在一个或几个连续的控制信道元素（CCE）的聚合上发送的，其中控制信道元素对应于 9 个资源元素组。未分配给 PCFICH 或 PHICH 的资源元素组的数量为 REG N。系统中可用的 CCE 从 0 和 N_CCE-1 编号，其中 N_CCE = floor（N_REG/9）。</p>
-</blockquote>
-<ul>
-<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDCCH</a> 页面</li>
-</ul>
-<h2 id="phich">PHICH</h2>
-<p><strong>Physical Hybrid ARQ Indicator Channel，物理 HARQ 指示信道</strong></p>
-<ul>
-<li>
-<p>对收到的 PUSCH 进行 H-ARQ 反馈</p>
-</li>
-<li>
-<p>UE 在 UL 中传输数据后，等待 PHICH 进行 ACK</p>
-</li>
-<li>
-<p>类似于 HSPA 中的 E-HICH</p>
-</li>
-<li>
-<p>某些情况下，几个 PHICH 使用相同的资源元素构成 PHICH 组</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreffer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PHICH </a> 页面</p>
-</li>
-</ul>
-<h2 id="pdsch">PDSCH</h2>
-<p><strong>Physical Downlink Shared Channel，物理下行共享信道</strong></p>
-<ul>
-<li>
-<p>携带用户特定的数据（DL 有效负载）</p>
-</li>
-<li>
-<p>携带随机访问响应消息</p>
-</li>
-<li>
-<p>它使用带有 QPSK，16 QAM，64 QAM，256 QAM 调制方案的 AMC（此调制方案由 DCI 承载的 MCS 确定）</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDSCH </a> 页面</p>
-</li>
-</ul>
-<h2 id="prach">PRACH</h2>
-<p><strong>Physical Random Access Channel，物理随机接入信道</strong></p>
-<ul>
-<li>
-<p>携带随机访问前导码</p>
-</li>
-<li>
-<p>它在频域中占用 72 个子载波（6 RB）的带宽</p>
-</li>
-<li>
-<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列</a> 生成</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreffer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PRACH</a> 页面</p>
-</li>
-</ul>
-<h2 id="p-ss">P-SS</h2>
-<p><strong>Primary Synchronization Signal，主同步信号</strong></p>
-<ul>
-<li>
-<p>映射到 72 个活动子载波（6 个资源块），以时隙 0（子帧 0）和时隙 10（子帧 5）中的 DC 子载波为中心。</p>
-</li>
-<li>
-<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列值</a> 组成</p>
-</li>
-<li>
-<p>用于下行帧同步</p>
-</li>
-<li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreffer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PSS</a> 页面</p>
-</li>
-</ul>
-<blockquote>
-<p>如何从基带捕获的 IQ 数据序列中找到 PSS 的确切位置？是定时同步中最重要的部分之一；也是理解 LTE 协议中非常棘手的部分之一，需要花费很长时间进行研究。</p>
-</blockquote>
-<h2 id="s-ss">S-SS</h2>
-<p><strong>Secondary Synchronization Signal，副同步信号</strong></p>
-<p>SSS 是用于无线电帧同步的特定物理层信号，它具有以下列出的特征：</p>
-<ul>
-<li>
-<p>映射到 72 个活动子载波（6 个资源块），以 FDD 中的时隙 0（子帧 0）和时隙 10（子帧 5）的 DC 子载波为中心</p>
-</li>
-<li>
-<p>子帧 0 中的 SSS 序列与子帧 5 中的 SSS 序列互不相同</p>
-</li>
-<li>
-<p>由 62 个加扰序列（基于 m 序列）组成</p>
-</li>
-<li>
-<p>奇偶索引的资源元素的值由不同方程生成</p>
-</li>
-<li>
-<p>用于下行帧同步</p>
-</li>
-<li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
-</li>
-<li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreffer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : SSS</a></p>
-</li>
-</ul>
-<h2 id="rs">RS</h2>
-<p><strong>Reference Signal，参考信号</strong></p>
-<p>大多数信道（例如，PDSCH，PDCCH，PBCH 等）都用于承载特殊信息（比特序列），它们与更高层的信道相连，但是参考信号是仅存在于 PHY 层的特殊信号，不用于传递任何特定信息。参考信号的目的是为下行链路功率提供参考点。</p>
-<p>当 UE 尝试计算 DL 功率（即，来自 eNode-B 的信号的功率）时，它将测量参考信号的功率并将其作为下行链路小区功率。</p>
-<p>这些参考信号由每个时隙中的多个特定资源元素承载，并且资源元素的具体位置由天线配置确定。</p>
-<h3 id="rs---cell-specific">RS - Cell Specific</h3>
-<p>在下图中，红色/蓝色/绿色/黄色是承载参考信号的部分，灰色标记的资源元素是为参考信号保留的部分，但未承载该特定天线的参考信号。（插图基于 36.211 的图 6.10.1.2-1： 下行链路参考信号的映射（正常循环前缀））</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" data-sub-html="<h2>小区特定参考信号</h2>">
-        
-    </a><figcaption class="image-caption">小区特定参考信号</figcaption>
-    </figure>
-<p>以下是 4 天线情况下物理信道配置和 RE（资源元素）映射的示例。测量结果来自 LTE 信号分析仪，它测量从 LTE 网络模拟器传出的 LTE 信号。它仅显示 20 Mhz 系统带宽中的一个 RB（RB0）（总共 100 个 RB），并且分别在 LTE 网络发送 MIB/SIB 和 UE 未连接时在天线端口 0、1、2、3 处捕获。你会注意到，每个天线的参考信号位置都不同。 由于此参考信号位置的差异，REG 分组可能由 PCFICH 的不同位置中略有不同。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" data-sub-html="<h2>各天线小区特定参考信号</h2>">
-        
-    </a><figcaption class="image-caption">各天线小区特定参考信号</figcaption>
-    </figure>
-<p>有两种不同类型的参考信号：小区特定参考信号和 UE 特定参考信号</p>
-<p>小区特定参考信号（CRS）：该参考信号在每个子帧处被发送，并且跨越整个工作带宽，通过天线端口 0、1、2、3 发送。</p>
-<p>UE 特定参考信号：此参考信号在仅分配给特定 UE 的资源块中传输，并通过天线端口 5 传输。</p>
-<p>特定于小区的参考信号的资源元素是否固定？</p>
-<p>否，位置会根据物理小区 ID 进行更改，如下所述：</p>
-<ul>
-<li>
-<p>参考信号的时域索引（l）= 固定（l = [0,4]）</p>
-</li>
-<li>
-<p>参考信号的频域索引 k 根据 36.211 6.10.1.2 映射到资源元素中指定的物理小区 ID 而变化。</p>
-<p>主要规则是：$k = 6m + (v + v_{shift})mod 6$，其中 v_shift=物理小区 ID mod6。详细信息参阅 36.211 6.10.1.2</p>
-</li>
-</ul>
-<p>下行参考信号携带什么样的值？</p>
-<p>该值是 36.211 6.10.1.1 序列生成中定义算法生成的伪随机序列。该序列的确定值之一是物理小区 ID，这意味着物理小区 ID 也影响参考信号的值。</p>
-<p>CRS 是否以任何子帧类型（类型 1、2、3）传输？</p>
-<p>对于帧结构类型 1，在所有下行链路子帧中发送 CRS。
-对于帧结构类型 2，在所有下行链路子帧和 DwPTS 中发送 CRS
-对于帧结构类型 3，CRS 在非空子帧中传输</p>
-<h3 id="rs---mbsfn">RS - MBSFN</h3>
-<p>下图基于 36.211 的图 6.10.2.2-1：MBSFN 参考信号的映射（扩展循环前缀，Δf= 15 kHz）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" data-sub-html="<h2>Reference Signal - MBSFN</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - MBSFN</figcaption>
-    </figure>
-<h3 id="rs---ue-specific">RS - UE Specific</h3>
-<p>下图基于 36.211 的图 6.10.3.2-1：特定于 UE 的参考信号，天线端口 5（正常循环前缀）的映射</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" data-sub-html="<h2>Reference Signal - UE Specific - Antenna Port 5</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - UE Specific - Antenna Port 5</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" data-sub-html="<h2>Reference Signal - UE Specific - Antenna Port 5</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - UE Specific - Antenna Port 5</figcaption>
-    </figure>
-<h3 id="rs---positioning">RS - Positioning</h3>
-<p>下图基于 36.211 的图 6.10.4.2-1：定位参考信号的映射（正常循环前缀）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" data-sub-html="<h2>Reference Signal - Positioning - Antenna Port 6</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - Positioning - Antenna Port 6</figcaption>
-    </figure>
-<h3 id="rs---csi">RS - CSI</h3>
-<p>下图基于 36.211 的图 6.10.5.2-1：CSI 参考信号的映射（CSI 配置 0，常规循环前缀）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" data-sub-html="<h2>Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22</h2>">
-        
-    </a><figcaption class="image-caption">Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22</figcaption>
-    </figure>
-<h2 id="全帧快照">全帧快照</h2>
-<p>下图展示了上述提及的所有物理信道在整个框架上的整体图像：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" data-sub-html="<h2>Full Frame</h2>">
-        
-    </a><figcaption class="image-caption">Full Frame</figcaption>
-    </figure>
-<h2 id="通信过程中的物理信道">通信过程中的物理信道</h2>
-<p>下图显示了上行/下行数据传输的总体顺序：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" data-sub-html="<h2>数据传输序列图</h2>">
-        
-    </a><figcaption class="image-caption">数据传输序列图</figcaption>
-    </figure>
-<h2 id="附加图">附加图</h2>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - Radio Frame</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Radio Frame</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - PBCH</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - PBCH</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - PSS/SSS</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - PSS/SSS</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" data-sub-html="<h2>Spectrogram - LTE FDD DL - Each Symbol</h2>">
-        
-    </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Physical Channels and Signals</a></p>
-</li>
-<li>
-<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE 的信道</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：下行链路帧结构</title>
-    <link>https://www.techkoala.top/lte_downlink_frame_structure/</link>
-    <pubDate>Mon, 29 Jul 2019 17:53:52 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_downlink_frame_structure/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 下行链路帧结构详细讲解</p>
-</blockquote>
-<h2 id="下行帧结构">下行帧结构</h2>
-<h3 id="fdd类型-1">FDD——类型 1</h3>
-<p>36.211 中 <code>FDD</code> <code>LTE</code> 的帧结构概览图如下所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
-        
-    </a><figcaption class="image-caption">FDD 帧结构</figcaption>
-    </figure>
-<p>上图仅显示了帧在时域上的结构，而没有显示频域上的结构。</p>
-<p>从图中可以看处：</p>
-<ul>
-<li>
-<p>一帧（一个无线帧，一个系统帧）的持续时间是 10 ms。</p>
-</li>
-<li>
-<p>一帧（10 毫秒）的样本数是 307200（307.200 K）。</p>
-</li>
-<li>
-<p>一帧中有 10 个子帧。</p>
-</li>
-<li>
-<p>一个子帧中有 2 个时隙。</p>
-</li>
-</ul>
-<p>那么一个时隙是时域上最小的结构吗？不，如果进一步放大此结构，则会得到下图：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-sub-html="<h2>时隙结构</h2>">
-        
-    </a><figcaption class="image-caption">时隙结构</figcaption>
-    </figure>
-<p>可以观察到一个时隙由 7 个<code>符号</code>组成。（一个符号是信号的某个时间跨度，在 I/Q 星座中的一个点。）</p>
-<p>在符号的开头，还有一个很小的跨度，称为<code>循环前缀</code>，其余部分是真实的符号数据。</p>
-<p><code>LTE</code> 中有两种不同类型的循环前缀。一种是<code>普通循环前缀</code>；另一个是<code>扩展循环前缀</code>，其长度比普通循环前缀更长。（由于一个时隙的长度是固定的且不能更改，因此，如果使用<code>扩展循环前缀</code>，则一个时隙内则只能有 6 个符号）。</p>
-<p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
-        
-    </a><figcaption class="image-caption">符号结构</figcaption>
-    </figure>
-<p>此图中显示的长度不随采样率而变化，但是每个符号和 <code>CP</code> 中的采样数随采样率而变化。此图中显示的样本数基于 30.72 Mhz 采样率的情况。</p>
-<p>关于上述子帧结构，需要注意的几件事是：</p>
-<ul>
-<li>
-<p>时隙中的第一个 OFDM 符号比剩下的 OFDM 符号长一些。</p>
-</li>
-<li>
-<p>上图中显示的样本数基于以下参数设置：采样率为 30.72M 个样本/秒和 2048 个 bin/IFFT（$N_{ifft}$）。实际采样率和 $N_{ifft}$ 可能会随系统带宽而变化，需要根据特定带宽来缩放。</p>
-</li>
-<li>
-<p>每种系统带宽的典型 $N_{ifft}$ 如下:</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>System BW</th>
-<th>Number of RBs</th>
-<th>$N_{ifft}$ (bins/IFFT)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.4</td>
-<td>6</td>
-<td>128</td>
-</tr>
-<tr>
-<td>3.0</td>
-<td>15</td>
-<td>256</td>
-</tr>
-<tr>
-<td>5.0</td>
-<td>25</td>
-<td>512</td>
-</tr>
-<tr>
-<td>10.0</td>
-<td>50</td>
-<td>1024</td>
-</tr>
-<tr>
-<td>15.0</td>
-<td>75</td>
-<td>2048</td>
-</tr>
-<tr>
-<td>20.0</td>
-<td>100</td>
-<td>2048</td>
-</tr>
-</tbody>
-</table>
-<p>下图是<code>LTE 资源网格</code>的总体子帧结构：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-sub-html="<h2>LTE 资源网格</h2>">
-        
-    </a><figcaption class="image-caption">LTE 资源网格</figcaption>
-    </figure>
-<p>以下显示所有 4 个天线信号叠加（重叠）的理想情况下的下行链路帧结构和 RE（Resource Element，资源元素）映射的示例。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-sub-html="<h2>4天线帧结构和 RE 映射示例</h2>">
-        
-    </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
-    </figure>
-<p>实际上，来自每个天线的信号具有略微不同的符号数据和参考信号位置。 RE 映射的顶部和底部显示的星座图是 <code>LTE</code> 信号分析器测量来自 <code>LTE</code> 网络模拟器的 <code>LTE</code> 信号的测量结果。这是在 <code>LTE</code> 网络正在传输 MIB/SIB 且 <code>UE</code> 未连接的情况下在天线端口 0 处捕获的。如果您使用不同的信道功率（例如 PCFICH 功率，PDCCH 功率，CRS 功率等）执行类似的操作，则可能会看到一些不同的星座图。</p>
-<p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
-        
-    </a><figcaption class="image-caption">下行帧结构物理信道</figcaption>
-    </figure>
-<p>如上所述，我们可以在二维图中表示 LTE 信号。横轴是时域，纵轴是频域。纵轴上的最小单位是子载波，横轴上的最小单位是符号。时域和频域多个较小单位组合成较大单位。</p>
-<hr>
-<p>首先让我们看一下频域结构：</p>
-<ul>
-<li>
-<p>LTE（无论 OFDM/OFDMA）频带由多个小间隔信道组成，这些小信道称为<code>子载波</code>。</p>
-</li>
-<li>
-<p>无论 LTE 频带的系统带宽是多少，<code>子载波</code>间隔都相同。</p>
-</li>
-<li>
-<p>如果 LTE 信道的系统带宽发生变化，则信道数（子载波）会发生变化，但信道之间的间隔不会发生变化。</p>
-</li>
-</ul>
-<ol>
-<li>
-<p>子载波和下一个子载波之间的空间是多少？ 15 Khz</p>
-</li>
-<li>
-<p>20 Mhz LTE 频段的信道（子载波）数量是多少？ 1200 个子载波。</p>
-</li>
-<li>
-<p>10 Mhz LTE 频段的信道（子载波）数量是多少？ 600 个子载波。</p>
-</li>
-<li>
-<p>5 Mhz LTE 频段的信道（子载波）数量是多少？ 300 个子载波。</p>
-</li>
-</ol>
-<hr>
-<p>接着我们看一下横轴（即时域）的上的基本组成单位。时域上的最小单位是符号，长度为 66.7 us。无论带宽如何，符号长度都不会改变。</p>
-<ol>
-<li>
-<p>一个时隙中有多少个符号？ A&gt; 7 个符号。</p>
-</li>
-<li>
-<p>一个子帧中有多少个符号？ A&gt; 14 个符号。</p>
-</li>
-<li>
-<p>一个帧中有几个时隙？ A&gt; 20 个时隙。</p>
-</li>
-</ol>
-<hr>
-<p>现在，让我们看一下由时域（横轴）和频域（竖轴）组成的单位。我们将此类型的单元称为二维单元。</p>
-<p>最小的二维单位是 RE，它由时域中的<code>一个符号</code>和频域中的<code>一个子载波</code>组成。另一个二维单位是 RB（Resource Block，资源块），它由时域中的<code>一个时隙</code>和频域中的 <code>12 个子载波</code>组成。RB 是 <code>LTE</code> 中协议侧和 <code>RF</code> 测量侧最重要的单元。</p>
-<ol>
-<li>
-<p>一个资源块中有多少个符号？ 7 个符号。</p>
-</li>
-<li>
-<p>一个资源块中有多少个子载波？ 12 个子载波。</p>
-</li>
-<li>
-<p>一个资源块中有多少资源元素？ 84 个资源元素。</p>
-</li>
-</ol>
-<p>那么</p>
-<ol start="4">
-<li>
-<p>20 Mhz 频带中有多少资源块？ 100 个资源块。</p>
-</li>
-<li>
-<p>10 Mhz 频带中有多少资源块？ 50 个资源块。</p>
-</li>
-<li>
-<p>5 Mhz 频带中有多少资源块？ 25 个资源块。</p>
-</li>
-</ol>
-<h3 id="tdd类型-2">TDD——类型 2</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-sub-html="<h2>TDD 帧结构</h2>">
-        
-    </a><figcaption class="image-caption">TDD 帧结构</figcaption>
-    </figure>
-<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 <code>TDD</code> <code>UL/DL</code> 资源分配图。</p>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>颜色</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PDCCH</td>
-<td>橙色</td>
-</tr>
-<tr>
-<td>PBCH</td>
-<td>蓝色</td>
-</tr>
-<tr>
-<td>PSS</td>
-<td>紫色</td>
-</tr>
-<tr>
-<td>SSS</td>
-<td>浅蓝色</td>
-</tr>
-<tr>
-<td>PDSCH</td>
-<td>白色</td>
-</tr>
-<tr>
-<td>Reserved</td>
-<td>黑色</td>
-</tr>
-<tr>
-<td>Ref Signal</td>
-<td>红色</td>
-</tr>
-<tr>
-<td>PCFICH</td>
-<td>浅绿色</td>
-</tr>
-<tr>
-<td>PHICH</td>
-<td>黄色</td>
-</tr>
-<tr>
-<td>TDD Uplink</td>
-<td>绿色</td>
-</tr>
-<tr>
-<td>Guard Period</td>
-<td>灰色</td>
-</tr>
-</tbody>
-</table>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 1, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 1, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 2, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 2, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 3, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 3, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 4, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 4, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 5, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 5, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 6, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 6, Special Subframe Config 0</figcaption>
-    </figure>
-<hr>
-<p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧 0 和子帧 6 中的符号结构如何变化。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 1</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 1</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 2</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 2</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 3</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 3</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 4</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 4</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 5</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 5</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 6</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 6</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 7</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 7</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 8</h2>">
-        
-    </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
-    </figure>
-<h3 id="laa类型-3">LAA——类型 3</h3>
-<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 <code>LTE-U</code> 一样，这也是一种在未经许可的频率范围内传输 <code>LTE</code> 信号的技术。 然而，与 <code>LTE-U</code> 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 <code>LTE</code> 信号类似于 <code>WLAN</code> 突发，并使 <code>LTE</code> 信号更好地与现有的 <code>WLAN</code> 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
-</li>
-<li>
-<p>[2] <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
-</li>
 </ul>]]></description>
 </item></channel>
 </rss>

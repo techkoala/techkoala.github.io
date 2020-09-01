@@ -1715,6 +1715,9 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
         
     </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
     </figure>
+<h2 id="另见">另见</h2>
+<p><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">LTE 系列：物理信号</a></p>
+<p><a href="https://www.techkoala.top/lte_physical_channels/" target="_blank" rel="noopener noreffer">LTE 系列：物理信道</a></p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>

@@ -1,4 +1,4 @@
-# LTE 系列：RLC 层详解
+# LTE 系列：RLC 层
 
 
 > LTE RLC 层详解

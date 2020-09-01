@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>LTE 系列：MAC 层详解 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：MAC 层详解" />
+        <title>LTE 系列：MAC 层 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：MAC 层" />
 <meta property="og:description" content="
 LTE MAC 层详解
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/lte_mac/" />
 <meta property="article:published_time" content="2020-08-31T21:00:31+08:00" />
-<meta property="article:modified_time" content="2020-08-31T21:20:43+08:00" />
+<meta property="article:modified_time" content="2020-08-31T23:40:58+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="LTE 系列：MAC 层详解"/>
+<meta name="twitter:title" content="LTE 系列：MAC 层"/>
 <meta name="twitter:description" content="
 LTE MAC 层详解
 "/>
@@ -25,13 +25,13 @@ LTE MAC 层详解
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "LTE 系列：MAC 层详解",
+        "headline": "LTE 系列：MAC 层",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/lte_mac\/"
         },"genre": "posts","keywords": "LTE","wordcount":  5795 ,
-        "url": "https:\/\/www.techkoala.top\/lte_mac\/","datePublished": "2020-08-31T21:00:31+08:00","dateModified": "2020-08-31T21:20:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/lte_mac\/","datePublished": "2020-08-31T21:00:31+08:00","dateModified": "2020-08-31T23:40:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -105,7 +105,7 @@ LTE MAC 层详解
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系列：MAC 层详解</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系列：MAC 层</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-31">2020-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5795 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
@@ -406,15 +406,15 @@ LTE MAC 层详解
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-08-31&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/9a9343f78c5317151c3e0b64ff9392c35cc75184" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 9a9343f78c5317151c3e0b64ff9392c35cc75184: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>9a9343f</a></span>
+                <span>更新于 2020-08-31&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/56ad5d03deedda5fe63a7c64c46f982190a5a173" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 56ad5d03deedda5fe63a7c64c46f982190a5a173: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>56ad5d0</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_mac/" data-title="LTE 系列：MAC 层详解" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_mac/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_mac/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_mac/" data-title="LTE 系列：MAC 层详解"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_mac/" data-title="LTE 系列：MAC 层详解"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_mac/" data-title="LTE 系列：MAC 层" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_mac/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_mac/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_mac/" data-title="LTE 系列：MAC 层"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_mac/" data-title="LTE 系列：MAC 层"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -426,8 +426,8 @@ LTE MAC 层详解
         </section>
     </div>
 
-    <div class="post-nav"><a href="/lte_rlc/" class="prev" rel="prev" title="LTE 系列：RLC 层详解"><i class="fas fa-angle-left fa-fw"></i>LTE 系列：RLC 层详解</a>
-            <a href="/lte_rrc/" class="next" rel="next" title="LTE 系列：RRC 层详解">LTE 系列：RRC 层详解<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/lte_rlc/" class="prev" rel="prev" title="LTE 系列：RLC 层"><i class="fas fa-angle-left fa-fw"></i>LTE 系列：RLC 层</a>
+            <a href="/lte_rrc/" class="next" rel="next" title="LTE 系列：RRC 层">LTE 系列：RRC 层<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -442,7 +442,7 @@ LTE MAC 层详解
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-31T21:00:31+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系列：MAC 层详解"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-31T21:00:31+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系列：MAC 层"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>

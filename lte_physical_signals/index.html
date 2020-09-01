@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>LTE 系列：物理信号 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：物理信号" />
+<meta property="og:description" content="
+LTE 物理信号详解
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.techkoala.top/lte_physical_signals/" />
+<meta property="article:published_time" content="2020-09-01T21:02:32+08:00" />
+<meta property="article:modified_time" content="2020-09-01T21:02:32+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LTE 系列：物理信号"/>
+<meta name="twitter:description" content="
+LTE 物理信号详解
+"/>
+<meta name="application-name" content="TechKoala">
+<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_physical_signals/" /><link rel="prev" href="https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/" /><link rel="next" href="https://www.techkoala.top/lte_physical_channels/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LTE 系列：物理信号",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.techkoala.top\/lte_physical_signals\/"
+        },"genre": "posts","keywords": "LTE","wordcount":  4904 ,
+        "url": "https:\/\/www.techkoala.top\/lte_physical_signals\/","datePublished": "2020-09-01T21:02:32+08:00","dateModified": "2020-09-01T21:02:32+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "TechKoala"},"author": {
+                "@type": "Person",
+                "name": "TechKoala"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> Posts </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> Tags </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> Categories </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> Tools </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> Softwares </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>Posts</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>Tags</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>Categories</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>Tools</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>Softwares</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系列：物理信号</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-01">2020-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4904 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#导频信号">导频信号</a>
+          <ul>
+            <li><a href="#下行导频信号">下行导频信号</a>
+              <ul>
+                <li><a href="#导频序列">导频序列</a></li>
+                <li><a href="#导频图案">导频图案</a>
+                  <ul>
+                    <li><a href="#小区公用导频信号">小区公用导频信号</a></li>
+                    <li><a href="#mbsfn-导频">MBSFN 导频</a></li>
+                    <li><a href="#用户专用导频">用户专用导频</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#上行导频信号">上行导频信号</a>
+              <ul>
+                <li><a href="#导频序列-1">导频序列</a></li>
+                <li><a href="#导频图案-1">导频图案</a>
+                  <ul>
+                    <li><a href="#上行共享信道-pusch-的解调导频">上行共享信道 PUSCH 的解调导频</a></li>
+                    <li><a href="#上行控制信道-pucch-的解调导频">上行控制信道 PUCCH 的解调导频</a></li>
+                    <li><a href="#上行-sounding-导频信号">上行 Sounding 导频信号</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#同步信号psssss">同步信号（PSS/SSS）</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>LTE 物理信号详解</p>
+</blockquote>
+<h2 id="导频信号">导频信号</h2>
+<h3 id="下行导频信号">下行导频信号</h3>
+<p>物理层定义了 3 种下行导频信号（Reference Signal，RS），包括：</p>
+<ul>
+<li>
+<p><strong>普通子帧的小区导频信号（Cell-specific RS，CRS）</strong></p>
+<p>指的是小区在下行<strong>普通子帧</strong>中<strong>全频带广播发送</strong>的导频信号，该信号以<strong>小区为单位</strong>，可以作为小区内用户进行<strong>下行测量</strong>、<strong>同步</strong>以及<strong>数据解调</strong>的参考符号</p>
+</li>
+<li>
+<p><strong>MBSFN 导频信号</strong></p>
+<p>指的是小区在下行 <strong>MBSFN 子帧</strong>中<strong>全频带广播发送</strong>的导频符号，该信号以 <strong>MBSFN 小区</strong>或<strong>小区集合为单位</strong>，可以用作对<strong>广播／多播（Malticast/Broadcast）业务情况下的下行测量</strong>、<strong>同步</strong>以及<strong>数据解调</strong>的参考符号</p>
+</li>
+<li>
+<p><strong>用户专用导频信号（UE-specific RS，又称为 DRS，Dedicated RS）</strong></p>
+<p>指的是小区在下行<strong>普通子帧</strong>中发送的<strong>用户专用</strong>的导频信号，该信号以<strong>用户为单位</strong>，通过高层信令指示是否发送了该信号并且用作<strong>用户下行数据解调</strong>的参考符号。DRS 仅在承载该用户数据的资源块上传输。</p>
+</li>
+</ul>
+<h4 id="导频序列">导频序列</h4>
+<p>使用 <code>gold 序列</code> 生成的<code>伪随机（PN）序列</code>作为物理层下行导频信号（CRS/MBSFN RS/DRS）使用的复数序列，序列的数学表达式是：</p>
+<center>$r_{l,n_s}=\frac{1}{\sqrt{2}}(1-2c(2m))+j\frac{1}{\sqrt{2}}(1-2c(2m+1))$</center>
+<p>其中，$c(n)$是寄存器长度为 31 的 <code>gold 序列</code>，生成的序列由初始值 <code>cinit</code> 所确定。</p>
+<p>3 种下行导频信号，根据各自的特性，序列的初始值有相应的设置方法。</p>
+<ul>
+<li>对于<strong>普通子帧的小区导频信号</strong>，即 <code>CRS</code>。信号的发送以小区为单位，每个小区有各自的导频序列，序列的初始值与 <code>小区 ID</code>（$N_{ID}^{cell}$ ，0 ～ 503）相关。为了保证导频序列具有充分的随机性，在每个包含 <code>CRS</code> 的 <code>OFDM</code> 符号上，根据 <code>OFDM</code> 符号的位置（时隙在无线帧中的编号 ns ：0 ～ 19、OFDM 符号在时隙内的序号：0 ～ 6/0 ～ 5）、小区使用的 <code>CP</code> 选项（NCP =1/0：Normal CP/Extended CP）结合前面提到的 <code>小区 ID</code>（$N_{ID}^{cell}$）共同确定该符号上所使用的 <code>CRS</code> 导频序列的初始值。具体的数学表达式为：</li>
+</ul>
+<center>$c_{init}=2^{10}(7(n_s+1)+l+1)(2N_{ID}^{cell}+1)+2N_{ID}^{cell}+N_{CP}$</center>
+<ul>
+<li>对于 <strong>MBSFN 导频信号</strong>，信号的发送以 <code>MBSFN</code> 小区／小区集合为单位。序列的初始值与 <code>MBSFN ID</code> 相关，在每个包含 <code>MBSFN</code> 导频的 <code>OFDM 符号</code> 上，根据 <code>OFDM 符号</code> 的位置和 <code>MBSFN ID</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
+</ul>
+<center>$c_{init}=2^9(7(n_s+1)+l+1)(2N_{ID}^{MBSFN}+1)+N_{ID}^{MBSFN}$</center>
+<ul>
+<li><strong>用户专用导频信号</strong>，即 <code>DRS</code>。信号的发送以用户为单位，每个用户有各自的导频。序列以子帧为单位进行初始化，在每个子帧的开始，根据 <code>子帧的位置</code>、<code>小区 ID</code>（alt ）以及 <code>用户的 RNTI</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
+</ul>
+<center>$c_{init}=(\left\lfloor\frac{n_s}{2}\right\rfloor)(2N_{ID}^{cell}+1)2^{16}+n_{RNTI}$</center>
+<h4 id="导频图案">导频图案</h4>
+<p>导频信号在<strong>时频域</strong>的图案规定了放置导频符号的<strong>时频域资源位置</strong>，LTE 物理层导频图案采用了<strong>二维</strong>的设计方法，规定了下行各个天线端口（Antenna port）导频信号的时频域位置，包括：</p>
+<ul>
+<li><strong>普通子帧的小区公用导频信号</strong>（CRS）支持 1 ～ 4 个发送天线使用的 Antenna port 0 ～ 3</li>
+<li>用于 <strong>MBSFN</strong> 发送的 Antenna port 4</li>
+<li>用于<strong>用户专用导频</strong>（DRS）的 Antenna port 5</li>
+</ul>
+<h5 id="小区公用导频信号">小区公用导频信号</h5>
+<p>小区公用导频信号支持<strong>最多 4 个</strong>天线端口的发送（port 0 ～ 3）</p>
+<ul>
+<li>对于前 2 个天线端口（port 0 ～ 1），每个时隙有 2 个 <code>OFDM</code> 符号携带导频符号</li>
+<li>对于后 2 个天线端口（port 2 ～ 3），每个时隙有 1 个 <code>OFDM</code> 符号携带导频符号</li>
+</ul>
+<p>在每个 <code>OFDM</code> 符号内导频符号的频域间隔为 6 个子载波，采用交错放置的方式。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" data-sub-html="<h2>下行正常子帧小区导频信号图案（CRS）</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" />
+    </a><figcaption class="image-caption">下行正常子帧小区导频信号图案（CRS）</figcaption>
+    </figure>
+<p>为了避免同基站不同发射天线端口之间导频与数据的干扰，在某一天线端口的导频位置上，同一基站的其他天线端口空出相应的时频资源。小区 CRS 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的<strong>相对偏移</strong>，避免<strong>不同小区</strong>的导频之间的<strong>同频干扰</strong>。</p>
+<h5 id="mbsfn-导频">MBSFN 导频</h5>
+<p><code>MBSFN</code> 导频采用单天线端口的发送，即 port 4。由于 MBSFN 广播／多播的业务特性，较大的小区半径和多小区信号的合并带来的时延扩展增加了无线信道的频率选择性。为了适应这样的特点，导频采用<strong>较小的频域间隔</strong>，即每 2 个子载波放置 1 个导频符号（在 MBSFN 专用载波采用 7.5kHz 子载波间隔时，每 4 个子载波放置 1 个导频符号）。另外，根据广播业务的移动性特点，适当地降低了导频信号在时间上的密度。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-sub-html="<h2>下行 MBSFN 导频图案</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" />
+    </a><figcaption class="image-caption">下行 MBSFN 导频图案</figcaption>
+    </figure>
+<p><code>MBSFN</code> 导频<strong>只</strong>支持在 <code>Extended CP</code> 情况下发送。MBSFN 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>无关</strong>，<strong>各小区</strong>导频在<strong>相同的频域位置</strong>，实现 MBSFN 集合内的<strong>不同小区</strong>导频信号的<strong>宏分集接收</strong>。</p>
+<h5 id="用户专用导频">用户专用导频</h5>
+<p>LTE Release 8 中用户专用导频信号采用<strong>单天线端口</strong>的发送，即天线端口 5。通过高层信令的指示，通知终端在数据传输中是否使用了用户专用导频，以及终端是否应该使用用户专用导频进行下行数据的解调。（DRS 主要用于支持下行波束赋形，即 BeamForming 操作）</p>
+<p>在发送 <code>UE specific</code> 的专用导频时，保持<strong>小区公用导频信号</strong>（CRS）不变，插入用户专用导频符号，每个 <code>PRB pair</code> 中发送 12 个用户专用导频符号。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-sub-html="<h2>下行用户专用导频图案</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" />
+    </a><figcaption class="image-caption">下行用户专用导频图案</figcaption>
+    </figure>
+<p>用户专用导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的相对偏移，避免导频之间的<strong>同频干扰</strong>。</p>
+<p>在专用导频与物理信道／信号（PBCH/PSS/SSS）<strong>发生位置冲突</strong>的时候，将<strong>丢弃</strong>冲突位置的专用导频的传输，即对专用导频进行<strong>打孔</strong>。因为仅在有数据发送时才进行 <code>DRS</code> 的传输，而小区导频 <code>CRS</code> 是<strong>始终</strong>在传输的，因此，即使用户数据的发送使用了 <code>DRS</code>，用户对于下行信道质量，即 <code>CQI</code> 的测量将<strong>始终</strong>基于小区 <code>CRS</code> 导频。</p>
+<h3 id="上行导频信号">上行导频信号</h3>
+<p>物理层定义了两种上行导频信号，包括：</p>
+<ul>
+<li>
+<p><strong>数据解调导频（DeModulation RS，DMRS）</strong></p>
+<p>指的是终端在<strong>上行共享信道</strong>或者<strong>上行控制信道</strong>（PUSCH/PUCCH）中发送的导频信号，用于基站接收上行数据／控制信息时进行解调的参考符号</p>
+</li>
+<li>
+<p><strong>Sounding 导频（Sounding RS，SRS）</strong></p>
+<p>指的是终端在上行发送的用于<strong>信道状态测量</strong>的导频信号，基站通过接收该信号测量上行信道的状态，相关的信息用于对上行数据传输的自适应调度。在 <code>TDD</code> 的情况下，由于同频段上下行信道的对称性，通过对上行 <code>SRS</code> 的测量还可以获得下行信道状态的信息，可用于辅助下行传输</p>
+</li>
+</ul>
+<h4 id="导频序列-1">导频序列</h4>
+<p>使用具有<strong>衡包络零自相关</strong>（ConstantAmplitude ZeroAutoCorrelation，CAZAC）特性的序列作为上行导频序列（DMRS/SRS），长度为 $M_{SC}^{RS}$ 的导频序列的数学表达式为：</p>
+<center>$r_{u,v}^{(α)}=e^{jan}\bar{r}_{u,v}(n) , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
+<p>其中 $\bar{r}_{u,v}(n)$ 表示基序列，由<code>基序列组的编号 u</code>和<code>组内的基序列编号 v</code>共同确定。$α$ 是对基序列的<strong>循环移位</strong>（Cyclic Shift），相同基序列的不同移位将形成不同的导频序列。</p>
+<ul>
+<li>
+<p>对于长度大于或者等于 36 的导频序列，使用长度为质数的 <code>Zadoff-Chu</code> 序列生成基序列，以保证良好的自相关和互相关特性，序列的数学表达式是：</p>
+<center>$\bar{r}_{u,v}(n)=x_q(n mod N_{ZC}^{RS} , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
+<p>其中 $x_q$ 是序号为 q、长度是 $N_{ZC}^{RS}$ 的 <code>Zadoff-Chu</code> 根序列，即 $x_q(m)=e^-j\frac{\pi qm(m+1)}{N_{ZC}^{RS}}$ 。序号 q 由基序列的编号 $\frac{u}{v}$ 确定，长度 $N_{ZC}^{RS}$ 是小于导频序列长度 $M_{SC}^{RS}$ 的最大质数。</p>
+</li>
+<li>
+<p>对于长度小于 36，即长度为 12 或者 24 的导频序列，使用计算机搜索的方法以获得自相关／互相关特性最优的序列。序列的数学表达式为：</p>
+<center>$\bar{r}_{u,v}(n)=e^{jϕ（n）\pi/4} , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
+<p>其中 $ϕ(n)$采用计算机搜索的方式进行查找，在标准中以列表的形式给出了确定的数值。</p>
+</li>
+</ul>
+<h4 id="导频图案-1">导频图案</h4>
+<ul>
+<li><strong>上行解调导频</strong>（DMRS）在用户发送数据或者控制信息的资源上发送
+<ul>
+<li>在共享信道 <code>PUSCH</code> 上，每个时隙内 <code>DMRS</code> 占用 1 个 <code>OFDM</code> 符号</li>
+<li>在控制信道 PUCCH 上，根据控制信息格式的不同，每个时隙内 DMRS 占用 2 ～ 3 个 OFDM 符号。</li>
+</ul>
+</li>
+<li><strong>上行 Sounding 导频</strong>（SRS）与用户发送数据的资源位置<strong>无关</strong>，由系统调度，终端在预定义的、需要进行测量的频率位置上进行发送，发送时将占用子帧的最后一个 <code>OFDM</code> 符号，小区内不同用户在相同时刻发送的 <code>SRS</code> 采用频分和码分（基序列不同的循环移位）的方式进行区分。</li>
+</ul>
+<h5 id="上行共享信道-pusch-的解调导频">上行共享信道 PUSCH 的解调导频</h5>
+<p>上行共享信道 <code>PUSCH</code> 的解调导频在每个时隙内占用 1 个 <code>OFDM</code> 符号，在用户发送上行数据的资源上发送，用于共享信道（PUSCH）数据的解调。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-sub-html="<h2>上行 PUSCH 数据解调导频</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" />
+    </a><figcaption class="image-caption">上行 PUSCH 数据解调导频</figcaption>
+    </figure>
+<p>每个时隙的导频符号采用 12 或者 24 的导频序列。其中 $M_{SC}^{RS}$ 是导频序列的长度，等于频域子载波的个数。导频序列由小区在该时隙的上行导频基序列 $\bar{r}_{u,v}(n)$ 和本次发送采用的循环移位 $α$共同确定。</p>
+<h5 id="上行控制信道-pucch-的解调导频">上行控制信道 PUCCH 的解调导频</h5>
+<p>上行控制信道 <code>PUCCH</code> 的解调导频根据上行控制信道格式的不同在每个时隙内占用 2 或者 3 个 <code>OFDM</code> 符号，用于控制信道（PUCCH）数据的解调。</p>
+<ul>
+<li>
+<p><code>PUCCH </code>格式 1/1a/1b 的导频发送格式。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" data-sub-html="<h2>PUCCH Format1/1a/1b 的解调导频（Normal CP）</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" />
+    </a><figcaption class="image-caption">PUCCH Format1/1a/1b 的解调导频（Normal CP）</figcaption>
+    </figure>
+<p>其中 $\bar{w}(m)$ 是长度为 3 的正交扩频序列。$r_{u,v}^{\alpha}$ 表示基序列序号为 $u,v$，循环移位为 $α$ 的导频序列，长度是 12，映射在 1 个 PRB 内的子载波上。</p>
+<p><code>PUCCH</code> Format1/1a/1b 中导频映射的过程包括：时隙内采用正交序列的块扩频，然后与长度为 12 的导频 <code>CACAZ</code> 序列相乘，最后映射在上行控制信息 <code>PUCCH</code> 所对应的 <code>PRB</code> 资源的 12 个子载波上。</p>
+</li>
+<li>
+<p>PUCCH 格式 2/2a/2b 的导频发送格式。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" data-sub-html="<h2>PUCCH Format2/2a/2b 的解调导频（Normal CP）</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" />
+    </a><figcaption class="image-caption">PUCCH Format2/2a/2b 的解调导频（Normal CP）</figcaption>
+    </figure>
+</li>
+</ul>
+<h5 id="上行-sounding-导频信号">上行 Sounding 导频信号</h5>
+<p>上行 Sounding 导频信号的发送与上行物理信道<strong>无关</strong>，是独立的的上行信号，根据<strong>预定义</strong>的周期、终端在需要进行信道测量的频域位置上进行发送。</p>
+<p>上行 Sounding 导频（SRS）在子帧的最后一个 <code>OFDM</code> 符号上发送。在每个小区，采用配置小区 <code>SRS</code> 子帧周期 <code>TSFC</code> 和偏移量 <code>∆SFC</code> 的方式，定义了小区内可用于发送上行 Sounding 导频符号的子帧时间位置，标准中列表给出了各种可能的配置选项，在系统广播消息 SIB 中使用 4 个比特进行指示。</p>
+<blockquote>
+<p>例如，假设配置 $T_{SFC} =5，∆SFC ={0,1}$，那么小区 <code>SRS</code> 子帧的时间位置如图所示。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" data-sub-html="<h2>小区的 SRS 子帧时间位置</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" />
+    </a><figcaption class="image-caption">小区的 SRS 子帧时间位置</figcaption>
+    </figure>
+</blockquote>
+<p>在定义小区 <code>SRS </code>子帧位置的基础上，采用类似的方法进一步定义了小区内某个用户发送上行 SRS 导频的子帧位置，即通过配置用户发送 <code>SRS</code> 导频的子帧周期 <code>TSRS</code> 和偏移量 <code>Toffset</code> ，可以确定该用户发送上行 <code>SRS</code> 导频的子帧位置。</p>
+<blockquote>
+<p>假设，在以上举例的小区 SRS 子帧配置的基础上，配置用户 x 的 $T_{SRS} =10，Toffset =1$，可以得到该用户 SRS 导频的发送时间位置如图所示。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" data-sub-html="<h2>用户的 SRS 子帧时间位置</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" />
+    </a><figcaption class="image-caption">用户的 SRS 子帧时间位置</figcaption>
+    </figure>
+</blockquote>
+<p>Sounding 导频（SRS）使用与解调导频相似的基序列生成方法，只是它的循环移位的数值改由高层信令<strong>直接进行配置</strong>。</p>
+<p>在导频序列向物理资源的映射上，<code>SRS</code> 导频采用 2 个子载波的频域间隔，形成<strong>梳状</strong>的<strong>频域结构</strong>，根据起始位置的不同（奇数或者偶数，kTC =0/1），可以频分复用 2 个<strong>梳状</strong>。相同的<strong>梳状</strong>内可以通过基序列不同的循环移位（8 种），以码分的方式进行更多的复用。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" data-sub-html="<h2>Sounding 导频图案</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" />
+    </a><figcaption class="image-caption">Sounding 导频图案</figcaption>
+    </figure>
+<p>其中 <code>SRS</code> 导频带宽 $m_{SRS,b}$ 以资源块（RB）为单位，并且是 4 的整数倍。同时，可以容易地看出，导频序列的长度是 SRS 导频所占用子载波宽度的一半。</p>
+<h2 id="同步信号psssss">同步信号（PSS/SSS）</h2>
+<p>下行同步信号用于支持物理层的小区搜索，实现用户终端对小区的识别以及对系统下行信号的频率和时间同步。</p>
+<p>同步信号包括：</p>
+<ul>
+<li><strong>主同步信号（Primary Synchronization Signal，PSS）</strong></li>
+<li><strong>辅同步信号（Secondary Synchronization Signal，SSS）</strong></li>
+</ul>
+<p><code>PSS</code> 和 <code>SSS</code> 的传输周期都是 <code>5ms</code>，每个同步信号的时间长度为 1 个 <code>OFDM</code> 符号，在频域上占用下行频带中心 <code>1.08MHz</code> 的带宽。</p>
+<p><code>PSS</code>/<code>SSS</code> 信号使用的序列与物理层小区 <code>ID</code> 相关，因此可用于终端对<strong>小区的识别</strong>。</p>
+<p>物理层支持 504 个小区 ID：分为 168 个组（0 ～ 167），每个组包含 3 个小区 ID（0 ～ 2）。</p>
+<ul>
+<li>主同步信号 PSS 序列包含 3 种可能性，指示小区的组内 ID</li>
+<li>辅同步信号 SSS 序列包含 168 种可能性，指示小区的组 ID</li>
+</ul>
+<p><code>FDD Type 1</code> 和 <code>TDD Type 2</code> 帧结构中，同步信号具有不同的时间位置。</p>
+<ul>
+<li>在 <code>FDD Type 1</code> 帧结构中，PSS/SSS 信号位于第 0 和第 5 子帧</li>
+<li>在 <code>TDD Type 2</code> 中，<code>PSS</code> 信号位于第 1 和第 6 子帧（即特殊子帧），<code>SSS</code> 信号位于第 0 和第 5 子帧。</li>
+</ul>
+<p>因此，两种帧结构下 <code>PSS</code> 与 <code>SSS</code> 的<strong>相对位置有所不同</strong>：</p>
+<ul>
+<li><code>FDD Type 1</code> 帧结构中，<code>PSS</code>/<code>SSS</code> 位于两个<strong>连续</strong>的 <code>OFDM</code> 符号</li>
+<li><code>TDD Type 2</code> 帧结构中，<code>PSS</code>/<code>SSS</code> 之间有两个 <code>OFDM</code> 符号的<strong>间隔</strong></li>
+</ul>
+<p>这种同步信号相对位置的区别，可用于终端在小区搜索的最初阶段<strong>检测</strong> LTE 系统的<strong>双工方式</strong>。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" data-sub-html="<h2>LTE 下行同步信号（FDD Type 1 帧结构）</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" />
+    </a><figcaption class="image-caption">LTE 下行同步信号（FDD Type 1 帧结构）</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" data-sub-html="<h2>LTE 下行同步信号（TDD Type 2 帧结构）</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" />
+    </a><figcaption class="image-caption">LTE 下行同步信号（TDD Type 2 帧结构）</figcaption>
+    </figure>
+<p><code>PSS</code> 和 <code>SSS</code> 在<strong>相同</strong>的某一根<strong>天线</strong>上发送，对于各种<strong>不同的系统带宽</strong>（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），同步信号的传输带宽<strong>相同</strong>：</p>
+<ul>
+<li>占用频带中心的 <code>1.08MHz</code> 带宽，其中同步序列占用 62 个子载波，两边各预留 5 个子载波作为保护带。</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" data-sub-html="<h2>同步信号 PSS/SSS 频域结构</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" />
+    </a><figcaption class="image-caption">同步信号 PSS/SSS 频域结构</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-09-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_physical_signals/" data-title="LTE 系列：物理信号" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_physical_signals/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_physical_signals/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_physical_signals/" data-title="LTE 系列：物理信号"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_physical_signals/" data-title="LTE 系列：物理信号"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/lte/">LTE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lte_encoding_multiplexing_and_interleaving/" class="prev" rel="prev" title="LTE 系列：编码、复用和交织"><i class="fas fa-angle-left fa-fw"></i>LTE 系列：编码、复用和交织</a>
+            <a href="/lte_physical_channels/" class="next" rel="next" title="LTE 系列：物理信道">LTE 系列：物理信道<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/dillonzq/LoveIt">LoveIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-09-01T21:02:32+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系列：物理信号"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>
+</html>

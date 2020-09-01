@@ -233,6 +233,13 @@ CRS 是否以任何子帧类型（类型 1、2、3）传输？
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" caption="Spectrogram - LTE FDD DL - Each Symbol">}}
 
+## 另见
+
+[LTE 系列：物理信号](https://www.techkoala.top/lte_physical_signals/)
+
+[LTE 系列：物理信道](https://www.techkoala.top/lte_physical_channels/)
+
+
 ## 参考
 
 - [1] [Physical Channels and Signals](http://www.sharetechnote.com/html/FrameStructure_DL.html)

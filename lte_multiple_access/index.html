@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>LTE 系列：多址方式 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：多址方式" />
+<meta property="og:description" content="
+LTE 多址方式详解
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.techkoala.top/lte_multiple_access/" />
+<meta property="article:published_time" content="2020-09-01T20:45:06+08:00" />
+<meta property="article:modified_time" content="2020-09-01T20:45:06+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LTE 系列：多址方式"/>
+<meta name="twitter:description" content="
+LTE 多址方式详解
+"/>
+<meta name="application-name" content="TechKoala">
+<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_multiple_access/" /><link rel="prev" href="https://www.techkoala.top/lte_frame_structure/" /><link rel="next" href="https://www.techkoala.top/lte_basic_physical_resource/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LTE 系列：多址方式",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.techkoala.top\/lte_multiple_access\/"
+        },"genre": "posts","keywords": "LTE","wordcount":  1194 ,
+        "url": "https:\/\/www.techkoala.top\/lte_multiple_access\/","datePublished": "2020-09-01T20:45:06+08:00","dateModified": "2020-09-01T20:45:06+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "TechKoala"},"author": {
+                "@type": "Person",
+                "name": "TechKoala"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> Posts </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> Tags </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> Categories </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> Tools </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> Softwares </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>Posts</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>Tags</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>Categories</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>Tools</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>Softwares</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系列：多址方式</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-01">2020-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1194 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#多址方式">多址方式</a>
+          <ul>
+            <li><a href="#下行多址方式">下行多址方式</a></li>
+            <li><a href="#上行多址方式">上行多址方式</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>LTE 多址方式详解</p>
+</blockquote>
+<h2 id="多址方式">多址方式</h2>
+<p>LTE 的空中接口采用以 <code>OFDM</code> 技术为基础的多址方式，使用 <code>15kHz</code> 的子载波宽度，通过不同的子载波数目（72 ～ 1200 ）实现了从 1.4 ～ 20MHz 之间多种可变的系统带宽。另外，考虑到在不同应用场景的情况下，无线信道的多径传输具有不同的时延扩展特性，所以 LTE 支持两种不同循环前缀（Cyclic Prefix，CP）长度的配置：<code>Normal CP</code> 和 <code>Extend CP</code>，它们的长度分别约为 <code>4.7μs</code> 和 <code>16.7μs</code>。</p>
+<p>在 <code>OFDM</code> 技术的基础上，根据下行和上行两个方向通信的不同特点，LTE 分别选择了<code>多载波 OFDM</code> 和<code>单载波 SC-FDMA</code>（即 DFT-SOFDM）作为多址方式的具体实现方法。</p>
+<h3 id="下行多址方式">下行多址方式</h3>
+<p>LTE 采用 <code>OFDM</code>（Orthogonal Frequency Division Multiplexing）作为下行无线信号传输的多址方式。<code>OFDM</code> 是一种<strong>多载波调制</strong>的传输技术，将数据流经过<strong>串并变换</strong>，形成多路<strong>子数据流</strong>（N 路），使用它们分别去调制 N 路子载波后<strong>并行传输</strong>。通过这样的处理，子数据流的速率是原来的 1/N，即符号周期是原来的 N 倍，使得该符号周期远<strong>大于</strong>信道的时延扩展，从而实现了将一个宽带频率选择性信道划分成 N 个<strong>窄带平坦衰落信道</strong>，因此 OFDM 信号具有很强的<strong>抗无线信道多径衰落</strong>和<strong>抗脉冲干扰</strong>的能力，并且由于实现方式简单，所以特别适用于高速无线数据传输。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-sub-html="<h2>OFDM 调制的信号处理流程</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" />
+    </a><figcaption class="image-caption">OFDM 调制的信号处理流程</figcaption>
+    </figure>
+<h3 id="上行多址方式">上行多址方式</h3>
+<p>上行方向上，LTE 采用<code>单载波 SC-FDMA</code>（即 DFT-SOFDM） 作为多址方式。其中，同样采用了 <code>15kHz</code> 的子载波带宽，不同子载波数目实现不同的系统带宽。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-sub-html="<h2>DFT-SOFDM 调制的信号处理流程</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" />
+    </a><figcaption class="image-caption">DFT-SOFDM 调制的信号处理流程</figcaption>
+    </figure>
+<p>与 <code>ODFM</code> 中信号直接映射到频域的子载波上形成多载波信号不同，<code>DFT-SOFDM</code> 中信号由<strong>时域</strong>输入，通过 <code>DFT</code> 的操作转换到频域后再进行子载波的调制，因此 <code>DFT-SOFDM</code> 属于单载波的调制方式，其发射信号也具有单载波的特性。</p>
+<p>在 <code>OFDM</code> 多载波调制中，由于多路信号在频域的并行传输，叠加后形成的时域输出信号具有<strong>较大峰均比</strong>。由于基站功率放大器的能力较强，因此在下行峰均比不会成为影响系统性能的主要问题。在上行方向上，考虑到终端的成本和功率效率，使用具有单载波特性的发送信号，这是<strong>因为较低的信号峰均比具有重要的意义</strong>。根据调制方式的不同（<code>QPSK</code>、<code>16QAM</code>），与 <code>OFDM</code> 相比较，单载波信号具有 1.5 ～ 2.5dB 的峰均比增益，这也是 LTE 选择<code>单载波 SC-FDMA</code> 作为上行多址方式的<strong>主要原因</strong>。</p>
+<p>另一方面，为了使信号真正具有单载波的特性，<code>DFT-SOFDM</code> 调制过程中对于子载波的映射需要满足一定的限制。除了集中式的映射之外（此时，<code>DFT-SOFDM</code> 的信号处理过程相当于对输入信号进行时域的过采样），在分布式的映射中，为了保持单载波特性，<code>DFT-SOFDM</code> 调制必须采用等间隔的子载波映射，即 <strong>L1 =L2 =…=LN</strong> （此时，<code>DFT-SOFDM</code> 的处理过程相当于对输入信号进行时域的块重复），而不能够使用间隔不相等的分布式映射，因为那将破坏输出信号的单载波特性。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" data-sub-html="<h2>OFDM/DFT-SOFDM 的子载波映射</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" />
+    </a><figcaption class="image-caption">OFDM/DFT-SOFDM 的子载波映射</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-09-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_multiple_access/" data-title="LTE 系列：多址方式" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_multiple_access/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_multiple_access/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_multiple_access/" data-title="LTE 系列：多址方式"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_multiple_access/" data-title="LTE 系列：多址方式"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/lte/">LTE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lte_frame_structure/" class="prev" rel="prev" title="LTE 系列：无线帧结构"><i class="fas fa-angle-left fa-fw"></i>LTE 系列：无线帧结构</a>
+            <a href="/lte_basic_physical_resource/" class="next" rel="next" title="LTE 系列：基本物理资源">LTE 系列：基本物理资源<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/dillonzq/LoveIt">LoveIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-09-01T20:45:06+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系列：多址方式"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>
+</html>

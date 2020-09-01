@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>LTE 系列：基本物理资源 - TechKoala</title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：基本物理资源" />
+<meta property="og:description" content="
+LTE 基本物理资源及分配方法
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.techkoala.top/lte_basic_physical_resource/" />
+<meta property="article:published_time" content="2020-09-01T20:49:05+08:00" />
+<meta property="article:modified_time" content="2020-09-01T20:49:05+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LTE 系列：基本物理资源"/>
+<meta name="twitter:description" content="
+LTE 基本物理资源及分配方法
+"/>
+<meta name="application-name" content="TechKoala">
+<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_basic_physical_resource/" /><link rel="prev" href="https://www.techkoala.top/lte_multiple_access/" /><link rel="next" href="https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LTE 系列：基本物理资源",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.techkoala.top\/lte_basic_physical_resource\/"
+        },"genre": "posts","keywords": "LTE","wordcount":  1052 ,
+        "url": "https:\/\/www.techkoala.top\/lte_basic_physical_resource\/","datePublished": "2020-09-01T20:49:05+08:00","dateModified": "2020-09-01T20:49:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "TechKoala"},"author": {
+                "@type": "Person",
+                "name": "TechKoala"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> Posts </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> Tags </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> Categories </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> Tools </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> Softwares </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="TechKoala"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>Posts</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>Tags</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>Categories</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>Tools</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>Softwares</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">LTE 系列：基本物理资源</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-01">2020-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1052 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#基本物理资源">基本物理资源</a>
+          <ul>
+            <li><a href="#物理资源块prb">物理资源块（PRB）</a></li>
+            <li><a href="#逻辑资源块vrb">逻辑资源块（VRB）</a></li>
+            <li><a href="#资源单元组reg">资源单元组（REG）</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>LTE 基本物理资源及分配方法</p>
+</blockquote>
+<h2 id="基本物理资源">基本物理资源</h2>
+<h3 id="物理资源块prb">物理资源块（PRB）</h3>
+<p>物理层定义了物理资源块（Physical Resource Block，PRB）作为空中接口物理资源分配的单位。1 个 <code>PRB</code> 在<strong>频域</strong>上包含 <strong>12 个连续的子载波</strong>，在<strong>时域</strong>上包含 <strong>7 个连续的 OFDM 符号</strong>（在 Extended CP 的情况下为 6 个），即 1 个 <code>PRB</code> 包括了<strong>频域宽度</strong>等于 <code>180kHz</code>、<strong>时间长度</strong>等于 <code>0.5ms</code>（1 个时隙）的物理资源。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-sub-html="<h2>物理资源块（PRB）的结构</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" />
+    </a><figcaption class="image-caption">物理资源块（PRB）的结构</figcaption>
+    </figure>
+<p>通过设置不同的子载波数目可以映射到不同的资源块（PRB）数目。LTE Release 8 版本定义的 6 种不同的系统带宽与子载波数目以及 PRB 数目之间的对应关系如下表所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-sub-html="<h2>系统带宽与资源块数目</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" />
+    </a><figcaption class="image-caption">系统带宽与资源块数目</figcaption>
+    </figure>
+<h3 id="逻辑资源块vrb">逻辑资源块（VRB）</h3>
+<p>为了方便物理信道向空中接口物理资源的映射，在物理资源块（PRB）的基础上还定义了逻辑资源块（Virtual Resource Block，VRB）。</p>
+<p>逻辑资源块的大小与物理资源块相同，即 <strong>1 个时隙</strong>（0.5ms）、<strong>12 个子载波</strong>。逻辑资源块主要定义了资源的分配方式，位于 1 个子帧内 2 个时隙的 2 个 <code>VRB</code>（即 VRB pair）是物理资源分配信令的指示单位。</p>
+<p>逻辑资源块和物理资源块分别对应有各自的资源块序号 <code>nVRB</code> 和 <code>nPRB</code> 。</p>
+<ul>
+<li>物理资源块 <code>PRB</code> 的序号 <code>nPRB</code> 按照频域的物理位置进行顺序编号</li>
+<li>逻辑资源块 <code>VRB</code> 的序号 <code>nVRB</code> 是系统进行资源分配时所指示的逻辑序号，通过它与 <code>PRB</code> 序号之间的映射关系来进一步地确定实际物理资源的位置</li>
+</ul>
+<p>物理层定义了两种类型的逻辑资源块：</p>
+<ul>
+<li>
+<p><code>集中式 VRB</code>（Localized VRB，LVRB）</p>
+<p><code>LVRB</code> 直接映射到 <code>PRB</code> 上，即 <strong>nPRB =nVRB</strong></p>
+</li>
+<li>
+<p><code>分布式 VRB</code>（Distributed VRB，DVRB）</p>
+<p><code>DVRB</code> 逻辑资源序号与物理资源序号具有一定的<strong>映射关系</strong>，可以表示为 <strong>nPRB =f(nVRB ，ns )</strong>，其中 <strong>0≤ns ≤19</strong> 是 1 个无线帧内的时隙序号。通常情况下，<strong>连续</strong>的 <code>DVBR</code> 序号将映射到<strong>不连续</strong>的 <code>PRB</code> 序号上，并且 1 个子帧内的 2 个时隙也有着不同的映射关系，即属于 1 个 <code>DVRB pair</code> 的两个具有相同逻辑序号的 DVRB 将映射到两个时隙不同频率位置的 PRB 上。通过这样的机制实现了<strong>分布式</strong>的资源分配</p>
+</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-sub-html="<h2>基于 VRB 的资源分配</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" />
+    </a><figcaption class="image-caption">基于 VRB 的资源分配</figcaption>
+    </figure>
+<ul>
+<li><strong>下行方向</strong>的信号传输，支持 LVRB 和 DVRB 的分配，具体采用的方式在下行资源的调度信令中进行指示</li>
+<li><strong>上行方向</strong>的信号传输，<strong>仅支持</strong> LVRB 方式的资源分配</li>
+</ul>
+<h3 id="资源单元组reg">资源单元组（REG）</h3>
+<p><code>PRB</code> 和 <code>VRB</code> 用于数据信道的资源分配和映射，物理层还定义了 <code>REG</code>（Resource Element Group）的概念，用于物理层下行控制信道的资源映射。</p>
+<p><strong>1 个</strong> <code>REG</code> 对应除掉导频符号之外在频域上连续的 <strong>4 个</strong>物理资源。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-sub-html="<h2>资源单元组（Resource Element Group，REG）</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp 2x"
+            data-sizes="auto"
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" />
+    </a><figcaption class="image-caption">资源单元组（Resource Element Group，REG）</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-09-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_basic_physical_resource/" data-title="LTE 系列：基本物理资源" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_basic_physical_resource/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_basic_physical_resource/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_basic_physical_resource/" data-title="LTE 系列：基本物理资源"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_basic_physical_resource/" data-title="LTE 系列：基本物理资源"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/lte/">LTE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lte_multiple_access/" class="prev" rel="prev" title="LTE 系列：多址方式"><i class="fas fa-angle-left fa-fw"></i>LTE 系列：多址方式</a>
+            <a href="/lte_encoding_multiplexing_and_interleaving/" class="next" rel="next" title="LTE 系列：编码、复用和交织">LTE 系列：编码、复用和交织<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/dillonzq/LoveIt">LoveIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-09-01T20:49:05+08:00","owner":"techkoala","repo":"commets_of_blog","title":"LTE 系列：基本物理资源"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>
+</html>
