@@ -7,959 +7,2364 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>LTE 系列：功率控制</title>
-    <link>https://www.techkoala.top/lte_power_control/</link>
-    <pubDate>Tue, 01 Sep 2020 21:16:56 &#43;0800</pubDate>
+    <title>全站迁移到 Vercel</title>
+    <link>https://www.techkoala.top/migrated_to_vercel/</link>
+    <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/lte_power_control/</guid>
+    <guid>https://www.techkoala.top/migrated_to_vercel/</guid>
     <description><![CDATA[<blockquote>
-<p>LTE 功率控制</p>
+<p>加速访问！</p>
 </blockquote>
-<h2 id="功率控制">功率控制</h2>
-<p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
-<ul>
-<li>
-<p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
-</li>
-<li>
-<p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
-</li>
-</ul>
-<h3 id="上行功率控制">上行功率控制</h3>
-<p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
-<p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
-<center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
-<p>其中：</p>
-<ul>
-<li>$P_{CMAX}$ 表示终端的最大发射功率</li>
-<li>$M_{PUSCH}(i)$ 表示 <code>PUSCH</code> 的传输带宽（RB 数目）</li>
-<li>$PL$ 是终端测量得到的下行大尺度损耗</li>
-<li>$∆TF (i)$ 表示由调制编码方式和数据类型（控制信息或者数据信息）所确定的功率偏移量。</li>
-<li>$KS＝1.25$ 或者 0，表示是否针对不同的调制方式进行补偿</li>
-<li>$f(i)$ 是由终端闭环功率控制所形成的调整值。它的数值根据 <code>PDCCH Format0/3/3A</code> 上的功率控制命令进行调整</li>
-</ul>
-<p>物理层有两种闭环功率控制类型：</p>
-<ul>
-<li><strong>累计型（accumulation）</strong></li>
-<li><strong>绝对值型（absolute）</strong></li>
-</ul>
-<p>与上行数据调度相类似</p>
-<ul>
-<li>在 <code>FDD</code> 情况下，<code>PDCCH Format 0/3/3A</code> 功率控制命令和相应的 <code>PUSCH</code> 发送之间的时延是 4ms</li>
-<li>在 <code>TDD</code> 情况下，该时延的数值根据上下行时间分配比例的不同而有所不同</li>
-</ul>
-<p>与功率控制相结合，可以通过小区之间交换干扰情况的信息，进行协调的调度，抑制小区间的同频干扰，小区间 X2 接口上交互的信息有两种：</p>
-<ul>
-<li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
-<li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
-</ul>
-<h3 id="下行功率分配">下行功率分配</h3>
-<p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
-<p>下行功率分配中包括了</p>
-<ul>
-<li>提高导频信号的发射功率（即 power boosting）</li>
-<li>用户调度相结合实现小区间干扰抑制的相关机制</li>
-</ul>
-<p>小区公用导频信号（CRS）在频率上和时间上采用<strong>恒定</strong>的发射功率，基站通过高层信令指示该发射功率的数值，在接收端，终端通过测量该信号的平均接收功率并与信令指示的发射功率进行比较，获得<strong>大尺度衰落</strong>的数值。</p>
-<p>下行共享信道 <code>PDSCH</code> 的发射功率表示为 <code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值，即 $ρA$ 和 $ρB$ 。其中</p>
-<ul>
-<li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
-<li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
-</ul>
-<h4 id="提高-crs-导频信号的发射功率即-power-boosting">提高 CRS 导频信号的发射功率（即 power boosting）</h4>
-<p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
+<h2 id="when">When</h2>
+<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">vercel</a></p>
+<h2 id="why">Why</h2>
+<p>鉴于目前 Github 以及 Cloudflare 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 Vercel。</p>
+<h2 id="what">What</h2>
+<p>下面是 Vercel 官网的介绍：</p>
 <blockquote>
-<p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
-<p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-sub-html="<h2>两种情况下天线端口 #0 的信号功率</h2>">
-        
-    </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
-    </figure>
+<p>Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</p>
 </blockquote>
-<h4 id="用户功率分配和小区间干扰协调">用户功率分配和小区间干扰协调</h4>
-<p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
-<center>$ρ_A =δ_{power-offset} +P_A$</center>
-<p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：共享信道传输与接收</title>
-    <link>https://www.techkoala.top/lte_transmission_and_reception/</link>
-    <pubDate>Tue, 01 Sep 2020 21:14:52 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_transmission_and_reception/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 物理层概要</p>
-</blockquote>
-<h2 id="下行共享信道的传输与接收">下行共享信道的传输与接收</h2>
-<p>物理层下行数据传输包含了链路自适应的过程，基站根据终端所上报的<strong>链路质量信息</strong>（CQI/PMI/RI）选择适当的物理资源和相应的编码调制方式进行下行数据的发送，实现对系统下行无线资源的优化利用，达到最佳的性能。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" data-sub-html="<h2>信道状态信息反馈和下行链路自适应传输</h2>">
+<p>相比于 Github Pages、Netlify 等，Vercel 拥有台湾和香港节点，对国内用户更加友好。并且小流量情况免费套餐足够使用了。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-sub-html="<h2>Vercel</h2>">
         
-    </a><figcaption class="image-caption">信道状态信息反馈和下行链路自适应传输</figcaption>
+    </a><figcaption class="image-caption">Vercel</figcaption>
     </figure>
-<p>物理层下行共享信道的传输包括了</p>
-<ul>
-<li>调度信息（PDCCH）</li>
-<li>数据信息（PDSCH）</li>
-</ul>
-<p>在长度为 <code>1ms</code> 的子帧结构中，前面的 1 ～ 3 个 <code>OFDM</code> 符号用于传输下行控制信息，其中包括了传输数据调度信息的 <code>PDCCH</code>；而子帧中剩余的符号用于传输数据信息（PDSCH）。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_45.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_45.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_45.webp" data-sub-html="<h2>下行数据传输的子帧结构</h2>">
+<h2 id="how">How</h2>
+<p>此前，本网站是托管在 Github Pages,然后通过 Clouflare 进行代理访问，因此只需要在 Cloudfalre 原配置上就行修改即可。</p>
+<ol>
+<li>首先，直接使用 Github 账号（或 Gitlab 等）登录 Vercel 即可（<strong>注：</strong> 不可以使用 QQ 邮箱为主邮箱的 Github 账号，Vercel 不识别部分邮箱域名，如果你是，请到 Github 修改主邮箱）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" data-sub-html="<h2>导入 Github 项目</h2>">
         
-    </a><figcaption class="image-caption">下行数据传输的子帧结构</figcaption>
+    </a><figcaption class="image-caption">导入 Github 项目</figcaption>
     </figure>
-<p>在下行数据接收的过程中，终端对当前子帧中所有 <code>PDCCH</code> 信道进行<strong>盲检测</strong>，如果发现属于自己的调度信息，那么终端将根据该调度信息的指示（包括资源位置、编码调制方法等）解调接收当前子帧中属于自己的 <code>PDSCH</code> 数据信息。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_46.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_46.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_46.webp" data-sub-html="<h2>下行数据的调度与传输</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import2.webp" data-sub-html="<h2>选择需要导入的文件夹，默认为根文件夹</h2>">
         
-    </a><figcaption class="image-caption">下行数据的调度与传输</figcaption>
+    </a><figcaption class="image-caption">选择需要导入的文件夹，默认为根文件夹</figcaption>
     </figure>
-<p>物理层下行支持 29 种调制编码格式，其中包括了 <code>QPSK</code>、<code>16QAM</code> 和 <code>64QAM</code> 3 种不同的调制方式和不同的信道编码速率（范围是 0.16 ～ 0.92）。根据这样的原则，针对每一种物理资源 <code>PRB</code> 的占用数目，规范中定义了 29 种<strong>传输块大小</strong>（Tranport block size）。</p>
-<p>在进行下行数据传输时，下行调度信息中使用 5 个比特对所调度数据使用的<strong>编码调制格式</strong>（MCS）进行指示。接收端根据该信息可以确定数据所使用的调制方式；</p>
-<p>同时，将这 5 比特 <code>MCS</code> 信息和调度信息中所分配的 <code>PRB</code> 数目相结合，可以查表确定传输块大小，即信道编码数据源大小的信息，由此实现下行数据的正确传输与接收。</p>
-<h2 id="上行共享信道的调度与传输">上行共享信道的调度与传输</h2>
-<p>物理层上行数据的传输包含了链路自适应的调度过程。</p>
-<p>首先，终端在上行发送 <code>Sounding 导频</code> 信号，基站利用该信号对用户上行信道的质量进行测量，根据测量的结果选择适当的物理资源和相应的编码调制方式，在上行资源调度信息中进行指示，终端根据基站的指示进行上行数据的发送，实现对系统上行无线资源的优化利用。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" data-sub-html="<h2>Sounding 导频和上行链路自适应</h2>">
+<ol start="2">
+<li>完成导入后，配置你的预编译设置（由于本站是在本地使用 Hugo 编译好后 push 到 Github 上的所以这里选择 Other，然后勾选 OVERRIDE，不填写编译内容，表示不需要进行编译）如果你想要 Vercel 代替你编译，可以在这里选择相应的配置。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" data-sub-html="<h2>编译选项</h2>">
         
-    </a><figcaption class="image-caption">Sounding 导频和上行链路自适应</figcaption>
+    </a><figcaption class="image-caption">编译选项</figcaption>
     </figure>
-<p>上行共享信道的传输包括</p>
-<ul>
-<li>上行调度信息（PDCCH）</li>
-<li>数据信息（PUSCH）</li>
-</ul>
-<p>根据 <code>PDCCH</code> 上行调度信息的指示，终端使用相应的资源进行上行数据的发送。与下行情况不同的是，在下行共享信道的传输过程中，<strong>调度信息</strong>与对应的<strong>数据信息</strong>处于<strong>同一个子帧内</strong>。而在上行的情况中，终端需要根据 <code>PDCCH</code> 调度信息的指示，进行上行数据的发送，因此二者之间<strong>存在一定的时延</strong>，考虑无线传播和设备处理时间的因素</p>
-<ul>
-<li><code>FDD</code> 中定义该时延的数值为 <code>4ms</code>，即对于在子帧 <code>n</code> 中接收到的 <code>PDCCH</code> 上行调度信息，终端将在子帧 <code>n+4</code> 进行对应的上行数据传输。</li>
-<li><code>TDD</code> 的情况中，在时延最小值等于 <code>4ms</code> 的前提下，还需要区分是上行或者下行子帧，因为只有在属于上行子帧的时间才能进行上行数据的发送。</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_48.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_48.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_48.webp" data-sub-html="<h2>上行数据的调度与传输</h2>">
+<ol start="3">
+<li>待你完成编译配置后，等待 Vercel 完成编译和部署，你就可以得到一个可以访问的网站了，当然域名是一个二级域名。接下来我们配置自定义域名，首先点击你的项目，进入 设置 &gt; 域名。然后添加你的域名，一开始你添加好的域名不会和图片上一样，会显示为正确配置，这是因为我们还需要到 Cloudflare 进行调整。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" data-sub-html="<h2>域名设置</h2>">
         
-    </a><figcaption class="image-caption">上行数据的调度与传输</figcaption>
+    </a><figcaption class="image-caption">域名设置</figcaption>
     </figure>
-<p>与下行类似，物理层上行支持 29 种调制编码格式，其中包括了 <code>QPSK</code>、<code>16QAM</code> 和 <code>64QAM</code> 3 种不同的调制方式和不同的信道编码速率（范围是 0.16 ～ 0.92），使用与下行相同的传输块大小的表格定义，规定了在各种 <code>PRB</code> 数目的情况下，所对应的 29 种<strong>传输块大小</strong>（Transport block size）。</p>
-<p>在进行上行数据传输时，上行调度信息中使用 5 个比特指示数据的调制编码格式（MCS），终端根据该信息可以确定所使用的调制方法（QPSK/16QAM/64QAM）；同时，将这 5 比特 <code>MCS</code> 信息和调度信息中所分配的 <code>PRB</code> 数目相结合，可以查表确定传输块大小，即信道编码数据源的大小。最后，终端进行信道编码、速率匹配的信号处理过程，实现上行数据的发送。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：物理信道</title>
-    <link>https://www.techkoala.top/lte_physical_channels/</link>
-    <pubDate>Tue, 01 Sep 2020 21:06:48 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_physical_channels/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 物理信道详解</p>
-</blockquote>
-<h2 id="广播信道pbch">广播信道（PBCH）</h2>
-<p>物理广播信道（Physical Broadcast CHannel，PBCH）用于承载系统的 MIB 广播信息。</p>
-<p>LTE 系统广播信息分为</p>
-<ul>
+<ol start="4">
 <li>
-<p><strong>MIB（Master Information Block）</strong></p>
-<p>系统基本的配置信息，在 <code>PBCH</code> 固定的物理资源上进行传输 <code>MIB</code> 数据块的总长度为 40 比特，包含 24 个信息比特和 16 个 <code>CRC</code> 比特（以加扰的方式携带关于基站发射天线数目（1/2/4）的信息）。信息比特中包括：</p>
-<ul>
-<li>下行系统带宽指示（3 比特）</li>
-<li>PHICH 资源指示（3 比特）</li>
-<li>系统帧号 SFN（8 比特）</li>
-<li>预留的 10 个比特</li>
-</ul>
-<p><code>MIB</code> 信息的传输周期 <code>TTI=40ms</code>，在位于每个 <code>10ms</code> 无线帧的第一个子帧的 <code>PBCH</code> 信道上传输。<code>MIB</code> 数据块经过信道编码、速率匹配和加扰后，得到 1920 比特，映射到 <code>40ms</code> 内，间隔为 <code>10ms</code> 的 4 个子帧的 <code>PBCH</code> 信道的物理资源上。其中，每一个 <code>PBCH</code> 子帧都是可自解码的，也就是说假设信道质量足够好的话，终端可以通过 4 次中的任意一次的接收即可解调出 <code>MIB</code> 信息。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" data-sub-html="<h2>LTE 物理广播信道</h2>">
-        
-    </a><figcaption class="image-caption">LTE 物理广播信道</figcaption>
-    </figure>
+<p>来到 Cloudflare 的 DNS 配置页面，首先删除此前指向 Github Pages 的两个解析，然后添加一个<code>CNAME</code>类型的解析，设置名字设置为<code>www</code>,内容填入<code>cname.vercel-dns.com</code>；</p>
+<p><strong>注：</strong> 关键一步是，这里一定要设置<code>Proxy Status</code>为<code>DNS only</code>，否则，你的网站依然会经过 Cloudflare 的代理来访问。</p>
 </li>
-<li>
-<p><strong>SIB（System Information Block）</strong></p>
-</li>
-</ul>
-<p><code>PBCH</code> 信道位于每个 <code>10ms</code> 无线帧的第一个子帧，占用 4 个连续的 <code>OFDM</code> 符号，在频域上占用下行频带中心 <code>1.08MHz</code> 的带宽。也就是说，对于各种不同的系统带宽（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），物理广播信道 <code>PBCH</code> 的传输带宽相同，总是占用频带中心的 1.08MHz 带宽（72 个子载波）。物理广播信道 PBCH 频域结构。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" data-sub-html="<h2>物理广播信道 PBCH 频域结构</h2>">
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-sub-html="<h2>Cloudflare DNS 配置</h2>">
         
-    </a><figcaption class="image-caption">物理广播信道 PBCH 频域结构</figcaption>
+    </a><figcaption class="image-caption">Cloudflare DNS 配置</figcaption>
     </figure>
-<p>当发射天线为 2/4 的时候，<code>PBCH</code> 采用<strong>发送分集</strong>（SFBC/SFBC+FSTD）的方式。在资源映射的时候，为了方便终端在不知道发射天线数目情况下的<strong>盲检测</strong>，对 1、2 或者 4 的发射天线数目，使用相同的物理资源映射方式，即总是空出 4 天线的小区公用导频 <code>CRS</code> 资源。</p>
-<h2 id="下行共享信道pdsch">下行共享信道（PDSCH）</h2>
-<p>下行物理共享信道（Physical Downlink Shared CHannel，PDSCH）用于下行数据的调度传输，是 LTE 物理层主要的下行<strong>数据承载信道</strong>，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
-<ul>
-<li>寻呼信息</li>
-<li>广播信息</li>
-<li>控制信息和业务数据信息</li>
-</ul>
-<p>作为决定物理层性能的关键因素之一，PDSCH 的传输支持各种物理层机制，包括信道自适应的调度，<code>HARQ</code> 和各种 <code>MIMO</code> 机制。</p>
-<h3 id="控制格式指示信道pcfich">控制格式指示信道（PCFICH）</h3>
-<p>物理控制格式指示信道（Physical Control Format Indicator CHannel，PCFICH）指示物理层控制信道的格式。</p>
-<p>在 LTE 中，物理层控制信道（PDCCH）在每个子帧的前几个 <code>OFDM</code> 符号上传输，根据系统物理层控制信息负载情况的不同，该数值可能是 1、2 或者 3（在使用最小值 <code>1.4MHz</code> 的系统带宽的时候，为了提供足够的物理层控制信息的容量，也可以设置为 4）。<code>PCFICH</code> 信道正是对该数值进行了指示，即在当前子帧中，前几个 <code>OFDM</code> 符号用于物理层控制信道 <code>PDCCH</code> 的传输。</p>
-<p><code>PCFICH</code> 指示当前子帧中 <code>PDCCH</code> 的符号数目：1、2、3（当系统带宽 1.4MHz 的时候，取值为 2、3、4）。</p>
-<p><code>PCFICH</code> 的基带处理过程如图所示，其携带的 3 种可能性通过编码映射得到 32 比特的信息，经过 <code>QPSK</code> 调制后形成 16 个调制符号，这 16 个调制符号将映射到子帧第 1 个 <code>OFDM</code> 符号上的 4 个资源单元组 <code>REG</code> 上（每个 <code>REG</code> 包含 4 个 <code>RE</code>，可以承载 4 个调制符号）。为了获得充分的分集增益，这 4 个 <code>REG</code> 均匀地分布在系统下行带宽上。可以注意到，其中频域的起始位置 k 与小区 ID 相关，因此不同小区的 <code>PCFICH</code> 将形成相对的频域偏移，避免不同小区的 <code>PCFICH</code> 之间的干扰。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" data-sub-html="<h2>物理控制信道格式指示信道（PCFICH）</h2>">
-        
-    </a><figcaption class="image-caption">物理控制信道格式指示信道（PCFICH）</figcaption>
-    </figure>
-<p><code>PCFICH</code> 信道采用的发射天线与 <code>PBCH</code> 相同，即 1、2 或者 4。当发射天线数目为 2 或者 4 的时候，使用 <code>SFBC</code>/<code>SFBC+FSTD</code> 的发送分集方式。</p>
-<h3 id="harq-指示信道phich">HARQ 指示信道（PHICH）</h3>
-<p>物理 HARQ 指示信道（Physical HARQ Indicator CHannel，PHICH）承载对上行数据传输的 <code>HARQ</code> <code>ACK</code>/<code>NACK</code> 反馈信息。</p>
-<p>物理层 <code>PHICH</code> 信道的传输以 <code>PHICH</code> 组的形式来组织，1 个 <code>PHICH</code> 信道由 <code>PHICH</code> <strong>组编号</strong>和<strong>组内编号</strong>共同确定。</p>
-<p>1 个 <code>PHICH</code> 组内的多个 <code>PHICH</code> 信道占用<strong>相同</strong>的时频域物理资源，采用<strong>正交扩频序列</strong>的复用方式。</p>
-<ul>
-<li>在 <code>Normal CP</code> 的情况下，采用扩频因子为 4 结合 <code>I/Q</code> 两路 <code>BPSK</code> 调制的复用方式，1 个 <code>PHICH </code>组占用 12 个调制符号（3 个 <code>REG</code>），可以复用 8 个 <code>PHICH</code> 信道</li>
-<li>在 <code>Extended CP</code> 时，针对频率选择性较强的无线信道，采用扩频因子为 2 结合 <code>I/Q </code>两路 <code>BPSK</code> 调制的复用方式，1 个 <code>PHICH</code> 组占用 6 个调制符号，可以复用 4 个 <code>PHICH</code> 信道，此时，2 个 <code>PHICH</code> 组共同占用 3 个 <code>REG</code> 的物理资源</li>
-</ul>
-<p><code>PHICH</code> 信道的基带处理过程如图所示，1 个比特的 <code>ACK</code>/<code>NACK</code>（0/1）信息使用重复编码的方式得到 3 个比特的编码后信息，然后经过 <code>BPSK</code> 调制以及系数为 4 的扩频操作，得到 12 个符号，映射在 <code>PHICH</code> 组所对应的 3 个 <code>REG</code> 的物理资源位置上。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" data-sub-html="<h2>物理 HARQ 指示信道（PHICH）</h2>">
-        
-    </a><figcaption class="image-caption">物理 HARQ 指示信道（PHICH）</figcaption>
-    </figure>
-<ul>
-<li>在频域上，1 个 <code>PHICH</code> 组对应的 3 个 <code>REG</code> 采用分布式的映射方式，以获得分集增益</li>
-<li>在时间上，<code>PHICH</code> 有<strong>正常</strong>（normal）和<strong>扩展</strong>（extended）两种资源映射方式
-<ul>
-<li>在采用正常方式的时候，<code>PHICH</code> 信道映射在子帧的第一个 <code>OFDM</code> 符号上；</li>
-<li>当 <code>PDCCH</code> 的长度为 3 时（在混合载波的 MBSFN 子帧或者 <code>TDD</code> 特殊子帧中，<code>PDCCH</code> 长度为 2 时），<code>PHICH</code> 可以配置为采用扩展的方式，此时每 1 个 <code>PHICH</code> 信道将分布在 <code>PDCCH</code> 所占用的多个 <code>OFDM</code> 符号上。</li>
-</ul>
-</li>
-</ul>
-<p>在 <code>PCFICH</code> 所指示的前 n 个 <code>OFDM </code>符号中，除了用于 <code>PCFICH</code> 和 <code>PHICH</code> 传输的资源外，其余的将用于 <code>PDCCH</code> 的传输。</p>
-<p>为了确定用于 <code>PDCCH</code> 的资源，需要先确定用于 <code>PCFICH</code> 和 <code>PHICH</code> 的资源，其中 <code>PCFICH</code> 的资源是<strong>固定的</strong>，而用于 <code>PHICH</code> 传输的资源数目则由系统在 <code>PBCH </code>广播信息进行半静态的指示。<code>MIB</code> 信息中有 3 个比特用于 <code>PHICH</code> 资源的指示，其中包括了正常或者扩展两种时间长度以及 <code>PHICH </code>组数目 4 种可能性的指示。</p>
-<p><code>PHICH</code> 信道发射天线的数目与 <code>PBCH</code> <strong>相同</strong>，当发射天线数目为 2、4 的时候采用<code> SFBC</code>/<code>SFBC+FSTD</code> 的<strong>发送分集</strong>方式。</p>
-<p><code>PHICH</code> 信道的<strong>索引号</strong>与上行数据传输的资源位置<strong>相对应</strong>，也就是说，<strong>不需要</strong>采用信令进行指示，根据上行 <code>PUSCH</code> 数据传输的资源位置就可以确定下行 <code>PHICH</code> 信号的索引号。</p>
-<p>具体来说，由相应的上行 <code>PUSCH</code> 数据传输使用的第 1 个物理资源块 <code>PRB</code> 的序号所确定。另外，为了使得各个 <code>PHICH</code> 组中实际使用的 <code>PHICH</code> 信道数量的负载均衡，相邻的上行 <code>PRB</code> 位置对应于不同 <code>PHICH</code> 组中的 <code>PHICH</code> 信道。</p>
-<h2 id="下行控制信道pdcch">下行控制信道（PDCCH）</h2>
-<p>下行物理控制信道（Physical Downlink Control CHannel，PDCCH）用于承载物理层的下行控制消息，包括：</p>
-<ul>
-<li>上／下行数据传输的调度信息</li>
-<li>上行功率控制命令信息</li>
-</ul>
-<p><code>PDCCH</code> 信道的传输以控制信道单元（Control Channel Element，CCE）的形式来组织，1 个 CCE 由 9 个 REG 组成（即 9×4=36 个 RE）。根据所占用的 <code>CCE</code> 数目的不同，标准中定义了 4 种 <code>PDCCH</code> 格式，分别占用 1、2、4、8 个 CCE，相应的数值又称为 <code>PDCCH</code> 的聚合等级（Aggregation Level）。</p>
-<p>一个下行子帧可以承载多个 <code>PDCCH</code> 信道，各个 <code>PDCCH</code> 信道进行独立的 <code>CRC</code> 计算、加扰、信道编码并根据 Aggregation Level 进行速率匹配。然后，一个子帧中所有的 <code>PDCCH </code>信道将复用为 1 个数据比特流，对该数据流进行填充，使各个 <code>PDCCH</code> 信道符合定义的 <code>CCE</code> 起始位置的规则（Aggregation Level 为 n 的 <code>PDCCH</code> 的起始位置为 n 整数倍的 <code>CCE</code> 位置）；并且使填充后的数据比特流长度能够充满分配给 <code>PDCCH</code> 的 <code>OFDM</code> 符号的所有资源（除去 <code>PCFICH</code> 和 <code>PHICH</code>）。然后，对形成的数据流进行加扰、调制和多天线映射。最后映射到分配给 <code>PDCCH</code> 的物理资源上。</p>
-<p>在 <code>PDCCH</code> 数据流向物理资源的映射过程中，包含了交织的操作，数据流以 <code>REG</code>（4 个调制符号）为单位进行交织。通过交织的资源映射，每个 <code>PDCCH</code> 信道能够获得充分的分集增益。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" data-sub-html="<h2>下行物理控制信道（PDCCH）</h2>">
-        
-    </a><figcaption class="image-caption">下行物理控制信道（PDCCH）</figcaption>
-    </figure>
-<p><code>PDCCH</code> 信道的发射天线与 <code>PBCH</code> 相同，即 1、2 或者 4。当发射天线数目为 2、4 的时候采用 <code>SFBC</code>/<code>SFBC+FSTD</code> 的发送分集方式。</p>
-<p>终端对 <code>PDCCH</code> 信道的接收采用<strong>盲检测</strong>的方式，即终端根据所使用的下行控制信息（DCI）的格式，解调所有可能属于自己的下行 <code>PDCCH</code> 信道，搜索属于自己的信息。</p>
-<h2 id="随机接入信道prach">随机接入信道（PRACH）</h2>
-<p>物理随机接入信道（Physical RandomAccess CHannel，PRACH）用于终端上行发送随机接入信号（random access preamble），启动随机接入的过程。</p>
-<p>随机接入信号由</p>
-<ul>
-<li><strong>循环前缀（Cyclic Prefix，CP）</strong></li>
-<li><strong>接入序列（Sequence）</strong></li>
-<li>**保护时间（Guard Time，GT）
-**
-3 个部分组成。</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" data-sub-html="<h2>物理随机接入信道</h2>">
-        
-    </a><figcaption class="image-caption">物理随机接入信道</figcaption>
-    </figure>
-<p>根据适用的场景的不同（例如：小区半径和链路的功率预算），LTE 物理层支持 5 种随机接入信号格式，具体使用过程中，由高层信令指示小区所使用的随机接入信道的配置。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" data-sub-html="<h2>随机接入信号格式</h2>">
-        
-    </a><figcaption class="image-caption">随机接入信号格式</figcaption>
-    </figure>
-<p>其中格式 4 的随机接入信号仅用于 <code>TDD Type 2</code> 中，当 <code>TDD</code> 配置特殊时隙 <code>UpPTS</code> 的长度为 2 个 <code>OFDM</code> 符号时，可以在 <code>UpPTS</code> 的位置发送格式 4 的随机接入信号，以较小的开销实现随机接入的功能。</p>
-<p>在频域上，<code>PRACH</code> 占用 6 个 PRB（1.08MHz）的带宽。以 <code>Format 0</code> 为例，<code>PRACH</code> 信号的生成方式如图所示，信号占用的带宽为 <code>1 048.75kHz</code>，不足 <code>1.08MHz</code> 的部分作为频域的保护带。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" data-sub-html="<h2>PRACH preamble 生成方法（Format 0）</h2>">
-        
-    </a><figcaption class="image-caption">PRACH preamble 生成方法（Format 0）</figcaption>
-    </figure>
-<p>LTE 物理层使用 <code>Zadoff-Chu</code> 序列作为生成随机接入信号的序列。每个小区有 64 个可用的序列，由小区的下行广播进行指示。</p>
-<p>小区中分配给上行随机接入信道的物理资源位置由高层信令进行指示。在关于小区随机接入信道配置的信息中，指示了使用的 <code>PRACH</code> 格式以及物理资源的位置。</p>
-<p>对于 <code>FDD Type 1</code>，每个时刻最多传输一个 <code>PRACH</code> 信道，即没有频分复用。结合配置信息中指示的<strong>PRACH 信道的时间位置</strong>和<strong>PRACH 信道频率位置</strong>的信息，可以确定小区中 <code>PRACH</code> 信道的时频资源位置。</p>
 <blockquote>
-<p>例如：设置使用 PRACH Format 0，周期等于 10ms，时间偏移量等于 1 个子帧，频率位置等于 1，那么小区中用于 PRACH 信道的物理资源位置</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" data-sub-html="<h2>随机接入信道的物理资源位置</h2>">
-        
-    </a><figcaption class="image-caption">随机接入信道的物理资源位置</figcaption>
-    </figure>
+<p>这里我还添加一个 A 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</p>
 </blockquote>
-<p>对于 <code>TDD Type 2</code>，除了在 <code>UpPTS</code> 上支持 <code>PRACH Format 4</code> 的发送之外，同一个时刻还可能传输多个频分的 <code>PRACH</code> 信道。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" data-sub-html="<h2>TDD Type 2 中频分的 PRACH 信道</h2>">
-        
-    </a><figcaption class="image-caption">TDD Type 2 中频分的 PRACH 信道</figcaption>
-    </figure>
-<p>因为 <code>TDD</code> 支持不同的上下行时间比例的配置，在某些配置情况下上行时间较少，所以可能需要在同一个时刻支持多个 <code>PRACH</code> 信道，以提供足够的随机接入信道的容量。在普通子帧中，由于上行两边频带存在 <code>PUCCH</code> 控制信道，而中间是 <code>PUSCH</code> 数据信道，因此 <code>PRACH</code> 信道采用频率偏移结合上下交错的分配方式为 <code>PUCCH</code> 和 <code>PUSCH</code> 信道留出物理资源空间。而对于 <code>PRACH Format 4</code>，由于特殊时隙 <code>UpPTS</code> 上不存在 <code>PUCCH</code> 或者 <code>PUSCH</code> 信道，因此采用了不同的机制：从上行频域的边际开始，连续分布，在两次 <code>UpPTS</code> 之间采用跳频的方式，即交替地从上边带或者下边带开始，这样可以在随机接入信号需要多次传输的时候获得频率分集的增益。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" data-sub-html="<h2>TDD Type 2 中 PRACH Format 4 的频分与跳频</h2>">
-        
-    </a><figcaption class="image-caption">TDD Type 2 中 PRACH Format 4 的频分与跳频</figcaption>
-    </figure>
-<h2 id="上行控制信道pucch">上行控制信道（PUCCH）</h2>
-<p>上行物理控制信道（Physical Uplink Control CHannel，PUCCH）传输物理层上行控制信息，包括<strong>上行调度请求</strong>、<strong>对下行数据的 ACK/NACK 信息</strong>和<strong>信道状态信息 CSI 反馈（包括 CQI/PMI/RI）</strong>。</p>
-<p>每 1 组 <code>PUCCH</code> 信道占用 1 个 <code>RB-pair</code> 的物理资源，采用时隙跳频的方式，在系统上行频带的两边进行传输，而上行频带的中间部分用于传输上行共享信道（PUSCH）的数据。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" data-sub-html="<h2>PUCCH 信道的资源分布</h2>">
-        
-    </a><figcaption class="image-caption">PUCCH 信道的资源分布</figcaption>
-    </figure>
-<p>根据所承载的上行控制信息，物理层设计了不同的 <code>PUCCH</code> 格式，对应于不同的发送方法。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" data-sub-html="<h2>PUCCH 信道不同的格式</h2>">
-        
-    </a><figcaption class="image-caption">PUCCH 信道不同的格式</figcaption>
-    </figure>
-<p>根据不同格式的 <code>PUCCH</code> 信道的特点，它们在频域的分布情况如图所示。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" data-sub-html="<h2>不同格式 PUCCH 信道在频域的分布情况</h2>">
-        
-    </a><figcaption class="image-caption">不同格式 PUCCH 信道在频域的分布情况</figcaption>
-    </figure>
+<h2 id="参考">参考</h2>
 <ul>
-<li>PUCCH 2/2a/2b 承载的是信道状态 <code>CSI</code> 的反馈信息，在系统配置中，这一部分资源的数量是相对固定的，因此将它们分布在频带的最外侧，资源的具体数量通过高层信令进行半静态的指示。</li>
-<li><code>PUCCH 1/1a/1b</code> 承载的是调度请求信息和对下行数据的 <code>ACK</code> 信息，资源数量是动态变化的，与小区中发送的下行数据的数量相关，因此将这一部分资源放置在稍靠近频率中心的位置，方便将系统剩余的频率资源用于上行共享信道 <code>PUSCH</code> 的传输。</li>
+<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>
+</ul>]]></description>
+</item><item>
+    <title>DNS 列表</title>
+    <link>https://www.techkoala.top/dns_list/</link>
+    <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/dns_list/</guid>
+    <description><![CDATA[<blockquote>
+<p>列举国内外常用的 DNS</p>
+</blockquote>
+<h2 id="ipv4">IPv4</h2>
+<h3 id="国内">国内</h3>
+<h4 id="知名-dns-服务">知名 DNS 服务</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>114 常规 DNS</td>
+<td>114.114.114.114</td>
+<td>114.114.115.115</td>
+</tr>
+<tr>
+<td>114 拦截钓鱼病毒木马网站</td>
+<td>114.114.114.119</td>
+<td>114.114.115.119</td>
+</tr>
+<tr>
+<td>114 拦截色情网站</td>
+<td>114.114.114.110</td>
+<td>114.114.115.110</td>
+</tr>
+<tr>
+<td>阿里 AliDNS</td>
+<td>223.5.5.5</td>
+<td>223.6.6.6</td>
+</tr>
+<tr>
+<td>百度 BaiduDNS</td>
+<td>180.76.76.76</td>
+<td></td>
+</tr>
+<tr>
+<td>DNSPod DNS+</td>
+<td>119.29.29.29</td>
+<td>182.254.116.116</td>
+</tr>
+<tr>
+<td>CNNIC SDNS</td>
+<td>1.2.4.8</td>
+<td>210.2.4.8</td>
+</tr>
+<tr>
+<td>oneDNS</td>
+<td>117.50.11.11</td>
+<td>52.80.66.66</td>
+</tr>
+<tr>
+<td>DNS 派电信/移动/铁通</td>
+<td>101.226.4.6</td>
+<td>218.30.118.6</td>
+</tr>
+<tr>
+<td>DNS 派联通</td>
+<td>123.125.81.6</td>
+<td>140.207.198.6</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地电信-dns-服务器-ip-地址">全国各地电信 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安徽电信 DNS</td>
+<td>61.132.163.68</td>
+<td>202.102.213.68</td>
+</tr>
+<tr>
+<td>北京电信 DNS</td>
+<td>219.141.136.10</td>
+<td>219.141.140.10</td>
+</tr>
+<tr>
+<td>重庆电信 DNS</td>
+<td>61.128.192.68</td>
+<td>61.128.128.68</td>
+</tr>
+<tr>
+<td>福建电信 DNS</td>
+<td>218.85.152.99</td>
+<td>218.85.157.99</td>
+</tr>
+<tr>
+<td>甘肃电信 DNS</td>
+<td>202.100.64.68</td>
+<td>61.178.0.93</td>
+</tr>
+<tr>
+<td>广东电信 DNS</td>
+<td>202.96.128.86</td>
+<td>202.96.128.166</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.134.33</td>
+<td>202.96.128.68</td>
+</tr>
+<tr>
+<td>广西电信 DNS</td>
+<td>202.103.225.68</td>
+<td>202.103.224.68</td>
+</tr>
+<tr>
+<td>贵州电信 DNS</td>
+<td>202.98.192.67</td>
+<td>202.98.198.167</td>
+</tr>
+<tr>
+<td>河南电信 DNS</td>
+<td>222.88.88.88</td>
+<td>222.85.85.85</td>
+</tr>
+<tr>
+<td>黑龙江电信</td>
+<td>219.147.198.230</td>
+<td>219.147.198.242</td>
+</tr>
+<tr>
+<td>湖北电信 DNS</td>
+<td>202.103.24.68</td>
+<td>202.103.0.68</td>
+</tr>
+<tr>
+<td>湖南电信 DNS</td>
+<td>222.246.129.80</td>
+<td>59.51.78.211</td>
+</tr>
+<tr>
+<td>江苏电信 DNS</td>
+<td>218.2.2.2</td>
+<td>218.4.4.4</td>
+</tr>
+<tr>
+<td></td>
+<td>61.147.37.1</td>
+<td>218.2.135.1</td>
+</tr>
+<tr>
+<td>江西电信 DNS</td>
+<td>202.101.224.69</td>
+<td>202.101.226.68</td>
+</tr>
+<tr>
+<td>内蒙古电信</td>
+<td>219.148.162.31</td>
+<td>222.74.39.50</td>
+</tr>
+<tr>
+<td>山东电信 DNS</td>
+<td>219.146.1.66</td>
+<td>219.147.1.66</td>
+</tr>
+<tr>
+<td>陕西电信 DNS</td>
+<td>218.30.19.40</td>
+<td>61.134.1.4</td>
+</tr>
+<tr>
+<td>上海电信 DNS</td>
+<td>202.96.209.133</td>
+<td>116.228.111.118</td>
+</tr>
+<tr>
+<td></td>
+<td>202.96.209.5</td>
+<td>180.168.255.118</td>
+</tr>
+<tr>
+<td>四川电信 DNS</td>
+<td>61.139.2.69</td>
+<td>218.6.200.139</td>
+</tr>
+<tr>
+<td>天津电信 DNS</td>
+<td>219.150.32.132</td>
+<td>219.146.0.132</td>
+</tr>
+<tr>
+<td>云南电信 DNS</td>
+<td>222.172.200.68</td>
+<td>61.166.150.123</td>
+</tr>
+<tr>
+<td>浙江电信 DNS</td>
+<td>202.101.172.35</td>
+<td>61.153.177.196</td>
+</tr>
+<tr>
+<td></td>
+<td>61.153.81.75</td>
+<td>60.191.244.5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地联通-dns-服务器-ip-地址">全国各地联通 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京联通 DNS</td>
+<td>123.123.123.123</td>
+<td>123.123.123.124</td>
+</tr>
+<tr>
+<td></td>
+<td>202.106.0.20</td>
+<td>202.106.195.68</td>
+</tr>
+<tr>
+<td>重庆联通 DNS</td>
+<td>221.5.203.98</td>
+<td>221.7.92.98</td>
+</tr>
+<tr>
+<td>广东联通 DNS</td>
+<td>210.21.196.6</td>
+<td>221.5.88.88</td>
+</tr>
+<tr>
+<td>河北联通 DNS</td>
+<td>202.99.160.68</td>
+<td>202.99.166.4</td>
+</tr>
+<tr>
+<td>河南联通 DNS</td>
+<td>202.102.224.68</td>
+<td>202.102.227.68</td>
+</tr>
+<tr>
+<td>黑龙江联通</td>
+<td>202.97.224.69</td>
+<td>202.97.224.68</td>
+</tr>
+<tr>
+<td>吉林联通 DNS</td>
+<td>202.98.0.68</td>
+<td>202.98.5.68</td>
+</tr>
+<tr>
+<td>江苏联通 DNS</td>
+<td>221.6.4.66</td>
+<td>221.6.4.67</td>
+</tr>
+<tr>
+<td>内蒙古联通</td>
+<td>202.99.224.68</td>
+<td>202.99.224.8</td>
+</tr>
+<tr>
+<td>山东联通 DNS</td>
+<td>202.102.128.68</td>
+<td>202.102.152.3</td>
+</tr>
+<tr>
+<td></td>
+<td>202.102.134.68</td>
+<td>202.102.154.3</td>
+</tr>
+<tr>
+<td>山西联通 DNS</td>
+<td>202.99.192.66</td>
+<td>202.99.192.68</td>
+</tr>
+<tr>
+<td>陕西联通 DNS</td>
+<td>221.11.1.67</td>
+<td>221.11.1.68</td>
+</tr>
+<tr>
+<td>上海联通 DNS</td>
+<td>210.22.70.3</td>
+<td>210.22.84.3</td>
+</tr>
+<tr>
+<td>四川联通 DNS</td>
+<td>119.6.6.6</td>
+<td>124.161.87.155</td>
+</tr>
+<tr>
+<td>天津联通 DNS</td>
+<td>202.99.104.68</td>
+<td>202.99.96.68</td>
+</tr>
+<tr>
+<td>浙江联通 DNS</td>
+<td>221.12.1.227</td>
+<td>221.12.33.227</td>
+</tr>
+<tr>
+<td>辽宁联通 DNS</td>
+<td>202.96.69.38</td>
+<td>202.96.64.68</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全国各地移动-dns-服务器-ip-地址">全国各地移动 DNS 服务器 IP 地址</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>江苏移动 DNS</td>
+<td>221.131.143.69</td>
+<td>112.4.0.55</td>
+</tr>
+<tr>
+<td>安徽移动 DNS</td>
+<td>211.138.180.2</td>
+<td>211.138.180.3</td>
+</tr>
+<tr>
+<td>山东移动 DNS</td>
+<td>218.201.96.130</td>
+<td>211.137.191.26</td>
+</tr>
+</tbody>
+</table>
+<h3 id="香港地区">香港地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>香港宽频 DNS</td>
+<td>203.80.96.10</td>
+<td></td>
+</tr>
+<tr>
+<td>和记环球电讯 DNS</td>
+<td>202.45.84.58</td>
+<td>202.45.84.59</td>
+</tr>
+<tr>
+<td>Pacific SuperNet DNS</td>
+<td>202.14.67.4</td>
+<td>202.14.67.14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信 DNS</td>
+<td>168.95.1.1</td>
+<td>168.95.192.1</td>
+</tr>
+<tr>
+<td>数位联合电信 DNS</td>
+<td>139.175.252.16</td>
+<td>139.175.55.244</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>101.101.101.101</td>
+<td>101.102.103.104</td>
+</tr>
+</tbody>
+</table>
+<h3 id="韩国">韩国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT olleh DNS</td>
+<td>168.126.63.1</td>
+<td>168.126.63.2</td>
+</tr>
+<tr>
+<td>SK Broadband DNS</td>
+<td>210.220.163.82</td>
+<td>219.250.36.130</td>
+</tr>
+<tr>
+<td>LG U+ DNS</td>
+<td>164.124.101.2</td>
+<td>203.248.252.2</td>
+</tr>
+<tr>
+<td></td>
+<td>164.124.107.9</td>
+<td>203.248.242.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloudflare DNS</td>
+<td>1.1.1.1</td>
+<td>1.0.0.1</td>
+</tr>
+<tr>
+<td>Google DNS</td>
+<td>8.8.8.8</td>
+<td>8.8.4.4</td>
+</tr>
+<tr>
+<td>IBM Quad9</td>
+<td>9.9.9.9</td>
+<td>149.112.112.112</td>
+</tr>
+<tr>
+<td>DNS.SB</td>
+<td>185.222.222.222</td>
+<td>185.184.222.222</td>
+</tr>
+<tr>
+<td>OpenDNS</td>
+<td>208.67.222.222</td>
+<td>208.67.220.220</td>
+</tr>
+<tr>
+<td>V2EX DNS</td>
+<td>199.91.73.222</td>
+<td>178.79.131.110</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>74.82.42.42</td>
+<td>66.220.18.42</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>77.88.8.8</td>
+<td>77.88.8.1</td>
+</tr>
+<tr>
+<td>俄罗斯 SafeDNS</td>
+<td>195.46.39.39</td>
+<td>195.46.39.40</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>84.200.69.80</td>
+<td>84.200.70.40</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>77.109.148.136</td>
+<td>77.109.148.137</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>91.239.100.100</td>
+<td>89.233.43.71</td>
+</tr>
+<tr>
+<td>荷兰 Freenom World Public DNS</td>
+<td>80.80.80.80</td>
+<td>80.80.81.81</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ipv6">IPv6</h2>
+<h3 id="国内-1">国内</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百度</td>
+<td>2400:da00::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>阿里</td>
+<td>2400:3200::1</td>
+<td>2400:3200:baba::1</td>
+</tr>
+<tr>
+<td>CNNIC</td>
+<td>2001:dc7:1000::1</td>
+<td></td>
+</tr>
+<tr>
+<td>下一代互联网北京研究中心</td>
+<td>240C::6666</td>
+<td>240C::6644</td>
+</tr>
+</tbody>
+</table>
+<h4 id="高校">高校</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京邮电大学</td>
+<td>2001:da8:202:10::36</td>
+<td>2001:da8:202:10::37</td>
+</tr>
+<tr>
+<td>上海交通大学</td>
+<td>2001:da8:8000:1:202:120:2:100</td>
+<td>2001:da8:8000:1:202:120:2:101</td>
+</tr>
+<tr>
+<td>中科院网络信息中心</td>
+<td>2001:cc0:2fff:1::6666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京交通大学</td>
+<td>2001:da8:205:2060::188</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学</td>
+<td>2001:da8:ff:305:20c:29ff:fe1f:a92a</td>
+<td></td>
+</tr>
+<tr>
+<td>清华大学 TUNA 协会</td>
+<td>2001:da8::666</td>
+<td></td>
+</tr>
+<tr>
+<td>北京科技大学</td>
+<td>2001:da8:208:10::6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="台湾地区-1">台湾地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中华电信</td>
+<td>2001:b000:168::1</td>
+<td>2001:b000:168::2</td>
+</tr>
+<tr>
+<td>台湾网路资讯</td>
+<td>2001:de4::101</td>
+<td>2001:de4::102</td>
+</tr>
+</tbody>
+</table>
+<h3 id="美国-1">美国</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOOGLE</td>
+<td>2001:4860:4860::8888</td>
+<td>2001:4860:4860::8844</td>
+</tr>
+<tr>
+<td>CloudFlare DNS</td>
+<td>2606:4700:4700::1111</td>
+<td>2606:4700:4700::1001</td>
+</tr>
+<tr>
+<td>IBM</td>
+<td>2620:fe::fe</td>
+<td>2620:fe::9</td>
+</tr>
+<tr>
+<td>Cisco OpenDNS</td>
+<td>2620:0:ccc::2</td>
+<td>2620:0:ccd::2</td>
+</tr>
+<tr>
+<td>HE Public DNS</td>
+<td>2001:470:20::2</td>
+<td>2001:470:0:9d::2</td>
+</tr>
+<tr>
+<td>Verisign Public DNS</td>
+<td>2620:74:1b::1:1</td>
+<td>2620:74:1c::2:2</td>
+</tr>
+<tr>
+<td>Neustar Recursive DNS</td>
+<td>2610:a1:1018::1</td>
+<td>2610:a1:1019::1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他地区-1">其他地区</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP 地址（首选）</th>
+<th>IP 地址（备选）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄罗斯 Yandex Public DNS</td>
+<td>2a02:6b8::feed:0ff</td>
+<td>2a02:6b8:0:1::feed:0ff</td>
+</tr>
+<tr>
+<td>德国 DNS.WATCH Public DNS</td>
+<td>2001:1608:10:25::1c04:b12f</td>
+<td>2001:1608:10:25::9249:d69b</td>
+</tr>
+<tr>
+<td>瑞士 xiala.net Public DNS</td>
+<td>2001:1620:2078:136::</td>
+<td>2001:1620:2078:137::</td>
+</tr>
+<tr>
+<td>丹麦 UncensoredDNS</td>
+<td>2001:67c:28a4::</td>
+<td>2a01:3a0:53:53::</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreffer">全球免费公共 dns 解析服务器 ip 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
+</li>
+<li>
+<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 dns 服务器 ip 地址</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>网络分析工具：NetCat</title>
+    <link>https://www.techkoala.top/netcat/</link>
+    <pubDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/netcat/</guid>
+    <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" data-sub-html="<h2>网络瑞士军刀 —— NetCat</h2>">
+        
+    </a><figcaption class="image-caption">网络瑞士军刀 —— NetCat</figcaption>
+    </figure>
+<h2 id="什么是-netcat">什么是 NetCat</h2>
+<p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
+<p>nc 可以在两台设备上面相互交互，即<code>侦听模式</code>/<code>传输模式</code></p>
+<p>nc 包含以下主要功能：</p>
+<ul>
+<li>Telnet 功能</li>
+<li>获取 banner 信息</li>
+<li>传输文本信息</li>
+<li>传输文件 / 目录</li>
+<li>加密传输文件，默认不加密</li>
+<li>远程控制</li>
+<li>加密所有流量</li>
+<li>流媒体服务器</li>
+<li>远程克隆硬盘</li>
 </ul>
-<p>在所占用的 1 个 <code>RB-pair</code> 的时频域资源中，<code>PUCCH 1/1a/1b</code> 和 <code>PUCCH 2/2a/2b</code> 都采用了码分的方式进一步地复用多个 <code>PUCCH</code> 信道。因此当配置的 <code>PUCCH 2/2a/2b</code> 信道数量所占用的资源数目不是 <code>RB-pair</code> 整数倍的时候，在 <code>PUCCH 2/2a/2b</code> 和 <code>PUCCH 1/1a/1b</code> 频域的交界处将出现它们在某 1 个 <code>RB-pair</code> 内以码分的方式混合传输的情况。</p>
-<h3 id="pucch-格式-11a1b">PUCCH 格式 1/1a/1b</h3>
-<p><code>PUCCH</code> 格式 <code>1/1a/1b</code> 用于终端发送<strong>调度请求信息</strong>或者<strong>1、2 比特的 ACK/NACK 信息</strong>。</p>
-<p>使用一个调制符号 $d(0)$ 来表示 <code>PUCCH 1/1a/1b</code> 发送的信息。对于 <code>PUCCH 1</code> 的<strong>调度请求信息</strong>，基站侧仅需要检测是否存在这样的发送，此时的 $d(0)$ 设置为预定义的固定值（d(0)=1）。对于 <code>PUCCH 1a/1b</code> 的 <code>ACK</code> 信息，$d(0)$ 为 <code>BPSK</code> 或者 <code>QPSK</code> 调制符号，分别对应于 1 比特或者 2 比特的 <code>ACK</code> 信息。</p>
-<p>在信息的发送过程中，首先使用正交扩频序列 $w(m)$ 进行扩频，将信息分散在一个时隙内用于 PUCCH 传输的多个上行符号上；然后，在每个上行符号上使用 1 个长度为 12 的 <code>Zadoff-Chu</code> 序列 $r_{u,v}^{\alpha}$ 进行调制，得到长度为 12 的复数序列对应于 1 个 <code>RB</code> 内的 12 个子载波。因此，<code>PUCCH 1/1a/1b</code> 的发送包含了**正交扩频序列**和**Zadoff-Chu 序列**两次码扩频的过程，可以复用的信道数目为二者的乘积。</p>
+<h2 id="使用-netcat">使用 NetCat</h2>
+<p>一般来说，nc 的命令行包括如下几个部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="命令选项">命令选项</h3>
 <blockquote>
-<p>例如：在使用 Normal CP 的情况下有 3 个正交扩频序列，而所使用的 Zadoff-Chu 序列的长度为 12，假设设置 Zadoff-Chu 序列循环移位（Cyclic Shift）的复用间隔为 2，那么 1 个 RB-pair 上可以复用 3×6=18 个 PUCCH 1/1a/1b 信道。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" data-sub-html="<h2>PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）</h2>">
-        
-    </a><figcaption class="image-caption">PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）</figcaption>
-    </figure>
+<p>本文内容基于 OpenBSD 社区的变种（也叫 OpenBSD netcat，部分命令与原版有差异。 ）</p>
 </blockquote>
-<p>为了增强信号的随机性，在 <code>PUCCH 1/1a/1b</code> 的发送过程中包含了<strong>跳频</strong>的概念。包括两种跳频：</p>
+<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD manual page</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">选项	   是否有 “选项值”	   说明
+-h	   NO	           输出 nc 的帮助
+-v	   NO	           在网络通讯时，显示详细的输出信息
+-n	   NO	           对命令行中的主机，不进行域名解析，如果主机是 IP 地址，需要用该选项
+-p	  YES	           指定端口号
+-l	  NO	           开启监听模式，nc 作为服务端，如不加，nc 默认作为客户端
+-u	  NO	           使用 UDP 协，如不加该选项，默认是 TCP 协议
+-w	  YES	           设置连接的超时间隔（N 秒）
+-q	  YES	           让 nc 延时（N 秒）再退出
+-z	  NO	           开启 zero-I/O 模式，该选项仅用于端口扫描
+-k	  NO	           配合 -l 选项使用，可以重复接受客户端连接
+-X	  YES	           指定代理的类型
+-x	  YES	           以 IP:port 的格式指定代理
+-d    NO               后台模式
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="主机">主机</h3>
+<p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
+<h3 id="端口">端口</h3>
+<p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
+<h2 id="常用使用场景示例">常用使用场景示例</h2>
+<h3 id="测试某个远程主机的监听端口是否可达">测试某个远程主机的监听端口是否可达</h3>
+<p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
+<ol>
+<li>监听端口没开启</li>
+<li>监听端口虽然开启，但是被防火墙阻拦了</li>
+</ol>
+<p>对第 1 个原因，（如果你能在该主机上运行命令）可以直接用 <code>netstat</code> 这个命令查看监听端口是否开启；但对于第 2 个原因，<code>netstat</code> 就用不上了，这时候就可以用 nc 来帮你搞定。</p>
+<p>用如下命令可以测试某个 IP 地址上的某个监听端口是否开启:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv ip port
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注：</strong>　默认情况下 nc 会等待很久，然后才告诉你连接失败。如果你所处的网络环境稳定且高速（比如：局域网内），那么，你可以追加 <code>-w</code> 选项，设置一个比较小的超时值。在下面的例子中，超时值设为 3 秒。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</h3>
+<p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
+<p>为了叙述方便，设想如下场景：
+有两台主机 ——<code>主机 C</code> 充当客户端，<code>主机 S</code> 充当服务端。
+然后要判断<code>主机 S</code> 上的防火墙是否会拦截其它主机对 8080 TCP 端口的连接。</p>
+<p>在<code>主机 S</code> 上运行 nc，让它在 8080 端口，命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -lv -p <span class="m">8080</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
+<p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
+<h3 id="端口扫描">端口扫描</h3>
+<p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024
+</code></pre></td></tr></table>
+</div>
+</div><p>选项 -z
+是指开启 <code>zero-I/O 模式</code>。该模式 nc 只判断某个监听端口是否能连上，连上后<strong>不</strong>与对端进行数据通讯。</p>
+<p>**注：**端口扫描的时候，<code>-v</code> 选项会把成功/失败的结果统统打印出来。通常关注的都是 “扫描成功” 的那些端口。因此，可以用可以配合使用 <code>grep</code> 过滤一下，只打印扫出来的端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
+</code></pre></td></tr></table>
+</div>
+</div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
+<p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
+<h3 id="探测服务器类型和软件版本">探测服务器类型和软件版本</h3>
+<p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
+OR
+<span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="端口转发">端口转发</h3>
+<p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
+<p>步骤 1：创建命名管道</p>
+<p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkfifo nc_pipe
+</code></pre></td></tr></table>
+</div>
+</div><p>步骤 2：同时启动两个 nc</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
+</code></pre></td></tr></table>
+</div>
+</div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
+<h3 id="传输文件">传输文件</h3>
+<p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端 B 主机运行如下命令
+nc -l -p port &gt; file2
+
+然后在发送端 A 主机运行如下命令
+nc ip port &lt; file1
+</code></pre></td></tr></table>
+</div>
+</div><p>两者端口号要相同</p>
+<h3 id="远程备份整个磁盘">远程备份整个磁盘</h3>
+<p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端（B 主机）运行如下命令
+nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sdb
+
+然后在发送端 A 主机运行如下命令
+dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="远程控制">远程控制</h3>
+<p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">A:
+nc -lp port -c bash
+
+B:
+nc ip port
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="流媒体服务">流媒体服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">A:
+cat test.mp4 <span class="p">|</span> nc -lp port
+
+B:
+nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4000</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>A 让 test.MP4 这个文件成为<code>流</code>的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。</p>
+<h3 id="信息收集">信息收集</h3>
+<p>收集目标机上的进程信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p port &gt; ps.txt
+将远程发送过来的内容保存在本地
+
+Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
+标准输入完成后 delay 一秒钟，会发送到侦听端
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
 <ul>
-<li>子帧内的 2 个时隙使用不同的正交扩频序列 $w(m)$，即<strong>正交序列跳频</strong></li>
-<li>时隙内的不同上行符号之间使用 <code>Zadoff-Chu</code> 序列不同的循环移位，即<strong>Cyclic Shift 跳频</strong></li>
-</ul>
-<h3 id="pucch-format-22a2b">PUCCH Format 2/2a/2b</h3>
-<p><code>PUCCH</code> 格式 2 用于终端发送信道状态信息（Channel State Information，CSI），包括：</p>
-<ul>
-<li><strong>信道质量指示（Channel Quality Indicator，CQI）</strong></li>
-<li><strong>预编码向量指示（Precoding Matrix Indicator，PMI）</strong></li>
-<li><strong>复用秩的指示（Rank Indicator，RI）</strong></li>
-</ul>
-<p>在 <code>Normal CP</code> 的情况下，<code>PUCCH 格式 2</code> 还可以扩展成 <code>PUCCH 格式 2a/2b</code>，在这两种格式中，通过对 <code>PUCCH 格式 2</code> 中的导频符号进行调制，在 <code>CSI</code> 信息的基础上，进一步承载 1 或者 2 比特的 <code>ACK</code>/<code>NACK</code> 信息。</p>
-<p><code>CSI</code> 信息经过信道编码和加扰后形成长度为 20 比特的数据流，经过 <code>QPSK</code> 调制后形成 10 个调制符号（d(0)，…，d(9)），在 <code>PUCCH Format 2/2a/2b</code> 上发送。</p>
-<p><code>PUCCH Format 2/2a/2b</code> 信息的发送过程与 <code>PUCCH Format 1/1a/1b</code> 类似，只是<strong>没有了扩频的操作</strong>，因为要<strong>发送更多</strong>的比特信息。</p>
-<p>对于要发送的调制符号信息 d(0)，…，d(9)，在每个符号上使用长度为 12 的 <code>Zadoff-Chu</code> 序列 $r_{u,v}^{\alpha}$ 进行调制，然后将各个符号调制的结果映射在子帧内相应上行符号 1 个 <code>RB</code> 内的 12 个子载波上。通过长度为 12 的 <code>Zadoff-Chu</code> 序列的不同循环移位来进行同一个 RB 内不同 <code>PUCCH 2/2a/2b</code> 信道的复用。</p>
+<li>
+<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">netcat manual page</a></p>
+</li>
+<li>
+<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreffer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
+</li>
+<li>
+<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>HTTPS 工作原理</title>
+    <link>https://www.techkoala.top/how_https_works/</link>
+    <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/how_https_works/</guid>
+    <description><![CDATA[<blockquote>
+<p>理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理</p>
+</blockquote>
 <blockquote>
-<p>假设设置 <code>Zadoff-Chu</code> 序列循环移位的复用间隔为 2，那么 1 个 <code>RB-pair</code> 上可以复用 6 个 <code>PUCCH 2/2a/2b</code> 信道。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" data-sub-html="<h2>PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）</h2>">
-        
-    </a><figcaption class="image-caption">PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）</figcaption>
-    </figure>
+<p>注：本文系全文转载，原文信息如下：</p>
+<p>作者：猫尾博客</p>
+<p>链接：https://cattail.me/tech/2015/11/30/how-https-works.html</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 </blockquote>
-<p>在 <code>PUCCH 2a/2b</code> 中，除了 20 个比特的 <code>CSI</code> 信息之外，还承载 1 或者 2 比特的 <code>ACK</code> 信息。该 <code>ACK</code> 信息将通过 <code>BPSK</code> 或者 <code>QPSK</code> 的调制，形成一个调制符号 d(10)，然后调制在导频符号上进行传输。</p>
-<p><code>PUCCH 2a/2b</code> <strong>仅适用</strong>于 <code>Normal CP</code> 的情况，对于 <code>Extended CP</code> 的情况，由于 <code>PUCCH 格式 2</code> 的每个时隙内只有 1 列上行导频，难以将 <code>ACK</code>/<code>NAK</code> 信息调制在导频中。所以，在这种情况下，如果 <code>ACK</code>/<code>NAK</code> 和 <code>CQI</code> 需要<strong>同时</strong>传输，那么将对它们进行<strong>联合编码</strong>，形成 20 比特的编码后数据，采用 <code>Extended CP</code> 的 <code>PUCCH 格式 2</code> 进行发送。</p>
-<h2 id="上行共享信道pusch">上行共享信道（PUSCH）</h2>
-<p>上行物理共享信道（Physical Uplink Shared CHannel，PUSCH）用于上行数据的调度传输，是物理层主要的上行数据承载信道，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
+<p>读完本文，你能明白</p>
 <ul>
-<li>控制信息</li>
-<li>用户业务信息</li>
+<li>什么是 HTTPS，TLS (SSL)，TLS 和 HTTPS 是什么关系</li>
+<li>什么是证书和数字签名，它们是如何传递信任的</li>
+<li>HTTPS 有什么样的功能，它是如何实现这样的功能的</li>
 </ul>
-<p>与下行物理共享信道 <code>PDSCH</code> 相似，<code>PUSCH</code> 信道是决定系统上行数据传输性能的关键，因此，<code>PUSCH</code> 的传输支持各种物理层机制，包括<strong>信道自适应的调度</strong>、<strong>HARQ</strong> 等。</p>
-<p><strong>值得一提的是</strong>，上行物理层采用单载波（DFT-SOFDM）作为多址方式，这样的多址方式对终端上行功率效率方面带来好处的同时也带来了一些<strong>限制</strong>。</p>
-<blockquote>
-<p>例如：为了保持上行单载波的特性，LTE Release 8 物理层不支持单用户的上行共享信道（PUSCH）和上行控制信道（PUCCH）的频分复用，即 1 个用户不能在一个时刻同时发送 <code>PUSCH</code> 信道和 <code>PUCCH</code> 信道。当用户有上行数据 <code>PUSCH</code> 正在发送的时候，如果需要同时发送物理层上行控制信息（CSI、ACK 或者 RI），那么这些信息不能在 <code>PUCCH</code> 信道上传输，而是将这些控制信息与数据信息一起复用在 <code>PUSCH</code> 信道上进行传输。</p>
-</blockquote>
-<p>另外，单载波（DFT-SOFDM）多址方式的处理过程中包含了 <code>DFT</code> 的操作，为了降低 <code>DFT</code> 运算的复杂度，便于使用类似 <code>FFT</code> 的快速算法，标准中对上行 <code>PUSCH</code> 信道子载波分配的数目进行了规定，即上行分配的 RB 数目的数值必须能够被 2、3、5 这 3 个质数所分解，即必须满足条件$=2_{α2}、3_{α3}、5_{α5}$，其中 $α2 、α3 和 α5$ 是非负整数。</p>
-<h2 id="参考">参考</h2>
+<h2 id="简介">简介</h2>
+<p>HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示为 SSL 3.1，TLS 1.1 为 SSL 3.2，TLS 1.2 为 SSL 3.3。本文着重描述 TLS 协议的 1.2 版本</p>
+<p>下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-sub-html="<h2>Credit: Kaushal Kumar Panday From: SSL Handshake and HTTPS Bindings on IIS</h2>">
+        
+    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
+    </figure>
+<p>其中 <code>Handshake protocol</code>，<code>Change Ciper Spec protocol</code> 和 <code>Alert protocol</code> 组成了 <code>SSL Handshaking Protocols</code>。</p>
+<p>HTTPS 和 HTTP 协议相比提供了:</p>
+<ol>
+<li>数据完整性：内容传输经过完整性校验</li>
+<li>数据隐私性：内容经过对称加密，每个连接生成一个唯一的加密密钥</li>
+<li>身份认证：第三方无法伪造服务端（客户端）身份</li>
+</ol>
+<p>其中，数据完整性和隐私性由 TLS Record Protocol 保证，身份认证由 TLS Handshaking Protocols 实现。</p>
+<h2 id="总览">总览</h2>
+<p>使用 RSA 算法的 SSL 握手过程是这样的:</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </figure>
+<ol>
+<li>[明文] 客户端发送随机数 client_random 和支持的加密方式列表</li>
+<li>[明文] 服务器返回随机数 server_random ，选择的加密方式和服务器证书链</li>
+<li>[RSA] 客户端验证服务器证书，使用证书中的公钥加密 premaster secret 发送给服务端</li>
+<li>服务端使用私钥解密 premaster secret</li>
+<li>两端分别通过 client_random，server_random 和 premaster secret 生成 master secret，用于对称加密后续通信内容</li>
+</ol>
+<h3 id="证书digital-certificate">证书（Digital certificate）</h3>
+<p>那么什么是证书呢？</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-sub-html="<h2>证书信息</h2>">
+        
+    </a><figcaption class="image-caption">证书信息</figcaption>
+    </figure>
+<h3 id="证书中包含了以下信息">证书中包含了以下信息</h3>
+<ol>
+<li>证书信息：过期时间和序列号</li>
+<li>所有者信息：姓名等</li>
+<li>所有者公钥</li>
+</ol>
+<p><strong>为什么服务端要发送证书给客户端?</strong></p>
+<p>互联网有太多的服务需要使用证书来验证身份，以至于客户端（操作系统或浏览器等）无法内置所有证书，需要通过服务端将证书发送给客户端。</p>
+<h3 id="客户端为什么要验证接收到的证书">客户端为什么要验证接收到的证书</h3>
+<p><strong>中间人攻击</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
+        伪造证书            拦截请求
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="客户端如何验证接收到的证书">客户端如何验证接收到的证书</h3>
+<p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
+| A digital signature |
+|(not to be confused  |
+|with a digital       |
+|certificate)         |              +---------+                +--------+
+| is a mathematical   |---- 哈希 ---&gt;| 消息摘要  |--- 私钥加密 ---&gt;| 数字签名 |
+|technique used       |              +---------+                +--------+
+|to validate the      |
+|authenticity and     |
+|integrity of a       |
+|message, software    |
+|or digital document. |
++---------------------+
+</code></pre></td></tr></table>
+</div>
+</div><p>将一段文本通过哈希（hash）和私钥加密处理后生成数字签名。</p>
+<p>假设消息传递在 Bob，Susan 和 Pat 三人之间发生。Susan 将消息连同数字签名一起发送给 Bob，Bob 接收到消息后，可以这样验证接收到的消息就是 Susan 发送的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
+| A digital signature |
+|(not to be confused  |
+|with a digital       |
+|certificate)         |              +---------+
+| is a mathematical   |---- 哈希 ---&gt;|  消息摘要 |
+|technique used       |              +---------+
+|to validate the      |                 |
+|authenticity and     |                 |
+|integrity of a       |                 |
+|message, software    |                 对
+|or digital document. |                 比
++---------------------+                 |
+                                        |
+                                        |
+        +---------+               +----------+
+        | 数字签名 |--- 公钥解密 ---&gt;|  消息摘要 |
+        +---------+               +----------+
+</code></pre></td></tr></table>
+</div>
+</div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
+<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreffer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
+<p>Susan 将证书发送给 Bob 后，Bob 通过 CA 证书的公钥验证证书签名。</p>
+<p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
+<p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
+<h2 id="tls-协议">TLS 协议</h2>
+<p>TLS 协议包括 TLS Record Protocol 和 TLS Handshake Protocol。总览中的流程图仅涉及到 TLS Handshake Protocol。</p>
+<h3 id="tls-record-protocol">TLS Record Protocol</h3>
+<p>在 TLS 协议中，有四种子协议运行于 Record protocol 之上</p>
 <ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：物理信号</title>
-    <link>https://www.techkoala.top/lte_physical_signals/</link>
-    <pubDate>Tue, 01 Sep 2020 21:02:32 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_physical_signals/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 物理信号详解</p>
-</blockquote>
-<h2 id="导频信号">导频信号</h2>
-<h3 id="下行导频信号">下行导频信号</h3>
-<p>物理层定义了 3 种下行导频信号（Reference Signal，RS），包括：</p>
-<ul>
-<li>
-<p><strong>普通子帧的小区导频信号（Cell-specific RS，CRS）</strong></p>
-<p>指的是小区在下行<strong>普通子帧</strong>中<strong>全频带广播发送</strong>的导频信号，该信号以<strong>小区为单位</strong>，可以作为小区内用户进行<strong>下行测量</strong>、<strong>同步</strong>以及<strong>数据解调</strong>的参考符号</p>
-</li>
-<li>
-<p><strong>MBSFN 导频信号</strong></p>
-<p>指的是小区在下行 <strong>MBSFN 子帧</strong>中<strong>全频带广播发送</strong>的导频符号，该信号以 <strong>MBSFN 小区</strong>或<strong>小区集合为单位</strong>，可以用作对<strong>广播／多播（Malticast/Broadcast）业务情况下的下行测量</strong>、<strong>同步</strong>以及<strong>数据解调</strong>的参考符号</p>
-</li>
-<li>
-<p><strong>用户专用导频信号（UE-specific RS，又称为 DRS，Dedicated RS）</strong></p>
-<p>指的是小区在下行<strong>普通子帧</strong>中发送的<strong>用户专用</strong>的导频信号，该信号以<strong>用户为单位</strong>，通过高层信令指示是否发送了该信号并且用作<strong>用户下行数据解调</strong>的参考符号。DRS 仅在承载该用户数据的资源块上传输。</p>
-</li>
+<li>Handshake protocol</li>
+<li>Alert protocol</li>
+<li>Change cipher spec protocol</li>
+<li>Application data protocol</li>
 </ul>
-<h4 id="导频序列">导频序列</h4>
-<p>使用 <code>gold 序列</code> 生成的<code>伪随机（PN）序列</code>作为物理层下行导频信号（CRS/MBSFN RS/DRS）使用的复数序列，序列的数学表达式是：</p>
-<center>$r_{l,n_s}=\frac{1}{\sqrt{2}}(1-2c(2m))+j\frac{1}{\sqrt{2}}(1-2c(2m+1))$</center>
-<p>其中，$c(n)$是寄存器长度为 31 的 <code>gold 序列</code>，生成的序列由初始值 <code>cinit</code> 所确定。</p>
-<p>3 种下行导频信号，根据各自的特性，序列的初始值有相应的设置方法。</p>
+<p>Record protocol 起到了这样的作用</p>
 <ul>
-<li>对于<strong>普通子帧的小区导频信号</strong>，即 <code>CRS</code>。信号的发送以小区为单位，每个小区有各自的导频序列，序列的初始值与 <code>小区 ID</code>（$N_{ID}^{cell}$ ，0 ～ 503）相关。为了保证导频序列具有充分的随机性，在每个包含 <code>CRS</code> 的 <code>OFDM</code> 符号上，根据 <code>OFDM</code> 符号的位置（时隙在无线帧中的编号 ns ：0 ～ 19、OFDM 符号在时隙内的序号：0 ～ 6/0 ～ 5）、小区使用的 <code>CP</code> 选项（NCP =1/0：Normal CP/Extended CP）结合前面提到的 <code>小区 ID</code>（$N_{ID}^{cell}$）共同确定该符号上所使用的 <code>CRS</code> 导频序列的初始值。具体的数学表达式为：</li>
-</ul>
-<center>$c_{init}=2^{10}(7(n_s+1)+l+1)(2N_{ID}^{cell}+1)+2N_{ID}^{cell}+N_{CP}$</center>
-<ul>
-<li>对于 <strong>MBSFN 导频信号</strong>，信号的发送以 <code>MBSFN</code> 小区／小区集合为单位。序列的初始值与 <code>MBSFN ID</code> 相关，在每个包含 <code>MBSFN</code> 导频的 <code>OFDM 符号</code> 上，根据 <code>OFDM 符号</code> 的位置和 <code>MBSFN ID</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
-</ul>
-<center>$c_{init}=2^9(7(n_s+1)+l+1)(2N_{ID}^{MBSFN}+1)+N_{ID}^{MBSFN}$</center>
-<ul>
-<li><strong>用户专用导频信号</strong>，即 <code>DRS</code>。信号的发送以用户为单位，每个用户有各自的导频。序列以子帧为单位进行初始化，在每个子帧的开始，根据 <code>子帧的位置</code>、<code>小区 ID</code>（alt ）以及 <code>用户的 RNTI</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
-</ul>
-<center>$c_{init}=(\left\lfloor\frac{n_s}{2}\right\rfloor)(2N_{ID}^{cell}+1)2^{16}+n_{RNTI}$</center>
-<h4 id="导频图案">导频图案</h4>
-<p>导频信号在<strong>时频域</strong>的图案规定了放置导频符号的<strong>时频域资源位置</strong>，LTE 物理层导频图案采用了<strong>二维</strong>的设计方法，规定了下行各个天线端口（Antenna port）导频信号的时频域位置，包括：</p>
-<ul>
-<li><strong>普通子帧的小区公用导频信号</strong>（CRS）支持 1 ～ 4 个发送天线使用的 Antenna port 0 ～ 3</li>
-<li>用于 <strong>MBSFN</strong> 发送的 Antenna port 4</li>
-<li>用于<strong>用户专用导频</strong>（DRS）的 Antenna port 5</li>
-</ul>
-<h5 id="小区公用导频信号">小区公用导频信号</h5>
-<p>小区公用导频信号支持<strong>最多 4 个</strong>天线端口的发送（port 0 ～ 3）</p>
-<ul>
-<li>对于前 2 个天线端口（port 0 ～ 1），每个时隙有 2 个 <code>OFDM</code> 符号携带导频符号</li>
-<li>对于后 2 个天线端口（port 2 ～ 3），每个时隙有 1 个 <code>OFDM</code> 符号携带导频符号</li>
-</ul>
-<p>在每个 <code>OFDM</code> 符号内导频符号的频域间隔为 6 个子载波，采用交错放置的方式。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" data-sub-html="<h2>下行正常子帧小区导频信号图案（CRS）</h2>">
-        
-    </a><figcaption class="image-caption">下行正常子帧小区导频信号图案（CRS）</figcaption>
-    </figure>
-<p>为了避免同基站不同发射天线端口之间导频与数据的干扰，在某一天线端口的导频位置上，同一基站的其他天线端口空出相应的时频资源。小区 CRS 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的<strong>相对偏移</strong>，避免<strong>不同小区</strong>的导频之间的<strong>同频干扰</strong>。</p>
-<h5 id="mbsfn-导频">MBSFN 导频</h5>
-<p><code>MBSFN</code> 导频采用单天线端口的发送，即 port 4。由于 MBSFN 广播／多播的业务特性，较大的小区半径和多小区信号的合并带来的时延扩展增加了无线信道的频率选择性。为了适应这样的特点，导频采用<strong>较小的频域间隔</strong>，即每 2 个子载波放置 1 个导频符号（在 MBSFN 专用载波采用 7.5kHz 子载波间隔时，每 4 个子载波放置 1 个导频符号）。另外，根据广播业务的移动性特点，适当地降低了导频信号在时间上的密度。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-sub-html="<h2>下行 MBSFN 导频图案</h2>">
-        
-    </a><figcaption class="image-caption">下行 MBSFN 导频图案</figcaption>
-    </figure>
-<p><code>MBSFN</code> 导频<strong>只</strong>支持在 <code>Extended CP</code> 情况下发送。MBSFN 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>无关</strong>，<strong>各小区</strong>导频在<strong>相同的频域位置</strong>，实现 MBSFN 集合内的<strong>不同小区</strong>导频信号的<strong>宏分集接收</strong>。</p>
-<h5 id="用户专用导频">用户专用导频</h5>
-<p>LTE Release 8 中用户专用导频信号采用<strong>单天线端口</strong>的发送，即天线端口 5。通过高层信令的指示，通知终端在数据传输中是否使用了用户专用导频，以及终端是否应该使用用户专用导频进行下行数据的解调。（DRS 主要用于支持下行波束赋形，即 BeamForming 操作）</p>
-<p>在发送 <code>UE specific</code> 的专用导频时，保持<strong>小区公用导频信号</strong>（CRS）不变，插入用户专用导频符号，每个 <code>PRB pair</code> 中发送 12 个用户专用导频符号。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-sub-html="<h2>下行用户专用导频图案</h2>">
-        
-    </a><figcaption class="image-caption">下行用户专用导频图案</figcaption>
-    </figure>
-<p>用户专用导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的相对偏移，避免导频之间的<strong>同频干扰</strong>。</p>
-<p>在专用导频与物理信道／信号（PBCH/PSS/SSS）<strong>发生位置冲突</strong>的时候，将<strong>丢弃</strong>冲突位置的专用导频的传输，即对专用导频进行<strong>打孔</strong>。因为仅在有数据发送时才进行 <code>DRS</code> 的传输，而小区导频 <code>CRS</code> 是<strong>始终</strong>在传输的，因此，即使用户数据的发送使用了 <code>DRS</code>，用户对于下行信道质量，即 <code>CQI</code> 的测量将<strong>始终</strong>基于小区 <code>CRS</code> 导频。</p>
-<h3 id="上行导频信号">上行导频信号</h3>
-<p>物理层定义了两种上行导频信号，包括：</p>
-<ul>
-<li>
-<p><strong>数据解调导频（DeModulation RS，DMRS）</strong></p>
-<p>指的是终端在<strong>上行共享信道</strong>或者<strong>上行控制信道</strong>（PUSCH/PUCCH）中发送的导频信号，用于基站接收上行数据／控制信息时进行解调的参考符号</p>
-</li>
-<li>
-<p><strong>Sounding 导频（Sounding RS，SRS）</strong></p>
-<p>指的是终端在上行发送的用于<strong>信道状态测量</strong>的导频信号，基站通过接收该信号测量上行信道的状态，相关的信息用于对上行数据传输的自适应调度。在 <code>TDD</code> 的情况下，由于同频段上下行信道的对称性，通过对上行 <code>SRS</code> 的测量还可以获得下行信道状态的信息，可用于辅助下行传输</p>
-</li>
-</ul>
-<h4 id="导频序列-1">导频序列</h4>
-<p>使用具有<strong>衡包络零自相关</strong>（ConstantAmplitude ZeroAutoCorrelation，CAZAC）特性的序列作为上行导频序列（DMRS/SRS），长度为 $M_{SC}^{RS}$ 的导频序列的数学表达式为：</p>
-<center>$r_{u,v}^{(α)}=e^{jan}\bar{r}_{u,v}(n) , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
-<p>其中 $\bar{r}_{u,v}(n)$ 表示基序列，由<code>基序列组的编号 u</code>和<code>组内的基序列编号 v</code>共同确定。$α$ 是对基序列的<strong>循环移位</strong>（Cyclic Shift），相同基序列的不同移位将形成不同的导频序列。</p>
-<ul>
-<li>
-<p>对于长度大于或者等于 36 的导频序列，使用长度为质数的 <code>Zadoff-Chu</code> 序列生成基序列，以保证良好的自相关和互相关特性，序列的数学表达式是：</p>
-<center>$\bar{r}_{u,v}(n)=x_q(n mod N_{ZC}^{RS} , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
-<p>其中 $x_q$ 是序号为 q、长度是 $N_{ZC}^{RS}$ 的 <code>Zadoff-Chu</code> 根序列，即 $x_q(m)=e^-j\frac{\pi qm(m+1)}{N_{ZC}^{RS}}$ 。序号 q 由基序列的编号 $\frac{u}{v}$ 确定，长度 $N_{ZC}^{RS}$ 是小于导频序列长度 $M_{SC}^{RS}$ 的最大质数。</p>
-</li>
-<li>
-<p>对于长度小于 36，即长度为 12 或者 24 的导频序列，使用计算机搜索的方法以获得自相关／互相关特性最优的序列。序列的数学表达式为：</p>
-<center>$\bar{r}_{u,v}(n)=e^{jϕ（n）\pi/4} , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
-<p>其中 $ϕ(n)$采用计算机搜索的方式进行查找，在标准中以列表的形式给出了确定的数值。</p>
-</li>
-</ul>
-<h4 id="导频图案-1">导频图案</h4>
-<ul>
-<li><strong>上行解调导频</strong>（DMRS）在用户发送数据或者控制信息的资源上发送
-<ul>
-<li>在共享信道 <code>PUSCH</code> 上，每个时隙内 <code>DMRS</code> 占用 1 个 <code>OFDM</code> 符号</li>
-<li>在控制信道 PUCCH 上，根据控制信息格式的不同，每个时隙内 DMRS 占用 2 ～ 3 个 OFDM 符号。</li>
-</ul>
-</li>
-<li><strong>上行 Sounding 导频</strong>（SRS）与用户发送数据的资源位置<strong>无关</strong>，由系统调度，终端在预定义的、需要进行测量的频率位置上进行发送，发送时将占用子帧的最后一个 <code>OFDM</code> 符号，小区内不同用户在相同时刻发送的 <code>SRS</code> 采用频分和码分（基序列不同的循环移位）的方式进行区分。</li>
-</ul>
-<h5 id="上行共享信道-pusch-的解调导频">上行共享信道 PUSCH 的解调导频</h5>
-<p>上行共享信道 <code>PUSCH</code> 的解调导频在每个时隙内占用 1 个 <code>OFDM</code> 符号，在用户发送上行数据的资源上发送，用于共享信道（PUSCH）数据的解调。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-sub-html="<h2>上行 PUSCH 数据解调导频</h2>">
-        
-    </a><figcaption class="image-caption">上行 PUSCH 数据解调导频</figcaption>
-    </figure>
-<p>每个时隙的导频符号采用 12 或者 24 的导频序列。其中 $M_{SC}^{RS}$ 是导频序列的长度，等于频域子载波的个数。导频序列由小区在该时隙的上行导频基序列 $\bar{r}_{u,v}(n)$ 和本次发送采用的循环移位 $α$共同确定。</p>
-<h5 id="上行控制信道-pucch-的解调导频">上行控制信道 PUCCH 的解调导频</h5>
-<p>上行控制信道 <code>PUCCH</code> 的解调导频根据上行控制信道格式的不同在每个时隙内占用 2 或者 3 个 <code>OFDM</code> 符号，用于控制信道（PUCCH）数据的解调。</p>
-<ul>
-<li>
-<p><code>PUCCH </code>格式 1/1a/1b 的导频发送格式。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" data-sub-html="<h2>PUCCH Format1/1a/1b 的解调导频（Normal CP）</h2>">
-        
-    </a><figcaption class="image-caption">PUCCH Format1/1a/1b 的解调导频（Normal CP）</figcaption>
-    </figure>
-<p>其中 $\bar{w}(m)$ 是长度为 3 的正交扩频序列。$r_{u,v}^{\alpha}$ 表示基序列序号为 $u,v$，循环移位为 $α$ 的导频序列，长度是 12，映射在 1 个 PRB 内的子载波上。</p>
-<p><code>PUCCH</code> Format1/1a/1b 中导频映射的过程包括：时隙内采用正交序列的块扩频，然后与长度为 12 的导频 <code>CACAZ</code> 序列相乘，最后映射在上行控制信息 <code>PUCCH</code> 所对应的 <code>PRB</code> 资源的 12 个子载波上。</p>
-</li>
-<li>
-<p>PUCCH 格式 2/2a/2b 的导频发送格式。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" data-sub-html="<h2>PUCCH Format2/2a/2b 的解调导频（Normal CP）</h2>">
-        
-    </a><figcaption class="image-caption">PUCCH Format2/2a/2b 的解调导频（Normal CP）</figcaption>
-    </figure>
-</li>
-</ul>
-<h5 id="上行-sounding-导频信号">上行 Sounding 导频信号</h5>
-<p>上行 Sounding 导频信号的发送与上行物理信道<strong>无关</strong>，是独立的的上行信号，根据<strong>预定义</strong>的周期、终端在需要进行信道测量的频域位置上进行发送。</p>
-<p>上行 Sounding 导频（SRS）在子帧的最后一个 <code>OFDM</code> 符号上发送。在每个小区，采用配置小区 <code>SRS</code> 子帧周期 <code>TSFC</code> 和偏移量 <code>∆SFC</code> 的方式，定义了小区内可用于发送上行 Sounding 导频符号的子帧时间位置，标准中列表给出了各种可能的配置选项，在系统广播消息 SIB 中使用 4 个比特进行指示。</p>
-<blockquote>
-<p>例如，假设配置 $T_{SFC} =5，∆SFC ={0,1}$，那么小区 <code>SRS</code> 子帧的时间位置如图所示。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" data-sub-html="<h2>小区的 SRS 子帧时间位置</h2>">
-        
-    </a><figcaption class="image-caption">小区的 SRS 子帧时间位置</figcaption>
-    </figure>
-</blockquote>
-<p>在定义小区 <code>SRS </code>子帧位置的基础上，采用类似的方法进一步定义了小区内某个用户发送上行 SRS 导频的子帧位置，即通过配置用户发送 <code>SRS</code> 导频的子帧周期 <code>TSRS</code> 和偏移量 <code>Toffset</code> ，可以确定该用户发送上行 <code>SRS</code> 导频的子帧位置。</p>
-<blockquote>
-<p>假设，在以上举例的小区 SRS 子帧配置的基础上，配置用户 x 的 $T_{SRS} =10，Toffset =1$，可以得到该用户 SRS 导频的发送时间位置如图所示。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" data-sub-html="<h2>用户的 SRS 子帧时间位置</h2>">
-        
-    </a><figcaption class="image-caption">用户的 SRS 子帧时间位置</figcaption>
-    </figure>
-</blockquote>
-<p>Sounding 导频（SRS）使用与解调导频相似的基序列生成方法，只是它的循环移位的数值改由高层信令<strong>直接进行配置</strong>。</p>
-<p>在导频序列向物理资源的映射上，<code>SRS</code> 导频采用 2 个子载波的频域间隔，形成<strong>梳状</strong>的<strong>频域结构</strong>，根据起始位置的不同（奇数或者偶数，kTC =0/1），可以频分复用 2 个<strong>梳状</strong>。相同的<strong>梳状</strong>内可以通过基序列不同的循环移位（8 种），以码分的方式进行更多的复用。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" data-sub-html="<h2>Sounding 导频图案</h2>">
-        
-    </a><figcaption class="image-caption">Sounding 导频图案</figcaption>
-    </figure>
-<p>其中 <code>SRS</code> 导频带宽 $m_{SRS,b}$ 以资源块（RB）为单位，并且是 4 的整数倍。同时，可以容易地看出，导频序列的长度是 SRS 导频所占用子载波宽度的一半。</p>
-<h2 id="同步信号psssss">同步信号（PSS/SSS）</h2>
-<p>下行同步信号用于支持物理层的小区搜索，实现用户终端对小区的识别以及对系统下行信号的频率和时间同步。</p>
-<p>同步信号包括：</p>
-<ul>
-<li><strong>主同步信号（Primary Synchronization Signal，PSS）</strong></li>
-<li><strong>辅同步信号（Secondary Synchronization Signal，SSS）</strong></li>
-</ul>
-<p><code>PSS</code> 和 <code>SSS</code> 的传输周期都是 <code>5ms</code>，每个同步信号的时间长度为 1 个 <code>OFDM</code> 符号，在频域上占用下行频带中心 <code>1.08MHz</code> 的带宽。</p>
-<p><code>PSS</code>/<code>SSS</code> 信号使用的序列与物理层小区 <code>ID</code> 相关，因此可用于终端对<strong>小区的识别</strong>。</p>
-<p>物理层支持 504 个小区 ID：分为 168 个组（0 ～ 167），每个组包含 3 个小区 ID（0 ～ 2）。</p>
-<ul>
-<li>主同步信号 PSS 序列包含 3 种可能性，指示小区的组内 ID</li>
-<li>辅同步信号 SSS 序列包含 168 种可能性，指示小区的组 ID</li>
-</ul>
-<p><code>FDD Type 1</code> 和 <code>TDD Type 2</code> 帧结构中，同步信号具有不同的时间位置。</p>
-<ul>
-<li>在 <code>FDD Type 1</code> 帧结构中，PSS/SSS 信号位于第 0 和第 5 子帧</li>
-<li>在 <code>TDD Type 2</code> 中，<code>PSS</code> 信号位于第 1 和第 6 子帧（即特殊子帧），<code>SSS</code> 信号位于第 0 和第 5 子帧。</li>
-</ul>
-<p>因此，两种帧结构下 <code>PSS</code> 与 <code>SSS</code> 的<strong>相对位置有所不同</strong>：</p>
-<ul>
-<li><code>FDD Type 1</code> 帧结构中，<code>PSS</code>/<code>SSS</code> 位于两个<strong>连续</strong>的 <code>OFDM</code> 符号</li>
-<li><code>TDD Type 2</code> 帧结构中，<code>PSS</code>/<code>SSS</code> 之间有两个 <code>OFDM</code> 符号的<strong>间隔</strong></li>
-</ul>
-<p>这种同步信号相对位置的区别，可用于终端在小区搜索的最初阶段<strong>检测</strong> LTE 系统的<strong>双工方式</strong>。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" data-sub-html="<h2>LTE 下行同步信号（FDD Type 1 帧结构）</h2>">
-        
-    </a><figcaption class="image-caption">LTE 下行同步信号（FDD Type 1 帧结构）</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" data-sub-html="<h2>LTE 下行同步信号（TDD Type 2 帧结构）</h2>">
-        
-    </a><figcaption class="image-caption">LTE 下行同步信号（TDD Type 2 帧结构）</figcaption>
-    </figure>
-<p><code>PSS</code> 和 <code>SSS</code> 在<strong>相同</strong>的某一根<strong>天线</strong>上发送，对于各种<strong>不同的系统带宽</strong>（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），同步信号的传输带宽<strong>相同</strong>：</p>
-<ul>
-<li>占用频带中心的 <code>1.08MHz</code> 带宽，其中同步序列占用 62 个子载波，两边各预留 5 个子载波作为保护带。</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" data-sub-html="<h2>同步信号 PSS/SSS 频域结构</h2>">
-        
-    </a><figcaption class="image-caption">同步信号 PSS/SSS 频域结构</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：编码、复用和交织</title>
-    <link>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</link>
-    <pubDate>Tue, 01 Sep 2020 20:54:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 数据的编码、复用和交织</p>
-</blockquote>
-<h2 id="数据的编码复用和交织">数据的编码、复用和交织</h2>
-<p>为了进行传输信道向物理信道的映射，提高数据传输的性能，并且将数据是否正确传输的情况向高层报告，物理层需要对传输信道的数据进行一系列信道编码相关的处理，通常的过程包括：</p>
-<ul>
-<li>码字 <code>CRC</code> 计算</li>
-<li>码块分割和码块 <code>CRC</code> 计算</li>
-<li>码块信道编码</li>
-<li>码块交织和速率匹配</li>
-<li>码块连接的过程</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" data-sub-html="<h2>传输块物理层信道编码的过程</h2>">
-        
-    </a><figcaption class="image-caption">传输块物理层信道编码的过程</figcaption>
-    </figure>
-<h3 id="crc-计算">CRC 计算</h3>
-<p>循环冗余校验码（Cyclic Redundancy Check，CRC）是数据通信领域中最常用的一种差错校验码，接收端通过对所接收到的数据信息和相应的 CRC 信息进行校验，可以判断接收到的数据是否正确。</p>
-<p>物理层提供了 4 种 CRC 计算方法，分别用于不同信息的处理过程，其中包括 2 种长度为 24 比特的 <code>CRC</code> 计算方法，1 种长度为 16 比特的 <code>CRC</code> 计算方法，和 1 种长度为 8 比特的 <code>CRC</code> 计算方法。</p>
-<ul>
-<li>长度为 24 比特的 <code>CRC</code> 用于<code>下行共享信道（DL-SCH）</code>、<code>寻呼信道（PCH</code>）、<code>多播信道（MCH）</code>和<code>上行共享信道（UL-SCH）</code>等传输信道信息的处理过程</li>
-<li>长度为 16 比特的 <code>CRC</code> 用于<code>广播信道（BCH）</code>和<code>下行控制信息（DCI）</code>的处理过程</li>
-<li>长度为 8 比特的 <code>CRC</code> 用于<code>上行控制信息（UCI）</code>在<code>上行物理共享信道（PUSCH）</code>中传输时可能需要的 <code>CRC</code> 操作，对应的计算多项式为：</li>
-</ul>
-<center>$gCRC8 (D)=[D8 +D7 +D4 +D3 +D+1]$</center>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" data-sub-html="<h2>CRC 计算（gCRC8）</h2>">
-        
-    </a><figcaption class="image-caption">CRC 计算（gCRC8）</figcaption>
-    </figure>
-<h3 id="码块分割">码块分割</h3>
-<p>传输信道中的 1 个<code>传输块</code>（transport block）对应于物理层的 1 个<code>码字</code>（codeword），码字是物理层进行信道编码等相关操作的单位。</p>
-<p>当收到来自 <code>MAC</code> 层的 1 个传输块后，物理层将其对应为 1 个码字，首先对<strong>整个码字</strong>进行 <code>CRC</code> 的计算，得到<strong>添加</strong>了 <code>CRC</code> 比特后的码字数据流。</p>
-<p>考虑到信道纠错编码的性能与处理时延的因素，标准中定义了最大的编码长度为 6144。也就是说，如果添加 CRC 比特后 1 个码字数据流的长度<strong>大于</strong> 6144 个比特，那么需要对码字进行<strong>分割</strong>，将 1 个码字分割为<strong>若干个</strong><code>码块</code>（code block），这时候需要对每个码块<strong>再添加</strong>相应的 CRC 比特，然后以<strong>码块为单位</strong>进行后续的信道纠错编码，以满足信道纠错编码最大长度的限制。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" data-sub-html="<h2>码块分割</h2>">
-        
-    </a><figcaption class="image-caption">码块分割</figcaption>
-    </figure>
-<p>物理层采用的 <code>Turbo 编码</code>的内交织器对数据的长度有一定的要求，标准中以列表的方式给出了所支持的数值，因此，在分块过程中，可能需要进行<strong>一定的填充</strong>，保证每一个码块的长度符合内交织器的要求。</p>
-<h3 id="信道编码">信道编码</h3>
-<p>物理层支持包括<code>块编码</code>、<code>截尾的卷积编码</code>和 <code>Turbo 码</code> 3 种不同的信道纠错编码方法。</p>
-<ul>
-<li><code>Turbo 码</code>由于其良好的性能，用于大部分传输信道数据信息的信道编码方法</li>
-<li><code>卷积码</code>的译码<strong>复杂度比较低</strong>，另外在码长<strong>比较短</strong>的时候，卷积码的性能与 Turbo 码相近，因此采用<code>截尾的卷积码</code>作为<code>广播信道</code>和<code>物理层下行控制信息</code>主要的信道编码方法</li>
-<li>使用<code>块编码</code>作为一些<strong>长度更短</strong>的信息的信道编码方法，包括<code>控制格式指示信息（PCFICH）</code>、<code>下行 HARQ 指示信息（PHICH）</code>和<code>物理层上行控制信息</code>（上行 ACK 信息、CQI 信息等）。</li>
-</ul>
-<h3 id="速率匹配">速率匹配</h3>
-<p>在速率匹配的过程中，对信道编码后形成的比特流进行选取，以匹配于最终实际使用的物理资源。根据所选取的数据数量的不同，形成不同的编码速率。在这个过程中，以信道编码的每个<strong>码块为单位</strong>。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" data-sub-html="<h2>Turbo 码速率匹配的数据选择</h2>">
-        
-    </a><figcaption class="image-caption">Turbo 码速率匹配的数据选择</figcaption>
-    </figure>
-<h3 id="码块连接">码块连接</h3>
-<p>在完成以码块为单位的信道编码和速率匹配的过程之后，将对 1 个码字内所有的码块进行<strong>串行连接</strong>，形成<strong>码字</strong>（即传输块）所对应的传输序列，然后就可以进一步地进行信号调制相关的处理与发送了。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" data-sub-html="<h2>码块连接</h2>">
-        
-    </a><figcaption class="image-caption">码块连接</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：基本物理资源</title>
-    <link>https://www.techkoala.top/lte_basic_physical_resource/</link>
-    <pubDate>Tue, 01 Sep 2020 20:49:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_basic_physical_resource/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 基本物理资源及分配方法</p>
-</blockquote>
-<h2 id="基本物理资源">基本物理资源</h2>
-<h3 id="物理资源块prb">物理资源块（PRB）</h3>
-<p>物理层定义了物理资源块（Physical Resource Block，PRB）作为空中接口物理资源分配的单位。1 个 <code>PRB</code> 在<strong>频域</strong>上包含 <strong>12 个连续的子载波</strong>，在<strong>时域</strong>上包含 <strong>7 个连续的 OFDM 符号</strong>（在 Extended CP 的情况下为 6 个），即 1 个 <code>PRB</code> 包括了<strong>频域宽度</strong>等于 <code>180kHz</code>、<strong>时间长度</strong>等于 <code>0.5ms</code>（1 个时隙）的物理资源。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-sub-html="<h2>物理资源块（PRB）的结构</h2>">
-        
-    </a><figcaption class="image-caption">物理资源块（PRB）的结构</figcaption>
-    </figure>
-<p>通过设置不同的子载波数目可以映射到不同的资源块（PRB）数目。LTE Release 8 版本定义的 6 种不同的系统带宽与子载波数目以及 PRB 数目之间的对应关系如下表所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-sub-html="<h2>系统带宽与资源块数目</h2>">
-        
-    </a><figcaption class="image-caption">系统带宽与资源块数目</figcaption>
-    </figure>
-<h3 id="逻辑资源块vrb">逻辑资源块（VRB）</h3>
-<p>为了方便物理信道向空中接口物理资源的映射，在物理资源块（PRB）的基础上还定义了逻辑资源块（Virtual Resource Block，VRB）。</p>
-<p>逻辑资源块的大小与物理资源块相同，即 <strong>1 个时隙</strong>（0.5ms）、<strong>12 个子载波</strong>。逻辑资源块主要定义了资源的分配方式，位于 1 个子帧内 2 个时隙的 2 个 <code>VRB</code>（即 VRB pair）是物理资源分配信令的指示单位。</p>
-<p>逻辑资源块和物理资源块分别对应有各自的资源块序号 <code>nVRB</code> 和 <code>nPRB</code> 。</p>
-<ul>
-<li>物理资源块 <code>PRB</code> 的序号 <code>nPRB</code> 按照频域的物理位置进行顺序编号</li>
-<li>逻辑资源块 <code>VRB</code> 的序号 <code>nVRB</code> 是系统进行资源分配时所指示的逻辑序号，通过它与 <code>PRB</code> 序号之间的映射关系来进一步地确定实际物理资源的位置</li>
-</ul>
-<p>物理层定义了两种类型的逻辑资源块：</p>
-<ul>
-<li>
-<p><code>集中式 VRB</code>（Localized VRB，LVRB）</p>
-<p><code>LVRB</code> 直接映射到 <code>PRB</code> 上，即 <strong>nPRB =nVRB</strong></p>
-</li>
-<li>
-<p><code>分布式 VRB</code>（Distributed VRB，DVRB）</p>
-<p><code>DVRB</code> 逻辑资源序号与物理资源序号具有一定的<strong>映射关系</strong>，可以表示为 <strong>nPRB =f(nVRB ，ns )</strong>，其中 <strong>0≤ns ≤19</strong> 是 1 个无线帧内的时隙序号。通常情况下，<strong>连续</strong>的 <code>DVBR</code> 序号将映射到<strong>不连续</strong>的 <code>PRB</code> 序号上，并且 1 个子帧内的 2 个时隙也有着不同的映射关系，即属于 1 个 <code>DVRB pair</code> 的两个具有相同逻辑序号的 DVRB 将映射到两个时隙不同频率位置的 PRB 上。通过这样的机制实现了<strong>分布式</strong>的资源分配</p>
-</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-sub-html="<h2>基于 VRB 的资源分配</h2>">
-        
-    </a><figcaption class="image-caption">基于 VRB 的资源分配</figcaption>
-    </figure>
-<ul>
-<li><strong>下行方向</strong>的信号传输，支持 LVRB 和 DVRB 的分配，具体采用的方式在下行资源的调度信令中进行指示</li>
-<li><strong>上行方向</strong>的信号传输，<strong>仅支持</strong> LVRB 方式的资源分配</li>
-</ul>
-<h3 id="资源单元组reg">资源单元组（REG）</h3>
-<p><code>PRB</code> 和 <code>VRB</code> 用于数据信道的资源分配和映射，物理层还定义了 <code>REG</code>（Resource Element Group）的概念，用于物理层下行控制信道的资源映射。</p>
-<p><strong>1 个</strong> <code>REG</code> 对应除掉导频符号之外在频域上连续的 <strong>4 个</strong>物理资源。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-sub-html="<h2>资源单元组（Resource Element Group，REG）</h2>">
-        
-    </a><figcaption class="image-caption">资源单元组（Resource Element Group，REG）</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：多址方式</title>
-    <link>https://www.techkoala.top/lte_multiple_access/</link>
-    <pubDate>Tue, 01 Sep 2020 20:45:06 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_multiple_access/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 多址方式详解</p>
-</blockquote>
-<h2 id="多址方式">多址方式</h2>
-<p>LTE 的空中接口采用以 <code>OFDM</code> 技术为基础的多址方式，使用 <code>15kHz</code> 的子载波宽度，通过不同的子载波数目（72 ～ 1200 ）实现了从 1.4 ～ 20MHz 之间多种可变的系统带宽。另外，考虑到在不同应用场景的情况下，无线信道的多径传输具有不同的时延扩展特性，所以 LTE 支持两种不同循环前缀（Cyclic Prefix，CP）长度的配置：<code>Normal CP</code> 和 <code>Extend CP</code>，它们的长度分别约为 <code>4.7μs</code> 和 <code>16.7μs</code>。</p>
-<p>在 <code>OFDM</code> 技术的基础上，根据下行和上行两个方向通信的不同特点，LTE 分别选择了<code>多载波 OFDM</code> 和<code>单载波 SC-FDMA</code>（即 DFT-SOFDM）作为多址方式的具体实现方法。</p>
-<h3 id="下行多址方式">下行多址方式</h3>
-<p>LTE 采用 <code>OFDM</code>（Orthogonal Frequency Division Multiplexing）作为下行无线信号传输的多址方式。<code>OFDM</code> 是一种<strong>多载波调制</strong>的传输技术，将数据流经过<strong>串并变换</strong>，形成多路<strong>子数据流</strong>（N 路），使用它们分别去调制 N 路子载波后<strong>并行传输</strong>。通过这样的处理，子数据流的速率是原来的 1/N，即符号周期是原来的 N 倍，使得该符号周期远<strong>大于</strong>信道的时延扩展，从而实现了将一个宽带频率选择性信道划分成 N 个<strong>窄带平坦衰落信道</strong>，因此 OFDM 信号具有很强的<strong>抗无线信道多径衰落</strong>和<strong>抗脉冲干扰</strong>的能力，并且由于实现方式简单，所以特别适用于高速无线数据传输。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-sub-html="<h2>OFDM 调制的信号处理流程</h2>">
-        
-    </a><figcaption class="image-caption">OFDM 调制的信号处理流程</figcaption>
-    </figure>
-<h3 id="上行多址方式">上行多址方式</h3>
-<p>上行方向上，LTE 采用<code>单载波 SC-FDMA</code>（即 DFT-SOFDM） 作为多址方式。其中，同样采用了 <code>15kHz</code> 的子载波带宽，不同子载波数目实现不同的系统带宽。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-sub-html="<h2>DFT-SOFDM 调制的信号处理流程</h2>">
-        
-    </a><figcaption class="image-caption">DFT-SOFDM 调制的信号处理流程</figcaption>
-    </figure>
-<p>与 <code>ODFM</code> 中信号直接映射到频域的子载波上形成多载波信号不同，<code>DFT-SOFDM</code> 中信号由<strong>时域</strong>输入，通过 <code>DFT</code> 的操作转换到频域后再进行子载波的调制，因此 <code>DFT-SOFDM</code> 属于单载波的调制方式，其发射信号也具有单载波的特性。</p>
-<p>在 <code>OFDM</code> 多载波调制中，由于多路信号在频域的并行传输，叠加后形成的时域输出信号具有<strong>较大峰均比</strong>。由于基站功率放大器的能力较强，因此在下行峰均比不会成为影响系统性能的主要问题。在上行方向上，考虑到终端的成本和功率效率，使用具有单载波特性的发送信号，这是<strong>因为较低的信号峰均比具有重要的意义</strong>。根据调制方式的不同（<code>QPSK</code>、<code>16QAM</code>），与 <code>OFDM</code> 相比较，单载波信号具有 1.5 ～ 2.5dB 的峰均比增益，这也是 LTE 选择<code>单载波 SC-FDMA</code> 作为上行多址方式的<strong>主要原因</strong>。</p>
-<p>另一方面，为了使信号真正具有单载波的特性，<code>DFT-SOFDM</code> 调制过程中对于子载波的映射需要满足一定的限制。除了集中式的映射之外（此时，<code>DFT-SOFDM</code> 的信号处理过程相当于对输入信号进行时域的过采样），在分布式的映射中，为了保持单载波特性，<code>DFT-SOFDM</code> 调制必须采用等间隔的子载波映射，即 <strong>L1 =L2 =…=LN</strong> （此时，<code>DFT-SOFDM</code> 的处理过程相当于对输入信号进行时域的块重复），而不能够使用间隔不相等的分布式映射，因为那将破坏输出信号的单载波特性。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_51.webp" data-sub-html="<h2>OFDM/DFT-SOFDM 的子载波映射</h2>">
-        
-    </a><figcaption class="image-caption">OFDM/DFT-SOFDM 的子载波映射</figcaption>
-    </figure>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：无线帧结构</title>
-    <link>https://www.techkoala.top/lte_frame_structure/</link>
-    <pubDate>Tue, 01 Sep 2020 20:37:14 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_frame_structure/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 无线帧结构详解</p>
-</blockquote>
-<h2 id="无线帧结构">无线帧结构</h2>
-<p>物理层定义了无线帧的结构，LTE 支持两种帧结构：</p>
-<ul>
-<li>Type 1 ，用于 FDD</li>
-<li>Type 2，用于 TDD</li>
-</ul>
-<p>1 个<strong>无线帧</strong>的长度为 <code>10ms</code>，分为 <code>10</code> 个长度等于 <code>1ms</code> 的<strong>子帧</strong>。</p>
-<p>LTE 空中接口物理资源分配的<strong>最小时间单位</strong>是 1 个<code>传输时间间隔</code>（Transmission Time Interval，TTI），1 个 <code>TTI</code> 的长度是 1 个子<strong>帧</strong>，即 <code>1ms</code>。</p>
-<p>在 <code>Type 1 FDD</code> 帧结构中，1 个 1<code>0ms</code> 的<strong>无线帧</strong>分为 10 个长度为 <code>1ms</code> 的<strong>子帧</strong>（Subframe），每个子帧由<strong>两个</strong>长度为 <code>0.5ms</code> 的<strong>时隙</strong>（Slot）组成。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" data-sub-html="<h2>Type 1 FDD 帧结构</h2>">
-        
-    </a><figcaption class="image-caption">Type 1 FDD 帧结构</figcaption>
-    </figure>
-<p>在 <code>Type 2 TDD</code> 帧结构中，1 个 <code>10ms</code> 的<strong>无线帧</strong>分为两个长度为 <code>5ms</code> 的<strong>半帧</strong>（Half Frame），每个<strong>半帧</strong>由 5 个长度为 <code>1ms</code> 的<strong>子帧</strong>组成，其中包括 4 个<strong>普通子帧</strong>和 1 个<strong>特殊子帧</strong>。<strong>普通子帧</strong>由两个 0.5ms 的<strong>时隙</strong>组成，而<strong>特殊子帧</strong>由 3 个<strong>特殊时隙</strong>（UpPTS、GP 和 DwPTS）组成。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" data-sub-html="<h2>Type 2 TDD 帧结构</h2>">
-        
-    </a><figcaption class="image-caption">Type 2 TDD 帧结构</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" data-sub-html="<h2>Type 2 TDD 的特殊时隙</h2>">
-        
-    </a><figcaption class="image-caption">Type 2 TDD 的特殊时隙</figcaption>
-    </figure>
-<ul>
-<li>
-<p><code>GP</code>（Guard Period）是 TDD <strong>上下行转换</strong>的<strong>保护间隔</strong>。 TDD 双工方式的系统中，由于<code>信号的传输时延</code>和<code>设备收发的转换时延</code>，为了避免上下行信号之间的干扰，需要在上下行转换的时候设置一定的保护时间间隔。</p>
-<ul>
-<li>设备收发的转换时延：指的是终端／基站在发送／接收状态间转换的设备时延，典型值在 10 ～ 20μs 之间</li>
-<li>信号的传输时延：主要与小区的覆盖半径相关，需要根据系统规划进行相应的设置。在 Release 8 版本的系统设计中，支持 GP 长度在 71 ～ 714μs 范围之内的不同设置，相对应的最大小区半径为 7 ～ 100km</li>
-</ul>
-</li>
-<li>
-<p><code>DwPTS</code>（Downlink Pilot Time Slot）用于下行信号的发送，根据不同的配置，<code>DwPTS</code> 的长度可以是 3 ～ 12 个 <code>OFDM</code> 符号。<code>LTE TDD</code> 系统的主同步信号位于它的第 3 个符号，<code>DwPTS</code> 中的其他资源用作正常的下行控制信道和下行共享信道的发送。</p>
-</li>
-<li>
-<p><code>UpPTS</code>（Uplink Pilot Time Slot）用于上行信号的发送，它的长度可以配置为 1 ～ 2 个 <code>OFDM</code> 符号，<code>UpPTS</code> 可以用于承载物理随机接入信道（PRACH Format 4）和 Sounding 导频信号。</p>
-</li>
-</ul>
-<p><code>Type 2 TDD</code> 帧结构支持 7 种不同的上下行时间比例分配（即配置 0 ～ 6），可以根据系统业务量的特性进行设置。</p>
-<p>这 7 种配置包括 3 种 <code>5ms</code> 周期和 4 种 <code>10ms</code> 周期的情况:</p>
-<ul>
-<li><code>5ms</code> 周期的配置中，每个长度为 <code>5ms</code> 半帧包含 1 个下行到上行的转换时间间隔 <code>GP</code></li>
-<li><code>10ms</code> 周期的配置中，每个长度为 <code>10ms</code> 的无线帧包含 1 个或者 2 个下行到上行的转换时间间隔 GP</li>
-</ul>
-<p>在系统广播消息 <code>SIB1</code> 中使用 3 个比特指示 <code>TDD</code> 上下行时间比例的配置信息。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" data-sub-html="<h2>LTE Type 2 TDD 上下行时间配比的配置</h2>">
-        
-    </a><figcaption class="image-caption">LTE Type 2 TDD 上下行时间配比的配置</figcaption>
-    </figure>
-<h2 id="另见">另见</h2>
-<p><a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">LTE 系列：下行链路帧结构</a></p>
-<p><a href="https://www.techkoala.top/lte_uplink_frame_structure/" target="_blank" rel="noopener noreffer">LTE 系列：上行链路帧结构</a></p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：多天线技术（MIMO）</title>
-    <link>https://www.techkoala.top/lte_mimo/</link>
-    <pubDate>Tue, 01 Sep 2020 20:33:29 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_mimo/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 多天线技术（MIMO）详解</p>
-</blockquote>
-<h2 id="多天线技术mimo">多天线技术（MIMO）</h2>
-<p>在收到信道编码后的数据（codeword）之后，物理层进一步的处理过程包括<code>加扰</code>、<code>调制</code>、<code>层映射</code>、<code>预编码</code>（precoding）以及针对各个物理天线端口的<code>资源映射</code>和 <code>OFDM</code> 信号生成的过程。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" data-sub-html="<h2>物理层数据处理过程</h2>">
-        
-    </a><figcaption class="image-caption">物理层数据处理过程</figcaption>
-    </figure>
-<ul>
-<li>加扰操作是指使用扰码对经过信道编码后的数据进行<strong>逐比特的加扰</strong>，实现数据间<strong>干扰的随机化</strong>。采用<strong>伪随机码</strong>作为<strong>扰码</strong>，在每个子帧的起始位置，根据 <code>RNTI</code>（Radio Network Temporary Identifier）、<code>Cell ID</code>、<code>Codeword</code> 的编号以及无线帧内的时隙编号等信息，对扰码的 <code>PN 序列</code> 进行初始化。</li>
-<li>调制指的是对比特数据进行复数调制，包括 <code>QPSK</code>、<code>16QAM</code> 或者 <code>64QAM</code>。</li>
-</ul>
-<p>在完成调制后，物理层的基带处理过程将进行 MIMO 相关的处理，包括 <code>层映射</code> 和 <code>预编码</code> 。LTE Release 8 版本支持不同的发射天线数目（1 / 2 / 4），以及多种不同的 MIMO 方案，包括<code>单天线发送</code>、<code>空间复用</code>和<code>发送分集</code>。</p>
-<h3 id="层映射">层映射</h3>
-<p>层映射实现信道编码之后的<strong>码字</strong>（Codeword）向空间多天线形成的多个<strong>层</strong>（layer）之间的映射。</p>
-<ul>
-<li>对于单天线的情况，直观地可以得到：物理层使用 1 个码字，并且这个码字直接映射到单天线的 1 个层上</li>
-<li>对于多天线实现空间复用的情况，当空间复用的层数目大于 1 的时候，可以同时发送 2 个码字</li>
+<li>在发送端：将数据（Record）分段，压缩，增加 MAC (Message Authentication Code) 和加密</li>
+<li>在接收端：将数据（Record）解密，验证 MAC，解压并重组</li>
 </ul>
 <blockquote>
-<p>以 4×4 天线配置的情况为例，根据无线信道的情况可以支持 1、2、3 或者 4 个层的空间复用，当空间复用的层数目大于 1 的时候，可以将 2 个码字映射在这些层上采用空间复用的方式同时进行发送。对于发送分集的情况，使用 1 个码字，按照发送天线数目的不同（2 或者 4），对应于 2 或者 4 个层，此时这 1 个码字将以逐比特转换的方式映射到这些层上。</p>
+<p>值得一提的是，Record protocol 提供了数据完整性和隐私性保证，但 Record 类型（type）和长度（length）是公开传输的</p>
 </blockquote>
-<h3 id="预编码">预编码</h3>
-<p>预编码（precoding）实现<strong>层</strong>到<strong>物理天线端口</strong>的<strong>映射</strong>。物理层使用不同的预编码方案，实现不同的 <code>MIMO</code> 模式：<code>单天线发送</code>、<code>空间复用</code>或者<code>发送分集</code>。</p>
-<h4 id="单天线发送">单天线发送</h4>
-<p>对于单天线发送的情况，直观的可以得出，1 个<strong>层</strong>将直接映射到 1 个<strong>物理天线端口</strong>上。</p>
-<h4 id="空间复用">空间复用</h4>
-<p>对于多天线实现空间复用的情况，LTE 中采用基于<code>码本</code>（codebook）进行预编码向量选择的机制，分为<code>开环</code>和<code>闭环</code>两种复用传输模式，分别采用<code>无循环延迟的预编码</code>和<code>大循环延迟的预编码</code>。</p>
-<p>在 2 个发送天线的情况时，基站一般使用<strong>线性阵列</strong>（Uniform LinearArray，ULA）的天线配置，因此，相对应地采用基于 DFT 正交距阵的码本设计方法。</p>
-<ul>
-<li>对应于 1 个<strong>层</strong>的传输，设计了 4 个可供选择的预编码向量</li>
-<li>对应于 2 个<strong>层</strong>的传输，设计了 3 个可供选择的预编码向量。</li>
-<li>对于 4 个发送天线的情况，天线的部署要更为复杂，实际情况下可能不使用线性阵列的天线配置，而采用例如双极化天线
-所以，基于对各种场景下的性能和复杂度等因素的综合考虑，选择了采用基于 <code>householder 变换</code> 的码本设计方法。对应于 1/2/3/4 个<strong>层</strong>的传输，均有 16 个可供选择的预编码向量。</li>
-</ul>
-<p>预编码向量选取常用的两个准则：</p>
-<ul>
-<li><strong>信噪比最大化</strong>，对应于容量最大化。将每个可选择的项代入，得到一个等效信道矩阵，计算等效信噪比，选择对应 SNR 最大的向量元素。</li>
-<li><strong>最小码距</strong>，对应于最小误码率。计算信道信息给出的加权矩阵与码本中元素的距离，选择距离最小的作为预编码向量。</li>
-</ul>
-<p><code>无循环延迟的预编码</code>用于<code>闭环</code>的 MIMO 空间复用。闭环模式下，终端通过对下行信道状态的测量选择适当的空间复用的层数目，并且从码本集合中选择预编码向量，分别表示为 <code>RI</code>（Rank Indicator）和 <code>PMI</code>（Precoding Matrix Indicator）的形式<strong>通过上行链路反馈给基站</strong>。基站根据这些信息进行预测，确定随后的下行发送中将采用的空间复用方案（包括采用的层数目和预编码向量）。</p>
-<p><code>大循环延迟的预编码</code>用于<code>开环</code>的 MIMO 空间复用。开环模式下，终端<strong>不再向基站反馈</strong>预编码向量 <code>PMI</code> 的信息，但仍可以根据基站的配置测量并且<strong>反馈</strong>下行信道的 <code>RI</code> 信息，即空间复用的层数目。基站根据终端上报的 <code>RI</code> 信息或者自行确定的层数目，选择在下行发送中所采用的预编码方案，包括采用发送分集，或者空间复用以及相应的层数目。</p>
-<p>在开环空间复用中，采用的预编码向量是<strong>固定</strong>的。</p>
-<ul>
-<li>在使用 2 个发送天线的情况下
-<ul>
-<li>当选择层数目 RI=1 时，采用发送分集的预编码方案。</li>
-<li>当选择 RI=2 时，采用对应码本的第一个元素，即 $W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \\ 0&amp;1\end{bmatrix}$ 作为预编码向量。</li>
-</ul>
-</li>
-<li>在使用 4 个发送天线的情况下
-<ul>
-<li>当选择层数目 RI=1 时，采用发送分集的预编码方案</li>
-<li>当选择 RI=2/3/4 时，采用对应的码本，以发送时刻为单位，固定的循环使用码本中序号为 12/13/14/15 的元素作为预编码向量。</li>
-</ul>
-</li>
-</ul>
-<p>对于<code>大循环延迟的预编码</code>，除了预编码向量 $W (i)$ 之外，有两个用于完成循环延迟（Cyclic Delay Diversity，CDD）功能的矩阵，即 $U$ 和 $D (i)$。</p>
-<p>假设层数目为 v，那么这两个矩阵的大小都是 $v×v$ 的，其中</p>
-<ul>
-<li>$U$ 是 <code>DFT 矩阵</code>，通过对输入信号进行 <code>DFT</code> 变换实现<code>层</code>到<code>虚拟天线</code>的映射，将每个层的信号能量均匀地分布在虚拟天线上</li>
-<li>$D (i)$是 <code>CDD 矩阵</code>，实现虚拟天线间增量为 $\frac{1}{v}$ 的时延。</li>
-</ul>
-<h4 id="发送分集">发送分集</h4>
-<p>对于多天线实现发送分集的情况，分别采用 <code>SFBC</code>（Space Frequency Block Codiing）和 <code>SFBC+FSTD</code>（Frequency Switched Transmit Diversity）的方案支持 2 和 4 个发送天线的场景。</p>
-<ul>
-<li>在 2 个发送天线时，使用 SFBC 的发送分集方案，实现“层”到物理天线映射的预编码操作。</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" data-sub-html="<h2>SFBC 发送分集</h2>">
+<p>Record Protocol 有三个连接状态 (Connection State)，连接状态定义了压缩，加密和 MAC 算法。所有的 Record 都是被当前状态（Current State）确定的算法处理的。</p>
+<p><code>TLS Handshake Protocol</code> 和 <code>Change Ciper Spec Protocol</code> 会导致 <code>Record Protocol</code> 状态切换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">empty state -------------------&gt; pending state ------------------&gt; current state
+             Handshake Protocol                Change Cipher Spec
+</code></pre></td></tr></table>
+</div>
+</div><p>初始当前状态（Current State）没有指定加密，压缩和 MAC 算法，因而在完成 TLS Handshaking Protocols 一系列动作之前，客户端和服务端的数据都是<strong>明文传输</strong>的；当 TLS 完成握手过程后，客户端和服务端确定了加密，压缩和 MAC 算法及其参数，数据（Record）会通过指定算法处理。</p>
+<blockquote>
+<p>其中，Record 首先被加密，然后添加 MAC（message authentication code）以保证数据完整性。</p>
+</blockquote>
+<h3 id="tls-handshaking-protocols">TLS Handshaking Protocols</h3>
+<p>Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。</p>
+<p>使用 RSA 算法的握手过程是这样的（已在总览中提到）</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">SFBC 发送分集</figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
-<ul>
-<li>在 4 个发送天线时，使用 SFBC+FSTD 的发送分集方案。相应地，实现层到物理天线映射的预编码操作可以表示为下图所示的形式，即 SFBC 结合 FSTD 在天线间频域的位置转换。</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" data-sub-html="<h2>SFBC&#43;FSTD 发送分集</h2>">
+<p>客户端和服务端在握手 hello 消息中明文交换了 client_random 和 server_random ，使用 RSA 公钥加密传输 premaster secret ，最后通过算法，客户端和服务端分别计算 master secret。其中，不直接使用 premaster secret 的原因是：保证 secret 的随机性不受任意一方的影响。</p>
+<p>除了使用 RSA 算法在公共信道交换密钥，还可以通过 Diffie–Hellman 算法。Diffie–Hellman 算法的原理是这样的</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-sub-html="<h2>By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</h2>">
         
-    </a><figcaption class="image-caption">SFBC+FSTD 发送分集</figcaption>
+    </a><figcaption class="image-caption">By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</figcaption>
     </figure>
+<p>使用 Diffie–Hellman 算法交换 <code>premaster secret</code> 的流程</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </figure>
+<h2 id="小结">小结</h2>
+<p>TLS Handshaking Protocols 协商了 TLS Record Protocol 使用的算法和所需参数，并验证了服务端身份；</p>
+<p>TLS Record Protocol 在协商后保证应用层数据的完整性和隐私性。</p>
+<p>TLS Handshaking Protocol 的核心是在公开信道上传递 premaster secret。</p>
+<h2 id="qa">Q&amp;A</h2>
+<h3 id="为什么传输内容不直接使用非对称加密">为什么传输内容不直接使用非对称加密？</h3>
+<p>因为性能限制。</p>
+<h3 id="https-能保证正常连接">HTTPS 能保证正常连接？</h3>
+<p>不能。</p>
+<blockquote>
+<p>There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</p>
+</blockquote>
+<p>攻击者甚至可以直接丢弃双方的数据包</p>
+<h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
+<p>通过 Client Certificate</p>
+<blockquote>
+<p>This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</p>
+</blockquote>
+<h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
+<p>Closure Alerts：防止 Truncation Attack</p>
+<blockquote>
+<p>In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</p>
+</blockquote>
+<p>Error Alerts：错误处理</p>
+<h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
+                      ClientHello.random + ServerHello.random)
+                      [0..47];
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="加密压缩和-mac-算法参数是如何计算的">加密，压缩和 MAC 算法参数是如何计算的</h3>
+<p>Handshaking Protocols 使得客户端和服务端交换了三个参数：client_random，server_random 和 master_secret，通过以下算法生成算法所需要的参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">To generate the key material, compute
+
+  key_block = PRF (SecurityParameters.master_secret,
+                  &#34;key expansion&#34;,
+                  SecurityParameters.`server_random` +
+                  SecurityParameters.`client_random`);
+
+until enough output has been generated.  Then, the key_block is
+partitioned as follows:
+
+  client_write_MAC_key [SecurityParameters.mac_key_length]
+  server_write_MAC_key [SecurityParameters.mac_key_length]
+  client_write_key [SecurityParameters.enc_key_length]
+  server_write_key [SecurityParameters.enc_key_length]
+  client_write_IV [SecurityParameters.fixed_iv_length]
+  server_write_IV [SecurityParameters.fixed_iv_length]
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</p>
+</blockquote>
+<p>使用 Diffie-Hellman 算法的 TLS 握手细节</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
+        
+    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/">https://cipherstuff.wordpress.com/</a></figcaption>
+    </figure>
+<h2 id="拓展阅读">拓展阅读</h2>
+<ul>
+<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
+<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
+<li>Session resume</li>
+<li>证书 Revoke</li>
+</ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
+<li>
+<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2 规范</a></p>
+</li>
+<li>
+<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI 规范</a></p>
+</li>
+<li>
+<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>
+</li>
+<li>
+<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
+</li>
 </ul>]]></description>
 </item><item>
-    <title>LTE 系列：物理层概要</title>
-    <link>https://www.techkoala.top/lte_physical_layer/</link>
-    <pubDate>Tue, 01 Sep 2020 11:19:04 &#43;0800</pubDate>
+    <title>如何高效搜索？</title>
+    <link>https://www.techkoala.top/how_to_search/</link>
+    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://www.techkoala.top/lte_physical_layer/</guid>
+    <guid>https://www.techkoala.top/how_to_search/</guid>
     <description><![CDATA[<blockquote>
-<p>LTE 物理层概要综列</p>
+<p>如何在互联网上高效地找到自己想要的东西？</p>
 </blockquote>
-<h2 id="物理层的功能">物理层的功能</h2>
-<p>物理层位于无线接入网协议的<strong>最底层</strong>，以传输信道为接口，通过传输信道向物理信道的映射，物理层向上层提供数据传输的服务。</p>
-<p>物理层的主要功能包括：</p>
-<ul>
-<li>传输信道向物理信道的映射</li>
-<li>调制与解调</li>
-<li>纠错编码与速率匹配</li>
-<li>向高层报告数据是否正确传输</li>
-<li>多天线的处理</li>
-<li>功率控制</li>
-<li>频率和时间的同步</li>
-<li>射频信号的生成</li>
-</ul>
-<h2 id="物理层的关键技术">物理层的关键技术</h2>
-<p>物理层的包含以下关键技术：</p>
-<ul>
-<li>多址方式</li>
-<li>无线帧结构</li>
-<li>基本物理资源及分配方法</li>
-<li>数据的编码、复用和交织</li>
-<li>多天线技术（MIMO）</li>
-</ul>
-<h2 id="物理层信号和信道的设计">物理层信号和信道的设计</h2>
-<p>出于对 <code>MAC</code> 层的传输信道以及物理层内部处理过程的需要，物理层定义了一系列的物理信道。</p>
-<p>下行方向的物理信道包括：</p>
-<ul>
-<li>物理广播信道（PBCH）</li>
-<li>物理下行共享信道（PDSCH）</li>
-<li>物理多播信道（PMCH）</li>
-<li>物理下行控制信道（PDCCH）</li>
-<li>物理控制格式指示信道（PCFICH）</li>
-<li>物理 HARQ 指示信道（PHICH）</li>
-</ul>
-<p>上行方向的物理信道包括：</p>
-<ul>
-<li>物理随机接入信道（PRACH）</li>
-<li>物理上行共享信道（PUSCH）</li>
-<li>物理上行控制信道（PUCCH）</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_12.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_12.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_12.webp" data-sub-html="<h2>下行信道映射</h2>">
-        
-    </a><figcaption class="image-caption">下行信道映射</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_13.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_13.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_13.webp" data-sub-html="<h2>上行信道映射</h2>">
-        
-    </a><figcaption class="image-caption">上行信道映射</figcaption>
-    </figure>
-<p>物理信号主要包括：</p>
-<ul>
-<li>导频信号</li>
-<li>同步信号（PSS/SSS）</li>
-</ul>
-<h2 id="物理层过程">物理层过程</h2>
-<p>讲解典型的物理层过程包括：</p>
-<ul>
-<li>终端的小区搜索和下行同步</li>
-<li>功率控制的方法</li>
-<li>上/下行共享信道的传输与接收</li>
-</ul>
+<p>搜索引擎方便了我们搜索资料，但是由于各种垃圾内容、网站地出现，实际上，搜索过程往往是十分低效的（特别是使用中文搜索）。因此，值得学习一些提升搜索效率必要的小技巧。</p>
+<p>废话不多说，直接分类讲解：</p>
+<h2 id="搜索语法">搜索语法</h2>
+<p>首先总结一下常用的语法表达式：</p>
+<table>
+<thead>
+<tr>
+<th>operator</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;phrase&rdquo;</td>
+<td>结果必须包含 &ldquo;phrase&rdquo;</td>
+</tr>
+<tr>
+<td>- phrase</td>
+<td>结果排除 phrase</td>
+</tr>
+<tr>
+<td>A AND B</td>
+<td>A 和 B 必须同时包含</td>
+</tr>
+<tr>
+<td>A OR B</td>
+<td>必须包括 A 和 B 之一（或两者）</td>
+</tr>
+<tr>
+<td>site:example.com</td>
+<td>在网站中搜索</td>
+</tr>
+<tr>
+<td>filetype:jpg</td>
+<td>结果必须包含类型 .jpg</td>
+</tr>
+</tbody>
+</table>
+<h2 id="实例展示">实例展示</h2>
+<h3 id="网页">网页</h3>
+<p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
+</code></pre></td></tr></table>
+</div>
+</div><p>查找必须在标题文本中包含短语的特定页面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
+</code></pre></td></tr></table>
+</div>
+</div><p>查找类似网站（仅谷歌搜索）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以将运算符链接在一起 （例如：在 Url 中查找具有安全性或错误赏金）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以限制为某些顶级域（例如：教师列表）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="email">Email</h3>
+<p>查找 Gmail 帐户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>查找工作帐户（您需要先找到他们的域）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>模糊搜索的情况下，可以尝试猜测电子邮件的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在网站上查找电子邮件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在网页上查找您访问的每封电子邮件，适用于每个网站，将其注入 Chrome 开发工具</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
+var re = new RegExp (&#34;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&#34;);
+for (var i = 0; i &lt; elems.length; i++) {
+    if (re.test (elems [i].innerHTML)) {
+        console.log (elems [i].innerHTML);
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>这将记录找到的每封电子邮件，而无需扫描整个页面。</p>
+<h3 id="文件">文件</h3>
+<p>查找电子表格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
+</code></pre></td></tr></table>
+</div>
+</div><p>查找谷歌文档和谷歌表格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="seo">SEO</h3>
+<p>在锚文本中查找具有特定关键字的网站</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>研究标题中包含特定关键字的博客帖子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>查找反向链接 (例如：链接到特定博客帖子的其他网站)。注意：链接运算符 <code>link</code> 现在已弃用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
+</code></pre></td></tr></table>
+</div>
+</div><p>使用通配符运算符查找关键字排列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
+</code></pre></td></tr></table>
+</div>
+</div><p>使用给定的 widget 查找公司</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="待更新">待更新&hellip;</h1>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
+<li>
+<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
+</li>
+<li>
+<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>利用 Netlify 搭建 Koodo Reader</title>
+    <link>https://www.techkoala.top/reader/</link>
+    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/reader/</guid>
+    <description><![CDATA[<blockquote>
+<p>搭建自己的在线 EPUB 阅读器</p>
+</blockquote>
+<h2 id="什么是-netlify">什么是 Netlify</h2>
+<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
+<blockquote>
+<p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
+</blockquote>
+<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供 CI 服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
+<h2 id="koodo-reader">Koodo Reader</h2>
+<p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
+        
+    </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
+    </figure>
+<p>提供以下功能：</p>
+<blockquote>
+<p>📝 强大笔记和翻译功能，学习事半功倍</p>
+<p>🚩 使用书架来为你的图书分类</p>
+<p>🌎 支持 <strong>Windows</strong> ， <strong>MacOS</strong> 和 <strong>网页版</strong></p>
+<p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
+<p>💻 您所有的数据都支持导入导出</p>
+</blockquote>
+<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
+<h2 id="搭建">搭建</h2>
+<ol>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 Github 登录，当然，你也可以选择其他方式。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
+        
+    </a><figcaption class="image-caption">Netlify 注册</figcaption>
+    </figure>
+<ol start="2">
+<li>注册登陆后，进入首页，点击右上角的 New Site from Git ，创建一个新的站点。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-sub-html="<h2>创建新站点</h2>">
+        
+    </a><figcaption class="image-caption">创建新站点</figcaption>
+    </figure>
+<ol start="3">
+<li>接下来，点击下方的 Github 进行授权，这里会弹出一个新的窗口，让你授权 Netlify 访问你的 Github 账户，完成授权后进去下一步。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-sub-html="<h2>使用Github 创建新站点</h2>">
+        
+    </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
+    </figure>
+<ol start="4">
+<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
+        
+    </a><figcaption class="image-caption">选择相应的 Repo</figcaption>
+    </figure>
+<ol start="5">
+<li>接着，配置 Build 选项。在该项目的部署中，需要修改 <code>Build name &gt; yarn build</code>，<code>Publish directory &gt; build/ </code>，其他保持默认即可。（如果配置其他项目，这里的参数可能不同，请参考具体项目的指导说明）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="6">
+<li>到这里，已经完成了整个部署工作，等待 Netlify 构建完成即刻。</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="7">
+<li>Netlify 会给你默认分配一个二级域名用于访问，当然也支持自定义域名，这里我绑定了自己域名。除了在此处绑定外，还需要配置 DNS 等等，这个请自行完成。（由于搭建博客时，已经完成了相应设置，因此，我直接在 Cloudfalre 新建了一个 CNAME 指向 Netlify 给我的域名就好了）</li>
+</ol>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-sub-html="<h2>配置</h2>">
+        
+    </a><figcaption class="image-caption">配置</figcaption>
+    </figure>
+<ol start="8">
+<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
+</ol>
+<h2 id="后续">后续</h2>
+<p>如果需要对网站进行更新，只需要关注你的 Github Repo 即可。每次 commit 之后，Netlify 都会自动拉取更新并生成。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
+</ul>]]></description>
+</item><item>
+    <title>网络测试工具：iPerf</title>
+    <link>https://www.techkoala.top/iperf/</link>
+    <pubDate>Fri, 07 Aug 2020 17:45:55 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/iperf/</guid>
+    <description><![CDATA[<blockquote>
+<p>TCP、UDP 和 SCTP 的终极速度测试工具</p>
+</blockquote>
+<h2 id="什么是-iperf">什么是 iPerf</h2>
+<p>iPerf 是一个用于测量网络最大带宽的小工具。iPerf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。对于每个测试，它都会报告带宽，丢包和其他参数。</p>
+<p>现在的版本也称 iPerf3，这是对 NLANR/DAST 开发的原始版本的重新设计。</p>
+<p><strong>注意</strong>：iPerf3 与此前版本的 iPerf 不兼容。</p>
+<h2 id="安装-iperf">安装 iPerf</h2>
+<p>iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreffer">官网</a>提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）</p>
+<p>类 UNIX 系统直接使用包管理进行安装即可，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="使用-iperf">使用 iPerf</h2>
+<p>首先，介绍服务端和客户端共有的参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
+--cport n         指定客户端端口
+-f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
+-i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
+-F, --file name   客户端：从文件读取并写入网络，而不是使用随机数据；服务器端：从网络读取并写入文件，而不是丢弃数据。
+-A, --affinity    如果可以，设置 CPU 关联（仅限 Linux 和 FreeBSD）。
+-B, --bind host   绑定到主机。对于客户端，这将设置出站接口。对于服务器，这将设置传入接口。这只适用于具有多个网络接口的多宿主主机。
+-V, --verbose     提供更详细的输出
+-J, --json        以 JSON 格式输出
+--logfile file    输出到日志文件
+--d, --debug      发出调试输出
+-v, --version     输出版本信息
+-h, --help        输出帮助信息
+</code></pre></td></tr></table>
+</div>
+</div><p>服务端特有参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
+-D, --daemon      将服务器作为守护进程在后台运行
+-I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
+</code></pre></td></tr></table>
+</div>
+</div><p>客户端特有参数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
+--sctp	                使用 SCTP 而不是 TCP
+-u, --udp	            使用 UDP 而不是 TCP
+-b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
+-t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
+-n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
+-k, --blockcount    	要传输的块（数据包）数
+-l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
+-P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
+-R, --reverse	        以反向模式运行（服务器发送，客户端接收）
+-w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
+-M, --set-mss  	        尝试设置 TCP 最大段大小（MSS）。MSS 通常是 MTU-TCP/IP 标头的 <span class="m">40</span> 个字节。对于以太网，MSS 为 <span class="m">1460</span> 字节（1500 字节 MTU）
+-N, --no-delay	        设置 “TCP no delay” 选项，禁用 Nagle 的算法。通常，仅对交互式应用程序（如 telnet）禁用此功能
+-4, --version4	        仅使用 IPv4.
+-6, --version4	        仅使用 IPv6.
+-S, --tos               传出数据包的服务类型。<span class="o">(</span>许多路由器会忽略TOS字段。）可以使用十六进制值（0x）作为前缀，使用八进制数（0）作为前缀，或者使用十进制来指定值。 例如，<span class="s1">&#39;0x10&#39;</span><span class="nv">十六进制</span><span class="o">=</span><span class="s1">&#39;020&#39;</span><span class="nv">八进制</span><span class="o">=</span><span class="s1">&#39;16&#39;</span>十进制。RFC 1349中指定的TOS编号为：
+                        IPTOS_LOWDELAY     minimize delay        0x10
+                        IPTOS_THROUGHPUT   maximize throughput   0x08
+                        IPTOS_RELIABILITY  maximize reliability  0x04
+                        IPTOS_LOWCOST      minimize cost         0x02
+-L, --flowlabel  	    设置 IPv6 流标签（当前仅在 Linux 上受支持）
+-Z, --zerocopy	        使用 “零拷贝” 方法发送数据，如 sendfile（2），而不是通常的 write（2）。这样可以占用更少的 CPU
+-O, --omit  	        省略测试的前 n 秒，以跳过 TCP TCP 慢启动周期
+-T, --title             为每个输出行添加此字符串前缀
+-C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>注意：</strong> 从客户端专有选项可以看出，iPerf 默认测试的是从客户端发送到服务端，相对于客户端来说，测试就是上行链路的带宽，对于一般参考意义更大的下行链路需要加上 <code>-R</code> 选项。</p>
+</blockquote>
+<p>常用启用参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">服务端
+$ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">客户端
+$ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
+</code></pre></td></tr></table>
+</div>
+</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-sub-html="<h2>iPerf 使用实例</h2>">
+        
+    </a><figcaption class="image-caption">iPerf 使用实例</figcaption>
+    </figure>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener noreffer">iPerf user docs</a></p>
+</li>
+<li>
+<p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreffer">iPerf Github</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>文件传输系列：SFTP</title>
+    <link>https://www.techkoala.top/sftp/</link>
+    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/sftp/</guid>
+    <description><![CDATA[<blockquote>
+<p>SCP 的继承者</p>
+</blockquote>
+<h2 id="什么是-sftp">什么是 SFTP</h2>
+<p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
+<p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
+<p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
+<blockquote>
+<p>有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></p>
+</blockquote>
+<h2 id="使用-sftp">使用 SFTP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="选项">选项</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
+-l：使用 ssh 协议版本 1；
+-b：指定批处理文件；
+-C：使用压缩；
+-o：指定 ssh 选项；
+-F：指定 ssh 配置文件；
+-R：指定一次可以容忍多少请求数；
+-v：升高日志等级。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参数">参数</h3>
+<p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+</li>
+<li>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>文件传输系列：rsync</title>
+    <link>https://www.techkoala.top/rsync/</link>
+    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/rsync/</guid>
+    <description><![CDATA[<blockquote>
+<p>SCP 的另一个绝佳替选</p>
+</blockquote>
+<h2 id="什么是-rsync">什么是 rsync</h2>
+<p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
+<p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
+<p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
+<h2 id="rsync-算法">rsync 算法</h2>
+<blockquote>
+<p>此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+</blockquote>
+<p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
+<h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
+<p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
+<h3 id="传输算法">传输算法</h3>
+<p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
+<p><strong>但是</strong></p>
+<p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
+如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
+<h3 id="checksum-查找算法">Checksum 查找算法</h3>
+<p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
+<h3 id="比对算法">比对算法</h3>
+<ol>
+<li>
+<p>取 <code>fileSrc</code> 的第一个文件块（我们假设的是 512 个长度），也就是从 <code>fileSrc</code> 的第 1 个字节到第 512 个字节，取出来后做 <code>rolling checksum</code> 计算。计算好的值到 <code>hash</code> 表中查询。</p>
+</li>
+<li>
+<p>如果查到了，说明发现在 <code>fileDst</code> 中有潜在相同的文件块，于是就再比较 · 的 <code>checksum</code>，因为 <code>rolling checksume</code> 太弱了，可能发生碰撞。于是还要算 <code>md5</code> 的 128 bits 的 <code>checksum</code>，这样一来，我们就有 $2^{-(32+128)} = 2^{-160} $ 的概率发生碰撞，这小到可以忽略。如果 <code>rolling checksum</code> 和 <code>md5 checksum</code> 都相同，那就可以说明在 <code>fileDst</code> 中有相同的块，记下这一块在 <code>fileDst</code> 下的文件编号。</p>
+</li>
+<li>
+<p>如果 <code>fileSrc</code> 的 <code>rolling checksum</code> 没有在 <code>hash table</code> 中找到，那就不用算 <code>md5 checksum</code> 了。表示这一块中有不同的信息。总之，只要 <code>rolling checksum</code> 或 <code>md5 checksum</code> 其中有一个在 <code>fileDst</code> 的 <code>checksum hash</code> 表中找不到匹配项，那么就会触发算法对 <code>fileSrc</code> 的 rolling 动作。于是，算法会住后 step 1 个字节，取 <code>fileSrc</code> 中字节 2-513 的文件块要做 <code>checksum</code>，然后继续第一步 – 这就是为什么叫 <code>rolling checksum</code> 。</p>
+</li>
+<li>
+<p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
+</li>
+</ol>
+<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
+<p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
+<p>其公式可以表示为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
+<p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+</code></pre></td></tr></table>
+</div>
+</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
+        
+    </a><figcaption class="image-caption">rsync 算法示意</figcaption>
+    </figure>
+<p>最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。</p>
+<h2 id="使用-rsync">使用 rsync</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
+rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
+<ul>
+<li>
+<p>拷贝本地文件。当 <code>SRC</code> 和 <code>DES</code> 路径信息都<strong>不包含</strong>有单个冒号 &ldquo;:&rdquo; 分隔符时就启动这种工作模式。如：<code>rsync -a /data/backup</code></p>
+</li>
+<li>
+<p>使用一个远程 <code>shell</code> 程序 (如 rsh、ssh) 来实现将本地机器的内容拷贝到远程机器。当 <code>DST</code> 路径地址<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz *.c foo:src</code></p>
+</li>
+<li>
+<p>使用一个远程 <code>shell</code> 程序 (如 <code>rsh</code>、<code>ssh</code>) 来实现将远程机器的内容拷贝到本地机器。当 <code>SRC</code> 地址路径<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz foo:src/bar/data</code></p>
+</li>
+<li>
+<p>从远程 <code>rsync</code> 服务器中拷贝文件到本地机。当 <code>SRC</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av root@192.168.78.192::www /databack</code></p>
+</li>
+<li>
+<p>从本地机器拷贝文件到远程 <code>rsync</code> 服务器中。当 <code>DST</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av /databack root@192.168.78.192::www</code></p>
+</li>
+<li>
+<p>列出远程主机的文件列表。这类似于 <code>rsync</code> 传输，不过只要在命令中省略掉本地机信息即可。如：<code>rsync -v rsync://192.168.78.192/www</code></p>
+</li>
+</ul>
+<p>可用选项如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
+-q, --quiet 精简输出模式。
+-C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
+-c, --checksum 打开校验开关，强制对文件传输进行校验。
+-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
+-r, --recursive 对子目录以递归模式处理。
+-R, --relative 使用相对路径信息。
+-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
+-u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
+-l, --links 保留软链结。
+-L, --copy-links 想对待常规文件一样处理软链结。
+-H, --hard-links 保留硬链结。
+-I, --ignore-times 不跳过那些有同样的时间和长度的文件。
+-p, --perms 保持文件权限。
+-o, --owner 保持文件属主信息。
+-g, --group 保持文件属组信息。
+-D, --devices 保持设备文件信息。
+-t, --times 保持文件时间信息。
+-S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
+-T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
+-n, --dry-run 现实哪些文件将被传输。
+-w, --whole-file 拷贝文件，不进行增量检测。
+-x, --one-file-system 不要跨越文件系统边界。
+-B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
+-e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
+-P 等同于 --partial。
+-z, --compress 对备份的文件在传输时进行压缩处理。
+-h, --help 显示帮助信息。
+--backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
+-suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
+--copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
+--safe-links 忽略指向 SRC 路径目录树以外的链结。
+--rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
+--existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
+--delete 删除那些 DST 中 SRC 没有的文件。
+--delete-excluded 同样删除接收端那些被该选项指定排除的文件。
+--delete-after 传输结束以后再删除。
+--ignore-errors 及时出现 IO 错误也进行删除。
+--max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
+--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
+--force 强制删除目录，即使不为空。
+--numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
+--timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
+--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
+--modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
+--compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
+--progress 显示备份过程。
+--exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
+--include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
+--exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
+--include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
+--version 打印版本信息。
+--address 绑定到特定的地址。
+--config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
+--port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
+--blocking-io 对远程 shell 使用阻塞 IO。
+-stats 给出某些文件的传输状态。
+--progress 在传输时现实传输过程。
+--log-format<span class="o">=</span>formAT 指定日志文件格式。
+--password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
+--bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
+</li>
+<li>
+<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+</li>
+<li>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
+</li>
+<li>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
+</li>
+</ul>]]></description>
+</item><item>
+    <title>Git Log 使用技巧</title>
+    <link>https://www.techkoala.top/git_log/</link>
+    <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/git_log/</guid>
+    <description><![CDATA[<blockquote>
+<p>最常用的 Git Log 技巧令总结</p>
+</blockquote>
+<h2 id="概览提交历史">概览提交历史</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令帮助您以更清晰的方式查看提交。每个提交仅显示为一行，并且只有最少量的信息，比如提交哈希、提交消息。</p>
+<h2 id="显示详细更改信息">显示详细更改信息</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
+</code></pre></td></tr></table>
+</div>
+</div><p>此命令会显示更新的详细更改信息，方便查阅。</p>
+<h2 id="根据时间筛选">根据时间筛选</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
+
+$ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
+
+$ git log --before<span class="o">=</span><span class="s2">&#34;10 day ago&#34;</span> // 显示最近十天的提交
+
+$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> // 显示上周以来的提交
+
+$ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;</span> // 显示近两个月的提交
+</code></pre></td></tr></table>
+</div>
+</div><p>上述命令将按给定的时间段过滤出提交。 例如，<code>--after</code> 将仅筛选给定时间段之后的提交，而 <code>--before</code> 将仅筛选给定时间段之前的提交。</p>
+<h2 id="根据作者筛选">根据作者筛选</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令会显示由 techkoala 提交的更改。当然，可以结合上面介绍的命令，进行更加精确的筛选，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="根据-log-信息筛选">根据 log 信息筛选</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 <code>-i</code> 选项。</p>
+<p>此外，还支持正则表达式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="根据文件筛选">根据文件筛选</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令显示针对特定文件的的提交历史。</p>
+<p>当然，可以传入多个文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
+</code></pre></td></tr></table>
+</div>
+</div><p>同样的，结合别的命令可以做出更精确的筛选，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="根据文件内容筛选">根据文件内容筛选</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述命令帮你在源代码中搜索已添加到提交历史记录中的特定字符串。同样的，加上 <code>-i</code> 可以不区分大小写。</p>
+<h2 id="仅显示合并提交">仅显示合并提交</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令显示当前分支上合并的提交。</p>
+<h2 id="显示不同分支间的区别">显示不同分支间的区别</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令将显示所有来自 <code>develop</code> 但不在 <code>master</code> 分支的提交。</p>
+<h2 id="自定义-log-信息格式">自定义 log 信息格式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy" target="_blank" rel="noopener noreffer">Ten Useful Git Log Tricks</a></p>
+</li>
+<li>
+<p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreffer">Git 基础 - 查看提交历史</a></p>
+</li>
 </ul>]]></description>
 </item></channel>
 </rss>

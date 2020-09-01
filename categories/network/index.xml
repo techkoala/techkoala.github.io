@@ -1485,7 +1485,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </li>
 </ul>]]></description>
 </item><item>
-    <title>NAT 2：问题及解决方法</title>
+    <title>NAT 系列：问题及解决方法</title>
     <link>https://www.techkoala.top/nat_issues_solutions/</link>
     <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
     <author>作者</author>
@@ -1529,7 +1529,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </li>
 </ul>]]></description>
 </item><item>
-    <title>NAT 1：认识 NAT</title>
+    <title>NAT 系列：认识 NAT</title>
     <link>https://www.techkoala.top/nat/</link>
     <pubDate>Tue, 14 Jul 2020 23:25:54 &#43;0800</pubDate>
     <author>作者</author>

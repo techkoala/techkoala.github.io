@@ -5,7 +5,7 @@
         <description>Linux - 标签 - TechKoala</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/linux/" rel="self" type="application/rss+xml" /><item>
-    <title>文件传输 3：SFTP</title>
+    <title>文件传输系列：SFTP</title>
     <link>https://www.techkoala.top/sftp/</link>
     <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
     <author>作者</author>
@@ -64,7 +64,7 @@
 </li>
 </ul>]]></description>
 </item><item>
-    <title>文件传输 2：rsync</title>
+    <title>文件传输系列：rsync</title>
     <link>https://www.techkoala.top/rsync/</link>
     <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
     <author>作者</author>
@@ -316,7 +316,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </li>
 </ul>]]></description>
 </item><item>
-    <title>文件传输 1：SCP</title>
+    <title>文件传输系列：SCP</title>
     <link>https://www.techkoala.top/scp/</link>
     <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
     <author>作者</author>
