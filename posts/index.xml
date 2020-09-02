@@ -16,7 +16,7 @@
 <h2 id="when">When</h2>
 <p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></p>
 <h2 id="why">Why</h2>
-<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare </code>在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 Vercel。</p>
+<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
 <h2 id="what">What</h2>
 <p>下面是 <code>Vercel</code> 官网的介绍：</p>
 <blockquote>
@@ -1228,9 +1228,9 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
 <p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
 <h2 id="tls-协议">TLS 协议</h2>
-<p>TLS 协议包括 TLS Record Protocol 和 TLS Handshake Protocol。总览中的流程图仅涉及到 TLS Handshake Protocol。</p>
+<p><code>TLS</code> 协议包括 <code>TLS Record Protocol</code> 和 <code>TLS Handshake Protocol</code>。总览中的流程图仅涉及到 <code>TLS Handshake Protocol</code>。</p>
 <h3 id="tls-record-protocol">TLS Record Protocol</h3>
-<p>在 TLS 协议中，有四种子协议运行于 Record protocol 之上</p>
+<p>在 <code>TLS</code> 协议中，有四种子协议运行于 <code>Record protocol</code> 之上</p>
 <ul>
 <li>Handshake protocol</li>
 <li>Alert protocol</li>
@@ -1263,26 +1263,26 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </blockquote>
 <h3 id="tls-handshaking-protocols">TLS Handshaking Protocols</h3>
 <p>Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。</p>
-<p>使用 RSA 算法的握手过程是这样的（已在总览中提到）</p>
+<p>使用 <code>RSA</code> 算法的握手过程是这样的（已在总览中提到）</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
     </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
-<p>客户端和服务端在握手 hello 消息中明文交换了 client_random 和 server_random ，使用 RSA 公钥加密传输 premaster secret ，最后通过算法，客户端和服务端分别计算 master secret。其中，不直接使用 premaster secret 的原因是：保证 secret 的随机性不受任意一方的影响。</p>
-<p>除了使用 RSA 算法在公共信道交换密钥，还可以通过 Diffie–Hellman 算法。Diffie–Hellman 算法的原理是这样的</p>
+<p>客户端和服务端在握手 hello 消息中明文交换了 <code>client_random</code> 和 <code>server_random</code> ，使用 <code>RSA</code> 公钥加密传输 <code>premaster secret</code> ，最后通过算法，客户端和服务端分别计算 <code>master secret</code>。其中，不直接使用 <code>premaster secret</code> 的原因是：保证 <code>secret</code> 的随机性不受任意一方的影响。</p>
+<p>除了使用 <code>RSA</code> 算法在公共信道交换密钥，还可以通过 <code>Diffie–Hellman</code> 算法。<code>Diffie–Hellman</code> 算法的原理是这样的</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-sub-html="<h2>By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</h2>">
         
     </a><figcaption class="image-caption">By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</figcaption>
     </figure>
-<p>使用 Diffie–Hellman 算法交换 <code>premaster secret</code> 的流程</p>
+<p>使用 <code>Diffie–Hellman</code> 算法交换 <code>premaster secret</code> 的流程</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
     </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <h2 id="小结">小结</h2>
-<p>TLS Handshaking Protocols 协商了 TLS Record Protocol 使用的算法和所需参数，并验证了服务端身份；</p>
-<p>TLS Record Protocol 在协商后保证应用层数据的完整性和隐私性。</p>
-<p>TLS Handshaking Protocol 的核心是在公开信道上传递 premaster secret。</p>
+<p><code>TLS Handshaking Protocols</code> 协商了 <code>TLS Record Protocol</code> 使用的算法和所需参数，并验证了服务端身份；</p>
+<p><code>TLS Record Protocol</code> 在协商后保证应用层数据的完整性和隐私性。</p>
+<p><code>TLS Handshaking Protocol</code> 的核心是在公开信道上传递 <code>premaster secret</code>。</p>
 <h2 id="qa">Q&amp;A</h2>
 <h3 id="为什么传输内容不直接使用非对称加密">为什么传输内容不直接使用非对称加密？</h3>
 <p>因为性能限制。</p>
@@ -1293,12 +1293,12 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </blockquote>
 <p>攻击者甚至可以直接丢弃双方的数据包</p>
 <h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
-<p>通过 Client Certificate</p>
+<p>通过 <code>Client Certificate</code></p>
 <blockquote>
 <p>This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</p>
 </blockquote>
 <h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
-<p>Closure Alerts：防止 Truncation Attack</p>
+<p><code>Closure Alerts</code>：防止 <code>Truncation Attack</code></p>
 <blockquote>
 <p>In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</p>
 </blockquote>
@@ -1317,7 +1317,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="加密压缩和-mac-算法参数是如何计算的">加密，压缩和 MAC 算法参数是如何计算的</h3>
-<p>Handshaking Protocols 使得客户端和服务端交换了三个参数：client_random，server_random 和 master_secret，通过以下算法生成算法所需要的参数</p>
+<p><code>Handshaking Protocols</code> 使得客户端和服务端交换了三个参数：<code>client_random</code>，<code>server_random</code> 和 <code>master_secret</code>，通过以下算法生成算法所需要的参数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1359,7 +1359,7 @@ partitioned as follows:
 </div><blockquote>
 <p>The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</p>
 </blockquote>
-<p>使用 Diffie-Hellman 算法的 TLS 握手细节</p>
+<p>使用 <code>Diffie-Hellman</code> 算法的 <code>TLS</code> 握手细节</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
         
     </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/">https://cipherstuff.wordpress.com/</a></figcaption>

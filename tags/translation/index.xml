@@ -643,7 +643,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <p>哈希函数入门介绍。</p>
 </blockquote>
 <h2 id="哈希函数hash-function用来做什么">哈希函数（Hash Function）用来做什么？</h2>
-<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，Qvault 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">点击这里</a> 查看哈希函数用于何处。</p>
+<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，<code>Qvault</code> 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">点击这里</a> 查看哈希函数用于何处。</p>
 <h2 id="重要特性">重要特性</h2>
 <p>哈希函数的拥有如下三个重要特性，这些特性可以说是最重要的特性：</p>
 <ul>

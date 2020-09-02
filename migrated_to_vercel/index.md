@@ -11,7 +11,7 @@
 
 ## Why
 
-鉴于目前 `Github` 以及 `Cloudflare `在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着[帖子](https://www.v2ex.com/t/701487)的推荐选择了 Vercel。
+鉴于目前 `Github` 以及 `Cloudflare` 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着[帖子](https://www.v2ex.com/t/701487)的推荐选择了 `Vercel`。
 
 ## What
 

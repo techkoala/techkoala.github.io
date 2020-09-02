@@ -23,7 +23,7 @@
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh -vT git@github.com
 </code></pre></td></tr></table>
 </div>
-</div><p>​ 然后确认您的私钥已生成并加载到 SSH。 如果使用的是 OpenSSH 6.7 或更早版本：</p>
+</div><p>​ 然后确认您的私钥已生成并加载到 <code>SSH</code>。 如果使用的是 <code>OpenSSH 6.7</code> 或更早版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -40,7 +40,7 @@ $ ssh-add -l
 &gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>​ 如果使用的是 OpenSSH 6.8 或更新版本：</p>
+</div><p>​ 如果使用的是 <code>OpenSSH 6.8</code> 或更新版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -58,7 +58,7 @@ $ ssh-add -l -E md5
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="确认公钥已附加到账户">确认公钥已附加到账户</h3>
-<p>​ 在后台启动 SSH 代理程序。</p>
+<p>​ 在后台启动 <code>SSH</code> 代理程序。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -69,7 +69,7 @@ $ ssh-add -l -E md5
 &gt; Agent pid <span class="m">59566</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>​ 找到并记录公钥指纹。 如果使用的是 OpenSSH 6.7 或更早版本：</p>
+</div><p>​ 找到并记录公钥指纹。 如果使用的是 <code>OpenSSH 6.7</code> 或更早版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -80,7 +80,7 @@ $ ssh-add -l -E md5
 &gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>​ 如果使用的是 OpenSSH 6.8 或更新版本：</p>
+</div><p>​ 如果使用的是 <code>OpenSSH 6.8</code> 或更新版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -101,7 +101,7 @@ $ ssh-add -l -E md5
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>注：不知为何，使用自定义名字的密钥，每次 git 操作都要重新添加一次，尚不明确原因。</p>
+<p>注：不知为何，使用自定义名字的密钥，每次 <code>git</code> 操作都要重新添加一次，尚不明确原因。</p>
 </blockquote>
 <h3 id="添加到-github">添加到 Github</h3>
 <p>​ <strong>Settings</strong> &gt; <strong>SSH and GPG keys</strong> &gt; 添加公钥即可</p>]]></description>

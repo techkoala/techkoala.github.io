@@ -41,7 +41,7 @@
 $ cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | awk '{print $2"="$1;}'
 ```
 
-查看尝试暴力登录 root 的 IP 及次数
+查看尝试暴力登录 `root` 的 `IP` 及次数
 
 ```shell
 $ grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | more

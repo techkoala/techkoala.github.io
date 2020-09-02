@@ -42,7 +42,7 @@
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /var/log/secure <span class="p">|</span> awk <span class="s1">&#39;/Failed/{print $(NF-3)}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> awk <span class="s1">&#39;{print $2&#34;=&#34;$1;}&#39;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>查看尝试暴力登录 root 的 IP 及次数</p>
+</div><p>查看尝试暴力登录 <code>root</code> 的 <code>IP</code> 及次数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

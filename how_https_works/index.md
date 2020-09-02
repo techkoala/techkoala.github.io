@@ -131,11 +131,11 @@ Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of T
 
 ## TLS 协议
 
-TLS 协议包括 TLS Record Protocol 和 TLS Handshake Protocol。总览中的流程图仅涉及到 TLS Handshake Protocol。
+`TLS` 协议包括 `TLS Record Protocol` 和 `TLS Handshake Protocol`。总览中的流程图仅涉及到 `TLS Handshake Protocol`。
 
 ### TLS Record Protocol
 
-在 TLS 协议中，有四种子协议运行于 Record protocol 之上
+在 `TLS` 协议中，有四种子协议运行于 `Record protocol` 之上
 
 - Handshake protocol
 - Alert protocol
@@ -166,27 +166,27 @@ empty state -------------------> pending state ------------------> current state
 
 Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。
 
-使用 RSA 算法的握手过程是这样的（已在总览中提到）
+使用 `RSA` 算法的握手过程是这样的（已在总览中提到）
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
-客户端和服务端在握手 hello 消息中明文交换了 client_random 和 server_random ，使用 RSA 公钥加密传输 premaster secret ，最后通过算法，客户端和服务端分别计算 master secret。其中，不直接使用 premaster secret 的原因是：保证 secret 的随机性不受任意一方的影响。
+客户端和服务端在握手 hello 消息中明文交换了 `client_random` 和 `server_random` ，使用 `RSA` 公钥加密传输 `premaster secret` ，最后通过算法，客户端和服务端分别计算 `master secret`。其中，不直接使用 `premaster secret` 的原因是：保证 `secret` 的随机性不受任意一方的影响。
 
-除了使用 RSA 算法在公共信道交换密钥，还可以通过 Diffie–Hellman 算法。Diffie–Hellman 算法的原理是这样的
+除了使用 `RSA` 算法在公共信道交换密钥，还可以通过 `Diffie–Hellman` 算法。`Diffie–Hellman` 算法的原理是这样的
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" caption="By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons" >}}
 
-使用 Diffie–Hellman 算法交换 `premaster secret` 的流程
+使用 `Diffie–Hellman` 算法交换 `premaster secret` 的流程
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
 ## 小结
 
-TLS Handshaking Protocols 协商了 TLS Record Protocol 使用的算法和所需参数，并验证了服务端身份；
+`TLS Handshaking Protocols` 协商了 `TLS Record Protocol` 使用的算法和所需参数，并验证了服务端身份；
 
-TLS Record Protocol 在协商后保证应用层数据的完整性和隐私性。
+`TLS Record Protocol` 在协商后保证应用层数据的完整性和隐私性。
 
-TLS Handshaking Protocol 的核心是在公开信道上传递 premaster secret。
+`TLS Handshaking Protocol` 的核心是在公开信道上传递 `premaster secret`。
 
 ## Q&A
 
@@ -204,13 +204,13 @@ TLS Handshaking Protocol 的核心是在公开信道上传递 premaster secret�
 
 ### 服务端如何验证客户端身份？
 
-通过 Client Certificate
+通过 `Client Certificate`
 
 > This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.
 
 ### Alert protocol 有什么作用？
 
-Closure Alerts：防止 Truncation Attack
+`Closure Alerts`：防止 `Truncation Attack`
 
 > In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.
 
@@ -226,7 +226,7 @@ Error Alerts：错误处理
 
 ### 加密，压缩和 MAC 算法参数是如何计算的
 
-Handshaking Protocols 使得客户端和服务端交换了三个参数：client_random，server_random 和 master_secret，通过以下算法生成算法所需要的参数
+`Handshaking Protocols` 使得客户端和服务端交换了三个参数：`client_random`，`server_random` 和 `master_secret`，通过以下算法生成算法所需要的参数
 
 ```
 To generate the key material, compute
@@ -249,7 +249,7 @@ partitioned as follows:
 
 > The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key
 
-使用 Diffie-Hellman 算法的 TLS 握手细节
+使用 `Diffie-Hellman` 算法的 `TLS` 握手细节
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" caption="Source: https://cipherstuff.wordpress.com/" >}}
 
