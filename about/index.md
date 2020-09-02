@@ -1,25 +1,26 @@
 # 关于
 
 
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">}}
+
 ### :man_shrugging:我
 
 - 对`网络`知识有浓厚的兴趣
-
 - 是一只会 `Python:snake:` 的`通信:dog2:`
-
 - 喜欢`瞎折腾:man_technologist:`一些有用没用的东西
-
 - 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 10` 工作学习
 
 ### 这个网站
 
 本质上，就是我自己的笔记:notebook_with_decorative_cover:，某天突发奇想:thought_balloon:：做成网站也不错呀，随时都可以查看。于是就诞生了这网站。
 
-网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版，网页利用 [Hugo](https://gohugo.io/) 渲染生成，页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点。
+- 网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版
+- 网页利用 [Hugo](https://gohugo.io/) 渲染生成
+- 页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点
+- 网站托管在 [vercel](https://vercel.com)
+- 套用了 [jsDelivr](https://www.jsdelivr.com/) 的 `CDN`
 
-网站托管在 [vercel](https://vercel.com) ，并套用 [jsDelivr](https://www.jsdelivr.com/) 的 `CDN` 。
-
-在此，**感谢** 各位开发者 & 公司。
+> 在此，**感谢**各位开发者 & 公司。
 
 ### 说明
 
