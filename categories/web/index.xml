@@ -14,23 +14,23 @@
 <p>加速访问！</p>
 </blockquote>
 <h2 id="when">When</h2>
-<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">vercel</a></p>
+<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></p>
 <h2 id="why">Why</h2>
-<p>鉴于目前 Github 以及 Cloudflare 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 Vercel。</p>
+<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare </code>在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 Vercel。</p>
 <h2 id="what">What</h2>
-<p>下面是 Vercel 官网的介绍：</p>
+<p>下面是 <code>Vercel</code> 官网的介绍：</p>
 <blockquote>
 <p>Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</p>
 </blockquote>
-<p>相比于 Github Pages、Netlify 等，Vercel 拥有台湾和香港节点，对国内用户更加友好。并且小流量情况免费套餐足够使用了。</p>
+<p>相比于 <code>Github Pages</code>、<code>Netlify</code> 等，<code>Vercel</code> 拥有<strong>台湾</strong>和<strong>香港</strong>节点，对国内用户更加友好，并且免费套餐足够应付小流量情况了。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-sub-html="<h2>Vercel</h2>">
         
     </a><figcaption class="image-caption">Vercel</figcaption>
     </figure>
 <h2 id="how">How</h2>
-<p>此前，本网站是托管在 Github Pages,然后通过 Clouflare 进行代理访问，因此只需要在 Cloudfalre 原配置上就行修改即可。</p>
+<p>此前，本网站是托管在 <code>Github Pages</code>,然后通过 <code>Clouflare</code> 进行代理访问，因此只需要在 <code>Cloudfalre</code> 原配置上就行修改即可。</p>
 <ol>
-<li>首先，直接使用 Github 账号（或 Gitlab 等）登录 Vercel 即可（<strong>注：</strong> 不可以使用 QQ 邮箱为主邮箱的 Github 账号，Vercel 不识别部分邮箱域名，如果你是，请到 Github 修改主邮箱）</li>
+<li>首先，直接使用 <code>Github</code> 账号（或 <code>Gitlab</code> 等）登录 <code>Vercel</code> 即可（<strong>注：</strong> 不可以使用 <code>QQ</code> 邮箱为主邮箱的 <code>Github</code> 账号，<code>Vercel</code> 不识别部分邮箱域名，如果你是，请到 <code>Github</code> 修改主邮箱）</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" data-sub-html="<h2>导入 Github 项目</h2>">
         
@@ -41,14 +41,14 @@
     </a><figcaption class="image-caption">选择需要导入的文件夹，默认为根文件夹</figcaption>
     </figure>
 <ol start="2">
-<li>完成导入后，配置你的预编译设置（由于本站是在本地使用 Hugo 编译好后 push 到 Github 上的所以这里选择 Other，然后勾选 OVERRIDE，不填写编译内容，表示不需要进行编译）如果你想要 Vercel 代替你编译，可以在这里选择相应的配置。</li>
+<li>完成导入后，配置你的预编译设置（由于本站是在本地使用 <code>Hugo</code> 编译好后 <code>push</code> 到 <code>Github</code> 上的所以这里选择 <code>Other</code>，然后勾选 <code>OVERRIDE</code>，不填写编译内容，表示不需要进行编译）如果你想要 <code>Vercel</code> 代替你编译，可以在这里选择相应的配置。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" data-sub-html="<h2>编译选项</h2>">
         
     </a><figcaption class="image-caption">编译选项</figcaption>
     </figure>
 <ol start="3">
-<li>待你完成编译配置后，等待 Vercel 完成编译和部署，你就可以得到一个可以访问的网站了，当然域名是一个二级域名。接下来我们配置自定义域名，首先点击你的项目，进入 设置 &gt; 域名。然后添加你的域名，一开始你添加好的域名不会和图片上一样，会显示为正确配置，这是因为我们还需要到 Cloudflare 进行调整。</li>
+<li>待你完成编译配置后，等待 <code>Vercel</code> 完成编译和部署，你就可以得到一个可以访问的网站了，当然域名是一个二级域名。接下来我们配置自定义域名，首先点击你的项目，进入 设置 &gt; 域名。然后添加你的域名，一开始你添加好的域名不会和图片上一样，会显示为正确配置，这是因为我们还需要到 <code>Cloudflare</code> 进行调整。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" data-sub-html="<h2>域名设置</h2>">
         
@@ -57,7 +57,7 @@
 <ol start="4">
 <li>
 <p>来到 Cloudflare 的 DNS 配置页面，首先删除此前指向 Github Pages 的两个解析，然后添加一个<code>CNAME</code>类型的解析，设置名字设置为<code>www</code>,内容填入<code>cname.vercel-dns.com</code>；</p>
-<p><strong>注：</strong> 关键一步是，这里一定要设置<code>Proxy Status</code>为<code>DNS only</code>，否则，你的网站依然会经过 Cloudflare 的代理来访问。</p>
+<p><strong>注：</strong> 关键一步是，这里一定要设置<code>Proxy Status</code>为<code>DNS only</code>，否则，你的网站依然会经过 <code>Cloudflare</code> 的代理来访问。</p>
 </li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-sub-html="<h2>Cloudflare DNS 配置</h2>">
@@ -65,7 +65,7 @@
     </a><figcaption class="image-caption">Cloudflare DNS 配置</figcaption>
     </figure>
 <blockquote>
-<p>这里我还添加一个 A 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</p>
+<p>这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</p>
 </blockquote>
 <h2 id="参考">参考</h2>
 <ul>
@@ -313,9 +313,9 @@ for (var i = 0; i &lt; elems.length; i++) {
 <blockquote>
 <p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
 </blockquote>
-<p>也就是说，Netlify 是一个提供静态网站托管的服务。它提供 CI 服务，能够将托管在 GitHub，GitLab 等网站上代码生成静态网站进行展示。类似于 Github Pages，不过功能更加丰富。</p>
+<p>也就是说，<code>Netlify</code> 是一个提供静态网站托管的服务。它提供 <code>CI</code> 服务，能够将托管在 <code>GitHub</code>，<code>GitLab</code> 等网站上代码生成静态网站进行展示。类似于 <code>Github Pages</code>，不过功能更加丰富。</p>
 <h2 id="koodo-reader">Koodo Reader</h2>
-<p>Koodo Reader 是一个基于 React 和 Electron 开发的 Epub 阅读器。</p>
+<p><code>Koodo Reader</code> 是一个基于 <code>React</code> 和 <code>Electron</code> 开发的 <code>Epub</code> 阅读器。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
         
     </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
@@ -331,21 +331,21 @@ for (var i = 0; i &lt; elems.length; i++) {
 <p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
 <h2 id="搭建">搭建</h2>
 <ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 Github 登录，当然，你也可以选择其他方式。</li>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
         
     </a><figcaption class="image-caption">Netlify 注册</figcaption>
     </figure>
 <ol start="2">
-<li>注册登陆后，进入首页，点击右上角的 New Site from Git ，创建一个新的站点。</li>
+<li>注册登陆后，进入首页，点击右上角的 <code>New Site from Git</code> ，创建一个新的站点。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site.webp" data-sub-html="<h2>创建新站点</h2>">
         
     </a><figcaption class="image-caption">创建新站点</figcaption>
     </figure>
 <ol start="3">
-<li>接下来，点击下方的 Github 进行授权，这里会弹出一个新的窗口，让你授权 Netlify 访问你的 Github 账户，完成授权后进去下一步。</li>
+<li>接下来，点击下方的 <code>Github</code> 进行授权，这里会弹出一个新的窗口，让你授权 <code>Netlify</code> 访问你的 <code>Github</code> 账户，完成授权后进去下一步。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_github.webp" data-sub-html="<h2>使用Github 创建新站点</h2>">
         
@@ -359,21 +359,21 @@ for (var i = 0; i &lt; elems.length; i++) {
     </a><figcaption class="image-caption">选择相应的 Repo</figcaption>
     </figure>
 <ol start="5">
-<li>接着，配置 Build 选项。在该项目的部署中，需要修改 <code>Build name &gt; yarn build</code>，<code>Publish directory &gt; build/ </code>，其他保持默认即可。（如果配置其他项目，这里的参数可能不同，请参考具体项目的指导说明）</li>
+<li>接着，配置 <code>Build</code> 选项。在该项目的部署中，需要修改 <code>Build name &gt; yarn build</code>，<code>Publish directory &gt; build/ </code>，其他保持默认即可。（如果配置其他项目，这里的参数可能不同，请参考具体项目的指导说明）</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Site_Setting.webp" data-sub-html="<h2>配置</h2>">
         
     </a><figcaption class="image-caption">配置</figcaption>
     </figure>
 <ol start="6">
-<li>到这里，已经完成了整个部署工作，等待 Netlify 构建完成即刻。</li>
+<li>到这里，已经完成了整个部署工作，等待 <code>Netlify</code> 构建完成即刻。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Deploying.webp" data-sub-html="<h2>配置</h2>">
         
     </a><figcaption class="image-caption">配置</figcaption>
     </figure>
 <ol start="7">
-<li>Netlify 会给你默认分配一个二级域名用于访问，当然也支持自定义域名，这里我绑定了自己域名。除了在此处绑定外，还需要配置 DNS 等等，这个请自行完成。（由于搭建博客时，已经完成了相应设置，因此，我直接在 Cloudfalre 新建了一个 CNAME 指向 Netlify 给我的域名就好了）</li>
+<li><code>Netlify</code> 会给你默认分配一个二级域名用于访问，当然也支持自定义域名，这里我绑定了自己域名。除了在此处绑定外，还需要配置 <code>DNS</code> 等等，这个请自行完成。（由于搭建博客时，已经完成了相应设置，因此，我直接在 <code>Cloudfalre</code> 新建了一个 <code>CNAME</code> 指向 <code>Netlify</code> 给我的域名就好了）</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Domain_Setting.webp" data-sub-html="<h2>配置</h2>">
         
@@ -383,7 +383,7 @@ for (var i = 0; i &lt; elems.length; i++) {
 <li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
 </ol>
 <h2 id="后续">后续</h2>
-<p>如果需要对网站进行更新，只需要关注你的 Github Repo 即可。每次 commit 之后，Netlify 都会自动拉取更新并生成。</p>
+<p>如果需要对网站进行更新，只需要关注你的 <code>Github Repo</code> 即可。每次 commit 之后，<code>Netlify</code> 都会自动拉取更新并生成。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
