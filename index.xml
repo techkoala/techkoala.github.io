@@ -7,12 +7,15 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>3GPP_Releases</title>
+    <title>3GPP Releases</title>
     <link>https://www.techkoala.top/3gpp_releases/</link>
     <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/3gpp_releases/</guid>
-    <description><![CDATA[<h2 id="3gpp-release-schedule-and-summary">3GPP Release schedule and summary</h2>
+    <description><![CDATA[<blockquote>
+<p>Meanings of 3GPP releases</p>
+</blockquote>
+<h2 id="3gpp-release-schedule-and-summary">3GPP Release schedule and summary</h2>
 <table>
 <thead>
 <tr>
@@ -127,8 +130,7 @@
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
-</ul>
-]]></description>
+</ul>]]></description>
 </item><item>
     <title>全站迁移到 Vercel</title>
     <link>https://www.techkoala.top/migrated_to_vercel/</link>

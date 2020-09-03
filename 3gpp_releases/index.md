@@ -1,5 +1,9 @@
-# 3GPP_Releases
+# 3GPP Releases
 
+
+> Meanings of 3GPP releases
+
+<!--more-->
 
 ## 3GPP Release schedule and summary
 
@@ -29,3 +33,4 @@
 ## 参考
 
 - [1] [3GPP Specification Release Numbers](https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php)
+
