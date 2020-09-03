@@ -7,6 +7,129 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>3GPP_Releases</title>
+    <link>https://www.techkoala.top/3gpp_releases/</link>
+    <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/3gpp_releases/</guid>
+    <description><![CDATA[<h2 id="3gpp-release-schedule-and-summary">3GPP Release schedule and summary</h2>
+<table>
+<thead>
+<tr>
+<th>3GPP RELEASE</th>
+<th>RELEASE DATE</th>
+<th>DETAILS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1</td>
+<td>1992</td>
+<td>Basic GSM</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>1995</td>
+<td>GSM features including EFR Codec</td>
+</tr>
+<tr>
+<td>Release 96</td>
+<td>Q1 1997</td>
+<td>GSM Updates, 14.4 kbps user data</td>
+</tr>
+<tr>
+<td>Release 97</td>
+<td>Q1 1998</td>
+<td>GSM additional features, GPRS</td>
+</tr>
+<tr>
+<td>Release 98</td>
+<td>Q1 1999</td>
+<td>GSM additional features, GPRS for PCS 1900, AMR, EDGE</td>
+</tr>
+<tr>
+<td>Release 99</td>
+<td>Q1 2000</td>
+<td>3G UMTS incorporating WCDMA radio access</td>
+</tr>
+<tr>
+<td>Release 4</td>
+<td>Q2 2001</td>
+<td>UMTS all-IP Core Network</td>
+</tr>
+<tr>
+<td>Release 5</td>
+<td>Q1 2002</td>
+<td>IMS and HSDPA</td>
+</tr>
+<tr>
+<td>Release 6</td>
+<td>Q4 2004</td>
+<td>HSUPA, MBMS, IMS enhancements, Push to Talk over Cellular, operation with WLAN</td>
+</tr>
+<tr>
+<td>Release 7</td>
+<td>Q4 2007</td>
+<td>Improvements in QoS &amp; latency, VoIP, HSPA+, NFC integration, EDGE Evolution</td>
+</tr>
+<tr>
+<td>Release 8</td>
+<td>Q4 2008</td>
+<td>Introduction of LTE, SAE, OFDMA, MIMO, Dual Cell HSDPA</td>
+</tr>
+<tr>
+<td>Release 9</td>
+<td>Q4 2009</td>
+<td>WiMAX / LTE / UMTS interoperability, Dual Cell HSDPA with MIMO, Dual Cell HSUPA, LTE HeNB</td>
+</tr>
+<tr>
+<td>Release 10</td>
+<td>Q1 2011</td>
+<td>LTE-Advanced, Backwards compatibility with Release 8 (LTE), Multi-Cell HSDPA</td>
+</tr>
+<tr>
+<td>Release 11</td>
+<td>Q3 2012</td>
+<td>Heterogeneous networks (HetNet), Coordinated Multipoint (CoMP), In device Coexistence (IDC), Advanced IP interconnection of Services,</td>
+</tr>
+<tr>
+<td>Release 12</td>
+<td>March 2015</td>
+<td>Enhanced Small Cells operation, Carrier Aggregation (2 uplink carriers, 3 downlink carriers, FDD/TDD carrier</td>
+</tr>
+<tr>
+<td>Release 13</td>
+<td>Q1 2016</td>
+<td>LTE-U / LTE-LAA, LTE-M, Elevation beamforming / Full Dimension MIMO, Indoor positioning, LTE-M Cat 1.4MHz &amp; Cat 200kHz introduced</td>
+</tr>
+<tr>
+<td>Release 14</td>
+<td>Mid 2017</td>
+<td>Elements on road to 5G</td>
+</tr>
+<tr>
+<td>Release 15</td>
+<td>End 2018</td>
+<td>5G Phase 1 specification</td>
+</tr>
+<tr>
+<td>Release 16</td>
+<td>2020</td>
+<td>5G Phase 2 specification</td>
+</tr>
+<tr>
+<td>Release 17</td>
+<td>~Sept 2021</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
+</ul>
+]]></description>
+</item><item>
     <title>全站迁移到 Vercel</title>
     <link>https://www.techkoala.top/migrated_to_vercel/</link>
     <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate>
@@ -2179,191 +2302,6 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </li>
 <li>
 <p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>Git Log 使用技巧</title>
-    <link>https://www.techkoala.top/git_log/</link>
-    <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/git_log/</guid>
-    <description><![CDATA[<blockquote>
-<p>最常用的 Git Log 技巧令总结</p>
-</blockquote>
-<h2 id="概览提交历史">概览提交历史</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令帮助您以更清晰的方式查看提交。每个提交仅显示为一行，并且只有最少量的信息，比如提交哈希、提交消息。</p>
-<h2 id="显示详细更改信息">显示详细更改信息</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
-</code></pre></td></tr></table>
-</div>
-</div><p>此命令会显示更新的详细更改信息，方便查阅。</p>
-<h2 id="根据时间筛选">根据时间筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
-
-$ git log --before<span class="o">=</span><span class="s2">&#34;10 day ago&#34;</span> // 显示最近十天的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> // 显示上周以来的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;</span> // 显示近两个月的提交
-</code></pre></td></tr></table>
-</div>
-</div><p>上述命令将按给定的时间段过滤出提交。 例如，<code>--after</code> 将仅筛选给定时间段之后的提交，而 <code>--before</code> 将仅筛选给定时间段之前的提交。</p>
-<h2 id="根据作者筛选">根据作者筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令会显示由 techkoala 提交的更改。当然，可以结合上面介绍的命令，进行更加精确的筛选，例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="根据-log-信息筛选">根据 log 信息筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 <code>-i</code> 选项。</p>
-<p>此外，还支持正则表达式：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="根据文件筛选">根据文件筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令显示针对特定文件的的提交历史。</p>
-<p>当然，可以传入多个文件：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
-</code></pre></td></tr></table>
-</div>
-</div><p>同样的，结合别的命令可以做出更精确的筛选，例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="根据文件内容筛选">根据文件内容筛选</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>上述命令帮你在源代码中搜索已添加到提交历史记录中的特定字符串。同样的，加上 <code>-i</code> 可以不区分大小写。</p>
-<h2 id="仅显示合并提交">仅显示合并提交</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令显示当前分支上合并的提交。</p>
-<h2 id="显示不同分支间的区别">显示不同分支间的区别</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
-</code></pre></td></tr></table>
-</div>
-</div><p>该命令将显示所有来自 <code>develop</code> 但不在 <code>master</code> 分支的提交。</p>
-<h2 id="自定义-log-信息格式">自定义 log 信息格式</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy" target="_blank" rel="noopener noreffer">Ten Useful Git Log Tricks</a></p>
-</li>
-<li>
-<p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreffer">Git 基础 - 查看提交历史</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

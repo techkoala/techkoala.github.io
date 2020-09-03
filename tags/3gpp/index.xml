@@ -1,0 +1,131 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>3GPP - 标签 - TechKoala</title>
+        <link>https://www.techkoala.top/tags/3gpp/</link>
+        <description>3GPP - 标签 - TechKoala</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/3gpp/" rel="self" type="application/rss+xml" /><item>
+    <title>3GPP_Releases</title>
+    <link>https://www.techkoala.top/3gpp_releases/</link>
+    <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/3gpp_releases/</guid>
+    <description><![CDATA[<h2 id="3gpp-release-schedule-and-summary">3GPP Release schedule and summary</h2>
+<table>
+<thead>
+<tr>
+<th>3GPP RELEASE</th>
+<th>RELEASE DATE</th>
+<th>DETAILS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1</td>
+<td>1992</td>
+<td>Basic GSM</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>1995</td>
+<td>GSM features including EFR Codec</td>
+</tr>
+<tr>
+<td>Release 96</td>
+<td>Q1 1997</td>
+<td>GSM Updates, 14.4 kbps user data</td>
+</tr>
+<tr>
+<td>Release 97</td>
+<td>Q1 1998</td>
+<td>GSM additional features, GPRS</td>
+</tr>
+<tr>
+<td>Release 98</td>
+<td>Q1 1999</td>
+<td>GSM additional features, GPRS for PCS 1900, AMR, EDGE</td>
+</tr>
+<tr>
+<td>Release 99</td>
+<td>Q1 2000</td>
+<td>3G UMTS incorporating WCDMA radio access</td>
+</tr>
+<tr>
+<td>Release 4</td>
+<td>Q2 2001</td>
+<td>UMTS all-IP Core Network</td>
+</tr>
+<tr>
+<td>Release 5</td>
+<td>Q1 2002</td>
+<td>IMS and HSDPA</td>
+</tr>
+<tr>
+<td>Release 6</td>
+<td>Q4 2004</td>
+<td>HSUPA, MBMS, IMS enhancements, Push to Talk over Cellular, operation with WLAN</td>
+</tr>
+<tr>
+<td>Release 7</td>
+<td>Q4 2007</td>
+<td>Improvements in QoS &amp; latency, VoIP, HSPA+, NFC integration, EDGE Evolution</td>
+</tr>
+<tr>
+<td>Release 8</td>
+<td>Q4 2008</td>
+<td>Introduction of LTE, SAE, OFDMA, MIMO, Dual Cell HSDPA</td>
+</tr>
+<tr>
+<td>Release 9</td>
+<td>Q4 2009</td>
+<td>WiMAX / LTE / UMTS interoperability, Dual Cell HSDPA with MIMO, Dual Cell HSUPA, LTE HeNB</td>
+</tr>
+<tr>
+<td>Release 10</td>
+<td>Q1 2011</td>
+<td>LTE-Advanced, Backwards compatibility with Release 8 (LTE), Multi-Cell HSDPA</td>
+</tr>
+<tr>
+<td>Release 11</td>
+<td>Q3 2012</td>
+<td>Heterogeneous networks (HetNet), Coordinated Multipoint (CoMP), In device Coexistence (IDC), Advanced IP interconnection of Services,</td>
+</tr>
+<tr>
+<td>Release 12</td>
+<td>March 2015</td>
+<td>Enhanced Small Cells operation, Carrier Aggregation (2 uplink carriers, 3 downlink carriers, FDD/TDD carrier</td>
+</tr>
+<tr>
+<td>Release 13</td>
+<td>Q1 2016</td>
+<td>LTE-U / LTE-LAA, LTE-M, Elevation beamforming / Full Dimension MIMO, Indoor positioning, LTE-M Cat 1.4MHz &amp; Cat 200kHz introduced</td>
+</tr>
+<tr>
+<td>Release 14</td>
+<td>Mid 2017</td>
+<td>Elements on road to 5G</td>
+</tr>
+<tr>
+<td>Release 15</td>
+<td>End 2018</td>
+<td>5G Phase 1 specification</td>
+</tr>
+<tr>
+<td>Release 16</td>
+<td>2020</td>
+<td>5G Phase 2 specification</td>
+</tr>
+<tr>
+<td>Release 17</td>
+<td>~Sept 2021</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
+</ul>
+]]></description>
+</item></channel>
+</rss>
