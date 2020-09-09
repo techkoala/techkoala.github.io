@@ -17,16 +17,10 @@
 - 网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版
 - 网页利用 [Hugo](https://gohugo.io/) 渲染生成
 - 页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点
-- 网站托管在 [vercel](https://vercel.com)
+- 网站托管在 [Vercel](https://vercel.com)
 - 套用了 [jsDelivr](https://www.jsdelivr.com/) 的 `CDN`
 
 > 在此，**感谢**各位开发者 & 公司。
-
-### 说明
-
-网站中含有 `Translation` 标签的文章，其 **主要内容** 来源于博主对优秀外文文章地翻译和校对，这里并不一定会遵循原文的叙述逻辑，内容上也会有一定的增删，原文请见文末参考。
-
-译文的目的仅为加深自己学习的印象，同时希望能够共享优质的内容。
 
 ### 本站的内容授权
 
