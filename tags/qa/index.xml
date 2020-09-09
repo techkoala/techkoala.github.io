@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Q&amp;A - 标签 - TechKoala-Open the pod bay doors, HAL</title>
+        <title>Q&amp;A - 标签 - TechKoala - Input/Output </title>
         <link>https://www.techkoala.top/tags/qa/</link>
-        <description>Q&amp;A - 标签 - TechKoala-Open the pod bay doors, HAL</description>
+        <description>Q&amp;A - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 May 2020 15:31:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/qa/" rel="self" type="application/rss+xml" /><item>
     <title>PVE 安装 Q&amp;A</title>

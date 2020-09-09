@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - TechKoala-Open the pod bay doors, HAL</title>
+        <title>所有文章 - TechKoala - Input/Output </title>
         <link>https://www.techkoala.top/posts/</link>
-        <description>所有文章 | TechKoala-Open the pod bay doors, HAL</description>
+        <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
     <title>5G NR 系列：波束赋形</title>

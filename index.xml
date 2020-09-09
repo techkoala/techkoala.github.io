@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>TechKoala-Open the pod bay doors, HAL</title>
+        <title>TechKoala - Input/Output </title>
         <link>https://www.techkoala.top/</link>
         <description>TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
