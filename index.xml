@@ -7,6 +7,170 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>5G NR 系列：波束赋形</title>
+    <link>https://www.techkoala.top/beamforming/</link>
+    <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/beamforming/</guid>
+    <description><![CDATA[<blockquote>
+<p>什么是波束赋形？波束赋形的基本原理是什么？5G 怎样实现波束赋形？</p>
+</blockquote>
+<blockquote>
+<p>注：本文系全文转载，原文信息如下：</p>
+<p>作者：无线深海</p>
+<p>链接：https://zhuanlan.zhihu.com/p/144971077</p>
+<p>来源：知乎</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="什么是波束赋形">什么是波束赋形？</h2>
+<p><strong>波束赋形</strong>这个概念可以拆分成<strong>波束</strong>和<strong>赋形</strong>这两个词来理解。</p>
+<ul>
+<li><strong>波束</strong>里的<strong>波</strong>字可以认为是电磁波，<strong>束</strong>字的本意是“捆绑”，因此波束的含义是捆绑在一起集中传播的电磁波</li>
+<li><strong>赋形</strong>可以简单地理解为“赋予一定的形状”</li>
+</ul>
+<p>合起来，波束赋形的意思就是<strong>赋予一定形状集中传播的电磁波</strong>。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_12.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_12.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_12.webp" data-sub-html="<h2>分散与集中的光线</h2>">
+        
+    </a><figcaption class="image-caption">分散与集中的光线</figcaption>
+    </figure>
+<p>其实，我们常见的光也是一种电磁波，灯泡作为一个点光源，发出的光没有方向性，只能不断向四周耗散；而手电筒则可以把光集中到一个方向发射，能量更为聚焦，从而照地更远。</p>
+<p>无线基站也是同理，如下图所示，如果天线的信号全向发射的话，这几个手机只能收到有限的信号，大部分能量都浪费掉了。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_17.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_17.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_17.webp" data-sub-html="<h2>分散与集中的电磁波</h2>">
+        
+    </a><figcaption class="image-caption">分散与集中的电磁波</figcaption>
+    </figure>
+<p>而如果能通过波束赋形把信号聚焦成几个波束，专门指向各个手机发射的话，承载信号的电磁能量就能传播地更远，而且手机收到的信号也就会更强。</p>
+<p>因此，波束赋形在无线通信中大有可为。</p>
+<h2 id="波束赋形的基本原理是什么">波束赋形的基本原理是什么？</h2>
+<p>波束赋形的物理学原理，其实就是波的干涉现象。</p>
+<p>频率相同的两列波叠加，使某些区域的振动加强，某些区域的振动减弱，而且振动加强的区域和振动减弱的区域相互隔开。</p>
+<p>想象一下，在湖边漫步时，你和女朋友在相距很近的两点激起水波，两朵涟漪不断散开，然后交叠起来，形成了下面的图样。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_10.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_10.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_10.webp" data-sub-html="<h2>波的干涉现象</h2>">
+        
+    </a><figcaption class="image-caption">波的干涉现象</figcaption>
+    </figure>
+<p>可以看出，有的地方水波增强，有的地方则减弱，并且增强和减弱的地方间隔分布，在最中间的狭窄区域最为明显。</p>
+<p>如果波峰和波峰，或者波谷和波谷相遇，则能量相加，波峰更高，波谷更深。这种情况叫做相长干涉。</p>
+<p>反之，如果波峰和波谷相遇，两者则相互抵消，震动归于静寂。这种情况叫做相消干涉。</p>
+<p>如果把这个现象抽象一下，可以得到下图：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_07.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_07.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_07.webp" data-sub-html="<h2>波的干涉</h2>">
+        
+    </a><figcaption class="image-caption">波的干涉</figcaption>
+    </figure>
+<p>在两个馈源正中间的地方由于相长干涉，能量最强，可以认为形成了一个定向的波束，也叫做主瓣；两边则由于相消干涉能量抵消，形成了零陷，再往两边又是相长干涉，但弱于最中间，因此称作旁瓣。</p>
+<p>如果我们能继续增强正中央主瓣的能量，使其宽度更窄，并抑制两边的旁瓣，就可以得到干净利落的波束了。</p>
+<p>其实，普通天线一直在做这样的事情。</p>
+<p>天线内部排布着一系列的电磁波源，称作振子，或者天线单元。这些天线单元也利用干涉原理来形成定向的波束。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_04.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_04.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_04.webp" data-sub-html="<h2>单列天线</h2>">
+        
+    </a><figcaption class="image-caption">单列天线</figcaption>
+    </figure>
+<p>由上图可以看出，纵向排列的天线单元越多，最中间的可集中的能量也就越多，波束也就越窄。</p>
+<p>但这只是一个垂直截面而已，其实完整的波束在空间是三维的，水平和垂直的宽度可能截然不同。</p>
+<p>下图是一个天线的振子排列，以及辐射能量三维分布图。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_06.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_06.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_06.webp" data-sub-html="<h2>纵向双列天线</h2>">
+        
+    </a><figcaption class="image-caption">纵向双列天线</figcaption>
+    </figure>
+<p>可以看出，上述天线内振源的排布方式为纵向，横向的数量很少，因此其波束在垂直方向的能量集中，而水平方向的角度还是比较宽的，像一个薄薄的大饼。</p>
+<p>这种传统的天线水平方向的辐射角度多为 60 度，进行大面积的地面信号覆盖是一把好手，但要垂直覆盖高楼就有些力不从心了，称作“波束赋形”还是不够格。</p>
+<p>如果我们把这些天线单元的排布改成矩形，电磁波辐射能量将在最中央形成一个很粗的主瓣，周边是一圈的旁瓣，这就有点波束赋形的意思了。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_01.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_01.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_01.webp" data-sub-html="<h2>矩形天线</h2>">
+        
+    </a><figcaption class="image-caption">矩形天线</figcaption>
+    </figure>
+<p>为了让波束更窄能量更集中，天线单元还需要更多更密，水平和垂直两个维度也都要兼顾，原本的天线就变成了大规模天线阵列。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_05.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_05.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_05.webp" data-sub-html="<h2>大规模矩形天线</h2>">
+        
+    </a><figcaption class="image-caption">大规模矩形天线</figcaption>
+    </figure>
+<p>这下，生成的波束就犀利多了，用大规模天线阵列来支持波束赋形，稳了！</p>
+<p>但是这样还有问题，那就是这个最大波束位于正中央，且其传播方向和天线阵列垂直，而手机是一直随着用户移动的，所在的位置完全不确定，主波束虽然犀利，但照射不到手机上也是白搭。</p>
+<p>那么，能不能让波束偏移一定的角度，对准手机来发射呢？</p>
+<p>首先我们看看中央的主波束的形成过程：多列波的相位相同，也就是波峰和波谷在同一时间是对齐的，则它们到达手机时，就可以相长干涉，信号通过叠加得以增强。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_02.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_02.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_02.webp" data-sub-html="<h2>到达同相，相长干涉</h2>">
+        
+    </a><figcaption class="image-caption">到达同相，相长干涉</figcaption>
+    </figure>
+<p>如果手机和天线阵列有一定的夹角，则各列波到达手机时，相位难以对齐，可能是波峰和波谷相遇，也可能是在其他相位进行叠加，难以达到相长干涉，信号叠加的效果。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_15.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_15.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_15.webp" data-sub-html="<h2>到达异相，无法相长</h2>">
+        
+    </a><figcaption class="image-caption">到达异相，无法相长</figcaption>
+    </figure>
+<p>这可咋办？总不能通过旋转天线来让波束跟随手机吧？</p>
+<p>其实，周期性是波最大的特点，不同的相位总是周期性的出现，错过了这个波峰，还有下一个波峰要来，因此相位是可以调整的。</p>
+<p>通过调整不同天线单元发射信号的振幅和相位（权值），即使它们的传播路径各不相同，只要在到达手机的时候相位相同，就可以达到信号叠加增强的结果，相当于天线阵列把信号对准了手机。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_14.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_14.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_14.webp" data-sub-html="<h2>相位控制</h2>">
+        
+    </a><figcaption class="image-caption">相位控制</figcaption>
+    </figure>
+<p>下图是一个示例，可以看出天线阵列通过调整发射信号的相位，让波束偏移了 θ 度，从而可以精确对准手机发射信号。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_13.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_13.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_13.webp" data-sub-html="<h2>相位控制</h2>">
+        
+    </a><figcaption class="image-caption">相位控制</figcaption>
+    </figure>
+<h2 id="5g-怎样实现波束赋形">5G 怎样实现波束赋形？</h2>
+<p>由此可见，波束赋形的关键在于天线单元相位的管控，也就是天线权值的处理。</p>
+<p>根据波束赋形处理位置和方式的不同，可分为</p>
+<ul>
+<li>数字波束赋形</li>
+<li>模拟波束赋形</li>
+<li>混合波束赋形</li>
+</ul>
+<h3 id="模拟波束赋形">模拟波束赋形</h3>
+<p>所谓模拟波束赋形，就是通过处理射频信号权值，通过移相器来完成天线相位的调整，处理的位置相对靠后。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_16.webp" data-sub-html="<h2>模拟波束赋形</h2>">
+        
+    </a><figcaption class="image-caption">模拟波束赋形</figcaption>
+    </figure>
+<p>模拟波束赋形的特点是基带处理的通道数量远小于天线单元的数量，因此容量上受到限制，并且天线的赋形完全是靠硬件搭建的，还会受到器件精度的影响，使性能受到一定的制约。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_08.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_08.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_08.webp" data-sub-html="<h2>模拟波束赋形框图</h2>">
+        
+    </a><figcaption class="image-caption">模拟波束赋形框图</figcaption>
+    </figure>
+<h3 id="数字波束赋形">数字波束赋形</h3>
+<p>数字波束赋形则在基带模块的时候就进行了天线权值的处理，基带处理的通道数和天线单元的数量相等，因此需要为每路数据配置一套射频链路。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_11.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_11.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_11.webp" data-sub-html="<h2>数字波束赋形</h2>">
+        
+    </a><figcaption class="image-caption">数字波束赋形</figcaption>
+    </figure>
+<p>数字波束赋形的优点是</p>
+<ul>
+<li>赋形精度高</li>
+<li>实现灵活</li>
+<li>天线权值变换响应及时</li>
+</ul>
+<p>缺点是</p>
+<ul>
+<li>基带处理能力要求高</li>
+<li>系统复杂</li>
+<li>设备体积大</li>
+<li>成本较高</li>
+</ul>
+<p>Sub6G 频段，作为当前 5G 容量的主力军，载波带宽可达 100MHz，一般采用采用数字波束赋形，通过 64 通道发射来实现小区内时频资源的多用户复用，下行最大可同时发射 24 路独立信号，上行独立接收 12 路数据，扛起了 5G 超高速率的大旗。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_09.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_09.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_09.webp" data-sub-html="<h2>数字波束赋形框图</h2>">
+        
+    </a><figcaption class="image-caption">数字波束赋形框图</figcaption>
+    </figure>
+<p>在毫米波 mmWave 频段，由于频谱资源非常充沛，一个 5G 载波的带宽可达 400MHz，如果单个 AAU 支持两个载波的话，带宽就达到了惊人的 800MHz！</p>
+<p>如果还要像 Sub6G 频段的设备一样支持数字波束赋形的话，对基带处理能力要求太高，并且射频部分功放的数量也要数倍增加，实现成本过高，功耗更是大得吓人。</p>
+<h3 id="混合波束赋形">混合波束赋形</h3>
+<p>因此，业界将数字波束赋形和模拟波束赋形结合起来，使在模拟端可调幅调相的波束赋形，结合基带的数字波束赋形，称之为混合波束赋形。</p>
+<p>混合波束赋形数字和模拟融合了两者的优点：</p>
+<ul>
+<li>基带处理的通道数目明显小于模拟天线单元的数量</li>
+<li>复杂度大幅下降</li>
+<li>成本降低</li>
+<li>系统性能接近全数字波束赋形</li>
+<li>非常适用于高频系统</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_03.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_03.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_03.webp" data-sub-html="<h2>混合波束赋形框图</h2>">
+        
+    </a><figcaption class="image-caption">混合波束赋形框图</figcaption>
+    </figure>
+<p>这样一来，毫米波频段的设备基带处理的通道数较少，一般为 4T4R，但天线单元众多，可达 512 个，其容量的主要来源是超大带宽和波束赋形。</p>
+<p>在波束赋形和 Massive MIMO 的加成之下，5G 在 Sub6G 频谱下单载波最多可达 7Gbps 的小区峰值速率，在毫米波频谱下单载波也最多达到了约 4.8Gbps 的小区峰值速率。</p>]]></description>
+</item><item>
     <title>3GPP Releases</title>
     <link>https://www.techkoala.top/3gpp_releases/</link>
     <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate>
@@ -2052,258 +2216,6 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </li>
 <li>
 <p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>文件传输系列：rsync</title>
-    <link>https://www.techkoala.top/rsync/</link>
-    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/rsync/</guid>
-    <description><![CDATA[<blockquote>
-<p>SCP 的另一个绝佳替选</p>
-</blockquote>
-<h2 id="什么是-rsync">什么是 rsync</h2>
-<p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
-<p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
-<p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
-<h2 id="rsync-算法">rsync 算法</h2>
-<blockquote>
-<p>此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
-</blockquote>
-<p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
-<h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
-<p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
-<h3 id="传输算法">传输算法</h3>
-<p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
-<p><strong>但是</strong></p>
-<p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
-如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
-<h3 id="checksum-查找算法">Checksum 查找算法</h3>
-<p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
-<h3 id="比对算法">比对算法</h3>
-<ol>
-<li>
-<p>取 <code>fileSrc</code> 的第一个文件块（我们假设的是 512 个长度），也就是从 <code>fileSrc</code> 的第 1 个字节到第 512 个字节，取出来后做 <code>rolling checksum</code> 计算。计算好的值到 <code>hash</code> 表中查询。</p>
-</li>
-<li>
-<p>如果查到了，说明发现在 <code>fileDst</code> 中有潜在相同的文件块，于是就再比较 · 的 <code>checksum</code>，因为 <code>rolling checksume</code> 太弱了，可能发生碰撞。于是还要算 <code>md5</code> 的 128 bits 的 <code>checksum</code>，这样一来，我们就有 $2^{-(32+128)} = 2^{-160} $ 的概率发生碰撞，这小到可以忽略。如果 <code>rolling checksum</code> 和 <code>md5 checksum</code> 都相同，那就可以说明在 <code>fileDst</code> 中有相同的块，记下这一块在 <code>fileDst</code> 下的文件编号。</p>
-</li>
-<li>
-<p>如果 <code>fileSrc</code> 的 <code>rolling checksum</code> 没有在 <code>hash table</code> 中找到，那就不用算 <code>md5 checksum</code> 了。表示这一块中有不同的信息。总之，只要 <code>rolling checksum</code> 或 <code>md5 checksum</code> 其中有一个在 <code>fileDst</code> 的 <code>checksum hash</code> 表中找不到匹配项，那么就会触发算法对 <code>fileSrc</code> 的 rolling 动作。于是，算法会住后 step 1 个字节，取 <code>fileSrc</code> 中字节 2-513 的文件块要做 <code>checksum</code>，然后继续第一步 – 这就是为什么叫 <code>rolling checksum</code> 。</p>
-</li>
-<li>
-<p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
-</li>
-</ol>
-<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
-<p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
-<p>其公式可以表示为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
-</code></pre></td></tr></table>
-</div>
-</div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
-<p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
-</code></pre></td></tr></table>
-</div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
-        
-    </a><figcaption class="image-caption">rsync 算法示意</figcaption>
-    </figure>
-<p>最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。</p>
-<h2 id="使用-rsync">使用 rsync</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
-<ul>
-<li>
-<p>拷贝本地文件。当 <code>SRC</code> 和 <code>DES</code> 路径信息都<strong>不包含</strong>有单个冒号 &ldquo;:&rdquo; 分隔符时就启动这种工作模式。如：<code>rsync -a /data/backup</code></p>
-</li>
-<li>
-<p>使用一个远程 <code>shell</code> 程序 (如 rsh、ssh) 来实现将本地机器的内容拷贝到远程机器。当 <code>DST</code> 路径地址<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz *.c foo:src</code></p>
-</li>
-<li>
-<p>使用一个远程 <code>shell</code> 程序 (如 <code>rsh</code>、<code>ssh</code>) 来实现将远程机器的内容拷贝到本地机器。当 <code>SRC</code> 地址路径<strong>包含单个</strong>冒号 &ldquo;:&rdquo; 分隔符时启动该模式。如：<code>rsync -avz foo:src/bar/data</code></p>
-</li>
-<li>
-<p>从远程 <code>rsync</code> 服务器中拷贝文件到本地机。当 <code>SRC</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av root@192.168.78.192::www /databack</code></p>
-</li>
-<li>
-<p>从本地机器拷贝文件到远程 <code>rsync</code> 服务器中。当 <code>DST</code> 路径信息包含 &ldquo;::&rdquo; 分隔符时启动该模式。如：<code>rsync -av /databack root@192.168.78.192::www</code></p>
-</li>
-<li>
-<p>列出远程主机的文件列表。这类似于 <code>rsync</code> 传输，不过只要在命令中省略掉本地机信息即可。如：<code>rsync -v rsync://192.168.78.192/www</code></p>
-</li>
-</ul>
-<p>可用选项如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
--q, --quiet 精简输出模式。
--C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
--c, --checksum 打开校验开关，强制对文件传输进行校验。
--a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
--r, --recursive 对子目录以递归模式处理。
--R, --relative 使用相对路径信息。
--b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
--u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
--l, --links 保留软链结。
--L, --copy-links 想对待常规文件一样处理软链结。
--H, --hard-links 保留硬链结。
--I, --ignore-times 不跳过那些有同样的时间和长度的文件。
--p, --perms 保持文件权限。
--o, --owner 保持文件属主信息。
--g, --group 保持文件属组信息。
--D, --devices 保持设备文件信息。
--t, --times 保持文件时间信息。
--S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
--T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
--n, --dry-run 现实哪些文件将被传输。
--w, --whole-file 拷贝文件，不进行增量检测。
--x, --one-file-system 不要跨越文件系统边界。
--B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
--e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
--P 等同于 --partial。
--z, --compress 对备份的文件在传输时进行压缩处理。
--h, --help 显示帮助信息。
---backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
--suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
---copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
---safe-links 忽略指向 SRC 路径目录树以外的链结。
---rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
---existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
---delete 删除那些 DST 中 SRC 没有的文件。
---delete-excluded 同样删除接收端那些被该选项指定排除的文件。
---delete-after 传输结束以后再删除。
---ignore-errors 及时出现 IO 错误也进行删除。
---max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
---partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
---force 强制删除目录，即使不为空。
---numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
---timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
---size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
---modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
---compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
---progress 显示备份过程。
---exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
---include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
---exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
---include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
---version 打印版本信息。
---address 绑定到特定的地址。
---config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
---port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
---blocking-io 对远程 shell 使用阻塞 IO。
--stats 给出某些文件的传输状态。
---progress 在传输时现实传输过程。
---log-format<span class="o">=</span>formAT 指定日志文件格式。
---password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
---bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
-</li>
-<li>
-<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
-</li>
-<li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
-</li>
-<li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

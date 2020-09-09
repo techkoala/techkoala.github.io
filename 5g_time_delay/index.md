@@ -205,7 +205,7 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" caption="下行微时隙调度">}} 
 
-MAC（媒体接入控制）层
+### MAC（媒体接入控制）层
 
 MAC 的作用是多路逻辑信道的复用，HARQ（混合重传），以及调度相关的功能。关于时延的改善的技术在 MAC 层有：异步 HARQ（异步混合重传）
 

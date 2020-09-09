@@ -145,6 +145,7 @@
             <li><a href="#信道编码">信道编码</a></li>
             <li><a href="#更短的传输时间间隔可变的-numerology">更短的传输时间间隔（可变的 Numerology）</a></li>
             <li><a href="#微时隙调度mini-slot">微时隙调度（Mini-slot）</a></li>
+            <li><a href="#mac媒体接入控制层">MAC（媒体接入控制）层</a></li>
             <li><a href="#上行免调度传输-grant-free-transmission">上行免调度传输 （Grant free transmission）</a></li>
             <li><a href="#预清空调度downlink-preemption-scheduling">预清空调度（Downlink preemption Scheduling）</a></li>
             <li><a href="#rlc无线链路控制层">RLC（无线链路控制）层</a></li>
@@ -465,7 +466,7 @@
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" />
     </a><figcaption class="image-caption">下行微时隙调度</figcaption>
     </figure>
-<p>MAC（媒体接入控制）层</p>
+<h3 id="mac媒体接入控制层">MAC（媒体接入控制）层</h3>
 <p>MAC 的作用是多路逻辑信道的复用，HARQ（混合重传），以及调度相关的功能。关于时延的改善的技术在 MAC 层有：异步 HARQ（异步混合重传）</p>
 <p>当无线环境出现问题等原因造成传输的数据出错，在 MAC 层会由 HARQ 功能来发起重新传输流程，在 LTE 中，HARQ 的时间间隔（从收到数据到发送反馈给发送方是否正确接收信息指令）是固定的（FDD，TDD 根据子帧结构变化）。</p>
 <p>而在 5G 中，HARQ 的时间间隔是动态指派的，更加的灵活，也符合低时延的设计要求。</p>
