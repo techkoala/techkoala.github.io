@@ -30,7 +30,7 @@ SCP 的另一个绝佳替选
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/rsync\/"
-        },"genre": "posts","keywords": "Software, Linux","wordcount":  3213 ,
+        },"genre": "posts","keywords": "Software, Linux","wordcount":  3215 ,
         "url": "https:\/\/www.techkoala.top\/rsync\/","datePublished": "2020-08-05T20:58:00+08:00","dateModified": "2020-09-01T22:08:16+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@ SCP 的另一个绝佳替选
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">文件传输系列：rsync</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-05">2020-08-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3213 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-05">2020-08-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3215 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -142,9 +142,14 @@ SCP 的另一个绝佳替选
 <p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
 <p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
 <h2 id="rsync-算法">rsync 算法</h2>
-<blockquote>
-<p>此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
-</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></div>
+        </div>
+    </div>
 <p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
 <h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
 <p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>

@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/migrated_to_vercel\/"
-        },"genre": "posts","keywords": "Vercel","wordcount":  850 ,
+        },"genre": "posts","keywords": "Vercel","wordcount":  854 ,
         "url": "https:\/\/www.techkoala.top\/migrated_to_vercel\/","datePublished": "2020-08-26T16:18:53+08:00","dateModified": "2020-09-02T20:19:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">全站迁移到 Vercel</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/web/"><i class="far fa-folder fa-fw"></i>Web</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-26">2020-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 850 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-26">2020-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 854 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -136,9 +136,14 @@
 <p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
 <h2 id="what">What</h2>
 <p>下面是 <code>Vercel</code> 官网的介绍：</p>
-<blockquote>
-<p>Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</div>
+        </div>
+    </div>
 <p>相比于 <code>Github Pages</code>、<code>Netlify</code> 等，<code>Vercel</code> 拥有<strong>台湾</strong>和<strong>香港</strong>节点，对国内用户更加友好，并且免费套餐足够应付小流量情况了。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-sub-html="<h2>Vercel</h2>">
         <img
@@ -217,9 +222,14 @@
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" />
     </a><figcaption class="image-caption">Cloudflare DNS 配置</figcaption>
     </figure>
-<blockquote>
-<p>这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</p>
-</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</div>
+        </div>
+    </div>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>

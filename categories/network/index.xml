@@ -1221,20 +1221,35 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>因为性能限制。</p>
 <h3 id="https-能保证正常连接">HTTPS 能保证正常连接？</h3>
 <p>不能。</p>
-<blockquote>
-<p>There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</div>
+        </div>
+    </div>
 <p>攻击者甚至可以直接丢弃双方的数据包</p>
 <h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
 <p>通过 <code>Client Certificate</code></p>
-<blockquote>
-<p>This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</div>
+        </div>
+    </div>
 <h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
 <p><code>Closure Alerts</code>：防止 <code>Truncation Attack</code></p>
-<blockquote>
-<p>In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</div>
+        </div>
+    </div>
 <p>Error Alerts：错误处理</p>
 <h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
 <div class="highlight"><div class="chroma">
@@ -1289,9 +1304,14 @@ partitioned as follows:
   server_write_IV [SecurityParameters.fixed_iv_length]
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</p>
-</blockquote>
+</div><div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</div>
+        </div>
+    </div>
 <p>使用 <code>Diffie-Hellman</code> 算法的 <code>TLS</code> 握手细节</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
         
@@ -1447,9 +1467,14 @@ partitioned as follows:
 -C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p><strong>注意：</strong> 从客户端专有选项可以看出，iPerf 默认测试的是从客户端发送到服务端，相对于客户端来说，测试就是上行链路的带宽，对于一般参考意义更大的下行链路需要加上 <code>-R</code> 选项。</p>
-</blockquote>
+</div><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">从客户端专有选项可以看出，iPerf 默认测试的是从客户端发送到服务端，相对于客户端来说，测试就是上行链路的带宽，对于一般参考意义更大的下行链路需要加上 <code>-R</code> 选项。</div>
+        </div>
+    </div>
 <p>常用启用参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1681,7 +1706,14 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看到，这里我们得到一个 <code>com.</code> 的权威 NS<code>a.gtld-servers.net.</code> 及其 IP 地址 <code>192.5.6.30</code></p>
-<p><strong>注</strong>：实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示 <code>DNS</code> 解析进程，我们假设这里没有得到。</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示完整 <code>DNS</code> 解析进程，假设这里我们没有得到。</div>
+        </div>
+    </div>
 </li>
 <li>
 <p>询问该权威 <code>NS</code> 有关 <code>github.com</code> 的 <code>NS</code></p>

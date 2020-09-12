@@ -9,7 +9,9 @@
 
 引用 [Netlify 官网](https://www.netlify.com/)的介绍：
 
-> Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.
+{{< admonition quote >}}
+Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.
+{{< / admonition >}}
 
 也就是说，`Netlify` 是一个提供静态网站托管的服务。它提供 `CI` 服务，能够将托管在 `GitHub`，`GitLab` 等网站上代码生成静态网站进行展示。类似于 `Github Pages`，不过功能更加丰富。
 

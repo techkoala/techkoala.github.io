@@ -45,7 +45,9 @@ $ dig @NS-421.awsdNS-52.com github.com
 
    可以看到，这里我们得到一个 `com.` 的权威 NS`a.gtld-servers.net.` 及其 IP 地址 `192.5.6.30`
 
-   **注**：实际上，99.99% 的情况下，此步我们就将得到 `github.com` 的 A 记录，但为了展示 `DNS` 解析进程，我们假设这里没有得到。
+   {{< admonition warning "注意" >}}
+   实际上，99.99% 的情况下，此步我们就将得到 `github.com` 的 A 记录，但为了展示完整 `DNS` 解析进程，假设这里我们没有得到。
+   {{< / admonition >}}
 
 3. 询问该权威 `NS` 有关 `github.com` 的 `NS`
 

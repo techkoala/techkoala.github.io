@@ -13,7 +13,9 @@
 
 尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。
 
-> 有关 SFTP 详细草案参见 [draft-ietf-secsh-filexfer-02](https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02)
+{{< admonition quote >}}
+有关 SFTP 详细草案参见 [draft-ietf-secsh-filexfer-02](https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02)
+{{< / admonition >}}
 
 ## 使用 SFTP
 

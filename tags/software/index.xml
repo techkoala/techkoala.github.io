@@ -299,9 +299,14 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </blockquote>
 <h2 id="什么是-netlify">什么是 Netlify</h2>
 <p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
-<blockquote>
-<p>Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Netlify is a unified platform that automates your code to create high-performant, easily maintainable sites and web apps.</div>
+        </div>
+    </div>
 <p>也就是说，<code>Netlify</code> 是一个提供静态网站托管的服务。它提供 <code>CI</code> 服务，能够将托管在 <code>GitHub</code>，<code>GitLab</code> 等网站上代码生成静态网站进行展示。类似于 <code>Github Pages</code>，不过功能更加丰富。</p>
 <h2 id="koodo-reader">Koodo Reader</h2>
 <p><code>Koodo Reader</code> 是一个基于 <code>React</code> 和 <code>Electron</code> 开发的 <code>Epub</code> 阅读器。</p>
@@ -505,9 +510,14 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 -C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p><strong>注意：</strong> 从客户端专有选项可以看出，iPerf 默认测试的是从客户端发送到服务端，相对于客户端来说，测试就是上行链路的带宽，对于一般参考意义更大的下行链路需要加上 <code>-R</code> 选项。</p>
-</blockquote>
+</div><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">从客户端专有选项可以看出，iPerf 默认测试的是从客户端发送到服务端，相对于客户端来说，测试就是上行链路的带宽，对于一般参考意义更大的下行链路需要加上 <code>-R</code> 选项。</div>
+        </div>
+    </div>
 <p>常用启用参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -555,9 +565,14 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
 <p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
 <p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
-<blockquote>
-<p>有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></div>
+        </div>
+    </div>
 <h2 id="使用-sftp">使用 SFTP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -615,9 +630,14 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
 <p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
 <h2 id="rsync-算法">rsync 算法</h2>
-<blockquote>
-<p>此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
-</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></div>
+        </div>
+    </div>
 <p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
 <h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
 <p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>

@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/how_https_works\/"
-        },"genre": "posts","keywords": "HTTPS","wordcount":  2882 ,
+        },"genre": "posts","keywords": "HTTPS","wordcount":  2890 ,
         "url": "https:\/\/www.techkoala.top\/how_https_works\/","datePublished": "2020-08-16T21:52:26+08:00","dateModified": "2020-09-02T20:19:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">HTTPS 工作原理</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-16">2020-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2882 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-16">2020-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2890 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -399,20 +399,35 @@
 <p>因为性能限制。</p>
 <h3 id="https-能保证正常连接">HTTPS 能保证正常连接？</h3>
 <p>不能。</p>
-<blockquote>
-<p>There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</div>
+        </div>
+    </div>
 <p>攻击者甚至可以直接丢弃双方的数据包</p>
 <h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
 <p>通过 <code>Client Certificate</code></p>
-<blockquote>
-<p>This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</div>
+        </div>
+    </div>
 <h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
 <p><code>Closure Alerts</code>：防止 <code>Truncation Attack</code></p>
-<blockquote>
-<p>In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</div>
+        </div>
+    </div>
 <p>Error Alerts：错误处理</p>
 <h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
 <div class="highlight"><div class="chroma">
@@ -467,9 +482,14 @@ partitioned as follows:
   server_write_IV [SecurityParameters.fixed_iv_length]
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</p>
-</blockquote>
+</div><div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</div>
+        </div>
+    </div>
 <p>使用 <code>Diffie-Hellman</code> 算法的 <code>TLS</code> 握手细节</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
         <img

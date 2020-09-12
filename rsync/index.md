@@ -15,7 +15,9 @@ rsync 默认监听 `TCP` 端口 873，以原生 rsync 传输协议或者透过`�
 
 ## rsync 算法
 
-> 此部分内容转载 [RSYNC 的核心算法](https://coolshell.cn/articles/7425.html)
+{{< admonition info >}}
+此部分内容转载 [RSYNC 的核心算法](https://coolshell.cn/articles/7425.html)
+{{< / admonition >}}
 
 rsync 的算法如下：（假设源文件名为 `fileSrc`，目的文件叫 `fileDst`）
 

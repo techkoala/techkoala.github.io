@@ -19,9 +19,14 @@
 <p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
 <h2 id="what">What</h2>
 <p>下面是 <code>Vercel</code> 官网的介绍：</p>
-<blockquote>
-<p>Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</p>
-</blockquote>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</div>
+        </div>
+    </div>
 <p>相比于 <code>Github Pages</code>、<code>Netlify</code> 等，<code>Vercel</code> 拥有<strong>台湾</strong>和<strong>香港</strong>节点，对国内用户更加友好，并且免费套餐足够应付小流量情况了。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-sub-html="<h2>Vercel</h2>">
         
@@ -64,9 +69,14 @@
         
     </a><figcaption class="image-caption">Cloudflare DNS 配置</figcaption>
     </figure>
-<blockquote>
-<p>这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</p>
-</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</div>
+        </div>
+    </div>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>

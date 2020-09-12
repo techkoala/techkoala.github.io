@@ -17,7 +17,9 @@
 
 下面是 `Vercel` 官网的介绍：
 
-> Vercel is a cloud platform for **static sites** and **Serverless Functions** that fits perfectly with your workflow. It enables developers to host **Jamstack** websites and web services that **deploy instantly**, **scale automatically**, and requires **no supervision**, all with **no configuration**.
+{{< admonition quote >}}
+Vercel is a cloud platform for **static sites** and **Serverless Functions** that fits perfectly with your workflow. It enables developers to host **Jamstack** websites and web services that **deploy instantly**, **scale automatically**, and requires **no supervision**, all with **no configuration**.
+{{< / admonition >}}
 
 相比于 `Github Pages`、`Netlify` 等，`Vercel` 拥有**台湾**和**香港**节点，对国内用户更加友好，并且免费套餐足够应付小流量情况了。
 
@@ -47,8 +49,9 @@
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" caption="Cloudflare DNS 配置" >}}
 
-> 这里我还添加一个 `A` 记录指向`76.76.21.21`，因为我默认将根域名跳转到`www`。这个根据实际情况决定，但同样记得设置设置`Proxy Status`为`DNS only`。
-
+{{< admonition info >}}
+这里我还添加一个 `A` 记录指向`76.76.21.21`，因为我默认将根域名跳转到`www`。这个根据实际情况决定，但同样记得设置设置`Proxy Status`为`DNS only`。
+{{< / admonition >}}
 ## 参考
 
 - [1] [Introduction to Vercel](https://vercel.com/docs/introduction)

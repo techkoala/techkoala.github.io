@@ -198,7 +198,9 @@ Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Ha
 
 不能。
 
-> There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.
+{{< admonition quote >}}
+There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.
+{{< / admonition >}}
 
 攻击者甚至可以直接丢弃双方的数据包
 
@@ -206,13 +208,17 @@ Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Ha
 
 通过 `Client Certificate`
 
-> This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.
+{{< admonition quote >}}
+This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.
+{{< / admonition >}}
 
 ### Alert protocol 有什么作用？
 
 `Closure Alerts`：防止 `Truncation Attack`
 
-> In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.
+{{< admonition quote >}}
+In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.
+{{< / admonition >}}
 
 Error Alerts：错误处理
 
@@ -247,7 +253,9 @@ partitioned as follows:
   server_write_IV [SecurityParameters.fixed_iv_length]
 ```
 
-> The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key
+{{< admonition quote >}}
+The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key
+{{< / admonition >}}
 
 使用 `Diffie-Hellman` 算法的 `TLS` 握手细节
 

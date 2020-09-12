@@ -3,7 +3,6 @@
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">}}
 
-{{< music server="netease" type="song" id="28793502" autoplay="true">}}
 ### :man_shrugging:我
 
 - 对`网络`知识有浓厚的兴趣
@@ -45,3 +44,4 @@
 
 {{< /admonition >}}
 
+{{< music server="netease" type="song" id="28793502" autoplay="true">}}
