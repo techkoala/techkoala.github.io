@@ -3,6 +3,7 @@
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">}}
 
+{{< music server="netease" type="song" id="28793502" autoplay="true">}}
 ### :man_shrugging:我
 
 - 对`网络`知识有浓厚的兴趣
@@ -20,15 +21,19 @@
 - 网站托管在 [Vercel](https://vercel.com)
 - 套用了 [jsDelivr](https://www.jsdelivr.com/) 的 `CDN`
 
-> 在此，**感谢**各位开发者 & 公司。
+{{< admonition info "致谢">}}
+在此，**感谢**上述开发者 & 公司。
+{{< /admonition >}}
 
 ### 本站的内容授权
+
+{{< admonition note "版权说明" >}}
 
 - 本站点发布内容默认采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）进行许可，即：
 
   - 本授权条款允许您（用户）可以复制、发行、展览、表演、放映、广播或通过信息网络传播本站作品；
 
-  - 您必须以附加本站 URL 的方式对作品进行署名；
+  - 您必须以附加本站 URL (https://www.techkoala.top/) 的方式对作品进行署名；
 
   - 若您改变、转变或更改本作品，仅在遵守与本作品相同的许可条款下，您才能散布由本作品产生的派生作品；
 
@@ -37,4 +42,6 @@
 - 转载作品另行声明，遵守原作者授权协议，所有权利归原作者所有；
 
 - 如果本站内容能帮到你，那是我极大的荣幸；
+
+{{< /admonition >}}
 

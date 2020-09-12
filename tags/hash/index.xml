@@ -104,7 +104,14 @@
 </blockquote>
 <h3 id="第四步块循环">第四步：块循环</h3>
 <p>对输入的每 512 位分为一块，执行以下步骤：</p>
-<p><strong>注：</strong> 在本文的例子中，因为 “hello world” 太短了，所以只有一个块。在循环的每一次迭代中，都将对哈希值 h0-h7 进行变更，最终作为结果输出。</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">在本文的例子中，因为 “hello world” 太短了，所以只有一个块。在循环的每一次迭代中，都将对哈希值 h0-h7 进行变更，最终作为结果输出。</div>
+        </div>
+    </div>
 <h3 id="第五步重组信息数组w">第五步：重组信息数组（w）</h3>
 <ol>
 <li>
@@ -448,12 +455,28 @@
     </a><figcaption class="image-caption">SHA-2 的第 t 个加密循环</figcaption>
     </figure>
 <p>下面这段<strong>伪代码</strong>总结了上面执行的所有步骤：</p>
-<blockquote>
-<p>注 1：所有变量均为 32 位无符号整数，加法以 $ 2^{32} $ 为模</p>
-<p>注 2：对于每一轮，在消息调度数组 w [i]，0≤i≤63 中有一个循环常数 k [i] 和一个条目。</p>
-<p>注 3：压缩函数使用 8 个工作变量，a 到 h。</p>
-<p>注 4：在此伪代码中表示常量时使用大端约定，并且当将消息块数据从字节解析到字时，例如，填充后的输入消息 “abc” 的第一个字是 0x61626380</p>
-</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>几点说明<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>
+<p>所有变量均为 32 位无符号整数，加法以 $ 2^{32} $ 为模</p>
+</li>
+<li>
+<p>对于每一轮，在消息调度数组 w [i]，0≤i≤63 中有一个循环常数 k [i] 和一个条目。</p>
+</li>
+<li>
+<p>压缩函数使用 8 个工作变量，a 到 h。</p>
+</li>
+<li>
+<p>在此伪代码中表示常量时使用大端约定，并且当将消息块数据从字节解析到字时，例如，填充后的输入消息 “abc” 的第一个字是 0x61626380</p>
+</li>
+</ol>
+</div>
+        </div>
+    </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -642,6 +665,14 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
     <description><![CDATA[<blockquote>
 <p>哈希函数入门介绍。</p>
 </blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>一点说明<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">本文中英文和二进制之间的相互转换并<strong>没有遵循任何模式</strong>，请读者不要纠结于这一点。当然，实际中，有很多方法用于将我们熟知的字符（例如中文、英语等）转换为二进制（十六进制），如果感兴趣，可以点击下面的参考中的内容</div>
+        </div>
+    </div>
 <h2 id="哈希函数hash-function用来做什么">哈希函数（Hash Function）用来做什么？</h2>
 <p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，<code>Qvault</code> 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">点击这里</a> 查看哈希函数用于何处。</p>
 <h2 id="重要特性">重要特性</h2>
@@ -687,7 +718,14 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <blockquote>
 <p>iLoveBitcoin→ 100010100000101111</p>
 </blockquote>
-<p><strong>注:</strong> 在这一步中，我们通过各种预定的步骤来转换我们的原始数据。转换方式可以采用各种方式，但重要的是，每当我们使用 LANEHASH 时，都需要使用相同的步骤，以便我们的算法是确定性的。</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">在这一步中，我们通过各种预定的步骤来转换我们的原始数据。转换方式可以采用各种方式，但重要的是，每当我们使用 LANEHASH 时，都需要使用相同的步骤，以便我们的算法是确定性的。</div>
+        </div>
+    </div>
 </li>
 <li>
 <p>将比特前四位从左移到右边</p>
@@ -742,8 +780,6 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </li>
 </ol>
 <p>正如你所看到的，如果在开始时使用相同的单词，则在结束时将始终得到相同的输出。然而，即使你改了一个字母，结果也会发生很大的变化。</p>
-<h2 id="注意">注意</h2>
-<p>本文中英文和二进制之间的相互转换并没有遵循任何模式，请读者不要纠结于这一点。当然，实际中，有很多方法用于将我们熟知的字符（例如中文、英语等）转换为二进制（十六进制），如果感兴趣，可以点击下面的参考中的内容</p>
 <h2 id="总结">总结</h2>
 <p>哈希函数实际上就是按照特定的规则将数据进行一系列转换，最后得到一串键值用来代替/指代原始数据，但是需要注意的是，哈希函数需要满足确定性、定长性、不可逆性。</p>
 <h2 id="参考">参考</h2>

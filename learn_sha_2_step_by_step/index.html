@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/"
-        },"genre": "posts","keywords": "SHA-2, SHA-256, Hash, Translation","wordcount":  2984 ,
+        },"genre": "posts","keywords": "SHA-2, SHA-256, Hash, Translation","wordcount":  2976 ,
         "url": "https:\/\/www.techkoala.top\/learn_sha_2_step_by_step\/","datePublished": "2020-07-28T16:19:03+08:00","dateModified": "2020-08-27T13:53:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">逐步详解 SHA-2 算法（以 SHA-256 为例）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>Algorithm</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-28">2020-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2984 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-28">2020-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2976 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -232,7 +232,14 @@
 </blockquote>
 <h3 id="第四步块循环">第四步：块循环</h3>
 <p>对输入的每 512 位分为一块，执行以下步骤：</p>
-<p><strong>注：</strong> 在本文的例子中，因为 “hello world” 太短了，所以只有一个块。在循环的每一次迭代中，都将对哈希值 h0-h7 进行变更，最终作为结果输出。</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">在本文的例子中，因为 “hello world” 太短了，所以只有一个块。在循环的每一次迭代中，都将对哈希值 h0-h7 进行变更，最终作为结果输出。</div>
+        </div>
+    </div>
 <h3 id="第五步重组信息数组w">第五步：重组信息数组（w）</h3>
 <ol>
 <li>
@@ -582,12 +589,28 @@
     </a><figcaption class="image-caption">SHA-2 的第 t 个加密循环</figcaption>
     </figure>
 <p>下面这段<strong>伪代码</strong>总结了上面执行的所有步骤：</p>
-<blockquote>
-<p>注 1：所有变量均为 32 位无符号整数，加法以 $ 2^{32} $ 为模</p>
-<p>注 2：对于每一轮，在消息调度数组 w [i]，0≤i≤63 中有一个循环常数 k [i] 和一个条目。</p>
-<p>注 3：压缩函数使用 8 个工作变量，a 到 h。</p>
-<p>注 4：在此伪代码中表示常量时使用大端约定，并且当将消息块数据从字节解析到字时，例如，填充后的输入消息 “abc” 的第一个字是 0x61626380</p>
-</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>几点说明<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>
+<p>所有变量均为 32 位无符号整数，加法以 $ 2^{32} $ 为模</p>
+</li>
+<li>
+<p>对于每一轮，在消息调度数组 w [i]，0≤i≤63 中有一个循环常数 k [i] 和一个条目。</p>
+</li>
+<li>
+<p>压缩函数使用 8 个工作变量，a 到 h。</p>
+</li>
+<li>
+<p>在此伪代码中表示常量时使用大端约定，并且当将消息块数据从字节解析到字时，例如，填充后的输入消息 “abc” 的第一个字是 0x61626380</p>
+</li>
+</ol>
+</div>
+        </div>
+    </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1

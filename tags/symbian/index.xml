@@ -17,9 +17,14 @@
 <blockquote>
 <p>聊聊 Symbian 的过去</p>
 </blockquote>
-<blockquote>
-<p>注：这是一篇写于 2013 年的文章，时过境迁，仅表怀念。</p>
-</blockquote>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这是一篇写于 2013 年的文章，文章的观点可能已经过时甚至错误，但时过境迁，仅表怀念。</div>
+        </div>
+    </div>
 <p>   毫不夸张的说，今天我们所拥有的一切，都是建立在它的肩膀上。无论多少人咒骂它的臃肿，嫌弃它的卡顿，都无法改变它作为手机智能操作系统鼻祖的地位。当山寨机还在襁褓中时，当伪智能还在浪费人们的时间时，作为先驱的它便已上路。大多数人接触的第一款真正的智能手机系统，它把软件下载，游戏安装，刷机破解等诸多名词第一次带到了大众视野。它叫 <code>Symbian</code>，也曾辉煌。三十年河东，三十年河西，科技领域本就没有常青树。虽然如今已经沦落，但不妨碍我们一起回味它曾经的辉煌。</p>
 <h3 id="混沌之初symbian-伊始">混沌之初，Symbian 伊始</h3>
 <p>​  Symbian，源自一家充满梦想的公司。</p>
@@ -47,8 +52,13 @@
 <p>   因此，至少在看得见的未来，<code>Symbian</code> 已经没有了未来！</p>
 <h3 id="末了">末了</h3>
 <p>   无论多么强大的文明都有覆灭的一天，帝国如是，企业如是。在暗潮汹涌的科技领域，公司不能推出迎合市场口味，顺应市场变化的产品，迎来的就只有倒闭。在创新与颠覆这条路上，<code>Symbian</code> 不是第一个倒下的，也不会是最后一个。</p>
-<blockquote>
-<p>P.S. 谨以此文献给那些成长路上的人和事，<code>Symbian</code> 没了，坛子没有了，但我们都还在。这些有关我们青春的事逝去也就随他去了，至少我们还有彼此。</p>
-</blockquote>]]></description>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>P.S.</strong> 谨以此文献给那些成长路上的人和事，<code>Symbian</code> 没了，坛子没有了，但我们都还在。这些有关我们青春的事逝去也就随他去了。</div>
+        </div>
+    </div>]]></description>
 </item></channel>
 </rss>
