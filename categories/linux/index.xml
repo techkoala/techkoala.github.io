@@ -4,7 +4,162 @@
         <link>https://www.techkoala.top/categories/linux/</link>
         <description>Linux - 分类 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 13 Sep 2020 22:35:06 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux 系统信息查询</title>
+    <link>https://www.techkoala.top/system_info/</link>
+    <pubDate>Sun, 13 Sep 2020 22:35:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/system_info/</guid>
+    <description><![CDATA[<blockquote>
+<p>记录一些常用的 Linux 系统信息查询命令</p>
+</blockquote>
+<p>日常使用 Linux 过程中，偶尔会需要查询一下系统信息，特别是在对于使用云端主机时，了解必要的信息十分重要。本文总结了一些常用的信息以及相应的查询命令。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>技巧<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">善用 grep 类命令作为配合，高效筛选想要的信息内容。</div>
+        </div>
+    </div>
+<h2 id="系统信息">系统信息</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
+$ head -n <span class="m">1</span> /etc/issue  <span class="c1"># 查看操作系统版本</span>
+$ hostname              <span class="c1"># 查看计算机名</span>
+$ lspci -tv             <span class="c1"># 列出所有 PCI 设备</span>
+$ lsusb -tv             <span class="c1"># 列出所有 USB 设备</span>
+$ lsmod                 <span class="c1"># 列出加载的内核模块</span>
+$ env                   <span class="c1"># 查看环境变量</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="系统资源">系统资源</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
+$ lscpu                         <span class="c1"># 查看 CPU 信息</span>
+$ lshw -short                   <span class="c1"># 当前服务器 CPU、内存、磁盘等详细信息</span>
+$ free -m                       <span class="c1"># 查看内存使用量和交换区使用量</span>
+$ df -h                         <span class="c1"># 查看各分区使用情况</span>
+$ du -sh                        <span class="c1"># 查看指定目录的大小</span>
+$ grep MemTotal /proc/meminfo   <span class="c1"># 查看内存总量</span>
+$ grep MemFree /proc/meminfo    <span class="c1"># 查看空闲内存量</span>
+$ uptime                        <span class="c1"># 查看系统运行时间、用户数、负载</span>
+$ cat /proc/loadavg             <span class="c1"># 查看系统负载</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="磁盘和分区">磁盘和分区</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
+$ fdisk -l                  <span class="c1"># 查看所有分区</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="网络信息">网络信息</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
+$ iptables -L           <span class="c1"># 查看防火墙设置</span>
+$ route -n              <span class="c1"># 查看路由表</span>
+$ netstat -lntp         <span class="c1"># 查看所有监听端口</span>
+$ netstat -antp         <span class="c1"># 查看所有已经建立的连接</span>
+$ netstat -s            <span class="c1"># 查看网络统计信息</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="进程查询">进程查询</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -ef            <span class="c1"># 查看所有进程</span>
+$ top               <span class="c1"># 实时显示进程状态</span>
+$ htop              <span class="c1"># 实时显示进程状态，加强版 top</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用户信息">用户信息</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ w                             <span class="c1"># 查看活动用户</span>
+$ id &lt;用户名&gt;                    <span class="c1"># 查看指定用户信息</span>
+$ last                          <span class="c1"># 查看用户登录日志</span>
+$ cut -d: -f1 /etc/passwd       <span class="c1"># 查看系统所有用户</span>
+$ cut -d: -f1 /etc/group        <span class="c1"># 查看系统所有组</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="服务">服务</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
+$ chkconfig –list               <span class="c1"># 列出所有系统服务</span>
+$ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列出所有启动的系统服务</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="软件信息">软件信息</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
+$ pacman -Qmeq                  <span class="c1"># 显示 aur 软件</span>
+$ pacman -Qneq                  <span class="c1"># 显示 pacman 安装的软件</span>
+$ pactree package_name          <span class="c1"># 显示软件的依赖树</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
     <title>Linux 安全分析与加固</title>
     <link>https://www.techkoala.top/linux_security/</link>
     <pubDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</pubDate>
