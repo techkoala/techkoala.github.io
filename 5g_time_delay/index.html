@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/5g_time_delay\/"
-        },"genre": "posts","keywords": "5G","wordcount":  9113 ,
+        },"genre": "posts","keywords": "5G","wordcount":  9100 ,
         "url": "https:\/\/www.techkoala.top\/5g_time_delay\/","datePublished": "2019-08-12T23:14:44+08:00","dateModified": "2020-09-09T16:38:29+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -107,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">5G NR 系列：如何做到空口 &lt;1ms 的延迟</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-08-12">2019-08-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9113 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-08-12">2019-08-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9100 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 19 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -208,7 +208,7 @@
 <h2 id="4g-网络延迟">4G 网络延迟</h2>
 <p>4G 网络（注：本文中提到的 4G 特指 LTE 网络）是从 2004 年开始标准化，2009 年开始商用网络部署，到现在已经历经了 10 余年的时间，是最成功的无线网络之一，已经在全球范围内广泛部署。</p>
 <p>最初的 4G 网络主要关注的业务和应用是 MBB（Mobile broad band）移动带宽业务，通俗的讲就是提供更大的网络容量，更快的上网速度。从最初的 3GPP release8 到 release13 一直是沿着这条路走，标准定义的峰值速率从 300Mbps 到 25Gbps（载波聚合，MIMO，高阶调制方式）。当我们在速率更快这条路走得越来越远，才发现无线网络的时延水平也需要改善，时延还会从侧面影响下载的速率，谨慎的评估了 LTE 的无线网络的现状，空中接口的时间延迟是未来标准化组织重点关注的研究对象。</p>
-<p><strong>而在当时，LTE 网络的延迟状况是接近于～20ms 的双向时延。（理论延迟时间，实际根据无线环境情况一般会更长）</strong></p>
+<p><strong>而在当时，LTE 网络的延迟状况是接近于～ 20ms 的双向时延。（理论延迟时间，实际根据无线环境情况一般会更长）</strong></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" data-sub-html="<h2>LTE 网络空中接口上下行时延基线</h2>">
         <img
             class="lazyload"
@@ -284,7 +284,7 @@
 <p>似乎探索有了方向&hellip;</p>
 <p>光阴如梭，整整一年后，2016 年 3 月初，瑞典哥德堡，3GPP RAN 71 次会议，关于真正网络延迟减少工作立项了（<a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreffer">RP-160667 L2 latency reduction techniques for LTE</a>），此次工作项目的立项标志着网络延迟减少工作的正式开启。所要着手解决的主要集中在改善上行的网络延迟，而解决问题的思想是和预调度类似的 <strong>半静态调度</strong>，提前为终端周期性的分配好相关的无线资源，用户在需要传送上行数据的时候直接使用已经预先分配好的资源，无需再进行资源请求流程。而在这个版本中引入了更短的半静态调度周期，低至一毫秒，从而能进一步改善时间延迟。</p>
 <p>同时针对预调度中分配了无线资源终端就得发送数据的问题（造成网络干扰和电量消耗），通过 Release 14 标准的改善，使用户即使分配了无线资源，也可以不发送填充数据。</p>
-<p>至此，上行的网络传输延迟大大减少。根据仿真的结果，<strong>LTE 空中接口双向传输时延降至～8ms</strong></p>
+<p>至此，上行的网络传输延迟大大减少。根据仿真的结果，<strong>LTE 空中接口双向传输时延降至～ 8ms</strong></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-sub-html="<h2>更短的半静态调度周期</h2>">
         <img
             class="lazyload"
@@ -305,7 +305,7 @@
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" />
     </a><figcaption class="image-caption">上行不用发送 Padding 数据</figcaption>
     </figure>
-<p><strong>手机的能耗也下降了～10%</strong></p>
+<p><strong>手机的能耗也下降了～ 10%</strong></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" data-sub-html="<h2>时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)</h2>">
         <img
             class="lazyload"
@@ -316,7 +316,7 @@
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" />
     </a><figcaption class="image-caption">时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)</figcaption>
     </figure>
-<p><strong>同时网络时延的改善也从侧面提升了终端的速率～30%-40%</strong></p>
+<p><strong>同时网络时延的改善也从侧面提升了终端的速率～ 30%-40%</strong></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" data-sub-html="<h2>时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)</h2>">
         <img
             class="lazyload"
@@ -592,7 +592,7 @@
 <p>[15] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreffer">3GPP TS38.824 Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a></p>
 </li>
 <li>
-<p>[16] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreffer">3GPP TR38.825  Study on NR industrial Internet of Things (IoT)</a></p>
+<p>[16] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreffer">3GPP TR38.825 Study on NR industrial Internet of Things (IoT)</a></p>
 </li>
 <li>
 <p>[17] <a href="https://www.ericsson.com/assets/local/publications/ericsson-technology-review/docs/2019/etr-magazine-2019-01.pdf" target="_blank" rel="noopener noreffer">Boosting smart manufacturing with 5G wireless connectivity</a></p>

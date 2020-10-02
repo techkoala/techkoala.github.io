@@ -4,7 +4,136 @@
         <link>https://www.techkoala.top/categories/wirelesscommunication/</link>
         <description>WirelessCommunication - 分类 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+    <title>5G 将是一个彻底的失败</title>
+    <link>https://www.techkoala.top/5g_will_be_a_complete_failure/</link>
+    <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
+    <description><![CDATA[<blockquote>
+<p>为什么说 5G 将是一个彻底的失败？</p>
+</blockquote>
+<blockquote>
+<p>注：本文系全文转载，原文信息如下：</p>
+<p>作者：杨学志</p>
+<p>链接：https://www.txrjy.com/thread-1061715-1-1.html</p>
+<p>来源：通信人家园</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>无线通信产业已经发展了四代，目前正处于 5G 产业化前夕，是当下到一个最热的话题，5G 如何发展，前景如何，是各个方面包括学术界、产业界、投资界以及政府都非常关心的。另外，中国已经启动 6G 研究的消息也见诸报端，未来无线通信产业如何发展，是不是会继续有 6、7、8、9G，也引起了大家的关切。为了回答这些问题，我们首先简单地回顾一下无线通信产业发展的历史。</p>
+<p>无线通信产业是由需求和技术两个轮子驱动前进的。早在 1947 年，贝尔实验室的科学家就提出了蜂窝通信的概念，其中的核心技术是频率复用和切换。基于这一概念，贝尔实验室于 1978 年研制出先进移动电话系统（Advanced Mobile Phone Service，AMPS），这就是第一代移动通信系统。AMPS 是一个模拟通信系统，采用频分多址（FDMA）的复用技术，主要技术手段是滤波器，容易受噪声的干扰，语音质量较差。</p>
+<p>随着集成电路技术的发展，第二代移动通信系统采用了数字技术，并采用 TDMA 和信道编码技术，使得通信系统向宽带化发展，语音质量得到了较大的改善。 其中欧洲制定的 <code>GSM</code> 系统非常成功，至今仍在广泛使用。</p>
+<p>20 世纪 90 年代互联网蓬勃发展，顺应这一时代要求，产业界制订了 3G 标准用以实现移动互联网。3G 采用了高通公司开发的 <code>CDMA</code> 技术。<code>CDMA</code> 一度被认为是一个神奇的技术，高通公司宣称 <code>CDMA</code> 的频谱效率可以达到 AMPS 的 18 倍，但是实践表明这个观点太过于浮夸了，<code>CDMA</code> 存在自干扰问题，其频谱效率只比 <code>GSM</code> 高 10%左右，并且 3G 的主流标准 W<code>CDMA</code> 的系统设计过于复杂，导致部署成本比较高，所以一直无法替代 <code>GSM</code> 系统。</p>
+<p>第四代移动通信采用了 <code>OFDM</code> 技术，从根本上克服了 <code>CDMA</code> 的技术缺陷，并且简化了系统设计，成就了一代成功的移动通信系统。<code>OFDM</code> 如何克服 <code>CDMA</code> 的缺陷，具体可以参考我的《通信之道-从微积分到 5G》。</p>
+<p>如果我们稍微总结一下，可以发现，1G 发掘出了移动通信的巨大需求，但是采用了比较落后的技术体制，因此长不大。2G 进行了数字化革命，从而获得巨大成功。3G 是为了新出现的移动互联网需求而诞生，但是在技术上走了弯路，全球的 3G 业务都不是太成功；而 4G 回归了正确的技术路线，目前 4G 业务蓬勃发展。</p>
+<p>随着 4G 的成功商用，按照无线通信十年一代的发展规律，产业界开始了 5G 的研发。按照业界目前的一般口径，5G 在 2020 年左右开始规模商用。中国政府已经为 5G 分配了 500MHz 的频谱，三大运营商也已经在多个城市开展了商用实验，商用前的准备工作正在紧锣密鼓地进行。 很多人认为 5G 牌照会在年内（2019）发放。
+对于 5G 的讨论，也要从技术和需求两条线来讨论。</p>
+<h2 id="无线通信技术体制">无线通信技术体制</h2>
+<p>无线通信产业基本上可以用“端管云”三个字进行概括。 端就是终端，包括电脑， PAD，手机等。云就是存储在网络上的内容，如新浪、百度、淘宝的数据中心，而管就是连接终端和云之间的这条通道。</p>
+<h3 id="端管云">端管云</h3>
+<p>这条管道可以分为两段。一段是终端到基站（或者路由器），这段是无线通信，也叫空中接口；另一段是基站到云，是有线通信。 云都是挂在因特网上的，因此因特网是这条管道当中必经之路。 移动通信有核心网，基站首先挂在核心网上，再连接到因特网。核心网主要是起运营支撑作用，比如身份的识别，计费等等。 而另一个体系是大家都熟悉的 <code>WiFi</code>，没有核心网，路由器是直接戳到因特网的。 这就构成了两大生态体系，也就是传说中的 CT 和 IT，它们之间的合作与竞争将贯穿无线通信产业的走向。</p>
+<p>在无线通信产业当中，空中接口这一段的产值，包括终端和基站，占绝大部分。如果做一个类比，通信网络可以类比人体的循环系统或这神经系统。 骨干网的部分可以类比中枢神经或者主动脉，虽然容量很大，但是只有几条。骨干网络的销售额不大，但是占据战略制高点；而空中接口部分相当于神经末梢或者毛细血管，数量庞大，占据无线通信产业的主要市场份额。</p>
+<p>有线网络现在都光纤化了。光纤的发明是基于高锟的理论，他因此获得诺贝尔奖。 光纤的容量大，成本低，彻底改变了人类通信的面貌。最早的光纤线路的速率只有 45Mbps，后来以令人乍舌的速度发展，目前一根光纤已经可以达到 1Tbps。 而光纤要比同等长度面条便宜，这是真正的高科技。 早期光纤只用于骨干线路（比如北京和上海之间），随着成本的降低，目前光纤已经入户了。 由于光纤的存在，有线网络的主要工作在于怎么组织和利用光纤的容量，如 IPV6，SDN 等等，基本上是逻辑性的工作，总体来说是比较简单的。</p>
+<p>空中接口部分就比有线网困难多了。在有线通信当中，信号在一个精心制造的介质里面传播，无论是铜线还是光纤，信号质量非常好，随便搞搞就能达到很高的速率。 而无线信号的传播环境就恶劣得多得多。 无线电波在传播过程中衰减很快，还受到建筑物、山体、树木的阻挡，很多时候需要经过反射或者穿透障碍物才能达到接收机。 并且，无线电波不是规规矩矩地沿着规定的路线走，会走到不希望的地方，造成对他人的干扰。 但是无线通信有一个好处，就是摆脱了线的束缚，可以拿着手机随便走，这种便利性是有线通信所无法比拟的。 所以尽管挑战很大，无数的研究者前仆后继，攻克无线通信当中的道道难关。</p>
+<h3 id="网络分层协议">网络分层协议</h3>
+<p>刚才说的这些事，背后是网络的分层结构。比如上图就是一个网络的 7 层协议模型，非专业的读者不必深究，只需要知道网络是分层工作的就好了。 最底下的一层叫物理层，其他的可以和合并起来叫高层。 物理层是处理物理信号的，比如电或者是光，就是如何把信息转换成可以用来传输的电信号或者光信号。 物理层解决的是通信能力的问题，或者是带宽的问题。有了这么多的带宽之后，怎么组织和利用是高层要做的事。</p>
+<p>这个和邮政系统非常类似。 物理层相当于运送信件或者包裹的方式，可以是马车，汽车、轮船、飞机，这提供了运送的能力。但是寄信的时候，我们要在信封上写通信地址，要跑到邮局交给柜台，后然分拣打包装车，到了目的地后要有邮递员送到收信地址，这些都是高层做的事情。</p>
+<p>所以大家能看出来，通信网络的核心技术在物理层。当然高层也必不可少，但相对来说可以变化的空间不大。 如果说我们的邮政系统比以前先进，主要不是体现在邮局的布置上，而是运输方式的改进，以前是马车，现在改飞机了。虽说邮局也进步了，比如装了玻璃柜台，或者信件实现了机器分拣， 但不是主要的因素。</p>
+<p>光纤是现代通信网络的最重要的基石，就是物理层技术。高层技术当中大家最熟悉的是 IP 协议。IPV4 获得广泛应用后，虽说存在一些问题，试图通过 IPV6 去解决。但是 IPV6 经过二三十年也没有取代 IPV4，就是因为高层技术相对简单，改进的空间不大。</p>
+<h2 id="无线通信技术演进">无线通信技术演进</h2>
+<p>同样，空中接口的核心技术也在物理层，每一代移动通信是由这些核心技术所定义的。这些核心技术，也就是《通信原理》课程里面的知识。</p>
+<h3 id="3g-核心技术">3G 核心技术</h3>
+<p>空中接口的核心技术可以分为 5 个大类，分别是调制、编码、多址、组网和多天线。 比核心技术更基础的是基础理论，包括电磁理论和信息论。 如上图所示。</p>
+<p>大家都知道，高通公司开发了 <code>CDMA</code> 技术，并且成为 3G 三大标准（ W<code>CDMA</code>，<code>CDMA</code>2000 和 TD-S<code>CDMA</code>）的核心技术，从而一跃成为芯片业巨头。 上图所示的是 W<code>CDMA</code> 的核心技术。高通的贡献主要在多址和组网两个领域。</p>
+<p>虽然普遍认为高通开发了 <code>CDMA</code> 技术，但是 <code>CDMA</code> 并不是高通发明的，发明人是好莱坞艳星海蒂.拉玛。<code>CDMA</code> 技术的标准接收机叫 Rake 接收机，也于 1950 年代由贝尔实验室发明。 实际上由于当时普遍认为 <code>CDMA</code> 的保密性好，一直应用于军事通信。 而高通解决的是 <code>CDMA</code> 的民用问题，这在当时是普遍不被看好的。</p>
+<p>高通解决 <code>CDMA</code> 民用有三招，分别是功率控制（Power Ctrl）、同频复用（UFR）和软切换。 功率控制解决远近效应，同频复用提升频谱效率，软切换解决切换连续性。 这构成了高通 <code>CDMA</code> 的技术体系。 这里只简要介绍一下，技术人员可以参考我的书《通信之道》。因为 UFR 并不是专利，所以高通其实在 <code>CDMA</code> 上就两个核心专利，其中软切换专利获得美国专利局的授权还载入了高通发展史。</p>
+<p>3G 在编码领域的主要进展是采用了 <code>Turbo</code> 码，这是法国电信所资助的教授发明的，是通信发展史上的里程碑，因为它首次充分逼近了香农在 1948 年所提出的信道容量。</p>
+<p>在多天线领域，Alamouti 编码应用到了广播信道多编码。因为广播信道在整个业务当中的比重并不大，所以这个编码的作用相对重要性低一些。但是这个编码是多天线技术领域的里程碑，有非常大的影响力。</p>
+<p>调制是最基础的通信技术，没有之一。因为基础，所以稳定，一直到现在的 5G 都没有太大的变化。</p>
+<p>可以看出，高通在 3G 的多址和组网两个方面拥有核心技术。当然，在把核心技术工程化的过程当中也建立起由几千个专利组成的专利组合。 凭着这些专利和芯片的联合运作，收取了大量的高通税。</p>
+<p>其实从现在的眼光看，<code>Turbo</code> 码和 Alamouti 码是更重要的核心技术。但这两个核心技术在法国电信和 ATT 这样的大公司里面，没有进行商业化运作的机制，只是收了一些专利费，没有形成象高通这么大的商业。</p>
+<h3 id="4g-核心技术">4G 核心技术</h3>
+<p>到了 4G 之后，<code>CDMA</code> 技术被 <code>OFDM</code> 技术所取代。主要的原因是 <code>CDMA</code> 存在自干扰的问题。高通的功率控制和软切换试图去解决这个问题，但采取的方法是在 <code>CDMA</code> 缺陷的基础上进行补救，但是怎么补也补不彻底。</p>
+<p>而 <code>OFDM</code> 从根本上克服了 <code>CDMA</code> 自干扰的缺陷，使得频谱效率得到了很大的提高，那这些补救措施也就没必要了。 所以在 4G 时代，高通的技术体系被摧毁了。 采用 <code>OFDM</code> 技术带来了新的问题，解决这些问题导致了三个创新的出现，这就是我在华为提出的 s<code>OFDM</code> 和软频率复用（SFR）以及爱立信提出的 SC-FDMA 技术。 我在华为还提出了随机波束赋形（random beam forming）技术，解决了非常火热的循环延时分集（Cyclic Delay Diversity）的严重缺陷。 在调制和编码领域仍然采用了 3G 的方案。</p>
+<p>可以看出，华为在 4G 的核心技术上已经取代了高通。 但是很可惜，由于华为公司的跟随基因，无法发挥手上的专利核武的威力，还要向高通交钱，也只是向苹果收了点小钱。 但是华为因此避免了专利核武打击，加上华为在产品上的优势，所以华为日子过得很好，在 4G 时代成为第一大设备制造商。</p>
+<h3 id="5g-核心技术">5G 核心技术</h3>
+<p>5G 标准已经制定完成了，盖棺定论后已经可以看得很清楚了。</p>
+<p>首先调制这块还是没有变，太基础了，想变也变不动。</p>
+<p>因为联想投票门的事情，编码这块的故事很多人都知道。相比于 3G/4G 采用的 <code>Turbo</code> 码，5G 采用了 <code>LDPC</code> 和 <code>Polar</code> 码。 这两个码都是鼎鼎大名，是 <code>Turbo</code> 码之后通信技术发展的里程碑性的技术。 但是由于 <code>Turbo</code> 码已经比较接近香农限，虽然这两个码更接近，但是对系统容量的提升已经不大，大概是 1 ～ 2%左右。</p>
+<p>多址这块，对于 5G 三大场景之一的 <code>eMBB</code> 这块没有变，还是采用了 <code>OFDM</code>。其中爱立信提出的 SC-FDMA 从 4G 的必选项变成了可选项，这是因为它相对于 <code>OFDM</code>A 并没有什么技术优势。</p>
+<p>多址这块 <code>NOMA</code> 有很大的热度，一度被公认为 5G 的必选技术。5G 标准的早期，几乎所有的厂家都支持这个方向。 但是经过我的论证，<code>NOMA</code> 比 <code>OFDM</code> 的增益严格为零，这是用信息论严格证明的。 所以 <code>NOMA</code> 既复杂又没增益，属于技术退步。</p>
+<p>另外华为还推了 <code>F-OFDM</code>，与 <code>sOFDM</code> 正好相反。<code>sOFDM</code> 的思想是所有的带宽所有的环境都用统一的参数，从而获得规模经济效应。<code>F-OFDM</code> 强调对不同的环境采用不同参数从而更好的适应环境。 这种做法并没有什么增益，反而丢失了规模效应这个大西瓜，也属于技术退步。</p>
+<p>组网方面没有听到什么消息，工作假设应该还是同频复用。<code>SFR</code> 和 <code>CoMP</code> 都是组网方案。<code>SFR</code> 非常简单，不需要标准化。<code>CoMP</code> 虽然一度被认为是更先进的技术，但经历了轰轰烈烈的标准工作和产品开发之后，已经是失败了。</p>
+<p>多天线这块最响亮的就是 <code>massive MIMO</code>，号称可以成百倍地提升系统容量，从媒体上看几乎可以是 5G 的代名词。 <code>MIMO</code> 这个理论 1995 年提出，已经 23 年了。它所揭示的对容量的巨大提升致使它一直是学界和工业界的热点。 但是这个技术一直到 4G 都不是很成功。这个技术有个特点，一演示就成功，一实用就趴窝。 记得 20 年前我还是小白的时候，在电信展上就看到厂家演示空分复用，用相同的时频资源实现两个用户的同时通信，还互不干扰。 在一个选择的场景下 <code>MIMO</code> 技术是很容易演示成功的，但是在复杂的实际环境中所涉及的问题的难度，是两个数量级的差别。当然 <code>MIMO</code> 是一个有潜力的领域，但是其实用化问题仍然没有解决。</p>
+<p><code>MIMO</code> 的问题还在于，虽然能够提高容量，但是要增加设备，有成本的。 其实 <code>MIMO</code> 最朴素的应用就是古老的三扇区天线，一个全向小区分割成三个扇区，容量在理论上增加了三倍，这就是 <code>MIMO</code> 的原理，虽然说是古板了一点。 所以粗暴一点，搞个 9 扇区，12 扇区，也就是 m<code>MIMO</code> 了，这个华为已经有产品了。 这和是不是 5G 没关系。</p>
+<p>综合来看，5G 相对于 4G 来说，几乎没有技术进步，在一些地方还退步了。 比如说 <code>NOMA</code>，F-<code>OFDM</code>，还有为了保证短时延而采用的自包含结构。</p>
+<p>还有，5G 采用了更高的频谱。在中国是 3.5GHz，还好一点。美国用了 28GHz。频率越高覆盖越小，这是无线通信的基本知识。所以同样的网络覆盖， 比起 4G 的 2.6GHz，3.5GHz 的投资要高出 50%（我也是看来的，看起来合理），而 28GHz 实现覆盖就是开玩笑了，花 5 倍的银子也是正常的。
+所以从技术角度看，5G 比 4G 没有进步，成本会更高。</p>
+<h2 id="5g-需求">5G 需求</h2>
+<p>5G 的需求，大概可以用高速率、低延迟、大连接来概括。</p>
+<p>大家知道，4G 设计当初的速率目标是 100Mbps，随着技术的演进，4G Cat 11 的速率已经达到 600Mbps。5G 进一步把速率目标提高到 1Gbps 以上。为了满足一些低延迟业务的需求，5G 要求空中接口的延迟时间为 1ms，而 4G 的这一指标为 30ms 左右。4G 主要是为移动互联网设计的，强调的是人与网络之间的高速连接，而同时连接到网络的终端的数量并不是一个需要特别考虑的问题。而在蓬勃发展的物联网时代，每一件物体都有可能有联网要求，因此连接数量会有数量级的增加，5G 需要具有支持海量连接的能力。</p>
+<p>5G 最抓眼球的就是它的速率。 看新闻经常是比光纤还快，一秒下一个大片，快到把人脸吹成骷髅，等等。
+但是有什么样的业务需要这样的速率呢？</p>
+<p>虽然暂时想不出，但是有一个非常流行的观点是，先修好路，自然会有车。3G、4G 都是这样，微博、微信、抖音什么的，以前根本就想不到。等 4G 来了之后，这些应用也就有了。</p>
+<p>很显然，这个观点首先在逻辑上就有很大的问题。 修好了路没有车也很正常啊，你就没见过没人走的路吗？ 按照 3G、4G 的情况去推断 5G，这个也不靠谱。就像你已经活了 80 岁，不能按此推断你还能再活 80 岁。2G 和 3G 都处于带宽短缺的时代，所以形成了修好路必有车的错觉。然而到了 4G 之后，带宽已经不再短缺了。</p>
+<p>还有一个流行的观点是，科技发展往往超出人的想象力，所以保守的预测往往是错误的。 比如比尔盖茨当年说，计算机 640k 内存应该是够了。 而现在已经是 640G 了，6 个数量级的增长。</p>
+<p>必须认识到，通信和计算机有很大的不同。</p>
+<p>计算机所涉及的所有零部件，<code>CPU</code>，内存，硬盘，都有一个共同的源泉就是半导体工艺。 半导体集成度在近十年提高了 1000 倍，大家共同水涨船高。但是通信不一样。 通信需要一个受体，以目前最广泛的 <code>eMBB</code> 为例，这个受体就是人。 人是肉长的而不是沙子做的，它能够处理的最大信息速率，也就是带宽，是固定的，超过了人的带宽是没有意义的。</p>
+<p>通俗一点说，我在 <code>PAD</code> 上看片，我一般看缺省的高清格式，尽管有超清格式，我一般不会主动选择。为啥？ 因为我的老花眼看不出二者的区别。当然眼睛好的人还是应该能分出来的。 高清视频也就是 1 ～ 2Mbps 的速率，目前的 <code>WiFi</code>，4G 都远远地超出了我的需求。</p>
+<p>当然，有人会反对。比如目前 4K/8K 视频很火热，有朋友跟我说，看了 4K 视频之后，其他的都没法看了。 我天天看高清格式视频，倒是没这种感觉了。 当然对于 60 寸的大电视，提高分辨率还是有必要的。但是电影院的屏幕，目前还只是 2K， 我认为 4K/8K 更多的是心理上的。 用户挑电视的时候会靠在跟前看屏幕上的一小块区域，一个像素一个像素地检查，4K/8K 当然要好。如果在正常观看距离上，比如 2 米，4K 和 2K 会有明显区别吗？ 我没试验过啊，有兴趣的朋友可以做一下双盲实验。</p>
+<p>即使是 4K 视频，速率也只有 30Mbps，4G 支持也不费力啊，怎么会有 1Gbps 的需求呢？ 这就要说到虚拟现实 <code>VR</code> 了。 <code>VR</code> 要求有沉浸式的体验。啥叫沉浸式？ 在真实的场景当中，如果我们慢慢地转头，看到的景物也就连续地变化，这就是沉浸的意思。VR 要实现这种效果，不光要传给你正在看的东西，没看的东西也要传给你，转头的时候要现传新视角上的数据来不及，会出现卡顿，就不是沉浸式体验了。这样一来，数据量再增加 30 倍，差不多就到 1G 了。5G 的 1G 速率的需求就是这么来的。</p>
+<p><code>VR</code> 作为一种创新的视频形式，相信能够获得一定的应用。VR 的麻烦在于需要一个专门的头盔，哪怕是手机盒做的简易型的，都是不方便携带的。这么一来 <code>VR</code> 一般发生在室内，而且一般是专门用途的场景，比如房地产或者旅游景点的体验店什么的。 这些业务一般不会走移动通信，更多的是 <code>WiFi</code> 或者专线。</p>
+<p>总是有很多朋友寄希望于未来可能出现的未知业务。 虽然具体的业务会层出不穷，我们确实无法预测，但是只要最终的受体是人，人感受信息的通道就是眼睛和耳朵，鼻子舌头皮肤还都用不上，人类进化出新的感觉器官最少也得是 100 万年以后的事情。人眼的带宽就确定了通信的最大速率，这是一个物理瓶颈，不管什么应用出现都是无法突破的。</p>
+<p>从现实的情况看，<code>WiFi</code> 的速率总是领先移动网的，即使 <code>WiFi</code> 已经提供给我们 100M 的带宽了，但是我门最多应用的速率还是 1 ～ 2M，超出 10M 以上的应用非常少，也只有下载软件的时候有时会达到。所以其实 4G 的速率已经超出需求了，5G 的高速率完全是没必要的。</p>
+<p>人的感官能力对时延同样是一个决定因素。</p>
+<p>时延当然越短越好，没有人会不喜欢短时延，但是信息论的基本原理决定了短时延会造成高成本。信道编码依靠的是大数定律实现可靠通信，要达到信道容量，理论上需要无穷的时延。因此这个固有原理因素就决定了时延不能非常短。这里就不说其他的处理时延、排队时延和反馈时延了。非要实现低时延也有方法，就是把效率降低，用很高的信噪比去实现很低的速率。这个成本就太高了。 任总一直在说，大速率、低时延的通信技术还没有实现。其实根本就不存在这样的技术。</p>
+<p>要知道人的感官时延大概是 100 毫秒左右，所以 4G 几十毫秒的时延是比较合适的，1ms 的时延对人没有意义。所以，只要有人参与的应用，就不需要低时延。比如常用的微博微信，甚至是很多人认为需要低时延的手机游戏，在 <code>WiFi</code> 上不都玩得挺好吗。</p>
+<p>自动驾驶是被广泛误解为需要低时延的应用。你可以经常看到有文章说，低时延使得刹车距离更短，从而更安全。 但是这要基于一个假设，就是刹车指令是通过 5G 网络从远程控制中心传送给汽车的。 显然实际的解决方案不是这样。 象刹车这种对时延和可靠性要求都非常高的指令，只能由车在本地产生，采用尽量短的回路。依靠网络传输的，是路线规划和路况信息这样的对可靠性和时延没有特殊要求的信息。Google 汽车已经跑了几百万公里了，并不需要一个低时延的网络。甚至没有网络的时候，汽车也应该能跑，这是起码的要求。</p>
+<p>基于同样的原因，象无人工厂这些工业应用也无法通过 5G 网络实现。5G 是一个公共网络，对经济性的要求决定了它无法达到工业级的可靠性。不是说技术上做不到工业级的可靠性，而是能做到也不做，太贵了公众用不起。所有的工业应用必须用专线。 远程手术也是同样的道理。</p>
+<p>对于这个话题，你经常会看到一个很高大上的技术叫“网络切片”，意思是在 5G 网络上切出一个高可靠性的通道出来，用来满足工业应用。 但是这实际是不可能做到的。 一个系统的可靠性取决于最薄弱的一环。如果 5G 网络采用统一的硬件设施，如果不想多花钱，就已经决定了这是一个民用级别的可靠性，是不可能在软件上做点工作使之达到工业级的可靠性。 就像特朗普车队，要清道、设岗，要有探路车、开道车、救护车、通信车、陆军一号这些硬东西，要花大把的银子。单靠在大街上挂几个标志是无法保证总统安全的。</p>
+<p>虽然低时延高可靠性（uRLLC）是 5G 定义的三大场景之一，但是这与 5G 作为一个公共网络的基本特征相矛盾，是绝无可能实现的。</p>
+<p>刚才所说的自动驾驶和无人工厂，属于物联网的例子。 接下来我们聊聊普遍意义的物联网。</p>
+<p>有句非常有名的话，叫做“4G 改变生活，5G 改变社会”，说的就是物联网。5G 使我们的社会从互联网发展到万物互联的社会。</p>
+<p>虽然普遍认为目前处于物联网爆发的前夕，但是有个问题，物联网未必是移动通信的菜。</p>
+<p>移动通信是怎么来的呢？ 起初就是人要打电话，要到处跑，不光在本地跑，还要出差，还要出国。这个特点要求移动需要统一标准，全球统一。所以要有个叫 3GPP 的组织，几百个公司的人一起制定这个标准，扯来扯去效率是很低的。还要搞个核心网去支持运营，运营商还要养着一大票的运维人员，这些特点就决定了移动通信会比较贵。</p>
+<p>所以说，除非移动，不然没有必要用移动通信。 这样移动通信的客户群就很明确，一是人，二是车，另外还有野生动物。所以 eMBB，车联网，野外科学考察等等，是移动通信的正经业务。</p>
+<p>但是大多数东西是不动的。 在 <code>WiFi</code> 已经普及的情况下，很大的一块业务会被 <code>WiFi</code> 分流，比如智能家居。 并且 <code>eMBB</code> 是 2C 的，而物联网多数是 2B 的，象油田，电力公司这些大企业更倾向于自建网络，就不用向运营商交月租了。以 NB-IoT 为例，一个链接每年 20 块的资费对很多应用是很大的一个负担。 这就有了象 Lora 这样的系统的生存空间，成本比 5G 低得多。</p>
+<p>所以，从 5G 的三大需求看，高速率和低时延的需求都是不存在的，物联网只有小部分落入 5G 的范围。</p>
+<h2 id="移动通信与-wifi">移动通信与 WiFi</h2>
+<p>5G 与 <code>WiFi</code> 的关系是无法回避的问题，这其实是本文开始就提到了 CT 与 IT 两大生态体系的关系问题。</p>
+<p>首先有一个每个人都能感觉到的事实，<code>WiFi</code> 承载了 80%的流量，我们却不会为它付一分钱，而会为只承载 20%流量的 4G 付月租。这是为什么？</p>
+<p>在信息社会，手机是我们与社会连接的通道。当我们习惯了这种连接之后，丢失连接后就会感到恐慌。 很多人一有机会就查一下微信，微博，电邮，股票，彩票，生怕遗漏了重大机会，或者没能及时回复。 也就是说，随时随地与社会连接，是我们的刚需。 要满足这种刚需，需要一个广覆盖的网络，这正是移动通信的目标和功能。</p>
+<p>在 <code>WiFi</code> 火热的时候，有些城市试图建设 <code>WiFi</code> 城市，用 <code>WiFi</code> 来实现覆盖，但是最终都失败了。 因为 <code>WiFi</code> 是由 IT 界设计的，生来就缺乏实现广覆盖的能力。这表现在技术方案上，就不在这里细说了。 后来 IT 界把 <code>WiFi</code> 升级到 WiMax，试图与 CT 竞争，但是 IT 界的基因还是导致了 WiMax 的失败，并且导致北电破产。</p>
+<p>由于 <code>WiFi</code> 无法实现广覆盖，它被定义为固网的延伸，已经成功渗透到了多数的家庭、酒店和办公室， 目前 <code>WiFi</code> 的实测速率已经达到 300 ～ 400Mbps。 <code>WiFi</code> 提供的是特定地点的高速率通信。路由器很便宜，二百块钱一个，用户自己买一个回来自己就能搞定，想把这些路由器集中控制起来收月租显然是不可行的。</p>
+<p>IT 与 CT 都试图入侵对方领地。早几年的 WiMax 就是 IT 入侵 CT 的一次失败的尝试。 这几年，也经常听到各种消息，一会儿是小扎，一会儿是马斯克，都要建全球免费 <code>WiFi</code>，周鸿祎说他掌管中国移动，就全免费。当然都没能成功。 移动通信所要求的统一标准、广域覆盖，网归网优，客户管理，都决定了运营商是一个分层的官僚体系，与互联网基因格格不入。中国移动每年营收 8000 亿，够买 6 个 360 了，说免就免了，从哪能捞回来这么些钱？ 用户愿意交这个钱，非不收，那叫啥呢？</p>
+<p>反过来，移动通信能取代 <code>WiFi</code> 吗。<code>WiFi</code> 覆盖小，高速率，成本低，使用非许可频段，决定了其免费的必然性。 移动通信要取代 <code>WiFi</code>，也必须达到如此低的成本，并且实现免费。 这是否能做到呢？ 如果 4G 能够利用已有的规模优势，做低成本的 Femto 基站，理论上有可能。 但是市场规模太小，菊花大厂看不上眼，现有的管理体制也不能适应。 而小厂很难有这个技术能力。 所以说也是比较难的。</p>
+<p>所以说，移动通信和 <code>WiFi</code> 有各自的应用场景。 移动通信能够实现 anytime，anywhere 的连接，能够满足用户的刚需，而 <code>WiFi</code> 便宜，无月租，满足用户高速率的应用需求，将长期共存。</p>
+<h2 id="5g-之局">5G 之局</h2>
+<p>移动通信经过四代的发展之后，人们得到一个似乎的规律，就是单数代不太成功，而偶数代很成功。 经过我们的分析后发现，1G 和 3G，都是新的需求促成的，但是技术不太好，而 2G 和 4G 在原有的需求基础上，改进了技术，从而很成功。 1G 和 3G 虽然不太成功，但也不能说是失败，毕竟他们是满足新需求的唯一技术。 但是到了 5G，需求是虚构的，技术上并没有进步，所以必然是要失败的。</p>
+<p>5G 是目前最火热的话题。 特别是孟晚舟事件之后，美帝组团打压华为，国人已经把 5G 看成是中美对决的战场。</p>
+<p>对于 5G 的立场，任总曾经发表过一个讲话，说 5G 的需求并没有出现。我心里赞叹任总真是到了从心所欲不逾矩的境界，也不为利益所左右。 后来徐直军也发表了对 5G 相对保守的观点。但是后来口风变了，任总为自己的讲话向产品线道了歉。后来华为发文表示要坚决打胜 5G 这一仗。</p>
+<p>我们已经知道，移动通信的根本的价值在于实现任何时间，任何地点的连接能力，在此基础上提高网络容量。如果没有覆盖这个前提，只是在局部实现高速率是没有商业价值的。 比如说大家一直谈论的可见光通信，因为覆盖小只能服务两三个人，速率太高超过了人的带宽，就没有意义了。 这个问题对毫米波、太赫兹都是如此。
+虽然过高的速率没够意义，但是随着用户渗透率的提高，资费的下降，数据量每年增长 30%的情况还会持续很多年。因此移动网络还需要扩容。</p>
+<p>移动通信正确对发展方向是，保证连续覆盖的情况下以低成本提高网络容量。当然，并不是我一个人才知道这是正确的方向，实际上这是通信界的常识，2G 和 4G 的成功就是这种模式。</p>
+<p>5G 偏离了这种模式，走向了错误的方向。 这背后的原因有三个，一是通信原理的创新遇到瓶颈，二是半导体工艺获得了爆炸性的发展， 三是无线产业决策链条太长。</p>
+<p>通信技术已经发展百年，因为其战略地位和创造财富的能力，全球最强智力投入其中，但凡简单一点的创新早就发掘完了。用于 <code>Turbo</code> 码解码的 BCJR 算法是 1970 年代发明的，在我历经艰辛终于看懂之后，感叹道，这只能与魔鬼做交易才能搞得出来。 到 2009 年的时候，随着 <code>Turbo</code>，<code>LDPC</code>，<code>Polar</code>，<code>OFDM</code>，<code>MIMO</code> 等领域的进展并且逼近理论极限，学术界普遍感觉到物理层已经死了，再也无法创新了。 象 David Tse 这样的被公认为传承香农衣钵的大咖，也感觉无处可走，转行做生物信息去了。</p>
+<p>在此同时，半导体技术得到了爆炸性的发展。 大家手上的 U 盘，从 10 年前 128M 变成了现在的 128G。在通信原理无法获得突破的情况下，自然地走上利用强大的算力实现高速率的方向。 高算力使得采用更宽的频带，更多的天线成为可能，在通信原理不变的情况下，通过算力使得速率暴力提升 1000 倍是很简单的事情。 华为早就整出来 115Gbps 的样机了。看报道我国启动了 6G 研究，速度比 5G 高 10 倍，看得我真是很无奈。</p>
+<p>移动通信产业有着与其他产业不同的特点。 一般的产业都是研发产品上市，获得反馈并逐步改进，是一个快速迭代的过程。 而移动通信要求在什么还没有之前，大家共同商定一个标准，然后按照这个标准做产品。 何时启动一代通信标准是战略决策，是由政治领导人和商业领导人来做出的。他们当然会咨询技术专家，但是专家们也未必懂，其中还有巨大的利益博弈，显然并不靠谱。行业认同的宏观规律是十年一代。时间一到，各方力量合力推动，就动手干了。 大炮一响，黄金万两。即使实际上不能干，也得创造条件干。所以我们看到 5G 出现了很多奇葩的技术，如全双工，毫米波，现在可见光，太赫兹也要上场了。<code>NOMA</code> 和 <code>F-OFDM</code> 比较起来都算是好的。</p>
+<p>一代移动通信标准一旦启动，到产品上市之前，所有的玩家都投入了巨大的成本。鉴于通信产业的战略地位，政府意志也为之背书。大家都绑在这个战车上，即使有问题，在碰到南墙之前是不会停下来的。</p>
+<p>所以 5G 的问题，不光是华为的问题，或者是中国的问题，美国、欧洲也都是如此。很多网友看到美帝在 5G 上整华为，就觉得美帝反对的东西肯定很重要。中国长期以来落后，都以美国为灯塔。但是经过改开 40 年，中国国力日渐强盛。而通信产业整体上已经获得了领先地位。在这种竞争格局下，即使美帝也会犯错。什么铱星啊，Wimax 啊，不都是美帝整的吗？ 所以我们要有独立的判断，而不是被对方的判断左右。 随着商用的日益迫近，5G 的问题会逐渐暴露出来。比如最近 ATT 的 5G 造假，韩国 5G 被指无用，澳洲未能按计划推出 5G 服务，等等。希望本文能为各方提个醒，尽量减少损失吧。</p>
+<p>因为任总的讲话，我认为华为对 5G 是有清醒的认识的，任总最新的讲话又谈到了 5G 的需求没有出现。5G 成功当然好，又能成为华为的产粮田，况且在舆论上华为 5G 已经领先友商 12 个月。但 5G 失败对华为也是有利的。因为华为有着最齐全的产品线，是行业老大，没有技术创新也就意味着现有格局的固化，华为也就能笑到最后了。当然裁员是避免不了的，这对于通信狗们来说不是个好消息。 对于二线的设备商，却是灾难性的，对 5G 的投入无法回收，现有市场份额也会被华为逐渐蚕食。 对于高通更是灭顶之灾，3G 专利过期，4G 没专利，然后 5G 没有了，怎么收专利费？早些年嫌设备和手机不赚钱甩给别人了，现在有点傻眼。趁手上还有点银子，想收个恩智浦，也被贸易战给搅黄了。这日子怕是过不下去了。</p>
+<h2 id="未来之路">未来之路</h2>
+<p>前面已经讲到，移动通信的发展方向是在保证覆盖的情况下，用低成本的技术提高系统容量。 这背后的使能器是核心技术的突破。 这也是我近二十年的通信技术研究生涯所始终追求的目标。</p>
+<p>尽管学界对通信原理的发展前景很悲观，但是情况正在起变化。</p>
+<p>我在 2014 年发布了多级软频率复用技术（multilevel soft frequency reuse，MLSFR），是 SFR 技术的增强版。 理论表明，SFR 可以提升频谱效率 10%左右，MLSFR 可以提高 30%。 值得注意的，这是在不增加任何硬件成本的前提下。 这种幅度技术进步，在最近 30 年的通信史上，只有 <code>Turbo</code> 码可以媲美，远远超过高通在 <code>CDMA</code> 领域的技术创新。MLSFR 将成为未来移动通信组网技术的基石。</p>
+<p>影响更加深远的，我已经在信息论上获得了重大突破。 大家知道，香农在 1948 年创立了信息论，其中最重要的成果是这个信道容量公式：C=log（1+S/N），是指引着通信技术研究和工业发展的灯塔。</p>
+<p>但是香农只给出了最简单的 AWGN 信道的容量。 无线通信的信道都是衰落信道，而衰落信道的容量香农只开了个头，后来的学者发展出了一套衰落信道容量的理论，这些可以在经典的通信原理教科书里面找到。</p>
+<p>但是，目前的衰落信道容量理论是错误的。</p>
+<p>这个问题我思考了 14 年，终于提出了新的衰落信道容量理论并在 2018 年 3 月份完成了论文初稿。大家可以体会一下基础研究的周期。 审稿的过程也非常艰苦。开始投稿了 Nature，但是 Nature 认为满篇都是公式的稿件不符合它们的风格，还是投到应属期刊 IEEE Transactions on Information Theory。经过 5 个月的评审被拒，原因是两个评委认为论文对信息论存在误解。想想当年 <code>Turbo</code> 码论文，评委认为存在 3dB 的误差。重大突破被误解恐怕是一个规律，创新者需要有这样的心里准备。 但是另外一位评委给予了全面的肯定。 当然，所有的评审意见都很容易回答，稿件修改之后再次投稿后，评审又进行了三个月，还没有出结果。在中美贸易战的背景下，美国在整华为，也难保政治不会侵蚀学术道德。 不管怎么样，大家很快就能看到了。</p>
+<p>基础理论的突破预示着无线通信产业的又一次技术革命，而中国就是这次革命的源头。</p>
+<p>成功的道路并不拥挤，我们砥砺前行。</p>
+<p>致敬改革开放 40 周年。</p>]]></description>
+</item><item>
     <title>5G NR 系列：波束赋形</title>
     <link>https://www.techkoala.top/beamforming/</link>
     <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate>
@@ -848,289 +977,6 @@
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>5G NR 系列：如何做到空口 &lt;1ms 的延迟</title>
-    <link>https://www.techkoala.top/5g_time_delay/</link>
-    <pubDate>Mon, 12 Aug 2019 23:14:44 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/5g_time_delay/</guid>
-    <description><![CDATA[<blockquote>
-<p>无线网络中的时延是如何一步步进化到 5G 中的 &lt;1ms ？</p>
-</blockquote>
-<blockquote>
-<p>注：本文系全文转载，原文信息如下：</p>
-<p>作者：见微</p>
-<p>链接：https://www.zhihu.com/question/307958274/answer/712266324</p>
-<p>来源：知乎</p>
-<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-<h2 id="网络延迟时间的定义">网络延迟时间的定义</h2>
-<h3 id="单向延迟">单向延迟</h3>
-<p>单向延迟指的是信息从发送方传到接收方的所花费的时间。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" data-sub-html="<h2>单向时间延迟</h2>">
-        
-    </a><figcaption class="image-caption">单向时间延迟</figcaption>
-    </figure>
-<h3 id="双向延迟">双向延迟</h3>
-<p>双向延迟（Round Trip Time, RTT）, 指的是信息从发送方到达接收方，加上接受方发信息给发送方所花费的总时间。双向延迟在工程中更加常见，因为我们可以只在信息发送方或者接收方的其中一方就可以测量到双向延迟（利用 ping 等工具）。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" data-sub-html="<h2>双向时间延迟</h2>">
-        
-    </a><figcaption class="image-caption">双向时间延迟</figcaption>
-    </figure>
-<h3 id="用户面时延">用户面时延</h3>
-<p>题主提到的 5G 网络 1 毫秒时间延迟最初是由 ITU IMT-2020 M.2410-0 （4.7.1）关于 IMT-2020 系统的设计最小需求中提到的。其适用的范围是 <strong>URLLC</strong>（Ultra reliable and low latency communication）超可靠且超低的时延业务，这里的时延是针对用户面时延。用户面时延是指我们平时使用手机发送数据的时间延迟，区别于控制面时延：手机注册网络或者状态转换经过的信令流程所花费的时间（控制面时延不做讨论）。</p>
-<p>另外一点是 1 毫秒指的是无线网络 <strong>空中接口</strong>（手机和基站之间，不包括核心网，互联网等网络节点）的延迟时间。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" data-sub-html="<h2>用户面时间延迟</h2>">
-        
-    </a><figcaption class="image-caption">用户面时间延迟</figcaption>
-    </figure>
-<p>明确了讨论的范围（无线网络空中接口的双向用户面时间延迟），接下来真正进入正题：<strong>网络空中接口的时间延迟是如何一步步降下来的。</strong></p>
-<h2 id="4g-网络延迟">4G 网络延迟</h2>
-<p>4G 网络（注：本文中提到的 4G 特指 LTE 网络）是从 2004 年开始标准化，2009 年开始商用网络部署，到现在已经历经了 10 余年的时间，是最成功的无线网络之一，已经在全球范围内广泛部署。</p>
-<p>最初的 4G 网络主要关注的业务和应用是 MBB（Mobile broad band）移动带宽业务，通俗的讲就是提供更大的网络容量，更快的上网速度。从最初的 3GPP release8 到 release13 一直是沿着这条路走，标准定义的峰值速率从 300Mbps 到 25Gbps（载波聚合，MIMO，高阶调制方式）。当我们在速率更快这条路走得越来越远，才发现无线网络的时延水平也需要改善，时延还会从侧面影响下载的速率，谨慎的评估了 LTE 的无线网络的现状，空中接口的时间延迟是未来标准化组织重点关注的研究对象。</p>
-<p><strong>而在当时，LTE 网络的延迟状况是接近于～20ms 的双向时延。（理论延迟时间，实际根据无线环境情况一般会更长）</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" data-sub-html="<h2>LTE 网络空中接口上下行时延基线</h2>">
-        
-    </a><figcaption class="image-caption">LTE 网络空中接口上下行时延基线</figcaption>
-    </figure>
-<p>上图描述了 LTE 空中接口的上行（从终端到基站）和下行（从基站到终端）时延。</p>
-<h3 id="上行时间延迟">上行时间延迟</h3>
-<p>上行时间延迟（从手机到基站）：当手机有一个数据包需要发送到网络侧，需要向网络侧发起无线资源请求的申请（Scheduling request, SR），告诉基站我有数据要发啦，基站接收到请求后，需要 3 毫秒时间解码用户发送的调度请求，然后准备给用户调度的资源，准备好了之后，给用户发送信息 (Grant)，告诉用户在某个时间某个频率上去发送他想要发送的数据，用户收到了调度信息之后，需要 3 毫秒时间解码调度的信息，并将数据发送给基站，基站收到用户发送的信息之后需要 3 毫秒的时间解码数据信息，完成数据的传送工作，整个时间计算下来是 <strong>12.5ms</strong>。</p>
-<h3 id="下行时间延迟">下行时间延迟</h3>
-<p>下行时间延迟（从基站到手机）：当基站有一个数据包需要发送到终端，需要 3 毫秒时间解码用户发送的调度请求，然后准备给用户调度的资源，准备好了之后，给用户发送信息，告诉用户在某个时间某个频率上去接受他的数据，用户收到了调度信息之后，需要 3 毫秒时间解码调度的信息并接收解码数据信息，完成数据的传送工作，整个时间计算下来是 <strong>7.5ms</strong>。</p>
-<p>所以总共的双向时延是 <strong>12.5ms+7.5ms = 20ms</strong></p>
-<p>详细的时间延迟组成请参考 <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreffer">3GPP 36.881 Study on latency reduction techniques for LTE（5.2.1）</a></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" data-sub-html="<h2>LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</h2>">
-        
-    </a><figcaption class="image-caption">LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" data-sub-html="<h2>LTE 下行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</h2>">
-        
-    </a><figcaption class="image-caption">LTE 下行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</figcaption>
-    </figure>
-<p><strong>从 20 毫秒开始，到 1 毫秒要走过怎样的路？</strong></p>
-<p>当 LTE 标准化组织 3GPP 意识到网络的时间延迟是一个问题，而且具有很大的潜在提升的时候，相关的工作拉开了序幕。</p>
-<p>时间来到了 2015 年，3 月初，中国上海，乍暖还寒，在 3GPP RAN 67 次会议上，终于迎来了关于减少 LTE 网络时间延迟的研究项目（SI）立项（<a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreffer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a>）。本次研究项目的立项旨在减小 LTE 网络的时间延迟，因为在此以前 LTE 网络一直向着速率更快的方向在发展，但是网络的延迟水平一直没有得到改善，而研究发现用户面网络延迟的改善能够提升网络的速率瓶颈（因为 TCP 的慢启动效应，改善 TCP 握手的时延，从而提升网络的速率），而且能够更好地支持更多对于时延要求特别高的应用，比如：VR，实时游戏，VoIP，视频会议等等。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" data-sub-html="<h2>改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</h2>">
-        
-    </a><figcaption class="image-caption">改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</figcaption>
-    </figure>
-<p>有了提升的意愿，通过什么方式提升？要解决一个问题，需要 <strong>全面的了解问题本身</strong>。</p>
-<h2 id="网络延迟的组成">网络延迟的组成</h2>
-<p>LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：资源调度请求和指派（Grant acquisition），传输时间间隔（Transmission time interval），终端和基站的数据包以及信令处理时间（Processing），混合重传来回时间（HARQ RTT）。</p>
-<p>经过研究，终端和基站的数据包的处理时间根据数据包的大小时间不同，这块时延很难大幅度改善，主要的提升方向放在了前两部分：<strong>资源调度请求和指派（Grant acquisition），传输时间间隔（Transmission time interval）</strong>，同时这两部分也是未来 5G 网络延迟改善的方向。</p>
-<h3 id="资源调度请求和指派">资源调度请求和指派</h3>
-<p>终端在需要传送上行数据的时候需要先给基站发送资源调度请求，然后基站才会分配相关的资源给终端，终端收到相应的指派信令后再在相关的资源上去发送上行的数据，整个过程下来，从手机有发送数据的意愿到真正开始向基站传数据，花了 <strong>8.5ms</strong>，相对于整个上行的单向时延 <strong>12.5ms</strong> 来说，是相当大的一部分时间延迟。所以研究的重点转向了怎样使用户不用通过上行资源的请求流程，直接就能想发送数据就发送数据？</p>
-<h3 id="传输时间间隔">传输时间间隔</h3>
-<p>传输时间间隔，是网络处理数据，请求的最小时间单位，在 LTE 中传输时间间隔等于 <strong>1 毫秒</strong>，也就是一个无线子帧。如何缩小传输的时间间隔也是改善时延的研究重点。</p>
-<h3 id="如何改善-lte-网络的时延">如何改善 LTE 网络的时延？</h3>
-<p>对于资源调度请求和指派这个方向，在 LTE release 14 以前，设备厂家普遍采用预调度（Pre-scheduling）的方式来改善延迟，这种办法的主要思想在于：基站周期性的给终端用户分配好相应的无线资源，终端在有数据要发送的时候直接就能在预先分配好的无线资源上发送，无需再向网络侧请求资源，所以减少了整个资源请求流程的时间。但是这种办法有一些缺点：</p>
-<p><strong>不管终端用户是否使用预先调度的无线资源，始终会分配给用户。造成了宝贵无线资源的浪费。</strong></p>
-<p><strong>终端用户在接收到无线资源调度后，如果没有数据发送，始终会使用已经分配的无线资源上传填充数据（padding data），这样会造成网络的干扰水平抬升，影响了网络的整体性能。而且手机的耗电量也增加了。</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" data-sub-html="<h2>LTE 预调度（Pre-scheduling）</h2>">
-        
-    </a><figcaption class="image-caption">LTE 预调度（Pre-scheduling）</figcaption>
-    </figure>
-<p>似乎探索有了方向&hellip;</p>
-<p>光阴如梭，整整一年后，2016 年 3 月初，瑞典哥德堡，3GPP RAN 71 次会议，关于真正网络延迟减少工作立项了（<a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreffer">RP-160667 L2 latency reduction techniques for LTE</a>），此次工作项目的立项标志着网络延迟减少工作的正式开启。所要着手解决的主要集中在改善上行的网络延迟，而解决问题的思想是和预调度类似的 <strong>半静态调度</strong>，提前为终端周期性的分配好相关的无线资源，用户在需要传送上行数据的时候直接使用已经预先分配好的资源，无需再进行资源请求流程。而在这个版本中引入了更短的半静态调度周期，低至一毫秒，从而能进一步改善时间延迟。</p>
-<p>同时针对预调度中分配了无线资源终端就得发送数据的问题（造成网络干扰和电量消耗），通过 Release 14 标准的改善，使用户即使分配了无线资源，也可以不发送填充数据。</p>
-<p>至此，上行的网络传输延迟大大减少。根据仿真的结果，<strong>LTE 空中接口双向传输时延降至～8ms</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-sub-html="<h2>更短的半静态调度周期</h2>">
-        
-    </a><figcaption class="image-caption">更短的半静态调度周期</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" data-sub-html="<h2>上行不用发送 Padding 数据</h2>">
-        
-    </a><figcaption class="image-caption">上行不用发送 Padding 数据</figcaption>
-    </figure>
-<p><strong>手机的能耗也下降了～10%</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" data-sub-html="<h2>时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)</h2>">
-        
-    </a><figcaption class="image-caption">时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)</figcaption>
-    </figure>
-<p><strong>同时网络时延的改善也从侧面提升了终端的速率～30%-40%</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" data-sub-html="<h2>时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)</h2>">
-        
-    </a><figcaption class="image-caption">时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)</figcaption>
-    </figure>
-<p>但是，真的这样就足够了吗？No，通信人止于至善。</p>
-<p>以上只是解决问题的其中一个角度，针对另一个角度 <strong>改善传输间隔时间</strong> 能做点什么？</p>
-<p>3 个月后，又又又开会了，韩国釜山，RAN 72 次会议，立项了关于从改善 LTE 网络传输间隔时间从而减少网络时延的工作（RP-161299 New Work Item on shortened TTI and processing time for LTE），改善的方法得从 LTE 的无线帧结构说起。</p>
-<p>无线网络的传输介质是时间和频率资源，终端在分配的时间和频率上发送相应的数据，在通信的世界里，时间的单位很短很短，一个 LTE 帧是 10 毫秒，可以分为 10 个子帧，每个子帧 1 毫秒，这就是网络最小可以调度的时间单位：1 毫秒。</p>
-<p>1 个子帧还可以分为两个时隙，每个时隙还可以分为 7 个符号，至此，终于分完。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" data-sub-html="<h2>Short transmission time interval (sTTI) 减少传输时延</h2>">
-        
-    </a><figcaption class="image-caption">Short transmission time interval (sTTI) 减少传输时延</figcaption>
-    </figure>
-<p>以前 LTE 网络每次的传输时间间隔是固定一个子帧 = 1 毫秒，上图红色部分是控制信道，用于传输无线资源指派等信令，绿色部分是下行数据信道，用于传输数据。本次工作要做的是将传输时间间隔从子帧级别（1ms) 降低至符号级别（1/14 ms），最小的调度间隔根据情况可以选择 3/2 个符号（3/14ms, 2/14ms），7 个符号（7/14ms），具体的子时隙 (subslot) 细分方式如下图。从而又进一步降低了整个 LTE 无线网络空口的时延。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" data-sub-html="<h2>4G LTE sTTI 上下行可选配置方式（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</h2>">
-        
-    </a><figcaption class="image-caption">4G LTE sTTI 上下行可选配置方式（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</figcaption>
-    </figure>
-<p>在 LTE release 15 中，还降低了 <strong>处理（procession）时间 (收到上行资源 grant 到上行传输数据的时间，以及从收到下行指派到反馈 HARQ ACK/NACK 指示的时间)，以前需要 4ms，降至了 3ms。</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" data-sub-html="<h2>R15 处理时间的减少从 n&#43;4 到 n&#43;3 ms（Source: 3GPP TR 21.915 Summary of Rel-15 Work Items）</h2>">
-        
-    </a><figcaption class="image-caption">R15 处理时间的减少从 n+4 到 n+3 ms（Source: 3GPP TR 21.915 Summary of Rel-15 Work Items）</figcaption>
-    </figure>
-<p>2018 年，到 LTE release 15 时，<strong>所有的大招都用上，LTE 的网络延迟理论上可以降至双向 2.7 毫秒（下行 0.7 毫秒 + 上行 2.0 毫秒）</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" data-sub-html="<h2>LTE 用户面时延（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</h2>">
-        
-    </a><figcaption class="image-caption">LTE 用户面时延（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</figcaption>
-    </figure>
-<p>至此，LTE 的无线网络延迟改善到头了。</p>
-<p>那么梦寐以求的一毫秒时间延迟怎么实现？剩下的使命需要 5G 来完成。</p>
-<h2 id="5g-网络延迟">5G 网络延迟</h2>
-<p>和人一样，一项技术也有自己的命运，LTE 从应运而生到如今的如日中天已经走过了 10 多个春秋，正如之前在另一个问题中讨论的从专业角度讲，<a href="https://www.zhihu.com/question/315446311/answer/673086704" target="_blank" rel="noopener noreffer">为什么需要开展 5G 而不是继续提升 4G？</a> 因为 4G LTE 从出生伊始已经注定了其时间延迟的下限，而这个下限如今也已经被我们触摸到了。下一步需要我们转向一项延迟下限更低的技术去找寻极限。</p>
-<p>5G 是站在巨人（4G）的肩膀上诞生的，从系统设计之初就将网络时间延迟的特性考虑了进来，成为 5G 需求的一部分: URLLC（Ultra reliable and low latency communication）超低的时延和超高可靠的通信以支持对时延和可靠性要求极高的行业应用，比如智能工厂，远程手术，自动驾驶等等。这部分的需求在 5G 的第一个版本 Release 15 中满足了一部分。</p>
-<p><strong>关于超低的时延：1ms 的无线空中接口双向传输时延是怎么一步步实现的呢？</strong></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" data-sub-html="<h2>5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</h2>">
-        
-    </a><figcaption class="image-caption">5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</figcaption>
-    </figure>
-<p>2016 年，3GPP 开始了 5G 的需求分析和研究项目，为了满足 ITU 所设置的 <strong>URLLC 极高的可靠性和极低的时延要求</strong>，在 5G 的需求研究项目 <a href="http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664" target="_blank" rel="noopener noreffer">TR38.913 Study on scenarios and requirements for next generation access technologies</a> 中的用户面 KPI 中针对 URLLC 业务用户面时延定义了上行 0.5ms 和下行 0.5ms 的要求，加起来正好是 1ms 的双向时延。</p>
-<p>需求的定义明确了，接下来进入了研究如何实现技术需求的阶段，2016 年 3 月，3GPP TSG RAN 71 次会议通过了 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.912/38912-e10.zip" target="_blank" rel="noopener noreffer">TR38.912 Study on New Radio (NR) access technology</a> ，这项研究工作致力于提出可行的无线技术来满足 ITU-2020 制定的 5G 需求。而从研究项目伊始，URLLC 就做为一项不可缺少的 5G 需求被考虑进来。</p>
-<p>从 2016 年的研究项目开始到 2018 年中第一版本 5G 标准（release 15 NSA&amp;SA）的出炉，低时延的设计贯穿了整个 5G 无线系统，我们就从用户面的每个层（物理层 PHY，媒体接入控制层 MAC，无线链路控制层 RLC）看看为了实现 1ms 的目标都做了怎样的努力。</p>
-<h3 id="物理层">物理层</h3>
-<p>5G 中物理层的主要作用是：编解码，调制 / 解调，多天线映射等。</p>
-<p>虽然本回答主要讨论的是低时延的系统架构设计，但是低时延是与 URLLC 的另一部分需求：极高的可靠性（99.999%）被共同捆绑在一起的。如果单单考虑低时延会比低时延高可靠简单很多，因为要满足极高的可靠性惯常采用更多的控制信令开销，重传，冗余，这些手段往往会提升时间延迟的水平。所以如何在保证可靠性的同时改善时延水平在物理层的设计中是难上加难。5G 物理层用了哪些手段来改善时延呢？</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" data-sub-html="<h2>5G 用户面协议层</h2>">
-        
-    </a><figcaption class="image-caption">5G 用户面协议层</figcaption>
-    </figure>
-<h3 id="包结构packet-structure">包结构（Packet structure）</h3>
-<p>在 4G LTE 的时延分析中提到过的系统处理时间在时延中所占的分量比较大，而且改善较为不易。这部分时延包括了接收包，获取控制信息，调度信息，解调数据，以及错误检测。在 4G LTE 中是采用下图左侧这种方形的包结构，传输的信息分为三部分，导频信息（Pilot），控制信息（control information），以及数据（data）。这种设计方式被广泛的用来对抗信道衰落。但是在 5G 中 URLLC 包采用的是下图右侧这种设计方式，导频信息，控制信息，以及数据依次在时域上排列，这样做的好处是信道估计，控制信道解码，数据的获取可以串行的进行，通过这样的方式这样减少了处理时间。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" data-sub-html="<h2>4G LTE 和 5G URLLC 包结构对比 （Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</h2>">
-        
-    </a><figcaption class="image-caption">4G LTE 和 5G URLLC 包结构对比 （Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</figcaption>
-    </figure>
-<p>从手机收到资源分配（Grant）指令到数据的传输时间要求如下，中间部分是 5G 不同子载波间隔（Subcarrier Spacing）配置下的不同要求：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" data-sub-html="<h2>从手机收到资源分配（Grant）指令到数据的传输时间要求（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
-        
-    </a><figcaption class="image-caption">从手机收到资源分配（Grant）指令到数据的传输时间要求（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
-    </figure>
-<h3 id="信道编码">信道编码</h3>
-<p>4G LTE 采用 Turbo 和 Simple code 来编解码数据达到无线传输的可靠性。在 5G 中使用的是 LDPC 和 Polar 码来提升数据和控制信道的编解码效率，经过编码界研究的不懈努力，编解码的性能和计算复杂度的提升对于降低时延也有所帮助。</p>
-<h3 id="更短的传输时间间隔可变的-numerology">更短的传输时间间隔（可变的 Numerology）</h3>
-<p>从更短的时间间隔这点说 5G 是天生丽质一点都不为过，LTE 规定的一个子载波 (传送信息的最小频域单位) 是 15KHz，时间域是 1ms （正常情况下）。5G 所需要支持的频率范围非常广，中低频从 450MHz~6000MHz（FR1），高频从 24.25GHz~52.6GHz（FR2）。高频意味着更高的相位噪声，所以需要设计更加宽的子载波间隔来抵御相位噪声的干扰。更宽的子载波间隔，意味着时域上更短的时隙，更短的传输时间间隔，我们在 4G LTE 时代千方百计想要降低的传输时间间隔在 5G 时代只需要使用更高的频段，更宽的子载波间隔就轻而易举的降低了。而且根据不同的频段可以选择从 15KHz, 30KHz 到 120KHz 的子载波间隔，可以简单的理解为，<strong>5G 子载波间隔相比于 LTE 15KHz 增加了多少倍，那么在时域上的传输时间间隔就减少相应的倍数</strong>。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" data-sub-html="<h2>频域子载波间隔成倍增加，时域符号时长相应倍数减少（Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</h2>">
-        
-    </a><figcaption class="image-caption">频域子载波间隔成倍增加，时域符号时长相应倍数减少（Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" data-sub-html="<h2>不同子载波间隔（sub-carrier spacing）对应的无线帧结构</h2>">
-        
-    </a><figcaption class="image-caption">不同子载波间隔（sub-carrier spacing）对应的无线帧结构</figcaption>
-    </figure>
-<h3 id="微时隙调度mini-slot">微时隙调度（Mini-slot）</h3>
-<p>微时隙调度继承了 LTE 中减小传输时间间隔 (subslot) 的设计理念，<strong>将最小的传输时间间隔由子帧拓展到了符号上</strong>。第一优先级最小的调度间隔根据情况可以选择 2 个符号，4 个符号，7 个符号。下图是一个下行数据传输的示例，数据包到达了基站，基站经过 4 个符号的处理以及等待合适的 sPDCCH 时间，随后通过两个符号的微时隙调度将数据传输给用户。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" data-sub-html="<h2>下行微时隙调度</h2>">
-        
-    </a><figcaption class="image-caption">下行微时隙调度</figcaption>
-    </figure>
-<h3 id="mac媒体接入控制层">MAC（媒体接入控制）层</h3>
-<p>MAC 的作用是多路逻辑信道的复用，HARQ（混合重传），以及调度相关的功能。关于时延的改善的技术在 MAC 层有：异步 HARQ（异步混合重传）</p>
-<p>当无线环境出现问题等原因造成传输的数据出错，在 MAC 层会由 HARQ 功能来发起重新传输流程，在 LTE 中，HARQ 的时间间隔（从收到数据到发送反馈给发送方是否正确接收信息指令）是固定的（FDD，TDD 根据子帧结构变化）。</p>
-<p>而在 5G 中，HARQ 的时间间隔是动态指派的，更加的灵活，也符合低时延的设计要求。</p>
-<p>5G 与 4G HARQ 流程时间对比：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" data-sub-html="<h2>5G 与 4G LTE HARQ 时延对比（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
-        
-    </a><figcaption class="image-caption">5G 与 4G LTE HARQ 时延对比（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
-    </figure>
-<h3 id="上行免调度传输-grant-free-transmission">上行免调度传输 （Grant free transmission）</h3>
-<p>和 4G LTE 一样，5G 可以周期性的给用户分配上行资源（<strong>半静态调度</strong>）来减少上行的传输时延，而且 5G 更加进了一步。在 4G 中半静态调度的资源一般是给每个用户单独分配的，所以当网络中用户较多的时候，造成的浪费是非常大的，因为预留的无线资源终端不一定会使用。</p>
-<p>在 5G 中可以将预留资源分配给一组终端用户，并且设计了当多个用户同时在相同的无线资源上发生冲撞的解决机制。这样在降低时延的同时使宝贵的无线资源的利用率也得到了保证。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" data-sub-html="<h2>5G 上行免调度传输 type1 和 type2 （Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
-        
-    </a><figcaption class="image-caption">5G 上行免调度传输 type1 和 type2 （Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
-    </figure>
-<h3 id="预清空调度downlink-preemption-scheduling">预清空调度（Downlink preemption Scheduling）</h3>
-<p>预清空调度的意思是为某个高优先级的用户清空原来已经分配给其他用户的资源，打个比方，我们去餐馆吃饭，没有位置了，餐馆老板认识我们是高级 VIP，所以把一桌正在吃饭的人赶走了，把桌子留给了咱们。</p>
-<p>通过这样的方式达到了对时间延迟要求高的用户可以立即传输数据，从而降低了时延。下图是一个示例：</p>
-<p>用户 A 已经在一个时隙上被调度了数据，但是这时用户 B 被标记为对时延要求高的数据需要传输。</p>
-<ul>
-<li>
-<p>如果这时有空闲的时频域资源可用，用户 B 会被优先调度空闲的资源</p>
-</li>
-<li>
-<p>但是如果此时网络负荷较大，没有空闲的资源可用，用户 B 就会抢占其他用户的（例如用户 A）的资源。</p>
-</li>
-</ul>
-<p>这种方式有个弊端就是会影响原本被分配资源的 A 的用户的数据传输（在被用户 B 抢占的资源上），当然优秀的 5G 系统也设计了方案来解决这个问题，方式有：HARQ 重传用户 A 受影响的传输数据，或者是直接通过控制信令（DCI2-1）通知用户 A，哪些传输的数据受到了影响。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" data-sub-html="<h2>下行预清空调度示例（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
-        
-    </a><figcaption class="image-caption">下行预清空调度示例（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
-    </figure>
-<h3 id="rlc无线链路控制层">RLC（无线链路控制）层</h3>
-<p>RLC 层主要负责 RLC 数据的切分，重复数据去除，RLC 重传的工作。</p>
-<p>在 RLC 层中关于低时延的技术考量主要体现在：在 4G LTE 中 RLC 层还需要负责保证数据的按顺序传递（<strong>In-sequence delivery</strong>），即前面的包没有向上层传递之前，排在后面的包需要等待。在 5G 中去掉了这样的功能要求来保障低时延水平。这样做的好处是，如果之前有某些包因为某些原因（例如无线环境突然变差）丢失了需要重传，在 5G 中后面的包不需要等到前面的包重传完毕就可以直接向上层传递。</p>
-<p>那么通过以上关键技术的组合，是怎么一步步使 5G 无线网络时间延迟降低到 1 毫秒的呢？</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" data-sub-html="<h2>无线网络空中接口双向时延演进</h2>">
-        
-    </a><figcaption class="image-caption">无线网络空中接口双向时延演进</figcaption>
-    </figure>
-<p>通过使用 30KHz 的子载波间隔，上行免调度，以及两个符号的微时隙的 5G 系统配置方案，可以达到低于双向时延 1ms 以下的要求。如果采用 5G 高频通信，使用 120KHz 的子载波间隔，时延可以更低。</p>
-<p>至此，1ms 梦寐以求的目标终于达成，但是科技工作者们仍没有停下探索的脚步，目前的研究转向了 5G 物理层的增强对 URLLC 业务的支持，而新的研究项目也已经成功立项并完成：<a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreffer">Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a>, 在下一版本 5G release 16 中，URLLC 将从 PDCCH，UCI，PUSCH（上下行控制信道以及上行数据信道）获得更多的提升。同时还研究支持对时延和可靠性要求极高的工业互联网应用 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreffer">Study on NR industrial Internet of Things (IoT)</a>。探索为什么 5G 能降低网络时间延迟到 1ms 完结，但是需要引起注意的是，我们这里讨论的延迟是整个网络中的一部分，特指空中接口。但是网络的传输时延绝不是空中接口单一接口就能够保证的，还涉及到端到端的核心网以及互联网。剩下这部分属于 TSN（Time Sensitive Networking）的范围，什么是 TSN，怎么将无线 URLLC 和 TSN 结合起来为工业 4.0 服务，下次有机会再聊。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" data-sub-html="<h2>无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）</h2>">
-        
-    </a><figcaption class="image-caption">无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）</figcaption>
-    </figure>
-<p>历史的有趣之处就在于：总是在起起伏伏，跌跌撞撞中前行，不断的循环，却又惊人的相似。对比 5G 中时延减少的思路，很多都和 4G 类似。而从 4G 一路看过来，才不会乱花渐欲迷人眼。20 毫秒到 1 毫秒，这么短，却又那么长，背后是无数通信工作者夜以继日，年复一年，默默无闻的贡献自己的力量。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2410-2017-PDF-E.pdf" target="_blank" rel="noopener noreffer">ITU-R M.2410-0 Minimum requirements related to technical performance for IMT-2020 radio interface (s)</a></p>
-</li>
-<li>
-<p>[2] <a href="https://www.3gpp.org/DynaReport/38913.htm" target="_blank" rel="noopener noreffer">3GPP 38.913 Study on scenarios and requirements for next generation access technologies</a></p>
-</li>
-<li>
-<p>[3] <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreffer">3GPP 36.881 Study on latency reduction techniques for LTE</a></p>
-</li>
-<li>
-<p>[4] <a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreffer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a></p>
-</li>
-<li>
-<p>[5] <a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreffer">RP-160667 L2 latency reduction techniques for LTE</a></p>
-</li>
-<li>
-<p>[6] <a href="http://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=view&amp;contributionId=713547" target="_blank" rel="noopener noreffer">RP-161299 New Work Item on shortened TTI and processing time for LTE</a></p>
-</li>
-<li>
-<p>[7] <a href="http://www.3gpp.org/ftp/TSG_RAN/WG2_RL2/TSGR2_91/Docs/R2-153490.zip" target="_blank" rel="noopener noreffer">R2-153490 L2 enhancements to reduce latency</a></p>
-</li>
-<li>
-<p>[8] <a href="https://arxiv.org/pdf/1808.07034.pdf" target="_blank" rel="noopener noreffer">Thomas Fehrenbach, Rohit Datta, URLLC Services in 5G Low Latency Enhancements for LTE</a></p>
-</li>
-<li>
-<p>[9] <a href="http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664" target="_blank" rel="noopener noreffer">38.913 Study on scenarios and requirements for next generation access technologies</a></p>
-</li>
-<li>
-<p>[10] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.912/38912-e10.zip" target="_blank" rel="noopener noreffer">TR38.912 Study on New Radio (NR) access technology </a></p>
-</li>
-<li>
-<p>[11] <a href="http://cscn2017.ieee-cscn.org/files/2017/08/Janne_Peisa_Ericsson_CSCN2017.pdf" target="_blank" rel="noopener noreffer">Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication IEEE cscn2017</a></p>
-</li>
-<li>
-<p>[12] <a href="https://futurenetworks.ieee.org/images/files/pdf/FirstResponder/Rapeepat-Ratasuk-Nokia.pdf" target="_blank" rel="noopener noreffer">Ultra Reliable Low Latency Communication for 5G New Radio</a></p>
-</li>
-<li>
-<p>[13] <a href="https://ieeexplore.ieee.org/document/8403963" target="_blank" rel="noopener noreffer">Ultra Reliable and Low Latency Communications in 5G Downlink: Physical Layer Aspects</a></p>
-</li>
-<li>
-<p>[14] ErikDahlman, JohanSkold, StefanParkvall, Ericsson，NR: the next generation wireless access technology</p>
-</li>
-<li>
-<p>[15] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreffer">3GPP TS38.824 Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a></p>
-</li>
-<li>
-<p>[16] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreffer">3GPP TR38.825  Study on NR industrial Internet of Things (IoT)</a></p>
-</li>
-<li>
-<p>[17] <a href="https://www.ericsson.com/assets/local/publications/ericsson-technology-review/docs/2019/etr-magazine-2019-01.pdf" target="_blank" rel="noopener noreffer">Boosting smart manufacturing with 5G wireless connectivity</a></p>
-</li>
-<li>
-<p>[18] <a href="http://www.3gpp.org/ftp//Specs/archive/21_series/21.915/21915-100.zip" target="_blank" rel="noopener noreffer">3GPP TR 21.915 Summary of Rel-15 Work Items</a></p>
-</li>
 </ul>]]></description>
 </item></channel>
 </rss>
