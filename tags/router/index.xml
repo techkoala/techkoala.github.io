@@ -1,0 +1,85 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Router - 标签 - TechKoala - Input/Output </title>
+        <link>https://www.techkoala.top/tags/router/</link>
+        <description>Router - 标签 - TechKoala - Input/Output </description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/router/" rel="self" type="application/rss+xml" /><item>
+    <title>单独编译 OpenWRT ipk 插件</title>
+    <link>https://www.techkoala.top/openwrt_compile_single_ipk/</link>
+    <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/openwrt_compile_single_ipk/</guid>
+    <description><![CDATA[<blockquote>
+<p>为 OpenWRT 编译单独的 ipk 插件</p>
+</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>说明<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">必须先完整编译一次固件才能单独编译 ipk</div>
+        </div>
+    </div>
+<p>当需要单独更新 OpenWRT 某个插件或者需要增加安装某个插件的时候，可以单独编译对应的 ipk 插件进行安装，而不必编译整个系统。</p>
+<h3 id="下载源码">下载源码</h3>
+<p>使用 <code>git clone</code> 对应的源码插件到下面的文件夹中</p>
+<h3 id="存放路径">存放路径</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="配置">配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
+</code></pre></td></tr></table>
+</div>
+</div><p>然后进入对应的子菜单中找到对应插件按 <M> 表示选中插件，但不编译进固件。</p>
+<h3 id="编译">编译</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>xxxxx 就是你需要单独编译的程序。</p>
+<h3 id="ipk-生成路径">ipk 生成路径</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="上传-ipk-至路由器">上传 ipk 至路由器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="安装">安装</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

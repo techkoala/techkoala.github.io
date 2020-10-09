@@ -13,7 +13,7 @@
 
 目前的网络拓扑图如下：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" caption="网络拓扑图" >}}
+{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" caption="网络拓扑图" >}}
 
 将安装过程中遇到的问题以及解决方法整理如下：
 

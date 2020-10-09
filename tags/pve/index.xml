@@ -4,7 +4,43 @@
         <link>https://www.techkoala.top/tags/pve/</link>
         <description>PVE - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 May 2020 15:31:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/pve/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 20 May 2020 15:30:24 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/pve/" rel="self" type="application/rss+xml" /><item>
+    <title>Hyper-V 桥接网络</title>
+    <link>https://www.techkoala.top/hyper-v_bridging/</link>
+    <pubDate>Wed, 20 May 2020 15:30:24 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/hyper-v_bridging/</guid>
+    <description><![CDATA[<blockquote>
+<p>Hyper-V 桥接模式</p>
+</blockquote>
+<p>Hyper-V 没有 VM 的桥接模式可以选择，为了让虚拟机可以和宿主机同网段，需要搭建网桥。</p>
+<p>创建网桥的步骤如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">操作 -&gt; 虚拟交换机管理器 -&gt; 新建虚拟网络交换机 -&gt; 选择外部类型 -&gt; 创建虚拟交换机 -&gt; 设置连接类型为内部网络 -&gt; 应用
+</code></pre></td></tr></table>
+</div>
+</div><p>首先点击虚拟机右边的 Hyper-V 操作选项<code>虚拟交换机管理器</code>：</p>
+<p>static/images/VM/Hyper-v_Bridging/hyperv-1.webp
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-sub-html="<h2>网络拓扑图</h2>">
+        
+    </a><figcaption class="image-caption">网络拓扑图</figcaption>
+    </figure></p>
+<p>新建虚拟交换机：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-sub-html="<h2>网络拓扑图</h2>">
+        
+    </a><figcaption class="image-caption">网络拓扑图</figcaption>
+    </figure>
+<p>将主机的网络和虚拟网络进行桥接：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" data-sub-html="<h2>网络拓扑图</h2>">
+        
+    </a><figcaption class="image-caption">网络拓扑图</figcaption>
+    </figure>
+<p>设置虚拟机的 IP 与宿主机的 IP 为同一网段，方便进行连接。</p>]]></description>
+</item><item>
     <title>PVE 安装 Q&amp;A</title>
     <link>https://www.techkoala.top/pve_q_a/</link>
     <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate>
@@ -17,7 +53,7 @@
 <p>近期将家里的服务器从 <code>Hyper-V</code> 迁移到 <code>PVE</code> 上。</p>
 <p>目前安装有<code>黑群晖</code>、<code>Openwrt</code>、<code>Ubuntu 18.09LTS</code></p>
 <p>目前的网络拓扑图如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>

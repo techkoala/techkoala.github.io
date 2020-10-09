@@ -21,7 +21,7 @@ PVE 安装过程中遇到的问题以及解决方法
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/pve_q_a/" /><link rel="prev" href="https://www.techkoala.top/hugo_loveit_q_a/" /><link rel="next" href="https://www.techkoala.top/huginn_backup/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/pve_q_a/" /><link rel="prev" href="https://www.techkoala.top/hugo_loveit_q_a/" /><link rel="next" href="https://www.techkoala.top/hyper-v_bridging/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -137,14 +137,14 @@ PVE 安装过程中遇到的问题以及解决方法
 <p>近期将家里的服务器从 <code>Hyper-V</code> 迁移到 <code>PVE</code> 上。</p>
 <p>目前安装有<code>黑群晖</code>、<code>Openwrt</code>、<code>Ubuntu 18.09LTS</code></p>
 <p>目前的网络拓扑图如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png"
-            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/%e6%8b%93%e6%89%91.png 2x"
+            data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png"
+            data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/PVE/拓扑.png" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" />
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>
 <p>将安装过程中遇到的问题以及解决方法整理如下：</p>
@@ -197,7 +197,7 @@ PVE 安装过程中遇到的问题以及解决方法
     </div>
 
     <div class="post-nav"><a href="/hugo_loveit_q_a/" class="prev" rel="prev" title="Hugo 搭配 LoveIt 技巧总结"><i class="fas fa-angle-left fa-fw"></i>Hugo 搭配 LoveIt 技巧总结</a>
-            <a href="/huginn_backup/" class="next" rel="next" title="Huginn（Docker）数据备份与恢复">Huginn（Docker）数据备份与恢复<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/hyper-v_bridging/" class="next" rel="next" title="Hyper-V 桥接网络">Hyper-V 桥接网络<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
