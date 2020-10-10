@@ -531,5 +531,31 @@ Executed in  215.68 millis	fish       	external
 <p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
 </li>
 </ul>]]></description>
+</item><item>
+    <title>Virtualbox 共享文件夹权限问题</title>
+    <link>https://www.techkoala.top/virtualbox_file_share_issue/</link>
+    <pubDate>Wed, 10 Oct 2018 13:26:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/virtualbox_file_share_issue/</guid>
+    <description><![CDATA[<blockquote>
+<p>一行命令解决 Virtualbox 共享文件夹权限问题</p>
+</blockquote>
+<h2 id="功能">功能</h2>
+<p>使用 virtualbox 最方便的 <code>host-guest</code> 交换文件方案莫过于共享文件夹功能了。</p>
+<p>比如 <code>host</code> 有个叫 <code>git</code> 的文件夹，可以直接将此文件夹设置为共享文件夹并自动 <code>mount</code>，这样，每次在虚拟机一开机就看到这个文件夹被挂载为<code>/media/sf_git</code>。</p>
+<h2 id="问题">问题</h2>
+<p>但是，在用非 <code>root</code> 用户方法这个文件夹时却会遇到权限不足问题。</p>
+<p>原因在于自动 <code>mount</code> 的文件夹的所有者为 <code>root</code>，所属的组是 <code>vboxsf</code>，因此只有这两个用户有访问权限。</p>
+<h2 id="解决">解决</h2>
+<p>解决办法很简单，只需要将当前登录用户加入到 <code>vboxsf</code> 组就行了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>重启一次系统组设置即生效。</p>]]></description>
 </item></channel>
 </rss>
