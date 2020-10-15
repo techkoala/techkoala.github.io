@@ -2,20 +2,21 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://www.techkoala.top/categories/</loc><lastmod>2020-10-10T13:59:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/</loc><lastmod>2020-10-11T10:51:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/categories/network/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/openwrt/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/posts/</loc><lastmod>2020-10-10T13:59:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/openwrt_resize/</loc><lastmod>2020-10-09T15:57:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/posts/</loc><lastmod>2020-10-11T10:51:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/router/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/</loc><lastmod>2020-10-10T13:59:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/</loc><lastmod>2020-10-11T10:51:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/openwrt_compile_single_ipk/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/5g/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/5g_will_be_a_complete_failure/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/categories/wirelesscommunication/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/commands/</loc><lastmod>2020-10-10T13:59:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/categories/linux/</loc><lastmod>2020-10-10T13:59:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/commands/</loc><lastmod>2020-10-11T10:51:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/linux/</loc><lastmod>2020-10-11T10:51:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/system_info/</loc><lastmod>2020-10-10T13:59:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/beamforming/</loc><lastmod>2020-09-09T16:38:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://www.techkoala.top/beamforming/</loc><lastmod>2020-09-09T16:38:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/3gpp/</loc><lastmod>2020-09-03T19:36:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/3gpp_releases/</loc><lastmod>2020-09-03T19:36:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/vercel/</loc><lastmod>2020-09-12T15:13:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
@@ -68,6 +69,7 @@
             <loc>https://www.techkoala.top/hugo_loveit_q_a/</loc><lastmod>2020-09-01T21:30:43&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/github/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://www.techkoala.top/github_issue/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://www.techkoala.top/process/</loc><lastmod>2020-10-11T10:51:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/lte/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/lte_physical_signals/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/lte_mimo/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -99,5 +101,4 @@
             <loc>https://www.techkoala.top/tags/symbian/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://www.techkoala.top/brief_history_of_symbian/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://www.techkoala.top/tags/system/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://www.techkoala.top/mobile_phone_systems/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://www.techkoala.top/process/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>https://www.techkoala.top/mobile_phone_systems/</loc><lastmod>2020-09-12T11:34:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url></urlset>

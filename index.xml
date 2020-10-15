@@ -7,6 +7,147 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>OpenWRT overlay 空间扩容</title>
+    <link>https://www.techkoala.top/openwrt_resize/</link>
+    <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/openwrt_resize/</guid>
+    <description><![CDATA[<blockquote>
+<p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，记录一下</p>
+</blockquote>
+<h2 id="什么是-overlay">什么是 overlay</h2>
+<p><code>OpenWRT</code> 一般使用的文件系统是 <code>SquashFS</code> ，这个文件系统的特点就是：<strong>只读</strong>。</p>
+<p>一个只读的文件系统要怎么做到保存设置和安装软件的呢？这里就是使用 <code>/overlay</code> 的分区，<code>overlay</code> 顾名思义就是覆盖在上面一层的意思。虽然原来的文件不能修改，但把修改的部分放在 <code>overlay</code> 分区上，然后映射到原来的位置，读取的时候就可以读到修改过的文件了。</p>
+<p>为什么要用这么复杂的方法呢？ <code>OpenWRT</code> 当然也可以使用 <code>EXT4</code> 文件系统，但使用 <code>SquashFS + overlay</code> 的方式有一定的优点。</p>
+<ul>
+<li><code>SquashFS</code> 是经过压缩的，在路由器这种小型 <code>ROM</code> 的设备可以放下更多的东西。</li>
+<li><code>OpenWRT</code> 的恢复出厂设置也要依赖于这个方式。在你重置的时候，它只需要把 <code>overlay</code> 分区清空就可以了，一切都回到了刚刷进去的样子。</li>
+</ul>
+<p>如果是 <code>EXT4</code> 文件系统，就只能够备份每个修改的文件，在恢复出厂设置的时候复制回来，十分复杂。</p>
+<p>当然，<code>SquashFS + overlay</code> 也有它的缺点：</p>
+<ul>
+<li>修改文件的时候会占用更多的空间。首先你不能够删除文件，因为删除文件实际上是在 <code>overlay</code> 分区中写入一个删除的标识，反而占用更多的空间。</li>
+<li>另外在修改文件的时候相当于增加了一份文件的副本，占用了双份的空间。</li>
+</ul>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/overlay.webp" title="/images/Network/OpenWRT_overlay/overlay.webp" data-thumbnail="/images/Network/OpenWRT_overlay/overlay.webp" data-sub-html="<h2>overlay 示意图</h2>">
+        
+    </a><figcaption class="image-caption">overlay 示意图</figcaption>
+    </figure>
+<h2 id="创建新分区">创建新分区</h2>
+<p>首先，需要创建一个新的分区，这里使用的是 <code>cfdisk</code></p>
+<p>如果没有，首先使用下列命令进行安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ opkg install cfdisk
+</code></pre></td></tr></table>
+</div>
+</div><p>输入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
+</code></pre></td></tr></table>
+</div>
+</div><p>打开磁盘管理界面：</p>
+<p><figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
+        
+    </a><figcaption class="image-caption">磁盘界面</figcaption>
+    </figure>
+这里可以看到，一共有两个已有分区，现在新建一个分区：</p>
+<p>选中 <code>Free Space</code>，再选中 <code>New</code>，输入需要的大小，比如 5G。</p>
+<p>接着选择 <code>primary</code></p>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/primary.webp" title="/images/Network/OpenWRT_overlay/primary.webp" data-thumbnail="/images/Network/OpenWRT_overlay/primary.webp" data-sub-html="<h2>选择主分区</h2>">
+        
+    </a><figcaption class="image-caption">选择主分区</figcaption>
+    </figure>
+<p>选择 <code>Write</code>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/write.webp" title="/images/Network/OpenWRT_overlay/write.webp" data-thumbnail="/images/Network/OpenWRT_overlay/write.webp" data-sub-html="<h2>写入更改</h2>">
+        
+    </a><figcaption class="image-caption">写入更改</figcaption>
+    </figure></p>
+<p>输入 <code>yes</code>，完成新分区的创建</p>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/yes.webp" title="/images/Network/OpenWRT_overlay/yes.webp" data-thumbnail="/images/Network/OpenWRT_overlay/yes.webp" data-sub-html="<h2>确认</h2>">
+        
+    </a><figcaption class="image-caption">确认</figcaption>
+    </figure>
+<h2 id="格式化分区">格式化分区</h2>
+<p>使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
+</code></pre></td></tr></table>
+</div>
+</div><p>格式化分区</p>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/format.webp" title="/images/Network/OpenWRT_overlay/format.webp" data-thumbnail="/images/Network/OpenWRT_overlay/format.webp" data-sub-html="<h2>格式化分区</h2>">
+        
+    </a><figcaption class="image-caption">格式化分区</figcaption>
+    </figure>
+<h2 id="挂载新分区">挂载新分区</h2>
+<p>使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
+</code></pre></td></tr></table>
+</div>
+</div><p>挂载分区</p>
+<h2 id="转移到新分区">转移到新分区</h2>
+<p>然后将原来 upper 层中的数据复制到新的分区中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="web-界面配置修改">Web 界面配置修改</h2>
+<p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/openwrt.webp" title="/images/Network/OpenWRT_overlay/openwrt.webp" data-thumbnail="/images/Network/OpenWRT_overlay/openwrt.webp" data-sub-html="<h2>Web 界面</h2>">
+        
+    </a><figcaption class="image-caption">Web 界面</figcaption>
+    </figure>
+<p>再挂载点处点击添加然后配置如下：</p>
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/mountpoint.webp" title="/images/Network/OpenWRT_overlay/mountpoint.webp" data-thumbnail="/images/Network/OpenWRT_overlay/mountpoint.webp" data-sub-html="<h2>挂载点配置</h2>">
+        
+    </a><figcaption class="image-caption">挂载点配置</figcaption>
+    </figure>
+<h2 id="完成">完成</h2>
+<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。到 系统 -&gt; 软件包 可以看到空间变大后的容量。</p>
+<h2 id="自动挂载">自动挂载</h2>
+<p>默认情况下分区再重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreffer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
+</li>
+<li>
+<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreffer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
+</li>
+<li>
+<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreffer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>单独编译 OpenWRT ipk 插件</title>
     <link>https://www.techkoala.top/openwrt_compile_single_ipk/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
@@ -2081,234 +2222,6 @@ partitioned as follows:
 </li>
 <li>
 <p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>如何高效搜索？</title>
-    <link>https://www.techkoala.top/how_to_search/</link>
-    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/how_to_search/</guid>
-    <description><![CDATA[<blockquote>
-<p>如何在互联网上高效地找到自己想要的东西？</p>
-</blockquote>
-<p>搜索引擎方便了我们搜索资料，但是由于各种垃圾内容、网站地出现，实际上，搜索过程往往是十分低效的（特别是使用中文搜索）。因此，值得学习一些提升搜索效率必要的小技巧。</p>
-<p>废话不多说，直接分类讲解：</p>
-<h2 id="搜索语法">搜索语法</h2>
-<p>首先总结一下常用的语法表达式：</p>
-<table>
-<thead>
-<tr>
-<th>operator</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&ldquo;phrase&rdquo;</td>
-<td>结果必须包含 &ldquo;phrase&rdquo;</td>
-</tr>
-<tr>
-<td>- phrase</td>
-<td>结果排除 phrase</td>
-</tr>
-<tr>
-<td>A AND B</td>
-<td>A 和 B 必须同时包含</td>
-</tr>
-<tr>
-<td>A OR B</td>
-<td>必须包括 A 和 B 之一（或两者）</td>
-</tr>
-<tr>
-<td>site:example.com</td>
-<td>在网站中搜索</td>
-</tr>
-<tr>
-<td>filetype:jpg</td>
-<td>结果必须包含类型 .jpg</td>
-</tr>
-</tbody>
-</table>
-<h2 id="实例展示">实例展示</h2>
-<h3 id="网页">网页</h3>
-<p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
-</code></pre></td></tr></table>
-</div>
-</div><p>查找必须在标题文本中包含短语的特定页面</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
-</code></pre></td></tr></table>
-</div>
-</div><p>查找类似网站（仅谷歌搜索）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
-</code></pre></td></tr></table>
-</div>
-</div><p>您可以将运算符链接在一起 （例如：在 Url 中查找具有安全性或错误赏金）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>您可以限制为某些顶级域（例如：教师列表）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="email">Email</h3>
-<p>查找 Gmail 帐户</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>查找工作帐户（您需要先找到他们的域）</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>模糊搜索的情况下，可以尝试猜测电子邮件的格式</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>在网站上查找电子邮件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>在网页上查找您访问的每封电子邮件，适用于每个网站，将其注入 Chrome 开发工具</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
-var re = new RegExp (&#34;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&#34;);
-for (var i = 0; i &lt; elems.length; i++) {
-    if (re.test (elems [i].innerHTML)) {
-        console.log (elems [i].innerHTML);
-    }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>这将记录找到的每封电子邮件，而无需扫描整个页面。</p>
-<h3 id="文件">文件</h3>
-<p>查找电子表格</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
-</code></pre></td></tr></table>
-</div>
-</div><p>查找谷歌文档和谷歌表格</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="seo">SEO</h3>
-<p>在锚文本中查找具有特定关键字的网站</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>研究标题中包含特定关键字的博客帖子</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>查找反向链接 (例如：链接到特定博客帖子的其他网站)。注意：链接运算符 <code>link</code> 现在已弃用</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
-</code></pre></td></tr></table>
-</div>
-</div><p>使用通配符运算符查找关键字排列</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
-</code></pre></td></tr></table>
-</div>
-</div><p>使用给定的 widget 查找公司</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="待更新">待更新&hellip;</h1>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
-</li>
-<li>
-<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
