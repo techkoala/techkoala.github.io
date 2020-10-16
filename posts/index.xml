@@ -4,7 +4,122 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>ARP &amp; RARP 详解</title>
+    <link>https://www.techkoala.top/arp_rarp/</link>
+    <pubDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/arp_rarp/</guid>
+    <description><![CDATA[<blockquote>
+<p>ARP 以及 RARP 如何工作？</p>
+</blockquote>
+<h2 id="为什么要有-mac-地址">为什么要有 MAC 地址？</h2>
+<p>在说明 ARP 以及 RARP 之前，有必要首先说一下 MAC 地址的必要性。</p>
+<p>引用《Computer Networking A Top-Down Approach》中的描述：</p>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>KEEPING THE LAYERS INDEPENDENT<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">There are several reasons why hosts and router interfaces have MAC addresses in addition to network-layer addresses. First, LANs are designed for arbitrary network-layer protocols, not just for IP and the Internet. If adapters were assigned IP addresses rather than “neutral” MAC addresses, then adapters would not easily be able to support other network-layer protocols (for example, IPX or DECnet). Second, if adapters were to use network-layer addresses instead of MAC addresses, the network-layer address would have to be stored in the adapter RAM and reconfigured every time the adapter was moved (or powered up). Another option is to not use any addresses in the adapters and have each adapter pass the data (typically, an IP datagram) of each frame it receives up the protocol stack. The network layer could then check for a matching network-layer address. One problem with this option is that the host would be interrupted by every frame sent on the LAN, including by frames that were destined for other hosts on the same broadcast LAN. In summary, in order for the layers to be largely independent building blocks in a network architecture, different layers need to have their own addressing scheme. We have now seen three types of addresses: host names for the application layer, IP addresses for the network layer, and
+MAC addresses for the link layer.</div>
+        </div>
+    </div>
+<p>简单来说：</p>
+<ul>
+<li>局域网不仅仅为 IP 和因特网设计，MAC 地址的“中立性”为各种网络层协议（比如 IPX 或者 DECnet)提供了灵活的施展空间</li>
+<li>网络层地址往往是动态的，每次更换网络或者重启都需要对适配器进行重新配置</li>
+<li>如果取消 MAC 地址，让适配器把收到的每帧都往上层传递，就会带来一个问题：主机会去处理局域网中的每个帧，即使这个帧不属于自己，这就带来了不必要的消耗。</li>
+</ul>
+<h2 id="arp">ARP</h2>
+<p>一句话概括 ARP（Address Resolution Protocol，地址解析协议）的目的就是：负责将<strong>网络层地址</strong>（最常见的就是 IP 地址）解析为/映射到<strong>链路层地址</strong>（MAC 地址）。</p>
+<h3 id="报文结构">报文结构</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
+        
+    </a><figcaption class="image-caption">ARP 包结构</figcaption>
+    </figure>
+<p>一般我们讨论以太网中的 ARP 报文时候，ARP 数据会被封装在以太网报文中，其中：</p>
+<ul>
+<li>
+<p>以太网报文：</p>
+<ul>
+<li><strong>目标以太网地址</strong>：目标 MAC 地址，FF:FF:FF:FF:FF:FF （二进制全 1）为广播地址</li>
+<li><strong>源以太网地址</strong>：发送方 MAC 地址</li>
+<li><strong>帧类型</strong>：以太类型，<strong>ARP 为 0x0806</strong></li>
+</ul>
+</li>
+<li>
+<p>ARP 报文数据：</p>
+<ul>
+<li><strong>硬件类型</strong>：如以太网（0x0001）、分组无线网</li>
+<li><strong>协议类型</strong>：如网际协议(IP)（0x0800）、IPv6（0x86DD）</li>
+<li><strong>硬件地址长度</strong>：每种硬件地址的字节长度，一般为 6（以太网）</li>
+<li><strong>协议地址长度</strong>：每种协议地址的字节长度，一般为 4（IPv4）</li>
+<li><strong>操作码 OP</strong>：1 为 ARP 请求，2 为 ARP 应答，3 为 RARP 请求，4 为 RARP 应答</li>
+<li><strong>源硬件地址</strong>：n 个字节，n 由硬件地址长度得到，一般为发送方 MAC 地址</li>
+<li><strong>源协议地址</strong>：m 个字节，m 由协议地址长度得到，一般为发送方 IP 地址</li>
+<li><strong>目标硬件地址</strong>：n 个字节，n 由硬件地址长度得到，一般为目标 MAC 地址</li>
+<li><strong>目标协议地址</strong>：m 个字节，m 由协议地址长度得到，一般为目标 IP 地址</li>
+</ul>
+</li>
+</ul>
+<h3 id="工作原理">工作原理</h3>
+<ol>
+<li>每台主机都会在自己的 ARP 缓冲区 (ARP Cache)中建立一个 ARP 列表，表示 IP 地址和 MAC 地址的对应关系。</li>
+<li>当源主机需要将一个数据包要发送到目的主机时，会首先检查自己 ARP 列表中是否存在该 IP 地址对应的 MAC 地址，如果有，就直接将数据包发送到这个 MAC 地址；如果没有，就向本地网段发起一个 ARP 请求的<strong>广播包</strong>（即将目的硬件地址设置为全 1），查询此目的主机对应的 MAC 地址。此 ARP 请求数据包里包括源主机的 IP 地址、硬件地址、以及目的主机的 IP 地址。</li>
+<li>网络中所有的主机收到这个 ARP 请求后，会检查数据包中的目的 IP 是否和自己的 IP 地址一致。如果不相同就忽略此数据包；如果相同，该主机首先将发送端的 MAC 地址和 IP 地址添加到自己的 ARP 列表中，如果 ARP 表中已经存在该 IP 的信息，则将其覆盖，然后给源主机发送一个 ARP <strong>单播</strong>响应数据包，告诉对方自己是它需要查找的 MAC 地址；</li>
+<li>源主机收到这个 ARP 响应数据包后，将得到的目的主机的 IP 地址和 MAC 地址添加到自己的 ARP 列表中，并利用此信息开始数据的传输。如果源主机一直没有收到 ARP 响应数据包，表示 ARP 查询失败。</li>
+</ol>
+<h3 id="代理-arp">代理 ARP</h3>
+<p>代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：</p>
+<p><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-sub-html="<h2>代理 ARP</h2>">
+        
+    </a><figcaption class="image-caption">代理 ARP</figcaption>
+    </figure>
+但是需要网关需要满足：</p>
+<ul>
+<li>开启代理 ARP 功能</li>
+<li>有目标的路由信息</li>
+</ul>
+<p>假如不存在网关但使用代理 ARP，则情况如下：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
+        
+    </a><figcaption class="image-caption">代理 ARP</figcaption>
+    </figure>
+<p>存在网关的情况下，使用正常 ARP，则情况如下：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
+        
+    </a><figcaption class="image-caption">代理 ARP</figcaption>
+    </figure>
+<p>总结而言：</p>
+<ul>
+<li>没有网关（采用代理 ARP）时：跨网段访问谁，就问谁的 MAC</li>
+<li>有网关（采用正常 ARP）时：跨网段访问谁，都问网关的 MAC</li>
+<li>无论使用哪种 ARP，跨网段通信时，发送方请求得到的目标 MAC 地址都是网关 MAC</li>
+</ul>
+<h2 id="rarp">RARP</h2>
+<p>RARP（Reverse Address Resolution Protocol，逆地址解析协议），顾名思义，用于将 MAC 地址映射为网络层地址（例如 IP 地址），用于给 MAC 地址分配 IP 地址（通常在需要远程启动(类似无盘工作站)的系统中使用）。其因为较限于 IP 地址的运用以及其他的一些缺点，因此渐为更新的 BOOTP 或 DHCP 所取代。</p>
+<p>RARP 使用与 ARP 相同的报头结构，只是其中的操作码有所区别，见上文。</p>
+<h3 id="工作原理-1">工作原理</h3>
+<ol>
+<li>发送主机发送一个本地的 RARP 广播，在此广播包中，声明自己的 MAC 地址并且请求任何收到此请求的 RARP 服务器分配一个 IP 地址；</li>
+<li>本地网段上的 RARP 服务器收到此请求后，检查其 RARP 列表，查找该 MAC 地址对应的 IP 地址；</li>
+<li>如果存在，RARP 服务器就给源主机发送一个响应数据包并将此 IP 地址提供给对方主机使用；</li>
+<li>如果不存在，RARP 服务器对此不做任何的响应；</li>
+<li>源主机收到从 RARP 服务器的响应信息，就利用得到的 IP 地址进行通讯；如果一直没有收到 RARP 服务器的响应信息，表示初始化失败。</li>
+</ol>
+<h2 id="安全问题">安全问题</h2>
+<h3 id="arp-欺骗">ARP 欺骗</h3>
+<p>源主机通过 ARP 协议在局域网内发送广播请求包，按照 ARP 协议的设想应该是对应主机回复，但如果攻击者进行回复，源主机依然会选择相信。这是由 ARP 协议的不验证引起的，它不验证对方是否是所声称 IP 地址的主机。同时，由于 ARP 协议是一种无状态协议，既不验证应答者的身份，也不判断是否发送过 ARP 请求，当收到一条 ARP 应答报文时，它就会更新 ARP 应答缓存表。因此，攻击者甚至可以<strong>主动</strong>向源主机发送 ARP 响应包，迫使源主机更新其 ARP 缓存表。</p>
+<p>对此，一个简单的方法是使用静态绑定地址，但是此方法维护起来较为麻烦。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] Computer Networking A Top-Down Approach</li>
+<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">地址解析协议</a></li>
+<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">逆地址解析协议</a></li>
+<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreffer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
+</ul>]]></description>
+</item><item>
     <title>OpenWRT overlay 空间扩容</title>
     <link>https://www.techkoala.top/openwrt_resize/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
@@ -1883,343 +1998,6 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </li>
 <li>
 <p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>HTTPS 工作原理</title>
-    <link>https://www.techkoala.top/how_https_works/</link>
-    <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/how_https_works/</guid>
-    <description><![CDATA[<blockquote>
-<p>理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理</p>
-</blockquote>
-<blockquote>
-<p>注：本文系全文转载，原文信息如下：</p>
-<p>作者：猫尾博客</p>
-<p>链接：https://cattail.me/tech/2015/11/30/how-https-works.html</p>
-<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-<p>读完本文，你能明白</p>
-<ul>
-<li>什么是 HTTPS，TLS (SSL)，TLS 和 HTTPS 是什么关系</li>
-<li>什么是证书和数字签名，它们是如何传递信任的</li>
-<li>HTTPS 有什么样的功能，它是如何实现这样的功能的</li>
-</ul>
-<h2 id="简介">简介</h2>
-<p>HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示为 SSL 3.1，TLS 1.1 为 SSL 3.2，TLS 1.2 为 SSL 3.3。本文着重描述 TLS 协议的 1.2 版本</p>
-<p>下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-sub-html="<h2>Credit: Kaushal Kumar Panday From: SSL Handshake and HTTPS Bindings on IIS</h2>">
-        
-    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
-    </figure>
-<p>其中 <code>Handshake protocol</code>，<code>Change Ciper Spec protocol</code> 和 <code>Alert protocol</code> 组成了 <code>SSL Handshaking Protocols</code>。</p>
-<p>HTTPS 和 HTTP 协议相比提供了:</p>
-<ol>
-<li>数据完整性：内容传输经过完整性校验</li>
-<li>数据隐私性：内容经过对称加密，每个连接生成一个唯一的加密密钥</li>
-<li>身份认证：第三方无法伪造服务端（客户端）身份</li>
-</ol>
-<p>其中，数据完整性和隐私性由 TLS Record Protocol 保证，身份认证由 TLS Handshaking Protocols 实现。</p>
-<h2 id="总览">总览</h2>
-<p>使用 RSA 算法的 SSL 握手过程是这样的:</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
-        
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
-    </figure>
-<ol>
-<li>[明文] 客户端发送随机数 client_random 和支持的加密方式列表</li>
-<li>[明文] 服务器返回随机数 server_random ，选择的加密方式和服务器证书链</li>
-<li>[RSA] 客户端验证服务器证书，使用证书中的公钥加密 premaster secret 发送给服务端</li>
-<li>服务端使用私钥解密 premaster secret</li>
-<li>两端分别通过 client_random，server_random 和 premaster secret 生成 master secret，用于对称加密后续通信内容</li>
-</ol>
-<h3 id="证书digital-certificate">证书（Digital certificate）</h3>
-<p>那么什么是证书呢？</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-sub-html="<h2>证书信息</h2>">
-        
-    </a><figcaption class="image-caption">证书信息</figcaption>
-    </figure>
-<h3 id="证书中包含了以下信息">证书中包含了以下信息</h3>
-<ol>
-<li>证书信息：过期时间和序列号</li>
-<li>所有者信息：姓名等</li>
-<li>所有者公钥</li>
-</ol>
-<p><strong>为什么服务端要发送证书给客户端?</strong></p>
-<p>互联网有太多的服务需要使用证书来验证身份，以至于客户端（操作系统或浏览器等）无法内置所有证书，需要通过服务端将证书发送给客户端。</p>
-<h3 id="客户端为什么要验证接收到的证书">客户端为什么要验证接收到的证书</h3>
-<p><strong>中间人攻击</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
-        伪造证书            拦截请求
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="客户端如何验证接收到的证书">客户端如何验证接收到的证书</h3>
-<p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
-| A digital signature |
-|(not to be confused  |
-|with a digital       |
-|certificate)         |              +---------+                +--------+
-| is a mathematical   |---- 哈希 ---&gt;| 消息摘要  |--- 私钥加密 ---&gt;| 数字签名 |
-|technique used       |              +---------+                +--------+
-|to validate the      |
-|authenticity and     |
-|integrity of a       |
-|message, software    |
-|or digital document. |
-+---------------------+
-</code></pre></td></tr></table>
-</div>
-</div><p>将一段文本通过哈希（hash）和私钥加密处理后生成数字签名。</p>
-<p>假设消息传递在 Bob，Susan 和 Pat 三人之间发生。Susan 将消息连同数字签名一起发送给 Bob，Bob 接收到消息后，可以这样验证接收到的消息就是 Susan 发送的</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
-| A digital signature |
-|(not to be confused  |
-|with a digital       |
-|certificate)         |              +---------+
-| is a mathematical   |---- 哈希 ---&gt;|  消息摘要 |
-|technique used       |              +---------+
-|to validate the      |                 |
-|authenticity and     |                 |
-|integrity of a       |                 |
-|message, software    |                 对
-|or digital document. |                 比
-+---------------------+                 |
-                                        |
-                                        |
-        +---------+               +----------+
-        | 数字签名 |--- 公钥解密 ---&gt;|  消息摘要 |
-        +---------+               +----------+
-</code></pre></td></tr></table>
-</div>
-</div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
-<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreffer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
-<p>Susan 将证书发送给 Bob 后，Bob 通过 CA 证书的公钥验证证书签名。</p>
-<p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
-<p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
-<h2 id="tls-协议">TLS 协议</h2>
-<p><code>TLS</code> 协议包括 <code>TLS Record Protocol</code> 和 <code>TLS Handshake Protocol</code>。总览中的流程图仅涉及到 <code>TLS Handshake Protocol</code>。</p>
-<h3 id="tls-record-protocol">TLS Record Protocol</h3>
-<p>在 <code>TLS</code> 协议中，有四种子协议运行于 <code>Record protocol</code> 之上</p>
-<ul>
-<li>Handshake protocol</li>
-<li>Alert protocol</li>
-<li>Change cipher spec protocol</li>
-<li>Application data protocol</li>
-</ul>
-<p>Record protocol 起到了这样的作用</p>
-<ul>
-<li>在发送端：将数据（Record）分段，压缩，增加 MAC (Message Authentication Code) 和加密</li>
-<li>在接收端：将数据（Record）解密，验证 MAC，解压并重组</li>
-</ul>
-<blockquote>
-<p>值得一提的是，Record protocol 提供了数据完整性和隐私性保证，但 Record 类型（type）和长度（length）是公开传输的</p>
-</blockquote>
-<p>Record Protocol 有三个连接状态 (Connection State)，连接状态定义了压缩，加密和 MAC 算法。所有的 Record 都是被当前状态（Current State）确定的算法处理的。</p>
-<p><code>TLS Handshake Protocol</code> 和 <code>Change Ciper Spec Protocol</code> 会导致 <code>Record Protocol</code> 状态切换。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">empty state -------------------&gt; pending state ------------------&gt; current state
-             Handshake Protocol                Change Cipher Spec
-</code></pre></td></tr></table>
-</div>
-</div><p>初始当前状态（Current State）没有指定加密，压缩和 MAC 算法，因而在完成 TLS Handshaking Protocols 一系列动作之前，客户端和服务端的数据都是<strong>明文传输</strong>的；当 TLS 完成握手过程后，客户端和服务端确定了加密，压缩和 MAC 算法及其参数，数据（Record）会通过指定算法处理。</p>
-<blockquote>
-<p>其中，Record 首先被加密，然后添加 MAC（message authentication code）以保证数据完整性。</p>
-</blockquote>
-<h3 id="tls-handshaking-protocols">TLS Handshaking Protocols</h3>
-<p>Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。</p>
-<p>使用 <code>RSA</code> 算法的握手过程是这样的（已在总览中提到）</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
-        
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
-    </figure>
-<p>客户端和服务端在握手 hello 消息中明文交换了 <code>client_random</code> 和 <code>server_random</code> ，使用 <code>RSA</code> 公钥加密传输 <code>premaster secret</code> ，最后通过算法，客户端和服务端分别计算 <code>master secret</code>。其中，不直接使用 <code>premaster secret</code> 的原因是：保证 <code>secret</code> 的随机性不受任意一方的影响。</p>
-<p>除了使用 <code>RSA</code> 算法在公共信道交换密钥，还可以通过 <code>Diffie–Hellman</code> 算法。<code>Diffie–Hellman</code> 算法的原理是这样的</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-sub-html="<h2>By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</h2>">
-        
-    </a><figcaption class="image-caption">By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</figcaption>
-    </figure>
-<p>使用 <code>Diffie–Hellman</code> 算法交换 <code>premaster secret</code> 的流程</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
-        
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
-    </figure>
-<h2 id="小结">小结</h2>
-<p><code>TLS Handshaking Protocols</code> 协商了 <code>TLS Record Protocol</code> 使用的算法和所需参数，并验证了服务端身份；</p>
-<p><code>TLS Record Protocol</code> 在协商后保证应用层数据的完整性和隐私性。</p>
-<p><code>TLS Handshaking Protocol</code> 的核心是在公开信道上传递 <code>premaster secret</code>。</p>
-<h2 id="qa">Q&amp;A</h2>
-<h3 id="为什么传输内容不直接使用非对称加密">为什么传输内容不直接使用非对称加密？</h3>
-<p>因为性能限制。</p>
-<h3 id="https-能保证正常连接">HTTPS 能保证正常连接？</h3>
-<p>不能。</p>
-<div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">There are a number of ways in which a man-in-the-middle attacker can attempt to make two entities drop down to the least secure method they support.</div>
-        </div>
-    </div>
-<p>攻击者甚至可以直接丢弃双方的数据包</p>
-<h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
-<p>通过 <code>Client Certificate</code></p>
-<div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</div>
-        </div>
-    </div>
-<h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
-<p><code>Closure Alerts</code>：防止 <code>Truncation Attack</code></p>
-<div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">In a truncation attack, an attacker inserts into a message a TCP code indicating the message has finished, thus preventing the recipient picking up the rest of the message. To prevent this, SSL from version v3 onward has a closing handshake, so the recipient knows the message has not ended until this has been performed.</div>
-        </div>
-    </div>
-<p>Error Alerts：错误处理</p>
-<h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
-                      ClientHello.random + ServerHello.random)
-                      [0..47];
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="加密压缩和-mac-算法参数是如何计算的">加密，压缩和 MAC 算法参数是如何计算的</h3>
-<p><code>Handshaking Protocols</code> 使得客户端和服务端交换了三个参数：<code>client_random</code>，<code>server_random</code> 和 <code>master_secret</code>，通过以下算法生成算法所需要的参数</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">To generate the key material, compute
-
-  key_block = PRF (SecurityParameters.master_secret,
-                  &#34;key expansion&#34;,
-                  SecurityParameters.`server_random` +
-                  SecurityParameters.`client_random`);
-
-until enough output has been generated.  Then, the key_block is
-partitioned as follows:
-
-  client_write_MAC_key [SecurityParameters.mac_key_length]
-  server_write_MAC_key [SecurityParameters.mac_key_length]
-  client_write_key [SecurityParameters.enc_key_length]
-  server_write_key [SecurityParameters.enc_key_length]
-  client_write_IV [SecurityParameters.fixed_iv_length]
-  server_write_IV [SecurityParameters.fixed_iv_length]
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">The master secret is expanded into a sequence of secure bytes, which is then split to a client write MAC key, a server write MAC key, a client write encryption key, and a server write encryption key</div>
-        </div>
-    </div>
-<p>使用 <code>Diffie-Hellman</code> 算法的 <code>TLS</code> 握手细节</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
-        
-    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/">https://cipherstuff.wordpress.com/</a></figcaption>
-    </figure>
-<h2 id="拓展阅读">拓展阅读</h2>
-<ul>
-<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
-<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
-<li>Session resume</li>
-<li>证书 Revoke</li>
-</ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2 规范</a></p>
-</li>
-<li>
-<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI 规范</a></p>
-</li>
-<li>
-<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>
-</li>
-<li>
-<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
