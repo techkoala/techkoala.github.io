@@ -4,7 +4,168 @@
         <link>https://www.techkoala.top/categories/network/</link>
         <description>Network - 分类 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/network/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/network/" rel="self" type="application/rss+xml" /><item>
+    <title>DNS 详解</title>
+    <link>https://www.techkoala.top/dns/</link>
+    <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/dns/</guid>
+    <description><![CDATA[<blockquote>
+<p>本文主要讲解 DNS 的报文结构</p>
+</blockquote>
+<h2 id="dns-简介">DNS 简介</h2>
+<p>简单来说 DNS 负责将我们熟知的域名翻译成 IP 地址，其相关定义由 RFC 1034 和 RFC 1035 给出。</p>
+<p>为了更加的扩展性，DNS 由大量的服务器分层次进行组织的，大致来说分为：根 DNS 服务器、顶域名（TLD）DNS 服务器和权威 DNS 服务器。他们的层次结构如下图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" data-sub-html="<h2>DNS 的层次结构</h2>">
+        
+    </a><figcaption class="image-caption">DNS 的层次结构</figcaption>
+    </figure>
+<p>关于 DNS 的工作过程及相关信息参见<a href="https://www.techkoala.top/dns_update/" target="_blank" rel="noopener noreffer">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
+<h3 id="dns-报文结构">DNS 报文结构</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-sub-html="<h2>DNS 的报文结构</h2>">
+        
+    </a><figcaption class="image-caption">DNS 的报文结构</figcaption>
+    </figure>
+<ul>
+<li>
+<p>前 12 个字节为<strong>首部</strong>，包含：</p>
+<ul>
+<li>
+<p><strong>标识符</strong>（2 字节），用于标识请求及其响应报文，区分不同的查询</p>
+</li>
+<li>
+<p><strong>标志</strong>（2 字节），其中：</p>
+<ul>
+<li><strong>QR</strong>（1bit）：查询/响应标志，<code>0</code> 为查询，<code>1</code> 为响应</li>
+<li><strong>opcode</strong>（4bit）：<code>0</code> 表示标准查询，<code>1</code> 表示反向查询，<code>2</code> 表示服务器状态请求，<code>[3,15]</code>为保留值</li>
+<li><strong>AA</strong>（1bit）：表示授权回答，这个比特位在应答的时候才有意义，指出给出应答的服务器是查询域名的授权解析服务器</li>
+<li><strong>TC</strong>（1bit）：表示可截断的，用来指出报文比允许的长度还要长，导致被截断;</li>
+<li><strong>RD</strong>（1bit）：表示期望递归，这个比特位被<strong>请求</strong>设置，应答的时候使用的相同的值返回。如果设置了 RD，就建议域名服务器进行递归解析，递归查询的支持是可选的;</li>
+<li><strong>RA</strong>（1bit）：表示可用递归，这个比特位在<strong>应答</strong>中设置或取消，用来代表服务器是否支持递归查询;</li>
+<li><strong>rcode</strong>（4bit）：表示返回码
+<ul>
+<li><code>0</code> : 没有错误</li>
+<li><code>1</code> : 报文格式错误(Format error) - 服务器不能理解请求的报文</li>
+<li><code>2</code> : 服务器失败(Server failure) - 因为服务器的原因导致没办法处理这个请求</li>
+<li><code>3</code> : 名字错误(Name Error) - 只有对授权域名解析服务器有意义，指出解析的域名不存在</li>
+<li><code>4</code> : 没有实现(Not Implemented) - 域名服务器不支持查询类型</li>
+<li><code>5</code> : 拒绝(Refused) - 服务器由于设置的策略拒绝给出应答.比如，服务器不希望对某些请求者给出应答，或者服务器不希望进行某些操作（比如区域传送 zone transfer）</li>
+<li><code>[6,15]</code> : 保留值，暂未使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>数量字段</strong>（8 字节）：每个区域 2 字节</p>
+<ul>
+<li><strong>Questions</strong> 表示查询问题区域节的数量</li>
+<li><strong>Answers</strong> 表示回答区域的数量</li>
+<li><strong>Authoritative namesversers</strong> 表示授权区域的数量</li>
+<li><strong>Additional recoreds</strong> 表示附加区域的数量</li>
+</ul>
+</li>
+<li>
+<p><strong>问题</strong>（Questions）部分包括：</p>
+<ul>
+<li>查询的域名 8bit</li>
+<li>查询的协议类型 16bit</li>
+<li>查询的类 16bit</li>
+</ul>
+</li>
+<li>
+<p><strong>回答</strong>（Answers）/<strong>权威</strong>（Authoritys）/<strong>附加</strong>（Additionals）部分格式相同：</p>
+<ul>
+<li><strong>NAME</strong> 资源记录包含的域名.</li>
+<li><strong>TYPE</strong> 表示 DNS 协议的类型.</li>
+<li><strong>CLASS</strong> 表示 RDATA 的类.</li>
+<li><strong>TTL</strong> 4 字节无符号整数表示资源记录可以缓存的时间。0 代表只能被传输，但是不能被缓存。</li>
+<li><strong>RDLENGTH</strong> 2 个字节无符号整数表示 RDATA 的长度</li>
+<li><strong>RDATA</strong> 不定长字符串来表示记录，格式根 TYPE 和 CLASS 有关。比如，TYPE 是 A，CLASS 是 IN，那么 RDATA 就是一个 4 个字节的 ARPA 网络地址。</li>
+</ul>
+</li>
+</ul>
+<h2 id="rrs-说明">RRs 说明</h2>
+<p>每个 DNS 响应报文包含一条或者多条资源记录（resource records ，RRs），资源记录包含下列字段的 4 元组：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">（Name，Value，Type，TTL）
+</code></pre></td></tr></table>
+</div>
+</div><p>其中 TTL 表示生存时间，决定了资源记录应该从缓存中删除的时间。</p>
+<ul>
+<li>如果是 Type=A，Name 为主机名，Value 是对应的 IP 地址（如 bar.foo.com，xxx.xxx.xxx.xxx，A）</li>
+<li>如果是 Type=NS，Name 为一个域（如 foo.com），Value 是知道如何获取该域中的主机 IP 地址的权威 DNS 服务器的主机名（如 foo.com，dns.foo.com，NS）</li>
+<li>如果是 Type=CNAME，Value 是别名为 Name 的主机对应的规范主机名。（如 foo.com，relay1.bar.foo.com，CNAME）</li>
+<li>如果是 Type=MX，Value 是别名为 Name 的邮件服务器对应的规范主机名。（如 foo.com，mail.bar.foo.com，MX）</li>
+</ul>
+<h2 id="实例">实例</h2>
+<p>这里我们使用 WireShark 抓包实际看看，启动 WireShark 时可以设置捕获过滤器为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">udp port 53
+</code></pre></td></tr></table>
+</div>
+</div><p>这样我们只抓取通过 UDP 53 端口的 DNS 请求，此外如果需要仅仅显示特定的 DNS 查询，还可以进一步应用显示过滤器，例如这里我们仅查看<code>www.techkoala.top</code>的查询记录，则显示过滤器设置为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">dns.qry.name==www.techkoala.top
+</code></pre></td></tr></table>
+</div>
+</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-sub-html="<h2>16 进制表示</h2>">
+        
+    </a><figcaption class="image-caption">16 进制表示</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" data-sub-html="<h2>WireShark 中 DNS 请求报文及其结构</h2>">
+        
+    </a><figcaption class="image-caption">WireShark 中 DNS 请求报文及其结构</figcaption>
+    </figure>
+<p>可以看出</p>
+<ul>
+<li>标识为：0x0000cd13</li>
+<li>这是一个请求报文，仅在 Questions 部分有值</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" data-sub-html="<h2>标志部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">标志部分各个字段的值</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" data-sub-html="<h2>查询部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">查询部分各个字段的值</figcaption>
+    </figure>
+<p>同时 WireShark 还贴心的告诉我们，响应报文的在总抓取包的编号为 10，方便我们快速找到请求报文对应的响应报文。</p>
+<p><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" data-sub-html="<h2>16进制表示</h2>">
+        
+    </a><figcaption class="image-caption">16进制表示</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" data-sub-html="<h2>WireShark 中 DNS 响应报文及其结构</h2>">
+        
+    </a><figcaption class="image-caption">WireShark 中 DNS 响应报文及其结构</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" data-sub-html="<h2>标志部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">标志部分各个字段的值</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" data-sub-html="<h2>查询部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">查询部分各个字段的值</figcaption>
+    </figure></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] Computer Networking A Top-Down Approach</li>
+<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreffer">DNS 请求报文详解</a></li>
+</ul>]]></description>
+</item><item>
     <title>ARP &amp; RARP 详解</title>
     <link>https://www.techkoala.top/arp_rarp/</link>
     <pubDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</pubDate>
@@ -338,13 +499,13 @@ MAC addresses for the link layer.</div>
 </div>
 </div>]]></description>
 </item><item>
-    <title>DNS 列表</title>
+    <title>常用 DNS 服务器</title>
     <link>https://www.techkoala.top/dns_list/</link>
     <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/dns_list/</guid>
     <description><![CDATA[<blockquote>
-<p>列举国内外常用的 DNS</p>
+<p>列举国内外常见的 DNS，方便替换使用</p>
 </blockquote>
 <h2 id="ipv4">IPv4</h2>
 <h3 id="国内">国内</h3>
@@ -1983,266 +2144,6 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </li>
 <li>
 <p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>深入浅出 DNS 解析</title>
-    <link>https://www.techkoala.top/dns_update/</link>
-    <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/dns_update/</guid>
-    <description><![CDATA[<blockquote>
-<p>DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新后必须等待 48 小时才能生效吗？为什么有人看到的是新 IP，有人看到的是旧 IP？</p>
-</blockquote>
-<h2 id="dns-分类">DNS 分类</h2>
-<p>我们知道，DNS 服务器有两种：权威服务器（authoritative）和递归服务器（recursive）</p>
-<p><code>权威 DNS 服务器（也称为名称服务器，NS，nameserver）</code> 具有其所负责的每个域的 <code>IP</code> 地址数据库。</p>
-<p>例如，<code>github.com</code> 的权威 <code>DNS</code> 服务器是 <code>NS-421.awsdNS-52.com</code></p>
-<p>您可以像这样要求它提供 <code>github.com</code> 的 <code>IP</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
-</code></pre></td></tr></table>
-</div>
-</div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 <code>IP</code> 地址。它们通过询问正确的权威 <code>DNS</code> 服务器，找出域名的 <code>IP</code> 地址，然后缓存这个 <code>IP</code> 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 <code>DNS</code> 服务器。</p>
-<p>当人们访问你的网站时，他们可能会向递归 <code>DNS</code> 服务器进行 <code>DNS</code> 查询。那么，递归 <code>DNS</code> 服务器是如何工作的呢？</p>
-<h3 id="递归-dns-服务器如何工作">递归 DNS 服务器如何工作</h3>
-<p>以 <code>8.8.8.8</code> 为例，如果我们向其请求 <code>github.com</code> 的 <code>IP</code> 地址（A 记录），如果它存在缓存，那么就直接返回缓存结果。然而，缓存是有期限的，如果所有缓存都过期了呢？那么情况是这样的：</p>
-<ol>
-<li>
-<p>递归服务器内部硬编码（hardcoded）有根 <code>DNS</code> 服务器 <code>.</code> 的 <code>IP</code> 地址（参见 [2][3]），选择一个根 <code>DNS</code> 服务器，例如 <code>198.41.0.4</code></p>
-</li>
-<li>
-<p>询问根 <code>DNS</code> 服务器有关 <code>com.</code> 的 <code>NS</code></p>
-<p>此步可以使用如下方法模拟：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
-
-...
-com.			172800	IN	NS	a.gtld-servers.net.
-...
-a.gtld-servers.net.	172800	IN	A	192.5.6.30
-...
-</code></pre></td></tr></table>
-</div>
-</div><p>可以看到，这里我们得到一个 <code>com.</code> 的权威 NS<code>a.gtld-servers.net.</code> 及其 IP 地址 <code>192.5.6.30</code></p>
-<div class="details admonition warning open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">实际上，99.99% 的情况下，此步我们就将得到 <code>github.com</code> 的 A 记录，但为了展示完整 <code>DNS</code> 解析进程，假设这里我们没有得到。</div>
-        </div>
-    </div>
-</li>
-<li>
-<p>询问该权威 <code>NS</code> 有关 <code>github.com</code> 的 <code>NS</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
-
-...
-github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-...
-</code></pre></td></tr></table>
-</div>
-</div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 <code>IP</code> 地址 <code>205.251.193.165</code></p>
-</li>
-<li>
-<p>询问该 <code>NS</code> 有关 <code>github.com</code> 的 A 记录</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
-
-github.com.		60	IN	A	140.82.112.4
-</code></pre></td></tr></table>
-</div>
-</div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 <code>github.com</code> 的 <code>IP</code> 地址。</p>
-</li>
-</ol>
-<p>此外，使用 <code>$ dig @8.8.8.8 +trace github.com</code> 可以一次性显示上述所有步骤。</p>
-<h2 id="更新-dns-记录">更新 DNS 记录</h2>
-<p>更新 <code>DNS</code> 记录时，有两种情况：</p>
-<ol>
-<li>
-<p>保持相同的 NS</p>
-</li>
-<li>
-<p>变更 NS</p>
-</li>
-</ol>
-<h3 id="首先谈谈生存时间ttlstime-to-live">首先谈谈生存时间（TTLs，time to live）</h3>
-<p>上面已经说到，<code>DNS</code> 服务器一般存有缓存，而控制缓存是否过期的参数就是 <code>TTL</code>。</p>
-<p>我们假设得到一个查询结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
-
-github.com.		60	IN	A	140.82.112.4
-</code></pre></td></tr></table>
-</div>
-</div><p>这里的 60（秒）即表示 <code>TTL</code>，这是一个很短的 <code>TTL</code>。理论上，如果每个用户都遵循 <code>DNS</code> 标准，那么 <code>github.com</code> 在更改了 <code>IP</code> 地址后，每个用户都应该在 60 秒内得到这个新的地址。但实际上呢？</p>
-<h3 id="更新同一-ns-上的-dns-记录">更新同一 NS 上的 DNS 记录</h3>
-<p>假设我们已经在域名商处更新了新的 <code>DNS</code> 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
-
-test.jvNS.ca.		299	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><p>如果此前没有设置过 <code>DNS</code> 记录，因为没有缓存，所以立刻生效了。这里可以看到 <code>TTL</code> 是 299。那么，修改 <code>IP</code> 为 <code>5.6.7.8</code> 呢。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
-
-test.jvNS.ca.		144	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><p>可以看到，<code>IP</code> 并没有发生改变且 <code>TTL</code> 表示缓存还将存在 144 秒。而且，多次查询，你可能会发现，有时候可以得到新的 <code>IP</code>，但有的时候又是旧的 <code>IP</code>。</p>
-<p>这里是因为像 <code>8.8.8.8</code> 这样的 <code>DNS</code> 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
-<p>等待 5 分钟后，所有的缓存都更新了，再次查询，将会始终返回新 <code>IP</code>。</p>
-<h3 id="ttl-并非总是可靠">TTL 并非总是可靠</h3>
-<p>与大多数互联网协议一样，并不是所有的终端都服从 <code>DNS</code> 规范（包括 <code>8.8.8.8</code> 这样的大型 <code>DNS</code> 也不尊重 <code>TTL</code>）。一些 ISP 的 <code>DNS</code> 服务器会将缓存记录的时间比 <code>TTL</code> 规定的时间长，比如可能是 2 天而不是 5 分钟。而且人们总是可以在他们的 <code>/etc/hosts</code> 中硬编码旧的 <code>IP</code> 地址。</p>
-<p>此外，应用程序（例如浏览器）都内置了自己的 <code>DNS</code> 缓存，或者本地网关也存在缓存。</p>
-<p>这也是为什么，即便正确地设置了对应的 <code>TTL</code>（大部分 <code>DNS</code> 将会在短时间内更新缓存），有些 <code>DNS</code> 服务器仍然需要更长时间生效，这也导致我们的查询也并不总是会得到新的 <code>IP</code> 地址。</p>
-<h3 id="连同-ns-一起更新">连同 NS 一起更新</h3>
-<p>假设此前的 NS 为 <code>dNS1.p01.NSone.net</code>，现在我们把他修改为谷歌的 NS<code>NS-cloud-b1.googledomaiNS.com</code>。</p>
-<p>通常，当你修改完成后，你的域名商会提示你：“修改将在 48 小时内生效”。</p>
-<p>然后设置一个新的 A 记录指向 <code>1.2.3.4</code></p>
-<p>dig 看看：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
-
-examplecat.com.		17	IN	A	104.248.50.87
-</code></pre></td></tr></table>
-</div>
-</div><p><code>8.8.8.8</code> 没有变化，询问别的 DNS：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
-
-examplecat.com.		299	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><p><code>1.1.1.1</code> 更新了。</p>
-<p>造成这样不同结果的原因，可能是此前并没有人询问过 <code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的 <code>IP</code>。</p>
-<p>而如果我们向新的 <code>NS</code> 查询，肯定会得到新的 <code>IP</code> 记录：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
-
-examplecat.com.		300	IN	A	1.2.3.4
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="ns-的-ttl-要长很多">NS 的 TTL 要长很多</h3>
-<p>域名商提示：“修改将在 48 小时内生效” 的原因是 <code>NS</code> 记录（告诉<code>递归 NS</code> 应该向哪个 <code>NS</code> 查询）的 TTL 要长的多。</p>
-<p>回到上一节中，我们的查询结果显示：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
-
-...
-github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-...
-</code></pre></td></tr></table>
-</div>
-</div><p>172800 秒是 48 小时！这就是为什么更改 <code>NS</code> 后需要更长的时间来生效。</p>
-<h3 id="ns-如何得到更新">NS 如何得到更新？</h3>
-<p>更新 <code>NS</code> 后，我们向根服务器查询的话就会到得到这样的结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
-
-examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
-</code></pre></td></tr></table>
-</div>
-</div><p>你可能会疑惑，新的 <code>NS</code> 记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的 <code>NS</code> 后，他们会负责将这个给更改告知根服务器。</p>
-<p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（<code>TLD</code>）（非<code>.com</code>）可能速度稍微慢一些。</p>
-<h2 id="总结">总结</h2>
-<p>本文展示了 <code>DNS</code> 的解析过程以及我们更新 <code>DNS</code> 记录时发送了什么，希望有助于你理解这一过程。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreffer">What happens when you update your DNS?</a></p>
-</li>
-<li>
-<p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">unbound’s source code</a></p>
-</li>
-<li>
-<p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">iana root files</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

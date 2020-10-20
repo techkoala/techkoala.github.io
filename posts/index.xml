@@ -4,7 +4,168 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DNS 详解</title>
+    <link>https://www.techkoala.top/dns/</link>
+    <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/dns/</guid>
+    <description><![CDATA[<blockquote>
+<p>本文主要讲解 DNS 的报文结构</p>
+</blockquote>
+<h2 id="dns-简介">DNS 简介</h2>
+<p>简单来说 DNS 负责将我们熟知的域名翻译成 IP 地址，其相关定义由 RFC 1034 和 RFC 1035 给出。</p>
+<p>为了更加的扩展性，DNS 由大量的服务器分层次进行组织的，大致来说分为：根 DNS 服务器、顶域名（TLD）DNS 服务器和权威 DNS 服务器。他们的层次结构如下图所示：</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" data-sub-html="<h2>DNS 的层次结构</h2>">
+        
+    </a><figcaption class="image-caption">DNS 的层次结构</figcaption>
+    </figure>
+<p>关于 DNS 的工作过程及相关信息参见<a href="https://www.techkoala.top/dns_update/" target="_blank" rel="noopener noreffer">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
+<h3 id="dns-报文结构">DNS 报文结构</h3>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-sub-html="<h2>DNS 的报文结构</h2>">
+        
+    </a><figcaption class="image-caption">DNS 的报文结构</figcaption>
+    </figure>
+<ul>
+<li>
+<p>前 12 个字节为<strong>首部</strong>，包含：</p>
+<ul>
+<li>
+<p><strong>标识符</strong>（2 字节），用于标识请求及其响应报文，区分不同的查询</p>
+</li>
+<li>
+<p><strong>标志</strong>（2 字节），其中：</p>
+<ul>
+<li><strong>QR</strong>（1bit）：查询/响应标志，<code>0</code> 为查询，<code>1</code> 为响应</li>
+<li><strong>opcode</strong>（4bit）：<code>0</code> 表示标准查询，<code>1</code> 表示反向查询，<code>2</code> 表示服务器状态请求，<code>[3,15]</code>为保留值</li>
+<li><strong>AA</strong>（1bit）：表示授权回答，这个比特位在应答的时候才有意义，指出给出应答的服务器是查询域名的授权解析服务器</li>
+<li><strong>TC</strong>（1bit）：表示可截断的，用来指出报文比允许的长度还要长，导致被截断;</li>
+<li><strong>RD</strong>（1bit）：表示期望递归，这个比特位被<strong>请求</strong>设置，应答的时候使用的相同的值返回。如果设置了 RD，就建议域名服务器进行递归解析，递归查询的支持是可选的;</li>
+<li><strong>RA</strong>（1bit）：表示可用递归，这个比特位在<strong>应答</strong>中设置或取消，用来代表服务器是否支持递归查询;</li>
+<li><strong>rcode</strong>（4bit）：表示返回码
+<ul>
+<li><code>0</code> : 没有错误</li>
+<li><code>1</code> : 报文格式错误(Format error) - 服务器不能理解请求的报文</li>
+<li><code>2</code> : 服务器失败(Server failure) - 因为服务器的原因导致没办法处理这个请求</li>
+<li><code>3</code> : 名字错误(Name Error) - 只有对授权域名解析服务器有意义，指出解析的域名不存在</li>
+<li><code>4</code> : 没有实现(Not Implemented) - 域名服务器不支持查询类型</li>
+<li><code>5</code> : 拒绝(Refused) - 服务器由于设置的策略拒绝给出应答.比如，服务器不希望对某些请求者给出应答，或者服务器不希望进行某些操作（比如区域传送 zone transfer）</li>
+<li><code>[6,15]</code> : 保留值，暂未使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>数量字段</strong>（8 字节）：每个区域 2 字节</p>
+<ul>
+<li><strong>Questions</strong> 表示查询问题区域节的数量</li>
+<li><strong>Answers</strong> 表示回答区域的数量</li>
+<li><strong>Authoritative namesversers</strong> 表示授权区域的数量</li>
+<li><strong>Additional recoreds</strong> 表示附加区域的数量</li>
+</ul>
+</li>
+<li>
+<p><strong>问题</strong>（Questions）部分包括：</p>
+<ul>
+<li>查询的域名 8bit</li>
+<li>查询的协议类型 16bit</li>
+<li>查询的类 16bit</li>
+</ul>
+</li>
+<li>
+<p><strong>回答</strong>（Answers）/<strong>权威</strong>（Authoritys）/<strong>附加</strong>（Additionals）部分格式相同：</p>
+<ul>
+<li><strong>NAME</strong> 资源记录包含的域名.</li>
+<li><strong>TYPE</strong> 表示 DNS 协议的类型.</li>
+<li><strong>CLASS</strong> 表示 RDATA 的类.</li>
+<li><strong>TTL</strong> 4 字节无符号整数表示资源记录可以缓存的时间。0 代表只能被传输，但是不能被缓存。</li>
+<li><strong>RDLENGTH</strong> 2 个字节无符号整数表示 RDATA 的长度</li>
+<li><strong>RDATA</strong> 不定长字符串来表示记录，格式根 TYPE 和 CLASS 有关。比如，TYPE 是 A，CLASS 是 IN，那么 RDATA 就是一个 4 个字节的 ARPA 网络地址。</li>
+</ul>
+</li>
+</ul>
+<h2 id="rrs-说明">RRs 说明</h2>
+<p>每个 DNS 响应报文包含一条或者多条资源记录（resource records ，RRs），资源记录包含下列字段的 4 元组：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">（Name，Value，Type，TTL）
+</code></pre></td></tr></table>
+</div>
+</div><p>其中 TTL 表示生存时间，决定了资源记录应该从缓存中删除的时间。</p>
+<ul>
+<li>如果是 Type=A，Name 为主机名，Value 是对应的 IP 地址（如 bar.foo.com，xxx.xxx.xxx.xxx，A）</li>
+<li>如果是 Type=NS，Name 为一个域（如 foo.com），Value 是知道如何获取该域中的主机 IP 地址的权威 DNS 服务器的主机名（如 foo.com，dns.foo.com，NS）</li>
+<li>如果是 Type=CNAME，Value 是别名为 Name 的主机对应的规范主机名。（如 foo.com，relay1.bar.foo.com，CNAME）</li>
+<li>如果是 Type=MX，Value 是别名为 Name 的邮件服务器对应的规范主机名。（如 foo.com，mail.bar.foo.com，MX）</li>
+</ul>
+<h2 id="实例">实例</h2>
+<p>这里我们使用 WireShark 抓包实际看看，启动 WireShark 时可以设置捕获过滤器为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">udp port 53
+</code></pre></td></tr></table>
+</div>
+</div><p>这样我们只抓取通过 UDP 53 端口的 DNS 请求，此外如果需要仅仅显示特定的 DNS 查询，还可以进一步应用显示过滤器，例如这里我们仅查看<code>www.techkoala.top</code>的查询记录，则显示过滤器设置为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">dns.qry.name==www.techkoala.top
+</code></pre></td></tr></table>
+</div>
+</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-sub-html="<h2>16 进制表示</h2>">
+        
+    </a><figcaption class="image-caption">16 进制表示</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" data-sub-html="<h2>WireShark 中 DNS 请求报文及其结构</h2>">
+        
+    </a><figcaption class="image-caption">WireShark 中 DNS 请求报文及其结构</figcaption>
+    </figure>
+<p>可以看出</p>
+<ul>
+<li>标识为：0x0000cd13</li>
+<li>这是一个请求报文，仅在 Questions 部分有值</li>
+</ul>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" data-sub-html="<h2>标志部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">标志部分各个字段的值</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" data-sub-html="<h2>查询部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">查询部分各个字段的值</figcaption>
+    </figure>
+<p>同时 WireShark 还贴心的告诉我们，响应报文的在总抓取包的编号为 10，方便我们快速找到请求报文对应的响应报文。</p>
+<p><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" data-sub-html="<h2>16进制表示</h2>">
+        
+    </a><figcaption class="image-caption">16进制表示</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" data-sub-html="<h2>WireShark 中 DNS 响应报文及其结构</h2>">
+        
+    </a><figcaption class="image-caption">WireShark 中 DNS 响应报文及其结构</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" data-sub-html="<h2>标志部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">标志部分各个字段的值</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" data-sub-html="<h2>查询部分各个字段的值</h2>">
+        
+    </a><figcaption class="image-caption">查询部分各个字段的值</figcaption>
+    </figure></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] Computer Networking A Top-Down Approach</li>
+<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreffer">DNS 请求报文详解</a></li>
+</ul>]]></description>
+</item><item>
     <title>ARP &amp; RARP 详解</title>
     <link>https://www.techkoala.top/arp_rarp/</link>
     <pubDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</pubDate>
@@ -1003,13 +1164,13 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 <li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>
 </ul>]]></description>
 </item><item>
-    <title>DNS 列表</title>
+    <title>常用 DNS 服务器</title>
     <link>https://www.techkoala.top/dns_list/</link>
     <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/dns_list/</guid>
     <description><![CDATA[<blockquote>
-<p>列举国内外常用的 DNS</p>
+<p>列举国内外常见的 DNS，方便替换使用</p>
 </blockquote>
 <h2 id="ipv4">IPv4</h2>
 <h3 id="国内">国内</h3>
@@ -1714,290 +1875,6 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 </li>
 <li>
 <p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 dns 服务器 ip 地址</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>网络分析工具：NetCat</title>
-    <link>https://www.techkoala.top/netcat/</link>
-    <pubDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/netcat/</guid>
-    <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" data-sub-html="<h2>网络瑞士军刀 —— NetCat</h2>">
-        
-    </a><figcaption class="image-caption">网络瑞士军刀 —— NetCat</figcaption>
-    </figure>
-<h2 id="什么是-netcat">什么是 NetCat</h2>
-<p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
-<p>nc 可以在两台设备上面相互交互，即<code>侦听模式</code>/<code>传输模式</code></p>
-<p>nc 包含以下主要功能：</p>
-<ul>
-<li>Telnet 功能</li>
-<li>获取 banner 信息</li>
-<li>传输文本信息</li>
-<li>传输文件 / 目录</li>
-<li>加密传输文件，默认不加密</li>
-<li>远程控制</li>
-<li>加密所有流量</li>
-<li>流媒体服务器</li>
-<li>远程克隆硬盘</li>
-</ul>
-<h2 id="使用-netcat">使用 NetCat</h2>
-<p>一般来说，nc 的命令行包括如下几个部分：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="命令选项">命令选项</h3>
-<blockquote>
-<p>本文内容基于 OpenBSD 社区的变种（也叫 OpenBSD netcat，部分命令与原版有差异。 ）</p>
-</blockquote>
-<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD manual page</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">选项	   是否有 “选项值”	   说明
--h	   NO	           输出 nc 的帮助
--v	   NO	           在网络通讯时，显示详细的输出信息
--n	   NO	           对命令行中的主机，不进行域名解析，如果主机是 IP 地址，需要用该选项
--p	  YES	           指定端口号
--l	  NO	           开启监听模式，nc 作为服务端，如不加，nc 默认作为客户端
--u	  NO	           使用 UDP 协，如不加该选项，默认是 TCP 协议
--w	  YES	           设置连接的超时间隔（N 秒）
--q	  YES	           让 nc 延时（N 秒）再退出
--z	  NO	           开启 zero-I/O 模式，该选项仅用于端口扫描
--k	  NO	           配合 -l 选项使用，可以重复接受客户端连接
--X	  YES	           指定代理的类型
--x	  YES	           以 IP:port 的格式指定代理
--d    NO               后台模式
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="主机">主机</h3>
-<p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
-<h3 id="端口">端口</h3>
-<p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
-<h2 id="常用使用场景示例">常用使用场景示例</h2>
-<h3 id="测试某个远程主机的监听端口是否可达">测试某个远程主机的监听端口是否可达</h3>
-<p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
-<ol>
-<li>监听端口没开启</li>
-<li>监听端口虽然开启，但是被防火墙阻拦了</li>
-</ol>
-<p>对第 1 个原因，（如果你能在该主机上运行命令）可以直接用 <code>netstat</code> 这个命令查看监听端口是否开启；但对于第 2 个原因，<code>netstat</code> 就用不上了，这时候就可以用 nc 来帮你搞定。</p>
-<p>用如下命令可以测试某个 IP 地址上的某个监听端口是否开启:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv ip port
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>注：</strong>　默认情况下 nc 会等待很久，然后才告诉你连接失败。如果你所处的网络环境稳定且高速（比如：局域网内），那么，你可以追加 <code>-w</code> 选项，设置一个比较小的超时值。在下面的例子中，超时值设为 3 秒。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</h3>
-<p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
-<p>为了叙述方便，设想如下场景：
-有两台主机 ——<code>主机 C</code> 充当客户端，<code>主机 S</code> 充当服务端。
-然后要判断<code>主机 S</code> 上的防火墙是否会拦截其它主机对 8080 TCP 端口的连接。</p>
-<p>在<code>主机 S</code> 上运行 nc，让它在 8080 端口，命令如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -lv -p <span class="m">8080</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
-<p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
-<h3 id="端口扫描">端口扫描</h3>
-<p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024
-</code></pre></td></tr></table>
-</div>
-</div><p>选项 -z
-是指开启 <code>zero-I/O 模式</code>。该模式 nc 只判断某个监听端口是否能连上，连上后<strong>不</strong>与对端进行数据通讯。</p>
-<p>**注：**端口扫描的时候，<code>-v</code> 选项会把成功/失败的结果统统打印出来。通常关注的都是 “扫描成功” 的那些端口。因此，可以用可以配合使用 <code>grep</code> 过滤一下，只打印扫出来的端口</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
-</code></pre></td></tr></table>
-</div>
-</div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
-<p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
-<h3 id="探测服务器类型和软件版本">探测服务器类型和软件版本</h3>
-<p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
-OR
-<span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="端口转发">端口转发</h3>
-<p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
-<p>步骤 1：创建命名管道</p>
-<p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkfifo nc_pipe
-</code></pre></td></tr></table>
-</div>
-</div><p>步骤 2：同时启动两个 nc</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
-</code></pre></td></tr></table>
-</div>
-</div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
-<h3 id="传输文件">传输文件</h3>
-<p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端 B 主机运行如下命令
-nc -l -p port &gt; file2
-
-然后在发送端 A 主机运行如下命令
-nc ip port &lt; file1
-</code></pre></td></tr></table>
-</div>
-</div><p>两者端口号要相同</p>
-<h3 id="远程备份整个磁盘">远程备份整个磁盘</h3>
-<p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端（B 主机）运行如下命令
-nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sdb
-
-然后在发送端 A 主机运行如下命令
-dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="远程控制">远程控制</h3>
-<p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">A:
-nc -lp port -c bash
-
-B:
-nc ip port
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="流媒体服务">流媒体服务</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">A:
-cat test.mp4 <span class="p">|</span> nc -lp port
-
-B:
-nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4000</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>A 让 test.MP4 这个文件成为<code>流</code>的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。</p>
-<h3 id="信息收集">信息收集</h3>
-<p>收集目标机上的进程信息</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p port &gt; ps.txt
-将远程发送过来的内容保存在本地
-
-Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
-标准输入完成后 delay 一秒钟，会发送到侦听端
-
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">netcat manual page</a></p>
-</li>
-<li>
-<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreffer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
-</li>
-<li>
-<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
