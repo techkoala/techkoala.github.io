@@ -1,4 +1,4 @@
-# DNS 详解
+# DNS 报文详解
 
 
 > 本文主要讲解 DNS 的报文结构
@@ -49,7 +49,7 @@
 
 - **问题**（Questions）部分包括：
 
-  - 查询的域名 8bit
+  - 查询的域名 8bit 为单位，长度不受限
   - 查询的协议类型 16bit
   - 查询的类 16bit
 
@@ -115,5 +115,4 @@ dns.qry.name==www.techkoala.top
 
 - [1] Computer Networking A Top-Down Approach
 - [2] [DNS 请求报文详解](https://juejin.im/post/6844903582441963527)
-
 
