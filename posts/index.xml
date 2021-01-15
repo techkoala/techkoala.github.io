@@ -4,7 +4,85 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系列：功率控制</title>
+    <link>https://www.techkoala.top/lte_power_control/</link>
+    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_power_control/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 功率控制</p>
+</blockquote>
+<h2 id="功率控制">功率控制</h2>
+<p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
+<ul>
+<li>
+<p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
+</li>
+<li>
+<p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
+</li>
+</ul>
+<h3 id="上行功率控制">上行功率控制</h3>
+<p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
+<p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
+<center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
+<p>其中：</p>
+<ul>
+<li>$P_{CMAX}$ 表示终端的最大发射功率</li>
+<li>$M_{PUSCH}(i)$ 表示 <code>PUSCH</code> 的传输带宽（RB 数目）</li>
+<li>$PL$ 是终端测量得到的下行大尺度损耗</li>
+<li>$∆TF (i)$ 表示由调制编码方式和数据类型（控制信息或者数据信息）所确定的功率偏移量。</li>
+<li>$KS＝1.25$ 或者 0，表示是否针对不同的调制方式进行补偿</li>
+<li>$f(i)$ 是由终端闭环功率控制所形成的调整值。它的数值根据 <code>PDCCH Format0/3/3A</code> 上的功率控制命令进行调整</li>
+</ul>
+<p>物理层有两种闭环功率控制类型：</p>
+<ul>
+<li><strong>累计型（accumulation）</strong></li>
+<li><strong>绝对值型（absolute）</strong></li>
+</ul>
+<p>与上行数据调度相类似</p>
+<ul>
+<li>在 <code>FDD</code> 情况下，<code>PDCCH Format 0/3/3A</code> 功率控制命令和相应的 <code>PUSCH</code> 发送之间的时延是 4ms</li>
+<li>在 <code>TDD</code> 情况下，该时延的数值根据上下行时间分配比例的不同而有所不同</li>
+</ul>
+<p>与功率控制相结合，可以通过小区之间交换干扰情况的信息，进行协调的调度，抑制小区间的同频干扰，小区间 X2 接口上交互的信息有两种：</p>
+<ul>
+<li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
+<li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
+</ul>
+<h3 id="下行功率分配">下行功率分配</h3>
+<p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
+<p>下行功率分配中包括了</p>
+<ul>
+<li>提高导频信号的发射功率（即 power boosting）</li>
+<li>用户调度相结合实现小区间干扰抑制的相关机制</li>
+</ul>
+<p>小区公用导频信号（CRS）在频率上和时间上采用<strong>恒定</strong>的发射功率，基站通过高层信令指示该发射功率的数值，在接收端，终端通过测量该信号的平均接收功率并与信令指示的发射功率进行比较，获得<strong>大尺度衰落</strong>的数值。</p>
+<p>下行共享信道 <code>PDSCH</code> 的发射功率表示为 <code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值，即 $ρA$ 和 $ρB$ 。其中</p>
+<ul>
+<li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
+<li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
+</ul>
+<h4 id="提高-crs-导频信号的发射功率即-power-boosting">提高 CRS 导频信号的发射功率（即 power boosting）</h4>
+<p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
+<blockquote>
+<p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
+<p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-sub-html="<h2>两种情况下天线端口 #0 的信号功率</h2>">
+        
+    </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
+    </figure>
+</blockquote>
+<h4 id="用户功率分配和小区间干扰协调">用户功率分配和小区间干扰协调</h4>
+<p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
+<center>$ρ_A =δ_{power-offset} +P_A$</center>
+<p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
     <title>告知你不为人知的 UDP —— 疑难杂症和使用</title>
     <link>https://www.techkoala.top/udp_intractable_diseases/</link>
     <pubDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</pubDate>
@@ -1208,83 +1286,6 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
-</ul>]]></description>
-</item><item>
-    <title>全站迁移到 Vercel</title>
-    <link>https://www.techkoala.top/migrated_to_vercel/</link>
-    <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/migrated_to_vercel/</guid>
-    <description><![CDATA[<blockquote>
-<p>加速访问！</p>
-</blockquote>
-<h2 id="when">When</h2>
-<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></p>
-<h2 id="why">Why</h2>
-<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
-<h2 id="what">What</h2>
-<p>下面是 <code>Vercel</code> 官网的介绍：</p>
-<div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Vercel is a cloud platform for <strong>static sites</strong> and <strong>Serverless Functions</strong> that fits perfectly with your workflow. It enables developers to host <strong>Jamstack</strong> websites and web services that <strong>deploy instantly</strong>, <strong>scale automatically</strong>, and requires <strong>no supervision</strong>, all with <strong>no configuration</strong>.</div>
-        </div>
-    </div>
-<p>相比于 <code>Github Pages</code>、<code>Netlify</code> 等，<code>Vercel</code> 拥有<strong>台湾</strong>和<strong>香港</strong>节点，对国内用户更加友好，并且免费套餐足够应付小流量情况了。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/vercel.webp" data-sub-html="<h2>Vercel</h2>">
-        
-    </a><figcaption class="image-caption">Vercel</figcaption>
-    </figure>
-<h2 id="how">How</h2>
-<p>此前，本网站是托管在 <code>Github Pages</code>,然后通过 <code>Clouflare</code> 进行代理访问，因此只需要在 <code>Cloudfalre</code> 原配置上就行修改即可。</p>
-<ol>
-<li>首先，直接使用 <code>Github</code> 账号（或 <code>Gitlab</code> 等）登录 <code>Vercel</code> 即可（<strong>注：</strong> 不可以使用 <code>QQ</code> 邮箱为主邮箱的 <code>Github</code> 账号，<code>Vercel</code> 不识别部分邮箱域名，如果你是，请到 <code>Github</code> 修改主邮箱）</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import.webp" data-sub-html="<h2>导入 Github 项目</h2>">
-        
-    </a><figcaption class="image-caption">导入 Github 项目</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/import2.webp" data-sub-html="<h2>选择需要导入的文件夹，默认为根文件夹</h2>">
-        
-    </a><figcaption class="image-caption">选择需要导入的文件夹，默认为根文件夹</figcaption>
-    </figure>
-<ol start="2">
-<li>完成导入后，配置你的预编译设置（由于本站是在本地使用 <code>Hugo</code> 编译好后 <code>push</code> 到 <code>Github</code> 上的所以这里选择 <code>Other</code>，然后勾选 <code>OVERRIDE</code>，不填写编译内容，表示不需要进行编译）如果你想要 <code>Vercel</code> 代替你编译，可以在这里选择相应的配置。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/build.webp" data-sub-html="<h2>编译选项</h2>">
-        
-    </a><figcaption class="image-caption">编译选项</figcaption>
-    </figure>
-<ol start="3">
-<li>待你完成编译配置后，等待 <code>Vercel</code> 完成编译和部署，你就可以得到一个可以访问的网站了，当然域名是一个二级域名。接下来我们配置自定义域名，首先点击你的项目，进入 设置 &gt; 域名。然后添加你的域名，一开始你添加好的域名不会和图片上一样，会显示为正确配置，这是因为我们还需要到 <code>Cloudflare</code> 进行调整。</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/domain.webp" data-sub-html="<h2>域名设置</h2>">
-        
-    </a><figcaption class="image-caption">域名设置</figcaption>
-    </figure>
-<ol start="4">
-<li>
-<p>来到 Cloudflare 的 DNS 配置页面，首先删除此前指向 Github Pages 的两个解析，然后添加一个<code>CNAME</code>类型的解析，设置名字设置为<code>www</code>,内容填入<code>cname.vercel-dns.com</code>；</p>
-<p><strong>注：</strong> 关键一步是，这里一定要设置<code>Proxy Status</code>为<code>DNS only</code>，否则，你的网站依然会经过 <code>Cloudflare</code> 的代理来访问。</p>
-</li>
-</ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Vercel/cloudflare.webp" data-sub-html="<h2>Cloudflare DNS 配置</h2>">
-        
-    </a><figcaption class="image-caption">Cloudflare DNS 配置</figcaption>
-    </figure>
-<div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</div>
-        </div>
-    </div>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

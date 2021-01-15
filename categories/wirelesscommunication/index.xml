@@ -4,7 +4,85 @@
         <link>https://www.techkoala.top/categories/wirelesscommunication/</link>
         <description>WirelessCommunication - 分类 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+    <title>LTE 系列：功率控制</title>
+    <link>https://www.techkoala.top/lte_power_control/</link>
+    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/lte_power_control/</guid>
+    <description><![CDATA[<blockquote>
+<p>LTE 功率控制</p>
+</blockquote>
+<h2 id="功率控制">功率控制</h2>
+<p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
+<ul>
+<li>
+<p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
+</li>
+<li>
+<p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
+</li>
+</ul>
+<h3 id="上行功率控制">上行功率控制</h3>
+<p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
+<p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
+<center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
+<p>其中：</p>
+<ul>
+<li>$P_{CMAX}$ 表示终端的最大发射功率</li>
+<li>$M_{PUSCH}(i)$ 表示 <code>PUSCH</code> 的传输带宽（RB 数目）</li>
+<li>$PL$ 是终端测量得到的下行大尺度损耗</li>
+<li>$∆TF (i)$ 表示由调制编码方式和数据类型（控制信息或者数据信息）所确定的功率偏移量。</li>
+<li>$KS＝1.25$ 或者 0，表示是否针对不同的调制方式进行补偿</li>
+<li>$f(i)$ 是由终端闭环功率控制所形成的调整值。它的数值根据 <code>PDCCH Format0/3/3A</code> 上的功率控制命令进行调整</li>
+</ul>
+<p>物理层有两种闭环功率控制类型：</p>
+<ul>
+<li><strong>累计型（accumulation）</strong></li>
+<li><strong>绝对值型（absolute）</strong></li>
+</ul>
+<p>与上行数据调度相类似</p>
+<ul>
+<li>在 <code>FDD</code> 情况下，<code>PDCCH Format 0/3/3A</code> 功率控制命令和相应的 <code>PUSCH</code> 发送之间的时延是 4ms</li>
+<li>在 <code>TDD</code> 情况下，该时延的数值根据上下行时间分配比例的不同而有所不同</li>
+</ul>
+<p>与功率控制相结合，可以通过小区之间交换干扰情况的信息，进行协调的调度，抑制小区间的同频干扰，小区间 X2 接口上交互的信息有两种：</p>
+<ul>
+<li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
+<li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
+</ul>
+<h3 id="下行功率分配">下行功率分配</h3>
+<p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
+<p>下行功率分配中包括了</p>
+<ul>
+<li>提高导频信号的发射功率（即 power boosting）</li>
+<li>用户调度相结合实现小区间干扰抑制的相关机制</li>
+</ul>
+<p>小区公用导频信号（CRS）在频率上和时间上采用<strong>恒定</strong>的发射功率，基站通过高层信令指示该发射功率的数值，在接收端，终端通过测量该信号的平均接收功率并与信令指示的发射功率进行比较，获得<strong>大尺度衰落</strong>的数值。</p>
+<p>下行共享信道 <code>PDSCH</code> 的发射功率表示为 <code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值，即 $ρA$ 和 $ρB$ 。其中</p>
+<ul>
+<li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
+<li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
+</ul>
+<h4 id="提高-crs-导频信号的发射功率即-power-boosting">提高 CRS 导频信号的发射功率（即 power boosting）</h4>
+<p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
+<blockquote>
+<p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
+<p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-sub-html="<h2>两种情况下天线端口 #0 的信号功率</h2>">
+        
+    </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
+    </figure>
+</blockquote>
+<h4 id="用户功率分配和小区间干扰协调">用户功率分配和小区间干扰协调</h4>
+<p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
+<center>$ρ_A =δ_{power-offset} +P_A$</center>
+<p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] LTE-Advanced 关键技术详解</li>
+</ul>]]></description>
+</item><item>
     <title>5G 将是一个彻底的失败</title>
     <link>https://www.techkoala.top/5g_will_be_a_complete_failure/</link>
     <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate>
@@ -930,65 +1008,6 @@
 </ul>
 <p>完成这些操作后，终端就可以开始读取服务小区的<strong>广播信道</strong>（PBCH）中的系统信息了。</p>
 <p>通过同步信号的检测与服务小区获得同步以后，终端还可以利用<strong>下行导频信号</strong>（CRS），进行更精确的时间与频率的同步，以及同步的维持。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：基本物理资源</title>
-    <link>https://www.techkoala.top/lte_basic_physical_resource/</link>
-    <pubDate>Sun, 01 Sep 2019 20:49:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/lte_basic_physical_resource/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 基本物理资源及分配方法</p>
-</blockquote>
-<h2 id="基本物理资源">基本物理资源</h2>
-<h3 id="物理资源块prb">物理资源块（PRB）</h3>
-<p>物理层定义了物理资源块（Physical Resource Block，PRB）作为空中接口物理资源分配的单位。1 个 <code>PRB</code> 在<strong>频域</strong>上包含 <strong>12 个连续的子载波</strong>，在<strong>时域</strong>上包含 <strong>7 个连续的 OFDM 符号</strong>（在 Extended CP 的情况下为 6 个），即 1 个 <code>PRB</code> 包括了<strong>频域宽度</strong>等于 <code>180kHz</code>、<strong>时间长度</strong>等于 <code>0.5ms</code>（1 个时隙）的物理资源。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" data-sub-html="<h2>物理资源块（PRB）的结构</h2>">
-        
-    </a><figcaption class="image-caption">物理资源块（PRB）的结构</figcaption>
-    </figure>
-<p>通过设置不同的子载波数目可以映射到不同的资源块（PRB）数目。LTE Release 8 版本定义的 6 种不同的系统带宽与子载波数目以及 PRB 数目之间的对应关系如下表所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" data-sub-html="<h2>系统带宽与资源块数目</h2>">
-        
-    </a><figcaption class="image-caption">系统带宽与资源块数目</figcaption>
-    </figure>
-<h3 id="逻辑资源块vrb">逻辑资源块（VRB）</h3>
-<p>为了方便物理信道向空中接口物理资源的映射，在物理资源块（PRB）的基础上还定义了逻辑资源块（Virtual Resource Block，VRB）。</p>
-<p>逻辑资源块的大小与物理资源块相同，即 <strong>1 个时隙</strong>（0.5ms）、<strong>12 个子载波</strong>。逻辑资源块主要定义了资源的分配方式，位于 1 个子帧内 2 个时隙的 2 个 <code>VRB</code>（即 VRB pair）是物理资源分配信令的指示单位。</p>
-<p>逻辑资源块和物理资源块分别对应有各自的资源块序号 <code>nVRB</code> 和 <code>nPRB</code> 。</p>
-<ul>
-<li>物理资源块 <code>PRB</code> 的序号 <code>nPRB</code> 按照频域的物理位置进行顺序编号</li>
-<li>逻辑资源块 <code>VRB</code> 的序号 <code>nVRB</code> 是系统进行资源分配时所指示的逻辑序号，通过它与 <code>PRB</code> 序号之间的映射关系来进一步地确定实际物理资源的位置</li>
-</ul>
-<p>物理层定义了两种类型的逻辑资源块：</p>
-<ul>
-<li>
-<p><code>集中式 VRB</code>（Localized VRB，LVRB）</p>
-<p><code>LVRB</code> 直接映射到 <code>PRB</code> 上，即 <strong>nPRB =nVRB</strong></p>
-</li>
-<li>
-<p><code>分布式 VRB</code>（Distributed VRB，DVRB）</p>
-<p><code>DVRB</code> 逻辑资源序号与物理资源序号具有一定的<strong>映射关系</strong>，可以表示为 <strong>nPRB =f(nVRB ，ns )</strong>，其中 <strong>0≤ns ≤19</strong> 是 1 个无线帧内的时隙序号。通常情况下，<strong>连续</strong>的 <code>DVBR</code> 序号将映射到<strong>不连续</strong>的 <code>PRB</code> 序号上，并且 1 个子帧内的 2 个时隙也有着不同的映射关系，即属于 1 个 <code>DVRB pair</code> 的两个具有相同逻辑序号的 DVRB 将映射到两个时隙不同频率位置的 PRB 上。通过这样的机制实现了<strong>分布式</strong>的资源分配</p>
-</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" data-sub-html="<h2>基于 VRB 的资源分配</h2>">
-        
-    </a><figcaption class="image-caption">基于 VRB 的资源分配</figcaption>
-    </figure>
-<ul>
-<li><strong>下行方向</strong>的信号传输，支持 LVRB 和 DVRB 的分配，具体采用的方式在下行资源的调度信令中进行指示</li>
-<li><strong>上行方向</strong>的信号传输，<strong>仅支持</strong> LVRB 方式的资源分配</li>
-</ul>
-<h3 id="资源单元组reg">资源单元组（REG）</h3>
-<p><code>PRB</code> 和 <code>VRB</code> 用于数据信道的资源分配和映射，物理层还定义了 <code>REG</code>（Resource Element Group）的概念，用于物理层下行控制信道的资源映射。</p>
-<p><strong>1 个</strong> <code>REG</code> 对应除掉导频符号之外在频域上连续的 <strong>4 个</strong>物理资源。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" data-sub-html="<h2>资源单元组（Resource Element Group，REG）</h2>">
-        
-    </a><figcaption class="image-caption">资源单元组（Resource Element Group，REG）</figcaption>
-    </figure>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] LTE-Advanced 关键技术详解</li>

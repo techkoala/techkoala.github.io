@@ -570,7 +570,7 @@ Executed in  215.68 millis	fish       	external
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn:/app/huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入 <code>docker</code>：</p>

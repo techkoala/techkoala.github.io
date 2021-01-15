@@ -26,7 +26,7 @@ $ docker exec -it  huginn mysqldump -u root -ppassword huginn_production > /root
 首先复制文件到 `docker` 中：
 
 ```shell
-$ docker cp /home/xxxx/huginn_backupfile.sql huginn: /app/xxxxx/huginn_backupfile.sql
+$ docker cp /home/xxxx/huginn_backupfile.sql huginn:/app/huginn_backupfile.sql
 ```
 
 然后进入 `docker`：
