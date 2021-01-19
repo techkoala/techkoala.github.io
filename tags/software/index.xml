@@ -5,15 +5,25 @@
         <description>Software - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
-    <title>Vim_Tips</title>
+    <title>Vim 使用手札</title>
     <link>https://www.techkoala.top/vim_tips/</link>
     <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://www.techkoala.top/vim_tips/</guid>
-    <description><![CDATA[<p>删除包含字符xxxx的所有行，vim进入文件，命令行模式下执行</p>
-<p>:g/xxxx/d</p>
-<p>To be continued&hellip;</p>
-]]></description>
+    <description><![CDATA[<blockquote>
+<p>记录使用 Vim 时遇到实用的小技巧</p>
+</blockquote>
+<h3 id="tip1">Tip.1</h3>
+<p>删除包含字符 xxxx 的所有行，vim 进入文件，命令行模式下执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/xxxx/d
+</code></pre></td></tr></table>
+</div>
+</div><p>To be continued&hellip;</p>]]></description>
 </item><item>
     <title>网络分析工具：NetCat</title>
     <link>https://www.techkoala.top/netcat/</link>
