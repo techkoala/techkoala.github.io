@@ -4,7 +4,86 @@
         <link>https://www.techkoala.top/categories/network/</link>
         <description>Network - 分类 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/network/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/network/" rel="self" type="application/rss+xml" /><item>
+    <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
+    <link>https://www.techkoala.top/openwrt_doh/</link>
+    <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/openwrt_doh/</guid>
+    <description><![CDATA[<blockquote>
+<p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
+</blockquote>
+<h2 id="安裝-dnscrypt-proxy2">安裝 dnscrypt-proxy2</h2>
+<p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
+opkg install dnscrypt-proxy2
+</code></pre></td></tr></table>
+</div>
+</div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
+<h2 id="配置">配置</h2>
+<p>基本使用只需要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+</code></pre></td></tr></table>
+</div>
+</div><p>修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><p>即可</p>
+<p>软件已经内置了常见的 DoH/DoT 服务器了，因此只需要填入名称即可</p>
+<p>然后</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
+</code></pre></td></tr></table>
+</div>
+</div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
+<h2 id="分流搭配-ssr">分流（搭配 SSR+）</h2>
+<ol>
+<li>SSR+ 使用大陆 IP 白名单 并使用 5335 的 DNS 解析的方式</li>
+<li>dnscyrpt-proxy2 配置监听在 5335，仅使用 DoH 协议向 <code>Cloudflare/Google</code> 服务器查询（这些 <code>Https</code> 的查询请求全部会被 SSR+ 代理转发）</li>
+<li>iptables 劫持所有目标为 53 端口的流量到路由器的 53 端口（默认）</li>
+<li>53 端口使用默认的 <code>masq</code> 作为 <code>DNS</code> 服务，上游设置为 127.0.0.1#5335，配置文件<code>/etc/dnsmasq.conf</code>最后添加 <code>conf-dir=/etc/dnsmasq.d</code></li>
+<li>在<code>/etc/dnsmasq.d/</code>(如无则新建）中放入<code>https://github.com/felixonmars/dnsmasq-china-list/blob/master/accelerated-domains.china.conf</code></li>
+</ol>
+<p>这样实现了凡是大陆的和在大陆有 cdn 的以及返回 AAAA 记录的域名全部直连查询并直连访问，其余的全部走代理查询，且结果在大陆以外的走代理访问（IP+域名的双白名单机制）</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
+</li>
+<li>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>告知你不为人知的 UDP —— 疑难杂症和使用</title>
     <link>https://www.techkoala.top/udp_intractable_diseases/</link>
     <pubDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</pubDate>
@@ -2124,50 +2203,6 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </li>
 <li>
 <p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreffer">iPerf Github</a></p>
-</li>
-</ul>]]></description>
-</item><item>
-    <title>NAT 系列：问题及解决方法</title>
-    <link>https://www.techkoala.top/nat_issues_solutions/</link>
-    <pubDate>Wed, 15 Jul 2020 14:19:14 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/nat_issues_solutions/</guid>
-    <description><![CDATA[<blockquote>
-<p>NAT 引发的问题以及解决方法</p>
-</blockquote>
-<h2 id="问题">问题</h2>
-<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 <code>P2P</code> 联机方式）时候给我们造成困扰。如果 <code>Xbox</code>、<code>PS</code>、<code>switch</code> 或者 <code>PC</code> 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
-<p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 <code>NAT</code> 化的。但是，在 <code>Internet</code> 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 <code>Xbox Live</code> 或 <code>PS</code> 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
-<p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
-<p>那么，主机如何得知它位于 <code>NAT</code> 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
-<h2 id="解决办法">解决办法</h2>
-<h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
-<p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
-<p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
-        
-    </a><figcaption class="image-caption">STUN 算法</figcaption>
-    </figure>
-<p>如果你还记得，除了<code>对称型 NAT</code> 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
-<p>但在对称型 NAT 的情况下，每一个连接都有一个不同的映射，有一个不同的（随机生成的）端口，意味着连接到 STUN 服务器也将有它自己独特的映射，表现的就像一个新的设备接入一样。这意味着每个映射都有不同的端口，在这种情况下，STUN 检测到的端口现在已经没有用了，因为这个映射是 STUN 服务器独有的。无论映射到其他设备的端口是什么，都是未知的，STUN 也没有办法检测到它。由于你的主机无法得知每个映射到每个主机的公共 NAT 化端口，因此无法将这些信息传递给你，也就意味着没有设备可以连接到你的游戏，这就是对称型 NAT 导致如此多游戏联机问题的原因。</p>
-<h3 id="dmzdemilitarized-zone">DMZ（Demilitarized zone)</h3>
-<p>路由器上的外围网络（也称 DMZ）功能用于消除对 Internet 的限制。它主要是将你的设备移到你的网络防火墙之外的区域，将部分用于提供对外服务的服务器主机划分到一个特定的子网 —— DMZ 内，在 DMZ 的主机能与同处 DMZ 内的主机和外部网络的主机通信，而同内部网络主机的通信会被受到限制。这使 DMZ 的主机能被内部网络和外部网络所访问，而内部网络又能避免外部网络所得知。</p>
-<p><strong>注意</strong> 当你设置外围网络时在主机上使用静态 IP 地址十分重要。要设置静态 IP 地址，请使用路由器的 DHCP 预留功能（如果可用）。如果该功能不可用，你将需要在你的设备 上配置手动 IP 设置。</p>
-<h3 id="upnpuniversal-plug-and-play">UPnP（Universal Plug and Play）</h3>
-<p>UPnP（Universal Plug and Play）是帮助路由器有效通信的一个标准。如果路由器或网关支持 UPnP，则它在默认情况下可能已启用。开启 UPnP 功能后，局域网中的计算机可以请求路由器自动进行端口转换。这样，互联网上的计算机就能在需要时访问局域网计算机上的资源（如 MSN Messenger 或迅雷、BT、PPLive 等支持 UPnP 协议的应用程序）。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="www.think-like-a-computer.com/2011/09/19/symmetric-nat/" rel="">Symmetric NAT and It’s Problems | Think Like A Computer</a></p>
-</li>
-<li>
-<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreffer">Wikipedia STUN</a></p>
-</li>
-<li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreffer">Wikipedia DMZ</a></p>
-</li>
-<li>
-<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreffer">解决 NAT 错误和多人游戏问题</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

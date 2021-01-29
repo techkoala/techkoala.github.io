@@ -4,7 +4,86 @@
         <link>https://www.techkoala.top/tags/router/</link>
         <description>Router - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/router/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/router/" rel="self" type="application/rss+xml" /><item>
+    <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
+    <link>https://www.techkoala.top/openwrt_doh/</link>
+    <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/openwrt_doh/</guid>
+    <description><![CDATA[<blockquote>
+<p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
+</blockquote>
+<h2 id="安裝-dnscrypt-proxy2">安裝 dnscrypt-proxy2</h2>
+<p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
+opkg install dnscrypt-proxy2
+</code></pre></td></tr></table>
+</div>
+</div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
+<h2 id="配置">配置</h2>
+<p>基本使用只需要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+</code></pre></td></tr></table>
+</div>
+</div><p>修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><p>即可</p>
+<p>软件已经内置了常见的 DoH/DoT 服务器了，因此只需要填入名称即可</p>
+<p>然后</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
+</code></pre></td></tr></table>
+</div>
+</div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
+<h2 id="分流搭配-ssr">分流（搭配 SSR+）</h2>
+<ol>
+<li>SSR+ 使用大陆 IP 白名单 并使用 5335 的 DNS 解析的方式</li>
+<li>dnscyrpt-proxy2 配置监听在 5335，仅使用 DoH 协议向 <code>Cloudflare/Google</code> 服务器查询（这些 <code>Https</code> 的查询请求全部会被 SSR+ 代理转发）</li>
+<li>iptables 劫持所有目标为 53 端口的流量到路由器的 53 端口（默认）</li>
+<li>53 端口使用默认的 <code>masq</code> 作为 <code>DNS</code> 服务，上游设置为 127.0.0.1#5335，配置文件<code>/etc/dnsmasq.conf</code>最后添加 <code>conf-dir=/etc/dnsmasq.d</code></li>
+<li>在<code>/etc/dnsmasq.d/</code>(如无则新建）中放入<code>https://github.com/felixonmars/dnsmasq-china-list/blob/master/accelerated-domains.china.conf</code></li>
+</ol>
+<p>这样实现了凡是大陆的和在大陆有 cdn 的以及返回 AAAA 记录的域名全部直连查询并直连访问，其余的全部走代理查询，且结果在大陆以外的走代理访问（IP+域名的双白名单机制）</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
+</li>
+<li>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
+</li>
+</ul>]]></description>
+</item><item>
     <title>OpenWRT overlay 空间扩容</title>
     <link>https://www.techkoala.top/openwrt_resize/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
