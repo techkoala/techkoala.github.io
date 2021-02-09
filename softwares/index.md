@@ -13,9 +13,9 @@
 
 - **[FireFox](https://www.mozilla.org/en-US/firefox/new/)**
 
-- ~~**[Chrome](https://www.google.com/chrome/)**~~
+- **~~[Chrome](https://www.google.com/chrome/)~~**
 
-  ### 浏览器插件
+  ##### 浏览器插件
 
   - [ClearURLs](https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei)
   - [Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)
@@ -64,7 +64,7 @@
 
 - **[7-zip](https://www.7-zip.org/download.html)**
 
-### Windows：
+##### Windows：
 
 - [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费，停留于 6.26
 
@@ -76,13 +76,13 @@
 
 - **[Motrix](https://motrix.app/)**
 
-### Windows：
+##### Windows：
 
 - ~~Eagleget~~：官方宣称是外国软件，查询证书为国产，原因不明
 
 - [IDM](https://www.internetdownloadmanager.com/)
 
-### Linux：
+##### Linux：
 
 - [Aria2](https://aria2.github.io/)
 
@@ -94,7 +94,7 @@
 
 ## 游戏平台及工具
 
-### Windows：
+##### Windows：
 
 - [战网](https://www.blizzardgames.cn/zh/)
 
@@ -118,13 +118,13 @@
 
 - **[Python3](https://www.python.org/downloads/)**
 
-### Windows：
+##### Windows：
 
 - [Matlab](https://ww2.mathworks.cn/products/matlab.html)
 
 - [Visual studio 2019](https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.google.com%2F)
 
-### Linux：
+##### Linux：
 
 - [Pycharm-professional](https://www.jetbrains.com/pycharm/)
 
@@ -138,7 +138,7 @@
 
 - **[Notion](https://www.notion.so/)**
 
-### Windows：
+##### Windows：
 
 - Office 365
 
@@ -166,11 +166,11 @@
 
 - **_网易云音乐_**
 
-### Android:
+##### Android:
 
 - [Podcast Republic](https://play.google.com/store/apps/details?id=com.itunestoppodcastplayer.app)
 
-### Windows：
+##### Windows：
 
 - [Potplayer](https://potplayer.daum.net/)
 
@@ -178,7 +178,7 @@
 
 - _foobar2000_
 
-### Linux：
+##### Linux：
 
 - [Petal](https://github.com/shakrmedia/petal)：Linux 下豆瓣 FM 第三方客户端
 
@@ -192,7 +192,7 @@
 
 - **[Resilio Sync](https://www.resilio.com/individuals-sync/)**
 
-### Windows：
+##### Windows：
 
 - [RaiDrive](https://www.raidrive.com/)
 
@@ -228,7 +228,7 @@
 
 - **[Wireshark](https://www.wireshark.org/)**
 
-### Windows：
+##### Windows：
 
 - [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)
 
@@ -236,11 +236,11 @@
 
 - [Fiddler](https://www.telerik.com/fiddler)
 
-### Linux:
+##### Linux:
 
 - [Remmina](https://remmina.org/) ：Linux 远程桌面
 
-### MacOS：
+##### MacOS：
 
 - [ClashX](https://github.com/yichengchen/clashX)
 
@@ -250,7 +250,7 @@
 
 - **[Utools](https://u.tools/)**
 
-### Windows：
+##### Windows：
 
 - [PowerToys](https://github.com/microsoft/PowerToys/)
 
@@ -266,7 +266,7 @@
 
 - _Pollar_
 
-### Linux:
+##### Linux:
 
 - [Easystroke](https://github.com/thjaeger/easystroke/wiki/BuildInstructions)：Linux 鼠标手势
 
@@ -274,7 +274,7 @@
 
 ## 软件&磁盘管理
 
-### Windows：
+##### Windows：
 
 - ~~[CCleaner](https://www.ccleaner.com/)~~
 
@@ -294,7 +294,7 @@
 
 ## 安全工具
 
-### Windows：
+##### Windows：
 
 - [火绒](https://www.huorong.cn/)
 
@@ -306,7 +306,7 @@
 
 - **[VMware Workstation Pro](https://www.vmware.com/cn.html)**
 
-### Windows：
+##### Windows：
 
 - Hyper-V
 
@@ -314,17 +314,17 @@
 
 - **~~[irreader](http://irreader.fatecore.com/)~~**
 
-### Linux:
+##### Linux:
 
 - [Liferea](https://lzone.de/liferea/)
 
-### Android:
+##### Android:
 
 - [轻芒阅读]()
 
 ## Cli
 
-### Linux:
+##### Linux:
 
 - [Zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
 
@@ -338,7 +338,7 @@
 
 ## 系统工具
 
-### Linux:
+##### Linux:
 
 - [BleachBit](https://www.bleachbit.org/)
 
@@ -350,7 +350,7 @@
 
 - [TimeShift](https://github.com/teejee2008/timeshift)：系统备份
 
-### MacOS：
+##### MacOS：
 
 - [Better and Better](https://better365.cn/)
 
@@ -358,11 +358,11 @@
 
 ## 邮件
 
-### Windows：
+##### Windows：
 
 - [Outlook](https://outlook.live.com)
 
-### Linux:
+##### Linux:
 
 - [Thunderbird](https://www.thunderbird.net/zh-CN/)
 
