@@ -9,8 +9,6 @@
 
 - [cURL 命令转代码](https://curl.6cm.co/)：支持将 curl 命令转换为各种代码
 
-- [Turn Any Link Into Emoji](http://www.xn--vi8hiv.ws/)：欢迎通过 [http://💻💻💻🐨🐨🐨.🍕💩.ws](http://💻💻💻🐨🐨🐨.🍕💩.ws) 访问本站。
-
 **网站测速：**
 
 - [BOCE](https://www.boce.com/)
@@ -43,9 +41,37 @@
 
 - [IPv6 发展监测平台目录服务](https://ipv6c.cngi.edu.cn/mainPage.do)
 
+**WebRTC:**
+
+- [皮皮直连](https://www.ppzhilian.com/)：浏览器局域网文件传输
+
+## Translator
+
+- [Deepl](https://www.deepl.com/translator)
+
 ## Tools
 
+**Format:**
+
 - [在线格式转换工具](https://www.alltoall.net/)
+
+- [小熊文件格式在线转换工具](https://www.ofoct.com/zh)
+
+- [EPUB 转换器](https://epub.to/)
+
+- [PDF 工具](https://tools.pdf24.org/zh/)
+
+**Toolset:**
+
+- [MikuTools - 工具集合](https://tools.miku.ac/)
+
+- [在线工具大全](https://jingzhunyun.com/)
+
+- [一个工具箱 - 好用的在线工具都在这里！](http://www.atoolbox.net/)
+
+- [菜鸟编程工具](http://c.runoob.com/)
+
+- [程序员的工具箱](https://tool.lu/)
 
 ## Reading
 
@@ -71,11 +97,11 @@
 
 - [isoflow](https://isoflow.io/)：好看的拓扑图绘制
 
+- [sketchboard](https://sketchboard.me)：卡通画风拓扑图绘制
+
 - [Full Emoji List](http://www.unicode.org/emoji/charts/full-emoji-list.html)
 
 ## Security
-
-文件安全在线检测：
 
 - [Virustotal](https://www.virustotal.com/gui/home/upload)
 
@@ -87,27 +113,30 @@
 
 - [transfer.sh](https://transfer.sh/)：命令行文件上传分享
 
+- [奶牛快传](https://cowtransfer.com/)
+
 - [Unicode Text Converter](http://qaz.wtf/u/convert.cgi)：Unicode 文本转换
 
 ## Temporary service
 
-**临时短信：**
+**TempSMS:**
 
 - [Z-SMS](http://www.z-sms.com/)：
-
-- [It233](http://www.it233.com/sms)
 
 - [Materialtools](https://www.materialtools.com/?page=1)
 
 - [Freeonlinephone](https://www.freeonlinephone.org/)
 
-**临时邮箱：**
+**TempMail:**
 
 - [Yopmail](http://www.yopmail.com/zh/)
 
 - [24mail](http://24mail.chacuo.net/)
+- [Snapmail](https://www.snapmail.cc)
 
-## Others
+## 老年人网上冲浪必备
 
 - [能不能好好说话？](https://lab.magiconch.com/nbnhhsh/)：网络缩写翻译
+
+- [小鸡词典](https://jikipedia.com/)
 
