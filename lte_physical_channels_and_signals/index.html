@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>LTE 系列：帧中的物理信道和信号 - TechKoala - Input/Output </title><meta name="Description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：帧中的物理信道和信号" />
+        <title>LTE 系列：帧中的物理信道和信号 - TechKoala - Input/Output </title><meta name="description" content="TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容"><meta property="og:title" content="LTE 系列：帧中的物理信道和信号" />
 <meta property="og:description" content="
 概述 LTE 信息帧中的各类物理通道和信号
 " />
@@ -147,7 +147,7 @@
             </div><div class="content" id="content"><blockquote>
 <p>概述 LTE 信息帧中的各类物理通道和信号</p>
 </blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
+<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreferrer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
 <h2 id="pbch">PBCH</h2>
 <p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
 <ul>
@@ -164,7 +164,7 @@
 <p>映射到不为传输参考信号、PDCCH 或 PCHICH 而保留的资源元素</p>
 </li>
 <li>
-<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
+<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
 </li>
 </ul>
 <h2 id="pcfich">PCFICH</h2>
@@ -186,7 +186,7 @@
 <p>PCFICH 的确切位置由小区 ID 和带宽确定</p>
 </li>
 <li>
-<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreffer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PCFICH</a> 页面</p>
+<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PCFICH</a> 页面</p>
 </li>
 </ul>
 <h2 id="pdcch">PDCCH</h2>
@@ -227,7 +227,7 @@
 <p>物理下行链路控制信道承载调度分配和其他控制信息。物理控制信道是在一个或几个连续的控制信道元素（CCE）的聚合上发送的，其中控制信道元素对应于 9 个资源元素组。未分配给 PCFICH 或 PHICH 的资源元素组的数量为 REG N。系统中可用的 CCE 从 0 和 N_CCE-1 编号，其中 N_CCE = floor（N_REG/9）。</p>
 </blockquote>
 <ul>
-<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDCCH</a> 页面</li>
+<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PDCCH</a> 页面</li>
 </ul>
 <h2 id="phich">PHICH</h2>
 <p><strong>Physical Hybrid ARQ Indicator Channel，物理 HARQ 指示信道</strong></p>
@@ -245,7 +245,7 @@
 <p>某些情况下，几个 PHICH 使用相同的资源元素构成 PHICH 组</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreffer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PHICH </a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreferrer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PHICH </a> 页面</p>
 </li>
 </ul>
 <h2 id="pdsch">PDSCH</h2>
@@ -261,7 +261,7 @@
 <p>它使用带有 QPSK，16 QAM，64 QAM，256 QAM 调制方案的 AMC（此调制方案由 DCI 承载的 MCS 确定）</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDSCH </a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PDSCH </a> 页面</p>
 </li>
 </ul>
 <h2 id="prach">PRACH</h2>
@@ -274,10 +274,10 @@
 <p>它在频域中占用 72 个子载波（6 RB）的带宽</p>
 </li>
 <li>
-<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列</a> 生成</p>
+<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreferrer">Zadoff-Chu 序列</a> 生成</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreffer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PRACH</a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreferrer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PRACH</a> 页面</p>
 </li>
 </ul>
 <h2 id="p-ss">P-SS</h2>
@@ -287,16 +287,16 @@
 <p>映射到 72 个活动子载波（6 个资源块），以时隙 0（子帧 0）和时隙 10（子帧 5）中的 DC 子载波为中心。</p>
 </li>
 <li>
-<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列值</a> 组成</p>
+<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreferrer">Zadoff-Chu 序列值</a> 组成</p>
 </li>
 <li>
 <p>用于下行帧同步</p>
 </li>
 <li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
+<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreferrer">物理小区 ID</a> 的关键因素之一</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreffer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PSS</a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreferrer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PSS</a> 页面</p>
 </li>
 </ul>
 <blockquote>
@@ -322,10 +322,10 @@
 <p>用于下行帧同步</p>
 </li>
 <li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
+<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreferrer">物理小区 ID</a> 的关键因素之一</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreffer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : SSS</a></p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreferrer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : SSS</a></p>
 </li>
 </ul>
 <h2 id="rs">RS</h2>
@@ -500,21 +500,21 @@
     </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
     </figure>
 <h2 id="另见">另见</h2>
-<p><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">LTE 系列：物理信号</a></p>
-<p><a href="https://www.techkoala.top/lte_physical_channels/" target="_blank" rel="noopener noreffer">LTE 系列：物理信道</a></p>
+<p><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">LTE 系列：物理信号</a></p>
+<p><a href="https://www.techkoala.top/lte_physical_channels/" target="_blank" rel="noopener noreferrer">LTE 系列：物理信道</a></p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Physical Channels and Signals</a></p>
+<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreferrer">Physical Channels and Signals</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE 的信道</a></p>
+<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreferrer">LTE 的信道</a></p>
 </li>
 </ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-09-01&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/a7e5ef17ed319cf886c8131e91ef334e22dbd8ac" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) a7e5ef17ed319cf886c8131e91ef334e22dbd8ac: update">
+                <span>更新于 2020-09-01&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/a7e5ef17ed319cf886c8131e91ef334e22dbd8ac" target="_blank" rel="noopener noreferrer" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) a7e5ef17ed319cf886c8131e91ef334e22dbd8ac: update">
                                     <i class="fas fa-hashtag fa-fw"></i>a7e5ef1</a></span>
             </div>
             <div class="post-info-license"></div>
@@ -541,7 +541,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/dillonzq/LoveIt">LoveIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/sunt-programator/CodeIT">CodeIT</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

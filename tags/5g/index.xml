@@ -363,7 +363,7 @@
 <h3 id="下行时间延迟">下行时间延迟</h3>
 <p>下行时间延迟（从基站到手机）：当基站有一个数据包需要发送到终端，需要 3 毫秒时间解码用户发送的调度请求，然后准备给用户调度的资源，准备好了之后，给用户发送信息，告诉用户在某个时间某个频率上去接受他的数据，用户收到了调度信息之后，需要 3 毫秒时间解码调度的信息并接收解码数据信息，完成数据的传送工作，整个时间计算下来是 <strong>7.5ms</strong>。</p>
 <p>所以总共的双向时延是 <strong>12.5ms+7.5ms = 20ms</strong></p>
-<p>详细的时间延迟组成请参考 <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreffer">3GPP 36.881 Study on latency reduction techniques for LTE（5.2.1）</a></p>
+<p>详细的时间延迟组成请参考 <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreferrer">3GPP 36.881 Study on latency reduction techniques for LTE（5.2.1）</a></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" data-sub-html="<h2>LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</h2>">
         
     </a><figcaption class="image-caption">LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</figcaption>
@@ -374,7 +374,7 @@
     </figure>
 <p><strong>从 20 毫秒开始，到 1 毫秒要走过怎样的路？</strong></p>
 <p>当 LTE 标准化组织 3GPP 意识到网络的时间延迟是一个问题，而且具有很大的潜在提升的时候，相关的工作拉开了序幕。</p>
-<p>时间来到了 2015 年，3 月初，中国上海，乍暖还寒，在 3GPP RAN 67 次会议上，终于迎来了关于减少 LTE 网络时间延迟的研究项目（SI）立项（<a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreffer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a>）。本次研究项目的立项旨在减小 LTE 网络的时间延迟，因为在此以前 LTE 网络一直向着速率更快的方向在发展，但是网络的延迟水平一直没有得到改善，而研究发现用户面网络延迟的改善能够提升网络的速率瓶颈（因为 TCP 的慢启动效应，改善 TCP 握手的时延，从而提升网络的速率），而且能够更好地支持更多对于时延要求特别高的应用，比如：VR，实时游戏，VoIP，视频会议等等。</p>
+<p>时间来到了 2015 年，3 月初，中国上海，乍暖还寒，在 3GPP RAN 67 次会议上，终于迎来了关于减少 LTE 网络时间延迟的研究项目（SI）立项（<a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreferrer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a>）。本次研究项目的立项旨在减小 LTE 网络的时间延迟，因为在此以前 LTE 网络一直向着速率更快的方向在发展，但是网络的延迟水平一直没有得到改善，而研究发现用户面网络延迟的改善能够提升网络的速率瓶颈（因为 TCP 的慢启动效应，改善 TCP 握手的时延，从而提升网络的速率），而且能够更好地支持更多对于时延要求特别高的应用，比如：VR，实时游戏，VoIP，视频会议等等。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" data-sub-html="<h2>改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</h2>">
         
     </a><figcaption class="image-caption">改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</figcaption>
@@ -396,7 +396,7 @@
     </a><figcaption class="image-caption">LTE 预调度（Pre-scheduling）</figcaption>
     </figure>
 <p>似乎探索有了方向&hellip;</p>
-<p>光阴如梭，整整一年后，2016 年 3 月初，瑞典哥德堡，3GPP RAN 71 次会议，关于真正网络延迟减少工作立项了（<a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreffer">RP-160667 L2 latency reduction techniques for LTE</a>），此次工作项目的立项标志着网络延迟减少工作的正式开启。所要着手解决的主要集中在改善上行的网络延迟，而解决问题的思想是和预调度类似的 <strong>半静态调度</strong>，提前为终端周期性的分配好相关的无线资源，用户在需要传送上行数据的时候直接使用已经预先分配好的资源，无需再进行资源请求流程。而在这个版本中引入了更短的半静态调度周期，低至一毫秒，从而能进一步改善时间延迟。</p>
+<p>光阴如梭，整整一年后，2016 年 3 月初，瑞典哥德堡，3GPP RAN 71 次会议，关于真正网络延迟减少工作立项了（<a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreferrer">RP-160667 L2 latency reduction techniques for LTE</a>），此次工作项目的立项标志着网络延迟减少工作的正式开启。所要着手解决的主要集中在改善上行的网络延迟，而解决问题的思想是和预调度类似的 <strong>半静态调度</strong>，提前为终端周期性的分配好相关的无线资源，用户在需要传送上行数据的时候直接使用已经预先分配好的资源，无需再进行资源请求流程。而在这个版本中引入了更短的半静态调度周期，低至一毫秒，从而能进一步改善时间延迟。</p>
 <p>同时针对预调度中分配了无线资源终端就得发送数据的问题（造成网络干扰和电量消耗），通过 Release 14 标准的改善，使用户即使分配了无线资源，也可以不发送填充数据。</p>
 <p>至此，上行的网络传输延迟大大减少。根据仿真的结果，<strong>LTE 空中接口双向传输时延降至～ 8ms</strong></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-sub-html="<h2>更短的半静态调度周期</h2>">
@@ -444,15 +444,15 @@
 <p>至此，LTE 的无线网络延迟改善到头了。</p>
 <p>那么梦寐以求的一毫秒时间延迟怎么实现？剩下的使命需要 5G 来完成。</p>
 <h2 id="5g-网络延迟">5G 网络延迟</h2>
-<p>和人一样，一项技术也有自己的命运，LTE 从应运而生到如今的如日中天已经走过了 10 多个春秋，正如之前在另一个问题中讨论的从专业角度讲，<a href="https://www.zhihu.com/question/315446311/answer/673086704" target="_blank" rel="noopener noreffer">为什么需要开展 5G 而不是继续提升 4G？</a> 因为 4G LTE 从出生伊始已经注定了其时间延迟的下限，而这个下限如今也已经被我们触摸到了。下一步需要我们转向一项延迟下限更低的技术去找寻极限。</p>
+<p>和人一样，一项技术也有自己的命运，LTE 从应运而生到如今的如日中天已经走过了 10 多个春秋，正如之前在另一个问题中讨论的从专业角度讲，<a href="https://www.zhihu.com/question/315446311/answer/673086704" target="_blank" rel="noopener noreferrer">为什么需要开展 5G 而不是继续提升 4G？</a> 因为 4G LTE 从出生伊始已经注定了其时间延迟的下限，而这个下限如今也已经被我们触摸到了。下一步需要我们转向一项延迟下限更低的技术去找寻极限。</p>
 <p>5G 是站在巨人（4G）的肩膀上诞生的，从系统设计之初就将网络时间延迟的特性考虑了进来，成为 5G 需求的一部分: URLLC（Ultra reliable and low latency communication）超低的时延和超高可靠的通信以支持对时延和可靠性要求极高的行业应用，比如智能工厂，远程手术，自动驾驶等等。这部分的需求在 5G 的第一个版本 Release 15 中满足了一部分。</p>
 <p><strong>关于超低的时延：1ms 的无线空中接口双向传输时延是怎么一步步实现的呢？</strong></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" data-sub-html="<h2>5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</h2>">
         
     </a><figcaption class="image-caption">5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</figcaption>
     </figure>
-<p>2016 年，3GPP 开始了 5G 的需求分析和研究项目，为了满足 ITU 所设置的 <strong>URLLC 极高的可靠性和极低的时延要求</strong>，在 5G 的需求研究项目 <a href="http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664" target="_blank" rel="noopener noreffer">TR38.913 Study on scenarios and requirements for next generation access technologies</a> 中的用户面 KPI 中针对 URLLC 业务用户面时延定义了上行 0.5ms 和下行 0.5ms 的要求，加起来正好是 1ms 的双向时延。</p>
-<p>需求的定义明确了，接下来进入了研究如何实现技术需求的阶段，2016 年 3 月，3GPP TSG RAN 71 次会议通过了 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.912/38912-e10.zip" target="_blank" rel="noopener noreffer">TR38.912 Study on New Radio (NR) access technology</a> ，这项研究工作致力于提出可行的无线技术来满足 ITU-2020 制定的 5G 需求。而从研究项目伊始，URLLC 就做为一项不可缺少的 5G 需求被考虑进来。</p>
+<p>2016 年，3GPP 开始了 5G 的需求分析和研究项目，为了满足 ITU 所设置的 <strong>URLLC 极高的可靠性和极低的时延要求</strong>，在 5G 的需求研究项目 <a href="http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664" target="_blank" rel="noopener noreferrer">TR38.913 Study on scenarios and requirements for next generation access technologies</a> 中的用户面 KPI 中针对 URLLC 业务用户面时延定义了上行 0.5ms 和下行 0.5ms 的要求，加起来正好是 1ms 的双向时延。</p>
+<p>需求的定义明确了，接下来进入了研究如何实现技术需求的阶段，2016 年 3 月，3GPP TSG RAN 71 次会议通过了 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.912/38912-e10.zip" target="_blank" rel="noopener noreferrer">TR38.912 Study on New Radio (NR) access technology</a> ，这项研究工作致力于提出可行的无线技术来满足 ITU-2020 制定的 5G 需求。而从研究项目伊始，URLLC 就做为一项不可缺少的 5G 需求被考虑进来。</p>
 <p>从 2016 年的研究项目开始到 2018 年中第一版本 5G 标准（release 15 NSA&amp;SA）的出炉，低时延的设计贯穿了整个 5G 无线系统，我们就从用户面的每个层（物理层 PHY，媒体接入控制层 MAC，无线链路控制层 RLC）看看为了实现 1ms 的目标都做了怎样的努力。</p>
 <h3 id="物理层">物理层</h3>
 <p>5G 中物理层的主要作用是：编解码，调制 / 解调，多天线映射等。</p>
@@ -532,7 +532,7 @@
     </a><figcaption class="image-caption">无线网络空中接口双向时延演进</figcaption>
     </figure>
 <p>通过使用 30KHz 的子载波间隔，上行免调度，以及两个符号的微时隙的 5G 系统配置方案，可以达到低于双向时延 1ms 以下的要求。如果采用 5G 高频通信，使用 120KHz 的子载波间隔，时延可以更低。</p>
-<p>至此，1ms 梦寐以求的目标终于达成，但是科技工作者们仍没有停下探索的脚步，目前的研究转向了 5G 物理层的增强对 URLLC 业务的支持，而新的研究项目也已经成功立项并完成：<a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreffer">Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a>, 在下一版本 5G release 16 中，URLLC 将从 PDCCH，UCI，PUSCH（上下行控制信道以及上行数据信道）获得更多的提升。同时还研究支持对时延和可靠性要求极高的工业互联网应用 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreffer">Study on NR industrial Internet of Things (IoT)</a>。探索为什么 5G 能降低网络时间延迟到 1ms 完结，但是需要引起注意的是，我们这里讨论的延迟是整个网络中的一部分，特指空中接口。但是网络的传输时延绝不是空中接口单一接口就能够保证的，还涉及到端到端的核心网以及互联网。剩下这部分属于 TSN（Time Sensitive Networking）的范围，什么是 TSN，怎么将无线 URLLC 和 TSN 结合起来为工业 4.0 服务，下次有机会再聊。</p>
+<p>至此，1ms 梦寐以求的目标终于达成，但是科技工作者们仍没有停下探索的脚步，目前的研究转向了 5G 物理层的增强对 URLLC 业务的支持，而新的研究项目也已经成功立项并完成：<a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreferrer">Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a>, 在下一版本 5G release 16 中，URLLC 将从 PDCCH，UCI，PUSCH（上下行控制信道以及上行数据信道）获得更多的提升。同时还研究支持对时延和可靠性要求极高的工业互联网应用 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreferrer">Study on NR industrial Internet of Things (IoT)</a>。探索为什么 5G 能降低网络时间延迟到 1ms 完结，但是需要引起注意的是，我们这里讨论的延迟是整个网络中的一部分，特指空中接口。但是网络的传输时延绝不是空中接口单一接口就能够保证的，还涉及到端到端的核心网以及互联网。剩下这部分属于 TSN（Time Sensitive Networking）的范围，什么是 TSN，怎么将无线 URLLC 和 TSN 结合起来为工业 4.0 服务，下次有机会再聊。</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" data-sub-html="<h2>无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）</h2>">
         
     </a><figcaption class="image-caption">无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）</figcaption>
@@ -541,58 +541,58 @@
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2410-2017-PDF-E.pdf" target="_blank" rel="noopener noreffer">ITU-R M.2410-0 Minimum requirements related to technical performance for IMT-2020 radio interface (s)</a></p>
+<p>[1] <a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2410-2017-PDF-E.pdf" target="_blank" rel="noopener noreferrer">ITU-R M.2410-0 Minimum requirements related to technical performance for IMT-2020 radio interface (s)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.3gpp.org/DynaReport/38913.htm" target="_blank" rel="noopener noreffer">3GPP 38.913 Study on scenarios and requirements for next generation access technologies</a></p>
+<p>[2] <a href="https://www.3gpp.org/DynaReport/38913.htm" target="_blank" rel="noopener noreferrer">3GPP 38.913 Study on scenarios and requirements for next generation access technologies</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreffer">3GPP 36.881 Study on latency reduction techniques for LTE</a></p>
+<p>[3] <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreferrer">3GPP 36.881 Study on latency reduction techniques for LTE</a></p>
 </li>
 <li>
-<p>[4] <a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreffer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a></p>
+<p>[4] <a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreferrer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a></p>
 </li>
 <li>
-<p>[5] <a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreffer">RP-160667 L2 latency reduction techniques for LTE</a></p>
+<p>[5] <a href="https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_71/Docs/RP-160667.zip" target="_blank" rel="noopener noreferrer">RP-160667 L2 latency reduction techniques for LTE</a></p>
 </li>
 <li>
-<p>[6] <a href="http://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=view&amp;contributionId=713547" target="_blank" rel="noopener noreffer">RP-161299 New Work Item on shortened TTI and processing time for LTE</a></p>
+<p>[6] <a href="http://portal.3gpp.org/ngppapp/CreateTdoc.aspx?mode=view&amp;contributionId=713547" target="_blank" rel="noopener noreferrer">RP-161299 New Work Item on shortened TTI and processing time for LTE</a></p>
 </li>
 <li>
-<p>[7] <a href="http://www.3gpp.org/ftp/TSG_RAN/WG2_RL2/TSGR2_91/Docs/R2-153490.zip" target="_blank" rel="noopener noreffer">R2-153490 L2 enhancements to reduce latency</a></p>
+<p>[7] <a href="http://www.3gpp.org/ftp/TSG_RAN/WG2_RL2/TSGR2_91/Docs/R2-153490.zip" target="_blank" rel="noopener noreferrer">R2-153490 L2 enhancements to reduce latency</a></p>
 </li>
 <li>
-<p>[8] <a href="https://arxiv.org/pdf/1808.07034.pdf" target="_blank" rel="noopener noreffer">Thomas Fehrenbach, Rohit Datta, URLLC Services in 5G Low Latency Enhancements for LTE</a></p>
+<p>[8] <a href="https://arxiv.org/pdf/1808.07034.pdf" target="_blank" rel="noopener noreferrer">Thomas Fehrenbach, Rohit Datta, URLLC Services in 5G Low Latency Enhancements for LTE</a></p>
 </li>
 <li>
-<p>[9] <a href="http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664" target="_blank" rel="noopener noreffer">38.913 Study on scenarios and requirements for next generation access technologies</a></p>
+<p>[9] <a href="http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664" target="_blank" rel="noopener noreferrer">38.913 Study on scenarios and requirements for next generation access technologies</a></p>
 </li>
 <li>
-<p>[10] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.912/38912-e10.zip" target="_blank" rel="noopener noreffer">TR38.912 Study on New Radio (NR) access technology </a></p>
+<p>[10] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.912/38912-e10.zip" target="_blank" rel="noopener noreferrer">TR38.912 Study on New Radio (NR) access technology </a></p>
 </li>
 <li>
-<p>[11] <a href="http://cscn2017.ieee-cscn.org/files/2017/08/Janne_Peisa_Ericsson_CSCN2017.pdf" target="_blank" rel="noopener noreffer">Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication IEEE cscn2017</a></p>
+<p>[11] <a href="http://cscn2017.ieee-cscn.org/files/2017/08/Janne_Peisa_Ericsson_CSCN2017.pdf" target="_blank" rel="noopener noreferrer">Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication IEEE cscn2017</a></p>
 </li>
 <li>
-<p>[12] <a href="https://futurenetworks.ieee.org/images/files/pdf/FirstResponder/Rapeepat-Ratasuk-Nokia.pdf" target="_blank" rel="noopener noreffer">Ultra Reliable Low Latency Communication for 5G New Radio</a></p>
+<p>[12] <a href="https://futurenetworks.ieee.org/images/files/pdf/FirstResponder/Rapeepat-Ratasuk-Nokia.pdf" target="_blank" rel="noopener noreferrer">Ultra Reliable Low Latency Communication for 5G New Radio</a></p>
 </li>
 <li>
-<p>[13] <a href="https://ieeexplore.ieee.org/document/8403963" target="_blank" rel="noopener noreffer">Ultra Reliable and Low Latency Communications in 5G Downlink: Physical Layer Aspects</a></p>
+<p>[13] <a href="https://ieeexplore.ieee.org/document/8403963" target="_blank" rel="noopener noreferrer">Ultra Reliable and Low Latency Communications in 5G Downlink: Physical Layer Aspects</a></p>
 </li>
 <li>
 <p>[14] ErikDahlman, JohanSkold, StefanParkvall, Ericsson，NR: the next generation wireless access technology</p>
 </li>
 <li>
-<p>[15] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreffer">3GPP TS38.824 Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a></p>
+<p>[15] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreferrer">3GPP TS38.824 Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a></p>
 </li>
 <li>
-<p>[16] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreffer">3GPP TR38.825 Study on NR industrial Internet of Things (IoT)</a></p>
+<p>[16] <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreferrer">3GPP TR38.825 Study on NR industrial Internet of Things (IoT)</a></p>
 </li>
 <li>
-<p>[17] <a href="https://www.ericsson.com/assets/local/publications/ericsson-technology-review/docs/2019/etr-magazine-2019-01.pdf" target="_blank" rel="noopener noreffer">Boosting smart manufacturing with 5G wireless connectivity</a></p>
+<p>[17] <a href="https://www.ericsson.com/assets/local/publications/ericsson-technology-review/docs/2019/etr-magazine-2019-01.pdf" target="_blank" rel="noopener noreferrer">Boosting smart manufacturing with 5G wireless connectivity</a></p>
 </li>
 <li>
-<p>[18] <a href="http://www.3gpp.org/ftp//Specs/archive/21_series/21.915/21915-100.zip" target="_blank" rel="noopener noreffer">3GPP TR 21.915 Summary of Rel-15 Work Items</a></p>
+<p>[18] <a href="http://www.3gpp.org/ftp//Specs/archive/21_series/21.915/21915-100.zip" target="_blank" rel="noopener noreferrer">3GPP TR 21.915 Summary of Rel-15 Work Items</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

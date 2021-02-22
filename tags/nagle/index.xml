@@ -73,10 +73,10 @@ end if
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreffer">Nagel 算法维基百科</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreferrer">Nagel 算法维基百科</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreffer">RFC896</a></p>
+<p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreferrer">RFC896</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

@@ -115,9 +115,9 @@ MAC addresses for the link layer.</div>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">地址解析协议</a></li>
-<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">逆地址解析协议</a></li>
-<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreffer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
+<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">地址解析协议</a></li>
+<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">逆地址解析协议</a></li>
+<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreferrer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

@@ -145,7 +145,7 @@
 </div><p>To be continued&hellip;</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>网络分析工具：NetCat</title>
@@ -186,7 +186,7 @@
 <blockquote>
 <p>本文内容基于 OpenBSD 社区的变种（也叫 OpenBSD netcat，部分命令与原版有差异。 ）</p>
 </blockquote>
-<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD manual page</a></p>
+<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreferrer">OpenBSD manual page</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -422,13 +422,13 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">netcat manual page</a></p>
+<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreferrer">netcat manual page</a></p>
 </li>
 <li>
-<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreffer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
+<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreferrer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
+<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreferrer">NetCat 使用指南</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -441,7 +441,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>搭建自己的在线 EPUB 阅读器</p>
 </blockquote>
 <h2 id="什么是-netlify">什么是 Netlify</h2>
-<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
+<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify 官网</a>的介绍：</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -465,10 +465,10 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
 <p>💻 您所有的数据都支持导入导出</p>
 </blockquote>
-<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
+<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreferrer">Koodo Reader 官网</a> 查看。</p>
 <h2 id="搭建">搭建</h2>
 <ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
         
@@ -489,7 +489,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
     </figure>
 <ol start="4">
-<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
+<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreferrer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
 </ol>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
         
@@ -517,13 +517,13 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     </a><figcaption class="image-caption">配置</figcaption>
     </figure>
 <ol start="8">
-<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
+<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreferrer">这里</a>看看书吧。</li>
 </ol>
 <h2 id="后续">后续</h2>
 <p>如果需要对网站进行更新，只需要关注你的 <code>Github Repo</code> 即可。每次 commit 之后，<code>Netlify</code> 都会自动拉取更新并生成。</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
+<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreferrer">koodo-reader</a></li>
 </ul>]]></description>
 </item><item>
     <title>网络测试工具：iPerf</title>
@@ -539,7 +539,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>现在的版本也称 iPerf3，这是对 NLANR/DAST 开发的原始版本的重新设计。</p>
 <p><strong>注意</strong>：iPerf3 与此前版本的 iPerf 不兼容。</p>
 <h2 id="安装-iperf">安装 iPerf</h2>
-<p>iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreffer">官网</a>提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）</p>
+<p>iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreferrer">官网</a>提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）</p>
 <p>类 UNIX 系统直接使用包管理进行安装即可，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -689,10 +689,10 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener noreffer">iPerf user docs</a></p>
+<p>[1] <a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener noreferrer">iPerf user docs</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreffer">iPerf Github</a></p>
+<p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreferrer">iPerf Github</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -713,7 +713,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></div>
+            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreferrer">draft-ietf-secsh-filexfer-02</a></div>
         </div>
     </div>
 <h2 id="使用-sftp">使用 SFTP</h2>
@@ -753,10 +753,10 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreferrer">SSH File Transfer Protocol</a></p>
 </li>
 <li>
-<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreferrer">SFTP Command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -778,7 +778,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></div>
+            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></div>
         </div>
     </div>
 <p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
@@ -1004,16 +1004,16 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
+<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreferrer">The rsync algorithm</a></p>
 </li>
 <li>
-<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></p>
 </li>
 <li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreferrer">rsync wikipedia</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreferrer">rsync command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1204,22 +1204,22 @@ Executed in  215.68 millis	fish       	external
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
 <ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreferrer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreferrer">SFTP</a></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreferrer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreferrer">Wikipedia Secure copy</a></p>
 </li>
 <li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreferrer">Call for testing: OpenSSH 8.0</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreferrer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item><item>

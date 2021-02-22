@@ -16,7 +16,7 @@
 <p><code>SHA-2</code> (Secure Hash Algorithm 2)，是最流行的哈希算法之一，包括了：<code>SHA-224</code>、<code>SHA-256</code>、<code>SHA-384</code>、<code>SHA-512</code>、<code>SHA-512/224</code>、<code>SHA-512/256</code>。这些变体除了生成摘要的长度、循环运行的次数等一些细微差异之外，基本结构是一致的。</p>
 <p><code>SHA-2</code> 以安全和速度著称，在未生成密钥的情况下（例如挖掘比特币），像 <code>SHA-2</code> 这样的快速哈希算法通常占据上风。</p>
 <h2 id="哈希函数hash-function">哈希函数（Hash Function）</h2>
-<p>如果，你还不清楚哈希是什么，可以参见我的<a href="http://techkoala.top/hash_functions/" target="_blank" rel="noopener noreffer">另外一篇文章</a></p>
+<p>如果，你还不清楚哈希是什么，可以参见我的<a href="http://techkoala.top/hash_functions/" target="_blank" rel="noopener noreferrer">另外一篇文章</a></p>
 <p>简单来说，哈希函数的拥有如下三个重要特性：</p>
 <ul>
 <li>
@@ -650,10 +650,10 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreffer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
+<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreferrer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreffer">SHA-2</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreferrer">SHA-2</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -674,7 +674,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
         </div>
     </div>
 <h2 id="哈希函数hash-function用来做什么">哈希函数（Hash Function）用来做什么？</h2>
-<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，<code>Qvault</code> 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">点击这里</a> 查看哈希函数用于何处。</p>
+<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，<code>Qvault</code> 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreferrer">点击这里</a> 查看哈希函数用于何处。</p>
 <h2 id="重要特性">重要特性</h2>
 <p>哈希函数的拥有如下三个重要特性，这些特性可以说是最重要的特性：</p>
 <ul>
@@ -785,16 +785,16 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://qvault.io/2020/01/01/very-basic-intro-to-hash-functions-sha-256-md-5-etc/" target="_blank" rel="noopener noreffer">(Very) Basic Intro to Hash Functions (SHA-256, MD5, etc)</a></p>
+<p>[1] <a href="https://qvault.io/2020/01/01/very-basic-intro-to-hash-functions-sha-256-md-5-etc/" target="_blank" rel="noopener noreferrer">(Very) Basic Intro to Hash Functions (SHA-256, MD5, etc)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">Hash Function</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreferrer">Hash Function</a></p>
 </li>
 <li>
-<p>[3] <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener noreffer">ASCII</a></p>
+<p>[3] <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener noreferrer">ASCII</a></p>
 </li>
 <li>
-<p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreffer">Unicode</a></p>
+<p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreferrer">Unicode</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

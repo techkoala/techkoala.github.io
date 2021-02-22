@@ -77,10 +77,10 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -215,13 +215,13 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreffer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
+<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreferrer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreffer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
+<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreferrer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreffer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
+<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreferrer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
 </li>
 </ul>]]></description>
 </item><item>

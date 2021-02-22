@@ -564,8 +564,8 @@
     </figure>
 <p>物理层小区搜索的过程主要涉及两个同步信号：</p>
 <ul>
-<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">主同步信号（PSS）</a></li>
-<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">辅同步信号（SSS）</a></li>
+<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">主同步信号（PSS）</a></li>
+<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">辅同步信号（SSS）</a></li>
 </ul>
 <p>过程中包括了</p>
 <ul>
@@ -670,13 +670,13 @@
 <p>详细的 PUCHH 结构参考：</p>
 <ul>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreffer">PUCCH Format</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreferrer">PUCCH Format</a></p>
 </li>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 1,1a,1b Location</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreferrer">PUCCH Format 1,1a,1b Location</a></p>
 </li>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 2,2a,2b Location</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreferrer">PUCCH Format 2,2a,2b Location</a></p>
 </li>
 </ul>
 <h3 id="pusch-rs">PUSCH RS</h3>
@@ -684,7 +684,7 @@
 <h3 id="pusch">PUSCH</h3>
 <p>承载 UE 尝试发送的上行链路数据。并且除了上行链路数据之外，还可以携带 UE 接收的 PDSCH 的 ACK/NACK。</p>
 <h3 id="srs">SRS</h3>
-<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreffer">SRS in Quick Reference</a></p>
+<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreferrer">SRS in Quick Reference</a></p>
 <h2 id="上行资源网格">上行资源网格</h2>
 <p>具体来说，上行资源还有一种网格格式，如下所示:</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-sub-html="<h2>上行资源网格</h2>">
@@ -705,7 +705,7 @@
     </figure>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreffer">UL FrameStructure</a></li>
+<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreferrer">UL FrameStructure</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：物理信道</title>

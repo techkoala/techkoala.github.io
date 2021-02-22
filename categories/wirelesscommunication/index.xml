@@ -513,7 +513,7 @@
 </table>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
+<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreferrer">3GPP Specification Release Numbers</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：物理信号</title>
@@ -997,8 +997,8 @@
     </figure>
 <p>物理层小区搜索的过程主要涉及两个同步信号：</p>
 <ul>
-<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">主同步信号（PSS）</a></li>
-<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">辅同步信号（SSS）</a></li>
+<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">主同步信号（PSS）</a></li>
+<li><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">辅同步信号（SSS）</a></li>
 </ul>
 <p>过程中包括了</p>
 <ul>

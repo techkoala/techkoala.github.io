@@ -505,10 +505,10 @@ $ ps axjf
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://os.51cto.com/art/201101/244090.htm" target="_blank" rel="noopener noreffer">如何在 Linux 中查看所有正在运行的进程</a></p>
+<p>[1] <a href="https://os.51cto.com/art/201101/244090.htm" target="_blank" rel="noopener noreferrer">如何在 Linux 中查看所有正在运行的进程</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/peida/archive/2012/12/19/2824418.html" target="_blank" rel="noopener noreffer">每天一个linux命令（41）：ps命令</a></p>
+<p>[2] <a href="https://www.cnblogs.com/peida/archive/2012/12/19/2824418.html" target="_blank" rel="noopener noreferrer">每天一个linux命令（41）：ps命令</a></p>
 </li>
 </ul>]]></description>
 </item><item>

@@ -145,7 +145,7 @@
 </div><p>To be continued&hellip;</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>文件传输系列：SFTP</title>
@@ -165,7 +165,7 @@
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></div>
+            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreferrer">draft-ietf-secsh-filexfer-02</a></div>
         </div>
     </div>
 <h2 id="使用-sftp">使用 SFTP</h2>
@@ -205,10 +205,10 @@
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreferrer">SSH File Transfer Protocol</a></p>
 </li>
 <li>
-<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreferrer">SFTP Command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -230,7 +230,7 @@
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></div>
+            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></div>
         </div>
     </div>
 <p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
@@ -456,16 +456,16 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
+<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreferrer">The rsync algorithm</a></p>
 </li>
 <li>
-<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></p>
 </li>
 <li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreferrer">rsync wikipedia</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreferrer">rsync command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -656,22 +656,22 @@ Executed in  215.68 millis	fish       	external
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
 <ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreferrer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreferrer">SFTP</a></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreferrer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreferrer">Wikipedia Secure copy</a></p>
 </li>
 <li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreferrer">Call for testing: OpenSSH 8.0</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreferrer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item><item>

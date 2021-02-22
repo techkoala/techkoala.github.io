@@ -16,7 +16,7 @@
 <p><code>SHA-2</code> (Secure Hash Algorithm 2)，是最流行的哈希算法之一，包括了：<code>SHA-224</code>、<code>SHA-256</code>、<code>SHA-384</code>、<code>SHA-512</code>、<code>SHA-512/224</code>、<code>SHA-512/256</code>。这些变体除了生成摘要的长度、循环运行的次数等一些细微差异之外，基本结构是一致的。</p>
 <p><code>SHA-2</code> 以安全和速度著称，在未生成密钥的情况下（例如挖掘比特币），像 <code>SHA-2</code> 这样的快速哈希算法通常占据上风。</p>
 <h2 id="哈希函数hash-function">哈希函数（Hash Function）</h2>
-<p>如果，你还不清楚哈希是什么，可以参见我的<a href="http://techkoala.top/hash_functions/" target="_blank" rel="noopener noreffer">另外一篇文章</a></p>
+<p>如果，你还不清楚哈希是什么，可以参见我的<a href="http://techkoala.top/hash_functions/" target="_blank" rel="noopener noreferrer">另外一篇文章</a></p>
 <p>简单来说，哈希函数的拥有如下三个重要特性：</p>
 <ul>
 <li>
@@ -650,10 +650,10 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreffer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
+<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreferrer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreffer">SHA-2</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreferrer">SHA-2</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -674,7 +674,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
         </div>
     </div>
 <h2 id="哈希函数hash-function用来做什么">哈希函数（Hash Function）用来做什么？</h2>
-<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，<code>Qvault</code> 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">点击这里</a> 查看哈希函数用于何处。</p>
+<p>哈希函数，又称散列函数，广泛应用于互联网的各处，包括但不限于安全地存储密码、查找重复记录、快速存储和检索数据等。例如，<code>Qvault</code> 应用使用哈希将主密码扩展为私人加密密钥。你还可以 <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreferrer">点击这里</a> 查看哈希函数用于何处。</p>
 <h2 id="重要特性">重要特性</h2>
 <p>哈希函数的拥有如下三个重要特性，这些特性可以说是最重要的特性：</p>
 <ul>
@@ -785,16 +785,16 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://qvault.io/2020/01/01/very-basic-intro-to-hash-functions-sha-256-md-5-etc/" target="_blank" rel="noopener noreffer">(Very) Basic Intro to Hash Functions (SHA-256, MD5, etc)</a></p>
+<p>[1] <a href="https://qvault.io/2020/01/01/very-basic-intro-to-hash-functions-sha-256-md-5-etc/" target="_blank" rel="noopener noreferrer">(Very) Basic Intro to Hash Functions (SHA-256, MD5, etc)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreffer">Hash Function</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Hash_function#Uses" target="_blank" rel="noopener noreferrer">Hash Function</a></p>
 </li>
 <li>
-<p>[3] <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener noreffer">ASCII</a></p>
+<p>[3] <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener noreferrer">ASCII</a></p>
 </li>
 <li>
-<p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreffer">Unicode</a></p>
+<p>[4] <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener noreferrer">Unicode</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -985,22 +985,22 @@ Executed in  215.68 millis	fish       	external
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
 <ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreffer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreffer">SFTP</a></li>
+<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreferrer">rsync</a></li>
+<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreferrer">SFTP</a></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreferrer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreferrer">Wikipedia Secure copy</a></p>
 </li>
 <li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreferrer">Call for testing: OpenSSH 8.0</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreferrer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1038,13 +1038,13 @@ Executed in  215.68 millis	fish       	external
 <p>[1] <a href="www.think-like-a-computer.com/2011/09/19/symmetric-nat/" rel="">Symmetric NAT and It’s Problems | Think Like A Computer</a></p>
 </li>
 <li>
-<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreffer">Wikipedia STUN</a></p>
+<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreferrer">Wikipedia STUN</a></p>
 </li>
 <li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreffer">Wikipedia DMZ</a></p>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreferrer">Wikipedia DMZ</a></p>
 </li>
 <li>
-<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreffer">解决 NAT 错误和多人游戏问题</a></p>
+<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreferrer">解决 NAT 错误和多人游戏问题</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1137,13 +1137,13 @@ Executed in  215.68 millis	fish       	external
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreffer">Wikipedia NAT</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreferrer">Wikipedia NAT</a></p>
 </li>
 <li>
-<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreffer">What you need to know about symmetric NAT | Think Like A Computer</a></p>
+<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreferrer">What you need to know about symmetric NAT | Think Like A Computer</a></p>
 </li>
 <li>
-<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
+<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreferrer">NAT Types Defined</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1397,13 +1397,13 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreffer">What happens when you update your DNS?</a></p>
+<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreferrer">What happens when you update your DNS?</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">unbound’s source code</a></p>
+<p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreferrer">unbound’s source code</a></p>
 </li>
 <li>
-<p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">iana root files</a></p>
+<p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreferrer">iana root files</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1438,13 +1438,13 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>详细的 PUCHH 结构参考：</p>
 <ul>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreffer">PUCCH Format</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreferrer">PUCCH Format</a></p>
 </li>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 1,1a,1b Location</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreferrer">PUCCH Format 1,1a,1b Location</a></p>
 </li>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 2,2a,2b Location</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreferrer">PUCCH Format 2,2a,2b Location</a></p>
 </li>
 </ul>
 <h3 id="pusch-rs">PUSCH RS</h3>
@@ -1452,7 +1452,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <h3 id="pusch">PUSCH</h3>
 <p>承载 UE 尝试发送的上行链路数据。并且除了上行链路数据之外，还可以携带 UE 接收的 PDSCH 的 ACK/NACK。</p>
 <h3 id="srs">SRS</h3>
-<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreffer">SRS in Quick Reference</a></p>
+<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreferrer">SRS in Quick Reference</a></p>
 <h2 id="上行资源网格">上行资源网格</h2>
 <p>具体来说，上行资源还有一种网格格式，如下所示:</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-sub-html="<h2>上行资源网格</h2>">
@@ -1473,7 +1473,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     </figure>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreffer">UL FrameStructure</a></li>
+<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreferrer">UL FrameStructure</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：帧中的物理信道和信号</title>
@@ -1484,7 +1484,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     <description><![CDATA[<blockquote>
 <p>概述 LTE 信息帧中的各类物理通道和信号</p>
 </blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreffer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
+<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreferrer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
 <h2 id="pbch">PBCH</h2>
 <p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
 <ul>
@@ -1501,7 +1501,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>映射到不为传输参考信号、PDCCH 或 PCHICH 而保留的资源元素</p>
 </li>
 <li>
-<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
+<p>详情参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PBCH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PBCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PBCH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PBCH</a> 页面（待填坑）</p>
 </li>
 </ul>
 <h2 id="pcfich">PCFICH</h2>
@@ -1523,7 +1523,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>PCFICH 的确切位置由小区 ID 和带宽确定</p>
 </li>
 <li>
-<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreffer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PCFICH</a> 页面</p>
+<p>详细信息参阅 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCFICH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PCFICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PCFICH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PCFICH</a> 页面</p>
 </li>
 </ul>
 <h2 id="pdcch">PDCCH</h2>
@@ -1564,7 +1564,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>物理下行链路控制信道承载调度分配和其他控制信息。物理控制信道是在一个或几个连续的控制信道元素（CCE）的聚合上发送的，其中控制信道元素对应于 9 个资源元素组。未分配给 PCFICH 或 PHICH 的资源元素组的数量为 REG N。系统中可用的 CCE 从 0 和 N_CCE-1 编号，其中 N_CCE = floor（N_REG/9）。</p>
 </blockquote>
 <ul>
-<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDCCH</a> 页面</li>
+<li>详细信息参阅物理层 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDCCH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PDCCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDCCH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PDCCH</a> 页面</li>
 </ul>
 <h2 id="phich">PHICH</h2>
 <p><strong>Physical Hybrid ARQ Indicator Channel，物理 HARQ 指示信道</strong></p>
@@ -1582,7 +1582,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>某些情况下，几个 PHICH 使用相同的资源元素构成 PHICH 组</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreffer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PHICH </a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PHICH_PHICHGroup.html" target="_blank" rel="noopener noreferrer">Physical Layer : PHICH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PHICH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PHICH </a> 页面</p>
 </li>
 </ul>
 <h2 id="pdsch">PDSCH</h2>
@@ -1598,7 +1598,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>它使用带有 QPSK，16 QAM，64 QAM，256 QAM 调制方案的 AMC（此调制方案由 DCI 承载的 MCS 确定）</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreffer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PDSCH </a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PDSCH.html" target="_blank" rel="noopener noreferrer">Physical Layer : PDSCH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PDSCH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PDSCH </a> 页面</p>
 </li>
 </ul>
 <h2 id="prach">PRACH</h2>
@@ -1611,10 +1611,10 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>它在频域中占用 72 个子载波（6 RB）的带宽</p>
 </li>
 <li>
-<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列</a> 生成</p>
+<p>在该信道内是随机访问前导，该随机访问前同步码用 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreferrer">Zadoff-Chu 序列</a> 生成</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreffer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PRACH</a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/RACH_LTE.html" target="_blank" rel="noopener noreferrer">RACH</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PRACH.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PRACH</a> 页面</p>
 </li>
 </ul>
 <h2 id="p-ss">P-SS</h2>
@@ -1624,16 +1624,16 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>映射到 72 个活动子载波（6 个资源块），以时隙 0（子帧 0）和时隙 10（子帧 5）中的 DC 子载波为中心。</p>
 </li>
 <li>
-<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreffer">Zadoff-Chu 序列值</a> 组成</p>
+<p>由 62 个 <a href="http://www.sharetechnote.com/html/Handbook_LTE_Zadoff_Chu_Sequence.html" target="_blank" rel="noopener noreferrer">Zadoff-Chu 序列值</a> 组成</p>
 </li>
 <li>
 <p>用于下行帧同步</p>
 </li>
 <li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
+<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreferrer">物理小区 ID</a> 的关键因素之一</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreffer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : PSS</a> 页面</p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PSS.html" target="_blank" rel="noopener noreferrer">Physical Layer : PSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_PSS.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : PSS</a> 页面</p>
 </li>
 </ul>
 <blockquote>
@@ -1659,10 +1659,10 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <p>用于下行帧同步</p>
 </li>
 <li>
-<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreffer">物理小区 ID</a> 的关键因素之一</p>
+<p>决定 <a href="http://www.sharetechnote.com/html/Handbook_LTE_PCI.html" target="_blank" rel="noopener noreferrer">物理小区 ID</a> 的关键因素之一</p>
 </li>
 <li>
-<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreffer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreffer">Matlab Toolbox : SSS</a></p>
+<p>详细信息参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SSS.html" target="_blank" rel="noopener noreferrer">Physical Layer : SSS</a> 和 <a href="http://www.sharetechnote.com/html/lte_toolbox/Matlab_LteToolbox_SSS.html" target="_blank" rel="noopener noreferrer">Matlab Toolbox : SSS</a></p>
 </li>
 </ul>
 <h2 id="rs">RS</h2>
@@ -1759,15 +1759,15 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
     </figure>
 <h2 id="另见">另见</h2>
-<p><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreffer">LTE 系列：物理信号</a></p>
-<p><a href="https://www.techkoala.top/lte_physical_channels/" target="_blank" rel="noopener noreffer">LTE 系列：物理信道</a></p>
+<p><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">LTE 系列：物理信号</a></p>
+<p><a href="https://www.techkoala.top/lte_physical_channels/" target="_blank" rel="noopener noreferrer">LTE 系列：物理信道</a></p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Physical Channels and Signals</a></p>
+<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreferrer">Physical Channels and Signals</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreffer">LTE 的信道</a></p>
+<p>[2] <a href="https://www.cnblogs.com/klb561/p/12227359.html" target="_blank" rel="noopener noreferrer">LTE 的信道</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1957,7 +1957,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
         
     </a><figcaption class="image-caption">TDD 帧结构</figcaption>
     </figure>
-<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 <code>TDD</code> <code>UL/DL</code> 资源分配图。</p>
+<p>以下是使用 <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreferrer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a> 生成的各种配置的 <code>TDD</code> <code>UL/DL</code> 资源分配图。</p>
 <table>
 <thead>
 <tr>
@@ -2079,14 +2079,14 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
     </figure>
 <h3 id="laa类型-3">LAA——类型 3</h3>
-<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 <code>LTE-U</code> 一样，这也是一种在未经许可的频率范围内传输 <code>LTE</code> 信号的技术。 然而，与 <code>LTE-U</code> 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 <code>LTE</code> 信号类似于 <code>WLAN</code> 突发，并使 <code>LTE</code> 信号更好地与现有的 <code>WLAN</code> 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreffer">LAA</a>。</p>
+<p>从 3GPP Rel 13 开始，提出了一种新的帧结构，主要应用于 LAA（License Assisted Access，许可辅助访问），与 <code>LTE-U</code> 一样，这也是一种在未经许可的频率范围内传输 <code>LTE</code> 信号的技术。 然而，与 <code>LTE-U</code> 不同的是，LAA 使用一种特殊的物理层帧结构，称为帧结构类型 3，这是以前不存在的。这种新的帧结构旨在使 <code>LTE</code> 信号类似于 <code>WLAN</code> 突发，并使 <code>LTE</code> 信号更好地与现有的 <code>WLAN</code> 业务共存。更多详情参见 <a href="http://www.sharetechnote.com/html/Handbook_LTE_LAA.html" target="_blank" rel="noopener noreferrer">LAA</a>。</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreffer">Frame Structure - Downlink</a></p>
+<p>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_DL.html" target="_blank" rel="noopener noreferrer">Frame Structure - Downlink</a></p>
 </li>
 <li>
-<p>[2] <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
+<p>[2] <a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreferrer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

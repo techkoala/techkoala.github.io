@@ -79,10 +79,10 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -226,7 +226,7 @@ opkg install dnscrypt-proxy2
 </div><p>To be continued&hellip;</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：功率控制</title>
@@ -427,7 +427,7 @@ opkg install dnscrypt-proxy2
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://blog.csdn.net/dog250/article/details/6896949http://blog.csdn.net/dog250/article/details/6896949" target="_blank" rel="noopener noreffer">Netfilter,iptables/OpenVPN/TCP guard</a></li>
+<li>[1] <a href="http://blog.csdn.net/dog250/article/details/6896949http://blog.csdn.net/dog250/article/details/6896949" target="_blank" rel="noopener noreferrer">Netfilter,iptables/OpenVPN/TCP guard</a></li>
 </ul>]]></description>
 </item><item>
     <title>DNS 报文详解</title>
@@ -445,7 +445,7 @@ opkg install dnscrypt-proxy2
         
     </a><figcaption class="image-caption">DNS 的层次结构</figcaption>
     </figure>
-<p>关于 DNS 的工作过程及相关信息参见<a href="https://www.techkoala.top/dns_update/" target="_blank" rel="noopener noreffer">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
+<p>关于 DNS 的工作过程及相关信息参见<a href="https://www.techkoala.top/dns_update/" target="_blank" rel="noopener noreferrer">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
 <h3 id="dns-报文结构">DNS 报文结构</h3>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-sub-html="<h2>DNS 的报文结构</h2>">
         
@@ -588,7 +588,7 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreffer">DNS 请求报文详解</a></li>
+<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreferrer">DNS 请求报文详解</a></li>
 </ul>]]></description>
 </item><item>
     <title>ARP &amp; RARP 详解</title>
@@ -701,9 +701,9 @@ MAC addresses for the link layer.</div>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">地址解析协议</a></li>
-<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">逆地址解析协议</a></li>
-<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreffer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
+<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">地址解析协议</a></li>
+<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">逆地址解析协议</a></li>
+<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreferrer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
 </ul>]]></description>
 </item><item>
     <title>OpenWRT overlay 空间扩容</title>
@@ -837,13 +837,13 @@ MAC addresses for the link layer.</div>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreffer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
+<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreferrer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreffer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
+<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreferrer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreffer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
+<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreferrer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
 </li>
 </ul>]]></description>
 </item><item>

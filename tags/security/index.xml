@@ -385,10 +385,10 @@ $ systemctl start fail2ban
 <p>[1] Linux 服务器为什么被黑？</p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/doublexi/p/9636506.html" target="_blank" rel="noopener noreffer">linux 系统安全加固 &ndash; 账号相关</a></p>
+<p>[2] <a href="https://www.cnblogs.com/doublexi/p/9636506.html" target="_blank" rel="noopener noreferrer">linux 系统安全加固 &ndash; 账号相关</a></p>
 </li>
 <li>
-<p>[3] <a href="https://wiki.archlinux.org/index.php/Security" target="_blank" rel="noopener noreffer">Security - Archlinux Wiki</a></p>
+<p>[3] <a href="https://wiki.archlinux.org/index.php/Security" target="_blank" rel="noopener noreferrer">Security - Archlinux Wiki</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

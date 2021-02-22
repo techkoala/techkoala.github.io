@@ -7,17 +7,17 @@
 
 - 对`网络`知识有浓厚的兴趣
 - 是一只会 `Python:snake:` 的`通信:dog2:`
-- 喜欢`瞎折腾:man_technologist:`一些有用没用的东西
-- 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 10` 工作学习
+- 喜欢`折腾:man_technologist:`一些有用没用的东西
+- 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 10`
 
 ### 这个网站
 
 本质上，就是我自己的笔记:notebook_with_decorative_cover:，某天突发奇想:thought_balloon:：做成网站也不错呀，随时都可以查看。于是就诞生了这网站。
 
-- 网站文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版
+- 文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版
 - 网页利用 [Hugo](https://gohugo.io/) 渲染生成
-- 页面由 [LoveIt](https://github.com/dillonzq/LoveIt) 装点
-- 网站托管在 [Vercel](https://vercel.com)
+- 页面由 [CodeIT](https://github.com/sunt-programator/CodeIT) 装点
+- 托管在 [Vercel](https://vercel.com)
 - 套用了 [jsDelivr](https://www.jsdelivr.com/) 的 `CDN`
 
 {{< admonition info "致谢">}}
@@ -59,5 +59,3 @@
 - 如果本站内容能帮到你，那是我极大的荣幸；
 
 {{< /admonition >}}
-
-{{< music server="netease" type="song" id="28793502" autoplay="true">}}
