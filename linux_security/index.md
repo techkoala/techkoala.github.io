@@ -211,6 +211,113 @@ $ find / -nouser -o –nogroup
 
 没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。
 
+## 常用防护软件
+
+### fail2ban
+
+fail2ban 通过扫描日志文件，筛选登录失败后继续频繁尝试登录的同一来源的非善意行为，根据用户定义的规则对访问来源做响应的封禁处理。
+
+**1、安装**
+
+以 debian 为例：
+
+```shell
+$ sudo apt update
+$ sudo apt install fail2ban
+```
+
+**2、复制配置文件**
+
+fail2ban 安装在  `/etc/fail2ban` 路径下,监控目标在 /etc/fail2ban/jail.conf 文件中，官方建议自定义的监控目标放在 /etc/fail2ban/jail.local 或者在 /etc/fail2ban/jail.d 目录中新建配置文件。因此，这里首先复制一份本地配置文件：
+
+```shell
+$ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+**3、修改配置文件**
+
+配置文件中的一些全局关键字段说明：
+
+```
+ignoreip = 127.0.0.1    # "ignoreip" 是指不会被禁止访问的主机地址，它可以是单 IP 地址、CIDR （汇聚网段）地址，甚至可以是 DNS （主机域名），若有多个条目，各条目间用空格分隔。
+bantime  = 3600         # "bantime" 字段设置禁止访问的时间间隔，以秒为单位。
+findtime  = 600         # "findtime" 是指在指定时间间隔内，达到或超过  "Maxretry"  次失败连接尝试，即被命中，禁止访问，以秒为单位。
+Maxretry = 3            # "Maxretry" 是指最大尝试次数。
+```
+
+此外，fail2ban 使用 jail 的概念对每个需要保护的服务进行配置，其中配置文件中已经对常见的服务进行了预设，当然，你也可以自定义不同服务的详细信息。jail 的模板如下：
+
+```
+[xxx]                                #jail的名字
+enabled  = true                      #是否启用
+port     = xxxx                      #需要进行保护的端口
+filter   = xxxx                      #指定 SSH 监控使用的规则过滤配置文件，大量默认规则保存在 /etc/fail2ban/filter.d，使用默认规则直接输入名称即可。
+action   = xxxx                      #发现恶意IP后采取的操作。action.d 目录中预定义了许多常用操作，例如调用 iptables/firewalld 封禁、sendmail 发送通知邮件；
+logpath  = xxxxxxxx                  #指定 fail2ban 监控日志文件路径，可换行输入多个路径
+bantime = xxxx
+findtime = xxxx
+maxretry = xxxx
+```
+
+#### 以保护 SSH 为例
+
+编辑配置文件`jail.local`，开启 ssh 保护，其中可定义多个字段：
+
+```
+[ssh]
+enabled  = true
+port     = ssh
+filter   = sshd
+action   = iptables[name=SSH, port=ssh, protocol=tcp]
+logpath  = /var/log/auth.log
+maxretry = 6
+```
+
+其余未设置的项尊崇全局设置。
+
+**4、启动并查看状态**
+
+配置好后保存配置文件，设置开启启动并启动 fail2ban：
+
+```shell
+$ systemctl enable fail2ban
+$ systemctl start fail2ban
+```
+
+查看 fail2ban 的运行状态
+
+```shell
+$ fail2ban-client status
+```
+
+输出
+
+```
+Status
+|- Number of jail:      1
+`- Jail list:   sshd
+```
+
+需要查看详情，则只需使用
+
+```shell
+$ fail2ban-client status sshd
+```
+
+即可输出对应 jail 的详细信息，如：
+
+```
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     2479
+|  `- File list:        /var/log/auth.log
+`- Actions
+   |- Currently banned: 4
+   |- Total banned:     118
+   `- Banned IP list:   31.184.198.75 173.212.240.196 116.110.108.227 171.227.208.32
+```
+
 ## 参考
 
 - [1] Linux 服务器为什么被黑？
