@@ -29,13 +29,14 @@
 
 首先，需要创建一个新的分区，这里使用的是 `cfdisk`
 
-如果没有，首先使用下列命令进行安装：
+如果此前没有安装，首先使用下列命令进行安装：
 
 ```shell
+$ opkg update
 $ opkg install cfdisk
 ```
 
-输入
+然后输入
 
 ```shell
 $ cfdisk
@@ -44,7 +45,8 @@ $ cfdisk
 打开磁盘管理界面：
 
 {{< image src="/images/Network/OpenWRT_overlay/cfdisk.webp" caption="磁盘界面">}}
-这里可以看到，一共有两个已有分区，现在新建一个分区：
+
+这里可以看到，目前一共有两个已有分区，现在新建一个分区：
 
 选中 `Free Space`，再选中 `New`，输入需要的大小，比如 5G。
 
@@ -83,7 +85,7 @@ $ mount /dev/sda3 /mnt/sda3
 
 ## 转移到新分区
 
-然后将原来 upper 层中的数据复制到新的分区中：
+然后将原来 `upper` 层中的数据复制到新的分区中：
 
 ```shell
 cp -r /overlay/* /mnt/sda3
@@ -95,17 +97,17 @@ cp -r /overlay/* /mnt/sda3
 
 {{< image src="/images/Network/OpenWRT_overlay/openwrt.webp" caption="Web 界面">}}
 
-再挂载点处点击添加然后配置如下：
+在挂载点处点击添加然后配置如下：
 
 {{< image src="/images/Network/OpenWRT_overlay/mountpoint.webp" caption="挂载点配置">}}
 
 ## 完成
 
-到这一步，只需要重启 `OpenWRT` 即可成功扩容。到 系统 -> 软件包 可以看到空间变大后的容量。
+到这一步，只需要重启 `OpenWRT` 即可成功扩容。到 `系统 -> 软件包` 可以看到变大后的空间容量。
 
 ## 自动挂载
 
-默认情况下分区再重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 `/etc/rc.local`
+分区默认会在 `OpenWRT` 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 `/etc/rc.local`
 
 ```shell
 $ vim /etc/rc.local

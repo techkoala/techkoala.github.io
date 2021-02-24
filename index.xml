@@ -4,7 +4,7 @@
         <link>https://www.techkoala.top/</link>
         <description>TechKoala的自留地，分享一些笔记，包括但不限于Linux、虚拟机、软件、计算机网络等相关内容</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jul 2020 13:56:16 &#43;0800</lastBuildDate>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</lastBuildDate>
             <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
@@ -734,16 +734,18 @@ MAC addresses for the link layer.</div>
     </figure>
 <h2 id="创建新分区">创建新分区</h2>
 <p>首先，需要创建一个新的分区，这里使用的是 <code>cfdisk</code></p>
-<p>如果没有，首先使用下列命令进行安装：</p>
+<p>如果此前没有安装，首先使用下列命令进行安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ opkg install cfdisk
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
+$ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
-</div><p>输入</p>
+</div><p>然后输入</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -753,11 +755,11 @@ MAC addresses for the link layer.</div>
 </code></pre></td></tr></table>
 </div>
 </div><p>打开磁盘管理界面：</p>
-<p><figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
+<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
         
     </a><figcaption class="image-caption">磁盘界面</figcaption>
     </figure>
-这里可以看到，一共有两个已有分区，现在新建一个分区：</p>
+<p>这里可以看到，目前一共有两个已有分区，现在新建一个分区：</p>
 <p>选中 <code>Free Space</code>，再选中 <code>New</code>，输入需要的大小，比如 5G。</p>
 <p>接着选择 <code>primary</code></p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/primary.webp" title="/images/Network/OpenWRT_overlay/primary.webp" data-thumbnail="/images/Network/OpenWRT_overlay/primary.webp" data-sub-html="<h2>选择主分区</h2>">
@@ -801,7 +803,7 @@ MAC addresses for the link layer.</div>
 </div>
 </div><p>挂载分区</p>
 <h2 id="转移到新分区">转移到新分区</h2>
-<p>然后将原来 upper 层中的数据复制到新的分区中：</p>
+<p>然后将原来 <code>upper</code> 层中的数据复制到新的分区中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -816,15 +818,15 @@ MAC addresses for the link layer.</div>
         
     </a><figcaption class="image-caption">Web 界面</figcaption>
     </figure>
-<p>再挂载点处点击添加然后配置如下：</p>
+<p>在挂载点处点击添加然后配置如下：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/mountpoint.webp" title="/images/Network/OpenWRT_overlay/mountpoint.webp" data-thumbnail="/images/Network/OpenWRT_overlay/mountpoint.webp" data-sub-html="<h2>挂载点配置</h2>">
         
     </a><figcaption class="image-caption">挂载点配置</figcaption>
     </figure>
 <h2 id="完成">完成</h2>
-<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。到 系统 -&gt; 软件包 可以看到空间变大后的容量。</p>
+<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。到 <code>系统 -&gt; 软件包</code> 可以看到变大后的空间容量。</p>
 <h2 id="自动挂载">自动挂载</h2>
-<p>默认情况下分区再重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
+<p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
