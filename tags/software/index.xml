@@ -5,7 +5,7 @@
         <description>Software - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
-    <title>使用 Nginx 实现多服务端口复用</title>
+    <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
     <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
     <author>作者</author>
@@ -14,12 +14,13 @@
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
 <h2 id="说明">说明</h2>
-<p>目前服务器上运行了一个 <code>Trojan</code> 实例以及通过 <code>frp</code> 与本地的服务器通信以实现 <code>Bitwarden</code> 的内网穿透访问。两个服务使用了不同的域名进行区分，但为了便捷，想都使用 <code>443</code> 端口。</p>
+<p>目前服务器上运行了一个 <code>Trojan</code> 实例以及通过 <code>frp</code> 与本地的服务器通信以实现 <code>Bitwarden</code> 的内网穿透访问。</p>
+<p>两个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
 <h2 id="流程概览">流程概览</h2>
 <ol>
 <li>采用 <code>Docker</code> 在本地服务器上搭建 <code>Bitwarden</code>，配置并运行 <code>frpc</code> 指向服务器上的 <code>frps</code></li>
 <li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如:<code>Trojan</code>)，配置运行 <code>frps</code></li>
-<li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 以默认包含，但 <code>Ubuntu</code> 等发行版还在使用更低版本的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
+<li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 已默认包含，但 <code>Ubuntu</code> 等发行版还在使用更老的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
 </ol>
 <h2 id="本地配置文件">本地配置文件</h2>
 <h3 id="frpcini">frpc.ini</h3>
@@ -173,7 +174,7 @@ http {
 
     server {
         listen 443 ssl http2;
-        server_name xxx.xxx.xxx;            # 域名
+        server_name xxx.xxx.xxx;                        # 域名
 
         ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
         ssl_certificate_key /xxx/cert/privkey.pem;
@@ -408,13 +409,13 @@ http {
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https。
-## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理。
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
+## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.xxx.xxx;                    # 域名
-        return 301 https://xxx.xxx.xxx$request_uri; # 域名
+        server_name xxx.xxx.xxx;                    # Bitwarden 域名
+        return 301 https://xxx.xxx.xxx$request_uri; # Bitwarden 域名
 }
 
 </code></pre></td></tr></table>

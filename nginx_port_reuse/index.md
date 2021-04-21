@@ -1,4 +1,4 @@
-# 使用 Nginx 实现多服务端口复用
+# 使用 Nginx 实现多服务复用端口
 
 
 > 利用 Nginx 在单一服务器上搭建多个同端口的服务
@@ -7,13 +7,15 @@
 
 ## 说明
 
-目前服务器上运行了一个 `Trojan` 实例以及通过 `frp` 与本地的服务器通信以实现 `Bitwarden` 的内网穿透访问。两个服务使用了不同的域名进行区分，但为了便捷，想都使用 `443` 端口。
+目前服务器上运行了一个 `Trojan` 实例以及通过 `frp` 与本地的服务器通信以实现 `Bitwarden` 的内网穿透访问。
+
+两个服务使用了不同域名进行区分，但为了便捷，都使用 `443` 端口。
 
 ## 流程概览
 
 1. 采用 `Docker` 在本地服务器上搭建 `Bitwarden`，配置并运行 `frpc` 指向服务器上的 `frps`
 2. 在服务器上搭建其他网站或者需要使用 `443` 端口的服务（如:`Trojan`)，配置运行 `frps`
-3. 安装 `Nginx`，这里需要利用 `Nginx` 的 `stream_ssl_preread` 模块，使用`nginx -V`查看是否包含该模块。（该模块在 `Nginx 1.19.2` 以默认包含，但 `Ubuntu` 等发行版还在使用更低版本的 `stable` 版本，需要手动添加 `mainline` 版本源，并更新 `Nginx` 到最新版本）
+3. 安装 `Nginx`，这里需要利用 `Nginx` 的 `stream_ssl_preread` 模块，使用`nginx -V`查看是否包含该模块。（该模块在 `Nginx 1.19.2` 已默认包含，但 `Ubuntu` 等发行版还在使用更老的 `stable` 版本，需要手动添加 `mainline` 版本源，并更新 `Nginx` 到最新版本）
 
 ## 本地配置文件
 
@@ -80,7 +82,7 @@ http {
 
     server {
         listen 443 ssl http2;
-        server_name xxx.xxx.xxx;            # 域名
+        server_name xxx.xxx.xxx;                        # 域名
 
         ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
         ssl_certificate_key /xxx/cert/privkey.pem;
@@ -215,13 +217,13 @@ http {
 放置在`/etc/nginx/sites-enabled/`下，与域名同名
 
 ```
-## Bitwarden 配置。只负责只将 http 重定向至 https。
-## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理。
+## Bitwarden 配置。只负责只将 http 重定向至 https
+## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.xxx.xxx;                    # 域名
-        return 301 https://xxx.xxx.xxx$request_uri; # 域名
+        server_name xxx.xxx.xxx;                    # Bitwarden 域名
+        return 301 https://xxx.xxx.xxx$request_uri; # Bitwarden 域名
 }
 
 ```
