@@ -1,0 +1,113 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Windows - 标签 - TechKoala - Input/Output </title>
+        <link>https://www.techkoala.top/tags/windows/</link>
+        <description>Windows - 标签 - TechKoala - Input/Output </description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
+    <title>Windows 10网络连接优先级设置</title>
+    <link>https://www.techkoala.top/windows_10_network_priority/</link>
+    <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
+    <description><![CDATA[<blockquote>
+<p>Windows10 默认优先使用有线连接，但是如果需要无线连接，除了简单粗暴禁用有线网卡外，还可以通过修改接口跃点数，更改各种网络连接的优先级。</p>
+</blockquote>
+<h2 id="优先级设置方法">优先级设置方法</h2>
+<h3 id="方法一控制面板中修改">方法一：控制面板中修改</h3>
+<p>接口跃点数通过以下路径找到：</p>
+<p>首先打开<code>控制面板 &gt; 网络和 Internet &gt; 网络连接</code></p>
+<p>找到想要修改的对应网络连接，右键打开<code>属性</code></p>
+<p>接下来打开<code>Internet 协议版本 4 属性 &gt; 高级</code></p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-sub-html="<h2>控制面板设置界面</h2>">
+        
+    </a><figcaption class="image-caption">控制面板设置界面</figcaption>
+    </figure>
+<p>取消勾选自动跃点，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
+<h3 id="方法二powershell-中修改">方法二：Powershell 中修改</h3>
+<p>更加便捷的方式是通过 Powershell 进行修改。</p>
+<p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>获得当前所有的网络连接，其中<code>InterfaceMetric</code>即为接口跃点数的值。</p>
+<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" data-sub-html="<h2>Powershell 设置界面</h2>">
+        
+    </a><figcaption class="image-caption">Powershell 设置界面</figcaption>
+    </figure>
+<p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，则使用命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>即可将其的跃点数设置为 10。</p>
+<p>想要恢复跃点数的话，运行以下命令即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
+<p>跃点数越小，网络优先级越高。</p>
+<p>跃点数的理论赋值范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败。并且合理的跃点数值也要参考网络带宽。</p>
+<h2 id="分流方法">分流方法</h2>
+<p>在同时使用 Wi-Fi 和有线网络的环境下可以用 route 命令实现特定网段使用特定接口。</p>
+<p>举例：</p>
+<p>可以连接到互联网的 Wi-Fi 网关地址是 <code>192.168.0.1</code>，有线网网关 IP 是 <code>10.0.0.1</code>。
+分流：需要访问的内网资源都位于 <code>10.0.0.0/8</code> 段，其他流量都走 Wi-Fi。</p>
+<ol>
+<li>首先打开管理员身份的命令提示符，输入以下命令删除默认的路由表。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>添加一个默认路由，指定所有流量走 Wi-Fi。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>添加另一个路由，指定 <code>10.0.0.1~10.255.255.254</code> 流量走有线网络。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>
+<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreferrer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
+</li>
+<li>
+<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreferrer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
+</li>
+</ul>]]></description>
+</item></channel>
+</rss>
