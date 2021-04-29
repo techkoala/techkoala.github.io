@@ -7,17 +7,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Windows 10网络连接优先级设置 - TechKoala - Input/Output </title><meta name="description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="Windows 10网络连接优先级设置" />
 <meta property="og:description" content="
-Windows10 默认优先使用有线连接，但是如果需要无线连接，除了简单粗暴禁用有线网卡外，还可以通过修改接口跃点数，更改各种网络连接的优先级。
+Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/windows_10_network_priority/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-29T20:42:25&#43;08:00" />
-<meta property="article:modified_time" content="2021-04-29T21:25:22&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-29T21:35:51&#43;08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Windows 10网络连接优先级设置"/>
 <meta name="twitter:description" content="
-Windows10 默认优先使用有线连接，但是如果需要无线连接，除了简单粗暴禁用有线网卡外，还可以通过修改接口跃点数，更改各种网络连接的优先级。
+Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。
 "/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -31,8 +31,8 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/windows_10_network_priority\/"
-        },"genre": "posts","keywords": "LAN, Windows","wordcount":  747 ,
-        "url": "https:\/\/www.techkoala.top\/windows_10_network_priority\/","datePublished": "2021-04-29T20:42:25+08:00","dateModified": "2021-04-29T21:25:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "LAN, Windows","wordcount":  743 ,
+        "url": "https:\/\/www.techkoala.top\/windows_10_network_priority\/","datePublished": "2021-04-29T20:42:25+08:00","dateModified": "2021-04-29T21:35:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -108,7 +108,7 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Windows 10网络连接优先级设置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-29">2021-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 747 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-29">2021-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 743 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -133,13 +133,13 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
-<p>Windows10 默认优先使用有线连接，但是如果需要无线连接，除了简单粗暴禁用有线网卡外，还可以通过修改接口跃点数，更改各种网络连接的优先级。</p>
+<p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
 </blockquote>
 <h2 id="优先级设置方法">优先级设置方法</h2>
 <h3 id="方法一控制面板中修改">方法一：控制面板中修改</h3>
-<p>接口跃点数通过以下路径找到：</p>
+<p>接口跃点数通过以下步骤找到：</p>
 <p>首先打开<code>控制面板 &gt; 网络和 Internet &gt; 网络连接</code></p>
-<p>找到想要修改的对应网络连接，右键打开<code>属性</code></p>
+<p>找到想要修改的网络连接，右键打开<code>属性</code></p>
 <p>接下来打开<code>Internet 协议版本 4 属性 &gt; 高级</code></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-sub-html="<h2>控制面板设置界面</h2>">
         <img
@@ -151,9 +151,9 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" />
     </a><figcaption class="image-caption">控制面板设置界面</figcaption>
     </figure>
-<p>取消勾选自动跃点，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
+<p>取消勾选<code>自动跃点</code>，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
 <h3 id="方法二powershell-中修改">方法二：Powershell 中修改</h3>
-<p>更加便捷的方式是通过 Powershell 进行修改。</p>
+<p>更便捷的方式是通过 Powershell 进行修改。</p>
 <p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -174,7 +174,7 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" />
     </a><figcaption class="image-caption">Powershell 设置界面</figcaption>
     </figure>
-<p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，则使用命令</p>
+<p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -183,7 +183,7 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>即可将其的跃点数设置为 10。</p>
+</div><p>即可将其跃点数设置为 10。</p>
 <p>想要恢复跃点数的话，运行以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -195,7 +195,7 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
 </div>
 </div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
 <p>跃点数越小，网络优先级越高。</p>
-<p>跃点数的理论赋值范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败。并且合理的跃点数值也要参考网络带宽。</p>
+<p>跃点数的理论范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败，同时，合理的跃点数值也要参考网络带宽。</p>
 <h2 id="分流方法">分流方法</h2>
 <p>在同时使用 Wi-Fi 和有线网络的环境下可以用 route 命令实现特定网段使用特定接口。</p>
 <p>举例：</p>
@@ -246,8 +246,8 @@ Windows10 默认优先使用有线连接，但是如果需要无线连接，除�
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-04-29&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/38a3cea7fd941ad11c3bf7bbea4bc00c5459b951" target="_blank" rel="noopener noreferrer" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 38a3cea7fd941ad11c3bf7bbea4bc00c5459b951: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>38a3cea</a></span>
+                <span>更新于 2021-04-29&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/5b5250a85e93a2e1e955852bafa2cbf9d404e95c" target="_blank" rel="noopener noreferrer" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 5b5250a85e93a2e1e955852bafa2cbf9d404e95c: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>5b5250a</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

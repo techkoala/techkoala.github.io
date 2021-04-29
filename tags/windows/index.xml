@@ -11,21 +11,21 @@
     <author>作者</author>
     <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
-<p>Windows10 默认优先使用有线连接，但是如果需要无线连接，除了简单粗暴禁用有线网卡外，还可以通过修改接口跃点数，更改各种网络连接的优先级。</p>
+<p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
 </blockquote>
 <h2 id="优先级设置方法">优先级设置方法</h2>
 <h3 id="方法一控制面板中修改">方法一：控制面板中修改</h3>
-<p>接口跃点数通过以下路径找到：</p>
+<p>接口跃点数通过以下步骤找到：</p>
 <p>首先打开<code>控制面板 &gt; 网络和 Internet &gt; 网络连接</code></p>
-<p>找到想要修改的对应网络连接，右键打开<code>属性</code></p>
+<p>找到想要修改的网络连接，右键打开<code>属性</code></p>
 <p>接下来打开<code>Internet 协议版本 4 属性 &gt; 高级</code></p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-sub-html="<h2>控制面板设置界面</h2>">
         
     </a><figcaption class="image-caption">控制面板设置界面</figcaption>
     </figure>
-<p>取消勾选自动跃点，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
+<p>取消勾选<code>自动跃点</code>，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
 <h3 id="方法二powershell-中修改">方法二：Powershell 中修改</h3>
-<p>更加便捷的方式是通过 Powershell 进行修改。</p>
+<p>更便捷的方式是通过 Powershell 进行修改。</p>
 <p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -40,7 +40,7 @@
         
     </a><figcaption class="image-caption">Powershell 设置界面</figcaption>
     </figure>
-<p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，则使用命令</p>
+<p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -49,7 +49,7 @@
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>即可将其的跃点数设置为 10。</p>
+</div><p>即可将其跃点数设置为 10。</p>
 <p>想要恢复跃点数的话，运行以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -61,7 +61,7 @@
 </div>
 </div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
 <p>跃点数越小，网络优先级越高。</p>
-<p>跃点数的理论赋值范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败。并且合理的跃点数值也要参考网络带宽。</p>
+<p>跃点数的理论范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败，同时，合理的跃点数值也要参考网络带宽。</p>
 <h2 id="分流方法">分流方法</h2>
 <p>在同时使用 Wi-Fi 和有线网络的环境下可以用 route 命令实现特定网段使用特定接口。</p>
 <p>举例：</p>

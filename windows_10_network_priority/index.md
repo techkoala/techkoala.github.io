@@ -1,7 +1,7 @@
 # Windows 10网络连接优先级设置
 
 
-> Windows10 默认优先使用有线连接，但是如果需要无线连接，除了简单粗暴禁用有线网卡外，还可以通过修改接口跃点数，更改各种网络连接的优先级。
+> Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。
 
 <!--more-->
 
@@ -9,21 +9,21 @@
 
 ### 方法一：控制面板中修改
 
-接口跃点数通过以下路径找到：
+接口跃点数通过以下步骤找到：
 
 首先打开`控制面板 > 网络和 Internet > 网络连接`
 
-找到想要修改的对应网络连接，右键打开`属性`
+找到想要修改的网络连接，右键打开`属性`
 
 接下来打开`Internet 协议版本 4 属性 > 高级`
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" caption="控制面板设置界面" >}}
 
-取消勾选自动跃点，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。
+取消勾选`自动跃点`，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。
 
 ### 方法二：Powershell 中修改
 
-更加便捷的方式是通过 Powershell 进行修改。
+更便捷的方式是通过 Powershell 进行修改。
 
 首先以管理员身份运行 Windows PowerShell，并使用命令
 
@@ -35,13 +35,13 @@ PS C:\Users\xxxx> Get-NetIPInterface
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" caption="Powershell 设置界面" >}}
 
-找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，则使用命令
+找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令
 
 ```powershell
 PS C:\Users\xxxx> Set-NetIPInterface -InterfaceIndex x -InterfaceMetric 10
 ```
 
-即可将其的跃点数设置为 10。
+即可将其跃点数设置为 10。
 
 想要恢复跃点数的话，运行以下命令即可：
 
@@ -53,7 +53,7 @@ PS C:\Users\xxxx> Set-NetIPInterface -InterfaceIndex x -AutomaticMetric enabled
 
 跃点数越小，网络优先级越高。
 
-跃点数的理论赋值范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败。并且合理的跃点数值也要参考网络带宽。
+跃点数的理论范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败，同时，合理的跃点数值也要参考网络带宽。
 
 ## 分流方法
 
