@@ -11,13 +11,13 @@
 
 ## 解决方法
 
-- 获得 Gist 文件列表中的第一个文件： `https://gist.github.com/[gist_user]/[gist_id]/raw/`
+- 获得 Gist 文件列表中的第一个文件： `https://gist.github.com/gist_user/gist_id/raw/`
 
   例如: https://gist.github.com/atenni/5604522/raw/
 
   即便更改了文件名，上述方法依然可以获得列表中的第一个文件。
 
-- 获得多个文件： https://gist.github.com/[gist_user]/[gist_id]/raw/[file_name]
+- 获得多个文件： `https://gist.github.com/gist_user/gist_id/raw/file_name`
 
   例如: https://gist.github.com/atenni/5604522/raw/README.md
 
