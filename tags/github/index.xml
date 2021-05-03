@@ -4,7 +4,34 @@
         <link>https://www.techkoala.top/tags/github/</link>
         <description>Github - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 10 May 2020 11:25:57 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/github/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 May 2021 22:22:32 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/github/" rel="self" type="application/rss+xml" /><item>
+    <title>持久化 Gist file raw 链接</title>
+    <link>https://www.techkoala.top/permalink_gist_raw_file/</link>
+    <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/permalink_gist_raw_file/</guid>
+    <description><![CDATA[<blockquote>
+<p>如何持久化 Gist file raw 链接地址？</p>
+</blockquote>
+<h2 id="问题">问题</h2>
+<p>通常，Gist 文件的 raw 链接会随着版本二更改，但在使用上往往不便，因此需要持久化文件的 raw 链接地址。</p>
+<h2 id="解决方法">解决方法</h2>
+<ul>
+<li>
+<p>获得 Gist 文件列表中的第一个文件： <code>https://gist.github.com/<sup>gist_user</sup>/<sub>gist_id</sub>/raw/</code></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/">https://gist.github.com/atenni/5604522/raw/</a></p>
+<p>即便更改了文件名，上述方法依然可以获得列表中的第一个文件。</p>
+</li>
+<li>
+<p>获得多个文件： <a href="https://gist.github.com/%5Bgist_user%5D/%5Bgist_id%5D/raw/%5Bfile_name%5D">https://gist.github.com/<sup>gist_user</sup>/<sub>gist_id</sub>/raw/[file_name]</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
+</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://gist.github.com/atenni/5604615" target="_blank" rel="noopener noreferrer">How to permalink to a gist&rsquo;s raw file</a></li>
+</ul>]]></description>
+</item><item>
     <title>Github 使用问题</title>
     <link>https://www.techkoala.top/github_issue/</link>
     <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate>
