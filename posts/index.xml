@@ -4,7 +4,51 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 May 2021 22:22:32 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>常用 youtube-dl 命令</title>
+    <link>https://www.techkoala.top/youtube-dl_tricks/</link>
+    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    <description><![CDATA[<blockquote>
+<p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
+</blockquote>
+<h2 id="下载播放列表">下载播放列表</h2>
+<p>Windows</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx 
+
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+-f bestaudio                #最佳音频
+--extract-audio             #提取音频
+--audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
+--playlist-items 1,2,5      #下载播放列表中的哪些项
+--playstart-start 2         #从第二项开始下载播放列表
+--playstart-end 2
+-f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
     <title>持久化 Gist file raw 链接</title>
     <link>https://www.techkoala.top/permalink_gist_raw_file/</link>
     <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate>
@@ -1423,149 +1467,6 @@ MAC addresses for the link layer.</div>
 <li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">地址解析协议</a></li>
 <li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">逆地址解析协议</a></li>
 <li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreferrer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
-</ul>]]></description>
-</item><item>
-    <title>OpenWRT overlay 空间扩容</title>
-    <link>https://www.techkoala.top/openwrt_resize/</link>
-    <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/openwrt_resize/</guid>
-    <description><![CDATA[<blockquote>
-<p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，记录一下</p>
-</blockquote>
-<h2 id="什么是-overlay">什么是 overlay</h2>
-<p><code>OpenWRT</code> 一般使用的文件系统是 <code>SquashFS</code> ，这个文件系统的特点就是：<strong>只读</strong>。</p>
-<p>一个只读的文件系统要怎么做到保存设置和安装软件的呢？这里就是使用 <code>/overlay</code> 的分区，<code>overlay</code> 顾名思义就是覆盖在上面一层的意思。虽然原来的文件不能修改，但把修改的部分放在 <code>overlay</code> 分区上，然后映射到原来的位置，读取的时候就可以读到修改过的文件了。</p>
-<p>为什么要用这么复杂的方法呢？ <code>OpenWRT</code> 当然也可以使用 <code>EXT4</code> 文件系统，但使用 <code>SquashFS + overlay</code> 的方式有一定的优点。</p>
-<ul>
-<li><code>SquashFS</code> 是经过压缩的，在路由器这种小型 <code>ROM</code> 的设备可以放下更多的东西。</li>
-<li><code>OpenWRT</code> 的恢复出厂设置也要依赖于这个方式。在你重置的时候，它只需要把 <code>overlay</code> 分区清空就可以了，一切都回到了刚刷进去的样子。</li>
-</ul>
-<p>如果是 <code>EXT4</code> 文件系统，就只能够备份每个修改的文件，在恢复出厂设置的时候复制回来，十分复杂。</p>
-<p>当然，<code>SquashFS + overlay</code> 也有它的缺点：</p>
-<ul>
-<li>修改文件的时候会占用更多的空间。首先你不能够删除文件，因为删除文件实际上是在 <code>overlay</code> 分区中写入一个删除的标识，反而占用更多的空间。</li>
-<li>另外在修改文件的时候相当于增加了一份文件的副本，占用了双份的空间。</li>
-</ul>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/overlay.webp" title="/images/Network/OpenWRT_overlay/overlay.webp" data-thumbnail="/images/Network/OpenWRT_overlay/overlay.webp" data-sub-html="<h2>overlay 示意图</h2>">
-        
-    </a><figcaption class="image-caption">overlay 示意图</figcaption>
-    </figure>
-<h2 id="创建新分区">创建新分区</h2>
-<p>首先，需要创建一个新的分区，这里使用的是 <code>cfdisk</code></p>
-<p>如果此前没有安装，首先使用下列命令进行安装：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
-$ opkg install cfdisk
-</code></pre></td></tr></table>
-</div>
-</div><p>然后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
-</code></pre></td></tr></table>
-</div>
-</div><p>打开磁盘管理界面：</p>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
-        
-    </a><figcaption class="image-caption">磁盘界面</figcaption>
-    </figure>
-<p>这里可以看到，目前一共有两个已有分区，现在新建一个分区：</p>
-<p>选中 <code>Free Space</code>，再选中 <code>New</code>，输入需要的大小，比如 5G。</p>
-<p>接着选择 <code>primary</code></p>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/primary.webp" title="/images/Network/OpenWRT_overlay/primary.webp" data-thumbnail="/images/Network/OpenWRT_overlay/primary.webp" data-sub-html="<h2>选择主分区</h2>">
-        
-    </a><figcaption class="image-caption">选择主分区</figcaption>
-    </figure>
-<p>选择 <code>Write</code>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/write.webp" title="/images/Network/OpenWRT_overlay/write.webp" data-thumbnail="/images/Network/OpenWRT_overlay/write.webp" data-sub-html="<h2>写入更改</h2>">
-        
-    </a><figcaption class="image-caption">写入更改</figcaption>
-    </figure></p>
-<p>输入 <code>yes</code>，完成新分区的创建</p>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/yes.webp" title="/images/Network/OpenWRT_overlay/yes.webp" data-thumbnail="/images/Network/OpenWRT_overlay/yes.webp" data-sub-html="<h2>确认</h2>">
-        
-    </a><figcaption class="image-caption">确认</figcaption>
-    </figure>
-<h2 id="格式化分区">格式化分区</h2>
-<p>使用命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
-</code></pre></td></tr></table>
-</div>
-</div><p>格式化分区</p>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/format.webp" title="/images/Network/OpenWRT_overlay/format.webp" data-thumbnail="/images/Network/OpenWRT_overlay/format.webp" data-sub-html="<h2>格式化分区</h2>">
-        
-    </a><figcaption class="image-caption">格式化分区</figcaption>
-    </figure>
-<h2 id="挂载新分区">挂载新分区</h2>
-<p>使用命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
-</code></pre></td></tr></table>
-</div>
-</div><p>挂载分区</p>
-<h2 id="转移到新分区">转移到新分区</h2>
-<p>然后将原来 <code>upper</code> 层中的数据复制到新的分区中：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="web-界面配置修改">Web 界面配置修改</h2>
-<p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/openwrt.webp" title="/images/Network/OpenWRT_overlay/openwrt.webp" data-thumbnail="/images/Network/OpenWRT_overlay/openwrt.webp" data-sub-html="<h2>Web 界面</h2>">
-        
-    </a><figcaption class="image-caption">Web 界面</figcaption>
-    </figure>
-<p>在挂载点处点击添加然后配置如下：</p>
-<figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/mountpoint.webp" title="/images/Network/OpenWRT_overlay/mountpoint.webp" data-thumbnail="/images/Network/OpenWRT_overlay/mountpoint.webp" data-sub-html="<h2>挂载点配置</h2>">
-        
-    </a><figcaption class="image-caption">挂载点配置</figcaption>
-    </figure>
-<h2 id="完成">完成</h2>
-<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。到 <code>系统 -&gt; 软件包</code> 可以看到变大后的空间容量。</p>
-<h2 id="自动挂载">自动挂载</h2>
-<p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
-</code></pre></td></tr></table>
-</div>
-</div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>
-<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreferrer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
-</li>
-<li>
-<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreferrer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
-</li>
-<li>
-<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreferrer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
-</li>
 </ul>]]></description>
 </item></channel>
 </rss>

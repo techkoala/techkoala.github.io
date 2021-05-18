@@ -4,7 +4,51 @@
         <link>https://www.techkoala.top/tags/software/</link>
         <description>Software - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
+    <title>常用 youtube-dl 命令</title>
+    <link>https://www.techkoala.top/youtube-dl_tricks/</link>
+    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    <description><![CDATA[<blockquote>
+<p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
+</blockquote>
+<h2 id="下载播放列表">下载播放列表</h2>
+<p>Windows</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx 
+
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+-f bestaudio                #最佳音频
+--extract-audio             #提取音频
+--audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
+--playlist-items 1,2,5      #下载播放列表中的哪些项
+--playstart-start 2         #从第二项开始下载播放列表
+--playstart-end 2
+-f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
     <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
