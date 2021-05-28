@@ -11,7 +11,7 @@
 
 ## 哈希函数（Hash Function）
 
-如果，你还不清楚哈希是什么，可以参见我的[另外一篇文章](http://techkoala.top/hash_functions/)
+如果，你还不清楚哈希是什么，可以参见我的[另外一篇文章](/hash_functions/)
 
 简单来说，哈希函数的拥有如下三个重要特性：
 

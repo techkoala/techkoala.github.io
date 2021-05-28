@@ -14,10 +14,10 @@
 
 {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" caption="LTE 接入网协议架构">}}
 
-- [分组数据会聚协议（PDCP）](https://www.techkoala.top/lte_pdcp/)
-- [无线链路控制（RLC）](https://www.techkoala.top/lte_rlc/)
-- [媒体接入控制（MAC）](https://www.techkoala.top/lte_mac/)
-- [无线资源控制（RRC）](https://www.techkoala.top/lte_rrc/)
+- [分组数据会聚协议（PDCP）](/lte_pdcp/)
+- [无线链路控制（RLC）](/lte_rlc/)
+- [媒体接入控制（MAC）](/lte_mac/)
+- [无线资源控制（RRC）](/lte_rrc/)
 
 无线接入网向核心网提供**无线承载**服务。
 

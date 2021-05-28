@@ -22,7 +22,7 @@
         </div>
     </div>
 <h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
-<p>创建一个新目录 ~/freshrss 并进入该位置，新建 docker-compose.yml</p>
+<p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

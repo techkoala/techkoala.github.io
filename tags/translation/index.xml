@@ -16,7 +16,7 @@
 <p><code>SHA-2</code> (Secure Hash Algorithm 2)，是最流行的哈希算法之一，包括了：<code>SHA-224</code>、<code>SHA-256</code>、<code>SHA-384</code>、<code>SHA-512</code>、<code>SHA-512/224</code>、<code>SHA-512/256</code>。这些变体除了生成摘要的长度、循环运行的次数等一些细微差异之外，基本结构是一致的。</p>
 <p><code>SHA-2</code> 以安全和速度著称，在未生成密钥的情况下（例如挖掘比特币），像 <code>SHA-2</code> 这样的快速哈希算法通常占据上风。</p>
 <h2 id="哈希函数hash-function">哈希函数（Hash Function）</h2>
-<p>如果，你还不清楚哈希是什么，可以参见我的<a href="http://techkoala.top/hash_functions/" target="_blank" rel="noopener noreferrer">另外一篇文章</a></p>
+<p>如果，你还不清楚哈希是什么，可以参见我的<a href="/hash_functions/" rel="">另外一篇文章</a></p>
 <p>简单来说，哈希函数的拥有如下三个重要特性：</p>
 <ul>
 <li>
@@ -985,8 +985,8 @@ Executed in  215.68 millis	fish       	external
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
 <ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreferrer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreferrer">SFTP</a></li>
+<li><a href="/rsync/" rel="">rsync</a></li>
+<li><a href="/sftp/" rel="">SFTP</a></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
@@ -1484,7 +1484,7 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     <description><![CDATA[<blockquote>
 <p>概述 LTE 信息帧中的各类物理通道和信号</p>
 </blockquote>
-<p>在 <a href="https://www.techkoala.top/lte_downlink_frame_structure/" target="_blank" rel="noopener noreferrer">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
+<p>在 <a href="/lte_downlink_frame_structure/" rel="">此前的一篇文章</a> 中，我们详细了解 <code>LTE</code> 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。</p>
 <h2 id="pbch">PBCH</h2>
 <p><strong>Physical Broadcast Channel，物理广播通道</strong></p>
 <ul>
@@ -1759,8 +1759,8 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
     </a><figcaption class="image-caption">Spectrogram - LTE FDD DL - Each Symbol</figcaption>
     </figure>
 <h2 id="另见">另见</h2>
-<p><a href="https://www.techkoala.top/lte_physical_signals/" target="_blank" rel="noopener noreferrer">LTE 系列：物理信号</a></p>
-<p><a href="https://www.techkoala.top/lte_physical_channels/" target="_blank" rel="noopener noreferrer">LTE 系列：物理信道</a></p>
+<p><a href="/lte_physical_signals/" rel="">LTE 系列：物理信号</a></p>
+<p><a href="/lte_physical_channels/" rel="">LTE 系列：物理信道</a></p>
 <h2 id="参考">参考</h2>
 <ul>
 <li>

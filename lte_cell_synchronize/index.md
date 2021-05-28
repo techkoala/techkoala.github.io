@@ -13,8 +13,8 @@
 
 物理层小区搜索的过程主要涉及两个同步信号：
 
-- [主同步信号（PSS）](https://www.techkoala.top/lte_physical_signals/)
-- [辅同步信号（SSS）](https://www.techkoala.top/lte_physical_signals/)
+- [主同步信号（PSS）](/lte_physical_signals/)
+- [辅同步信号（SSS）](/lte_physical_signals/)
 
 过程中包括了
 

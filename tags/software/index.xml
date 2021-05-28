@@ -22,7 +22,7 @@
         </div>
     </div>
 <h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
-<p>创建一个新目录 ~/freshrss 并进入该位置，新建 docker-compose.yml</p>
+<p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -2069,8 +2069,8 @@ Executed in  215.68 millis	fish       	external
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
 <h2 id="另见">另见</h2>
 <ul>
-<li><a href="https://www.techkoala.top/rsync/" target="_blank" rel="noopener noreferrer">rsync</a></li>
-<li><a href="https://www.techkoala.top/sftp/" target="_blank" rel="noopener noreferrer">SFTP</a></li>
+<li><a href="/rsync/" rel="">rsync</a></li>
+<li><a href="/sftp/" rel="">SFTP</a></li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>

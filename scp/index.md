@@ -159,8 +159,8 @@ Executed in  215.68 millis	fish       	external
 
 ## 另见
 
-- [rsync](https://www.techkoala.top/rsync/)
-- [SFTP](https://www.techkoala.top/sftp/)
+- [rsync](/rsync/)
+- [SFTP](/sftp/)
 
 ## 参考
 

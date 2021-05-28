@@ -5,7 +5,7 @@
 
 <!--more-->
 
-在 [此前的一篇文章](https://www.techkoala.top/lte_downlink_frame_structure/) 中，我们详细了解 `LTE` 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。
+在 [此前的一篇文章](/lte_downlink_frame_structure/) 中，我们详细了解 `LTE` 下行链路的帧结构，其中包含了各种物理信道和信号，本文将会做一个概要性的讲述，用作一个速查表。
 
 ## PBCH
 
@@ -235,9 +235,9 @@ CRS 是否以任何子帧类型（类型 1、2、3）传输？
 
 ## 另见
 
-[LTE 系列：物理信号](https://www.techkoala.top/lte_physical_signals/)
+[LTE 系列：物理信号](/lte_physical_signals/)
 
-[LTE 系列：物理信道](https://www.techkoala.top/lte_physical_channels/)
+[LTE 系列：物理信道](/lte_physical_channels/)
 
 
 ## 参考

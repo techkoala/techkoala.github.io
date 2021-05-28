@@ -11,7 +11,7 @@
 
 ## FreshRSS Docker 配置
 
-创建一个新目录 ~/freshrss 并进入该位置，新建 docker-compose.yml
+创建一个新目录 `~/freshrss` 并进入该位置，新建 docker-compose.yml
 
 ```
 # 创建 FreshRSS 目录并进入

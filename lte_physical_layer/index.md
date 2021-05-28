@@ -24,11 +24,11 @@
 
 物理层的包含以下关键技术：
 
-- [多址方式](https://www.techkoala.top/lte_multiple_access/)
-- [无线帧结构](https://www.techkoala.top/lte_frame_structure/)
-- [基本物理资源及分配方法](https://www.techkoala.top/lte_basic_physical_resource/)
-- [数据的编码、复用和交织](https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/)
-- [多天线技术（MIMO）](https://www.techkoala.top/lte_mimo/)
+- [多址方式](/lte_multiple_access/)
+- [无线帧结构](/lte_frame_structure/)
+- [基本物理资源及分配方法](/lte_basic_physical_resource/)
+- [数据的编码、复用和交织](/lte_encoding_multiplexing_and_interleaving/)
+- [多天线技术（MIMO）](/lte_mimo/)
 
 ## 物理层信号和信道的设计
 
@@ -60,17 +60,17 @@
 
 详细内容另见：
 
-- [LTE 系列：物理信号](https://www.techkoala.top/lte_physical_signals/)
-- [LTE 系列：物理信道](https://www.techkoala.top/lte_physical_channels/)
-- [LTE 系列：帧中的物理信道和信号](https://www.techkoala.top/lte_physical_channels_and_signals/)
+- [LTE 系列：物理信号](/lte_physical_signals/)
+- [LTE 系列：物理信道](/lte_physical_channels/)
+- [LTE 系列：帧中的物理信道和信号](/lte_physical_channels_and_signals/)
 
 ## 物理层过程
 
 讲解典型的物理层过程包括：
 
-- [终端的小区搜索和下行同步](https://www.techkoala.top/lte_cell_synchronize/)
-- [功率控制](https://www.techkoala.top/lte_power_control/)
-- [上/下行共享信道的传输与接收](https://www.techkoala.top/lte_transmission_and_reception/)
+- [终端的小区搜索和下行同步](/lte_cell_synchronize/)
+- [功率控制](/lte_power_control/)
+- [上/下行共享信道的传输与接收](/lte_transmission_and_reception/)
 
 ## 参考
 

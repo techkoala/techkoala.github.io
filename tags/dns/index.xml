@@ -99,7 +99,7 @@ opkg install dnscrypt-proxy2
         
     </a><figcaption class="image-caption">DNS 的层次结构</figcaption>
     </figure>
-<p>关于 DNS 的工作过程及相关信息参见<a href="https://www.techkoala.top/dns_update/" target="_blank" rel="noopener noreferrer">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
+<p>关于 DNS 的工作过程及相关信息参见<a href="/dns_update/" rel="">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
 <h3 id="dns-报文结构">DNS 报文结构</h3>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-sub-html="<h2>DNS 的报文结构</h2>">
         

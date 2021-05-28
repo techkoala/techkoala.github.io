@@ -48,9 +48,9 @@ LTE 空中接口物理资源分配的**最小时间单位**是 1 个`传输时�
 
 ## 另见
 
-[LTE 系列：下行链路帧结构](https://www.techkoala.top/lte_downlink_frame_structure/)
+[LTE 系列：下行链路帧结构](/lte_downlink_frame_structure/)
 
-[LTE 系列：上行链路帧结构](https://www.techkoala.top/lte_uplink_frame_structure/)
+[LTE 系列：上行链路帧结构](/lte_uplink_frame_structure/)
 
 ## 参考
 

@@ -13,7 +13,7 @@
 
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" caption="DNS 的层次结构" >}}
 
-关于 DNS 的工作过程及相关信息参见[深入浅出 DNS 解析](https://www.techkoala.top/dns_update/)，本文负责补充 DNS 报文结构。
+关于 DNS 的工作过程及相关信息参见[深入浅出 DNS 解析](/dns_update/)，本文负责补充 DNS 报文结构。
 
 ### DNS 报文结构
 
