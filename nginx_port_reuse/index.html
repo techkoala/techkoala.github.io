@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/nginx_port_reuse\/"
-        },"genre": "posts","keywords": "Software, Nginx, Bitwarden, Trojan","wordcount":  1369 ,
+        },"genre": "posts","keywords": "Software, Nginx, Bitwarden, Trojan, FreshRSS","wordcount":  1562 ,
         "url": "https:\/\/www.techkoala.top\/nginx_port_reuse\/","datePublished": "2021-04-20T14:17:01+08:00","dateModified": "2021-04-21T18:55:47+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -108,8 +108,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">使用 Nginx 实现多服务复用端口</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-20">2021-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1369 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-20">2021-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1562 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -129,11 +129,20 @@
         </li>
         <li><a href="#服务器配置文件">服务器配置文件</a>
           <ul>
-            <li><a href="#frpsini">frps.ini</a></li>
             <li><a href="#服务器-nginxcof">服务器 nginx.cof</a></li>
-            <li><a href="#bitwarden-nginx-配置">Bitwarden Nginx 配置</a></li>
-            <li><a href="#trojan-nginx-配置">Trojan Nginx 配置</a></li>
-            <li><a href="#trojan-配置">Trojan 配置</a></li>
+            <li><a href="#bitwarden-相关配置">Bitwarden 相关配置</a>
+              <ul>
+                <li><a href="#frpsini">frps.ini</a></li>
+                <li><a href="#bitwarden-nginx-站点配置">Bitwarden Nginx 站点配置</a></li>
+              </ul>
+            </li>
+            <li><a href="#trojan-相关配置">Trojan 相关配置</a>
+              <ul>
+                <li><a href="#trojan-nginx-配置">Trojan Nginx 配置</a></li>
+                <li><a href="#trojan-配置文件">Trojan 配置文件</a></li>
+              </ul>
+            </li>
+            <li><a href="#freshrss-站点配置">FreshRSS 站点配置</a></li>
           </ul>
         </li>
         <li><a href="#防火墙设置">防火墙设置</a></li>
@@ -145,12 +154,18 @@
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
 <h2 id="说明">说明</h2>
-<p>目前服务器上运行了一个 <code>Trojan</code> 实例以及通过 <code>frp</code> 与本地的服务器通信以实现 <code>Bitwarden</code> 的内网穿透访问。</p>
-<p>两个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
+<p>目前服务器上运行以下服务：</p>
+<ul>
+<li><code>Trojan</code></li>
+<li><code>frp</code> + <code>Bitwarden</code> 实现内网穿透访问</li>
+<li><code>FreshRSS</code></li>
+</ul>
+<p>三个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
 <h2 id="流程概览">流程概览</h2>
 <ol>
 <li>采用 <code>Docker</code> 在本地服务器上搭建 <code>Bitwarden</code>，配置并运行 <code>frpc</code> 指向服务器上的 <code>frps</code></li>
-<li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如:<code>Trojan</code>)，配置运行 <code>frps</code></li>
+<li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如：<code>Trojan</code>)，配置运行 <code>frps</code></li>
+<li>采用 <code>Docker</code> 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书</li>
 <li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 已默认包含，但 <code>Ubuntu</code> 等发行版还在使用更老的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
 </ol>
 <h2 id="本地配置文件">本地配置文件</h2>
@@ -337,24 +352,7 @@ http {
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="服务器配置文件">服务器配置文件</h2>
-<h3 id="frpsini">frps.ini</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
+<h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -439,6 +437,10 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">80
 </span><span class="lnt">81
 </span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
@@ -453,14 +455,18 @@ events {
 
 stream {
     map $ssl_preread_server_name $name {
-        xxx.xxx.xxx frps-bitwarden;   # Bitwarden 域名
-        xxx.xxx.xxx trojan;           # Trojan 域名
+        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+        xxx.techkoala.top trojan;           # Trojan 域名
+        xxx.techkoala.top rss;              # FreshRSS 域名
     }
     upstream frps-bitwarden {
         server 127.0.0.1:8080;        # Bitwarden的 frps 端口
     }
     upstream trojan {
         server 127.0.0.1:4443;        # Trojan 本地监听端口
+    }
+    upstream rss {
+        server 127.0.0.1:39955;       # FreshRSS 本地监听端口
     }
     server {
         listen 443 reuseport;
@@ -525,8 +531,26 @@ http {
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="bitwarden-nginx-配置">Bitwarden Nginx 配置</h3>
-<p>放置在<code>/etc/nginx/sites-enabled/</code>下，与域名同名</p>
+</div><h3 id="bitwarden-相关配置">Bitwarden 相关配置</h3>
+<h4 id="frpsini">frps.ini</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+bind_port = xxxx                # 与本地 frpc 通信的端口
+vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+authentication_method = token
+token = xxxxxx                  # frp 验证密钥
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="bitwarden-nginx-站点配置">Bitwarden Nginx 站点配置</h4>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -545,8 +569,8 @@ http {
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.xxx.xxx;                    # Bitwarden 域名
-        return 301 https://xxx.xxx.xxx$request_uri; # Bitwarden 域名
+        server_name xxx.techkoala.top;                    # Bitwarden 域名
+        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
 }
 
 </code></pre></td></tr></table>
@@ -557,11 +581,12 @@ server {
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-nginx-配置">Trojan Nginx 配置</h3>
-<p>放置在<code>/etc/nginx/sites-enabled/</code>下，与域名同名</p>
+</div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
+<h4 id="trojan-nginx-配置">Trojan Nginx 配置</h4>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -587,15 +612,15 @@ server {
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
-    server_name xxx.xxx.xxx;                   # 自己的域名
+    server_name xxx.techkoala.top;             # 自己的域名
     location / {
         proxy_pass https://www.aliexpress.com; # 伪装的网站，这里是阿里速卖通
     }
 }
 server {
     listen 127.0.0.1:80;
-    server_name xxx.xxx.xxx.xxx;                 # 自己服务器的 IP
-    return 301 https://xxx.xxx.xxx$request_uri;  # 自己的域名
+    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
 }
 server {
     listen 0.0.0.0:80;
@@ -612,10 +637,10 @@ server {
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-配置">Trojan 配置</h3>
+</div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -722,6 +747,59 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="freshrss-站点配置">FreshRSS 站点配置</h3>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+        listen 80;
+        listen [::]:80;
+        server_name xxx.techkoala.top;
+        return 301 https://xxx.techkoala.top$request_uri;
+    }
+
+server {
+    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+    server_name rss.techkoala.top;
+    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+
+    location / {
+       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+    }
+}
+
+</code></pre></td></tr></table>
+</div>
+</div><p>链接配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="防火墙设置">防火墙设置</h2>
 <p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -735,13 +813,13 @@ server {
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/nginx_port_reuse/" data-title="使用 Nginx 实现多服务复用端口" data-hashtags="Software,Nginx,Bitwarden,Trojan"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/nginx_port_reuse/" data-hashtag="Software"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/nginx_port_reuse/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/nginx_port_reuse/" data-title="使用 Nginx 实现多服务复用端口"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/nginx_port_reuse/" data-title="使用 Nginx 实现多服务复用端口"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/nginx_port_reuse/" data-title="使用 Nginx 实现多服务复用端口" data-hashtags="Software,Nginx,Bitwarden,Trojan,FreshRSS"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/nginx_port_reuse/" data-hashtag="Software"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/nginx_port_reuse/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/nginx_port_reuse/" data-title="使用 Nginx 实现多服务复用端口"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/nginx_port_reuse/" data-title="使用 Nginx 实现多服务复用端口"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/software/">Software</a>,&nbsp;<a href="/tags/nginx/">Nginx</a>,&nbsp;<a href="/tags/bitwarden/">Bitwarden</a>,&nbsp;<a href="/tags/trojan/">Trojan</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/software/">Software</a>,&nbsp;<a href="/tags/nginx/">Nginx</a>,&nbsp;<a href="/tags/bitwarden/">Bitwarden</a>,&nbsp;<a href="/tags/trojan/">Trojan</a>,&nbsp;<a href="/tags/freshrss/">FreshRSS</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

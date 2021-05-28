@@ -7,15 +7,20 @@
 
 ## 说明
 
-目前服务器上运行了一个 `Trojan` 实例以及通过 `frp` 与本地的服务器通信以实现 `Bitwarden` 的内网穿透访问。
+目前服务器上运行以下服务：
 
-两个服务使用了不同域名进行区分，但为了便捷，都使用 `443` 端口。
+- `Trojan`
+- `frp` + `Bitwarden` 实现内网穿透访问
+- `FreshRSS`
+
+三个服务使用了不同域名进行区分，但为了便捷，都使用 `443` 端口。
 
 ## 流程概览
 
 1. 采用 `Docker` 在本地服务器上搭建 `Bitwarden`，配置并运行 `frpc` 指向服务器上的 `frps`
-2. 在服务器上搭建其他网站或者需要使用 `443` 端口的服务（如:`Trojan`)，配置运行 `frps`
-3. 安装 `Nginx`，这里需要利用 `Nginx` 的 `stream_ssl_preread` 模块，使用`nginx -V`查看是否包含该模块。（该模块在 `Nginx 1.19.2` 已默认包含，但 `Ubuntu` 等发行版还在使用更老的 `stable` 版本，需要手动添加 `mainline` 版本源，并更新 `Nginx` 到最新版本）
+2. 在服务器上搭建其他网站或者需要使用 `443` 端口的服务（如：`Trojan`)，配置运行 `frps`
+3. 采用 `Docker` 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书
+4. 安装 `Nginx`，这里需要利用 `Nginx` 的 `stream_ssl_preread` 模块，使用`nginx -V`查看是否包含该模块。（该模块在 `Nginx 1.19.2` 已默认包含，但 `Ubuntu` 等发行版还在使用更老的 `stable` 版本，需要手动添加 `mainline` 版本源，并更新 `Nginx` 到最新版本）
 
 ## 本地配置文件
 
@@ -115,16 +120,6 @@ http {
 
 ## 服务器配置文件
 
-### frps.ini
-
-```
-[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-```
-
 ### 服务器 nginx.cof
 
 ```
@@ -140,14 +135,18 @@ events {
 
 stream {
     map $ssl_preread_server_name $name {
-        xxx.xxx.xxx frps-bitwarden;   # Bitwarden 域名
-        xxx.xxx.xxx trojan;           # Trojan 域名
+        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+        xxx.techkoala.top trojan;           # Trojan 域名
+        xxx.techkoala.top rss;              # FreshRSS 域名
     }
     upstream frps-bitwarden {
         server 127.0.0.1:8080;        # Bitwarden的 frps 端口
     }
     upstream trojan {
         server 127.0.0.1:4443;        # Trojan 本地监听端口
+    }
+    upstream rss {
+        server 127.0.0.1:39955;       # FreshRSS 本地监听端口
     }
     server {
         listen 443 reuseport;
@@ -212,9 +211,21 @@ http {
 
 ```
 
-### Bitwarden Nginx 配置
+### Bitwarden 相关配置
 
-放置在`/etc/nginx/sites-enabled/`下，与域名同名
+#### frps.ini
+
+```
+[common]
+bind_port = xxxx                # 与本地 frpc 通信的端口
+vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+authentication_method = token
+token = xxxxxx                  # frp 验证密钥
+```
+
+#### Bitwarden Nginx 站点配置
+
+放置在`/etc/nginx/sites-available/`下，文件与域名同名
 
 ```
 ## Bitwarden 配置。只负责只将 http 重定向至 https
@@ -222,8 +233,8 @@ http {
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.xxx.xxx;                    # Bitwarden 域名
-        return 301 https://xxx.xxx.xxx$request_uri; # Bitwarden 域名
+        server_name xxx.techkoala.top;                    # Bitwarden 域名
+        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
 }
 
 ```
@@ -231,25 +242,27 @@ server {
 链接配置文件
 
 ```
-ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 ```
 
-### Trojan Nginx 配置
+### Trojan 相关配置
 
-放置在`/etc/nginx/sites-enabled/`下，与域名同名
+#### Trojan Nginx 配置
+
+放置在`/etc/nginx/sites-available/`下，文件与域名同名
 
 ```
 server {
     listen 127.0.0.1:80 default_server;
-    server_name xxx.xxx.xxx;                   # 自己的域名
+    server_name xxx.techkoala.top;             # 自己的域名
     location / {
         proxy_pass https://www.aliexpress.com; # 伪装的网站，这里是阿里速卖通
     }
 }
 server {
     listen 127.0.0.1:80;
-    server_name xxx.xxx.xxx.xxx;                 # 自己服务器的 IP
-    return 301 https://xxx.xxx.xxx$request_uri;  # 自己的域名
+    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
 }
 server {
     listen 0.0.0.0:80;
@@ -263,10 +276,10 @@ server {
 链接配置文件
 
 ```
-ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 ```
 
-### Trojan 配置
+#### Trojan 配置文件
 
 ```
 {
@@ -319,6 +332,37 @@ ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
         "ca": ""
     }
 }
+```
+
+### FreshRSS 站点配置
+
+放置在`/etc/nginx/sites-available/`下，文件与域名同名
+
+```
+server {
+        listen 80;
+        listen [::]:80;
+        server_name xxx.techkoala.top;
+        return 301 https://xxx.techkoala.top$request_uri;
+    }
+
+server {
+    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+    server_name rss.techkoala.top;
+    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+
+    location / {
+       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+    }
+}
+
+```
+
+链接配置文件
+
+```
+ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 ```
 
 ## 防火墙设置

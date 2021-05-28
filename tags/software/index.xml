@@ -4,7 +4,170 @@
         <link>https://www.techkoala.top/tags/software/</link>
         <description>Software - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 May 2021 23:25:46 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker 部署 FreshRSS 自建专属 RSS 服务器 </title>
+    <link>https://www.techkoala.top/frsshrss/</link>
+    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/frsshrss/</guid>
+    <description><![CDATA[<blockquote>
+<p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
+</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">境外服务器是保证服务可用性的条件之一</div>
+        </div>
+    </div>
+<h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
+<p>创建一个新目录 ~/freshrss 并进入该位置，新建 docker-compose.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+mkdir ~/freshrss &amp;&amp; cd ~/freshrss
+
+# 新建&amp;编辑配置文件
+vim docker-compose.yml
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="docker-composeyml">docker-compose.yml</h3>
+<p>配置文件内容见下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+
+version: &#34;3&#34;
+
+services:
+  freshrss-db:
+    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+    container_name: freshrss-db
+    hostname: freshrss-db
+    restart: always
+    volumes:
+      - freshrss-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+
+  freshrss-app:
+    image: freshrss/freshrss:latest
+    container_name: freshrss-app
+    hostname: freshrss-app
+    restart: always
+    ports:
+      - &#34;39954:80&#34;                   # 映射端口
+    depends_on:
+      - freshrss-db
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
+    environment:
+      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
+      TZ: Asia/Shanghai            # 时区
+
+volumes:
+  freshrss-db:
+</code></pre></td></tr></table>
+</div>
+</div><p>确认配置后，运行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="freshrss-设置">FreshRSS 设置</h2>
+<h3 id="初始化">初始化</h3>
+<p>数据库连接需要注意的点：</p>
+<ul>
+<li>主机名填写 <code>freshrss-db</code>（数据库 docker 容器名）</li>
+<li>用户名、密码、数据库分别对应之前 Docker Compose 配置文件中的 POSTGRES_USER、POSTGRES_PASSWORD、POSTGRES_DB</li>
+<li>表前缀任意填</li>
+</ul>
+<h3 id="设置">设置</h3>
+<p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
+<h3 id="扩展">扩展</h3>
+<p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
+<p>点击扩展页面中的相应扩展，会跳转到相应的下载地址，将扩展下载后上传到 FreshRSS 安装目录下的 extensions 文件夹（之前部署 FreshRSS 的 Docker Compose 配置文件中已经将 <code>~/freshrss/extensions/</code> 对应了 FreshRSS 在容器内的扩展位置，所以只需要将扩展拖至 <code>~/freshrss/extensions/</code> 即可）</p>
+<p>将解压后的 xExtension-AutoRefresh 文件夹放到 ~/freshrss/extensions 目中，到 FreshRSS <code>设置-&gt; 扩展</code> 启用，刷新时间需要修改 <code>xExtension-AutoRefresh/static/script.js</code> ，其中时间相关单位是 ms</p>
+<h2 id="nginx-反向代理">Nginx 反向代理</h2>
+<p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
+<h2 id="配合第三方软件">配合第三方软件</h2>
+<p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
+<p>在此之前需要到开启<code>认证 =&gt; 允许 API 访问</code>，并在<code>用户账户 =&gt; API 管理</code>中设置相应的 API 密码</p>
+<p>需要注意，<code>Feedme</code>服务应选择<code>FreshRSS</code></p>
+<p>参数配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
+
+用户名：注册用户名
+密码：API 密码
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+</ul>]]></description>
+</item><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
     <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
@@ -58,12 +221,18 @@
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
 <h2 id="说明">说明</h2>
-<p>目前服务器上运行了一个 <code>Trojan</code> 实例以及通过 <code>frp</code> 与本地的服务器通信以实现 <code>Bitwarden</code> 的内网穿透访问。</p>
-<p>两个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
+<p>目前服务器上运行以下服务：</p>
+<ul>
+<li><code>Trojan</code></li>
+<li><code>frp</code> + <code>Bitwarden</code> 实现内网穿透访问</li>
+<li><code>FreshRSS</code></li>
+</ul>
+<p>三个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
 <h2 id="流程概览">流程概览</h2>
 <ol>
 <li>采用 <code>Docker</code> 在本地服务器上搭建 <code>Bitwarden</code>，配置并运行 <code>frpc</code> 指向服务器上的 <code>frps</code></li>
-<li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如:<code>Trojan</code>)，配置运行 <code>frps</code></li>
+<li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如：<code>Trojan</code>)，配置运行 <code>frps</code></li>
+<li>采用 <code>Docker</code> 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书</li>
 <li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 已默认包含，但 <code>Ubuntu</code> 等发行版还在使用更老的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
 </ol>
 <h2 id="本地配置文件">本地配置文件</h2>
@@ -250,24 +419,7 @@ http {
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="服务器配置文件">服务器配置文件</h2>
-<h3 id="frpsini">frps.ini</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
+<h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -352,6 +504,10 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">80
 </span><span class="lnt">81
 </span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
@@ -366,14 +522,18 @@ events {
 
 stream {
     map $ssl_preread_server_name $name {
-        xxx.xxx.xxx frps-bitwarden;   # Bitwarden 域名
-        xxx.xxx.xxx trojan;           # Trojan 域名
+        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+        xxx.techkoala.top trojan;           # Trojan 域名
+        xxx.techkoala.top rss;              # FreshRSS 域名
     }
     upstream frps-bitwarden {
         server 127.0.0.1:8080;        # Bitwarden的 frps 端口
     }
     upstream trojan {
         server 127.0.0.1:4443;        # Trojan 本地监听端口
+    }
+    upstream rss {
+        server 127.0.0.1:39955;       # FreshRSS 本地监听端口
     }
     server {
         listen 443 reuseport;
@@ -438,8 +598,26 @@ http {
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="bitwarden-nginx-配置">Bitwarden Nginx 配置</h3>
-<p>放置在<code>/etc/nginx/sites-enabled/</code>下，与域名同名</p>
+</div><h3 id="bitwarden-相关配置">Bitwarden 相关配置</h3>
+<h4 id="frpsini">frps.ini</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+bind_port = xxxx                # 与本地 frpc 通信的端口
+vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+authentication_method = token
+token = xxxxxx                  # frp 验证密钥
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="bitwarden-nginx-站点配置">Bitwarden Nginx 站点配置</h4>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -458,8 +636,8 @@ http {
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.xxx.xxx;                    # Bitwarden 域名
-        return 301 https://xxx.xxx.xxx$request_uri; # Bitwarden 域名
+        server_name xxx.techkoala.top;                    # Bitwarden 域名
+        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
 }
 
 </code></pre></td></tr></table>
@@ -470,11 +648,12 @@ server {
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-nginx-配置">Trojan Nginx 配置</h3>
-<p>放置在<code>/etc/nginx/sites-enabled/</code>下，与域名同名</p>
+</div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
+<h4 id="trojan-nginx-配置">Trojan Nginx 配置</h4>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -500,15 +679,15 @@ server {
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
-    server_name xxx.xxx.xxx;                   # 自己的域名
+    server_name xxx.techkoala.top;             # 自己的域名
     location / {
         proxy_pass https://www.aliexpress.com; # 伪装的网站，这里是阿里速卖通
     }
 }
 server {
     listen 127.0.0.1:80;
-    server_name xxx.xxx.xxx.xxx;                 # 自己服务器的 IP
-    return 301 https://xxx.xxx.xxx$request_uri;  # 自己的域名
+    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
 }
 server {
     listen 0.0.0.0:80;
@@ -525,10 +704,10 @@ server {
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-配置">Trojan 配置</h3>
+</div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -633,6 +812,59 @@ server {
         &#34;ca&#34;: &#34;&#34;
     }
 }
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="freshrss-站点配置">FreshRSS 站点配置</h3>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+        listen 80;
+        listen [::]:80;
+        server_name xxx.techkoala.top;
+        return 301 https://xxx.techkoala.top$request_uri;
+    }
+
+server {
+    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+    server_name rss.techkoala.top;
+    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+
+    location / {
+       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+    }
+}
+
+</code></pre></td></tr></table>
+</div>
+</div><p>链接配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="防火墙设置">防火墙设置</h2>
@@ -1855,66 +2087,5 @@ Executed in  215.68 millis	fish       	external
 <p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreferrer">Scp</a></p>
 </li>
 </ul>]]></description>
-</item><item>
-    <title>Huginn（Docker）数据备份与恢复</title>
-    <link>https://www.techkoala.top/huginn_backup/</link>
-    <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/huginn_backup/</guid>
-    <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-sub-html="<h2>Huginn</h2>">
-        
-    </a><figcaption class="image-caption">Huginn</figcaption>
-    </figure>
-<blockquote>
-<p>简单介绍使用 Docker 运行的 Huginn 数据的备份与恢复</p>
-</blockquote>
-<h3 id="备份数据">备份数据</h3>
-<p>使用命令在容器中生成备份：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
-</code></pre></td></tr></table>
-</div>
-</div><p>或直接拷贝数据到容器外：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="恢复数据">恢复数据</h3>
-<p>首先复制文件到 <code>docker</code> 中：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn:/app/huginn_backupfile.sql
-</code></pre></td></tr></table>
-</div>
-</div><p>然后进入 <code>docker</code>：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
-</code></pre></td></tr></table>
-</div>
-</div><p>接下来恢复数据库:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
-</code></pre></td></tr></table>
-</div>
-</div>]]></description>
 </item></channel>
 </rss>

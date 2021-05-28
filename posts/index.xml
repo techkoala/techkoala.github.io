@@ -4,7 +4,170 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 May 2021 23:25:46 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker 部署 FreshRSS 自建专属 RSS 服务器 </title>
+    <link>https://www.techkoala.top/frsshrss/</link>
+    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/frsshrss/</guid>
+    <description><![CDATA[<blockquote>
+<p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
+</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">境外服务器是保证服务可用性的条件之一</div>
+        </div>
+    </div>
+<h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
+<p>创建一个新目录 ~/freshrss 并进入该位置，新建 docker-compose.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+mkdir ~/freshrss &amp;&amp; cd ~/freshrss
+
+# 新建&amp;编辑配置文件
+vim docker-compose.yml
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="docker-composeyml">docker-compose.yml</h3>
+<p>配置文件内容见下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+
+version: &#34;3&#34;
+
+services:
+  freshrss-db:
+    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+    container_name: freshrss-db
+    hostname: freshrss-db
+    restart: always
+    volumes:
+      - freshrss-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+
+  freshrss-app:
+    image: freshrss/freshrss:latest
+    container_name: freshrss-app
+    hostname: freshrss-app
+    restart: always
+    ports:
+      - &#34;39954:80&#34;                   # 映射端口
+    depends_on:
+      - freshrss-db
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
+    environment:
+      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
+      TZ: Asia/Shanghai            # 时区
+
+volumes:
+  freshrss-db:
+</code></pre></td></tr></table>
+</div>
+</div><p>确认配置后，运行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="freshrss-设置">FreshRSS 设置</h2>
+<h3 id="初始化">初始化</h3>
+<p>数据库连接需要注意的点：</p>
+<ul>
+<li>主机名填写 <code>freshrss-db</code>（数据库 docker 容器名）</li>
+<li>用户名、密码、数据库分别对应之前 Docker Compose 配置文件中的 POSTGRES_USER、POSTGRES_PASSWORD、POSTGRES_DB</li>
+<li>表前缀任意填</li>
+</ul>
+<h3 id="设置">设置</h3>
+<p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
+<h3 id="扩展">扩展</h3>
+<p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
+<p>点击扩展页面中的相应扩展，会跳转到相应的下载地址，将扩展下载后上传到 FreshRSS 安装目录下的 extensions 文件夹（之前部署 FreshRSS 的 Docker Compose 配置文件中已经将 <code>~/freshrss/extensions/</code> 对应了 FreshRSS 在容器内的扩展位置，所以只需要将扩展拖至 <code>~/freshrss/extensions/</code> 即可）</p>
+<p>将解压后的 xExtension-AutoRefresh 文件夹放到 ~/freshrss/extensions 目中，到 FreshRSS <code>设置-&gt; 扩展</code> 启用，刷新时间需要修改 <code>xExtension-AutoRefresh/static/script.js</code> ，其中时间相关单位是 ms</p>
+<h2 id="nginx-反向代理">Nginx 反向代理</h2>
+<p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
+<h2 id="配合第三方软件">配合第三方软件</h2>
+<p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
+<p>在此之前需要到开启<code>认证 =&gt; 允许 API 访问</code>，并在<code>用户账户 =&gt; API 管理</code>中设置相应的 API 密码</p>
+<p>需要注意，<code>Feedme</code>服务应选择<code>FreshRSS</code></p>
+<p>参数配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
+
+用户名：注册用户名
+密码：API 密码
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+</ul>]]></description>
+</item><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
     <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
@@ -190,12 +353,18 @@
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
 <h2 id="说明">说明</h2>
-<p>目前服务器上运行了一个 <code>Trojan</code> 实例以及通过 <code>frp</code> 与本地的服务器通信以实现 <code>Bitwarden</code> 的内网穿透访问。</p>
-<p>两个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
+<p>目前服务器上运行以下服务：</p>
+<ul>
+<li><code>Trojan</code></li>
+<li><code>frp</code> + <code>Bitwarden</code> 实现内网穿透访问</li>
+<li><code>FreshRSS</code></li>
+</ul>
+<p>三个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
 <h2 id="流程概览">流程概览</h2>
 <ol>
 <li>采用 <code>Docker</code> 在本地服务器上搭建 <code>Bitwarden</code>，配置并运行 <code>frpc</code> 指向服务器上的 <code>frps</code></li>
-<li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如:<code>Trojan</code>)，配置运行 <code>frps</code></li>
+<li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如：<code>Trojan</code>)，配置运行 <code>frps</code></li>
+<li>采用 <code>Docker</code> 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书</li>
 <li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 已默认包含，但 <code>Ubuntu</code> 等发行版还在使用更老的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
 </ol>
 <h2 id="本地配置文件">本地配置文件</h2>
@@ -382,24 +551,7 @@ http {
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="服务器配置文件">服务器配置文件</h2>
-<h3 id="frpsini">frps.ini</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
+<h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -484,6 +636,10 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">80
 </span><span class="lnt">81
 </span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
@@ -498,14 +654,18 @@ events {
 
 stream {
     map $ssl_preread_server_name $name {
-        xxx.xxx.xxx frps-bitwarden;   # Bitwarden 域名
-        xxx.xxx.xxx trojan;           # Trojan 域名
+        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+        xxx.techkoala.top trojan;           # Trojan 域名
+        xxx.techkoala.top rss;              # FreshRSS 域名
     }
     upstream frps-bitwarden {
         server 127.0.0.1:8080;        # Bitwarden的 frps 端口
     }
     upstream trojan {
         server 127.0.0.1:4443;        # Trojan 本地监听端口
+    }
+    upstream rss {
+        server 127.0.0.1:39955;       # FreshRSS 本地监听端口
     }
     server {
         listen 443 reuseport;
@@ -570,8 +730,26 @@ http {
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="bitwarden-nginx-配置">Bitwarden Nginx 配置</h3>
-<p>放置在<code>/etc/nginx/sites-enabled/</code>下，与域名同名</p>
+</div><h3 id="bitwarden-相关配置">Bitwarden 相关配置</h3>
+<h4 id="frpsini">frps.ini</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+bind_port = xxxx                # 与本地 frpc 通信的端口
+vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+authentication_method = token
+token = xxxxxx                  # frp 验证密钥
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="bitwarden-nginx-站点配置">Bitwarden Nginx 站点配置</h4>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -590,8 +768,8 @@ http {
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.xxx.xxx;                    # Bitwarden 域名
-        return 301 https://xxx.xxx.xxx$request_uri; # Bitwarden 域名
+        server_name xxx.techkoala.top;                    # Bitwarden 域名
+        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
 }
 
 </code></pre></td></tr></table>
@@ -602,11 +780,12 @@ server {
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-nginx-配置">Trojan Nginx 配置</h3>
-<p>放置在<code>/etc/nginx/sites-enabled/</code>下，与域名同名</p>
+</div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
+<h4 id="trojan-nginx-配置">Trojan Nginx 配置</h4>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -632,15 +811,15 @@ server {
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
-    server_name xxx.xxx.xxx;                   # 自己的域名
+    server_name xxx.techkoala.top;             # 自己的域名
     location / {
         proxy_pass https://www.aliexpress.com; # 伪装的网站，这里是阿里速卖通
     }
 }
 server {
     listen 127.0.0.1:80;
-    server_name xxx.xxx.xxx.xxx;                 # 自己服务器的 IP
-    return 301 https://xxx.xxx.xxx$request_uri;  # 自己的域名
+    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
 }
 server {
     listen 0.0.0.0:80;
@@ -657,10 +836,10 @@ server {
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.xxx.xxx /etc/nginx/sites-enabled/
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-配置">Trojan 配置</h3>
+</div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -765,6 +944,59 @@ server {
         &#34;ca&#34;: &#34;&#34;
     }
 }
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="freshrss-站点配置">FreshRSS 站点配置</h3>
+<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+        listen 80;
+        listen [::]:80;
+        server_name xxx.techkoala.top;
+        return 301 https://xxx.techkoala.top$request_uri;
+    }
+
+server {
+    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+    server_name rss.techkoala.top;
+    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+
+    location / {
+       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+    }
+}
+
+</code></pre></td></tr></table>
+</div>
+</div><p>链接配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="防火墙设置">防火墙设置</h2>
@@ -1352,121 +1584,6 @@ opkg install dnscrypt-proxy2
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
 <li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreferrer">DNS 请求报文详解</a></li>
-</ul>]]></description>
-</item><item>
-    <title>ARP &amp; RARP 详解</title>
-    <link>https://www.techkoala.top/arp_rarp/</link>
-    <pubDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/arp_rarp/</guid>
-    <description><![CDATA[<blockquote>
-<p>ARP 以及 RARP 如何工作？</p>
-</blockquote>
-<h2 id="为什么要有-mac-地址">为什么要有 MAC 地址？</h2>
-<p>在说明 ARP 以及 RARP 之前，有必要首先说一下 MAC 地址的必要性。</p>
-<p>引用《Computer Networking A Top-Down Approach》中的描述：</p>
-<div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-quote-right fa-fw"></i>KEEPING THE LAYERS INDEPENDENT<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">There are several reasons why hosts and router interfaces have MAC addresses in addition to network-layer addresses. First, LANs are designed for arbitrary network-layer protocols, not just for IP and the Internet. If adapters were assigned IP addresses rather than “neutral” MAC addresses, then adapters would not easily be able to support other network-layer protocols (for example, IPX or DECnet). Second, if adapters were to use network-layer addresses instead of MAC addresses, the network-layer address would have to be stored in the adapter RAM and reconfigured every time the adapter was moved (or powered up). Another option is to not use any addresses in the adapters and have each adapter pass the data (typically, an IP datagram) of each frame it receives up the protocol stack. The network layer could then check for a matching network-layer address. One problem with this option is that the host would be interrupted by every frame sent on the LAN, including by frames that were destined for other hosts on the same broadcast LAN. In summary, in order for the layers to be largely independent building blocks in a network architecture, different layers need to have their own addressing scheme. We have now seen three types of addresses: host names for the application layer, IP addresses for the network layer, and
-MAC addresses for the link layer.</div>
-        </div>
-    </div>
-<p>简单来说：</p>
-<ul>
-<li>局域网不仅仅为 IP 和因特网设计，MAC 地址的“中立性”为各种网络层协议（比如 IPX 或者 DECnet)提供了灵活的施展空间</li>
-<li>网络层地址往往是动态的，每次更换网络或者重启都需要对适配器进行重新配置</li>
-<li>如果取消 MAC 地址，让适配器把收到的每帧都往上层传递，就会带来一个问题：主机会去处理局域网中的每个帧，即使这个帧不属于自己，这就带来了不必要的消耗。</li>
-</ul>
-<h2 id="arp">ARP</h2>
-<p>一句话概括 ARP（Address Resolution Protocol，地址解析协议）的目的就是：负责将<strong>网络层地址</strong>（最常见的就是 IP 地址）解析为/映射到<strong>链路层地址</strong>（MAC 地址）。</p>
-<h3 id="报文结构">报文结构</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
-        
-    </a><figcaption class="image-caption">ARP 包结构</figcaption>
-    </figure>
-<p>一般我们讨论以太网中的 ARP 报文时候，ARP 数据会被封装在以太网报文中，其中：</p>
-<ul>
-<li>
-<p>以太网报文：</p>
-<ul>
-<li><strong>目标以太网地址</strong>：目标 MAC 地址，FF:FF:FF:FF:FF:FF （二进制全 1）为广播地址</li>
-<li><strong>源以太网地址</strong>：发送方 MAC 地址</li>
-<li><strong>帧类型</strong>：以太类型，<strong>ARP 为 0x0806</strong></li>
-</ul>
-</li>
-<li>
-<p>ARP 报文数据：</p>
-<ul>
-<li><strong>硬件类型</strong>：如以太网（0x0001）、分组无线网</li>
-<li><strong>协议类型</strong>：如网际协议(IP)（0x0800）、IPv6（0x86DD）</li>
-<li><strong>硬件地址长度</strong>：每种硬件地址的字节长度，一般为 6（以太网）</li>
-<li><strong>协议地址长度</strong>：每种协议地址的字节长度，一般为 4（IPv4）</li>
-<li><strong>操作码 OP</strong>：1 为 ARP 请求，2 为 ARP 应答，3 为 RARP 请求，4 为 RARP 应答</li>
-<li><strong>源硬件地址</strong>：n 个字节，n 由硬件地址长度得到，一般为发送方 MAC 地址</li>
-<li><strong>源协议地址</strong>：m 个字节，m 由协议地址长度得到，一般为发送方 IP 地址</li>
-<li><strong>目标硬件地址</strong>：n 个字节，n 由硬件地址长度得到，一般为目标 MAC 地址</li>
-<li><strong>目标协议地址</strong>：m 个字节，m 由协议地址长度得到，一般为目标 IP 地址</li>
-</ul>
-</li>
-</ul>
-<h3 id="工作原理">工作原理</h3>
-<ol>
-<li>每台主机都会在自己的 ARP 缓冲区 (ARP Cache)中建立一个 ARP 列表，表示 IP 地址和 MAC 地址的对应关系。</li>
-<li>当源主机需要将一个数据包要发送到目的主机时，会首先检查自己 ARP 列表中是否存在该 IP 地址对应的 MAC 地址，如果有，就直接将数据包发送到这个 MAC 地址；如果没有，就向本地网段发起一个 ARP 请求的<strong>广播包</strong>（即将目的硬件地址设置为全 1），查询此目的主机对应的 MAC 地址。此 ARP 请求数据包里包括源主机的 IP 地址、硬件地址、以及目的主机的 IP 地址。</li>
-<li>网络中所有的主机收到这个 ARP 请求后，会检查数据包中的目的 IP 是否和自己的 IP 地址一致。如果不相同就忽略此数据包；如果相同，该主机首先将发送端的 MAC 地址和 IP 地址添加到自己的 ARP 列表中，如果 ARP 表中已经存在该 IP 的信息，则将其覆盖，然后给源主机发送一个 ARP <strong>单播</strong>响应数据包，告诉对方自己是它需要查找的 MAC 地址；</li>
-<li>源主机收到这个 ARP 响应数据包后，将得到的目的主机的 IP 地址和 MAC 地址添加到自己的 ARP 列表中，并利用此信息开始数据的传输。如果源主机一直没有收到 ARP 响应数据包，表示 ARP 查询失败。</li>
-</ol>
-<h3 id="代理-arp">代理 ARP</h3>
-<p>代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：</p>
-<p><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-sub-html="<h2>代理 ARP</h2>">
-        
-    </a><figcaption class="image-caption">代理 ARP</figcaption>
-    </figure>
-但是需要网关需要满足：</p>
-<ul>
-<li>开启代理 ARP 功能</li>
-<li>有目标的路由信息</li>
-</ul>
-<p>假如不存在网关但使用代理 ARP，则情况如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
-        
-    </a><figcaption class="image-caption">代理 ARP</figcaption>
-    </figure>
-<p>存在网关的情况下，使用正常 ARP，则情况如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
-        
-    </a><figcaption class="image-caption">代理 ARP</figcaption>
-    </figure>
-<p>总结而言：</p>
-<ul>
-<li>没有网关（采用代理 ARP）时：跨网段访问谁，就问谁的 MAC</li>
-<li>有网关（采用正常 ARP）时：跨网段访问谁，都问网关的 MAC</li>
-<li>无论使用哪种 ARP，跨网段通信时，发送方请求得到的目标 MAC 地址都是网关 MAC</li>
-</ul>
-<h2 id="rarp">RARP</h2>
-<p>RARP（Reverse Address Resolution Protocol，逆地址解析协议），顾名思义，用于将 MAC 地址映射为网络层地址（例如 IP 地址），用于给 MAC 地址分配 IP 地址（通常在需要远程启动(类似无盘工作站)的系统中使用）。其因为较限于 IP 地址的运用以及其他的一些缺点，因此渐为更新的 BOOTP 或 DHCP 所取代。</p>
-<p>RARP 使用与 ARP 相同的报头结构，只是其中的操作码有所区别，见上文。</p>
-<h3 id="工作原理-1">工作原理</h3>
-<ol>
-<li>发送主机发送一个本地的 RARP 广播，在此广播包中，声明自己的 MAC 地址并且请求任何收到此请求的 RARP 服务器分配一个 IP 地址；</li>
-<li>本地网段上的 RARP 服务器收到此请求后，检查其 RARP 列表，查找该 MAC 地址对应的 IP 地址；</li>
-<li>如果存在，RARP 服务器就给源主机发送一个响应数据包并将此 IP 地址提供给对方主机使用；</li>
-<li>如果不存在，RARP 服务器对此不做任何的响应；</li>
-<li>源主机收到从 RARP 服务器的响应信息，就利用得到的 IP 地址进行通讯；如果一直没有收到 RARP 服务器的响应信息，表示初始化失败。</li>
-</ol>
-<h2 id="安全问题">安全问题</h2>
-<h3 id="arp-欺骗">ARP 欺骗</h3>
-<p>源主机通过 ARP 协议在局域网内发送广播请求包，按照 ARP 协议的设想应该是对应主机回复，但如果攻击者进行回复，源主机依然会选择相信。这是由 ARP 协议的不验证引起的，它不验证对方是否是所声称 IP 地址的主机。同时，由于 ARP 协议是一种无状态协议，既不验证应答者的身份，也不判断是否发送过 ARP 请求，当收到一条 ARP 应答报文时，它就会更新 ARP 应答缓存表。因此，攻击者甚至可以<strong>主动</strong>向源主机发送 ARP 响应包，迫使源主机更新其 ARP 缓存表。</p>
-<p>对此，一个简单的方法是使用静态绑定地址，但是此方法维护起来较为麻烦。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">地址解析协议</a></li>
-<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">逆地址解析协议</a></li>
-<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreferrer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

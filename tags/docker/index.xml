@@ -1,0 +1,171 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Docker - 标签 - TechKoala - Input/Output </title>
+        <link>https://www.techkoala.top/tags/docker/</link>
+        <description>Docker - 标签 - TechKoala - Input/Output </description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 May 2021 23:25:46 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker 部署 FreshRSS 自建专属 RSS 服务器 </title>
+    <link>https://www.techkoala.top/frsshrss/</link>
+    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://www.techkoala.top/frsshrss/</guid>
+    <description><![CDATA[<blockquote>
+<p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
+</blockquote>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">境外服务器是保证服务可用性的条件之一</div>
+        </div>
+    </div>
+<h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
+<p>创建一个新目录 ~/freshrss 并进入该位置，新建 docker-compose.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+mkdir ~/freshrss &amp;&amp; cd ~/freshrss
+
+# 新建&amp;编辑配置文件
+vim docker-compose.yml
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="docker-composeyml">docker-compose.yml</h3>
+<p>配置文件内容见下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+
+version: &#34;3&#34;
+
+services:
+  freshrss-db:
+    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+    container_name: freshrss-db
+    hostname: freshrss-db
+    restart: always
+    volumes:
+      - freshrss-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+
+  freshrss-app:
+    image: freshrss/freshrss:latest
+    container_name: freshrss-app
+    hostname: freshrss-app
+    restart: always
+    ports:
+      - &#34;39954:80&#34;                   # 映射端口
+    depends_on:
+      - freshrss-db
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
+    environment:
+      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
+      TZ: Asia/Shanghai            # 时区
+
+volumes:
+  freshrss-db:
+</code></pre></td></tr></table>
+</div>
+</div><p>确认配置后，运行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="freshrss-设置">FreshRSS 设置</h2>
+<h3 id="初始化">初始化</h3>
+<p>数据库连接需要注意的点：</p>
+<ul>
+<li>主机名填写 <code>freshrss-db</code>（数据库 docker 容器名）</li>
+<li>用户名、密码、数据库分别对应之前 Docker Compose 配置文件中的 POSTGRES_USER、POSTGRES_PASSWORD、POSTGRES_DB</li>
+<li>表前缀任意填</li>
+</ul>
+<h3 id="设置">设置</h3>
+<p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
+<h3 id="扩展">扩展</h3>
+<p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
+<p>点击扩展页面中的相应扩展，会跳转到相应的下载地址，将扩展下载后上传到 FreshRSS 安装目录下的 extensions 文件夹（之前部署 FreshRSS 的 Docker Compose 配置文件中已经将 <code>~/freshrss/extensions/</code> 对应了 FreshRSS 在容器内的扩展位置，所以只需要将扩展拖至 <code>~/freshrss/extensions/</code> 即可）</p>
+<p>将解压后的 xExtension-AutoRefresh 文件夹放到 ~/freshrss/extensions 目中，到 FreshRSS <code>设置-&gt; 扩展</code> 启用，刷新时间需要修改 <code>xExtension-AutoRefresh/static/script.js</code> ，其中时间相关单位是 ms</p>
+<h2 id="nginx-反向代理">Nginx 反向代理</h2>
+<p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
+<h2 id="配合第三方软件">配合第三方软件</h2>
+<p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
+<p>在此之前需要到开启<code>认证 =&gt; 允许 API 访问</code>，并在<code>用户账户 =&gt; API 管理</code>中设置相应的 API 密码</p>
+<p>需要注意，<code>Feedme</code>服务应选择<code>FreshRSS</code></p>
+<p>参数配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
+
+用户名：注册用户名
+密码：API 密码
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+</ul>]]></description>
+</item></channel>
+</rss>
