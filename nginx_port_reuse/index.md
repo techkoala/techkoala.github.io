@@ -22,6 +22,13 @@
 3. 采用 `Docker` 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书
 4. 安装 `Nginx`，这里需要利用 `Nginx` 的 `stream_ssl_preread` 模块，使用`nginx -V`查看是否包含该模块。（该模块在 `Nginx 1.19.2` 已默认包含，但 `Ubuntu` 等发行版还在使用更老的 `stable` 版本，需要手动添加 `mainline` 版本源，并更新 `Nginx` 到最新版本）
 
+## 获取 SSL 证书
+
+```shell
+$ sudo apt install certbot python3-certbot-nginx
+$ sudo certbot --nginx -d example.com -d www.example.com
+```
+
 ## 本地配置文件
 
 ### frpc.ini
