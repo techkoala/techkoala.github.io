@@ -1,4 +1,4 @@
-# Docker 部署 FreshRSS 自建专属 RSS 服务器 
+# Docker 搭建 FreshRSS 专属 RSS 服务 
 
 
 > inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择
