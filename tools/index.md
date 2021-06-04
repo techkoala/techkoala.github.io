@@ -23,6 +23,8 @@
 
 - [测速网](https://www.speedtest.cn/)
 
+- [NTU Speed5](http://speed5.ntu.edu.tw/speed5/)
+
 **IP&DNS 测试：**
 
 - [WHOER](https://whoer.net/zh)
@@ -31,11 +33,19 @@
 
 - [DnsLeakTest](https://dnsleaktest.com/)
 
+- [BrowserLeaks - Web Browser Fingerprinting](https://browserleaks.com/)
+
+- [Proxy Anonymity Check](http://proxydb.net/anon)
+
+- [Ping, mtr, dig and TCP port check from multiple locations](https://ping.pe/)
+
 **IPv6:**
 
 - [IPv6 连接测试](https://test-ipv6.com/)
 
 - [IPv6 Test](https://ipv6-test.com/)
+
+- [IPv6 测试聚合站](https://ipv6.stream/)
 
 - [国家 IPv6 发展检测平台](https://www.china-ipv6.cn/#/index)
 
@@ -132,7 +142,20 @@
 - [Yopmail](http://www.yopmail.com/zh/)
 
 - [24mail](http://24mail.chacuo.net/)
+
 - [Snapmail](https://www.snapmail.cc)
+
+**阅后即焚:**
+
+- [Ubuntu Pastebin](https://paste.ubuntu.com/)
+
+- [Vuash - 安全发送信息](http://www.vua.sh/)
+
+- [Privnote - Send notes that will self-destruct after being read](https://privnote.com)
+
+- [Verybin - Anonymous, Encrypted and Opensource pastebin.](https://www.verybin.com/)
+
+- [PrivateBin](https://paste.itefix.net/)
 
 ## 老年人网上冲浪必备
 

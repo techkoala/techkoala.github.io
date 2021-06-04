@@ -18,16 +18,21 @@
   ##### 浏览器插件
 
   - [ClearURLs](https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei)
-  - [Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)
-  - [Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)：RSS 阅读
 
-  - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)：新建标签页美化
+  - [Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)
+
+  - ~~[Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)~~：已自建 FreshRSS
+
+  - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)
 
   - [OneNote Web Clipper](https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma)
+
   - [Proxy SwitchyOmega](https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/dijmmgblneagkcdganednabkbgjmceoe)
 
   - [Save to Pocket](https://microsoftedge.microsoft.com/addons/detail/save-to-pocket/jicacccodjjgmghnmekophahpmddeemd?hl=zh-CN)
+
   - [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+
   - [uBlock Origin](https://microsoftedge.microsoft.com/addons/detail/ublock-origin/odfafepnkmbhccpbejgmiehpchacaeak)
 
   - [京价保 - 京东价保助手](https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge)
@@ -54,11 +59,21 @@
 
   - [Unpaywall](https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha)：文献解锁
 
-  - [Reggy](https://chrome.google.com/webstore/detail/reggy/pnneajlgffpejnabhionnhdfhibijihe)：匿名用户资料生成
-
-  - [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
+  - [Vimium C - 全键盘操作浏览器](https://microsoftedge.microsoft.com/addons/detail/vimium-c-%E5%85%A8%E9%94%AE%E7%9B%98%E6%93%8D%E4%BD%9C%E6%B5%8F%E8%A7%88%E5%99%A8/aibcglbfblnogfjhbcmmpobjhnomhcdo)
 
   - [二管家](https://chrome.google.com/webstore/detail/nooboss/aajodjghehmlpahhboidcpfjcncmcklf)：扩展管理
+
+  - [Dark Reader](https://microsoftedge.microsoft.com/addons/detail/ifoakfbpdcdoeenechcleahebpibofpc)
+
+  - [HTTPS Everywhere](https://microsoftedge.microsoft.com/addons/detail/https-everywhere/fchjpkplmbeeeaaogdbhjbgbknjobohb)
+
+  - [图片助手(ImageAssistant) 批量图片下载器](https://microsoftedge.microsoft.com/addons/detail/%E5%9B%BE%E7%89%87%E5%8A%A9%E6%89%8Bimageassistant-%E6%89%B9%E9%87%8F%E5%9B%BE%E7%89%87/odphnbhiddhdpoccbialllejaajemdio)
+
+  - [Dualsub](https://chrome.google.com/webstore/detail/dualsub/gnlibmlfpencglodjpgnalbdebfhpmfp)
+
+  - [简悦 - SimpRead](https://chrome.google.com/webstore/detail/simpread-reader-view/ijllcpnolfcooahcekpamkbidhejabll)
+
+  - [Bitwarden - 免费密码管理器](https://microsoftedge.microsoft.com/addons/detail/bitwarden-%E5%85%8D%E8%B4%B9%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8/jbkfoedolllekgbhcbcoahefnbanhhlh)
 
 ## 压缩&解压缩
 
@@ -66,7 +81,7 @@
 
 ##### Windows：
 
-- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费，停留于 6.26
+- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费，停留于 6.29
 
 - [Peazip](https://www.peazip.org/)
 
@@ -75,6 +90,8 @@
 - **[FDM](https://www.freedownloadmanager.org/zh/)**
 
 - **[Motrix](https://motrix.app/)**
+
+- **[Xtreme Download Manager](https://github.com/subhra74/xdm)**
 
 ##### Windows：
 
@@ -186,7 +203,7 @@
 
 - **Onedrive**：网页&各平台客户端
 
-- **[Rclone](https://rclone.org/downloads/)**
+- **[rclone](https://rclone.org/downloads/)**
 
 - **[Goodsync](https://www.goodsync.com/)**
 
@@ -313,6 +330,10 @@
 ## 阅读
 
 - **~~[irreader](http://irreader.fatecore.com/)~~**
+  
+- [FreshRSS](https://freshrss.org/)
+
+- [Fluent Reader](https://github.com/yang991178/fluent-reader)
 
 ##### Linux:
 
@@ -320,7 +341,9 @@
 
 ##### Android:
 
-- [轻芒阅读]()
+- [Fluent Reader Lite](https://github.com/yang991178/fluent-reader-lite)
+
+- [Feedme]](https://github.com/seazon/FeedMe)
 
 ## Cli
 
