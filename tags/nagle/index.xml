@@ -8,7 +8,7 @@
     <title>Nagle 算法</title>
     <link>https://www.techkoala.top/nagle/</link>
     <pubDate>Sun, 28 Jun 2020 10:44:16 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/nagle/</guid>
     <description><![CDATA[<blockquote>
 <p>简要介绍 Nagle 算法</p>
@@ -73,10 +73,10 @@ end if
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreferrer">Nagel 算法维基百科</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreffer">Nagel 算法维基百科</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreferrer">RFC896</a></p>
+<p>[2] <a href="https://www.ietf.org/rfc/rfc896.txt" target="_blank" rel="noopener noreffer">RFC896</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

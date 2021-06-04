@@ -8,7 +8,7 @@
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
     <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
@@ -77,17 +77,17 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>OpenWRT overlay 空间扩容</title>
     <link>https://www.techkoala.top/openwrt_resize/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_resize/</guid>
     <description><![CDATA[<blockquote>
 <p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，记录一下</p>
@@ -217,20 +217,20 @@ $ opkg install cfdisk
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreferrer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
+<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreffer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreferrer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
+<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreffer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreferrer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
+<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreffer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>单独编译 OpenWRT ipk 插件</title>
     <link>https://www.techkoala.top/openwrt_compile_single_ipk/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_compile_single_ipk/</guid>
     <description><![CDATA[<blockquote>
 <p>为 OpenWRT 编译单独的 ipk 插件</p>

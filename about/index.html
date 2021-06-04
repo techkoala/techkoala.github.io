@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>关于 - TechKoala - Input/Output </title><meta name="description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="关于" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>关于 - TechKoala - Input/Output </title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="关于" />
 <meta property="og:description" content="🤷‍♂️我 对网络知识有浓厚的兴趣 是一只会 Python🐍 的通信🐕 喜欢折腾👨‍💻一些有用没用的东西 长期使用 Linux(Arch &amp; Ubuntu 20.04) &amp; Windows 10 这个网站 本质上，就是我自" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/about/" /><meta property="article:section" content="" />
@@ -16,9 +16,14 @@
 <meta name="twitter:title" content="关于"/>
 <meta name="twitter:description" content="🤷‍♂️我 对网络知识有浓厚的兴趣 是一只会 Python🐍 的通信🐕 喜欢折腾👨‍💻一些有用没用的东西 长期使用 Linux(Arch &amp; Ubuntu 20.04) &amp; Windows 10 这个网站 本质上，就是我自"/>
 <meta name="application-name" content="TechKoala">
-<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="TechKoala">
+
+<meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/about/" /><link rel="next" href="https://www.techkoala.top/softwares/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/about/" /><link rel="next" href="https://www.techkoala.top/softwares/" /><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"></noscript><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -36,8 +41,47 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
+            if (window.localStorage && localStorage.getItem('theme')) {
+                let theme = localStorage.getItem('theme');
+                if (theme === 'light' || theme === 'dark' || theme === 'black') {
+                    document.body.setAttribute('theme', theme);
+                } else {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.body.setAttribute('theme', 'dark');
+                    }
+                    else {
+                        document.body.setAttribute('theme', 'light');
+                    }
+                }
+            } else {
+                if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') {
+                    document.body.setAttribute('auto');
+                    window.localStorage && localStorage.setItem('theme', 'auto');
+                } else {
+                    window.localStorage && localStorage.setItem('theme', 'auto');
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.body.setAttribute('theme', 'dark');
+                    }
+                    else {
+                        document.body.setAttribute('theme', 'light');
+                    }
+                }
+            }
+            function getMeta(metaName) {
+                const metas = document.getElementsByTagName('meta'); 
+                for (let i = 0; i < metas.length; i++) {
+                    if (metas[i].getAttribute('name') === metaName) {
+                        return metas[i];
+                    }
+                }
+                return '';
+            }
+            let themeColorMeta = getMeta('theme-color');
+            if (document.body.getAttribute('theme') != 'light') {
+                themeColorMeta.content = '#000000';
+            }
+        </script>
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
@@ -57,8 +101,7 @@
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -99,14 +142,14 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">关于</h1><div class="content" id="content"><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">关于</h1><div class="content" id="content"><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp"
+        />
     </a>
 <h3 id="我">🤷‍♂️我</h3>
 <ul>
@@ -118,11 +161,11 @@
 <h3 id="这个网站">这个网站</h3>
 <p>本质上，就是我自己的笔记📔，某天突发奇想💭：做成网站也不错呀，随时都可以查看。于是就诞生了这网站。</p>
 <ul>
-<li>文章使用 <a href="https://zh.wikipedia.org/zh-hans/Markdown" target="_blank" rel="noopener noreferrer">Markdown</a> 撰写排版</li>
-<li>网页利用 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> 渲染生成</li>
-<li>页面由 <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer">CodeIT</a> 装点</li>
-<li>托管在 <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a></li>
-<li>套用了 <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener noreferrer">jsDelivr</a> 的 <code>CDN</code></li>
+<li>文章使用 <a href="https://zh.wikipedia.org/zh-hans/Markdown" target="_blank" rel="noopener noreffer">Markdown</a> 撰写排版</li>
+<li>网页利用 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer">Hugo</a> 渲染生成</li>
+<li>页面由 <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer">DoIt</a> 装点</li>
+<li>托管在 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></li>
+<li>套用了 <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener noreffer">jsDelivr</a> 的 <code>CDN</code></li>
 </ul>
 <div class="details admonition info open">
         <div class="details-summary admonition-title">
@@ -199,16 +242,15 @@
     </div>
 </div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/sunt-programator/CodeIT">CodeIT</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
                 <i class="fas fa-arrow-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>

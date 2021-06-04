@@ -8,7 +8,7 @@
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
     <link>https://www.techkoala.top/frsshrss/</link>
     <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/frsshrss/</guid>
     <description><![CDATA[<blockquote>
 <p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
@@ -165,13 +165,13 @@ volumes:
 </div>
 </div><h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreffer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
 </ul>]]></description>
 </item><item>
     <title>Windows 网络连接优先级设置</title>
     <link>https://www.techkoala.top/windows_10_network_priority/</link>
     <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
@@ -266,17 +266,17 @@ volumes:
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreferrer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
+<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreffer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreferrer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
+<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreffer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
     <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
@@ -945,7 +945,7 @@ server {
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
     <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
@@ -1014,17 +1014,17 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>告知你不为人知的 UDP —— 疑难杂症和使用</title>
     <link>https://www.techkoala.top/udp_intractable_diseases/</link>
     <pubDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/udp_intractable_diseases/</guid>
     <description><![CDATA[<blockquote>
 <p>UDP 说来简单，但是一些细节你都清楚吗？</p>
@@ -1141,13 +1141,13 @@ opkg install dnscrypt-proxy2
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://blog.csdn.net/dog250/article/details/6896949http://blog.csdn.net/dog250/article/details/6896949" target="_blank" rel="noopener noreferrer">Netfilter,iptables/OpenVPN/TCP guard</a></li>
+<li>[1] <a href="http://blog.csdn.net/dog250/article/details/6896949http://blog.csdn.net/dog250/article/details/6896949" target="_blank" rel="noopener noreffer">Netfilter,iptables/OpenVPN/TCP guard</a></li>
 </ul>]]></description>
 </item><item>
     <title>DNS 报文详解</title>
     <link>https://www.techkoala.top/dns/</link>
     <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/dns/</guid>
     <description><![CDATA[<blockquote>
 <p>本文主要讲解 DNS 的报文结构</p>
@@ -1302,13 +1302,13 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreferrer">DNS 请求报文详解</a></li>
+<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreffer">DNS 请求报文详解</a></li>
 </ul>]]></description>
 </item><item>
     <title>ARP &amp; RARP 详解</title>
     <link>https://www.techkoala.top/arp_rarp/</link>
     <pubDate>Fri, 16 Oct 2020 15:56:34 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/arp_rarp/</guid>
     <description><![CDATA[<blockquote>
 <p>ARP 以及 RARP 如何工作？</p>
@@ -1415,15 +1415,15 @@ MAC addresses for the link layer.</div>
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">地址解析协议</a></li>
-<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">逆地址解析协议</a></li>
-<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreferrer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
+<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">地址解析协议</a></li>
+<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">逆地址解析协议</a></li>
+<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreffer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
 </ul>]]></description>
 </item><item>
     <title>OpenWRT overlay 空间扩容</title>
     <link>https://www.techkoala.top/openwrt_resize/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_resize/</guid>
     <description><![CDATA[<blockquote>
 <p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，记录一下</p>
@@ -1553,20 +1553,20 @@ $ opkg install cfdisk
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreferrer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
+<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreffer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreferrer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
+<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreffer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreferrer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
+<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreffer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>单独编译 OpenWRT ipk 插件</title>
     <link>https://www.techkoala.top/openwrt_compile_single_ipk/</link>
     <pubDate>Fri, 09 Oct 2020 15:57:29 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_compile_single_ipk/</guid>
     <description><![CDATA[<blockquote>
 <p>为 OpenWRT 编译单独的 ipk 插件</p>
@@ -1643,7 +1643,7 @@ $ opkg install cfdisk
     <title>常用 DNS 服务器</title>
     <link>https://www.techkoala.top/dns_list/</link>
     <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/dns_list/</guid>
     <description><![CDATA[<blockquote>
 <p>列举国内外常见的 DNS，方便替换使用</p>
@@ -2347,10 +2347,10 @@ $ opkg install cfdisk
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreferrer">全球免费公共 dns 解析服务器 ip 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
+<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreffer">全球免费公共 dns 解析服务器 ip 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
 </li>
 <li>
-<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreferrer">公共 dns 服务器 ip 地址</a></p>
+<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 dns 服务器 ip 地址</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

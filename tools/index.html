@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>工具 - TechKoala - Input/Output </title><meta name="description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="工具" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>工具 - TechKoala - Input/Output </title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="工具" />
 <meta property="og:description" content="Network Web: DigitalOcean Nginx Tool：Nginx Config 生成 cURL 命令转代码：支持将 curl 命令转换为各种代码 网站测速： BOCE 17CE 网络测速: CloudFlare Speed Test Speedtest by Ookla 测速网 IP&amp;DNS 测试： WHOER ipleak DnsLeakTest IPv6: IPv6 连接测" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/tools/" /><meta property="article:section" content="" />
@@ -16,9 +16,14 @@
 <meta name="twitter:title" content="工具"/>
 <meta name="twitter:description" content="Network Web: DigitalOcean Nginx Tool：Nginx Config 生成 cURL 命令转代码：支持将 curl 命令转换为各种代码 网站测速： BOCE 17CE 网络测速: CloudFlare Speed Test Speedtest by Ookla 测速网 IP&amp;DNS 测试： WHOER ipleak DnsLeakTest IPv6: IPv6 连接测"/>
 <meta name="application-name" content="TechKoala">
-<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="TechKoala">
+
+<meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/tools/" /><link rel="prev" href="https://www.techkoala.top/softwares/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/tools/" /><link rel="prev" href="https://www.techkoala.top/softwares/" /><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"></noscript><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -36,8 +41,47 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
+            if (window.localStorage && localStorage.getItem('theme')) {
+                let theme = localStorage.getItem('theme');
+                if (theme === 'light' || theme === 'dark' || theme === 'black') {
+                    document.body.setAttribute('theme', theme);
+                } else {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.body.setAttribute('theme', 'dark');
+                    }
+                    else {
+                        document.body.setAttribute('theme', 'light');
+                    }
+                }
+            } else {
+                if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') {
+                    document.body.setAttribute('auto');
+                    window.localStorage && localStorage.setItem('theme', 'auto');
+                } else {
+                    window.localStorage && localStorage.setItem('theme', 'auto');
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.body.setAttribute('theme', 'dark');
+                    }
+                    else {
+                        document.body.setAttribute('theme', 'light');
+                    }
+                }
+            }
+            function getMeta(metaName) {
+                const metas = document.getElementsByTagName('meta'); 
+                for (let i = 0; i < metas.length; i++) {
+                    if (metas[i].getAttribute('name') === metaName) {
+                        return metas[i];
+                    }
+                }
+                return '';
+            }
+            let themeColorMeta = getMeta('theme-color');
+            if (document.body.getAttribute('theme') != 'light') {
+                themeColorMeta.content = '#000000';
+            }
+        </script>
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
@@ -57,8 +101,7 @@
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -99,214 +142,213 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">工具</h1><div class="content" id="content"><h2 id="network">Network</h2>
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">工具</h1><div class="content" id="content"><h2 id="network">Network</h2>
 <p><strong>Web:</strong></p>
 <ul>
 <li>
-<p><a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener noreferrer">DigitalOcean Nginx Tool</a>：Nginx Config 生成</p>
+<p><a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener noreffer">DigitalOcean Nginx Tool</a>：Nginx Config 生成</p>
 </li>
 <li>
-<p><a href="https://curl.6cm.co/" target="_blank" rel="noopener noreferrer">cURL 命令转代码</a>：支持将 curl 命令转换为各种代码</p>
+<p><a href="https://curl.6cm.co/" target="_blank" rel="noopener noreffer">cURL 命令转代码</a>：支持将 curl 命令转换为各种代码</p>
 </li>
 </ul>
 <p><strong>网站测速：</strong></p>
 <ul>
 <li>
-<p><a href="https://www.boce.com/" target="_blank" rel="noopener noreferrer">BOCE</a></p>
+<p><a href="https://www.boce.com/" target="_blank" rel="noopener noreffer">BOCE</a></p>
 </li>
 <li>
-<p><a href="https://www.17ce.com/" target="_blank" rel="noopener noreferrer">17CE</a></p>
+<p><a href="https://www.17ce.com/" target="_blank" rel="noopener noreffer">17CE</a></p>
 </li>
 </ul>
 <p><strong>网络测速:</strong></p>
 <ul>
 <li>
-<p><a href="https://speed.cloudflare.com/" target="_blank" rel="noopener noreferrer">CloudFlare Speed Test</a></p>
+<p><a href="https://speed.cloudflare.com/" target="_blank" rel="noopener noreffer">CloudFlare Speed Test</a></p>
 </li>
 <li>
-<p><a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer">Speedtest by Ookla</a></p>
+<p><a href="https://www.speedtest.net/" target="_blank" rel="noopener noreffer">Speedtest by Ookla</a></p>
 </li>
 <li>
-<p><a href="https://www.speedtest.cn/" target="_blank" rel="noopener noreferrer">测速网</a></p>
+<p><a href="https://www.speedtest.cn/" target="_blank" rel="noopener noreffer">测速网</a></p>
 </li>
 </ul>
 <p><strong>IP&amp;DNS 测试：</strong></p>
 <ul>
 <li>
-<p><a href="https://whoer.net/zh" target="_blank" rel="noopener noreferrer">WHOER</a></p>
+<p><a href="https://whoer.net/zh" target="_blank" rel="noopener noreffer">WHOER</a></p>
 </li>
 <li>
-<p><a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer">ipleak</a></p>
+<p><a href="https://ipleak.net/" target="_blank" rel="noopener noreffer">ipleak</a></p>
 </li>
 <li>
-<p><a href="https://dnsleaktest.com/" target="_blank" rel="noopener noreferrer">DnsLeakTest</a></p>
+<p><a href="https://dnsleaktest.com/" target="_blank" rel="noopener noreffer">DnsLeakTest</a></p>
 </li>
 </ul>
 <p><strong>IPv6:</strong></p>
 <ul>
 <li>
-<p><a href="https://test-ipv6.com/" target="_blank" rel="noopener noreferrer">IPv6 连接测试</a></p>
+<p><a href="https://test-ipv6.com/" target="_blank" rel="noopener noreffer">IPv6 连接测试</a></p>
 </li>
 <li>
-<p><a href="https://ipv6-test.com/" target="_blank" rel="noopener noreferrer">IPv6 Test</a></p>
+<p><a href="https://ipv6-test.com/" target="_blank" rel="noopener noreffer">IPv6 Test</a></p>
 </li>
 <li>
-<p><a href="https://www.china-ipv6.cn/#/index" target="_blank" rel="noopener noreferrer">国家 IPv6 发展检测平台</a></p>
+<p><a href="https://www.china-ipv6.cn/#/index" target="_blank" rel="noopener noreffer">国家 IPv6 发展检测平台</a></p>
 </li>
 <li>
-<p><a href="https://ipv6c.cngi.edu.cn/mainPage.do" target="_blank" rel="noopener noreferrer">IPv6 发展监测平台目录服务</a></p>
+<p><a href="https://ipv6c.cngi.edu.cn/mainPage.do" target="_blank" rel="noopener noreffer">IPv6 发展监测平台目录服务</a></p>
 </li>
 </ul>
 <p><strong>WebRTC:</strong></p>
 <ul>
-<li><a href="https://www.ppzhilian.com/" target="_blank" rel="noopener noreferrer">皮皮直连</a>：浏览器局域网文件传输</li>
+<li><a href="https://www.ppzhilian.com/" target="_blank" rel="noopener noreffer">皮皮直连</a>：浏览器局域网文件传输</li>
 </ul>
 <h2 id="translator">Translator</h2>
 <ul>
-<li><a href="https://www.deepl.com/translator" target="_blank" rel="noopener noreferrer">Deepl</a></li>
+<li><a href="https://www.deepl.com/translator" target="_blank" rel="noopener noreffer">Deepl</a></li>
 </ul>
 <h2 id="tools">Tools</h2>
 <p><strong>Format:</strong></p>
 <ul>
 <li>
-<p><a href="https://www.alltoall.net/" target="_blank" rel="noopener noreferrer">在线格式转换工具</a></p>
+<p><a href="https://www.alltoall.net/" target="_blank" rel="noopener noreffer">在线格式转换工具</a></p>
 </li>
 <li>
-<p><a href="https://www.ofoct.com/zh" target="_blank" rel="noopener noreferrer">小熊文件格式在线转换工具</a></p>
+<p><a href="https://www.ofoct.com/zh" target="_blank" rel="noopener noreffer">小熊文件格式在线转换工具</a></p>
 </li>
 <li>
-<p><a href="https://epub.to/" target="_blank" rel="noopener noreferrer">EPUB 转换器</a></p>
+<p><a href="https://epub.to/" target="_blank" rel="noopener noreffer">EPUB 转换器</a></p>
 </li>
 <li>
-<p><a href="https://tools.pdf24.org/zh/" target="_blank" rel="noopener noreferrer">PDF 工具</a></p>
+<p><a href="https://tools.pdf24.org/zh/" target="_blank" rel="noopener noreffer">PDF 工具</a></p>
 </li>
 </ul>
 <p><strong>Toolset:</strong></p>
 <ul>
 <li>
-<p><a href="https://tools.miku.ac/" target="_blank" rel="noopener noreferrer">MikuTools - 工具集合</a></p>
+<p><a href="https://tools.miku.ac/" target="_blank" rel="noopener noreffer">MikuTools - 工具集合</a></p>
 </li>
 <li>
-<p><a href="https://jingzhunyun.com/" target="_blank" rel="noopener noreferrer">在线工具大全</a></p>
+<p><a href="https://jingzhunyun.com/" target="_blank" rel="noopener noreffer">在线工具大全</a></p>
 </li>
 <li>
-<p><a href="http://www.atoolbox.net/" target="_blank" rel="noopener noreferrer">一个工具箱 - 好用的在线工具都在这里！</a></p>
+<p><a href="http://www.atoolbox.net/" target="_blank" rel="noopener noreffer">一个工具箱 - 好用的在线工具都在这里！</a></p>
 </li>
 <li>
-<p><a href="http://c.runoob.com/" target="_blank" rel="noopener noreferrer">菜鸟编程工具</a></p>
+<p><a href="http://c.runoob.com/" target="_blank" rel="noopener noreffer">菜鸟编程工具</a></p>
 </li>
 <li>
-<p><a href="https://tool.lu/" target="_blank" rel="noopener noreferrer">程序员的工具箱</a></p>
+<p><a href="https://tool.lu/" target="_blank" rel="noopener noreffer">程序员的工具箱</a></p>
 </li>
 </ul>
 <h2 id="reading">Reading</h2>
 <ul>
-<li><a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreferrer">Epub 在线阅读</a></li>
+<li><a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">Epub 在线阅读</a></li>
 </ul>
 <h2 id="wireless-communication">Wireless Communication</h2>
 <ul>
-<li><a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreferrer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a>：LTE 资源网格生成</li>
+<li><a href="http://dhagle.in/LTE" target="_blank" rel="noopener noreffer">Sandesh Dhagle&rsquo;s Resource Grid Tools</a>：LTE 资源网格生成</li>
 </ul>
 <h2 id="linux">Linux</h2>
 <ul>
-<li><a href="https://ningyu1.github.io/linux-command/" target="_blank" rel="noopener noreferrer">Linux Command</a>：Linux 命令搜索引擎命令</li>
+<li><a href="https://ningyu1.github.io/linux-command/" target="_blank" rel="noopener noreffer">Linux Command</a>：Linux 命令搜索引擎命令</li>
 </ul>
 <h2 id="pics">Pics</h2>
 <ul>
 <li>
-<p><a href="https://renzhezhilu.github.io/webp2jpg-online/" target="_blank" rel="noopener noreferrer">webp2jpg</a>：图片格式转换</p>
+<p><a href="https://renzhezhilu.github.io/webp2jpg-online/" target="_blank" rel="noopener noreffer">webp2jpg</a>：图片格式转换</p>
 </li>
 <li>
-<p><a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer">squoosh</a>：谷歌图片压缩</p>
+<p><a href="https://squoosh.app/" target="_blank" rel="noopener noreffer">squoosh</a>：谷歌图片压缩</p>
 </li>
 <li>
-<p><a href="https://sm.ms/" target="_blank" rel="noopener noreferrer">sm.ms</a>：图床</p>
+<p><a href="https://sm.ms/" target="_blank" rel="noopener noreffer">sm.ms</a>：图床</p>
 </li>
 <li>
-<p><a href="https://realfavicongenerator.net/" target="_blank" rel="noopener noreferrer">Favicon Generator</a>：网站图标生成</p>
+<p><a href="https://realfavicongenerator.net/" target="_blank" rel="noopener noreffer">Favicon Generator</a>：网站图标生成</p>
 </li>
 <li>
-<p><a href="https://isoflow.io/" target="_blank" rel="noopener noreferrer">isoflow</a>：好看的拓扑图绘制</p>
+<p><a href="https://isoflow.io/" target="_blank" rel="noopener noreffer">isoflow</a>：好看的拓扑图绘制</p>
 </li>
 <li>
-<p><a href="https://sketchboard.me" target="_blank" rel="noopener noreferrer">sketchboard</a>：卡通画风拓扑图绘制</p>
+<p><a href="https://sketchboard.me" target="_blank" rel="noopener noreffer">sketchboard</a>：卡通画风拓扑图绘制</p>
 </li>
 <li>
-<p><a href="http://www.unicode.org/emoji/charts/full-emoji-list.html" target="_blank" rel="noopener noreferrer">Full Emoji List</a></p>
+<p><a href="http://www.unicode.org/emoji/charts/full-emoji-list.html" target="_blank" rel="noopener noreffer">Full Emoji List</a></p>
 </li>
 </ul>
 <h2 id="security">Security</h2>
 <ul>
 <li>
-<p><a href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener noreferrer">Virustotal</a></p>
+<p><a href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener noreffer">Virustotal</a></p>
 </li>
 <li>
-<p><a href="https://x.threatbook.cn/" target="_blank" rel="noopener noreferrer">微步在线威胁情报社区</a></p>
+<p><a href="https://x.threatbook.cn/" target="_blank" rel="noopener noreffer">微步在线威胁情报社区</a></p>
 </li>
 </ul>
 <h2 id="file-share">File Share</h2>
 <ul>
 <li>
-<p><a href="https://app.tmp.link/" target="_blank" rel="noopener noreferrer">TMP.LINK</a>：文件上传分享</p>
+<p><a href="https://app.tmp.link/" target="_blank" rel="noopener noreffer">TMP.LINK</a>：文件上传分享</p>
 </li>
 <li>
-<p><a href="https://transfer.sh/" target="_blank" rel="noopener noreferrer">transfer.sh</a>：命令行文件上传分享</p>
+<p><a href="https://transfer.sh/" target="_blank" rel="noopener noreffer">transfer.sh</a>：命令行文件上传分享</p>
 </li>
 <li>
-<p><a href="https://cowtransfer.com/" target="_blank" rel="noopener noreferrer">奶牛快传</a></p>
+<p><a href="https://cowtransfer.com/" target="_blank" rel="noopener noreffer">奶牛快传</a></p>
 </li>
 <li>
-<p><a href="http://qaz.wtf/u/convert.cgi" target="_blank" rel="noopener noreferrer">Unicode Text Converter</a>：Unicode 文本转换</p>
+<p><a href="http://qaz.wtf/u/convert.cgi" target="_blank" rel="noopener noreffer">Unicode Text Converter</a>：Unicode 文本转换</p>
 </li>
 </ul>
 <h2 id="temporary-service">Temporary service</h2>
 <p><strong>TempSMS:</strong></p>
 <ul>
 <li>
-<p><a href="http://www.z-sms.com/" target="_blank" rel="noopener noreferrer">Z-SMS</a>：</p>
+<p><a href="http://www.z-sms.com/" target="_blank" rel="noopener noreffer">Z-SMS</a>：</p>
 </li>
 <li>
-<p><a href="https://www.materialtools.com/?page=1" target="_blank" rel="noopener noreferrer">Materialtools</a></p>
+<p><a href="https://www.materialtools.com/?page=1" target="_blank" rel="noopener noreffer">Materialtools</a></p>
 </li>
 <li>
-<p><a href="https://www.freeonlinephone.org/" target="_blank" rel="noopener noreferrer">Freeonlinephone</a></p>
+<p><a href="https://www.freeonlinephone.org/" target="_blank" rel="noopener noreffer">Freeonlinephone</a></p>
 </li>
 </ul>
 <p><strong>TempMail:</strong></p>
 <ul>
 <li>
-<p><a href="http://www.yopmail.com/zh/" target="_blank" rel="noopener noreferrer">Yopmail</a></p>
+<p><a href="http://www.yopmail.com/zh/" target="_blank" rel="noopener noreffer">Yopmail</a></p>
 </li>
 <li>
-<p><a href="http://24mail.chacuo.net/" target="_blank" rel="noopener noreferrer">24mail</a></p>
+<p><a href="http://24mail.chacuo.net/" target="_blank" rel="noopener noreffer">24mail</a></p>
 </li>
 <li>
-<p><a href="https://www.snapmail.cc" target="_blank" rel="noopener noreferrer">Snapmail</a></p>
+<p><a href="https://www.snapmail.cc" target="_blank" rel="noopener noreffer">Snapmail</a></p>
 </li>
 </ul>
 <h2 id="老年人网上冲浪必备">老年人网上冲浪必备</h2>
 <ul>
 <li>
-<p><a href="https://lab.magiconch.com/nbnhhsh/" target="_blank" rel="noopener noreferrer">能不能好好说话？</a>：网络缩写翻译</p>
+<p><a href="https://lab.magiconch.com/nbnhhsh/" target="_blank" rel="noopener noreffer">能不能好好说话？</a>：网络缩写翻译</p>
 </li>
 <li>
-<p><a href="https://jikipedia.com/" target="_blank" rel="noopener noreferrer">小鸡词典</a></p>
+<p><a href="https://jikipedia.com/" target="_blank" rel="noopener noreffer">小鸡词典</a></p>
 </li>
 </ul>
 </div><div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/sunt-programator/CodeIT">CodeIT</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
                 <i class="fas fa-arrow-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-07-30T13:56:16+08:00","owner":"techkoala","repo":"commets_of_blog","title":"工具"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-07-30T13:56:16+08:00","owner":"techkoala","repo":"commets_of_blog","title":"工具"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>

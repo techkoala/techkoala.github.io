@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>HTTPS 工作原理 - TechKoala - Input/Output </title><meta name="description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="HTTPS 工作原理" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>HTTPS 工作原理 - TechKoala - Input/Output </title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="HTTPS 工作原理" />
 <meta property="og:description" content="
 理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理
 " />
@@ -20,9 +20,14 @@
 理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理
 "/>
 <meta name="application-name" content="TechKoala">
-<meta name="apple-mobile-web-app-title" content="TechKoala"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="TechKoala">
+
+<meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/how_https_works/" /><link rel="prev" href="https://www.techkoala.top/how_to_search/" /><link rel="next" href="https://www.techkoala.top/netcat/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/how_https_works/" /><link rel="prev" href="https://www.techkoala.top/how_to_search/" /><link rel="next" href="https://www.techkoala.top/netcat/" /><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"></noscript><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -40,8 +45,47 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
+            if (window.localStorage && localStorage.getItem('theme')) {
+                let theme = localStorage.getItem('theme');
+                if (theme === 'light' || theme === 'dark' || theme === 'black') {
+                    document.body.setAttribute('theme', theme);
+                } else {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.body.setAttribute('theme', 'dark');
+                    }
+                    else {
+                        document.body.setAttribute('theme', 'light');
+                    }
+                }
+            } else {
+                if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') {
+                    document.body.setAttribute('auto');
+                    window.localStorage && localStorage.setItem('theme', 'auto');
+                } else {
+                    window.localStorage && localStorage.setItem('theme', 'auto');
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.body.setAttribute('theme', 'dark');
+                    }
+                    else {
+                        document.body.setAttribute('theme', 'light');
+                    }
+                }
+            }
+            function getMeta(metaName) {
+                const metas = document.getElementsByTagName('meta'); 
+                for (let i = 0; i < metas.length; i++) {
+                    if (metas[i].getAttribute('name') === metaName) {
+                        return metas[i];
+                    }
+                }
+                return '';
+            }
+            let themeColorMeta = getMeta('theme-color');
+            if (document.body.getAttribute('theme') != 'light') {
+                themeColorMeta.content = '#000000';
+            }
+        </script>
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
@@ -61,8 +105,7 @@
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -104,9 +147,9 @@
 </div>
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">HTTPS 工作原理</h1><div class="post-meta">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.body.setAttribute("pageStyle", "normal")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HTTPS 工作原理</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>TechKoala</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-16">2020-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2890 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
@@ -172,12 +215,12 @@
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-sub-html="<h2>Credit: Kaushal Kumar Panday From: SSL Handshake and HTTPS Bindings on IIS</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" />
-    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreferrer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreferrer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp"
+        />
+    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
     </figure>
 <p>其中 <code>Handshake protocol</code>，<code>Change Ciper Spec protocol</code> 和 <code>Alert protocol</code> 组成了 <code>SSL Handshaking Protocols</code>。</p>
 <p>HTTPS 和 HTTP 协议相比提供了:</p>
@@ -192,12 +235,12 @@
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" />
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp"
+        />
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <ol>
 <li>[明文] 客户端发送随机数 client_random 和支持的加密方式列表</li>
@@ -211,11 +254,11 @@
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-sub-html="<h2>证书信息</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp"
+        />
     </a><figcaption class="image-caption">证书信息</figcaption>
     </figure>
 <h3 id="证书中包含了以下信息">证书中包含了以下信息</h3>
@@ -317,7 +360,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
-<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
+<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreffer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
 <p>Susan 将证书发送给 Bob 后，Bob 通过 CA 证书的公钥验证证书签名。</p>
 <p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
 <p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
@@ -361,35 +404,35 @@
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" />
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp"
+        />
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <p>客户端和服务端在握手 hello 消息中明文交换了 <code>client_random</code> 和 <code>server_random</code> ，使用 <code>RSA</code> 公钥加密传输 <code>premaster secret</code> ，最后通过算法，客户端和服务端分别计算 <code>master secret</code>。其中，不直接使用 <code>premaster secret</code> 的原因是：保证 <code>secret</code> 的随机性不受任意一方的影响。</p>
 <p>除了使用 <code>RSA</code> 算法在公共信道交换密钥，还可以通过 <code>Diffie–Hellman</code> 算法。<code>Diffie–Hellman</code> 算法的原理是这样的</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" data-sub-html="<h2>By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp"
+        />
     </a><figcaption class="image-caption">By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons</figcaption>
     </figure>
 <p>使用 <code>Diffie–Hellman</code> 算法交换 <code>premaster secret</code> 的流程</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" />
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp"
+        />
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <h2 id="小结">小结</h2>
 <p><code>TLS Handshaking Protocols</code> 协商了 <code>TLS Record Protocol</code> 使用的算法和所需参数，并验证了服务端身份；</p>
@@ -495,39 +538,39 @@ partitioned as follows:
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
         <img
             class="lazyload"
-            src="/svg/loading.min.svg"
             data-src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp"
             data-srcset="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp 1.5x, https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp 2x"
             data-sizes="auto"
-            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" />
+            alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp"
+        />
     </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/">https://cipherstuff.wordpress.com/</a></figcaption>
     </figure>
 <h2 id="拓展阅读">拓展阅读</h2>
 <ul>
-<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless</a></li>
-<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a></li>
+<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
+<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
 <li>Session resume</li>
 <li>证书 Revoke</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreferrer">TLS1.2 规范</a></p>
+<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2 规范</a></p>
 </li>
 <li>
-<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreferrer">PKI 规范</a></p>
+<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI 规范</a></p>
 </li>
 <li>
-<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreferrer">证书和数字签名</a></p>
+<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>
 </li>
 <li>
-<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">TLS Handshake</a></p>
+<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
 </li>
 </ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-09-12&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/3f60e332a7117732c8ed1696eab63aa0e1f55d68" target="_blank" rel="noopener noreferrer" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 3f60e332a7117732c8ed1696eab63aa0e1f55d68: update">
+                <span>更新于 2020-09-12&nbsp;<a class="git-hash" href="/root/ron159/.git//commit/3f60e332a7117732c8ed1696eab63aa0e1f55d68" target="_blank" title="commit by techkoala(zlronron159&#43;techkoala@gmail.com) 3f60e332a7117732c8ed1696eab63aa0e1f55d68: update" rel="noopener noreferrer">
                                     <i class="fas fa-hashtag fa-fw"></i>3f60e33</a></span>
             </div>
             <div class="post-info-license"></div>
@@ -554,16 +597,15 @@ partitioned as follows:
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/sunt-programator/CodeIT">CodeIT</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div></footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
                 <i class="fas fa-arrow-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-16T21:52:26+08:00","owner":"techkoala","repo":"commets_of_blog","title":"HTTPS 工作原理"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"gitalk":{"admin":["techkoala"],"clientID":"1444fb45e93744574ed4","clientSecret":"b8e4a3b68c665d515f64286592fb58e7d94ba7b7","id":"2020-08-16T21:52:26+08:00","owner":"techkoala","repo":"commets_of_blog","title":"HTTPS 工作原理"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></body>

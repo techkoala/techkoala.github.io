@@ -8,7 +8,7 @@
     <title>LTE 系列：功率控制</title>
     <link>https://www.techkoala.top/lte_power_control/</link>
     <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_power_control/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
@@ -86,7 +86,7 @@
     <title>LTE 系列：物理信号</title>
     <link>https://www.techkoala.top/lte_physical_signals/</link>
     <pubDate>Thu, 20 Feb 2020 21:02:32 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_physical_signals/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理信号详解</p>
@@ -299,7 +299,7 @@
     <title>LTE 系列：多天线技术（MIMO）</title>
     <link>https://www.techkoala.top/lte_mimo/</link>
     <pubDate>Sat, 01 Feb 2020 20:33:29 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_mimo/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 多天线技术（MIMO）详解</p>
@@ -389,7 +389,7 @@
     <title>LTE 系列：编码、复用和交织</title>
     <link>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</link>
     <pubDate>Fri, 10 Jan 2020 20:54:23 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 数据的编码、复用和交织</p>
@@ -456,7 +456,7 @@
     <title>LTE 系列：共享信道传输与接收</title>
     <link>https://www.techkoala.top/lte_transmission_and_reception/</link>
     <pubDate>Fri, 22 Nov 2019 21:14:52 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_transmission_and_reception/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要</p>
@@ -516,7 +516,7 @@
     <title>LTE 系列：多址方式</title>
     <link>https://www.techkoala.top/lte_multiple_access/</link>
     <pubDate>Sun, 20 Oct 2019 20:45:06 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_multiple_access/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 多址方式详解</p>
@@ -551,7 +551,7 @@
     <title>LTE 系列：小区搜索和下行同步</title>
     <link>https://www.techkoala.top/lte_cell_synchronize/</link>
     <pubDate>Sun, 15 Sep 2019 21:46:08 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_cell_synchronize/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要综列</p>
@@ -583,7 +583,7 @@
     <title>LTE 系列：基本物理资源</title>
     <link>https://www.techkoala.top/lte_basic_physical_resource/</link>
     <pubDate>Sun, 01 Sep 2019 20:49:05 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_basic_physical_resource/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 基本物理资源及分配方法</p>
@@ -642,7 +642,7 @@
     <title>LTE 系列：上行链路帧结构</title>
     <link>https://www.techkoala.top/lte_uplink_frame_structure/</link>
     <pubDate>Sat, 10 Aug 2019 19:46:00 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_uplink_frame_structure/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 上行链路帧结构详细讲解</p>
@@ -670,13 +670,13 @@
 <p>详细的 PUCHH 结构参考：</p>
 <ul>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreferrer">PUCCH Format</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format.html" target="_blank" rel="noopener noreffer">PUCCH Format</a></p>
 </li>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreferrer">PUCCH Format 1,1a,1b Location</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format1_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 1,1a,1b Location</a></p>
 </li>
 <li>
-<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreferrer">PUCCH Format 2,2a,2b Location</a></p>
+<p><a href="http://www.sharetechnote.com/html/Handbook_LTE_PUCCH_Format2_Location.html" target="_blank" rel="noopener noreffer">PUCCH Format 2,2a,2b Location</a></p>
 </li>
 </ul>
 <h3 id="pusch-rs">PUSCH RS</h3>
@@ -684,7 +684,7 @@
 <h3 id="pusch">PUSCH</h3>
 <p>承载 UE 尝试发送的上行链路数据。并且除了上行链路数据之外，还可以携带 UE 接收的 PDSCH 的 ACK/NACK。</p>
 <h3 id="srs">SRS</h3>
-<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreferrer">SRS in Quick Reference</a></p>
+<p>参考 <a href="http://www.sharetechnote.com/html/Handbook_LTE_SRS.html" target="_blank" rel="noopener noreffer">SRS in Quick Reference</a></p>
 <h2 id="上行资源网格">上行资源网格</h2>
 <p>具体来说，上行资源还有一种网格格式，如下所示:</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" data-sub-html="<h2>上行资源网格</h2>">
@@ -705,13 +705,13 @@
     </figure>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreferrer">UL FrameStructure</a></li>
+<li>[1] <a href="http://www.sharetechnote.com/html/FrameStructure_UL.html" target="_blank" rel="noopener noreffer">UL FrameStructure</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：物理信道</title>
     <link>https://www.techkoala.top/lte_physical_channels/</link>
     <pubDate>Mon, 05 Aug 2019 21:06:48 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_physical_channels/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理信道详解</p>

@@ -8,7 +8,7 @@
     <title>逐步详解 SHA-2 算法（以 SHA-256 为例）</title>
     <link>https://www.techkoala.top/learn_sha_2_step_by_step/</link>
     <pubDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/learn_sha_2_step_by_step/</guid>
     <description><![CDATA[<blockquote>
 <p>最常见的 SHA-2 算法是如何实现的？本文逐步为你讲解。</p>
@@ -650,10 +650,10 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreferrer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
+<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreffer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreferrer">SHA-2</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreffer">SHA-2</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

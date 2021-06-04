@@ -4,11 +4,206 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 May 2021 23:25:46 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>不容错过的 Bash 技巧</title>
+    <link>https://www.techkoala.top/bash_tricks/</link>
+    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate>
+    <author>TechKoala</author>
+    <guid>https://www.techkoala.top/bash_tricks/</guid>
+    <description><![CDATA[<blockquote>
+<p>一些提升 Bash 使用效率的小技巧</p>
+</blockquote>
+<p>在使用 Bash 时，我们通常使用 上 ↑ 下 ↓ 箭头来快速切换历史命令，然而一些重复的、不想要的命令（例如最简单的 ls，敲击比切换快，同时也会增加切换到别的命令的按键次数）也在历史记录里保存，这降低了切换的效率。下面一些技巧可以更好的帮助我们切换到想要的命令：</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>说明<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+</code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<h2 id="使用-histignore-移除历史记录中无意义的命令">使用 HISTIGNORE 移除历史记录中无意义的命令</h2>
+<p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+</code></pre></td></tr></table>
+</div>
+</div><p>另外：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+</code></pre></td></tr></table>
+</div>
+</div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
+<h2 id="设置历史记录数量">设置历史记录数量</h2>
+<p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="更有效的调用命令">更有效的调用命令</h2>
+<p><code>!!</code>可以调用前一行的命令。</p>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+/etc
+$ !!
+<span class="nb">pwd</span>
+/etc
+</code></pre></td></tr></table>
+</div>
+</div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+</code></pre></td></tr></table>
+</div>
+</div><p>就将使用 root 权限再次执行此前的命令。</p>
+<p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+$ mkdir temp
+$ touch temp/test
+$ !!
+touch temp/test
+$ <span class="nb">history</span> <span class="p">|</span> tail -4
+  <span class="m">179</span>  rm -r temp/
+  <span class="m">180</span>  mkdir temp
+  <span class="m">181</span>  touch temp/test
+  <span class="m">182</span>  touch temp/test
+  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
+$ !179:p
+rm -r temp
+$ !180
+touch temp/test
+</code></pre></td></tr></table>
+</div>
+</div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+</code></pre></td></tr></table>
+</div>
+</div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
+<p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
+<h2 id="使用--和--调用前一行参数">使用 !$ 和 !* 调用前一行参数</h2>
+<p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+$ vim !$
+vim items.txt
+$ cp !$ shopping.txt
+cp items.txt shopping.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数</p>
+<p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+$ touch !*
+touch /var/log/httpd/access.log /var/log/httpd/error.log
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用--替换前一行的匹配词">用 ^ 替换前一行的匹配词</h2>
+<p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+$ ^error^access
+rm /var/log/httpd/access.log
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://cyb.org.uk/2021/05/03/bash-productivity.html" target="_blank" rel="noopener noreffer">Be more productive with use of your BASH history</a></li>
+</ul>]]></description>
+</item><item>
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
     <link>https://www.techkoala.top/frsshrss/</link>
     <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/frsshrss/</guid>
     <description><![CDATA[<blockquote>
 <p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
@@ -165,13 +360,13 @@ volumes:
 </div>
 </div><h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreffer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
 </ul>]]></description>
 </item><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
     <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
@@ -215,7 +410,7 @@ volumes:
     <title>持久化 Gist file raw 链接</title>
     <link>https://www.techkoala.top/permalink_gist_raw_file/</link>
     <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/permalink_gist_raw_file/</guid>
     <description><![CDATA[<blockquote>
 <p>如何持久化 Gist file raw 链接地址？</p>
@@ -236,13 +431,13 @@ volumes:
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://gist.github.com/atenni/5604615" target="_blank" rel="noopener noreferrer">How to permalink to a gist&rsquo;s raw file</a></li>
+<li>[1] <a href="https://gist.github.com/atenni/5604615" target="_blank" rel="noopener noreffer">How to permalink to a gist&rsquo;s raw file</a></li>
 </ul>]]></description>
 </item><item>
     <title>Windows 网络连接优先级设置</title>
     <link>https://www.techkoala.top/windows_10_network_priority/</link>
     <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
@@ -337,17 +532,17 @@ volumes:
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreferrer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
+<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreffer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreferrer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
+<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreffer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
     <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
@@ -1016,7 +1211,7 @@ server {
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
     <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
@@ -1085,17 +1280,17 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
     <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
@@ -1232,13 +1427,13 @@ opkg install dnscrypt-proxy2
 </div><p>To be continued&hellip;</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：功率控制</title>
     <link>https://www.techkoala.top/lte_power_control/</link>
     <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/lte_power_control/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
@@ -1316,7 +1511,7 @@ opkg install dnscrypt-proxy2
     <title>告知你不为人知的 UDP —— 疑难杂症和使用</title>
     <link>https://www.techkoala.top/udp_intractable_diseases/</link>
     <pubDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/udp_intractable_diseases/</guid>
     <description><![CDATA[<blockquote>
 <p>UDP 说来简单，但是一些细节你都清楚吗？</p>
@@ -1433,168 +1628,7 @@ opkg install dnscrypt-proxy2
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://blog.csdn.net/dog250/article/details/6896949http://blog.csdn.net/dog250/article/details/6896949" target="_blank" rel="noopener noreferrer">Netfilter,iptables/OpenVPN/TCP guard</a></li>
-</ul>]]></description>
-</item><item>
-    <title>DNS 报文详解</title>
-    <link>https://www.techkoala.top/dns/</link>
-    <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://www.techkoala.top/dns/</guid>
-    <description><![CDATA[<blockquote>
-<p>本文主要讲解 DNS 的报文结构</p>
-</blockquote>
-<h2 id="dns-简介">DNS 简介</h2>
-<p>简单来说 DNS 负责将我们熟知的域名翻译成 IP 地址，其相关定义由 RFC 1034 和 RFC 1035 给出。</p>
-<p>为了更加的扩展性，DNS 由大量的服务器分层次进行组织的，大致来说分为：根 DNS 服务器、顶域名（TLD）DNS 服务器和权威 DNS 服务器。他们的层次结构如下图所示：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" data-sub-html="<h2>DNS 的层次结构</h2>">
-        
-    </a><figcaption class="image-caption">DNS 的层次结构</figcaption>
-    </figure>
-<p>关于 DNS 的工作过程及相关信息参见<a href="/dns_update/" rel="">深入浅出 DNS 解析</a>，本文负责补充 DNS 报文结构。</p>
-<h3 id="dns-报文结构">DNS 报文结构</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" data-sub-html="<h2>DNS 的报文结构</h2>">
-        
-    </a><figcaption class="image-caption">DNS 的报文结构</figcaption>
-    </figure>
-<ul>
-<li>
-<p>前 12 个字节为<strong>首部</strong>，包含：</p>
-<ul>
-<li>
-<p><strong>标识符</strong>（2 字节），用于标识请求及其响应报文，区分不同的查询</p>
-</li>
-<li>
-<p><strong>标志</strong>（2 字节），其中：</p>
-<ul>
-<li><strong>QR</strong>（1bit）：查询/响应标志，<code>0</code> 为查询，<code>1</code> 为响应</li>
-<li><strong>opcode</strong>（4bit）：<code>0</code> 表示标准查询，<code>1</code> 表示反向查询，<code>2</code> 表示服务器状态请求，<code>[3,15]</code>为保留值</li>
-<li><strong>AA</strong>（1bit）：表示授权回答，这个比特位在应答的时候才有意义，指出给出应答的服务器是查询域名的授权解析服务器</li>
-<li><strong>TC</strong>（1bit）：表示可截断的，用来指出报文比允许的长度还要长，导致被截断;</li>
-<li><strong>RD</strong>（1bit）：表示期望递归，这个比特位被<strong>请求</strong>设置，应答的时候使用的相同的值返回。如果设置了 RD，就建议域名服务器进行递归解析，递归查询的支持是可选的;</li>
-<li><strong>RA</strong>（1bit）：表示可用递归，这个比特位在<strong>应答</strong>中设置或取消，用来代表服务器是否支持递归查询;</li>
-<li><strong>rcode</strong>（4bit）：表示返回码
-<ul>
-<li><code>0</code> : 没有错误</li>
-<li><code>1</code> : 报文格式错误(Format error) - 服务器不能理解请求的报文</li>
-<li><code>2</code> : 服务器失败(Server failure) - 因为服务器的原因导致没办法处理这个请求</li>
-<li><code>3</code> : 名字错误(Name Error) - 只有对授权域名解析服务器有意义，指出解析的域名不存在</li>
-<li><code>4</code> : 没有实现(Not Implemented) - 域名服务器不支持查询类型</li>
-<li><code>5</code> : 拒绝(Refused) - 服务器由于设置的策略拒绝给出应答.比如，服务器不希望对某些请求者给出应答，或者服务器不希望进行某些操作（比如区域传送 zone transfer）</li>
-<li><code>[6,15]</code> : 保留值，暂未使用。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>数量字段</strong>（8 字节）：每个区域 2 字节</p>
-<ul>
-<li><strong>Questions</strong> 表示查询问题区域节的数量</li>
-<li><strong>Answers</strong> 表示回答区域的数量</li>
-<li><strong>Authoritative namesversers</strong> 表示授权区域的数量</li>
-<li><strong>Additional recoreds</strong> 表示附加区域的数量</li>
-</ul>
-</li>
-<li>
-<p><strong>问题</strong>（Questions）部分包括：</p>
-<ul>
-<li>查询的域名 8bit 为单位，长度不受限</li>
-<li>查询的协议类型 16bit</li>
-<li>查询的类 16bit</li>
-</ul>
-</li>
-<li>
-<p><strong>回答</strong>（Answers）/<strong>权威</strong>（Authoritys）/<strong>附加</strong>（Additionals）部分格式相同：</p>
-<ul>
-<li><strong>NAME</strong> 资源记录包含的域名.</li>
-<li><strong>TYPE</strong> 表示 DNS 协议的类型.</li>
-<li><strong>CLASS</strong> 表示 RDATA 的类.</li>
-<li><strong>TTL</strong> 4 字节无符号整数表示资源记录可以缓存的时间。0 代表只能被传输，但是不能被缓存。</li>
-<li><strong>RDLENGTH</strong> 2 个字节无符号整数表示 RDATA 的长度</li>
-<li><strong>RDATA</strong> 不定长字符串来表示记录，格式根 TYPE 和 CLASS 有关。比如，TYPE 是 A，CLASS 是 IN，那么 RDATA 就是一个 4 个字节的 ARPA 网络地址。</li>
-</ul>
-</li>
-</ul>
-<h2 id="rrs-说明">RRs 说明</h2>
-<p>每个 DNS 响应报文包含一条或者多条资源记录（resource records ，RRs），资源记录包含下列字段的 4 元组：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">（Name，Value，Type，TTL）
-</code></pre></td></tr></table>
-</div>
-</div><p>其中 TTL 表示生存时间，决定了资源记录应该从缓存中删除的时间。</p>
-<ul>
-<li>如果是 Type=A，Name 为主机名，Value 是对应的 IP 地址（如 bar.foo.com，xxx.xxx.xxx.xxx，A）</li>
-<li>如果是 Type=NS，Name 为一个域（如 foo.com），Value 是知道如何获取该域中的主机 IP 地址的权威 DNS 服务器的主机名（如 foo.com，dns.foo.com，NS）</li>
-<li>如果是 Type=CNAME，Value 是别名为 Name 的主机对应的规范主机名。（如 foo.com，relay1.bar.foo.com，CNAME）</li>
-<li>如果是 Type=MX，Value 是别名为 Name 的邮件服务器对应的规范主机名。（如 foo.com，mail.bar.foo.com，MX）</li>
-</ul>
-<h2 id="实例">实例</h2>
-<p>这里我们使用 WireShark 抓包实际看看，启动 WireShark 时可以设置捕获过滤器为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">udp port 53
-</code></pre></td></tr></table>
-</div>
-</div><p>这样我们只抓取通过 UDP 53 端口的 DNS 请求，此外如果需要仅仅显示特定的 DNS 查询，还可以进一步应用显示过滤器，例如这里我们仅查看<code>www.techkoala.top</code>的查询记录，则显示过滤器设置为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">dns.qry.name==www.techkoala.top
-</code></pre></td></tr></table>
-</div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-sub-html="<h2>16 进制表示</h2>">
-        
-    </a><figcaption class="image-caption">16 进制表示</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" data-sub-html="<h2>WireShark 中 DNS 请求报文及其结构</h2>">
-        
-    </a><figcaption class="image-caption">WireShark 中 DNS 请求报文及其结构</figcaption>
-    </figure>
-<p>可以看出</p>
-<ul>
-<li>标识为：0x0000cd13</li>
-<li>这是一个请求报文，仅在 Questions 部分有值</li>
-</ul>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" data-sub-html="<h2>标志部分各个字段的值</h2>">
-        
-    </a><figcaption class="image-caption">标志部分各个字段的值</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" data-sub-html="<h2>查询部分各个字段的值</h2>">
-        
-    </a><figcaption class="image-caption">查询部分各个字段的值</figcaption>
-    </figure>
-<p>同时 WireShark 还贴心的告诉我们，响应报文的在总抓取包的编号为 10，方便我们快速找到请求报文对应的响应报文。</p>
-<p><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" data-sub-html="<h2>16进制表示</h2>">
-        
-    </a><figcaption class="image-caption">16进制表示</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" data-sub-html="<h2>WireShark 中 DNS 响应报文及其结构</h2>">
-        
-    </a><figcaption class="image-caption">WireShark 中 DNS 响应报文及其结构</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" data-sub-html="<h2>标志部分各个字段的值</h2>">
-        
-    </a><figcaption class="image-caption">标志部分各个字段的值</figcaption>
-    </figure>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" data-sub-html="<h2>查询部分各个字段的值</h2>">
-        
-    </a><figcaption class="image-caption">查询部分各个字段的值</figcaption>
-    </figure></p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreferrer">DNS 请求报文详解</a></li>
+<li>[1] <a href="http://blog.csdn.net/dog250/article/details/6896949http://blog.csdn.net/dog250/article/details/6896949" target="_blank" rel="noopener noreffer">Netfilter,iptables/OpenVPN/TCP guard</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

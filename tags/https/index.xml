@@ -8,7 +8,7 @@
     <title>HTTPS 工作原理</title>
     <link>https://www.techkoala.top/how_https_works/</link>
     <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/how_https_works/</guid>
     <description><![CDATA[<blockquote>
 <p>理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理</p>
@@ -30,7 +30,7 @@
 <p>下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-sub-html="<h2>Credit: Kaushal Kumar Panday From: SSL Handshake and HTTPS Bindings on IIS</h2>">
         
-    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreferrer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreferrer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
+    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
     </figure>
 <p>其中 <code>Handshake protocol</code>，<code>Change Ciper Spec protocol</code> 和 <code>Alert protocol</code> 组成了 <code>SSL Handshaking Protocols</code>。</p>
 <p>HTTPS 和 HTTP 协议相比提供了:</p>
@@ -44,7 +44,7 @@
 <p>使用 RSA 算法的 SSL 握手过程是这样的:</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <ol>
 <li>[明文] 客户端发送随机数 client_random 和支持的加密方式列表</li>
@@ -158,7 +158,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
-<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
+<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreffer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
 <p>Susan 将证书发送给 Bob 后，Bob 通过 CA 证书的公钥验证证书签名。</p>
 <p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
 <p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
@@ -201,7 +201,7 @@
 <p>使用 <code>RSA</code> 算法的握手过程是这样的（已在总览中提到）</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <p>客户端和服务端在握手 hello 消息中明文交换了 <code>client_random</code> 和 <code>server_random</code> ，使用 <code>RSA</code> 公钥加密传输 <code>premaster secret</code> ，最后通过算法，客户端和服务端分别计算 <code>master secret</code>。其中，不直接使用 <code>premaster secret</code> 的原因是：保证 <code>secret</code> 的随机性不受任意一方的影响。</p>
 <p>除了使用 <code>RSA</code> 算法在公共信道交换密钥，还可以通过 <code>Diffie–Hellman</code> 算法。<code>Diffie–Hellman</code> 算法的原理是这样的</p>
@@ -212,7 +212,7 @@
 <p>使用 <code>Diffie–Hellman</code> 算法交换 <code>premaster secret</code> 的流程</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <h2 id="小结">小结</h2>
 <p><code>TLS Handshaking Protocols</code> 协商了 <code>TLS Record Protocol</code> 使用的算法和所需参数，并验证了服务端身份；</p>
@@ -321,24 +321,24 @@ partitioned as follows:
     </figure>
 <h2 id="拓展阅读">拓展阅读</h2>
 <ul>
-<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless</a></li>
-<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a></li>
+<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
+<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
 <li>Session resume</li>
 <li>证书 Revoke</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreferrer">TLS1.2 规范</a></p>
+<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2 规范</a></p>
 </li>
 <li>
-<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreferrer">PKI 规范</a></p>
+<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI 规范</a></p>
 </li>
 <li>
-<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreferrer">证书和数字签名</a></p>
+<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>
 </li>
 <li>
-<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">TLS Handshake</a></p>
+<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

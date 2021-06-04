@@ -8,7 +8,7 @@
     <title>Windows 网络连接优先级设置</title>
     <link>https://www.techkoala.top/windows_10_network_priority/</link>
     <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
@@ -103,10 +103,10 @@
 </div><h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreferrer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
+<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreffer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreferrer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
+<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreffer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

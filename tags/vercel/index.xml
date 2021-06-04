@@ -8,15 +8,15 @@
     <title>全站迁移到 Vercel</title>
     <link>https://www.techkoala.top/migrated_to_vercel/</link>
     <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/migrated_to_vercel/</guid>
     <description><![CDATA[<blockquote>
 <p>加速访问！</p>
 </blockquote>
 <h2 id="when">When</h2>
-<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a></p>
+<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></p>
 <h2 id="why">Why</h2>
-<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreferrer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
+<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
 <h2 id="what">What</h2>
 <p>下面是 <code>Vercel</code> 官网的介绍：</p>
 <div class="details admonition quote open">
@@ -79,7 +79,7 @@
     </div>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreferrer">Introduction to Vercel</a></li>
+<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

@@ -16,7 +16,7 @@
 
 - 文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版
 - 网页利用 [Hugo](https://gohugo.io/) 渲染生成
-- 页面由 [CodeIT](https://github.com/sunt-programator/CodeIT) 装点
+- 页面由 [DoIt](https://github.com/HEIGE-PCloud/DoIt) 装点
 - 托管在 [Vercel](https://vercel.com)
 - 套用了 [jsDelivr](https://www.jsdelivr.com/) 的 `CDN`
 

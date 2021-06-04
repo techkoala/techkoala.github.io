@@ -4,11 +4,206 @@
         <link>https://www.techkoala.top/tags/trick/</link>
         <description>Trick - 标签 - TechKoala - Input/Output </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/trick/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/trick/" rel="self" type="application/rss+xml" /><item>
+    <title>不容错过的 Bash 技巧</title>
+    <link>https://www.techkoala.top/bash_tricks/</link>
+    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate>
+    <author>TechKoala</author>
+    <guid>https://www.techkoala.top/bash_tricks/</guid>
+    <description><![CDATA[<blockquote>
+<p>一些提升 Bash 使用效率的小技巧</p>
+</blockquote>
+<p>在使用 Bash 时，我们通常使用 上 ↑ 下 ↓ 箭头来快速切换历史命令，然而一些重复的、不想要的命令（例如最简单的 ls，敲击比切换快，同时也会增加切换到别的命令的按键次数）也在历史记录里保存，这降低了切换的效率。下面一些技巧可以更好的帮助我们切换到想要的命令：</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>说明<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+</code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<h2 id="使用-histignore-移除历史记录中无意义的命令">使用 HISTIGNORE 移除历史记录中无意义的命令</h2>
+<p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+</code></pre></td></tr></table>
+</div>
+</div><p>另外：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+</code></pre></td></tr></table>
+</div>
+</div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
+<h2 id="设置历史记录数量">设置历史记录数量</h2>
+<p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="更有效的调用命令">更有效的调用命令</h2>
+<p><code>!!</code>可以调用前一行的命令。</p>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+/etc
+$ !!
+<span class="nb">pwd</span>
+/etc
+</code></pre></td></tr></table>
+</div>
+</div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+</code></pre></td></tr></table>
+</div>
+</div><p>就将使用 root 权限再次执行此前的命令。</p>
+<p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+$ mkdir temp
+$ touch temp/test
+$ !!
+touch temp/test
+$ <span class="nb">history</span> <span class="p">|</span> tail -4
+  <span class="m">179</span>  rm -r temp/
+  <span class="m">180</span>  mkdir temp
+  <span class="m">181</span>  touch temp/test
+  <span class="m">182</span>  touch temp/test
+  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
+$ !179:p
+rm -r temp
+$ !180
+touch temp/test
+</code></pre></td></tr></table>
+</div>
+</div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+</code></pre></td></tr></table>
+</div>
+</div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
+<p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
+<h2 id="使用--和--调用前一行参数">使用 !$ 和 !* 调用前一行参数</h2>
+<p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+$ vim !$
+vim items.txt
+$ cp !$ shopping.txt
+cp items.txt shopping.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数</p>
+<p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+$ touch !*
+touch /var/log/httpd/access.log /var/log/httpd/error.log
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用--替换前一行的匹配词">用 ^ 替换前一行的匹配词</h2>
+<p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+$ ^error^access
+rm /var/log/httpd/access.log
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://cyb.org.uk/2021/05/03/bash-productivity.html" target="_blank" rel="noopener noreffer">Be more productive with use of your BASH history</a></li>
+</ul>]]></description>
+</item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
     <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
@@ -145,13 +340,13 @@
 </div><p>To be continued&hellip;</p>
 <h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>如何高效搜索？</title>
     <link>https://www.techkoala.top/how_to_search/</link>
     <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/how_to_search/</guid>
     <description><![CDATA[<blockquote>
 <p>如何在互联网上高效地找到自己想要的东西？</p>
@@ -369,17 +564,17 @@ for (var i = 0; i &lt; elems.length; i++) {
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreferrer">dorking (how to find anything on the Internet)</a></p>
+<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreferrer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
+<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>Git Log 使用技巧</title>
     <link>https://www.techkoala.top/git_log/</link>
     <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/git_log/</guid>
     <description><![CDATA[<blockquote>
 <p>最常用的 Git Log 技巧令总结</p>
@@ -554,10 +749,10 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy" target="_blank" rel="noopener noreferrer">Ten Useful Git Log Tricks</a></p>
+<p>[1] <a href="https://hackernoon.com/ten-useful-git-log-tricks-7nt3yxy" target="_blank" rel="noopener noreffer">Ten Useful Git Log Tricks</a></p>
 </li>
 <li>
-<p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreferrer">Git 基础 - 查看提交历史</a></p>
+<p>[2] <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener noreffer">Git 基础 - 查看提交历史</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

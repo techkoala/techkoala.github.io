@@ -8,7 +8,7 @@
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
     <link>https://www.techkoala.top/frsshrss/</link>
     <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/frsshrss/</guid>
     <description><![CDATA[<blockquote>
 <p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
@@ -165,13 +165,13 @@ volumes:
 </div>
 </div><h2 id="参考">参考</h2>
 <ul>
-<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreffer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
 </ul>]]></description>
 </item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
     <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>

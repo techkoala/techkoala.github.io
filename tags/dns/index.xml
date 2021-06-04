@@ -8,7 +8,7 @@
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
     <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
@@ -77,17 +77,17 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>DNS 报文详解</title>
     <link>https://www.techkoala.top/dns/</link>
     <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/dns/</guid>
     <description><![CDATA[<blockquote>
 <p>本文主要讲解 DNS 的报文结构</p>
@@ -242,13 +242,13 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreferrer">DNS 请求报文详解</a></li>
+<li>[2] <a href="https://juejin.im/post/6844903582441963527" target="_blank" rel="noopener noreffer">DNS 请求报文详解</a></li>
 </ul>]]></description>
 </item><item>
     <title>常用 DNS 服务器</title>
     <link>https://www.techkoala.top/dns_list/</link>
     <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/dns_list/</guid>
     <description><![CDATA[<blockquote>
 <p>列举国内外常见的 DNS，方便替换使用</p>
@@ -952,17 +952,17 @@ opkg install dnscrypt-proxy2
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreferrer">全球免费公共 dns 解析服务器 ip 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
+<p>[1] <a href="https://www.iplaysoft.com/public-dns.html" target="_blank" rel="noopener noreffer">全球免费公共 dns 解析服务器 ip 地址列表推荐 (解决无法上网/加速/防劫持)</a></p>
 </li>
 <li>
-<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreferrer">公共 dns 服务器 ip 地址</a></p>
+<p>[2] <a href="http://ip.cn/dns.html" target="_blank" rel="noopener noreffer">公共 dns 服务器 ip 地址</a></p>
 </li>
 </ul>]]></description>
 </item><item>
     <title>深入浅出 DNS 解析</title>
     <link>https://www.techkoala.top/dns_update/</link>
     <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>TechKoala</author>
     <guid>https://www.techkoala.top/dns_update/</guid>
     <description><![CDATA[<blockquote>
 <p>DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新后必须等待 48 小时才能生效吗？为什么有人看到的是新 IP，有人看到的是旧 IP？</p>
@@ -1209,13 +1209,13 @@ examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 <h2 id="参考">参考</h2>
 <ul>
 <li>
-<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreferrer">What happens when you update your DNS?</a></p>
+<p>[1] <a href="https://jvNS.ca/blog/how-updating-dNS-works/" target="_blank" rel="noopener noreffer">What happens when you update your DNS?</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreferrer">unbound’s source code</a></p>
+<p>[2] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">unbound’s source code</a></p>
 </li>
 <li>
-<p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreferrer">iana root files</a></p>
+<p>[3] <a href="https://github.com/NLnetLabs/unbound/blob/6e0756e819779d9cc2a14741b501cadffe446c93/iterator/iter_hints.c#L131" target="_blank" rel="noopener noreffer">iana root files</a></p>
 </li>
 </ul>]]></description>
 </item></channel>
