@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>WirelessCommunication - 分类 - TechKoala - Input/Output </title>
+        <title>WirelessCommunication - 分类 - TechKoala - Input/Output</title>
         <link>https://www.techkoala.top/categories/wirelesscommunication/</link>
-        <description>WirelessCommunication - 分类 - TechKoala - Input/Output </description>
+        <description>WirelessCommunication - 分类 - TechKoala - Input/Output</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
     <title>LTE 系列：功率控制</title>
