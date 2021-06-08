@@ -5,12 +5,17 @@
 
 <!--more-->
 
-## 下载播放列表
+## 下载播放列表视频+音频
 
 Windows
 
 ```cmd
-youtube-dl -o D:\%(title)s.%(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx 
+youtube-dl.exe -o "D:\xxxxxx\%(title)s.%(ext)s" -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+```
+
+## 仅下载播放列表音频
+```cmd
+youtububedl.exe -o D:\%(title)s.%(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
 
 ```
 
@@ -24,3 +29,4 @@ youtube-dl -o D:\%(title)s.%(ext)s -f bestaudio --extract-audio --audio-format m
 --playstart-end 2
 -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'             #设置最大下载分辨率
 ```
+

@@ -10,6 +10,7 @@
 目前服务器上运行以下服务：
 
 - `Trojan`
+- `Xray`
 - `frp` + `Bitwarden` 实现内网穿透访问
 - `FreshRSS`
 
@@ -145,15 +146,19 @@ stream {
         xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
         xxx.techkoala.top trojan;           # Trojan 域名
         xxx.techkoala.top rss;              # FreshRSS 域名
+        xxx.techkoala.top xrls;              # Xray 域名
     }
     upstream frps-bitwarden {
-        server 127.0.0.1:8080;        # Bitwarden的 frps 端口
+        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
     }
     upstream trojan {
-        server 127.0.0.1:4443;        # Trojan 本地监听端口
+        server 127.0.0.1:4443;         # Trojan 本地监听端口
     }
     upstream rss {
-        server 127.0.0.1:39955;       # FreshRSS 本地监听端口
+        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
+    }
+    upstream xtls {
+        server 127.0.0.1:8443;       # Xray 本地监听端口
     }
     server {
         listen 443 reuseport;
@@ -263,7 +268,7 @@ server {
     listen 127.0.0.1:80 default_server;
     server_name xxx.techkoala.top;             # 自己的域名
     location / {
-        proxy_pass https://www.aliexpress.com; # 伪装的网站，这里是阿里速卖通
+        proxy_pass https://www.digitalocean.com; # 伪装的网站
     }
 }
 server {
@@ -370,6 +375,81 @@ server {
 
 ```
 ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+```
+
+### Xray
+
+#### Xray Nginx 配置
+
+```
+server {
+        listen 80;
+        server_name xxx.techkoala.top;
+        if ($host = xxxx.techkoala.top) {
+                return 301 https://$host$request_uri;
+        }
+        return 404;
+}
+
+server {
+        listen 127.0.0.1:23333;
+        server_name xxxx.techkoala.top;
+        location / {
+                proxy_pass https://www.digitalocean.com; # 伪装的网站
+        }
+}
+```
+
+#### Xray 配置
+
+```
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1", # 仅监听在本地防止探测到下面的 8443 端口
+            "port": 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "7f46753a-6a4b-4284-94c0-760340f96f1e", # 填写你的UUID
+                        "flow": "xtls-rprx-direct",
+                        "level": 0
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": "23333" # 回落站点的端口号，与 Xray Nginx 配置一致
+                    }
+                 ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/usr/local/etc/xray/fullchain.pem", # 你的域名证书
+                            "keyFile": "/usr/local/etc/xray/privkey.pem" # 你的证书私钥
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
+}
 ```
 
 ## 防火墙设置

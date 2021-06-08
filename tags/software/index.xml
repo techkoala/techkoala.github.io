@@ -176,15 +176,24 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
-<h2 id="下载播放列表">下载播放列表</h2>
+<h2 id="下载播放列表视频音频">下载播放列表视频+音频</h2>
 <p>Windows</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx 
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
 
 </code></pre></td></tr></table>
 </div>
@@ -224,6 +233,7 @@ volumes:
 <p>目前服务器上运行以下服务：</p>
 <ul>
 <li><code>Trojan</code></li>
+<li><code>Xray</code></li>
 <li><code>frp</code> + <code>Bitwarden</code> 实现内网穿透访问</li>
 <li><code>FreshRSS</code></li>
 </ul>
@@ -519,6 +529,10 @@ http {
 </span><span class="lnt">84
 </span><span class="lnt">85
 </span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
@@ -536,15 +550,19 @@ stream {
         xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
         xxx.techkoala.top trojan;           # Trojan 域名
         xxx.techkoala.top rss;              # FreshRSS 域名
+        xxx.techkoala.top xrls;              # Xray 域名
     }
     upstream frps-bitwarden {
-        server 127.0.0.1:8080;        # Bitwarden的 frps 端口
+        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
     }
     upstream trojan {
-        server 127.0.0.1:4443;        # Trojan 本地监听端口
+        server 127.0.0.1:4443;         # Trojan 本地监听端口
     }
     upstream rss {
-        server 127.0.0.1:39955;       # FreshRSS 本地监听端口
+        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
+    }
+    upstream xtls {
+        server 127.0.0.1:8443;       # Xray 本地监听端口
     }
     server {
         listen 443 reuseport;
@@ -692,7 +710,7 @@ server {
     listen 127.0.0.1:80 default_server;
     server_name xxx.techkoala.top;             # 自己的域名
     location / {
-        proxy_pass https://www.aliexpress.com; # 伪装的网站，这里是阿里速卖通
+        proxy_pass https://www.digitalocean.com; # 伪装的网站
     }
 }
 server {
@@ -876,6 +894,147 @@ server {
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="xray">Xray</h3>
+<h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+        listen 80;
+        server_name xxx.techkoala.top;
+        if ($host = xxxx.techkoala.top) {
+                return 301 https://$host$request_uri;
+        }
+        return 404;
+}
+
+server {
+        listen 127.0.0.1:23333;
+        server_name xxxx.techkoala.top;
+        location / {
+                proxy_pass https://www.digitalocean.com; # 伪装的网站
+        }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="xray-配置">Xray 配置</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+    &#34;log&#34;: {
+        &#34;loglevel&#34;: &#34;warning&#34;
+    },
+    &#34;inbounds&#34;: [
+        {
+            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
+            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
+            &#34;protocol&#34;: &#34;vless&#34;,
+            &#34;settings&#34;: {
+                &#34;clients&#34;: [
+                    {
+                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
+                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
+                        &#34;level&#34;: 0
+                    }
+                ],
+                &#34;decryption&#34;: &#34;none&#34;,
+                &#34;fallbacks&#34;: [
+                    {
+                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
+                    }
+                 ]
+            },
+            &#34;streamSettings&#34;: {
+                &#34;network&#34;: &#34;tcp&#34;,
+                &#34;security&#34;: &#34;xtls&#34;,
+                &#34;xtlsSettings&#34;: {
+                    &#34;alpn&#34;: [
+                        &#34;http/1.1&#34;
+                    ],
+                    &#34;certificates&#34;: [
+                        {
+                            &#34;certificateFile&#34;: &#34;/usr/local/etc/xray/fullchain.pem&#34;, # 你的域名证书
+                            &#34;keyFile&#34;: &#34;/usr/local/etc/xray/privkey.pem&#34; # 你的证书私钥
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    &#34;outbounds&#34;: [
+        {
+            &#34;protocol&#34;: &#34;freedom&#34;
+        }
+    ]
+}
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="防火墙设置">防火墙设置</h2>
