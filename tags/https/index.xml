@@ -288,23 +288,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">To generate the key material, compute
-
-  key_block = PRF (SecurityParameters.master_secret,
-                  &#34;key expansion&#34;,
-                  SecurityParameters.`server_random` +
-                  SecurityParameters.`client_random`);
-
-until enough output has been generated.  Then, the key_block is
-partitioned as follows:
-
-  client_write_MAC_key [SecurityParameters.mac_key_length]
-  server_write_MAC_key [SecurityParameters.mac_key_length]
-  client_write_key [SecurityParameters.enc_key_length]
-  server_write_key [SecurityParameters.enc_key_length]
-  client_write_IV [SecurityParameters.fixed_iv_length]
-  server_write_IV [SecurityParameters.fixed_iv_length]
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">To</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">material</span><span class="p">,</span><span class="w"> </span><span class="n">compute</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="n">key_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">PRF</span><span class="w"> </span><span class="p">(</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">master_secret</span><span class="p">,</span><span class="w">
+</span><span class="w">                  </span><span class="s2">&#34;key expansion&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">                  </span><span class="n">SecurityParameters</span><span class="p">.</span><span class="o">`</span><span class="n">server_random</span><span class="o">`</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="w">                  </span><span class="n">SecurityParameters</span><span class="p">.</span><span class="o">`</span><span class="n">client_random</span><span class="o">`</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">until</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">generated</span><span class="p">.</span><span class="w">  </span><span class="k">Then</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">key_block</span><span class="w"> </span><span class="k">is</span><span class="w">
+</span><span class="w"></span><span class="n">partitioned</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">follows</span><span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="n">client_write_MAC_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">mac_key_length</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="n">server_write_MAC_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">mac_key_length</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="n">client_write_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">enc_key_length</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="n">server_write_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">enc_key_length</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="n">client_write_IV</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">fixed_iv_length</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="n">server_write_IV</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">fixed_iv_length</span><span class="p">]</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition quote open">
         <div class="details-summary admonition-title">
