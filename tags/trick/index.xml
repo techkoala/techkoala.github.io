@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/trick/" rel="self" type="application/rss+xml" /><item>
     <title>不容错过的 Bash 技巧</title>
     <link>https://www.techkoala.top/bash_tricks/</link>
-    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/bash_tricks/</guid>
+    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -167,7 +167,7 @@ $ cp !$ shopping.txt
 cp items.txt shopping.txt
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数</p>
+</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数。</p>
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -202,9 +202,9 @@ rm /var/log/httpd/access.log
 </item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
-    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/vim_tips/</guid>
+    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
@@ -345,9 +345,9 @@ rm /var/log/httpd/access.log
 </item><item>
     <title>如何高效搜索？</title>
     <link>https://www.techkoala.top/how_to_search/</link>
-    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/how_to_search/</guid>
+    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/how_to_search/</guid>
     <description><![CDATA[<blockquote>
 <p>如何在互联网上高效地找到自己想要的东西？</p>
 </blockquote>
@@ -573,9 +573,9 @@ for (var i = 0; i &lt; elems.length; i++) {
 </item><item>
     <title>Git Log 使用技巧</title>
     <link>https://www.techkoala.top/git_log/</link>
-    <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/git_log/</guid>
+    <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/git_log/</guid>
     <description><![CDATA[<blockquote>
 <p>最常用的 Git Log 技巧令总结</p>
 </blockquote>

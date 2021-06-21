@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/youtube-dl/" rel="self" type="application/rss+xml" /><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
-    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>

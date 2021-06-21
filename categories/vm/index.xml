@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 20 May 2020 15:30:24 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/vm/" rel="self" type="application/rss+xml" /><item>
     <title>Hyper-V 桥接网络</title>
     <link>https://www.techkoala.top/hyper-v_bridging/</link>
-    <pubDate>Wed, 20 May 2020 15:30:24 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/hyper-v_bridging/</guid>
+    <pubDate>Wed, 20 May 2020 15:30:24 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/hyper-v_bridging/</guid>
     <description><![CDATA[<blockquote>
 <p>Hyper-V 桥接模式</p>
 </blockquote>
@@ -43,9 +43,9 @@
 </item><item>
     <title>PVE 安装 Q&amp;A</title>
     <link>https://www.techkoala.top/pve_q_a/</link>
-    <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/pve_q_a/</guid>
+    <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/pve_q_a/</guid>
     <description><![CDATA[<blockquote>
 <p>PVE 安装过程中遇到的问题以及解决方法</p>
 </blockquote>
@@ -86,9 +86,9 @@
 </item><item>
     <title>Virtualbox 共享文件夹权限问题</title>
     <link>https://www.techkoala.top/virtualbox_file_share_issue/</link>
-    <pubDate>Wed, 10 Oct 2018 13:26:54 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/virtualbox_file_share_issue/</guid>
+    <pubDate>Wed, 10 Oct 2018 13:26:54 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/virtualbox_file_share_issue/</guid>
     <description><![CDATA[<blockquote>
 <p>一行命令解决 Virtualbox 共享文件夹权限问题</p>
 </blockquote>

@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/5g/" rel="self" type="application/rss+xml" /><item>
     <title>5G 将是一个彻底的失败</title>
     <link>https://www.techkoala.top/5g_will_be_a_complete_failure/</link>
-    <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
+    <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
     <description><![CDATA[<blockquote>
 <p>为什么说 5G 将是一个彻底的失败？</p>
 </blockquote>
@@ -151,9 +151,9 @@
 </item><item>
     <title>5G NR 系列：波束赋形</title>
     <link>https://www.techkoala.top/beamforming/</link>
-    <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/beamforming/</guid>
+    <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/beamforming/</guid>
     <description><![CDATA[<blockquote>
 <p>什么是波束赋形？波束赋形的基本原理是什么？5G 怎样实现波束赋形？</p>
 </blockquote>
@@ -315,9 +315,9 @@
 </item><item>
     <title>5G NR 系列：如何做到空口 &lt;1ms 的延迟</title>
     <link>https://www.techkoala.top/5g_time_delay/</link>
-    <pubDate>Mon, 12 Aug 2019 23:14:44 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/5g_time_delay/</guid>
+    <pubDate>Mon, 12 Aug 2019 23:14:44 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/5g_time_delay/</guid>
     <description><![CDATA[<blockquote>
 <p>无线网络中的时延是如何一步步进化到 5G 中的 &lt;1ms ？</p>
 </blockquote>

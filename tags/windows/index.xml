@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
     <title>Windows 网络连接优先级设置</title>
     <link>https://www.techkoala.top/windows_10_network_priority/</link>
-    <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
+    <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
 </blockquote>

@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/nginx/" rel="self" type="application/rss+xml" /><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
-    <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/nginx_port_reuse/</guid>
+    <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>

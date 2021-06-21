@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/https/" rel="self" type="application/rss+xml" /><item>
     <title>HTTPS 工作原理</title>
     <link>https://www.techkoala.top/how_https_works/</link>
-    <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/how_https_works/</guid>
+    <pubDate>Sun, 16 Aug 2020 21:52:26 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/how_https_works/</guid>
     <description><![CDATA[<blockquote>
 <p>理解 HTTP 协议，对称和非对称加密，了解 HTTPS 协议的工作原理</p>
 </blockquote>

@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/vim/" rel="self" type="application/rss+xml" /><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
-    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/vim_tips/</guid>
+    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>

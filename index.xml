@@ -9,9 +9,9 @@
         <item>
     <title>不容错过的 Bash 技巧</title>
     <link>https://www.techkoala.top/bash_tricks/</link>
-    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/bash_tricks/</guid>
+    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -169,7 +169,7 @@ $ cp !$ shopping.txt
 cp items.txt shopping.txt
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数</p>
+</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数。</p>
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -204,9 +204,9 @@ rm /var/log/httpd/access.log
 </item><item>
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
     <link>https://www.techkoala.top/frsshrss/</link>
-    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/frsshrss/</guid>
+    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/frsshrss/</guid>
     <description><![CDATA[<blockquote>
 <p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
 </blockquote>
@@ -367,9 +367,9 @@ volumes:
 </item><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
-    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
@@ -420,9 +420,9 @@ volumes:
 </item><item>
     <title>持久化 Gist file raw 链接</title>
     <link>https://www.techkoala.top/permalink_gist_raw_file/</link>
-    <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/permalink_gist_raw_file/</guid>
+    <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/permalink_gist_raw_file/</guid>
     <description><![CDATA[<blockquote>
 <p>如何持久化 Gist file raw 链接地址？</p>
 </blockquote>
@@ -447,9 +447,9 @@ volumes:
 </item><item>
     <title>Windows 网络连接优先级设置</title>
     <link>https://www.techkoala.top/windows_10_network_priority/</link>
-    <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/windows_10_network_priority/</guid>
+    <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
 </blockquote>
@@ -552,9 +552,9 @@ volumes:
 </item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
-    <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/nginx_port_reuse/</guid>
+    <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
@@ -1371,9 +1371,9 @@ server {
 </item><item>
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
-    <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/openwrt_doh/</guid>
+    <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
 </blockquote>
@@ -1450,9 +1450,9 @@ opkg install dnscrypt-proxy2
 </item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
-    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/vim_tips/</guid>
+    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
@@ -1593,9 +1593,9 @@ opkg install dnscrypt-proxy2
 </item><item>
     <title>LTE 系列：功率控制</title>
     <link>https://www.techkoala.top/lte_power_control/</link>
-    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_power_control/</guid>
+    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_power_control/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
 </blockquote>
@@ -1671,9 +1671,9 @@ opkg install dnscrypt-proxy2
 </item><item>
     <title>告知你不为人知的 UDP —— 疑难杂症和使用</title>
     <link>https://www.techkoala.top/udp_intractable_diseases/</link>
-    <pubDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/udp_intractable_diseases/</guid>
+    <pubDate>Mon, 26 Oct 2020 11:06:30 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/udp_intractable_diseases/</guid>
     <description><![CDATA[<blockquote>
 <p>UDP 说来简单，但是一些细节你都清楚吗？</p>
 </blockquote>

@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 May 2020 21:54:02 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/hugo/" rel="self" type="application/rss+xml" /><item>
     <title>Hugo 搭配 LoveIt 技巧总结</title>
     <link>https://www.techkoala.top/hugo_loveit_q_a/</link>
-    <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
+    <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案</p>
 </blockquote>

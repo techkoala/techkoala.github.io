@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/dns/" rel="self" type="application/rss+xml" /><item>
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
-    <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/openwrt_doh/</guid>
+    <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
 </blockquote>
@@ -86,9 +86,9 @@ opkg install dnscrypt-proxy2
 </item><item>
     <title>DNS 报文详解</title>
     <link>https://www.techkoala.top/dns/</link>
-    <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/dns/</guid>
+    <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/dns/</guid>
     <description><![CDATA[<blockquote>
 <p>本文主要讲解 DNS 的报文结构</p>
 </blockquote>
@@ -247,9 +247,9 @@ opkg install dnscrypt-proxy2
 </item><item>
     <title>常用 DNS 服务器</title>
     <link>https://www.techkoala.top/dns_list/</link>
-    <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/dns_list/</guid>
+    <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/dns_list/</guid>
     <description><![CDATA[<blockquote>
 <p>列举国内外常见的 DNS，方便替换使用</p>
 </blockquote>
@@ -961,9 +961,9 @@ opkg install dnscrypt-proxy2
 </item><item>
     <title>深入浅出 DNS 解析</title>
     <link>https://www.techkoala.top/dns_update/</link>
-    <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/dns_update/</guid>
+    <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/dns_update/</guid>
     <description><![CDATA[<blockquote>
 <p>DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新后必须等待 48 小时才能生效吗？为什么有人看到的是新 IP，有人看到的是旧 IP？</p>
 </blockquote>

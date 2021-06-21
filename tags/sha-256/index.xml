@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/sha-256/" rel="self" type="application/rss+xml" /><item>
     <title>逐步详解 SHA-2 算法（以 SHA-256 为例）</title>
     <link>https://www.techkoala.top/learn_sha_2_step_by_step/</link>
-    <pubDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/learn_sha_2_step_by_step/</guid>
+    <pubDate>Tue, 28 Jul 2020 16:19:03 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/learn_sha_2_step_by_step/</guid>
     <description><![CDATA[<blockquote>
 <p>最常见的 SHA-2 算法是如何实现的？本文逐步为你讲解。</p>
 </blockquote>

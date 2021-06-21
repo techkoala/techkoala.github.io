@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 May 2021 23:25:46 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/software/" rel="self" type="application/rss+xml" /><item>
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
     <link>https://www.techkoala.top/frsshrss/</link>
-    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/frsshrss/</guid>
+    <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/frsshrss/</guid>
     <description><![CDATA[<blockquote>
 <p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
 </blockquote>
@@ -170,9 +170,9 @@ volumes:
 </item><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
-    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
@@ -223,9 +223,9 @@ volumes:
 </item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
     <link>https://www.techkoala.top/nginx_port_reuse/</link>
-    <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/nginx_port_reuse/</guid>
+    <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
@@ -1042,9 +1042,9 @@ server {
 </item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
-    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/vim_tips/</guid>
+    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
@@ -1185,9 +1185,9 @@ server {
 </item><item>
     <title>网络分析工具：NetCat</title>
     <link>https://www.techkoala.top/netcat/</link>
-    <pubDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/netcat/</guid>
+    <pubDate>Wed, 19 Aug 2020 23:15:35 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/netcat/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" data-sub-html="<h2>网络瑞士军刀 —— NetCat</h2>">
         
     </a><figcaption class="image-caption">网络瑞士军刀 —— NetCat</figcaption>
@@ -1469,9 +1469,9 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </item><item>
     <title>利用 Netlify 搭建 Koodo Reader</title>
     <link>https://www.techkoala.top/reader/</link>
-    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/reader/</guid>
+    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/reader/</guid>
     <description><![CDATA[<blockquote>
 <p>搭建自己的在线 EPUB 阅读器</p>
 </blockquote>
@@ -1563,9 +1563,9 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </item><item>
     <title>网络测试工具：iPerf</title>
     <link>https://www.techkoala.top/iperf/</link>
-    <pubDate>Fri, 07 Aug 2020 17:45:55 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/iperf/</guid>
+    <pubDate>Fri, 07 Aug 2020 17:45:55 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/iperf/</guid>
     <description><![CDATA[<blockquote>
 <p>TCP、UDP 和 SCTP 的终极速度测试工具</p>
 </blockquote>
@@ -1733,9 +1733,9 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </item><item>
     <title>文件传输系列：SFTP</title>
     <link>https://www.techkoala.top/sftp/</link>
-    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/sftp/</guid>
+    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/sftp/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 的继承者</p>
 </blockquote>
@@ -1797,9 +1797,9 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </item><item>
     <title>文件传输系列：rsync</title>
     <link>https://www.techkoala.top/rsync/</link>
-    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/rsync/</guid>
+    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/rsync/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 的另一个绝佳替选</p>
 </blockquote>
@@ -2054,9 +2054,9 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </item><item>
     <title>文件传输系列：SCP</title>
     <link>https://www.techkoala.top/scp/</link>
-    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/scp/</guid>
+    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/scp/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>

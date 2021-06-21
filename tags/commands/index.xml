@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/commands/" rel="self" type="application/rss+xml" /><item>
     <title>不容错过的 Bash 技巧</title>
     <link>https://www.techkoala.top/bash_tricks/</link>
-    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/bash_tricks/</guid>
+    <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -167,7 +167,7 @@ $ cp !$ shopping.txt
 cp items.txt shopping.txt
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数</p>
+</div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数。</p>
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -202,9 +202,9 @@ rm /var/log/httpd/access.log
 </item><item>
     <title>Linux 系统信息查询</title>
     <link>https://www.techkoala.top/system_info/</link>
-    <pubDate>Sun, 13 Sep 2020 22:35:06 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/system_info/</guid>
+    <pubDate>Sun, 13 Sep 2020 22:35:06 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/system_info/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 Linux 系统信息查询命令</p>
 </blockquote>
@@ -357,9 +357,9 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 </item><item>
     <title>查看 Linux 进程信息</title>
     <link>https://www.techkoala.top/process/</link>
-    <pubDate>Mon, 02 Mar 2020 17:03:48 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/process/</guid>
+    <pubDate>Mon, 02 Mar 2020 17:03:48 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/process/</guid>
     <description><![CDATA[<blockquote>
 <p>Linux 中如何查看进程信息？</p>
 </blockquote>
@@ -709,9 +709,9 @@ $ ps axjf
 </item><item>
     <title>使用 df 和 du 查看存储信息</title>
     <link>https://www.techkoala.top/command_df_du/</link>
-    <pubDate>Thu, 10 Oct 2019 13:36:09 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/command_df_du/</guid>
+    <pubDate>Thu, 10 Oct 2019 13:36:09 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/command_df_du/</guid>
     <description><![CDATA[<blockquote>
 <p>Linux 中使用 df 和 du 查看磁盘以及文件存储信息的</p>
 </blockquote>

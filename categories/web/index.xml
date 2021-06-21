@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/web/" rel="self" type="application/rss+xml" /><item>
     <title>全站迁移到 Vercel</title>
     <link>https://www.techkoala.top/migrated_to_vercel/</link>
-    <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/migrated_to_vercel/</guid>
+    <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/migrated_to_vercel/</guid>
     <description><![CDATA[<blockquote>
 <p>加速访问！</p>
 </blockquote>
@@ -84,9 +84,9 @@
 </item><item>
     <title>如何高效搜索？</title>
     <link>https://www.techkoala.top/how_to_search/</link>
-    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/how_to_search/</guid>
+    <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/how_to_search/</guid>
     <description><![CDATA[<blockquote>
 <p>如何在互联网上高效地找到自己想要的东西？</p>
 </blockquote>
@@ -312,9 +312,9 @@ for (var i = 0; i &lt; elems.length; i++) {
 </item><item>
     <title>利用 Netlify 搭建 Koodo Reader</title>
     <link>https://www.techkoala.top/reader/</link>
-    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/reader/</guid>
+    <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/reader/</guid>
     <description><![CDATA[<blockquote>
 <p>搭建自己的在线 EPUB 阅读器</p>
 </blockquote>
@@ -406,9 +406,9 @@ for (var i = 0; i &lt; elems.length; i++) {
 </item><item>
     <title>Hugo 搭配 LoveIt 技巧总结</title>
     <link>https://www.techkoala.top/hugo_loveit_q_a/</link>
-    <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
+    <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案</p>
 </blockquote>

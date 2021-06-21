@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/software/" rel="self" type="application/rss+xml" /><item>
     <title>常用 youtube-dl 命令</title>
     <link>https://www.techkoala.top/youtube-dl_tricks/</link>
-    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
@@ -60,9 +60,9 @@
 </item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
-    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/vim_tips/</guid>
+    <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
@@ -203,9 +203,9 @@
 </item><item>
     <title>文件传输系列：SFTP</title>
     <link>https://www.techkoala.top/sftp/</link>
-    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/sftp/</guid>
+    <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/sftp/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 的继承者</p>
 </blockquote>
@@ -267,9 +267,9 @@
 </item><item>
     <title>文件传输系列：rsync</title>
     <link>https://www.techkoala.top/rsync/</link>
-    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/rsync/</guid>
+    <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/rsync/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 的另一个绝佳替选</p>
 </blockquote>
@@ -524,9 +524,9 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </item><item>
     <title>文件传输系列：SCP</title>
     <link>https://www.techkoala.top/scp/</link>
-    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/scp/</guid>
+    <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/scp/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>
@@ -730,9 +730,9 @@ Executed in  215.68 millis	fish       	external
 </item><item>
     <title>Huginn（Docker）数据备份与恢复</title>
     <link>https://www.techkoala.top/huginn_backup/</link>
-    <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/huginn_backup/</guid>
+    <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/huginn_backup/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-sub-html="<h2>Huginn</h2>">
         
     </a><figcaption class="image-caption">Huginn</figcaption>

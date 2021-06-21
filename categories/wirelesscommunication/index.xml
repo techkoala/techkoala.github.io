@@ -7,9 +7,9 @@
             <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
     <title>LTE 系列：功率控制</title>
     <link>https://www.techkoala.top/lte_power_control/</link>
-    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_power_control/</guid>
+    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_power_control/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
 </blockquote>
@@ -85,9 +85,9 @@
 </item><item>
     <title>5G 将是一个彻底的失败</title>
     <link>https://www.techkoala.top/5g_will_be_a_complete_failure/</link>
-    <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
+    <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
     <description><![CDATA[<blockquote>
 <p>为什么说 5G 将是一个彻底的失败？</p>
 </blockquote>
@@ -229,9 +229,9 @@
 </item><item>
     <title>5G NR 系列：波束赋形</title>
     <link>https://www.techkoala.top/beamforming/</link>
-    <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/beamforming/</guid>
+    <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/beamforming/</guid>
     <description><![CDATA[<blockquote>
 <p>什么是波束赋形？波束赋形的基本原理是什么？5G 怎样实现波束赋形？</p>
 </blockquote>
@@ -393,9 +393,9 @@
 </item><item>
     <title>3GPP Releases</title>
     <link>https://www.techkoala.top/3gpp_releases/</link>
-    <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/3gpp_releases/</guid>
+    <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/3gpp_releases/</guid>
     <description><![CDATA[<blockquote>
 <p>Meanings of 3GPP releases</p>
 </blockquote>
@@ -518,9 +518,9 @@
 </item><item>
     <title>LTE 系列：物理信号</title>
     <link>https://www.techkoala.top/lte_physical_signals/</link>
-    <pubDate>Thu, 20 Feb 2020 21:02:32 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_physical_signals/</guid>
+    <pubDate>Thu, 20 Feb 2020 21:02:32 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_physical_signals/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理信号详解</p>
 </blockquote>
@@ -731,9 +731,9 @@
 </item><item>
     <title>LTE 系列：多天线技术（MIMO）</title>
     <link>https://www.techkoala.top/lte_mimo/</link>
-    <pubDate>Sat, 01 Feb 2020 20:33:29 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_mimo/</guid>
+    <pubDate>Sat, 01 Feb 2020 20:33:29 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_mimo/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 多天线技术（MIMO）详解</p>
 </blockquote>
@@ -821,9 +821,9 @@
 </item><item>
     <title>LTE 系列：编码、复用和交织</title>
     <link>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</link>
-    <pubDate>Fri, 10 Jan 2020 20:54:23 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</guid>
+    <pubDate>Fri, 10 Jan 2020 20:54:23 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 数据的编码、复用和交织</p>
 </blockquote>
@@ -888,9 +888,9 @@
 </item><item>
     <title>LTE 系列：共享信道传输与接收</title>
     <link>https://www.techkoala.top/lte_transmission_and_reception/</link>
-    <pubDate>Fri, 22 Nov 2019 21:14:52 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_transmission_and_reception/</guid>
+    <pubDate>Fri, 22 Nov 2019 21:14:52 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_transmission_and_reception/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要</p>
 </blockquote>
@@ -948,9 +948,9 @@
 </item><item>
     <title>LTE 系列：多址方式</title>
     <link>https://www.techkoala.top/lte_multiple_access/</link>
-    <pubDate>Sun, 20 Oct 2019 20:45:06 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_multiple_access/</guid>
+    <pubDate>Sun, 20 Oct 2019 20:45:06 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_multiple_access/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 多址方式详解</p>
 </blockquote>
@@ -983,9 +983,9 @@
 </item><item>
     <title>LTE 系列：小区搜索和下行同步</title>
     <link>https://www.techkoala.top/lte_cell_synchronize/</link>
-    <pubDate>Sun, 15 Sep 2019 21:46:08 &#43;0800</pubDate>
-    <author>TechKoala</author>
-    <guid>https://www.techkoala.top/lte_cell_synchronize/</guid>
+    <pubDate>Sun, 15 Sep 2019 21:46:08 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/lte_cell_synchronize/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要综列</p>
 </blockquote>
