@@ -12,8 +12,8 @@ SCP 的另一个绝佳替选
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/rsync/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-08-05T20:58:00&#43;08:00" />
-<meta property="article:modified_time" content="2020-09-12T15:13:04&#43;08:00" />
+<meta property="article:published_time" content="2020-08-05T20:58:00+08:00" />
+<meta property="article:modified_time" content="2020-09-12T15:13:04+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="文件传输系列：rsync"/>
@@ -197,20 +197,20 @@ SCP 的另一个绝佳替选
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
 </code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
@@ -227,7 +227,7 @@ SCP 的另一个绝佳替选
 <h2 id="使用-rsync">使用 rsync</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -235,7 +235,7 @@ SCP 的另一个绝佳替选
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
@@ -267,7 +267,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>可用选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -330,7 +330,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
 -q, --quiet 精简输出模式。
 -C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
 -c, --checksum 打开校验开关，强制对文件传输进行校验。

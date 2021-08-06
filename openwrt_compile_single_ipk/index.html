@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/openwrt_compile_single_ipk/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-10-09T15:57:29&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-09T16:37:48&#43;08:00" />
+<meta property="article:published_time" content="2020-10-09T15:57:29+08:00" />
+<meta property="article:modified_time" content="2020-10-09T16:37:48+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="单独编译 OpenWRT ipk 插件"/>
@@ -167,57 +167,57 @@
 <h3 id="存放路径">存放路径</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="配置">配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入对应的子菜单中找到对应插件按 <M> 表示选中插件，但不编译进固件。</p>
 <h3 id="编译">编译</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>xxxxx 就是你需要单独编译的程序。</p>
 <h3 id="ipk-生成路径">ipk 生成路径</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="上传-ipk-至路由器">上传 ipk 至路由器</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="安装">安装</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">

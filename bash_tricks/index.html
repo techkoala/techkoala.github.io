@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/bash_tricks/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-04T11:06:47&#43;08:00" />
-<meta property="article:modified_time" content="2021-06-21T12:04:11&#43;08:00" />
+<meta property="article:published_time" content="2021-06-04T11:06:47+08:00" />
+<meta property="article:modified_time" content="2021-06-21T12:04:11+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="不容错过的 Bash 技巧"/>
@@ -157,10 +157,10 @@
             <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -170,28 +170,28 @@
 <p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
 </code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
@@ -199,11 +199,11 @@
 <p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
@@ -212,14 +212,14 @@
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
 /etc
 $ !!
 <span class="nb">pwd</span>
@@ -229,17 +229,17 @@ $ !!
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
 </code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -256,7 +256,7 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
 $ mkdir temp
 $ touch temp/test
 $ !!
@@ -276,10 +276,10 @@ touch temp/test
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
 </code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
@@ -288,14 +288,14 @@ touch temp/test
 <p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
 $ vim !$
 vim items.txt
 $ cp !$ shopping.txt
@@ -306,12 +306,12 @@ cp items.txt shopping.txt
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
 $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
@@ -320,12 +320,12 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 <p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
 $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>

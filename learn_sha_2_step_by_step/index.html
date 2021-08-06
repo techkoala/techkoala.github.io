@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/learn_sha_2_step_by_step/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-07-28T16:19:03&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-29T00:28:49&#43;08:00" />
+<meta property="article:published_time" content="2020-07-28T16:19:03+08:00" />
+<meta property="article:modified_time" content="2021-05-29T00:28:49+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="逐步详解 SHA-2 算法（以 SHA-256 为例）"/>
@@ -295,7 +295,7 @@
 <p>使用以下算法修改数组末尾的零索引：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -303,7 +303,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">For i from w[16…63]:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">For i from w[16…63]:
     s0 = (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)
 
     s1 = (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
@@ -405,7 +405,7 @@
 <p>进行压缩循环。 压缩循环将改变 a…h 的值。压缩循环如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -421,7 +421,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">for i from 0 to 63:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">for i from 0 to 63:
     S1 = (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
     ch = (e and f) xor ((not e) and g)
     temp1 = h + S1 + ch + k[i] + w[i]
@@ -585,11 +585,11 @@
 <h3 id="第八步-组成最终的哈希值">第八步: 组成最终的哈希值</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
        = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
 </code></pre></td></tr></table>
 </div>
@@ -630,7 +630,7 @@
     </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -714,7 +714,7 @@
 </span><span class="lnt">82
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Initialize hash values:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Initialize hash values:
 (first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19):
 h0 := 0x6a09e667
 h1 := 0xbb67ae85

@@ -12,8 +12,8 @@ DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新�
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/dns_update/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-07-02T15:48:24&#43;08:00" />
-<meta property="article:modified_time" content="2020-09-12T15:13:04&#43;08:00" />
+<meta property="article:published_time" content="2020-07-02T15:48:24+08:00" />
+<meta property="article:modified_time" content="2020-09-12T15:13:04+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="深入浅出 DNS 解析"/>
@@ -166,10 +166,10 @@ DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新�
 <p>您可以像这样要求它提供 <code>github.com</code> 的 <code>IP</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
 </div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 <code>IP</code> 地址。它们通过询问正确的权威 <code>DNS</code> 服务器，找出域名的 <code>IP</code> 地址，然后缓存这个 <code>IP</code> 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 <code>DNS</code> 服务器。</p>
@@ -185,7 +185,7 @@ DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新�
 <p>此步可以使用如下方法模拟：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -194,7 +194,7 @@ DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
 
 ...
 com.			172800	IN	NS	a.gtld-servers.net.
@@ -217,7 +217,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 <p>询问该权威 <code>NS</code> 有关 <code>github.com</code> 的 <code>NS</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -225,7 +225,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -239,12 +239,12 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 <p>询问该 <code>NS</code> 有关 <code>github.com</code> 的 A 记录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -268,12 +268,12 @@ github.com.		60	IN	A	140.82.112.4
 <p>我们假设得到一个查询结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -283,12 +283,12 @@ github.com.		60	IN	A	140.82.112.4
 <p>假设我们已经在域名商处更新了新的 <code>DNS</code> 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -296,12 +296,12 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 </div><p>如果此前没有设置过 <code>DNS</code> 记录，因为没有缓存，所以立刻生效了。这里可以看到 <code>TTL</code> 是 299。那么，修改 <code>IP</code> 为 <code>5.6.7.8</code> 呢。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		144	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -320,12 +320,12 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 <p>dig 看看：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
 
 examplecat.com.		17	IN	A	104.248.50.87
 </code></pre></td></tr></table>
@@ -333,12 +333,12 @@ examplecat.com.		17	IN	A	104.248.50.87
 </div><p><code>8.8.8.8</code> 没有变化，询问别的 DNS：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
 
 examplecat.com.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -348,12 +348,12 @@ examplecat.com.		299	IN	A	1.2.3.4
 <p>而如果我们向新的 <code>NS</code> 查询，肯定会得到新的 <code>IP</code> 记录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
 
 examplecat.com.		300	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -363,7 +363,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 <p>回到上一节中，我们的查询结果显示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -371,7 +371,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -384,12 +384,12 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 <p>更新 <code>NS</code> 后，我们向根服务器查询的话就会到得到这样的结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
 
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </code></pre></td></tr></table>

@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/vim_tips/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-19T19:34:18&#43;08:00" />
-<meta property="article:modified_time" content="2021-01-29T21:01:31&#43;08:00" />
+<meta property="article:published_time" content="2021-01-19T19:34:18+08:00" />
+<meta property="article:modified_time" content="2021-01-29T21:01:31+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vim 小技巧"/>
@@ -161,19 +161,19 @@
 <p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
 </code></pre></td></tr></table>
 </div>
 </div><p>也即：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -186,38 +186,38 @@
 <p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
@@ -225,40 +225,40 @@
 <p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
 <p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
 <p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
 <p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -269,10 +269,10 @@
 <h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
@@ -280,10 +280,10 @@
 <p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>

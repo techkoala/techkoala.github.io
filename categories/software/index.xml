@@ -17,26 +17,26 @@
 <p>Windows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
 
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -46,7 +46,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
 -f bestaudio                #最佳音频
 --extract-audio             #提取音频
 --audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
@@ -70,19 +70,19 @@
 <p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
 </code></pre></td></tr></table>
 </div>
 </div><p>也即：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -95,38 +95,38 @@
 <p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
@@ -134,40 +134,40 @@
 <p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
 <p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
 <p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
 <p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -178,10 +178,10 @@
 <h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
@@ -189,10 +189,10 @@
 <p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>
@@ -224,16 +224,16 @@
 <h2 id="使用-sftp">使用 SFTP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -243,7 +243,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
 -l：使用 ssh 协议版本 1；
 -b：指定批处理文件；
 -C：使用压缩；
@@ -316,20 +316,20 @@
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
 </code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
@@ -340,7 +340,7 @@
 <h2 id="使用-rsync">使用 rsync</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -348,7 +348,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
@@ -380,7 +380,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>可用选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -443,7 +443,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
 -q, --quiet 精简输出模式。
 -C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
 -c, --checksum 打开校验开关，强制对文件传输进行校验。
@@ -535,10 +535,10 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
 </code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
@@ -595,16 +595,16 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <h2 id="使用-scp">使用 SCP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -619,7 +619,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
 -2：使用ssh协议版本2；
 -4：使用ipv4；
 -6：使用ipv6；
@@ -646,7 +646,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -668,7 +668,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
 $ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
 <span class="m">10000</span>
 
@@ -744,47 +744,47 @@ Executed in  215.68 millis	fish       	external
 <p>使用命令在容器中生成备份：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it huginn mysqldump --single-transaction --opt -u root -ppassword huginn_production &gt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>或直接拷贝数据到容器外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="恢复数据">恢复数据</h3>
 <p>首先复制文件到 <code>docker</code> 中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn:/app/huginn_backupfile.sql
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker cp /home/xxxx/huginn_backupfile.sql huginn:/app/huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入 <code>docker</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -ti huginn bash
 </code></pre></td></tr></table>
 </div>
 </div><p>接下来恢复数据库:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mysql -u root -ppassword huginn_production &lt; huginn_backupfile.sql
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>

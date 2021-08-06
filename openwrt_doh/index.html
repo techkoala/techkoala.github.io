@@ -12,8 +12,8 @@ OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/openwrt_doh/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-29T20:36:35&#43;08:00" />
-<meta property="article:modified_time" content="2021-01-29T21:01:31&#43;08:00" />
+<meta property="article:published_time" content="2021-01-29T20:36:35+08:00" />
+<meta property="article:modified_time" content="2021-01-29T21:01:31+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流"/>
@@ -150,11 +150,11 @@ OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题
 <p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
 opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
@@ -163,27 +163,27 @@ opkg install dnscrypt-proxy2
 <p>基本使用只需要</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 </code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
@@ -191,10 +191,10 @@ opkg install dnscrypt-proxy2
 <p>然后</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
 </code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>

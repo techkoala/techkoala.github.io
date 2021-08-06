@@ -12,8 +12,8 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/iperf/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-08-07T17:45:55&#43;08:00" />
-<meta property="article:modified_time" content="2020-09-12T15:13:04&#43;08:00" />
+<meta property="article:published_time" content="2020-08-07T17:45:55+08:00" />
+<meta property="article:modified_time" content="2020-09-12T15:13:04+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="网络测试工具：iPerf"/>
@@ -155,17 +155,17 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 <p>类 UNIX 系统直接使用包管理进行安装即可，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="使用-iperf">使用 iPerf</h2>
 <p>首先，介绍服务端和客户端共有的参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -180,7 +180,7 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
 --cport n         指定客户端端口
 -f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
 -i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
@@ -198,12 +198,12 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </div><p>服务端特有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
 -D, --daemon      将服务器作为守护进程在后台运行
 -I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
 </code></pre></td></tr></table>
@@ -211,7 +211,7 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </div><p>客户端特有参数:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -238,7 +238,7 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
 --sctp	                使用 SCTP 而不是 TCP
 -u, --udp	            使用 UDP 而不是 TCP
 -b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
@@ -276,21 +276,21 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 <p>常用启用参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">服务端
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">服务端
 $ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">客户端
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">客户端
 $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
 </code></pre></td></tr></table>
 </div>

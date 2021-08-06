@@ -25,14 +25,14 @@
 <p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
 mkdir ~/freshrss &amp;&amp; cd ~/freshrss
 
 # 新建&amp;编辑配置文件
@@ -43,7 +43,7 @@ vim docker-compose.yml
 <p>配置文件内容见下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -80,7 +80,7 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
 
 version: &#34;3&#34;
 
@@ -120,10 +120,10 @@ volumes:
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置">FreshRSS 设置</h2>
@@ -149,14 +149,14 @@ volumes:
 <p>参数配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
 域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
 
 用户名：注册用户名
@@ -192,10 +192,10 @@ volumes:
 <p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>获得当前所有的网络连接，其中<code>InterfaceMetric</code>即为接口跃点数的值。</p>
@@ -206,20 +206,20 @@ volumes:
 <p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>即可将其跃点数设置为 10。</p>
 <p>想要恢复跃点数的话，运行以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
@@ -235,10 +235,10 @@ volumes:
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
 </code></pre></td></tr></table>
 </div>
 </div><ol start="2">
@@ -246,10 +246,10 @@ volumes:
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -257,10 +257,10 @@ volumes:
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="参考">参考</h2>
@@ -300,11 +300,11 @@ volumes:
 <h2 id="获取-ssl-证书">获取 SSL 证书</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
 $ sudo certbot --nginx -d example.com -d www.example.com
 </code></pre></td></tr></table>
 </div>
@@ -312,7 +312,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 <h3 id="frpcini">frpc.ini</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -323,7 +323,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 server_addr = xxx.xxx.xxx.xxx           # 服务器地址
 server_port = xxx                       # 与服务器 frps 通信的端口
 token = xxxxxx                          # frp 验证密钥
@@ -337,7 +337,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </div><h3 id="本地-nginxcof">本地 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -414,7 +414,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
 worker_processes auto;
 error_log /var/log/nginx/error.log warn;
 pid /var/run/nginx.pid;
@@ -495,7 +495,7 @@ http {
 <h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -587,7 +587,7 @@ http {
 </span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
 worker_processes auto;
 pid /var/run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
@@ -683,14 +683,14 @@ http {
 <h4 id="frpsini">frps.ini</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 bind_port = xxxx                # 与本地 frpc 通信的端口
 vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
 authentication_method = token
@@ -701,7 +701,7 @@ token = xxxxxx                  # frp 验证密钥
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -712,7 +712,7 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
 ## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
 server {
         listen 80;
@@ -726,10 +726,10 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
@@ -737,7 +737,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -758,7 +758,7 @@ server {
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
     server_name xxx.techkoala.top;             # 自己的域名
     location / {
@@ -782,16 +782,16 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -843,7 +843,7 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;run_type&#34;: &#34;server&#34;,
     &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
     &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
@@ -899,7 +899,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -919,7 +919,7 @@ server {
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         listen [::]:80;
         server_name xxx.techkoala.top;
@@ -942,17 +942,17 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="xray">Xray</h3>
 <h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -970,7 +970,7 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         server_name xxx.techkoala.top;
         if ($host = xxxx.techkoala.top) {
@@ -991,7 +991,7 @@ server {
 </div><h4 id="xray-配置">Xray 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1040,7 +1040,7 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;log&#34;: {
         &#34;loglevel&#34;: &#34;warning&#34;
     },
@@ -1104,11 +1104,11 @@ server {
 <p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
 opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
@@ -1117,27 +1117,27 @@ opkg install dnscrypt-proxy2
 <p>基本使用只需要</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 </code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
@@ -1145,10 +1145,10 @@ opkg install dnscrypt-proxy2
 <p>然后</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
 </code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
@@ -1379,10 +1379,10 @@ opkg install dnscrypt-proxy2
 <p>每个 DNS 响应报文包含一条或者多条资源记录（resource records ，RRs），资源记录包含下列字段的 4 元组：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">（Name，Value，Type，TTL）
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">（Name，Value，Type，TTL）
 </code></pre></td></tr></table>
 </div>
 </div><p>其中 TTL 表示生存时间，决定了资源记录应该从缓存中删除的时间。</p>
@@ -1396,19 +1396,19 @@ opkg install dnscrypt-proxy2
 <p>这里我们使用 WireShark 抓包实际看看，启动 WireShark 时可以设置捕获过滤器为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">udp port 53
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">udp port 53
 </code></pre></td></tr></table>
 </div>
 </div><p>这样我们只抓取通过 UDP 53 端口的 DNS 请求，此外如果需要仅仅显示特定的 DNS 查询，还可以进一步应用显示过滤器，例如这里我们仅查看<code>www.techkoala.top</code>的查询记录，则显示过滤器设置为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">dns.qry.name==www.techkoala.top
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">dns.qry.name==www.techkoala.top
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-sub-html="<h2>16 进制表示</h2>">
@@ -1601,21 +1601,21 @@ MAC addresses for the link layer.</div>
 <p>如果此前没有安装，首先使用下列命令进行安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
 $ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>然后输入</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>打开磁盘管理界面：</p>
@@ -1644,10 +1644,10 @@ $ opkg install cfdisk
 <p>使用命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
 </code></pre></td></tr></table>
 </div>
 </div><p>格式化分区</p>
@@ -1659,10 +1659,10 @@ $ opkg install cfdisk
 <p>使用命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
 </code></pre></td></tr></table>
 </div>
 </div><p>挂载分区</p>
@@ -1670,10 +1670,10 @@ $ opkg install cfdisk
 <p>然后将原来 <code>upper</code> 层中的数据复制到新的分区中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="web-界面配置修改">Web 界面配置修改</h2>
@@ -1693,10 +1693,10 @@ $ opkg install cfdisk
 <p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
 </code></pre></td></tr></table>
 </div>
 </div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
@@ -1735,57 +1735,57 @@ $ opkg install cfdisk
 <h3 id="存放路径">存放路径</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="配置">配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入对应的子菜单中找到对应插件按 <M> 表示选中插件，但不编译进固件。</p>
 <h3 id="编译">编译</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>xxxxx 就是你需要单独编译的程序。</p>
 <h3 id="ipk-生成路径">ipk 生成路径</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="上传-ipk-至路由器">上传 ipk 至路由器</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="安装">安装</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>

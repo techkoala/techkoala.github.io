@@ -12,8 +12,8 @@ inoreader 等现有服务要么付费要么有限制，有服务器的话自建 
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/frsshrss/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-28T23:25:46&#43;08:00" />
-<meta property="article:modified_time" content="2021-06-03T00:28:31&#43;08:00" />
+<meta property="article:published_time" content="2021-05-28T23:25:46+08:00" />
+<meta property="article:modified_time" content="2021-06-03T00:28:31+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Docker 搭建 FreshRSS 专属 RSS 服务 "/>
@@ -169,14 +169,14 @@ inoreader 等现有服务要么付费要么有限制，有服务器的话自建 
 <p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
 mkdir ~/freshrss &amp;&amp; cd ~/freshrss
 
 # 新建&amp;编辑配置文件
@@ -187,7 +187,7 @@ vim docker-compose.yml
 <p>配置文件内容见下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -224,7 +224,7 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
 
 version: &#34;3&#34;
 
@@ -264,10 +264,10 @@ volumes:
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置">FreshRSS 设置</h2>
@@ -293,14 +293,14 @@ volumes:
 <p>参数配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
 域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
 
 用户名：注册用户名

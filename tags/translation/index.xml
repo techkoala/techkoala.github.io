@@ -150,7 +150,7 @@
 <p>使用以下算法修改数组末尾的零索引：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -158,7 +158,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">For i from w[16…63]:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">For i from w[16…63]:
     s0 = (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)
 
     s1 = (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
@@ -260,7 +260,7 @@
 <p>进行压缩循环。 压缩循环将改变 a…h 的值。压缩循环如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -276,7 +276,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">for i from 0 to 63:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">for i from 0 to 63:
     S1 = (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
     ch = (e and f) xor ((not e) and g)
     temp1 = h + S1 + ch + k[i] + w[i]
@@ -440,11 +440,11 @@
 <h3 id="第八步-组成最终的哈希值">第八步: 组成最终的哈希值</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
        = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
 </code></pre></td></tr></table>
 </div>
@@ -479,7 +479,7 @@
     </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -563,7 +563,7 @@
 </span><span class="lnt">82
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Initialize hash values:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Initialize hash values:
 (first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19):
 h0 := 0x6a09e667
 h1 := 0xbb67ae85
@@ -811,10 +811,10 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
 </code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
@@ -871,16 +871,16 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <h2 id="使用-scp">使用 SCP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -895,7 +895,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
 -2：使用ssh协议版本2；
 -4：使用ipv4；
 -6：使用ipv6；
@@ -922,7 +922,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -944,7 +944,7 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
 $ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
 <span class="m">10000</span>
 
@@ -1162,10 +1162,10 @@ Executed in  215.68 millis	fish       	external
 <p>您可以像这样要求它提供 <code>github.com</code> 的 <code>IP</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
 </code></pre></td></tr></table>
 </div>
 </div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 <code>IP</code> 地址。它们通过询问正确的权威 <code>DNS</code> 服务器，找出域名的 <code>IP</code> 地址，然后缓存这个 <code>IP</code> 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 <code>DNS</code> 服务器。</p>
@@ -1181,7 +1181,7 @@ Executed in  215.68 millis	fish       	external
 <p>此步可以使用如下方法模拟：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1190,7 +1190,7 @@ Executed in  215.68 millis	fish       	external
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
 
 ...
 com.			172800	IN	NS	a.gtld-servers.net.
@@ -1213,7 +1213,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 <p>询问该权威 <code>NS</code> 有关 <code>github.com</code> 的 <code>NS</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1221,7 +1221,7 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -1235,12 +1235,12 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 <p>询问该 <code>NS</code> 有关 <code>github.com</code> 的 A 记录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -1264,12 +1264,12 @@ github.com.		60	IN	A	140.82.112.4
 <p>我们假设得到一个查询结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
 
 github.com.		60	IN	A	140.82.112.4
 </code></pre></td></tr></table>
@@ -1279,12 +1279,12 @@ github.com.		60	IN	A	140.82.112.4
 <p>假设我们已经在域名商处更新了新的 <code>DNS</code> 记录 <code>test.jvNS.ca</code>&ndash;&gt;<code>1.2.3.4</code>，试着查询：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -1292,12 +1292,12 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 </div><p>如果此前没有设置过 <code>DNS</code> 记录，因为没有缓存，所以立刻生效了。这里可以看到 <code>TTL</code> 是 299。那么，修改 <code>IP</code> 为 <code>5.6.7.8</code> 呢。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
 
 test.jvNS.ca.		144	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -1316,12 +1316,12 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 <p>dig 看看：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
 
 examplecat.com.		17	IN	A	104.248.50.87
 </code></pre></td></tr></table>
@@ -1329,12 +1329,12 @@ examplecat.com.		17	IN	A	104.248.50.87
 </div><p><code>8.8.8.8</code> 没有变化，询问别的 DNS：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
 
 examplecat.com.		299	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -1344,12 +1344,12 @@ examplecat.com.		299	IN	A	1.2.3.4
 <p>而如果我们向新的 <code>NS</code> 查询，肯定会得到新的 <code>IP</code> 记录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
 
 examplecat.com.		300	IN	A	1.2.3.4
 </code></pre></td></tr></table>
@@ -1359,7 +1359,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 <p>回到上一节中，我们的查询结果显示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1367,7 +1367,7 @@ examplecat.com.		300	IN	A	1.2.3.4
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
 
 ...
 github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
@@ -1380,12 +1380,12 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 <p>更新 <code>NS</code> 后，我们向根服务器查询的话就会到得到这样的结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
 
 examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
 </code></pre></td></tr></table>

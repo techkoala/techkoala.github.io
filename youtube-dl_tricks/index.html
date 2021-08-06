@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/youtube-dl_tricks/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-18T15:19:43&#43;08:00" />
-<meta property="article:modified_time" content="2021-06-08T23:26:55&#43;08:00" />
+<meta property="article:published_time" content="2021-05-18T15:19:43+08:00" />
+<meta property="article:modified_time" content="2021-06-08T23:26:55+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常用 youtube-dl 命令"/>
@@ -148,26 +148,26 @@
 <p>Windows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
 
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -177,7 +177,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
 -f bestaudio                #最佳音频
 --extract-audio             #提取音频
 --audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换

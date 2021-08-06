@@ -22,10 +22,10 @@
             <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -35,28 +35,28 @@
 <p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
 </code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
@@ -64,11 +64,11 @@
 <p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
@@ -77,14 +77,14 @@
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
 /etc
 $ !!
 <span class="nb">pwd</span>
@@ -94,17 +94,17 @@ $ !!
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
 </code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -121,7 +121,7 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
 $ mkdir temp
 $ touch temp/test
 $ !!
@@ -141,10 +141,10 @@ touch temp/test
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
 </code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
@@ -153,14 +153,14 @@ touch temp/test
 <p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
 $ vim !$
 vim items.txt
 $ cp !$ shopping.txt
@@ -171,12 +171,12 @@ cp items.txt shopping.txt
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
 $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
@@ -185,12 +185,12 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 <p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
 $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>
@@ -220,7 +220,7 @@ rm /var/log/httpd/access.log
 <h2 id="系统信息">系统信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -229,7 +229,7 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
 $ head -n <span class="m">1</span> /etc/issue  <span class="c1"># 查看操作系统版本</span>
 $ hostname              <span class="c1"># 查看计算机名</span>
 $ lspci -tv             <span class="c1"># 列出所有 PCI 设备</span>
@@ -241,7 +241,7 @@ $ env                   <span class="c1"># 查看环境变量</span>
 </div><h2 id="系统资源">系统资源</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -253,7 +253,7 @@ $ env                   <span class="c1"># 查看环境变量</span>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
 $ lscpu                         <span class="c1"># 查看 CPU 信息</span>
 $ lshw -short                   <span class="c1"># 当前服务器 CPU、内存、磁盘等详细信息</span>
 $ free -m                       <span class="c1"># 查看内存使用量和交换区使用量</span>
@@ -268,18 +268,18 @@ $ cat /proc/loadavg             <span class="c1"># 查看系统负载</span>
 </div><h2 id="磁盘和分区">磁盘和分区</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
 $ fdisk -l                  <span class="c1"># 查看所有分区</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="网络信息">网络信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -287,7 +287,7 @@ $ fdisk -l                  <span class="c1"># 查看所有分区</span>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
 $ iptables -L           <span class="c1"># 查看防火墙设置</span>
 $ route -n              <span class="c1"># 查看路由表</span>
 $ netstat -lntp         <span class="c1"># 查看所有监听端口</span>
@@ -298,12 +298,12 @@ $ netstat -s            <span class="c1"># 查看网络统计信息</span>
 </div><h2 id="进程查询">进程查询</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -ef            <span class="c1"># 查看所有进程</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -ef            <span class="c1"># 查看所有进程</span>
 $ top               <span class="c1"># 实时显示进程状态</span>
 $ htop              <span class="c1"># 实时显示进程状态，加强版 top</span>
 </code></pre></td></tr></table>
@@ -311,14 +311,14 @@ $ htop              <span class="c1"># 实时显示进程状态，加强版 top<
 </div><h2 id="用户信息">用户信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ w                             <span class="c1"># 查看活动用户</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ w                             <span class="c1"># 查看活动用户</span>
 $ id &lt;用户名&gt;                    <span class="c1"># 查看指定用户信息</span>
 $ last                          <span class="c1"># 查看用户登录日志</span>
 $ cut -d: -f1 /etc/passwd       <span class="c1"># 查看系统所有用户</span>
@@ -328,12 +328,12 @@ $ cut -d: -f1 /etc/group        <span class="c1"># 查看系统所有组</span>
 </div><h2 id="服务">服务</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
 $ chkconfig –list               <span class="c1"># 列出所有系统服务</span>
 $ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列出所有启动的系统服务</span>
 </code></pre></td></tr></table>
@@ -341,13 +341,13 @@ $ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列�
 </div><h2 id="软件信息">软件信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
 $ pacman -Qmeq                  <span class="c1"># 显示 aur 软件</span>
 $ pacman -Qneq                  <span class="c1"># 显示 pacman 安装的软件</span>
 $ pactree package_name          <span class="c1"># 显示软件的依赖树</span>
@@ -404,16 +404,16 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 <h3 id="语法">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps <span class="o">[</span>选项<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps <span class="o">[</span>选项<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -454,7 +454,7 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-a：          显示所有终端机下执行的程序，除了阶段作业领导者之外。
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-a：          显示所有终端机下执行的程序，除了阶段作业领导者之外。
 a：           显示现行终端机下的所有程序，包括其他用户的程序。
 -A：          显示所有程序。
 -c：          显示CLS和PRI栏位。
@@ -499,21 +499,21 @@ x：           显示所有程序，不以终端机来区分。
 <p>显示所有运行中的进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> less
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> less
 </code></pre></td></tr></table>
 </div>
 </div><p>查看系统中的每个进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -A
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -A
 或
 $ ps -e
 </code></pre></td></tr></table>
@@ -521,41 +521,41 @@ $ ps -e
 </div><p>查看非 root 运行的进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -U root -u root -N
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -U root -u root -N
 </code></pre></td></tr></table>
 </div>
 </div><p>查看用户 xxx 运行的进程</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -u xxx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -u xxx
 </code></pre></td></tr></table>
 </div>
 </div><p>获得线程信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -eLf
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -eLf
 $ ps axms
 </code></pre></td></tr></table>
 </div>
 </div><p>获得安全信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -eo euser,ruser,suser,fuser,f,comm,label
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -eo euser,ruser,suser,fuser,f,comm,label
 $ ps axZ
 $ ps -eM
 </code></pre></td></tr></table>
@@ -563,50 +563,50 @@ $ ps -eM
 </div><p>显示进程的树状图：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -ejH
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -ejH
 $ ps axjf
 </code></pre></td></tr></table>
 </div>
 </div><p>此外 pstree 也可以以树状显示正在运行的进程。树的根节点为 pid 或 init。如果指定了用户名，进程树将以用户所拥有的进程作为根节点。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ pstree
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pstree
 </code></pre></td></tr></table>
 </div>
 </div><p>查找进程：</p>
 <p>ps 可以打搭配 grep 进行指定关键词进程的查找：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> grep zsh
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> grep zsh
 </code></pre></td></tr></table>
 </div>
 </div><p>此外使用 pgrep 也能查找当前正在运行的进程并列出符合条件的进程 ID。</p>
 <p>例如显示 firefox 的进程 ID：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ pgrep firefox
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep firefox
 </code></pre></td></tr></table>
 </div>
 </div><p>显示进程名为 sshd、所有者为 root 的进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ pgrep -u root sshd
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep -u root sshd
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="top-命令">top 命令</h2>
@@ -614,16 +614,16 @@ $ ps axjf
 <h3 id="语法-1">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ top <span class="o">[</span>参数<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top <span class="o">[</span>参数<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="参数">参数</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -634,7 +634,7 @@ $ ps axjf
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-b        批处理
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-b        批处理
 -c        显示完整的治命令
 -I        忽略失效过程
 -s        保密模式
@@ -654,29 +654,29 @@ $ ps axjf
 <p>将进程快照储存到文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 &gt; /tmp/process.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 &gt; /tmp/process.log
 </code></pre></td></tr></table>
 </div>
 </div><p>将结果通过邮件发送：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 <span class="p">|</span> mail -s <span class="s1">&#39;Process snapshot&#39;</span> you@example.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 <span class="p">|</span> mail -s <span class="s1">&#39;Process snapshot&#39;</span> you@example.com
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="htop">Htop</h2>
 <p>Htop 是一个类似 top 的交互式进程查看工具，可以垂直和水平滚动来查看所有进程和他们的命令行。进程的相关操作(killing，renicing)不需要输入 PID。Htop 一般需要自行安装。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ htop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ htop
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-sub-html="<h2>Htop 命令</h2>">
@@ -687,10 +687,10 @@ $ ps axjf
 <p>atop 是一个用来查看 Linux 系统负载的交互式监控工具。它能展现系统层级的关键硬件资源(从性能角度)的使用情况，如 CPU、内存、硬盘和网络。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ atop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ atop
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-sub-html="<h2>atop 命令</h2>">
@@ -721,16 +721,16 @@ $ ps axjf
 <h3 id="语法">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">df <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>参数<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">df <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>参数<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -748,7 +748,7 @@ $ ps axjf
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-a或--all                                    包含全部的文件系统；
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-a或--all                                    包含全部的文件系统；
 --block-size<span class="o">=</span>&lt;区块大小&gt;                       以指定的区块大小来显示区块数目；
 -h或--human-readable                         以可读性较高的方式来显示信息；
 -H或--si                                     与-h参数相同，但在计算时是以1000 Bytes为换算单位而非1024 Bytes；
@@ -771,16 +771,16 @@ $ ps axjf
 <h3 id="语法-1">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">du <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>文件<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">du <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>文件<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项-1">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -797,7 +797,7 @@ $ ps axjf
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-a或-all                                显示目录中个别文件的大小。
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-a或-all                                显示目录中个别文件的大小。
 -b或-bytes                              显示目录或文件大小时，以byte为单位。
 -c或--total                             除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。
 -k或--kilobytes                         以KB<span class="o">(</span>1024bytes<span class="o">)</span>为单位输出。
@@ -818,48 +818,48 @@ $ ps axjf
 <p>按文件大小排序：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du -sh * <span class="p">|</span> sort -h
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du -sh * <span class="p">|</span> sort -h
 </code></pre></td></tr></table>
 </div>
 </div><p>显示目录或者文件所占空间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du
 </code></pre></td></tr></table>
 </div>
 </div><p>显示指定文件所占空间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du xxxxx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du xxxxx
 </code></pre></td></tr></table>
 </div>
 </div><p>查看指定目录的所占空间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du scf
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du scf
 </code></pre></td></tr></table>
 </div>
 </div><p>显示多个文件所占空间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du xxxx.tar.gz yyyy.tar.gz
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du xxxx.tar.gz yyyy.tar.gz
 <span class="m">4</span> xxxx.tar.gz
 <span class="m">4</span> yyyy.tar.gz
 </code></pre></td></tr></table>
@@ -867,31 +867,31 @@ $ ps axjf
 </div><p>只显示总和的大小:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du -s
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du -s
 <span class="m">1288</span> .
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ du -s scf
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du -s scf
 <span class="m">32</span> scf
 </code></pre></td></tr></table>
 </div>
 </div><p>显示总和的大小且易读:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">du -sh <span class="se">\$</span>dir
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">du -sh <span class="se">\$</span>dir
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>

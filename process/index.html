@@ -12,8 +12,8 @@ Linux 中如何查看进程信息？
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/process/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-02T17:03:48&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-15T12:15:47&#43;08:00" />
+<meta property="article:published_time" content="2020-03-02T17:03:48+08:00" />
+<meta property="article:modified_time" content="2020-10-15T12:15:47+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="查看 Linux 进程信息"/>
@@ -200,16 +200,16 @@ Linux 中如何查看进程信息？
 <h3 id="语法">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps <span class="o">[</span>选项<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps <span class="o">[</span>选项<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -250,7 +250,7 @@ Linux 中如何查看进程信息？
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-a：          显示所有终端机下执行的程序，除了阶段作业领导者之外。
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-a：          显示所有终端机下执行的程序，除了阶段作业领导者之外。
 a：           显示现行终端机下的所有程序，包括其他用户的程序。
 -A：          显示所有程序。
 -c：          显示CLS和PRI栏位。
@@ -295,21 +295,21 @@ x：           显示所有程序，不以终端机来区分。
 <p>显示所有运行中的进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> less
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> less
 </code></pre></td></tr></table>
 </div>
 </div><p>查看系统中的每个进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -A
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -A
 或
 $ ps -e
 </code></pre></td></tr></table>
@@ -317,41 +317,41 @@ $ ps -e
 </div><p>查看非 root 运行的进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -U root -u root -N
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -U root -u root -N
 </code></pre></td></tr></table>
 </div>
 </div><p>查看用户 xxx 运行的进程</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -u xxx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -u xxx
 </code></pre></td></tr></table>
 </div>
 </div><p>获得线程信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -eLf
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -eLf
 $ ps axms
 </code></pre></td></tr></table>
 </div>
 </div><p>获得安全信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -eo euser,ruser,suser,fuser,f,comm,label
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -eo euser,ruser,suser,fuser,f,comm,label
 $ ps axZ
 $ ps -eM
 </code></pre></td></tr></table>
@@ -359,50 +359,50 @@ $ ps -eM
 </div><p>显示进程的树状图：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -ejH
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -ejH
 $ ps axjf
 </code></pre></td></tr></table>
 </div>
 </div><p>此外 pstree 也可以以树状显示正在运行的进程。树的根节点为 pid 或 init。如果指定了用户名，进程树将以用户所拥有的进程作为根节点。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ pstree
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pstree
 </code></pre></td></tr></table>
 </div>
 </div><p>查找进程：</p>
 <p>ps 可以打搭配 grep 进行指定关键词进程的查找：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> grep zsh
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> grep zsh
 </code></pre></td></tr></table>
 </div>
 </div><p>此外使用 pgrep 也能查找当前正在运行的进程并列出符合条件的进程 ID。</p>
 <p>例如显示 firefox 的进程 ID：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ pgrep firefox
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep firefox
 </code></pre></td></tr></table>
 </div>
 </div><p>显示进程名为 sshd、所有者为 root 的进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ pgrep -u root sshd
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep -u root sshd
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="top-命令">top 命令</h2>
@@ -410,16 +410,16 @@ $ ps axjf
 <h3 id="语法-1">语法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ top <span class="o">[</span>参数<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top <span class="o">[</span>参数<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="参数">参数</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -430,7 +430,7 @@ $ ps axjf
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-b        批处理
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-b        批处理
 -c        显示完整的治命令
 -I        忽略失效过程
 -s        保密模式
@@ -456,29 +456,29 @@ $ ps axjf
 <p>将进程快照储存到文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 &gt; /tmp/process.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 &gt; /tmp/process.log
 </code></pre></td></tr></table>
 </div>
 </div><p>将结果通过邮件发送：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 <span class="p">|</span> mail -s <span class="s1">&#39;Process snapshot&#39;</span> you@example.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 <span class="p">|</span> mail -s <span class="s1">&#39;Process snapshot&#39;</span> you@example.com
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="htop">Htop</h2>
 <p>Htop 是一个类似 top 的交互式进程查看工具，可以垂直和水平滚动来查看所有进程和他们的命令行。进程的相关操作(killing，renicing)不需要输入 PID。Htop 一般需要自行安装。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ htop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ htop
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-sub-html="<h2>Htop 命令</h2>">
@@ -495,10 +495,10 @@ $ ps axjf
 <p>atop 是一个用来查看 Linux 系统负载的交互式监控工具。它能展现系统层级的关键硬件资源(从性能角度)的使用情况，如 CPU、内存、硬盘和网络。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ atop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ atop
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-sub-html="<h2>atop 命令</h2>">

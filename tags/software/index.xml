@@ -25,14 +25,14 @@
 <p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
 mkdir ~/freshrss &amp;&amp; cd ~/freshrss
 
 # 新建&amp;编辑配置文件
@@ -43,7 +43,7 @@ vim docker-compose.yml
 <p>配置文件内容见下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -80,7 +80,7 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
 
 version: &#34;3&#34;
 
@@ -120,10 +120,10 @@ volumes:
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置">FreshRSS 设置</h2>
@@ -149,14 +149,14 @@ volumes:
 <p>参数配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
 域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
 
 用户名：注册用户名
@@ -180,26 +180,26 @@ volumes:
 <p>Windows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
 
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -209,7 +209,7 @@ volumes:
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
 -f bestaudio                #最佳音频
 --extract-audio             #提取音频
 --audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
@@ -248,11 +248,11 @@ volumes:
 <h2 id="获取-ssl-证书">获取 SSL 证书</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
 $ sudo certbot --nginx -d example.com -d www.example.com
 </code></pre></td></tr></table>
 </div>
@@ -260,7 +260,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 <h3 id="frpcini">frpc.ini</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -271,7 +271,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 server_addr = xxx.xxx.xxx.xxx           # 服务器地址
 server_port = xxx                       # 与服务器 frps 通信的端口
 token = xxxxxx                          # frp 验证密钥
@@ -285,7 +285,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </div><h3 id="本地-nginxcof">本地 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -362,7 +362,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
 worker_processes auto;
 error_log /var/log/nginx/error.log warn;
 pid /var/run/nginx.pid;
@@ -443,7 +443,7 @@ http {
 <h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -535,7 +535,7 @@ http {
 </span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
 worker_processes auto;
 pid /var/run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
@@ -631,14 +631,14 @@ http {
 <h4 id="frpsini">frps.ini</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 bind_port = xxxx                # 与本地 frpc 通信的端口
 vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
 authentication_method = token
@@ -649,7 +649,7 @@ token = xxxxxx                  # frp 验证密钥
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -660,7 +660,7 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
 ## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
 server {
         listen 80;
@@ -674,10 +674,10 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
@@ -685,7 +685,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -706,7 +706,7 @@ server {
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
     server_name xxx.techkoala.top;             # 自己的域名
     location / {
@@ -730,16 +730,16 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -791,7 +791,7 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;run_type&#34;: &#34;server&#34;,
     &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
     &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
@@ -847,7 +847,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -867,7 +867,7 @@ server {
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         listen [::]:80;
         server_name xxx.techkoala.top;
@@ -890,17 +890,17 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="xray">Xray</h3>
 <h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -918,7 +918,7 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         server_name xxx.techkoala.top;
         if ($host = xxxx.techkoala.top) {
@@ -939,7 +939,7 @@ server {
 </div><h4 id="xray-配置">Xray 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -988,7 +988,7 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;log&#34;: {
         &#34;loglevel&#34;: &#34;warning&#34;
     },
@@ -1052,19 +1052,19 @@ server {
 <p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
 </code></pre></td></tr></table>
 </div>
 </div><p>也即：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1077,38 +1077,38 @@ server {
 <p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
@@ -1116,40 +1116,40 @@ server {
 <p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
 <p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
 <p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
 <p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1160,10 +1160,10 @@ server {
 <h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
@@ -1171,10 +1171,10 @@ server {
 <p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>
@@ -1211,10 +1211,10 @@ server {
 <p>一般来说，nc 的命令行包括如下几个部分：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="命令选项">命令选项</h3>
@@ -1224,7 +1224,7 @@ server {
 <p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD manual page</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1240,7 +1240,7 @@ server {
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">选项	   是否有 “选项值”	   说明
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">选项	   是否有 “选项值”	   说明
 -h	   NO	           输出 nc 的帮助
 -v	   NO	           在网络通讯时，显示详细的输出信息
 -n	   NO	           对命令行中的主机，不进行域名解析，如果主机是 IP 地址，需要用该选项
@@ -1271,19 +1271,19 @@ server {
 <p>用如下命令可以测试某个 IP 地址上的某个监听端口是否开启:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv ip port
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -nv ip port
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>注：</strong>　默认情况下 nc 会等待很久，然后才告诉你连接失败。如果你所处的网络环境稳定且高速（比如：局域网内），那么，你可以追加 <code>-w</code> 选项，设置一个比较小的超时值。在下面的例子中，超时值设为 3 秒。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</h3>
@@ -1294,10 +1294,10 @@ server {
 <p>在<code>主机 S</code> 上运行 nc，让它在 8080 端口，命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -lv -p <span class="m">8080</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -lv -p <span class="m">8080</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
@@ -1306,10 +1306,10 @@ server {
 <p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024
 </code></pre></td></tr></table>
 </div>
 </div><p>选项 -z
@@ -1317,10 +1317,10 @@ server {
 <p>**注：**端口扫描的时候，<code>-v</code> 选项会把成功/失败的结果统统打印出来。通常关注的都是 “扫描成功” 的那些端口。因此，可以用可以配合使用 <code>grep</code> 过滤一下，只打印扫出来的端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
 </code></pre></td></tr></table>
 </div>
 </div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
@@ -1329,12 +1329,12 @@ server {
 <p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
 OR
 <span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
 </code></pre></td></tr></table>
@@ -1345,19 +1345,19 @@ OR
 <p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkfifo nc_pipe
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkfifo nc_pipe
 </code></pre></td></tr></table>
 </div>
 </div><p>步骤 2：同时启动两个 nc</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
 </code></pre></td></tr></table>
 </div>
 </div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
@@ -1365,14 +1365,14 @@ OR
 <p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端 B 主机运行如下命令
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">先在接收端 B 主机运行如下命令
 nc -l -p port &gt; file2
 
 然后在发送端 A 主机运行如下命令
@@ -1384,14 +1384,14 @@ nc ip port &lt; file1
 <p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">先在接收端（B 主机）运行如下命令
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">先在接收端（B 主机）运行如下命令
 nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sdb
 
 然后在发送端 A 主机运行如下命令
@@ -1402,14 +1402,14 @@ dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</
 <p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">A:
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">A:
 nc -lp port -c bash
 
 B:
@@ -1419,14 +1419,14 @@ nc ip port
 </div><h3 id="流媒体服务">流媒体服务</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">A:
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">A:
 cat test.mp4 <span class="p">|</span> nc -lp port
 
 B:
@@ -1438,7 +1438,7 @@ nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4
 <p>收集目标机上的进程信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1446,7 +1446,7 @@ nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nc -l -p port &gt; ps.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -l -p port &gt; ps.txt
 将远程发送过来的内容保存在本地
 
 Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
@@ -1578,17 +1578,17 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>类 UNIX 系统直接使用包管理进行安装即可，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="使用-iperf">使用 iPerf</h2>
 <p>首先，介绍服务端和客户端共有的参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1603,7 +1603,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
 --cport n         指定客户端端口
 -f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
 -i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
@@ -1621,12 +1621,12 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </div><p>服务端特有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
 -D, --daemon      将服务器作为守护进程在后台运行
 -I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
 </code></pre></td></tr></table>
@@ -1634,7 +1634,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </div><p>客户端特有参数:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1661,7 +1661,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
 --sctp	                使用 SCTP 而不是 TCP
 -u, --udp	            使用 UDP 而不是 TCP
 -b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
@@ -1699,21 +1699,21 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>常用启用参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">服务端
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">服务端
 $ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">客户端
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">客户端
 $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
 </code></pre></td></tr></table>
 </div>
@@ -1754,16 +1754,16 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <h2 id="使用-sftp">使用 SFTP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1773,7 +1773,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
 -l：使用 ssh 协议版本 1；
 -b：指定批处理文件；
 -C：使用压缩；
@@ -1846,20 +1846,20 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
 </code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
@@ -1870,7 +1870,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <h2 id="使用-rsync">使用 rsync</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1878,7 +1878,7 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
@@ -1910,7 +1910,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>可用选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1973,7 +1973,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
 -q, --quiet 精简输出模式。
 -C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
 -c, --checksum 打开校验开关，强制对文件传输进行校验。
@@ -2065,10 +2065,10 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
 </code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
@@ -2125,16 +2125,16 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <h2 id="使用-scp">使用 SCP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -2149,7 +2149,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
 -2：使用ssh协议版本2；
 -4：使用ipv4；
 -6：使用ipv6；
@@ -2176,7 +2176,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -2198,7 +2198,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
 $ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
 <span class="m">10000</span>
 

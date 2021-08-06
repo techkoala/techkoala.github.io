@@ -22,10 +22,10 @@
             <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -35,28 +35,28 @@
 <p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
 </code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
@@ -64,11 +64,11 @@
 <p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
@@ -77,14 +77,14 @@
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
 /etc
 $ !!
 <span class="nb">pwd</span>
@@ -94,17 +94,17 @@ $ !!
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
 </code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -121,7 +121,7 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
 $ mkdir temp
 $ touch temp/test
 $ !!
@@ -141,10 +141,10 @@ touch temp/test
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
 </code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
@@ -153,14 +153,14 @@ touch temp/test
 <p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
 $ vim !$
 vim items.txt
 $ cp !$ shopping.txt
@@ -171,12 +171,12 @@ cp items.txt shopping.txt
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
 $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
@@ -185,12 +185,12 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 <p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
 $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>
@@ -212,19 +212,19 @@ rm /var/log/httpd/access.log
 <p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
 </code></pre></td></tr></table>
 </div>
 </div><p>也即：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -237,38 +237,38 @@ rm /var/log/httpd/access.log
 <p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
@@ -276,40 +276,40 @@ rm /var/log/httpd/access.log
 <p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
 <p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
 <p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
 <p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -320,10 +320,10 @@ rm /var/log/httpd/access.log
 <h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
@@ -331,10 +331,10 @@ rm /var/log/httpd/access.log
 <p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>
@@ -394,89 +394,89 @@ rm /var/log/httpd/access.log
 <p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">site:www.techkoala.top Trick
 </code></pre></td></tr></table>
 </div>
 </div><p>查找必须在标题文本中包含短语的特定页面</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">allintitle:&#34;Github&#34; site:techkoala.com
 </code></pre></td></tr></table>
 </div>
 </div><p>查找类似网站（仅谷歌搜索）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">related:techkoala.com
 </code></pre></td></tr></table>
 </div>
 </div><p>您可以将运算符链接在一起 （例如：在 Url 中查找具有安全性或错误赏金）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">inurl:security OR inurl:bug-bounty OR site:hackerone.com) + &#34;techkoala&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>您可以限制为某些顶级域（例如：教师列表）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="email">Email</h3>
 <p>查找 Gmail 帐户</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">username &#34;@gmail.com&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>查找工作帐户（您需要先找到他们的域）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">username  &#34;@techkoala.top&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>模糊搜索的情况下，可以尝试猜测电子邮件的格式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&#34;username&#34; &#34;@&#34; &#34;.com&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>在网站上查找电子邮件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">site:gumroad.com intext:&#34;@gumroad.com&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>在网页上查找您访问的每封电子邮件，适用于每个网站，将其注入 Chrome 开发工具</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -485,7 +485,7 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">var elems = document.body.getElementsByTagName (&#34;*&#34;);
 var re = new RegExp (&#34;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&#34;);
 for (var i = 0; i &lt; elems.length; i++) {
     if (re.test (elems [i].innerHTML)) {
@@ -499,65 +499,65 @@ for (var i = 0; i &lt; elems.length; i++) {
 <p>查找电子表格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">filetype:csv OR filetype:xlsx OR filetype:xls OR filetype:xltx OR filetype:xlt OR inurl:airtable.com/universe/
 </code></pre></td></tr></table>
 </div>
 </div><p>查找谷歌文档和谷歌表格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="seo">SEO</h3>
 <p>在锚文本中查找具有特定关键字的网站</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">inanchor:&#34;cyber security&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>研究标题中包含特定关键字的博客帖子</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">inposttitle:&#34;diy slime&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>查找反向链接 (例如：链接到特定博客帖子的其他网站)。注意：链接运算符 <code>link</code> 现在已弃用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">intext:intercom.com/intercom-api-reference/reference
 </code></pre></td></tr></table>
 </div>
 </div><p>使用通配符运算符查找关键字排列</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">* design tools
 </code></pre></td></tr></table>
 </div>
 </div><p>使用给定的 widget 查找公司</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
 </code></pre></td></tr></table>
 </div>
 </div><h1 id="待更新">待更新&hellip;</h1>
@@ -582,43 +582,43 @@ for (var i = 0; i &lt; elems.length; i++) {
 <h2 id="概览提交历史">概览提交历史</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令帮助您以更清晰的方式查看提交。每个提交仅显示为一行，并且只有最少量的信息，比如提交哈希、提交消息。</p>
 <h2 id="显示详细更改信息">显示详细更改信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
 </code></pre></td></tr></table>
 </div>
 </div><p>此命令会显示更新的详细更改信息，方便查阅。</p>
 <h2 id="根据时间筛选">根据时间筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -629,7 +629,7 @@ for (var i = 0; i &lt; elems.length; i++) {
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
 
 $ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
 
@@ -644,105 +644,105 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <h2 id="根据作者筛选">根据作者筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令会显示由 techkoala 提交的更改。当然，可以结合上面介绍的命令，进行更加精确的筛选，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="根据-log-信息筛选">根据 log 信息筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 <code>-i</code> 选项。</p>
 <p>此外，还支持正则表达式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="根据文件筛选">根据文件筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令显示针对特定文件的的提交历史。</p>
 <p>当然，可以传入多个文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
 </code></pre></td></tr></table>
 </div>
 </div><p>同样的，结合别的命令可以做出更精确的筛选，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="根据文件内容筛选">根据文件内容筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>上述命令帮你在源代码中搜索已添加到提交历史记录中的特定字符串。同样的，加上 <code>-i</code> 可以不区分大小写。</p>
 <h2 id="仅显示合并提交">仅显示合并提交</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令显示当前分支上合并的提交。</p>
 <h2 id="显示不同分支间的区别">显示不同分支间的区别</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令将显示所有来自 <code>develop</code> 但不在 <code>master</code> 分支的提交。</p>
 <h2 id="自定义-log-信息格式">自定义 log 信息格式</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>

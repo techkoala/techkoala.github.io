@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/how_https_works/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-08-16T21:52:26&#43;08:00" />
-<meta property="article:modified_time" content="2020-09-12T15:13:04&#43;08:00" />
+<meta property="article:published_time" content="2020-08-16T21:52:26+08:00" />
+<meta property="article:modified_time" content="2020-09-12T15:13:04+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HTTPS 工作原理"/>
@@ -246,11 +246,11 @@
 <p><strong>中间人攻击</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
         伪造证书            拦截请求
 </code></pre></td></tr></table>
 </div>
@@ -258,7 +258,7 @@
 <p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -273,7 +273,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
 | A digital signature |
 |(not to be confused  |
 |with a digital       |
@@ -292,7 +292,7 @@
 <p>假设消息传递在 Bob，Susan 和 Pat 三人之间发生。Susan 将消息连同数字签名一起发送给 Bob，Bob 接收到消息后，可以这样验证接收到的消息就是 Susan 发送的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -312,7 +312,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
 | A digital signature |
 |(not to be confused  |
 |with a digital       |
@@ -359,11 +359,11 @@
 <p><code>TLS Handshake Protocol</code> 和 <code>Change Ciper Spec Protocol</code> 会导致 <code>Record Protocol</code> 状态切换。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">empty state -------------------&gt; pending state ------------------&gt; current state
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">empty state -------------------&gt; pending state ------------------&gt; current state
              Handshake Protocol                Change Cipher Spec
 </code></pre></td></tr></table>
 </div>
@@ -449,12 +449,12 @@
 <h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
                       ClientHello.random + ServerHello.random)
                       [0..47];
 </code></pre></td></tr></table>
@@ -463,7 +463,7 @@
 <p><code>Handshaking Protocols</code> 使得客户端和服务端交换了三个参数：<code>client_random</code>，<code>server_random</code> 和 <code>master_secret</code>，通过以下算法生成算法所需要的参数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -481,7 +481,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">To</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">material</span><span class="p">,</span><span class="w"> </span><span class="n">compute</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">To</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">material</span><span class="p">,</span><span class="w"> </span><span class="n">compute</span><span class="w">
 </span><span class="w">
 </span><span class="w">  </span><span class="n">key_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">PRF</span><span class="w"> </span><span class="p">(</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">master_secret</span><span class="p">,</span><span class="w">
 </span><span class="w">                  </span><span class="s2">&#34;key expansion&#34;</span><span class="p">,</span><span class="w">
@@ -516,7 +516,7 @@
             data-sizes="auto"
             alt="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp"
         />
-    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/">https://cipherstuff.wordpress.com/</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/" target="_blank" rel="noopener noreffer">https://cipherstuff.wordpress.com/</a></figcaption>
     </figure>
 <h2 id="拓展阅读">拓展阅读</h2>
 <ul>

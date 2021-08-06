@@ -17,11 +17,11 @@
 <p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
 opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
@@ -30,27 +30,27 @@ opkg install dnscrypt-proxy2
 <p>基本使用只需要</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 </code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
@@ -58,10 +58,10 @@ opkg install dnscrypt-proxy2
 <p>然后</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
 </code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
@@ -115,21 +115,21 @@ opkg install dnscrypt-proxy2
 <p>如果此前没有安装，首先使用下列命令进行安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
 $ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>然后输入</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>打开磁盘管理界面：</p>
@@ -158,10 +158,10 @@ $ opkg install cfdisk
 <p>使用命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
 </code></pre></td></tr></table>
 </div>
 </div><p>格式化分区</p>
@@ -173,10 +173,10 @@ $ opkg install cfdisk
 <p>使用命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
 </code></pre></td></tr></table>
 </div>
 </div><p>挂载分区</p>
@@ -184,10 +184,10 @@ $ opkg install cfdisk
 <p>然后将原来 <code>upper</code> 层中的数据复制到新的分区中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="web-界面配置修改">Web 界面配置修改</h2>
@@ -207,10 +207,10 @@ $ opkg install cfdisk
 <p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
 </code></pre></td></tr></table>
 </div>
 </div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
@@ -249,57 +249,57 @@ $ opkg install cfdisk
 <h3 id="存放路径">存放路径</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="配置">配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入对应的子菜单中找到对应插件按 <M> 表示选中插件，但不编译进固件。</p>
 <h3 id="编译">编译</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>xxxxx 就是你需要单独编译的程序。</p>
 <h3 id="ipk-生成路径">ipk 生成路径</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="上传-ipk-至路由器">上传 ipk 至路由器</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="安装">安装</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>

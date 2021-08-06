@@ -19,12 +19,12 @@
 <ul>
 <li>
 <p>获得 Gist 文件列表中的第一个文件： <code>https://gist.github.com/gist_user/gist_id/raw/</code></p>
-<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/">https://gist.github.com/atenni/5604522/raw/</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/" target="_blank" rel="noopener noreffer">https://gist.github.com/atenni/5604522/raw/</a></p>
 <p>即便更改了文件名，上述方法依然可以获得列表中的第一个文件。</p>
 </li>
 <li>
 <p>获得多个文件： <code>https://gist.github.com/gist_user/gist_id/raw/file_name</code></p>
-<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md" target="_blank" rel="noopener noreffer">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
 </li>
 </ul>
 <h2 id="参考">参考</h2>
@@ -44,23 +44,23 @@
 <p>​ 首先，使用如下命令检查问题详情：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh -vT git@github.com
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh -vT git@github.com
 </code></pre></td></tr></table>
 </div>
 </div><p>​ 然后确认您的私钥已生成并加载到 <code>SSH</code>。 如果使用的是 <code>OpenSSH 6.7</code> 或更早版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
 $ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
 &gt; Agent pid <span class="m">59566</span>
 $ ssh-add -l
@@ -70,14 +70,14 @@ $ ssh-add -l
 </div><p>​ 如果使用的是 <code>OpenSSH 6.8</code> 或更新版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
 $ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
 &gt; Agent pid <span class="m">59566</span>
 $ ssh-add -l -E md5
@@ -88,43 +88,43 @@ $ ssh-add -l -E md5
 <p>​ 在后台启动 <code>SSH</code> 代理程序。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
 &gt; Agent pid <span class="m">59566</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>​ 找到并记录公钥指纹。 如果使用的是 <code>OpenSSH 6.7</code> 或更早版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l
 &gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>​ 如果使用的是 <code>OpenSSH 6.8</code> 或更新版本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l -E md5
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l -E md5
 &gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>如果没有添加，则</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add /xxx/.ssh/xxx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add /xxx/.ssh/xxx
 </code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">

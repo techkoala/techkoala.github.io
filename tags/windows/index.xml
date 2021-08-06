@@ -29,10 +29,10 @@
 <p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>获得当前所有的网络连接，其中<code>InterfaceMetric</code>即为接口跃点数的值。</p>
@@ -43,20 +43,20 @@
 <p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>即可将其跃点数设置为 10。</p>
 <p>想要恢复跃点数的话，运行以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
@@ -72,10 +72,10 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
 </code></pre></td></tr></table>
 </div>
 </div><ol start="2">
@@ -83,10 +83,10 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -94,10 +94,10 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="参考">参考</h2>

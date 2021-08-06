@@ -18,10 +18,10 @@
 <p>使用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
 </code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机 IP，即可通过同网域机器访问该 web 服务</p>

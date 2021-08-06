@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/nginx_port_reuse/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-20T14:17:01&#43;08:00" />
-<meta property="article:modified_time" content="2021-06-08T23:26:55&#43;08:00" />
+<meta property="article:published_time" content="2021-04-20T14:17:01+08:00" />
+<meta property="article:modified_time" content="2021-06-08T23:26:55+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用 Nginx 实现多服务复用端口"/>
@@ -195,11 +195,11 @@
 <h2 id="获取-ssl-证书">获取 SSL 证书</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
 $ sudo certbot --nginx -d example.com -d www.example.com
 </code></pre></td></tr></table>
 </div>
@@ -207,7 +207,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 <h3 id="frpcini">frpc.ini</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -218,7 +218,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 server_addr = xxx.xxx.xxx.xxx           # 服务器地址
 server_port = xxx                       # 与服务器 frps 通信的端口
 token = xxxxxx                          # frp 验证密钥
@@ -232,7 +232,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </div><h3 id="本地-nginxcof">本地 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -309,7 +309,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
 worker_processes auto;
 error_log /var/log/nginx/error.log warn;
 pid /var/run/nginx.pid;
@@ -390,7 +390,7 @@ http {
 <h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -482,7 +482,7 @@ http {
 </span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
 worker_processes auto;
 pid /var/run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
@@ -578,14 +578,14 @@ http {
 <h4 id="frpsini">frps.ini</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 bind_port = xxxx                # 与本地 frpc 通信的端口
 vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
 authentication_method = token
@@ -596,7 +596,7 @@ token = xxxxxx                  # frp 验证密钥
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -607,7 +607,7 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
 ## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
 server {
         listen 80;
@@ -621,10 +621,10 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
@@ -632,7 +632,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -653,7 +653,7 @@ server {
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
     server_name xxx.techkoala.top;             # 自己的域名
     location / {
@@ -677,16 +677,16 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -738,7 +738,7 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;run_type&#34;: &#34;server&#34;,
     &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
     &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
@@ -794,7 +794,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -814,7 +814,7 @@ server {
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         listen [::]:80;
         server_name xxx.techkoala.top;
@@ -837,17 +837,17 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="xray">Xray</h3>
 <h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -865,7 +865,7 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         server_name xxx.techkoala.top;
         if ($host = xxxx.techkoala.top) {
@@ -886,7 +886,7 @@ server {
 </div><h4 id="xray-配置">Xray 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -935,7 +935,7 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;log&#34;: {
         &#34;loglevel&#34;: &#34;warning&#34;
     },

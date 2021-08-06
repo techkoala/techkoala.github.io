@@ -12,8 +12,8 @@
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/system_info/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-09-13T22:35:06&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-10T13:59:08&#43;08:00" />
+<meta property="article:published_time" content="2020-09-13T22:35:06+08:00" />
+<meta property="article:modified_time" content="2020-10-10T13:59:08+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux 系统信息查询"/>
@@ -162,7 +162,7 @@
 <h2 id="系统信息">系统信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -171,7 +171,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
 $ head -n <span class="m">1</span> /etc/issue  <span class="c1"># 查看操作系统版本</span>
 $ hostname              <span class="c1"># 查看计算机名</span>
 $ lspci -tv             <span class="c1"># 列出所有 PCI 设备</span>
@@ -183,7 +183,7 @@ $ env                   <span class="c1"># 查看环境变量</span>
 </div><h2 id="系统资源">系统资源</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -195,7 +195,7 @@ $ env                   <span class="c1"># 查看环境变量</span>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
 $ lscpu                         <span class="c1"># 查看 CPU 信息</span>
 $ lshw -short                   <span class="c1"># 当前服务器 CPU、内存、磁盘等详细信息</span>
 $ free -m                       <span class="c1"># 查看内存使用量和交换区使用量</span>
@@ -210,18 +210,18 @@ $ cat /proc/loadavg             <span class="c1"># 查看系统负载</span>
 </div><h2 id="磁盘和分区">磁盘和分区</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
 $ fdisk -l                  <span class="c1"># 查看所有分区</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="网络信息">网络信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -229,7 +229,7 @@ $ fdisk -l                  <span class="c1"># 查看所有分区</span>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
 $ iptables -L           <span class="c1"># 查看防火墙设置</span>
 $ route -n              <span class="c1"># 查看路由表</span>
 $ netstat -lntp         <span class="c1"># 查看所有监听端口</span>
@@ -240,12 +240,12 @@ $ netstat -s            <span class="c1"># 查看网络统计信息</span>
 </div><h2 id="进程查询">进程查询</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ps -ef            <span class="c1"># 查看所有进程</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -ef            <span class="c1"># 查看所有进程</span>
 $ top               <span class="c1"># 实时显示进程状态</span>
 $ htop              <span class="c1"># 实时显示进程状态，加强版 top</span>
 </code></pre></td></tr></table>
@@ -253,14 +253,14 @@ $ htop              <span class="c1"># 实时显示进程状态，加强版 top<
 </div><h2 id="用户信息">用户信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ w                             <span class="c1"># 查看活动用户</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ w                             <span class="c1"># 查看活动用户</span>
 $ id &lt;用户名&gt;                    <span class="c1"># 查看指定用户信息</span>
 $ last                          <span class="c1"># 查看用户登录日志</span>
 $ cut -d: -f1 /etc/passwd       <span class="c1"># 查看系统所有用户</span>
@@ -270,12 +270,12 @@ $ cut -d: -f1 /etc/group        <span class="c1"># 查看系统所有组</span>
 </div><h2 id="服务">服务</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
 $ chkconfig –list               <span class="c1"># 列出所有系统服务</span>
 $ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列出所有启动的系统服务</span>
 </code></pre></td></tr></table>
@@ -283,13 +283,13 @@ $ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列�
 </div><h2 id="软件信息">软件信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
 $ pacman -Qmeq                  <span class="c1"># 显示 aur 软件</span>
 $ pacman -Qneq                  <span class="c1"># 显示 pacman 安装的软件</span>
 $ pactree package_name          <span class="c1"># 显示软件的依赖树</span>

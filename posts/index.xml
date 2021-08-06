@@ -22,10 +22,10 @@
             <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -35,28 +35,28 @@
 <p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
 </code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
@@ -64,11 +64,11 @@
 <p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
@@ -77,14 +77,14 @@
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
 /etc
 $ !!
 <span class="nb">pwd</span>
@@ -94,17 +94,17 @@ $ !!
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
 </code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -121,7 +121,7 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
 $ mkdir temp
 $ touch temp/test
 $ !!
@@ -141,10 +141,10 @@ touch temp/test
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
 </code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
@@ -153,14 +153,14 @@ touch temp/test
 <p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
 $ vim !$
 vim items.txt
 $ cp !$ shopping.txt
@@ -171,12 +171,12 @@ cp items.txt shopping.txt
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
 $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
@@ -185,12 +185,12 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 <p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
 $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>
@@ -220,14 +220,14 @@ rm /var/log/httpd/access.log
 <p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
 mkdir ~/freshrss &amp;&amp; cd ~/freshrss
 
 # 新建&amp;编辑配置文件
@@ -238,7 +238,7 @@ vim docker-compose.yml
 <p>配置文件内容见下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -275,7 +275,7 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
 
 version: &#34;3&#34;
 
@@ -315,10 +315,10 @@ volumes:
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置">FreshRSS 设置</h2>
@@ -344,14 +344,14 @@ volumes:
 <p>参数配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
 域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
 
 用户名：注册用户名
@@ -375,26 +375,26 @@ volumes:
 <p>Windows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
 
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -404,7 +404,7 @@ volumes:
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
 -f bestaudio                #最佳音频
 --extract-audio             #提取音频
 --audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
@@ -430,12 +430,12 @@ volumes:
 <ul>
 <li>
 <p>获得 Gist 文件列表中的第一个文件： <code>https://gist.github.com/gist_user/gist_id/raw/</code></p>
-<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/">https://gist.github.com/atenni/5604522/raw/</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/" target="_blank" rel="noopener noreffer">https://gist.github.com/atenni/5604522/raw/</a></p>
 <p>即便更改了文件名，上述方法依然可以获得列表中的第一个文件。</p>
 </li>
 <li>
 <p>获得多个文件： <code>https://gist.github.com/gist_user/gist_id/raw/file_name</code></p>
-<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md" target="_blank" rel="noopener noreffer">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
 </li>
 </ul>
 <h2 id="参考">参考</h2>
@@ -467,10 +467,10 @@ volumes:
 <p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>获得当前所有的网络连接，其中<code>InterfaceMetric</code>即为接口跃点数的值。</p>
@@ -481,20 +481,20 @@ volumes:
 <p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>即可将其跃点数设置为 10。</p>
 <p>想要恢复跃点数的话，运行以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
@@ -510,10 +510,10 @@ volumes:
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
 </code></pre></td></tr></table>
 </div>
 </div><ol start="2">
@@ -521,10 +521,10 @@ volumes:
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -532,10 +532,10 @@ volumes:
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="参考">参考</h2>
@@ -575,11 +575,11 @@ volumes:
 <h2 id="获取-ssl-证书">获取 SSL 证书</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
 $ sudo certbot --nginx -d example.com -d www.example.com
 </code></pre></td></tr></table>
 </div>
@@ -587,7 +587,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 <h3 id="frpcini">frpc.ini</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -598,7 +598,7 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 server_addr = xxx.xxx.xxx.xxx           # 服务器地址
 server_port = xxx                       # 与服务器 frps 通信的端口
 token = xxxxxx                          # frp 验证密钥
@@ -612,7 +612,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </div><h3 id="本地-nginxcof">本地 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -689,7 +689,7 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
 worker_processes auto;
 error_log /var/log/nginx/error.log warn;
 pid /var/run/nginx.pid;
@@ -770,7 +770,7 @@ http {
 <h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -862,7 +862,7 @@ http {
 </span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
 worker_processes auto;
 pid /var/run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
@@ -958,14 +958,14 @@ http {
 <h4 id="frpsini">frps.ini</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[common]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
 bind_port = xxxx                # 与本地 frpc 通信的端口
 vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
 authentication_method = token
@@ -976,7 +976,7 @@ token = xxxxxx                  # frp 验证密钥
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -987,7 +987,7 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
 ## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
 server {
         listen 80;
@@ -1001,10 +1001,10 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
@@ -1012,7 +1012,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1033,7 +1033,7 @@ server {
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
     listen 127.0.0.1:80 default_server;
     server_name xxx.techkoala.top;             # 自己的域名
     location / {
@@ -1057,16 +1057,16 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1118,7 +1118,7 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;run_type&#34;: &#34;server&#34;,
     &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
     &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
@@ -1174,7 +1174,7 @@ server {
 <p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1194,7 +1194,7 @@ server {
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         listen [::]:80;
         server_name xxx.techkoala.top;
@@ -1217,17 +1217,17 @@ server {
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="xray">Xray</h3>
 <h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1245,7 +1245,7 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
         listen 80;
         server_name xxx.techkoala.top;
         if ($host = xxxx.techkoala.top) {
@@ -1266,7 +1266,7 @@ server {
 </div><h4 id="xray-配置">Xray 配置</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1315,7 +1315,7 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
     &#34;log&#34;: {
         &#34;loglevel&#34;: &#34;warning&#34;
     },
@@ -1379,11 +1379,11 @@ server {
 <p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
 opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
@@ -1392,27 +1392,27 @@ opkg install dnscrypt-proxy2
 <p>基本使用只需要</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 </code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
 </code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
@@ -1420,10 +1420,10 @@ opkg install dnscrypt-proxy2
 <p>然后</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
 </code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
@@ -1458,19 +1458,19 @@ opkg install dnscrypt-proxy2
 <p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
 </code></pre></td></tr></table>
 </div>
 </div><p>也即：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1483,38 +1483,38 @@ opkg install dnscrypt-proxy2
 <p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
@@ -1522,40 +1522,40 @@ opkg install dnscrypt-proxy2
 <p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
 <p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
 <p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
 <p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1566,10 +1566,10 @@ opkg install dnscrypt-proxy2
 <h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
@@ -1577,10 +1577,10 @@ opkg install dnscrypt-proxy2
 <p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>

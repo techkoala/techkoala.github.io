@@ -16,43 +16,43 @@
 <h2 id="概览提交历史">概览提交历史</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令帮助您以更清晰的方式查看提交。每个提交仅显示为一行，并且只有最少量的信息，比如提交哈希、提交消息。</p>
 <h2 id="显示详细更改信息">显示详细更改信息</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
 </code></pre></td></tr></table>
 </div>
 </div><p>此命令会显示更新的详细更改信息，方便查阅。</p>
 <h2 id="根据时间筛选">根据时间筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -63,7 +63,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
 
 $ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
 
@@ -78,105 +78,105 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <h2 id="根据作者筛选">根据作者筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令会显示由 techkoala 提交的更改。当然，可以结合上面介绍的命令，进行更加精确的筛选，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="根据-log-信息筛选">根据 log 信息筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 <code>-i</code> 选项。</p>
 <p>此外，还支持正则表达式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="根据文件筛选">根据文件筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令显示针对特定文件的的提交历史。</p>
 <p>当然，可以传入多个文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
 </code></pre></td></tr></table>
 </div>
 </div><p>同样的，结合别的命令可以做出更精确的筛选，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="根据文件内容筛选">根据文件内容筛选</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>上述命令帮你在源代码中搜索已添加到提交历史记录中的特定字符串。同样的，加上 <code>-i</code> 可以不区分大小写。</p>
 <h2 id="仅显示合并提交">仅显示合并提交</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令显示当前分支上合并的提交。</p>
 <h2 id="显示不同分支间的区别">显示不同分支间的区别</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令将显示所有来自 <code>develop</code> 但不在 <code>master</code> 分支的提交。</p>
 <h2 id="自定义-log-信息格式">自定义 log 信息格式</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>

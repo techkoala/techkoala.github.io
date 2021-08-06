@@ -22,10 +22,10 @@
             <div class="admonition-content"><p>下文中需要编辑的内容均在<code>.bashrc</code>中，使用常用的文本编辑器打开它，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -35,28 +35,28 @@
 <p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
 </code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
@@ -64,11 +64,11 @@
 <p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
@@ -77,14 +77,14 @@
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
 /etc
 $ !!
 <span class="nb">pwd</span>
@@ -94,17 +94,17 @@ $ !!
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
 </code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -121,7 +121,7 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
 $ mkdir temp
 $ touch temp/test
 $ !!
@@ -141,10 +141,10 @@ touch temp/test
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ !ping
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
 </code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
@@ -153,14 +153,14 @@ touch temp/test
 <p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
 $ vim !$
 vim items.txt
 $ cp !$ shopping.txt
@@ -171,12 +171,12 @@ cp items.txt shopping.txt
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
 $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
@@ -185,12 +185,12 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 <p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
 $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>
@@ -223,16 +223,16 @@ rm /var/log/httpd/access.log
 <h2 id="使用-sftp">使用 SFTP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="选项">选项</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -242,7 +242,7 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
 -l：使用 ssh 协议版本 1；
 -b：指定批处理文件；
 -C：使用压缩；
@@ -315,20 +315,20 @@ rm /var/log/httpd/access.log
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
 </code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
 </code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
@@ -339,7 +339,7 @@ rm /var/log/httpd/access.log
 <h2 id="使用-rsync">使用 rsync</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -347,7 +347,7 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
 rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
@@ -379,7 +379,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>可用选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -442,7 +442,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
 -q, --quiet 精简输出模式。
 -C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
 -c, --checksum 打开校验开关，强制对文件传输进行校验。
@@ -534,10 +534,10 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
 </code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
@@ -594,16 +594,16 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <h2 id="使用-scp">使用 SCP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
 </code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -618,7 +618,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
 -2：使用ssh协议版本2；
 -4：使用ipv4；
 -6：使用ipv6；
@@ -645,7 +645,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -667,7 +667,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
 $ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
 <span class="m">10000</span>
 
@@ -745,10 +745,10 @@ Executed in  215.68 millis	fish       	external
 <p>解决办法很简单，只需要将当前登录用户加入到 <code>vboxsf</code> 组就行了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>重启一次系统组设置即生效。</p>]]></description>

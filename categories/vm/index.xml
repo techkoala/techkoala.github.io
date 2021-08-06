@@ -17,10 +17,10 @@
 <p>创建网桥的步骤如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">操作 -&gt; 虚拟交换机管理器 -&gt; 新建虚拟网络交换机 -&gt; 选择外部类型 -&gt; 创建虚拟交换机 -&gt; 设置连接类型为内部网络 -&gt; 应用
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">操作 -&gt; 虚拟交换机管理器 -&gt; 新建虚拟网络交换机 -&gt; 选择外部类型 -&gt; 创建虚拟交换机 -&gt; 设置连接类型为内部网络 -&gt; 应用
 </code></pre></td></tr></table>
 </div>
 </div><p>首先点击虚拟机右边的 Hyper-V 操作选项<code>虚拟交换机管理器</code>：</p>
@@ -66,20 +66,20 @@
 <p>删除界面缓存文件即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ rm /var/lib/rrdcached/db/pve2-node
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ rm /var/lib/rrdcached/db/pve2-node
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="4-群晖-socks-代理">4. 群晖 socks 代理</h3>
 <p>Openwrt 安装 luci-app-Privoxy，设置转发规则：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Shell" data-lang="Shell">$ /ip:port .
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ /ip:port .
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>
@@ -102,10 +102,10 @@
 <p>解决办法很简单，只需要将当前登录用户加入到 <code>vboxsf</code> 组就行了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>重启一次系统组设置即生效。</p>]]></description>
