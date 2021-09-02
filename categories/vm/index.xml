@@ -4,7 +4,266 @@
         <link>https://www.techkoala.top/categories/vm/</link>
         <description>VM - 分类 - TechKoala - Input/Output</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 20 May 2020 15:30:24 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/vm/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/vm/" rel="self" type="application/rss+xml" /><item>
+    <title>快速调整 Hyper-V 虚拟机磁盘大小</title>
+    <link>https://www.techkoala.top/resize_vm_lvm_disk_size/</link>
+    <pubDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/resize_vm_lvm_disk_size/</guid>
+    <description><![CDATA[<blockquote>
+<p>如何调整已建立的 Hyper-V 虚拟机磁盘大小？本文以 Ubuntu 为例，对此进行介绍。</p>
+</blockquote>
+<h2 id="说明">说明</h2>
+<p>此教程适用于使用 LVM 格式化的任何 Ubuntu 文件系统。</p>
+<p>如果你在使用 VMware，基本步骤与下面的教程类似，区别参见<a href="https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm" target="_blank" rel="noopener noreffer">这里</a>。</p>
+<h2 id="tldr">TL;DR</h2>
+<ol>
+<li>fdisk -l (note it’s partition 3 by looking at the current Size)</li>
+<li>parted</li>
+<li>resizepart, Fix, 3, 100% (type this instead), quit</li>
+<li>pvresize /dev/sda3</li>
+<li>lvextend -l +100%FREE /dev/mapper/ubuntu–vg-ubuntu–lv</li>
+<li>resize2fs /dev/mapper/ubuntu–vg-ubuntu–lv</li>
+<li>df -h</li>
+</ol>
+<h2 id="具体步骤">具体步骤</h2>
+<h3 id="查看剩余磁盘大小">查看剩余磁盘大小</h3>
+<p>在下面的输出中，请注意 /root 卷只有 3.9 GB 的磁盘空间：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~$ df -h
+Filesystem Size Used Avail Use% Mounted on
+udev 1.9G <span class="m">0</span> 1.9G 0% /dev
+tmpfs 394M 1.1M 393M 1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv 3.9G 3.2G 489M 87% /
+tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
+tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
+tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
+/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
+/dev/sda2 976M 77M 833M 9% /boot
+/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
+tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来，在输出中可以看出实际上还有更多可用空间未利用。例如 /dev/sda3 卷上有 24G。另一个 1GB 用于启动卷和 BIOS 启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# fdisk -l
+Disk /dev/loop0: 88.5 MiB, <span class="m">92778496</span> bytes, <span class="m">181208</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+
+
+Disk /dev/loop1: <span class="m">89</span> MiB, <span class="m">93327360</span> bytes, <span class="m">182280</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+
+...
+
+Disk /dev/sda: <span class="m">25</span> GiB, <span class="m">26843545600</span> bytes, <span class="m">52428800</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
+Disklabel type: gpt
+Disk identifier: ED41F7A6-5D09-457B-A55C-C7F1E30DE419
+
+Device Start End Sectors Size Type
+/dev/sda1 <span class="m">2048</span> <span class="m">4095</span> <span class="m">2048</span> 1M BIOS boot
+/dev/sda2 <span class="m">4096</span> <span class="m">2101247</span> <span class="m">2097152</span> 1G Linux filesystem
+/dev/sda3 <span class="m">2101248</span> <span class="m">52426751</span> <span class="m">50325504</span> 24G Linux filesystem
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: <span class="m">4</span> GiB, <span class="m">4294967296</span> bytes, <span class="m">8388608</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="调整虚拟机磁盘大小">调整虚拟机磁盘大小</h3>
+<p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
+<h3 id="重新分区">重新分区</h3>
+<p>下面利用 parted 进行对新加的磁盘进行分区。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# parted
+GNU Parted 3.2
+Using /dev/sda
+Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+<span class="o">(</span>parted<span class="o">)</span> print
+Model: Msft Virtual Disk <span class="o">(</span>scsi<span class="o">)</span>
+Disk /dev/sda: 26.8GB
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/4096B
+Partition Table: gpt
+Disk Flags:
+
+Number Start End Size File system Name Flags
+<span class="m">1</span> 1049kB 2097kB 1049kB bios_grub
+<span class="m">2</span> 2097kB 1076MB 1074MB ext4
+<span class="m">3</span> 1076MB 26.8GB 25.8GB
+
+<span class="o">(</span>parted<span class="o">)</span> quit
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# parted
+GNU Parted 3.2
+Using /dev/sda
+Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+<span class="o">(</span>parted<span class="o">)</span> resizepart
+Partition number? <span class="m">3</span>
+End? <span class="o">[</span>26.8GB<span class="o">]</span>?
+<span class="o">(</span>parted<span class="o">)</span> quit
+Information: You may need to update /etc/fstab.
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# pvresize /dev/sda3
+Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
+<span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="扩容">扩容</h3>
+<p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+resize2fs 1.44.1 <span class="o">(</span>24-Mar-2018<span class="o">)</span>
+Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;</span> on-line resizing required
+<span class="nv">old_desc_blocks</span> <span class="o">=</span> 1, <span class="nv">new_desc_blocks</span> <span class="o">=</span> <span class="m">3</span>
+The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="确认">确认</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# df -h
+Filesystem Size Used Avail Use% Mounted on
+udev 1.9G <span class="m">0</span> 1.9G 0% /dev
+tmpfs 394M 1.1M 393M 1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv 23G 3.2G 19G 15% /
+tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
+tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
+tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
+/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
+/dev/sda2 976M 77M 833M 9% /boot
+/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
+tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
+user@server:~#
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li>[1] <a href="https://vander.host/knowledgebase/operating-systems/how-to-resize-an-ubuntu-18-04-lvm-disk/" target="_blank" rel="noopener noreffer">How to resize an Ubuntu 18.04/20.04 LVM disk</a></li>
+</ul>]]></description>
+</item><item>
     <title>Hyper-V 桥接网络</title>
     <link>https://www.techkoala.top/hyper-v_bridging/</link>
     <pubDate>Wed, 20 May 2020 15:30:24 &#43;0800</pubDate><author>
