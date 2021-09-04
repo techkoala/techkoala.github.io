@@ -2,14 +2,14 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://www.techkoala.top/categories/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/hyper-v/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/linux/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/posts/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/categories/vm/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/resize_vm_lvm_disk_size/</loc><lastmod>2021-09-02T11:25:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/hyper-v/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/linux/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/posts/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/vm/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/resize_vm_lvm_disk_size/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/offline/</loc><lastmod>2021-06-04T16:49:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/commands/</loc><lastmod>2021-06-21T12:04:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/categories/linux/</loc><lastmod>2021-06-21T12:04:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -91,9 +91,9 @@
             <loc>https://www.techkoala.top/tags/security/</loc><lastmod>2021-02-22T17:13:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/huginn/</loc><lastmod>2021-01-29T21:01:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/huginn_backup/</loc><lastmod>2021-01-29T21:01:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/hyper-v_bridging/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/tags/pve/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/tags/qa/</loc><lastmod>2020-10-10T13:59:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://www.techkoala.top/hyper-v_bridging/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/pve/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/qa/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/pve_q_a/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/hugo/</loc><lastmod>2020-09-01T21:30:43&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/hugo_loveit_q_a/</loc><lastmod>2020-09-01T21:30:43&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

@@ -119,8 +119,8 @@ opkg install dnscrypt-proxy2
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ opkg update
-$ opkg install cfdisk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg update
+opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>然后输入</p>
@@ -129,7 +129,7 @@ $ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cfdisk
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>打开磁盘管理界面：</p>
@@ -161,7 +161,7 @@ $ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mkfs.ext4 /dev/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkfs.ext4 /dev/sda3
 </code></pre></td></tr></table>
 </div>
 </div><p>格式化分区</p>
@@ -176,7 +176,7 @@ $ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mount /dev/sda3 /mnt/sda3
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mount /dev/sda3 /mnt/sda3
 </code></pre></td></tr></table>
 </div>
 </div><p>挂载分区</p>
@@ -196,13 +196,14 @@ $ opkg install cfdisk
         
     </a><figcaption class="image-caption">Web 界面</figcaption>
     </figure>
-<p>在挂载点处点击添加然后配置如下：</p>
+<p>在<code>挂载点</code>下方点击<code>添加</code>，然后如下配置：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/mountpoint.webp" title="/images/Network/OpenWRT_overlay/mountpoint.webp" data-thumbnail="/images/Network/OpenWRT_overlay/mountpoint.webp" data-sub-html="<h2>挂载点配置</h2>">
         
     </a><figcaption class="image-caption">挂载点配置</figcaption>
     </figure>
 <h2 id="完成">完成</h2>
-<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。到 <code>系统 -&gt; 软件包</code> 可以看到变大后的空间容量。</p>
+<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。</p>
+<p>重启后到 <code>系统 -&gt; 软件包</code> 可以看到变大后的空间容量。</p>
 <h2 id="自动挂载">自动挂载</h2>
 <p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
 <div class="highlight"><div class="chroma">
@@ -210,7 +211,7 @@ $ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim /etc/rc.local
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vim /etc/rc.local
 </code></pre></td></tr></table>
 </div>
 </div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>

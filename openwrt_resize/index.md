@@ -32,14 +32,14 @@
 如果此前没有安装，首先使用下列命令进行安装：
 
 ```shell
-$ opkg update
-$ opkg install cfdisk
+opkg update
+opkg install cfdisk
 ```
 
 然后输入
 
 ```shell
-$ cfdisk
+cfdisk
 ```
 
 打开磁盘管理界面：
@@ -66,7 +66,7 @@ $ cfdisk
 使用命令：
 
 ```shell
-$ mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda3
 ```
 
 格式化分区
@@ -78,7 +78,7 @@ $ mkfs.ext4 /dev/sda3
 使用命令：
 
 ```shell
-$ mount /dev/sda3 /mnt/sda3
+mount /dev/sda3 /mnt/sda3
 ```
 
 挂载分区
@@ -97,20 +97,22 @@ cp -r /overlay/* /mnt/sda3
 
 {{< image src="/images/Network/OpenWRT_overlay/openwrt.webp" caption="Web 界面">}}
 
-在挂载点处点击添加然后配置如下：
+在`挂载点`下方点击`添加`，然后如下配置：
 
 {{< image src="/images/Network/OpenWRT_overlay/mountpoint.webp" caption="挂载点配置">}}
 
 ## 完成
 
-到这一步，只需要重启 `OpenWRT` 即可成功扩容。到 `系统 -> 软件包` 可以看到变大后的空间容量。
+到这一步，只需要重启 `OpenWRT` 即可成功扩容。
+
+重启后到 `系统 -> 软件包` 可以看到变大后的空间容量。
 
 ## 自动挂载
 
 分区默认会在 `OpenWRT` 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 `/etc/rc.local`
 
 ```shell
-$ vim /etc/rc.local
+vim /etc/rc.local
 ```
 
 在 `exit 0` 之前加入一行 `mount /dev/sda3 /overlay` 即可。
