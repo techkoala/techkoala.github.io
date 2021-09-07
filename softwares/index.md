@@ -1,25 +1,25 @@
 # 软件
 
 
-> 1.  **粗体** 表示在多平台中使用的软件
+> 1.  **粗体** 表示在跨平台软件
 >
-> 2.  _斜体_ 表示优先选择表示商店版本(`Windows` & `MacOS`)
+> 2.  _斜体_ 表示优先选择表示商店版本(`Windows` & `macOS`)
 >
 > 3.  `Linux` 优先选用对应包管理器安装
 
 ## 浏览器
 
-- **[Microsoft Edge](https://www.microsoftedgeinsider.com/zh-cn/download)**
+- **[Microsoft Edge](https://www.microsoft.com/en-us/edge)**
 
 - **[FireFox](https://www.mozilla.org/en-US/firefox/new/)**
 
-- **~~[Chrome](https://www.google.com/chrome/)~~**
+- **[Vivaldi](https://vivaldi.com/)**
 
   ##### 浏览器插件
 
   - [ClearURLs](https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei)
 
-  - [Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)
+  - ~~[Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)~~
 
   - ~~[Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)~~：已自建 FreshRSS
 
@@ -37,7 +37,7 @@
 
   - [京价保 - 京东价保助手](https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge)
 
-  - [FireShot](https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm)
+  - ~~[FireShot](https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm)~~：浏览器自带
 
   - [沙拉查词-聚合词典划词翻译](https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp)
 
@@ -57,7 +57,7 @@
 
   - [Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
 
-  - [Unpaywall](https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha)：文献解锁
+  - ~~[Unpaywall](https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha)~~
 
   - [Vimium C - 全键盘操作浏览器](https://microsoftedge.microsoft.com/addons/detail/vimium-c-%E5%85%A8%E9%94%AE%E7%9B%98%E6%93%8D%E4%BD%9C%E6%B5%8F%E8%A7%88%E5%99%A8/aibcglbfblnogfjhbcmmpobjhnomhcdo)
 
@@ -69,7 +69,7 @@
 
   - [图片助手(ImageAssistant) 批量图片下载器](https://microsoftedge.microsoft.com/addons/detail/%E5%9B%BE%E7%89%87%E5%8A%A9%E6%89%8Bimageassistant-%E6%89%B9%E9%87%8F%E5%9B%BE%E7%89%87/odphnbhiddhdpoccbialllejaajemdio)
 
-  - [Dualsub](https://chrome.google.com/webstore/detail/dualsub/gnlibmlfpencglodjpgnalbdebfhpmfp)
+  - ~~[Dualsub](https://chrome.google.com/webstore/detail/dualsub/gnlibmlfpencglodjpgnalbdebfhpmfp)~~
 
   - [简悦 - SimpRead](https://chrome.google.com/webstore/detail/simpread-reader-view/ijllcpnolfcooahcekpamkbidhejabll)
 
@@ -79,11 +79,11 @@
 
 - **[7-zip](https://www.7-zip.org/download.html)**
 
+- **[PeaZip](https://peazip.github.io/)**
+
 ##### Windows：
 
-- [Bandizip](https://en.bandisoft.com/bandizip/)：7.0 版本已增加付费，停留于 6.29
-
-- [Peazip](https://www.peazip.org/)
+- ~~[Bandizip](https://en.bandisoft.com/bandizip/)~~：7.0 版本已增加付费，停留于 6.29
 
 ## 下载
 
@@ -94,8 +94,6 @@
 - **[Xtreme Download Manager](https://github.com/subhra74/xdm)**
 
 ##### Windows：
-
-- ~~Eagleget~~：官方宣称是外国软件，查询证书为国产，原因不明
 
 - [IDM](https://www.internetdownloadmanager.com/)
 
@@ -108,6 +106,10 @@
 - [Curl](https://curl.haxx.se/)
 
 - [Wget](https://www.gnu.org/software/wget/)
+
+#### macOS
+
+- [Downie](https://software.charliemonroe.net/downie/):视频下载
 
 ## 游戏平台及工具
 
@@ -125,7 +127,7 @@
 
 - [网易 UU](https://uu.163.com/)
 
-- [Logitech 鼠标驱动](https://support.logi.com/hc/zh-cn/articles/360025298053)
+- [Logitech G Hub](https://www.logitechg.com.cn/zh-cn/innovation/g-hub.html)
 
 ## Code
 
@@ -167,7 +169,7 @@
 
 - [Adobe acrobat DC](https://get.adobe.com/cn/reader/otherversions/)
 
-- [CAJViewer](http://cajviewer.cnki.net/)
+- ~~[CAJViewer](http://cajviewer.cnki.net/)~~
 
 - [Visio](https://msdn.itellyou.cn/)
 
@@ -181,7 +183,9 @@
 
 - **[Apple Music](https://www.apple.com/apple-music/)**：网页 & Android 客户端
 
-- **_网易云音乐_**
+- ~~**_网易云音乐_**~~
+
+- **[Macast](https://github.com/xfangfang/Macast)**: PC 充当 DLNA 接收器
 
 ##### Android:
 
@@ -199,9 +203,13 @@
 
 - [Petal](https://github.com/shakrmedia/petal)：Linux 下豆瓣 FM 第三方客户端
 
+#### macOS:
+
+- [IINA](https://iina.io/)
+
 ## 网盘工具
 
-- **Onedrive**：网页&各平台客户端
+- **Onedrive**：网页 & 各平台客户端
 
 - **[rclone](https://rclone.org/downloads/)**
 
@@ -213,15 +221,11 @@
 
 - [RaiDrive](https://www.raidrive.com/)
 
-- ~~Speedpan~~ ：已失效
-
-- ~~[Pandownload](https://pandownload.com/)~~ ：已失效，避免使用百度网盘
-
 ## 即时通信
 
 - **[Telegram](https://desktop.telegram.org/)**
 
-- _~~Unigram~~_ ：Telegram 第三方客户端，相较官方客户端增加了 PC 端的端到端加密聊天功能
+- _~~Unigram~~_ ：Telegram 第三方客户端，对比官方客户端增加了 PC 端的端到端加密聊天功能
 
 - _微信_
 
@@ -244,10 +248,9 @@
 - **[ZeroTier One](https://www.zerotier.com/)**
 
 - **[Wireshark](https://www.wireshark.org/)**
+- **[Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)**
 
 ##### Windows：
-
-- [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)
 
 - ~~[MobaXterm](https://mobaxterm.mobatek.net/)~~ ：已转用 Termius，多端同步
 
@@ -257,7 +260,7 @@
 
 - [Remmina](https://remmina.org/) ：Linux 远程桌面
 
-##### MacOS：
+##### macOS：
 
 - [ClashX](https://github.com/yichengchen/clashX)
 
@@ -271,11 +274,13 @@
 
 - [PowerToys](https://github.com/microsoft/PowerToys/)
 
-- ~~[Quicker](https://getquicker.net/)~~：已转用 utools
+- ~~[Quicker](https://getquicker.net/)~~
 
-- ~~[Wox](http://www.wox.one/)~~：已转用 utools
+- ~~[Wox](http://www.wox.one/)~~
 
-- [WGestures](http://www.yingdev.com/projects/wgestures) ：Windows 鼠标手势
+- ~~[WGestures](http://www.yingdev.com/projects/wgestures) ：需要安装根证书 & 长时间未更新~~
+
+- [Strokesplus.net](https://www.strokesplus.net/Downloads）：Windows 鼠标手势
 
 - [Fastcopy-M](https://github.com/Mapaler/FastCopy-M)：基于原版的二次开发
 
@@ -319,6 +324,10 @@
 
 - [OpenHashTab](https://github.com/namazso/OpenHashTab)：Windows 属性菜单添加 Hash 值直接查看
 
+#### macOS:
+
+- [LuLu](https://github.com/objective-see/LuLu)
+
 ## 虚拟机
 
 - **[VMware Workstation Pro](https://www.vmware.com/cn.html)**
@@ -330,7 +339,7 @@
 ## 阅读
 
 - **~~[irreader](http://irreader.fatecore.com/)~~**
-  
+
 - [FreshRSS](https://freshrss.org/)
 
 - [Fluent Reader](https://github.com/yang991178/fluent-reader)
@@ -344,6 +353,12 @@
 - [Fluent Reader Lite](https://github.com/yang991178/fluent-reader-lite)
 
 - [Feedme]](https://github.com/seazon/FeedMe)
+
+##### macOS:
+
+- _[Reeder]_
+  
+- [NetNewsWire](https://netnewswire.com/)
 
 ## Cli
 
@@ -373,11 +388,17 @@
 
 - [TimeShift](https://github.com/teejee2008/timeshift)：系统备份
 
-##### MacOS：
+##### macOS：
 
 - [Better and Better](https://better365.cn/)
 
 - [iStat Menus](https://bjango.com/mac/istatmenus/)
+  
+- [Stats](https://github.com/exelban/stats)
+
+- [Mounty](https://mounty.app/)
+
+- _自动切换输入法Lite_
 
 ## 邮件
 

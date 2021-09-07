@@ -2,12 +2,12 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://www.techkoala.top/categories/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/categories/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/hyper-v/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/linux/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/posts/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/tags/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://www.techkoala.top/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/posts/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/tags/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.techkoala.top/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/categories/vm/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/resize_vm_lvm_disk_size/</loc><lastmod>2021-09-02T12:32:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/offline/</loc><lastmod>2021-06-04T16:49:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -18,7 +18,7 @@
             <loc>https://www.techkoala.top/tags/docker/</loc><lastmod>2021-06-03T00:28:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/frsshrss/</loc><lastmod>2021-06-03T00:28:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/freshrss/</loc><lastmod>2021-06-08T23:26:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/categories/network/</loc><lastmod>2021-06-08T23:26:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://www.techkoala.top/categories/network/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/rss/</loc><lastmod>2021-06-03T00:28:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/software/</loc><lastmod>2021-06-08T23:26:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/categories/software/</loc><lastmod>2021-06-08T23:26:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -35,9 +35,9 @@
             <loc>https://www.techkoala.top/tags/trojan/</loc><lastmod>2021-06-08T23:26:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/nginx_port_reuse/</loc><lastmod>2021-06-08T23:26:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/dns/</loc><lastmod>2021-05-29T00:28:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/tags/openwrt/</loc><lastmod>2021-02-24T14:08:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://www.techkoala.top/tags/openwrt/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/openwrt_doh/</loc><lastmod>2021-01-29T21:01:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/tags/router/</loc><lastmod>2021-02-24T14:08:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://www.techkoala.top/tags/router/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/tags/vim/</loc><lastmod>2021-01-29T21:01:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/vim_tips/</loc><lastmod>2021-01-29T21:01:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/lte/</loc><lastmod>2021-05-29T00:28:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -49,7 +49,7 @@
             <loc>https://www.techkoala.top/tags/arp/</loc><lastmod>2020-10-16T22:43:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/arp_rarp/</loc><lastmod>2020-10-16T22:43:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/rarp/</loc><lastmod>2020-10-16T22:43:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/openwrt_resize/</loc><lastmod>2021-02-24T14:08:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://www.techkoala.top/openwrt_resize/</loc><lastmod>2021-09-04T13:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.techkoala.top/openwrt_compile_single_ipk/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/5g/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/5g_will_be_a_complete_failure/</loc><lastmod>2020-10-09T16:37:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

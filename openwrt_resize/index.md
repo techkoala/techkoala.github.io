@@ -1,7 +1,7 @@
 # OpenWRT overlay 空间扩容
 
 
-> 安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，记录一下
+> 安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，本文对此进行了记录
 
 <!--more-->
 

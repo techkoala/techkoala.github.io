@@ -11,10 +11,10 @@
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
-<p>OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题</p>
+<p>OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍如何 dnscrypt-proxy2 进行加密查询，以及如何与上网插件进行搭配使用</p>
 </blockquote>
 <h2 id="安裝-dnscrypt-proxy2">安裝 dnscrypt-proxy2</h2>
-<p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装</p>
+<p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装，命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -90,7 +90,7 @@ opkg install dnscrypt-proxy2
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/openwrt_resize/</guid>
     <description><![CDATA[<blockquote>
-<p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，记录一下</p>
+<p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，本文对此进行了记录</p>
 </blockquote>
 <h2 id="什么是-overlay">什么是 overlay</h2>
 <p><code>OpenWRT</code> 一般使用的文件系统是 <code>SquashFS</code> ，这个文件系统的特点就是：<strong>只读</strong>。</p>
@@ -234,14 +234,14 @@ opkg install cfdisk
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/openwrt_compile_single_ipk/</guid>
     <description><![CDATA[<blockquote>
-<p>为 OpenWRT 编译单独的 ipk 插件</p>
+<p>本文介绍如何单独编译 OpenWRT 的 ipk 插件</p>
 </blockquote>
 <div class="details admonition info open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-info-circle fa-fw"></i>说明<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">必须先完整编译一次固件才能单独编译 ipk</div>
+            <div class="admonition-content">必须首先完整编译一次固件才能单独编译 ipk</div>
         </div>
     </div>
 <p>当需要单独更新 OpenWRT 某个插件或者需要增加安装某个插件的时候，可以单独编译对应的 ipk 插件进行安装，而不必编译整个系统。</p>

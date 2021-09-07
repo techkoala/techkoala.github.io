@@ -1,13 +1,13 @@
 # OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流
 
 
-> OpenWRT 原始并不支持 DoH 或 DoT，会有 DNS 泄露问题
+> OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍如何 dnscrypt-proxy2 进行加密查询，以及如何与上网插件进行搭配使用
 
 <!--more-->
 
 ## 安裝 dnscrypt-proxy2
 
-如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装
+如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装，命令如下：
 
 ```
 opkg update

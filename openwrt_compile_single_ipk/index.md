@@ -1,12 +1,12 @@
 # 单独编译 OpenWRT ipk 插件
 
 
-> 为 OpenWRT 编译单独的 ipk 插件
+> 本文介绍如何单独编译 OpenWRT 的 ipk 插件
 
 <!--more-->
 
 {{< admonition info "说明">}}
-必须先完整编译一次固件才能单独编译 ipk
+必须首先完整编译一次固件才能单独编译 ipk
 {{< /admonition >}}
 
 当需要单独更新 OpenWRT 某个插件或者需要增加安装某个插件的时候，可以单独编译对应的 ipk 插件进行安装，而不必编译整个系统。

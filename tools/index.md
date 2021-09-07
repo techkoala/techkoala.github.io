@@ -55,6 +55,8 @@
 
 - [皮皮直连](https://www.ppzhilian.com/)：浏览器局域网文件传输
 
+- [Snapdrop](https://snapdrop.net/)
+
 ## Translator
 
 - [Deepl](https://www.deepl.com/translator)
@@ -110,6 +112,10 @@
 - [sketchboard](https://sketchboard.me)：卡通画风拓扑图绘制
 
 - [Full Emoji List](http://www.unicode.org/emoji/charts/full-emoji-list.html)
+
+## OCR
+
+- [PearOCR](https://pearocr.com/)
 
 ## Security
 
