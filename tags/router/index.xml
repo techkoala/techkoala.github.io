@@ -70,7 +70,7 @@ opkg install dnscrypt-proxy2
 <li>SSR+ 使用大陆 IP 白名单 并使用 5335 的 DNS 解析的方式</li>
 <li>dnscyrpt-proxy2 配置监听在 5335，仅使用 DoH 协议向 <code>Cloudflare/Google</code> 服务器查询（这些 <code>Https</code> 的查询请求全部会被 SSR+ 代理转发）</li>
 <li>iptables 劫持所有目标为 53 端口的流量到路由器的 53 端口（默认）</li>
-<li>53 端口使用默认的 <code>masq</code> 作为 <code>DNS</code> 服务，上游设置为 127.0.0.1#5335，配置文件<code>/etc/dnsmasq.conf</code>最后添加 <code>conf-dir=/etc/dnsmasq.d</code></li>
+<li>53 端口使用默认的 <code>dnsmasq</code> 作为 <code>DNS</code> 服务，上游设置为 <code>127.0.0.1#5335</code>，配置文件<code>/etc/dnsmasq.conf</code>最后添加 <code>conf-dir=/etc/dnsmasq.d</code></li>
 <li>在<code>/etc/dnsmasq.d/</code>(如无则新建）中放入<code>https://github.com/felixonmars/dnsmasq-china-list/blob/master/accelerated-domains.china.conf</code></li>
 </ol>
 <p>这样实现了凡是大陆的和在大陆有 cdn 的以及返回 AAAA 记录的域名全部直连查询并直连访问，其余的全部走代理查询，且结果在大陆以外的走代理访问（IP+域名的双白名单机制）</p>

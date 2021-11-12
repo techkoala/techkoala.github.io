@@ -15,7 +15,6 @@ Hyper-V 没有 VM 的桥接模式可以选择，为了让虚拟机可以和宿�
 
 首先点击虚拟机右边的 Hyper-V 操作选项`虚拟交换机管理器`：
 
-static/images/VM/Hyper-v_Bridging/hyperv-1.webp
 {{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" caption="网络拓扑图" >}}
 
 新建虚拟交换机：

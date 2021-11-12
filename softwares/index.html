@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title class="pjax-title">软件 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="软件" />
-<meta property="og:description" content="粗体 表示在跨平台软件 斜体 表示优先选择表示商店版本(Windows &amp; macOS) Linux 优先选用对应包管理器安装 浏览器 Microsoft Edge FireFox Vivaldi 浏览器插件 ClearURLs Enpass extension Feedbro：" />
+<meta property="og:description" content="粗体 表示跨平台软件 斜体 表示优先选择表示商店版本(Windows &amp; macOS) Linux 优先选用对应包管理器安装 浏览器 Microsoft Edge FireFox Vivaldi 浏览器插件 ClearURLs Enpass extension Feedbro：已" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.techkoala.top/softwares/" /><meta property="article:section" content="" />
 <meta property="article:published_time" content="2019-12-30T17:14:18+08:00" />
-<meta property="article:modified_time" content="2021-06-04T14:41:43+08:00" />
+<meta property="article:modified_time" content="2021-09-07T13:07:01+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="软件"/>
-<meta name="twitter:description" content="粗体 表示在跨平台软件 斜体 表示优先选择表示商店版本(Windows &amp; macOS) Linux 优先选用对应包管理器安装 浏览器 Microsoft Edge FireFox Vivaldi 浏览器插件 ClearURLs Enpass extension Feedbro："/>
+<meta name="twitter:description" content="粗体 表示跨平台软件 斜体 表示优先选择表示商店版本(Windows &amp; macOS) Linux 优先选用对应包管理器安装 浏览器 Microsoft Edge FireFox Vivaldi 浏览器插件 ClearURLs Enpass extension Feedbro：已"/>
 <meta name="application-name" content="TechKoala">
 <meta name="apple-mobile-web-app-title" content="TechKoala">
 
-<meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/softwares/" /><link rel="prev" href="https://www.techkoala.top/about/" /><link rel="next" href="https://www.techkoala.top/tools/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
@@ -32,7 +32,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/softwares\/"
         },"genre": "page","wordcount":  1059 ,
-        "url": "https:\/\/www.techkoala.top\/softwares\/","datePublished": "2019-12-30T17:14:18+08:00","dateModified": "2021-06-04T14:41:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/www.techkoala.top\/softwares\/","datePublished": "2019-12-30T17:14:18+08:00","dateModified": "2021-09-07T13:07:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
                 "@type": "Person",
@@ -46,8 +46,8 @@
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
-        let themeColorMeta = getMeta('theme-color');
-        if (document.body.getAttribute('theme') != 'light') themeColorMeta.content = '#000000';
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
     </script>
     <div id="back-to-top"></div>
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -113,7 +113,7 @@
             <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">软件</h1><div class="content" id="content"><blockquote>
 <ol>
 <li>
-<p><strong>粗体</strong> 表示在跨平台软件</p>
+<p><strong>粗体</strong> 表示跨平台软件</p>
 </li>
 <li>
 <p><em>斜体</em> 表示优先选择表示商店版本(<code>Windows</code> &amp; <code>macOS</code>)</p>
@@ -236,7 +236,7 @@
 </ul>
 <h5 id="windows">Windows：</h5>
 <ul>
-<li><del><a href="https://en.bandisoft.com/bandizip/" target="_blank" rel="noopener noreffer">Bandizip</a></del>：7.0 版本已增加付费，停留于 6.29</li>
+<li><del><a href="https://en.bandisoft.com/bandizip/" target="_blank" rel="noopener noreffer">Bandizip</a></del>：7.0 版本已增加付费，建议使用 6.29</li>
 </ul>
 <h2 id="下载">下载</h2>
 <ul>
@@ -271,7 +271,7 @@
 </ul>
 <h4 id="macos">macOS</h4>
 <ul>
-<li><a href="https://software.charliemonroe.net/downie/" target="_blank" rel="noopener noreffer">Downie</a>:视频下载</li>
+<li><a href="https://software.charliemonroe.net/downie/" target="_blank" rel="noopener noreffer">Downie</a>：视频下载</li>
 </ul>
 <h2 id="游戏平台及工具">游戏平台及工具</h2>
 <h5 id="windows-2">Windows：</h5>
@@ -718,7 +718,9 @@
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
 
-<div class="pjax-assets"><script type="text/javascript" src="/lib/waline/Waline.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"avatar":"retro","avatarForce":true,"el":"#waline","highlight":true,"lang":"zh-CN","meta":["nick","mail","link"],"pageSize":10,"placeholder":"请畅所欲言...","serverURL":"https://blog-comments-eight.vercel.app","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="stylesheet" href="/lib/waline/Waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></div>
+<div class="pjax-assets"><script type="text/javascript" src="/lib/waline/Waline.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","highlight":true,"lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

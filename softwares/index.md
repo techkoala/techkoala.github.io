@@ -1,7 +1,7 @@
 # 软件
 
 
-> 1.  **粗体** 表示在跨平台软件
+> 1.  **粗体** 表示跨平台软件
 >
 > 2.  _斜体_ 表示优先选择表示商店版本(`Windows` & `macOS`)
 >
@@ -83,7 +83,7 @@
 
 ##### Windows：
 
-- ~~[Bandizip](https://en.bandisoft.com/bandizip/)~~：7.0 版本已增加付费，停留于 6.29
+- ~~[Bandizip](https://en.bandisoft.com/bandizip/)~~：7.0 版本已增加付费，建议使用 6.29
 
 ## 下载
 
@@ -109,7 +109,7 @@
 
 #### macOS
 
-- [Downie](https://software.charliemonroe.net/downie/):视频下载
+- [Downie](https://software.charliemonroe.net/downie/)：视频下载
 
 ## 游戏平台及工具
 

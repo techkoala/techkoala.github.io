@@ -24,11 +24,10 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>首先点击虚拟机右边的 Hyper-V 操作选项<code>虚拟交换机管理器</code>：</p>
-<p>static/images/VM/Hyper-v_Bridging/hyperv-1.webp
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
-    </figure></p>
+    </figure>
 <p>新建虚拟交换机：</p>
 <figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-sub-html="<h2>网络拓扑图</h2>">
         

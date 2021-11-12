@@ -6,9 +6,9 @@
 ### :man_shrugging:我
 
 - 一只`通信:dog2:`
-- 对`网络`知识有浓厚的兴趣
-- 喜欢`瞎折腾:man_technologist:`，给自己没事找事
-- 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 10`
+- 对`计算机网络`有浓厚的兴趣
+- 喜欢`瞎折腾:man_technologist:`
+- 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 11`，偶尔也用用`MacOS`
 
 ### 这个网站
 
@@ -25,7 +25,7 @@
 {{< /admonition >}}
 
 {{< admonition info "说明">}}
-本质上，网站内容包括两部分：
+网站内容包括两部分：
 
 - **学习笔记**
 
