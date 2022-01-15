@@ -179,6 +179,8 @@
 
 - **[VLC](https://www.videolan.org/vlc/index.html)**
 
+- **[Spotify](https://www.spotify.com/)**：网页 & 全平台客户端
+
 - **[Youtube Music](https://music.youtube.com/)**：网页 & Android 客户端
 
 - **[Apple Music](https://www.apple.com/apple-music/)**：网页 & Android 客户端

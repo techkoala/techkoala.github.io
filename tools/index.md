@@ -59,7 +59,7 @@
 
 ## Translator
 
-- [Deepl](https://www.deepl.com/translator)
+- [DeepL](https://www.deepl.com/translator)
 
 ## Tools
 
