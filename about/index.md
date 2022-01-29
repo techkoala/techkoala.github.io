@@ -5,15 +5,17 @@
 
 ### :man_shrugging:我
 
-- 一只`通信:dog2:`，- 对`网络`有浓厚的兴趣
+- 一只`通信:dog2:`，对`网络`有浓厚的兴趣
 - 目前从事 ~~Wife~~ Wi-Fi 相关工作 :man_technologist:
-- 长期使用 `Linux(Arch & Ubuntu 20.04)` & `Windows 11`，偶尔使用`MacOS`
+- 擅长 `Linux(Arch & Ubuntu 20.04)` & `Windows 11` & `MacOS` 开关机
 
 ### 这个网站
 
 本质上，就是我自己的笔记:notebook_with_decorative_cover:，某天突发奇想:thought_balloon:：做成网站也不错呀，随时都可以查看，于是就诞生了这网站。
 
 更新随缘，内容随意。
+
+如果内容对你有所帮助，那将是我莫大的荣幸。
 
 - 文章使用 [Markdown](https://zh.wikipedia.org/zh-hans/Markdown) 撰写排版
 - 网页利用 [Hugo](https://gohugo.io/) 渲染生成
@@ -57,8 +59,6 @@
   - 您不得为商业目的而使用本作品；
 
 - 转载作品另行声明，遵守原作者授权协议，所有权利归原作者所有；
-
-- 如果本站的内容能帮助到你，那将是我极大的荣幸；
 
 {{< /admonition >}}
 
