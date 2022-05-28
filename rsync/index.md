@@ -66,7 +66,7 @@ hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
 hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" caption="rsync 算法示意" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" caption="rsync 算法示意" >}}
 
 最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。
 

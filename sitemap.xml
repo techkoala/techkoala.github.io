@@ -72,7 +72,7 @@
             <loc>https://www.techkoala.top/rsync/</loc><lastmod>2020-09-12T15:13:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/git/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/git_log/</loc><lastmod>2020-08-27T13:53:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/tools/</loc><lastmod>2022-01-15T15:55:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/tools/</loc><lastmod>2022-01-15T15:55:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/categories/algorithm/</loc><lastmod>2021-05-29T00:28:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/hash/</loc><lastmod>2021-05-29T00:28:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/tags/sha-2/</loc><lastmod>2021-05-29T00:28:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -101,8 +101,8 @@
             <loc>https://www.techkoala.top/lte_physical_signals/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/lte_mimo/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.techkoala.top/softwares/</loc><lastmod>2022-01-15T15:55:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://www.techkoala.top/about/</loc><lastmod>2022-01-15T15:55:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://www.techkoala.top/softwares/</loc><lastmod>2022-01-15T15:55:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://www.techkoala.top/about/</loc><lastmod>2022-01-29T21:02:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/lte_transmission_and_reception/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/lte_multiple_access/</loc><lastmod>2020-09-01T22:08:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://www.techkoala.top/command_df_du/</loc><lastmod>2020-10-10T13:59:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

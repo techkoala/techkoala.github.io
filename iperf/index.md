@@ -97,7 +97,7 @@ $ iperf3 -s -p 12345 -i 1
 $ iperf3 -c 192.168.1.43 -p 12345 -i 1 -t 20 -w 100k
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" caption="iPerf 使用实例">}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" caption="iPerf 使用实例">}}
 
 ## 参考
 

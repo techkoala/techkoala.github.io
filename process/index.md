@@ -185,7 +185,7 @@ $ top [参数]
 -n<次数>   循环显示的次数
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" caption="top 命令">}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" caption="top 命令">}}
 
 按 q 退出，按 h 进入帮助。
 
@@ -211,7 +211,7 @@ Htop 是一个类似 top 的交互式进程查看工具，可以垂直和水平�
 $ htop
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" caption="Htop 命令">}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" caption="Htop 命令">}}
 
 ## atop
 
@@ -221,7 +221,7 @@ atop 是一个用来查看 Linux 系统负载的交互式监控工具。它能�
 $ atop
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" caption="atop 命令">}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" caption="atop 命令">}}
 
 ## 参考
 

@@ -36,19 +36,19 @@ LTE 定义的传输信道包括：
 
 在 LTE 空中接口 `MAC 层`协议功能的处理过程中，逻辑信道向传输信道以及最终的物理信道的映射关系如下所示：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" caption="下行信道映射">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp" caption="下行信道映射">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" caption="上行信道映射">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" caption="上行信道映射">}}
 
 ### MAC 协议数据单元格式
 
 `MAC 包头`可以包含多个子包头，每个子包头对应于 `MAC PDU` 负荷部分的 1 个 `MAC 控制单元`、`MAC SDU` 或者填充比特字段。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" caption="MAC 协议数据单元 PDU 的格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" caption="MAC 协议数据单元 PDU 的格式">}}
 
 子包头的格式如图所示：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" caption="MAC 层的子包头">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp" caption="MAC 层的子包头">}}
 
 - `R`（Reserve）字段为保留字段，数值设为 `0`
 - `E`（Extension）字段指示本子包头后面是否还有其他的子包头，或者是包头部分已经结束，将要开始 `MAC 控制单`元或者 MAC SDU 的传输
@@ -66,7 +66,7 @@ LTE 定义的传输信道包括：
 
 首先建立**执行控制功能的连接**（即 `RRC 连接`），终端由空闲状态转变为连接状态$\Longrightarrow$然后通过 `RRC 控制功能`建立数据通信的连接，开始进行数据的通信。(对于连接状态的终端，也可能因为长时间没有发送上行信号而失去上行同步，此时如果有数据需要进行发送，终端需要进行随机接入的过程，与基站重新建立上行同步。随机接入过程可以由终端发起，也可以由网络侧通过物理层下行控制信道（PDCCH）触发终端发起随机接入)
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" caption="随机接入过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" caption="随机接入过程">}}
 
 在随机接入过程中，终端选择 1 个随机接入序列通过物理层随机接入信道（PRACH）进行发送（在网络侧触发的情况下，由触发消息指示终端所使用的随机接入序列）$\Longrightarrow$基站检测到随机接入序列的信号后，在下行方向上发送随机接入响应，该消息指示了：
 
@@ -86,7 +86,7 @@ LTE 定义的传输信道包括：
 
   `C-RNTI` 的 `MAC 控制单元`仅包含一个字段，即 16 比特 `C-RNTI`。
 
-  {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" caption="MAC 控制单元——C-RNTI">}}
+  {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp" caption="MAC 控制单元——C-RNTI">}}
 
 - 终端冲突解决标识。
 
@@ -94,7 +94,7 @@ LTE 定义的传输信道包括：
 
   终端冲突解决标识的 `MAC 控制单元`仅包含一个字段：`终端冲突解决标识`，这个字段包含上行随机接入冲突解决过程中，终端在`消息 3`中发送的`上行公用控制信道`的服务数据单元（CCCH SDU）。
 
-  {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" caption="MAC 控制单元——终端冲突解决标识">}}
+  {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp" caption="MAC 控制单元——终端冲突解决标识">}}
 
 #### 数据的调度和传输
 
@@ -111,13 +111,13 @@ LTE 支持`半持续`（Semi-Persistent Scheduling，SPS）的调度方式。对
 
 对于半持续调度，为了减小调度信令的开销，基站一次为终端分配一段时间内预先定义好的无线资源和相应的传输格式，主要参数是`半持续调度的时间间隔`。例如，根据 VoIP 业务的流量特点，设置半持续调度的时间间隔等于 20ms，为用户分配一段时间内间隔为 20ms、相同频域位置和大小的无线资源。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" caption="半持续调度">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" caption="半持续调度">}}
 
 ##### HARQ
 
 MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的`停——等`机制的 HARQ 进程，每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" caption="多个并行的 停——等 机制的 HARQ 进程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" caption="多个并行的 停——等 机制的 HARQ 进程">}}
 
 在下行的数据传输中，每个 `HARQ` 进程内部采用`异步`、`自适应`的机制。
 
@@ -145,7 +145,7 @@ MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的�
 - 短格式进行 1 个逻辑信道组对应的缓存状态报告，相应的 `MAC 控制单`元由逻辑信道组标识（LCG ID）和缓存数据量大小组成
 - 长格式进行 4 个逻辑信道组的缓存状态报告，发送的 4 个关于缓存大小的消息分别对应于编号 0 到编号 3 的 4 个逻辑信道组
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" caption="MAC 控制单元——缓存状态报告">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp" caption="MAC 控制单元——缓存状态报告">}}
 
 ##### 功率余量报告
 
@@ -157,7 +157,7 @@ MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的�
 
 功率余量报告的 `MAC 控制单元`包括 2 个比特的预留字段和 6 个比特的功率余量（Power Headroom，PH）信息，指示从 −23dB 到 40dB 范围之内的数值。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" caption="MAC 控制单元——功率余量报告">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp" caption="MAC 控制单元——功率余量报告">}}
 
 #### 上行时间同步的保持
 
@@ -168,7 +168,7 @@ MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的�
 
 定时提前命令的 `MAC 控制单元`包括 2 个比特的预留字段和 6 个比特的 TA 命令信息。定时调整的精度是 16Ts ，即 16×1/(15×1 000×2 048)s 约等于 0.52μs。因为 6 个比特 TA 命令表示的是从 −31 到+32 的范围，所以每个定时提前命令能够调整的时间范围是 −16.15 ～+16.67μs。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" caption="MAC 控制单元——定时提前命令">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp" caption="MAC 控制单元——定时提前命令">}}
 
 #### 不连续接收功能
 
@@ -178,7 +178,7 @@ MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的�
 - 在激活的时间里，终端需要对 `PDCCH` 信道进行监测
 - 在休眠的时间中，终端不需要对 `PDCCH` 信道进行监测，基站也不会向该终端进行数据传输的调度，所以可以节省终端的耗电。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" caption="不连续接收（DRX）功能">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp" caption="不连续接收（DRX）功能">}}
 
 关于终端使用 `DRX` 功能的过程，首先通过高层 RRC 信令对终端设置 `DRX` 的相关配置，包括 `DRX 周期`、激活和休眠时间等。在工作过程中，采用 `MAC 层控制信令`开启或者关闭终端的 `DRX` 功能。`MAC 层` `DRX` 命令采用类型为 `DRX` 命令的 `MAC 控制单元`进行指示，所对应的 `MAC PDU` 子包头指示 MAC 控制单元的类型是 `DRX` 命令，因为除了指示存在 `DRX` 命令之外，不需要其他的信息，所以相应的 `MAC 控制单元`部分的长度是 `0`。
 

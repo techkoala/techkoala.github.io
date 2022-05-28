@@ -17,7 +17,7 @@
 
 接下来打开`Internet 协议版本 4 属性 > 高级`
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" caption="控制面板设置界面" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" caption="控制面板设置界面" >}}
 
 取消勾选`自动跃点`，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。
 
@@ -33,7 +33,7 @@ PS C:\Users\xxxx> Get-NetIPInterface
 
 获得当前所有的网络连接，其中`InterfaceMetric`即为接口跃点数的值。
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" caption="Powershell 设置界面" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" caption="Powershell 设置界面" >}}
 
 找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令
 

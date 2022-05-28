@@ -1,7 +1,7 @@
 # 关于
 
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/About/Header.webp">}}
 
 ### :man_shrugging:我
 

@@ -11,13 +11,13 @@
 
 为了更加的扩展性，DNS 由大量的服务器分层次进行组织的，大致来说分为：根 DNS 服务器、顶域名（TLD）DNS 服务器和权威 DNS 服务器。他们的层次结构如下图所示：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" caption="DNS 的层次结构" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Level.webp" caption="DNS 的层次结构" >}}
 
 关于 DNS 的工作过程及相关信息参见[深入浅出 DNS 解析](/dns_update/)，本文负责补充 DNS 报文结构。
 
 ### DNS 报文结构
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" caption="DNS 的报文结构" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/DNS_Structure.webp" caption="DNS 的报文结构" >}}
 
 - 前 12 个字节为**首部**，包含：
 
@@ -91,25 +91,25 @@ udp port 53
 dns.qry.name==www.techkoala.top
 ```
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" caption="16 进制表示" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" caption="16 进制表示" >}}
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" caption="WireShark 中 DNS 请求报文及其结构" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request.webp" caption="WireShark 中 DNS 请求报文及其结构" >}}
 
 可以看出
 
 - 标识为：0x0000cd13
 - 这是一个请求报文，仅在 Questions 部分有值
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" caption="标志部分各个字段的值" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Flags.webp" caption="标志部分各个字段的值" >}}
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" caption="查询部分各个字段的值" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_Queries.webp" caption="查询部分各个字段的值" >}}
 
 同时 WireShark 还贴心的告诉我们，响应报文的在总抓取包的编号为 10，方便我们快速找到请求报文对应的响应报文。
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" caption="16进制表示" >}}
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" caption="WireShark 中 DNS 响应报文及其结构" >}}
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" caption="标志部分各个字段的值" >}}
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" caption="查询部分各个字段的值" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_16.webp" caption="16进制表示" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response.webp" caption="WireShark 中 DNS 响应报文及其结构" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Flags.webp" caption="标志部分各个字段的值" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Response_Queries.webp" caption="查询部分各个字段的值" >}}
 
 ## 参考
 

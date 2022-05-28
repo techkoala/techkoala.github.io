@@ -9,7 +9,7 @@
 
 通过小区搜索的过程，终端实现对服务小区下行信号时间和频率的同步，并且确定小区的物理层 ID。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master//images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_42.webp" caption="小区搜索过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master//images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_42.webp" caption="小区搜索过程">}}
 
 物理层小区搜索的过程主要涉及两个同步信号：
 

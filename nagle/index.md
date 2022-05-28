@@ -39,7 +39,7 @@ end if
 
 2. 打开如下路径 `计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces`
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" caption="注册表界面" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" caption="注册表界面" >}}
 
 3. 依次点击下方注册表项，检查右窗格中是否包含 `DhcpIPAddress` 值；
 

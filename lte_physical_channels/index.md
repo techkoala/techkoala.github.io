@@ -22,13 +22,13 @@ LTE 系统广播信息分为
 
   `MIB` 信息的传输周期 `TTI=40ms`，在位于每个 `10ms` 无线帧的第一个子帧的 `PBCH` 信道上传输。`MIB` 数据块经过信道编码、速率匹配和加扰后，得到 1920 比特，映射到 `40ms` 内，间隔为 `10ms` 的 4 个子帧的 `PBCH` 信道的物理资源上。其中，每一个 `PBCH` 子帧都是可自解码的，也就是说假设信道质量足够好的话，终端可以通过 4 次中的任意一次的接收即可解调出 `MIB` 信息。
 
-  {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" caption="LTE 物理广播信道">}}
+  {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp" caption="LTE 物理广播信道">}}
 
 - **SIB（System Information Block）**
 
 `PBCH` 信道位于每个 `10ms` 无线帧的第一个子帧，占用 4 个连续的 `OFDM` 符号，在频域上占用下行频带中心 `1.08MHz` 的带宽。也就是说，对于各种不同的系统带宽（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），物理广播信道 `PBCH` 的传输带宽相同，总是占用频带中心的 1.08MHz 带宽（72 个子载波）。物理广播信道 PBCH 频域结构。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" caption="物理广播信道 PBCH 频域结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp" caption="物理广播信道 PBCH 频域结构">}}
 
 当发射天线为 2/4 的时候，`PBCH` 采用**发送分集**（SFBC/SFBC+FSTD）的方式。在资源映射的时候，为了方便终端在不知道发射天线数目情况下的**盲检测**，对 1、2 或者 4 的发射天线数目，使用相同的物理资源映射方式，即总是空出 4 天线的小区公用导频 `CRS` 资源。
 
@@ -52,7 +52,7 @@ LTE 系统广播信息分为
 
 `PCFICH` 的基带处理过程如图所示，其携带的 3 种可能性通过编码映射得到 32 比特的信息，经过 `QPSK` 调制后形成 16 个调制符号，这 16 个调制符号将映射到子帧第 1 个 `OFDM` 符号上的 4 个资源单元组 `REG` 上（每个 `REG` 包含 4 个 `RE`，可以承载 4 个调制符号）。为了获得充分的分集增益，这 4 个 `REG` 均匀地分布在系统下行带宽上。可以注意到，其中频域的起始位置 k 与小区 ID 相关，因此不同小区的 `PCFICH` 将形成相对的频域偏移，避免不同小区的 `PCFICH` 之间的干扰。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" caption="物理控制信道格式指示信道（PCFICH）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp" caption="物理控制信道格式指示信道（PCFICH）">}}
 
 `PCFICH` 信道采用的发射天线与 `PBCH` 相同，即 1、2 或者 4。当发射天线数目为 2 或者 4 的时候，使用 `SFBC`/`SFBC+FSTD` 的发送分集方式。
 
@@ -69,7 +69,7 @@ LTE 系统广播信息分为
 
 `PHICH` 信道的基带处理过程如图所示，1 个比特的 `ACK`/`NACK`（0/1）信息使用重复编码的方式得到 3 个比特的编码后信息，然后经过 `BPSK` 调制以及系数为 4 的扩频操作，得到 12 个符号，映射在 `PHICH` 组所对应的 3 个 `REG` 的物理资源位置上。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" caption="物理 HARQ 指示信道（PHICH）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp" caption="物理 HARQ 指示信道（PHICH）">}}
 
 - 在频域上，1 个 `PHICH` 组对应的 3 个 `REG` 采用分布式的映射方式，以获得分集增益
 - 在时间上，`PHICH` 有**正常**（normal）和**扩展**（extended）两种资源映射方式
@@ -99,7 +99,7 @@ LTE 系统广播信息分为
 
 在 `PDCCH` 数据流向物理资源的映射过程中，包含了交织的操作，数据流以 `REG`（4 个调制符号）为单位进行交织。通过交织的资源映射，每个 `PDCCH` 信道能够获得充分的分集增益。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" caption="下行物理控制信道（PDCCH）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp" caption="下行物理控制信道（PDCCH）">}}
 
 `PDCCH` 信道的发射天线与 `PBCH` 相同，即 1、2 或者 4。当发射天线数目为 2、4 的时候采用 `SFBC`/`SFBC+FSTD` 的发送分集方式。
 
@@ -117,17 +117,17 @@ LTE 系统广播信息分为
   **
   3 个部分组成。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" caption="物理随机接入信道">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp" caption="物理随机接入信道">}}
 
 根据适用的场景的不同（例如：小区半径和链路的功率预算），LTE 物理层支持 5 种随机接入信号格式，具体使用过程中，由高层信令指示小区所使用的随机接入信道的配置。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" caption="随机接入信号格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp" caption="随机接入信号格式">}}
 
 其中格式 4 的随机接入信号仅用于 `TDD Type 2` 中，当 `TDD` 配置特殊时隙 `UpPTS` 的长度为 2 个 `OFDM` 符号时，可以在 `UpPTS` 的位置发送格式 4 的随机接入信号，以较小的开销实现随机接入的功能。
 
 在频域上，`PRACH` 占用 6 个 PRB（1.08MHz）的带宽。以 `Format 0` 为例，`PRACH` 信号的生成方式如图所示，信号占用的带宽为 `1 048.75kHz`，不足 `1.08MHz` 的部分作为频域的保护带。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" caption="PRACH preamble 生成方法（Format 0）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp" caption="PRACH preamble 生成方法（Format 0）">}}
 
 LTE 物理层使用 `Zadoff-Chu` 序列作为生成随机接入信号的序列。每个小区有 64 个可用的序列，由小区的下行广播进行指示。
 
@@ -137,15 +137,15 @@ LTE 物理层使用 `Zadoff-Chu` 序列作为生成随机接入信号的序列�
 
 > 例如：设置使用 PRACH Format 0，周期等于 10ms，时间偏移量等于 1 个子帧，频率位置等于 1，那么小区中用于 PRACH 信道的物理资源位置
 >
-> {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" caption="随机接入信道的物理资源位置">}}
+> {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp" caption="随机接入信道的物理资源位置">}}
 
 对于 `TDD Type 2`，除了在 `UpPTS` 上支持 `PRACH Format 4` 的发送之外，同一个时刻还可能传输多个频分的 `PRACH` 信道。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" caption="TDD Type 2 中频分的 PRACH 信道">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp" caption="TDD Type 2 中频分的 PRACH 信道">}}
 
 因为 `TDD` 支持不同的上下行时间比例的配置，在某些配置情况下上行时间较少，所以可能需要在同一个时刻支持多个 `PRACH` 信道，以提供足够的随机接入信道的容量。在普通子帧中，由于上行两边频带存在 `PUCCH` 控制信道，而中间是 `PUSCH` 数据信道，因此 `PRACH` 信道采用频率偏移结合上下交错的分配方式为 `PUCCH` 和 `PUSCH` 信道留出物理资源空间。而对于 `PRACH Format 4`，由于特殊时隙 `UpPTS` 上不存在 `PUCCH` 或者 `PUSCH` 信道，因此采用了不同的机制：从上行频域的边际开始，连续分布，在两次 `UpPTS` 之间采用跳频的方式，即交替地从上边带或者下边带开始，这样可以在随机接入信号需要多次传输的时候获得频率分集的增益。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" caption="TDD Type 2 中 PRACH Format 4 的频分与跳频">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp" caption="TDD Type 2 中 PRACH Format 4 的频分与跳频">}}
 
 ## 上行控制信道（PUCCH）
 
@@ -153,15 +153,15 @@ LTE 物理层使用 `Zadoff-Chu` 序列作为生成随机接入信号的序列�
 
 每 1 组 `PUCCH` 信道占用 1 个 `RB-pair` 的物理资源，采用时隙跳频的方式，在系统上行频带的两边进行传输，而上行频带的中间部分用于传输上行共享信道（PUSCH）的数据。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" caption="PUCCH 信道的资源分布">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" caption="PUCCH 信道的资源分布">}}
 
 根据所承载的上行控制信息，物理层设计了不同的 `PUCCH` 格式，对应于不同的发送方法。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" caption="PUCCH 信道不同的格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp" caption="PUCCH 信道不同的格式">}}
 
 根据不同格式的 `PUCCH` 信道的特点，它们在频域的分布情况如图所示。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" caption="不同格式 PUCCH 信道在频域的分布情况">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp" caption="不同格式 PUCCH 信道在频域的分布情况">}}
 
 - PUCCH 2/2a/2b 承载的是信道状态 `CSI` 的反馈信息，在系统配置中，这一部分资源的数量是相对固定的，因此将它们分布在频带的最外侧，资源的具体数量通过高层信令进行半静态的指示。
 - `PUCCH 1/1a/1b` 承载的是调度请求信息和对下行数据的 `ACK` 信息，资源数量是动态变化的，与小区中发送的下行数据的数量相关，因此将这一部分资源放置在稍靠近频率中心的位置，方便将系统剩余的频率资源用于上行共享信道 `PUSCH` 的传输。
@@ -178,7 +178,7 @@ LTE 物理层使用 `Zadoff-Chu` 序列作为生成随机接入信号的序列�
 
 > 例如：在使用 Normal CP 的情况下有 3 个正交扩频序列，而所使用的 Zadoff-Chu 序列的长度为 12，假设设置 Zadoff-Chu 序列循环移位（Cyclic Shift）的复用间隔为 2，那么 1 个 RB-pair 上可以复用 3×6=18 个 PUCCH 1/1a/1b 信道。
 >
-> {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" caption="PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）">}}
+> {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp" caption="PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）">}}
 
 为了增强信号的随机性，在 `PUCCH 1/1a/1b` 的发送过程中包含了**跳频**的概念。包括两种跳频：
 
@@ -203,7 +203,7 @@ LTE 物理层使用 `Zadoff-Chu` 序列作为生成随机接入信号的序列�
 
 > 假设设置 `Zadoff-Chu` 序列循环移位的复用间隔为 2，那么 1 个 `RB-pair` 上可以复用 6 个 `PUCCH 2/2a/2b` 信道。
 >
-> {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" caption="PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）">}}
+> {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp" caption="PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）">}}
 
 在 `PUCCH 2a/2b` 中，除了 20 个比特的 `CSI` 信息之外，还承载 1 或者 2 比特的 `ACK` 信息。该 `ACK` 信息将通过 `BPSK` 或者 `QPSK` 的调制，形成一个调制符号 d(10)，然后调制在导频符号上进行传输。
 

@@ -34,7 +34,7 @@ MAC addresses for the link layer.</div>
 <h2 id="arp">ARP</h2>
 <p>一句话概括 ARP（Address Resolution Protocol，地址解析协议）的目的就是：负责将<strong>网络层地址</strong>（最常见的就是 IP 地址）解析为/映射到<strong>链路层地址</strong>（MAC 地址）。</p>
 <h3 id="报文结构">报文结构</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
         
     </a><figcaption class="image-caption">ARP 包结构</figcaption>
     </figure>
@@ -72,7 +72,7 @@ MAC addresses for the link layer.</div>
 </ol>
 <h3 id="代理-arp">代理 ARP</h3>
 <p>代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：</p>
-<p><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-sub-html="<h2>代理 ARP</h2>">
+<p><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-sub-html="<h2>代理 ARP</h2>">
         
     </a><figcaption class="image-caption">代理 ARP</figcaption>
     </figure>
@@ -82,12 +82,12 @@ MAC addresses for the link layer.</div>
 <li>有目标的路由信息</li>
 </ul>
 <p>假如不存在网关但使用代理 ARP，则情况如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
         
     </a><figcaption class="image-caption">代理 ARP</figcaption>
     </figure>
 <p>存在网关的情况下，使用正常 ARP，则情况如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
         
     </a><figcaption class="image-caption">代理 ARP</figcaption>
     </figure>

@@ -28,7 +28,7 @@ MAC addresses for the link layer.
 
 ### 报文结构
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" caption="ARP 包结构" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" caption="ARP 包结构" >}}
 
 一般我们讨论以太网中的 ARP 报文时候，ARP 数据会被封装在以太网报文中，其中：
 
@@ -61,7 +61,7 @@ MAC addresses for the link layer.
 
 代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" caption="代理 ARP" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" caption="代理 ARP" >}}
 但是需要网关需要满足：
 
 - 开启代理 ARP 功能
@@ -69,11 +69,11 @@ MAC addresses for the link layer.
 
 假如不存在网关但使用代理 ARP，则情况如下：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" caption="代理 ARP" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" caption="代理 ARP" >}}
 
 存在网关的情况下，使用正常 ARP，则情况如下：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" caption="代理 ARP" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" caption="代理 ARP" >}}
 
 总结而言：
 

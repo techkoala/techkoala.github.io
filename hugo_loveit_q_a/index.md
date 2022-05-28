@@ -47,7 +47,7 @@ Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。
 
 接着打开 `Settings > Developer settings > OAuth Apps` ，点击 `New OAuth App`
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" caption="新建 OAuth App" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" caption="新建 OAuth App" >}}
 
 然后填写信息：
 

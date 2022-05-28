@@ -15,7 +15,7 @@
 - 码块交织和速率匹配
 - 码块连接的过程
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" caption="传输块物理层信道编码的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_4.webp" caption="传输块物理层信道编码的过程">}}
 
 ### CRC 计算
 
@@ -29,7 +29,7 @@
 
 <center>$gCRC8 (D)=[D8 +D7 +D4 +D3 +D+1]$</center>
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" caption="CRC 计算（gCRC8）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_5.webp" caption="CRC 计算（gCRC8）">}}
 
 ### 码块分割
 
@@ -39,7 +39,7 @@
 
 考虑到信道纠错编码的性能与处理时延的因素，标准中定义了最大的编码长度为 6144。也就是说，如果添加 CRC 比特后 1 个码字数据流的长度**大于** 6144 个比特，那么需要对码字进行**分割**，将 1 个码字分割为**若干个**`码块`（code block），这时候需要对每个码块**再添加**相应的 CRC 比特，然后以**码块为单位**进行后续的信道纠错编码，以满足信道纠错编码最大长度的限制。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" caption="码块分割">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" caption="码块分割">}}
 
 物理层采用的 `Turbo 编码`的内交织器对数据的长度有一定的要求，标准中以列表的方式给出了所支持的数值，因此，在分块过程中，可能需要进行**一定的填充**，保证每一个码块的长度符合内交织器的要求。
 
@@ -55,13 +55,13 @@
 
 在速率匹配的过程中，对信道编码后形成的比特流进行选取，以匹配于最终实际使用的物理资源。根据所选取的数据数量的不同，形成不同的编码速率。在这个过程中，以信道编码的每个**码块为单位**。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" caption="Turbo 码速率匹配的数据选择">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" caption="Turbo 码速率匹配的数据选择">}}
 
 ### 码块连接
 
 在完成以码块为单位的信道编码和速率匹配的过程之后，将对 1 个码字内所有的码块进行**串行连接**，形成**码字**（即传输块）所对应的传输序列，然后就可以进一步地进行信号调制相关的处理与发送了。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" caption="码块连接">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" caption="码块连接">}}
 
 ## 参考
 

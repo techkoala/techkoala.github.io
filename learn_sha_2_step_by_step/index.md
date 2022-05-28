@@ -524,7 +524,7 @@ digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h
 
 ## 附录
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" caption="SHA-2 的第 t 个加密循环" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" caption="SHA-2 的第 t 个加密循环" >}}
 
 下面这段**伪代码**总结了上面执行的所有步骤：
 

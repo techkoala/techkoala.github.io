@@ -645,7 +645,7 @@ $ ps axjf
 -n&lt;次数&gt;   循环显示的次数
 </code></pre></td></tr></table>
 </div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-sub-html="<h2>top 命令</h2>">
+</div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-sub-html="<h2>top 命令</h2>">
         
     </a><figcaption class="image-caption">top 命令</figcaption>
     </figure>
@@ -679,7 +679,7 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ htop
 </code></pre></td></tr></table>
 </div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-sub-html="<h2>Htop 命令</h2>">
+</div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-sub-html="<h2>Htop 命令</h2>">
         
     </a><figcaption class="image-caption">Htop 命令</figcaption>
     </figure>
@@ -693,7 +693,7 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ atop
 </code></pre></td></tr></table>
 </div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-sub-html="<h2>atop 命令</h2>">
+</div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-sub-html="<h2>atop 命令</h2>">
         
     </a><figcaption class="image-caption">atop 命令</figcaption>
     </figure>

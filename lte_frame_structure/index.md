@@ -18,13 +18,13 @@ LTE 空中接口物理资源分配的**最小时间单位**是 1 个`传输时�
 
 在 `Type 1 FDD` 帧结构中，1 个 1`0ms` 的**无线帧**分为 10 个长度为 `1ms` 的**子帧**（Subframe），每个子帧由**两个**长度为 `0.5ms` 的**时隙**（Slot）组成。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" caption="Type 1 FDD 帧结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_52.webp" caption="Type 1 FDD 帧结构">}}
 
 在 `Type 2 TDD` 帧结构中，1 个 `10ms` 的**无线帧**分为两个长度为 `5ms` 的**半帧**（Half Frame），每个**半帧**由 5 个长度为 `1ms` 的**子帧**组成，其中包括 4 个**普通子帧**和 1 个**特殊子帧**。**普通子帧**由两个 0.5ms 的**时隙**组成，而**特殊子帧**由 3 个**特殊时隙**（UpPTS、GP 和 DwPTS）组成。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" caption="Type 2 TDD 帧结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_53.webp" caption="Type 2 TDD 帧结构">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" caption="Type 2 TDD 的特殊时隙">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_54.webp" caption="Type 2 TDD 的特殊时隙">}}
 
 - `GP`（Guard Period）是 TDD **上下行转换**的**保护间隔**。 TDD 双工方式的系统中，由于`信号的传输时延`和`设备收发的转换时延`，为了避免上下行信号之间的干扰，需要在上下行转换的时候设置一定的保护时间间隔。
 
@@ -44,7 +44,7 @@ LTE 空中接口物理资源分配的**最小时间单位**是 1 个`传输时�
 
 在系统广播消息 `SIB1` 中使用 3 个比特指示 `TDD` 上下行时间比例的配置信息。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" caption="LTE Type 2 TDD 上下行时间配比的配置">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_55.webp" caption="LTE Type 2 TDD 上下行时间配比的配置">}}
 
 ## 另见
 

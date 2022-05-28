@@ -11,11 +11,11 @@
 
 物理层定义了物理资源块（Physical Resource Block，PRB）作为空中接口物理资源分配的单位。1 个 `PRB` 在**频域**上包含 **12 个连续的子载波**，在**时域**上包含 **7 个连续的 OFDM 符号**（在 Extended CP 的情况下为 6 个），即 1 个 `PRB` 包括了**频域宽度**等于 `180kHz`、**时间长度**等于 `0.5ms`（1 个时隙）的物理资源。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" caption="物理资源块（PRB）的结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_56.webp" caption="物理资源块（PRB）的结构">}}
 
 通过设置不同的子载波数目可以映射到不同的资源块（PRB）数目。LTE Release 8 版本定义的 6 种不同的系统带宽与子载波数目以及 PRB 数目之间的对应关系如下表所示：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" caption="系统带宽与资源块数目">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_1.webp" caption="系统带宽与资源块数目">}}
 
 ### 逻辑资源块（VRB）
 
@@ -38,7 +38,7 @@
 
   `DVRB` 逻辑资源序号与物理资源序号具有一定的**映射关系**，可以表示为 **nPRB =f(nVRB ，ns )**，其中 **0≤ns ≤19** 是 1 个无线帧内的时隙序号。通常情况下，**连续**的 `DVBR` 序号将映射到**不连续**的 `PRB` 序号上，并且 1 个子帧内的 2 个时隙也有着不同的映射关系，即属于 1 个 `DVRB pair` 的两个具有相同逻辑序号的 DVRB 将映射到两个时隙不同频率位置的 PRB 上。通过这样的机制实现了**分布式**的资源分配
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" caption="基于 VRB 的资源分配">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_2.webp" caption="基于 VRB 的资源分配">}}
 
 - **下行方向**的信号传输，支持 LVRB 和 DVRB 的分配，具体采用的方式在下行资源的调度信令中进行指示
 - **上行方向**的信号传输，**仅支持** LVRB 方式的资源分配
@@ -49,7 +49,7 @@
 
 **1 个** `REG` 对应除掉导频符号之外在频域上连续的 **4 个**物理资源。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" caption="资源单元组（Resource Element Group，REG）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_3.webp" caption="资源单元组（Resource Element Group，REG）">}}
 
 ## 参考
 

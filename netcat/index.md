@@ -1,7 +1,7 @@
 # 网络分析工具：NetCat
 
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" caption="网络瑞士军刀 —— NetCat">}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp" caption="网络瑞士军刀 —— NetCat">}}
 
 <!--more-->
 

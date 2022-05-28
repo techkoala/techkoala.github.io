@@ -9,7 +9,7 @@
 
 在收到信道编码后的数据（codeword）之后，物理层进一步的处理过程包括`加扰`、`调制`、`层映射`、`预编码`（precoding）以及针对各个物理天线端口的`资源映射`和 `OFDM` 信号生成的过程。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" caption="物理层数据处理过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" caption="物理层数据处理过程">}}
 
 - 加扰操作是指使用扰码对经过信道编码后的数据进行**逐比特的加扰**，实现数据间**干扰的随机化**。采用**伪随机码**作为**扰码**，在每个子帧的起始位置，根据 `RNTI`（Radio Network Temporary Identifier）、`Cell ID`、`Codeword` 的编号以及无线帧内的时隙编号等信息，对扰码的 `PN 序列` 进行初始化。
 - 调制指的是对比特数据进行复数调制，包括 `QPSK`、`16QAM` 或者 `64QAM`。
@@ -75,11 +75,11 @@
 
 - 在 2 个发送天线时，使用 SFBC 的发送分集方案，实现“层”到物理天线映射的预编码操作。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" caption="SFBC 发送分集">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_10.webp" caption="SFBC 发送分集">}}
 
 - 在 4 个发送天线时，使用 SFBC+FSTD 的发送分集方案。相应地，实现层到物理天线映射的预编码操作可以表示为下图所示的形式，即 SFBC 结合 FSTD 在天线间频域的位置转换。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" caption="SFBC+FSTD 发送分集">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_11.webp" caption="SFBC+FSTD 发送分集">}}
 
 ## 参考
 

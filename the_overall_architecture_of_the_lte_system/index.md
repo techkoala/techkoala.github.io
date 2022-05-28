@@ -24,7 +24,7 @@
 
 LTE 系统可以分为`核心网`和`无线接入网`两个部分，如下图所示：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" caption="LTE 系统总体架构图">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_System_Structure/Structure.webp" caption="LTE 系统总体架构图">}}
 
 ### 核心网
 

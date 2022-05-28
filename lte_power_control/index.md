@@ -69,7 +69,7 @@
 >
 > 下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 `OFDM` 符号中数据元素的发送功率。
 >
-> {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" caption="两种情况下天线端口 #0 的信号功率">}}
+> {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" caption="两种情况下天线端口 #0 的信号功率">}}
 
 #### 用户功率分配和小区间干扰协调
 

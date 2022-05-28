@@ -22,7 +22,7 @@
 <h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
 <p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
         
     </a><figcaption class="image-caption">STUN 算法</figcaption>
     </figure>
@@ -68,7 +68,7 @@
 </blockquote>
 <h2 id="nat-的四种类型">NAT 的四种类型</h2>
 <h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
@@ -78,7 +78,7 @@
 </blockquote>
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
         
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
@@ -87,7 +87,7 @@
 <p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 <code>IP</code> 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。<code>NAT</code> 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的<code>源 IP</code> 为 <code>56.45.34.78</code>（<code>网站 IP</code>）的数据包将被接受，接着网站返回数据至我的 <code>PC</code>。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 <code>IP</code> 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
 </blockquote>
 <h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
@@ -96,7 +96,7 @@
 <p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
 </blockquote>
 <h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
         
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>

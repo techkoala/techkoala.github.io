@@ -12,7 +12,7 @@
 - **数据面**负责用户数据信息的传输
 - **控制面**负责系统控制功能以及相关信息的传输和处理
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" caption="LTE 接入网协议架构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_1.webp" caption="LTE 接入网协议架构">}}
 
 - [分组数据会聚协议（PDCP）](/lte_pdcp/)
 - [无线链路控制（RLC）](/lte_rlc/)
@@ -29,7 +29,7 @@
 
 经过 `MAC` 层协议的处理后，形成 1 个或者多个传输信道。最终通过物理层的处理在无线信号上进行传输。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" caption="LTE 接入网协议功能和数据处理流程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_2.webp" caption="LTE 接入网协议功能和数据处理流程">}}
 
 控制面主要的控制功能包括：
 

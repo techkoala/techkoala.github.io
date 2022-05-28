@@ -332,7 +332,7 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
 </code></pre></td></tr></table>
 </div>
-</div><figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
+</div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
         
     </a><figcaption class="image-caption">rsync 算法示意</figcaption>
     </figure>
@@ -550,7 +550,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <h3 id="建立连接">建立连接</h3>
 <p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
 <p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         
     </a><figcaption class="image-caption">建立连接</figcaption>
     </figure>
@@ -588,7 +588,7 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </li>
 </ul>
 <p>下面这个带有注释的图片实例，详细讲述了这个过程：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-2.png" data-sub-html="<h2>传输过程</h2>">
         
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
@@ -733,7 +733,7 @@ Executed in  215.68 millis	fish       	external
     <pubDate>Wed, 27 May 2020 23:06:20 &#43;0800</pubDate><author>
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/huginn_backup/</guid>
-    <description><![CDATA[<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-sub-html="<h2>Huginn</h2>">
+    <description><![CDATA[<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-sub-html="<h2>Huginn</h2>">
         
     </a><figcaption class="image-caption">Huginn</figcaption>
     </figure>

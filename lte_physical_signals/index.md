@@ -62,7 +62,7 @@
 
 在每个 `OFDM` 符号内导频符号的频域间隔为 6 个子载波，采用交错放置的方式。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" caption="下行正常子帧小区导频信号图案（CRS）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_14.webp" caption="下行正常子帧小区导频信号图案（CRS）">}}
 
 为了避免同基站不同发射天线端口之间导频与数据的干扰，在某一天线端口的导频位置上，同一基站的其他天线端口空出相应的时频资源。小区 CRS 导频子载波在频域的**绝对位置**与小区 ID **相关**，因此不同小区之间形成频域的**相对偏移**，避免**不同小区**的导频之间的**同频干扰**。
 
@@ -70,7 +70,7 @@
 
 `MBSFN` 导频采用单天线端口的发送，即 port 4。由于 MBSFN 广播／多播的业务特性，较大的小区半径和多小区信号的合并带来的时延扩展增加了无线信道的频率选择性。为了适应这样的特点，导频采用**较小的频域间隔**，即每 2 个子载波放置 1 个导频符号（在 MBSFN 专用载波采用 7.5kHz 子载波间隔时，每 4 个子载波放置 1 个导频符号）。另外，根据广播业务的移动性特点，适当地降低了导频信号在时间上的密度。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" caption="下行 MBSFN 导频图案">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" caption="下行 MBSFN 导频图案">}}
 
 `MBSFN` 导频**只**支持在 `Extended CP` 情况下发送。MBSFN 导频子载波在频域的**绝对位置**与小区 ID **无关**，**各小区**导频在**相同的频域位置**，实现 MBSFN 集合内的**不同小区**导频信号的**宏分集接收**。
 
@@ -80,7 +80,7 @@ LTE Release 8 中用户专用导频信号采用**单天线端口**的发送，�
 
 在发送 `UE specific` 的专用导频时，保持**小区公用导频信号**（CRS）不变，插入用户专用导频符号，每个 `PRB pair` 中发送 12 个用户专用导频符号。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" caption="下行用户专用导频图案">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" caption="下行用户专用导频图案">}}
 
 用户专用导频子载波在频域的**绝对位置**与小区 ID **相关**，因此不同小区之间形成频域的相对偏移，避免导频之间的**同频干扰**。
 
@@ -129,7 +129,7 @@ LTE Release 8 中用户专用导频信号采用**单天线端口**的发送，�
 
 上行共享信道 `PUSCH` 的解调导频在每个时隙内占用 1 个 `OFDM` 符号，在用户发送上行数据的资源上发送，用于共享信道（PUSCH）数据的解调。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" caption="上行 PUSCH 数据解调导频">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" caption="上行 PUSCH 数据解调导频">}}
 
 每个时隙的导频符号采用 12 或者 24 的导频序列。其中 $M_{SC}^{RS}$ 是导频序列的长度，等于频域子载波的个数。导频序列由小区在该时隙的上行导频基序列 $\bar{r}_{u,v}(n)$ 和本次发送采用的循环移位 $α$共同确定。
 
@@ -139,7 +139,7 @@ LTE Release 8 中用户专用导频信号采用**单天线端口**的发送，�
 
 - `PUCCH `格式 1/1a/1b 的导频发送格式。
 
-  {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" caption="PUCCH Format1/1a/1b 的解调导频（Normal CP）">}}
+  {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_18.webp" caption="PUCCH Format1/1a/1b 的解调导频（Normal CP）">}}
 
   其中 $\bar{w}(m)$ 是长度为 3 的正交扩频序列。$r_{u,v}^{\alpha}$ 表示基序列序号为 $u,v$，循环移位为 $α$ 的导频序列，长度是 12，映射在 1 个 PRB 内的子载波上。
 
@@ -147,7 +147,7 @@ LTE Release 8 中用户专用导频信号采用**单天线端口**的发送，�
 
 - PUCCH 格式 2/2a/2b 的导频发送格式。
 
-  {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" caption="PUCCH Format2/2a/2b 的解调导频（Normal CP）">}}
+  {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_19.webp" caption="PUCCH Format2/2a/2b 的解调导频（Normal CP）">}}
 
 ##### 上行 Sounding 导频信号
 
@@ -157,19 +157,19 @@ LTE Release 8 中用户专用导频信号采用**单天线端口**的发送，�
 
 > 例如，假设配置 $T_{SFC} =5，∆SFC ={0,1}$，那么小区 `SRS` 子帧的时间位置如图所示。
 >
-> {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" caption="小区的 SRS 子帧时间位置">}}
+> {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_20.webp" caption="小区的 SRS 子帧时间位置">}}
 
 在定义小区 `SRS `子帧位置的基础上，采用类似的方法进一步定义了小区内某个用户发送上行 SRS 导频的子帧位置，即通过配置用户发送 `SRS` 导频的子帧周期 `TSRS` 和偏移量 `Toffset` ，可以确定该用户发送上行 `SRS` 导频的子帧位置。
 
 > 假设，在以上举例的小区 SRS 子帧配置的基础上，配置用户 x 的 $T_{SRS} =10，Toffset =1$，可以得到该用户 SRS 导频的发送时间位置如图所示。
 >
-> {{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" caption="用户的 SRS 子帧时间位置">}}
+> {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_21.webp" caption="用户的 SRS 子帧时间位置">}}
 
 Sounding 导频（SRS）使用与解调导频相似的基序列生成方法，只是它的循环移位的数值改由高层信令**直接进行配置**。
 
 在导频序列向物理资源的映射上，`SRS` 导频采用 2 个子载波的频域间隔，形成**梳状**的**频域结构**，根据起始位置的不同（奇数或者偶数，kTC =0/1），可以频分复用 2 个**梳状**。相同的**梳状**内可以通过基序列不同的循环移位（8 种），以码分的方式进行更多的复用。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" caption="Sounding 导频图案">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_22.webp" caption="Sounding 导频图案">}}
 
 其中 `SRS` 导频带宽 $m_{SRS,b}$ 以资源块（RB）为单位，并且是 4 的整数倍。同时，可以容易地看出，导频序列的长度是 SRS 导频所占用子载波宽度的一半。
 
@@ -203,15 +203,15 @@ Sounding 导频（SRS）使用与解调导频相似的基序列生成方法，�
 
 这种同步信号相对位置的区别，可用于终端在小区搜索的最初阶段**检测** LTE 系统的**双工方式**。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" caption="LTE 下行同步信号（FDD Type 1 帧结构）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_23.webp" caption="LTE 下行同步信号（FDD Type 1 帧结构）">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" caption="LTE 下行同步信号（TDD Type 2 帧结构）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_24.webp" caption="LTE 下行同步信号（TDD Type 2 帧结构）">}}
 
 `PSS` 和 `SSS` 在**相同**的某一根**天线**上发送，对于各种**不同的系统带宽**（1.4MHz、3MHz、5MHz、10MHz、15MHz、20MHz），同步信号的传输带宽**相同**：
 
 - 占用频带中心的 `1.08MHz` 带宽，其中同步序列占用 62 个子载波，两边各预留 5 个子载波作为保护带。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" caption="同步信号 PSS/SSS 频域结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_25.webp" caption="同步信号 PSS/SSS 频域结构">}}
 
 ## 参考
 

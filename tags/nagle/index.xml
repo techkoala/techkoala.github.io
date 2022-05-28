@@ -57,7 +57,7 @@ end if
 <p>打开如下路径 <code>计算机 \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></p>
 </li>
 </ol>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" data-sub-html="<h2>注册表界面</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Nagle/Regedit.png" data-sub-html="<h2>注册表界面</h2>">
         
     </a><figcaption class="image-caption">注册表界面</figcaption>
     </figure>

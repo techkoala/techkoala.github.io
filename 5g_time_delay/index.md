@@ -21,13 +21,13 @@
 
 单向延迟指的是信息从发送方传到接收方的所花费的时间。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" caption="单向时间延迟">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" caption="单向时间延迟">}}
 
 ### 双向延迟
 
 双向延迟（Round Trip Time, RTT）, 指的是信息从发送方到达接收方，加上接受方发信息给发送方所花费的总时间。双向延迟在工程中更加常见，因为我们可以只在信息发送方或者接收方的其中一方就可以测量到双向延迟（利用 ping 等工具）。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" caption="双向时间延迟">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" caption="双向时间延迟">}}
 
 ### 用户面时延
 
@@ -35,7 +35,7 @@
 
 另外一点是 1 毫秒指的是无线网络 **空中接口**（手机和基站之间，不包括核心网，互联网等网络节点）的延迟时间。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" caption="用户面时间延迟">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" caption="用户面时间延迟">}}
 
 明确了讨论的范围（无线网络空中接口的双向用户面时间延迟），接下来真正进入正题：**网络空中接口的时间延迟是如何一步步降下来的。**
 
@@ -47,7 +47,7 @@
 
 **而在当时，LTE 网络的延迟状况是接近于～ 20ms 的双向时延。（理论延迟时间，实际根据无线环境情况一般会更长）**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" caption="LTE 网络空中接口上下行时延基线">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" caption="LTE 网络空中接口上下行时延基线">}}
 
 上图描述了 LTE 空中接口的上行（从终端到基站）和下行（从基站到终端）时延。
 
@@ -63,9 +63,9 @@
 
 详细的时间延迟组成请参考 [3GPP 36.881 Study on latency reduction techniques for LTE（5.2.1）](https://www.3gpp.org/DynaReport/36881.htm)
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" caption="LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" caption="LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" caption="LTE 下行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" caption="LTE 下行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）">}}
 
 **从 20 毫秒开始，到 1 毫秒要走过怎样的路？**
 
@@ -73,7 +73,7 @@
 
 时间来到了 2015 年，3 月初，中国上海，乍暖还寒，在 3GPP RAN 67 次会议上，终于迎来了关于减少 LTE 网络时间延迟的研究项目（SI）立项（[RP-150465 New SI proposal: Study on Latency reduction techniques for LTE](http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip)）。本次研究项目的立项旨在减小 LTE 网络的时间延迟，因为在此以前 LTE 网络一直向着速率更快的方向在发展，但是网络的延迟水平一直没有得到改善，而研究发现用户面网络延迟的改善能够提升网络的速率瓶颈（因为 TCP 的慢启动效应，改善 TCP 握手的时延，从而提升网络的速率），而且能够更好地支持更多对于时延要求特别高的应用，比如：VR，实时游戏，VoIP，视频会议等等。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" caption="改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" caption="改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）">}}
 
 有了提升的意愿，通过什么方式提升？要解决一个问题，需要 **全面的了解问题本身**。
 
@@ -99,7 +99,7 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 **终端用户在接收到无线资源调度后，如果没有数据发送，始终会使用已经分配的无线资源上传填充数据（padding data），这样会造成网络的干扰水平抬升，影响了网络的整体性能。而且手机的耗电量也增加了。**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" caption="LTE 预调度（Pre-scheduling）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" caption="LTE 预调度（Pre-scheduling）">}}
 
 似乎探索有了方向...
 
@@ -109,17 +109,17 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 至此，上行的网络传输延迟大大减少。根据仿真的结果，**LTE 空中接口双向传输时延降至～ 8ms**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" caption="更短的半静态调度周期">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" caption="更短的半静态调度周期">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" caption="上行不用发送 Padding 数据">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" caption="上行不用发送 Padding 数据">}}
 
 **手机的能耗也下降了～ 10%**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" caption="时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" caption="时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)">}}
 
 **同时网络时延的改善也从侧面提升了终端的速率～ 30%-40%**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" caption="时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" caption="时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)">}}
 
 但是，真的这样就足够了吗？No，通信人止于至善。
 
@@ -131,19 +131,19 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 1 个子帧还可以分为两个时隙，每个时隙还可以分为 7 个符号，至此，终于分完。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" caption="Short transmission time interval (sTTI) 减少传输时延">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" caption="Short transmission time interval (sTTI) 减少传输时延">}}
 
 以前 LTE 网络每次的传输时间间隔是固定一个子帧 = 1 毫秒，上图红色部分是控制信道，用于传输无线资源指派等信令，绿色部分是下行数据信道，用于传输数据。本次工作要做的是将传输时间间隔从子帧级别（1ms) 降低至符号级别（1/14 ms），最小的调度间隔根据情况可以选择 3/2 个符号（3/14ms, 2/14ms），7 个符号（7/14ms），具体的子时隙 (subslot) 细分方式如下图。从而又进一步降低了整个 LTE 无线网络空口的时延。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" caption="4G LTE sTTI 上下行可选配置方式（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" caption="4G LTE sTTI 上下行可选配置方式（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）">}}
 
 在 LTE release 15 中，还降低了 **处理（procession）时间 (收到上行资源 grant 到上行传输数据的时间，以及从收到下行指派到反馈 HARQ ACK/NACK 指示的时间)，以前需要 4ms，降至了 3ms。**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" caption="R15 处理时间的减少从 n+4 到 n+3 ms（Source: 3GPP TR 21.915 Summary of Rel-15 Work Items）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" caption="R15 处理时间的减少从 n+4 到 n+3 ms（Source: 3GPP TR 21.915 Summary of Rel-15 Work Items）">}}
 
 2018 年，到 LTE release 15 时，**所有的大招都用上，LTE 的网络延迟理论上可以降至双向 2.7 毫秒（下行 0.7 毫秒 + 上行 2.0 毫秒）**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" caption="LTE 用户面时延（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" caption="LTE 用户面时延（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）">}}
 
 至此，LTE 的无线网络延迟改善到头了。
 
@@ -157,7 +157,7 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 **关于超低的时延：1ms 的无线空中接口双向传输时延是怎么一步步实现的呢？**
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" caption="5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" caption="5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）">}}
 
 2016 年，3GPP 开始了 5G 的需求分析和研究项目，为了满足 ITU 所设置的 **URLLC 极高的可靠性和极低的时延要求**，在 5G 的需求研究项目 [TR38.913 Study on scenarios and requirements for next generation access technologies](http://portal.3gpp.org/webapp/meetingCalendar/MeetingDetails.asp?m_id=18664) 中的用户面 KPI 中针对 URLLC 业务用户面时延定义了上行 0.5ms 和下行 0.5ms 的要求，加起来正好是 1ms 的双向时延。
 
@@ -171,17 +171,17 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 虽然本回答主要讨论的是低时延的系统架构设计，但是低时延是与 URLLC 的另一部分需求：极高的可靠性（99.999%）被共同捆绑在一起的。如果单单考虑低时延会比低时延高可靠简单很多，因为要满足极高的可靠性惯常采用更多的控制信令开销，重传，冗余，这些手段往往会提升时间延迟的水平。所以如何在保证可靠性的同时改善时延水平在物理层的设计中是难上加难。5G 物理层用了哪些手段来改善时延呢？
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" caption="5G 用户面协议层">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" caption="5G 用户面协议层">}}
 
 ### 包结构（Packet structure）
 
 在 4G LTE 的时延分析中提到过的系统处理时间在时延中所占的分量比较大，而且改善较为不易。这部分时延包括了接收包，获取控制信息，调度信息，解调数据，以及错误检测。在 4G LTE 中是采用下图左侧这种方形的包结构，传输的信息分为三部分，导频信息（Pilot），控制信息（control information），以及数据（data）。这种设计方式被广泛的用来对抗信道衰落。但是在 5G 中 URLLC 包采用的是下图右侧这种设计方式，导频信息，控制信息，以及数据依次在时域上排列，这样做的好处是信道估计，控制信道解码，数据的获取可以串行的进行，通过这样的方式这样减少了处理时间。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" caption="4G LTE 和 5G URLLC 包结构对比 （Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" caption="4G LTE 和 5G URLLC 包结构对比 （Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）">}}
 
 从手机收到资源分配（Grant）指令到数据的传输时间要求如下，中间部分是 5G 不同子载波间隔（Subcarrier Spacing）配置下的不同要求：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" caption="从手机收到资源分配（Grant）指令到数据的传输时间要求（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" caption="从手机收到资源分配（Grant）指令到数据的传输时间要求（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
 
 ### 信道编码
 
@@ -191,15 +191,15 @@ LTE 网络空中接口的用户面网络延迟主要由以下及部分组成：�
 
 从更短的时间间隔这点说 5G 是天生丽质一点都不为过，LTE 规定的一个子载波 (传送信息的最小频域单位) 是 15KHz，时间域是 1ms （正常情况下）。5G 所需要支持的频率范围非常广，中低频从 450MHz~6000MHz（FR1），高频从 24.25GHz~52.6GHz（FR2）。高频意味着更高的相位噪声，所以需要设计更加宽的子载波间隔来抵御相位噪声的干扰。更宽的子载波间隔，意味着时域上更短的时隙，更短的传输时间间隔，我们在 4G LTE 时代千方百计想要降低的传输时间间隔在 5G 时代只需要使用更高的频段，更宽的子载波间隔就轻而易举的降低了。而且根据不同的频段可以选择从 15KHz, 30KHz 到 120KHz 的子载波间隔，可以简单的理解为，**5G 子载波间隔相比于 LTE 15KHz 增加了多少倍，那么在时域上的传输时间间隔就减少相应的倍数**。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" caption="频域子载波间隔成倍增加，时域符号时长相应倍数减少（Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" caption="频域子载波间隔成倍增加，时域符号时长相应倍数减少（Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" caption="不同子载波间隔（sub-carrier spacing）对应的无线帧结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" caption="不同子载波间隔（sub-carrier spacing）对应的无线帧结构">}}
 
 ### 微时隙调度（Mini-slot）
 
 微时隙调度继承了 LTE 中减小传输时间间隔 (subslot) 的设计理念，**将最小的传输时间间隔由子帧拓展到了符号上**。第一优先级最小的调度间隔根据情况可以选择 2 个符号，4 个符号，7 个符号。下图是一个下行数据传输的示例，数据包到达了基站，基站经过 4 个符号的处理以及等待合适的 sPDCCH 时间，随后通过两个符号的微时隙调度将数据传输给用户。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" caption="下行微时隙调度">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" caption="下行微时隙调度">}}
 
 ### MAC（媒体接入控制）层
 
@@ -211,7 +211,7 @@ MAC 的作用是多路逻辑信道的复用，HARQ（混合重传），以及调
 
 5G 与 4G HARQ 流程时间对比：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" caption="5G 与 4G LTE HARQ 时延对比（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" caption="5G 与 4G LTE HARQ 时延对比（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
 
 ### 上行免调度传输 （Grant free transmission）
 
@@ -219,7 +219,7 @@ MAC 的作用是多路逻辑信道的复用，HARQ（混合重传），以及调
 
 在 5G 中可以将预留资源分配给一组终端用户，并且设计了当多个用户同时在相同的无线资源上发生冲撞的解决机制。这样在降低时延的同时使宝贵的无线资源的利用率也得到了保证。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" caption="5G 上行免调度传输 type1 和 type2 （Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" caption="5G 上行免调度传输 type1 和 type2 （Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
 
 ### 预清空调度（Downlink preemption Scheduling）
 
@@ -235,7 +235,7 @@ MAC 的作用是多路逻辑信道的复用，HARQ（混合重传），以及调
 
 这种方式有个弊端就是会影响原本被分配资源的 A 的用户的数据传输（在被用户 B 抢占的资源上），当然优秀的 5G 系统也设计了方案来解决这个问题，方式有：HARQ 重传用户 A 受影响的传输数据，或者是直接通过控制信令（DCI2-1）通知用户 A，哪些传输的数据受到了影响。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" caption="下行预清空调度示例（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" caption="下行预清空调度示例（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）">}}
 
 ### RLC（无线链路控制）层
 
@@ -245,13 +245,13 @@ RLC 层主要负责 RLC 数据的切分，重复数据去除，RLC 重传的工�
 
 那么通过以上关键技术的组合，是怎么一步步使 5G 无线网络时间延迟降低到 1 毫秒的呢？
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" caption="无线网络空中接口双向时延演进">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" caption="无线网络空中接口双向时延演进">}}
 
 通过使用 30KHz 的子载波间隔，上行免调度，以及两个符号的微时隙的 5G 系统配置方案，可以达到低于双向时延 1ms 以下的要求。如果采用 5G 高频通信，使用 120KHz 的子载波间隔，时延可以更低。
 
 至此，1ms 梦寐以求的目标终于达成，但是科技工作者们仍没有停下探索的脚步，目前的研究转向了 5G 物理层的增强对 URLLC 业务的支持，而新的研究项目也已经成功立项并完成：[Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)](http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip), 在下一版本 5G release 16 中，URLLC 将从 PDCCH，UCI，PUSCH（上下行控制信道以及上行数据信道）获得更多的提升。同时还研究支持对时延和可靠性要求极高的工业互联网应用 [Study on NR industrial Internet of Things (IoT)](http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip)。探索为什么 5G 能降低网络时间延迟到 1ms 完结，但是需要引起注意的是，我们这里讨论的延迟是整个网络中的一部分，特指空中接口。但是网络的传输时延绝不是空中接口单一接口就能够保证的，还涉及到端到端的核心网以及互联网。剩下这部分属于 TSN（Time Sensitive Networking）的范围，什么是 TSN，怎么将无线 URLLC 和 TSN 结合起来为工业 4.0 服务，下次有机会再聊。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" caption="无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" caption="无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）">}}
 
 历史的有趣之处就在于：总是在起起伏伏，跌跌撞撞中前行，不断的循环，却又惊人的相似。对比 5G 中时延减少的思路，很多都和 4G 类似。而从 4G 一路看过来，才不会乱花渐欲迷人眼。20 毫秒到 1 毫秒，这么短，却又那么长，背后是无数通信工作者夜以继日，年复一年，默默无闻的贡献自己的力量。
 

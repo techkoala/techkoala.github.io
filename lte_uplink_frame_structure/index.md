@@ -11,7 +11,7 @@ LTE 使用 SC (单载波)-FDMA 作为上行链路信号。
 
 从下面的时隙结构可以看出，LTE 上下行链路的时隙结构是相似的：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" caption="上行时隙结构">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/FDD_UL_FrameStructure_Symbols.png" caption="上行时隙结构">}}
 
 与下行链路相同，上行链路中的帧时间和时隙时间与下行链路中相同。并且资源块结构和下行链路上也相同。如上所述，在一个时隙中的 7 个符号在上行链路和下行链路上也是相同的。
 
@@ -56,7 +56,7 @@ LTE 使用 SC (单载波)-FDMA 作为上行链路信号。
 
 具体来说，上行资源还有一种网格格式，如下所示:
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" caption="上行资源网格">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/36_211_Fig5_2_1-1_UL_ResourceGrid.png" caption="上行资源网格">}}
 
 最小的单元是 “资源元素 (RE)”，最小的资源分配单元是 RB (资源块)，它沿时域跨越 7 RE，沿频域跨越 12 RE。 这意味着一个 RB 有 84 个单元 (7x12)。
 
@@ -64,11 +64,11 @@ LTE 使用 SC (单载波)-FDMA 作为上行链路信号。
 
 下图显示了上行/下行数据传输的总体顺序。你可以将数据传输序列图与 DL/UL 帧结构中每个通道的特定位置相关联。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" caption="LTE 上下行传输顺序图">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/ChannelFlow_Small.png" caption="LTE 上下行传输顺序图">}}
 
 ## 帧结构总览
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" caption="上行帧结构概览">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-UL-FS/UL_SlotStructure_Constellation.png" caption="上行帧结构概览">}}
 
 ## 参考
 

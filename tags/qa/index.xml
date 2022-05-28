@@ -24,17 +24,17 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>首先点击虚拟机右边的 Hyper-V 操作选项<code>虚拟交换机管理器</code>：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>
 <p>新建虚拟交换机：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>
 <p>将主机的网络和虚拟网络进行桥接：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>
@@ -52,7 +52,7 @@
 <p>近期将家里的服务器从 <code>Hyper-V</code> 迁移到 <code>PVE</code> 上。</p>
 <p>目前安装有<code>黑群晖</code>、<code>Openwrt</code>、<code>Ubuntu 18.09LTS</code></p>
 <p>目前的网络拓扑图如下：</p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/%e6%8b%93%e6%89%91.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/PVE/拓扑.png" data-sub-html="<h2>网络拓扑图</h2>">
         
     </a><figcaption class="image-caption">网络拓扑图</figcaption>
     </figure>
@@ -128,7 +128,7 @@
 <p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
 <p>因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。</p>
 <p>接着打开 <code>Settings &gt; Developer settings &gt; OAuth Apps</code> ，点击 <code>New OAuth App</code></p>
-<figure><a class="lightgallery" href="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" title="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-thumbnail="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
         
     </a><figcaption class="image-caption">新建 OAuth App</figcaption>
     </figure>

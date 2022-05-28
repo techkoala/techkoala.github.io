@@ -15,15 +15,15 @@ Hyper-V 没有 VM 的桥接模式可以选择，为了让虚拟机可以和宿�
 
 首先点击虚拟机右边的 Hyper-V 操作选项`虚拟交换机管理器`：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" caption="网络拓扑图" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" caption="网络拓扑图" >}}
 
 新建虚拟交换机：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" caption="网络拓扑图" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-2.webp" caption="网络拓扑图" >}}
 
 将主机的网络和虚拟网络进行桥接：
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" caption="网络拓扑图" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-3.webp" caption="网络拓扑图" >}}
 
 设置虚拟机的 IP 与宿主机的 IP 为同一网段，方便进行连接。
 

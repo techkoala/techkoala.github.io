@@ -23,7 +23,7 @@
 
 此模式下，`RLC` 子层是完全透明的，**不执行任何功能**，例如不添加 `RLC 包头`、不进行数据分段或者连接，即来自上层的数据在 `RLC` 层**不进行任何处理**，“透明”地传输到下层的 `MAC 层`。透明模式用于广播、寻呼和公用控制信道等信息需要传输给多个用户的情况，相对应于广播、上下行公用控制和寻呼等逻辑信道。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" caption="TM 模式数据消息的 RLC PDU 格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" caption="TM 模式数据消息的 RLC PDU 格式">}}
 
 ### 确认模式（AM）
 
@@ -37,7 +37,7 @@
 
 `AM 模式`的 `RLC PDU` 由 `RLC 包头`和 `RLC SDU` 组成，`RLC 包头`包括 `D/C`，`RF`，`P`，`FI`， `E` 和 `SN` 字段。如果 `RLC PDU` 中包含多于 1 个数据字段，那么相对应的 `RLC 包头`还将包括 `E` 和 `LI` 字段，以分别对应于各个数据字段。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" caption="AM 模式数据消息的 RLC PDU 格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" caption="AM 模式数据消息的 RLC PDU 格式">}}
 
 以下是 `RLC 包头`各个字段的具体含义:
 
@@ -51,14 +51,14 @@
 
 在 `AM 模式`下，`RLC` 层使用 `ARQ` 纠错机制对传输错误的数据包进行重传，由于下层指示的数据包传输大小可能与初次传输时候的情况有所不同，可能需要对初次传输的 `AM PDU` 进行分段，因此形成了`AM PDU 分段`的格式。与 `AM PDU` 相比较，`AM PDU` 分段在包头部分多了两个字段：`LSF` 和 `SO`。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" caption="AM 模式数据消息的 RLC PDU 分段的格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" caption="AM 模式数据消息的 RLC PDU 分段的格式">}}
 
 - `LSF`（Last Segment Flag）字段指示这个 `AM PDU` 分段是否是所对应的初次传输的 `AM PDU` 的最后一个分段。
 - `SO`（Segment Offset）字段指示这个 `AM PDU` 分段在所对应的初次传输的 `AM PDU` 中的位置，具体**是这个 AM PDU 分段的第 1 个字节**在所对应的初次传输的 `AM PDU` 中的字节位置。
 
 除了 `RLC 数据 PDU` 之外，`AM 模式`下还可能传输 `RLC 控制 PDU`，进行 `RLC 状态`的报告。由数据接收方的 `RLC 实体`向数据发送方对等的 `RLC 实体`发送 `RLC 状态 PDU`，报告 `AM PDU` 数据包的接收状态，包括正确接收的数据包的最后序号，以及接收错误的数据包的序号。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" caption="RLC 状态 PDU">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" caption="RLC 状态 PDU">}}
 
 - `CPT`（Control PDU Type）字段指示该 `RLC 控制 PDU` 的类型
 - `ACK_SN`（Acknowledgement SN）字段指示接收正确的数据包的最后一个序列号，不包含 `ACK_SN` 本身所指示的数据包，以及由 `NACK_SN` 所指出的接收错误的数据包
@@ -74,7 +74,7 @@
 
 与 `AM 模式`相比较，`UM 模式`的 `RLC PUD` 少了 3 个字段：`D/C`、`RF` 和 `P`。因为 `RLC 控制 PDU` 只在 `AM 模式`进行传输，`UM 模式`仅传输 `RLC 数据 PDU`，因此不需要指示 `RLC 控制`或者 `RLC 数据信息`的 `D/C` 字段。`UM 模式`不进行 `ARQ` 纠错的重传，因此不会出现数据包重传需要重新分段的情况，所以不需要指示数据分段的 `RF` 字段。P 字段所指示的 `RLC 状态报告`也仅适用于 `AM 模式`，因此 `UM 模式`的情况下不需要这个字段。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" caption="UM 模式数据消息的 RLC PDU 格式">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" caption="UM 模式数据消息的 RLC PDU 格式">}}
 
 ## 参考
 

@@ -49,13 +49,13 @@ LTE 的系统信息分为：
 
 系统广播信息向传输信道的映射如图所示:
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" caption="系统广播信息向传输信道的映射">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp" caption="系统广播信息向传输信道的映射">}}
 
 系统广播信息的更新采用`更新提示`和`信息更新`两个阶段的方式。
 
 根据系统配置的更新周期（最小值为 640ms），当需要对系统广播消息进行更新的时候，系统在前一个更新周期使用寻呼消息提示用户，系统广播消息将发生改变，但是在这个更新周期中，仍然发送原来的系统信息。在下一个更新周期，将发送改变之后的系统信息，终端根据该信息进行更新。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" caption="系统广播信息的更新">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp" caption="系统广播信息的更新">}}
 
 ### 对连接的控制
 
@@ -74,7 +74,7 @@ LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer
 
 终端开机在网络中进行注册之后处于空闲状态，终端首先建立传输 `RRC` 消息的信令承载 `SRB1`，终端进入 `RRC 连接状态`，然后，系统建立传输 `NAS` 消息的信令无线承载 `SRB2` 和传输数据的无线承载 `DRB`，由此可以开始进行数据的通信。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" caption="RRC 连接建立的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp" caption="RRC 连接建立的过程">}}
 
 进入 `RRC 连接状态`之后，采用 `RRC 连接重配置`的过程来进行 `SRB2` 和 `DRB` 的建立和管理。
 
@@ -92,13 +92,13 @@ LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer
 - 移动性控制的相关参数
 - 无线测量的配置信息
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" caption="RRC 连接重配置的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp" caption="RRC 连接重配置的过程">}}
 
 按照 `RRC 连接重配置`消息中携带的配置信息，无线承载建立的过程包括建立一个 `PDCP 实体`、建立一个 `RLC 实体`，以及按照指定的逻辑信道标识建立一个逻辑信道。
 
 与建立的过程相对应，当 `RRC 连接重配置`消息指示释放某个无线承载的时候，将释放相应的 `PDCP 实体`、`RLC 实体`和`逻辑信道`。通过 `RRC 连接`释放的过程，终端由 `RRC 连接状态`转变为`空闲状态`。这个过程释放 `RRC 连接`，包括所有已经建立的信令和数据的无线承载，以及所有的无线资源。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" caption="RRC连接释放的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp" caption="RRC连接释放的过程">}}
 
 #### 通信安全的功能
 
@@ -110,11 +110,11 @@ LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer
 
 在 `RRC` 连接建立的过程中，无线接入网从核心网取得终端用户的相关信息，然后可以使用安全模式激活的 RRC 消息设置用户密钥和加密算法，开启信令完整性保护和加密的功能，从而保证后续通信过程的安全（包括 `SRB2` 和 `DRB` 的建立等）。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" caption="安全模式激活的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp" caption="安全模式激活的过程">}}
 
 在通信的过程中还可以通过计数器检查（counter check）的 `RRC 消息`防止`中间人`（man in the middle）攻击。在计数器检查的过程中，网络发送计数器检查消息要求终端确认在每个数据无线承载 `DRB` 上发送和接收数据的数量，通过这样的方法可以排除`中间人`可能进行的伪装通信。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" caption="计数器检查的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp" caption="计数器检查的过程">}}
 
 ### 终端移动性的管理
 
@@ -131,7 +131,7 @@ LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer
 
 终端在移动的过程中，可能由一个小区无线信号的覆盖范围进入另一个小区的覆盖范围，这时候终端将进行小区重选的操作，改变所驻留侦听控制信道的小区。如果这个小区与前一个小区属于不同的跟踪区，那么在小区重选之后，终端将发起跟踪区改变的流程，使用非接入层（NAS）信令向核心网注册新的跟踪区位置。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" caption="空闲状态终端的寻呼和跟踪区改变">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" caption="空闲状态终端的寻呼和跟踪区改变">}}
 
 当有呼叫到达或者是系统消息改变需要向空闲状态的终端发送寻呼消息的时候，核心网`移动控制实体`（MME）根据终端所注册的跟踪区位置，找到相对应的跟踪区列表，然后在列表中所有的跟踪区上，发送针对该终端的寻呼消息。
 
@@ -141,7 +141,7 @@ LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer
 
 `RRC 连接状态`终端的移动性由网络进行控制，网络根据无线接口的情况决定是否改变终端的服务小区，即切换的过程是由网络触发的。为了获取关于无线接口情况的信息，网络可以配置终端进行相关的测量和上报，然后根据上报的结果，触发切换的流程。另外，没有收到终端的测量与上报，网络也可以自行触发进行切换。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" caption="连接状态终端的小区间切换">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" caption="连接状态终端的小区间切换">}}
 
 ##### 切换过程
 
@@ -183,7 +183,7 @@ LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer
 - B1 事件，异系统相邻小区的信号质量优于某个设定的门限
 - B2 事件，服务小区的信号质量差于某个设定的门限的同时，异系统相邻小区的信号质量优于某个设定的门限
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" caption="终端测量上报的过程">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp" caption="终端测量上报的过程">}}
 
 ### 服务质量（QoS）管理
 
@@ -196,7 +196,7 @@ LTE 系统中采用 `EPS 承载`为单位进行端到端的服务质量（QoS）
 
 对于一个终端，网络可以建立**多个** `EPS 承载`，每个 `EPS 承载`可以有不同的 `QoS` 参数，因此除了在不同用户之间实现不同的 `QoS`，属于同一个用户的多个 `EPS 承载`也可以实现不同的 `QoS`，用于一个用户在同时进行的不同业务。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" caption="LTE 系统中的承载">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" caption="LTE 系统中的承载">}}
 
 针对每一个 `EPS 承载`，由核心网分配 `QoS 参数`，包括`QoS 类别标识`（QoS Class Identifier，QCI）和`分配和滞留优先级`（Allocation and Retention Priority，ARP）。
 
@@ -213,7 +213,7 @@ RRC 协议可以执行一部分 `QoS` 管理的功能，主要包括：半持续
 
 除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过`隧道打包`的方式，在终端用户和网络核心网之间传输 NAS 信息。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" caption="上行（NAS）信息的直接传输">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" caption="上行（NAS）信息的直接传输">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" caption="下行（NAS）信息的直接传输">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" caption="下行（NAS）信息的直接传输">}}
 

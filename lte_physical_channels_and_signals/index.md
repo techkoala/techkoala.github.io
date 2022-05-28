@@ -153,11 +153,11 @@ SSS 是用于无线电帧同步的特定物理层信号，它具有以下列出�
 
 在下图中，红色/蓝色/绿色/黄色是承载参考信号的部分，灰色标记的资源元素是为参考信号保留的部分，但未承载该特定天线的参考信号。（插图基于 36.211 的图 6.10.1.2-1： 下行链路参考信号的映射（正常循环前缀））
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" caption="小区特定参考信号">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal.png" caption="小区特定参考信号">}}
 
 以下是 4 天线情况下物理信道配置和 RE（资源元素）映射的示例。测量结果来自 LTE 信号分析仪，它测量从 LTE 网络模拟器传出的 LTE 信号。它仅显示 20 Mhz 系统带宽中的一个 RB（RB0）（总共 100 个 RB），并且分别在 LTE 网络发送 MIB/SIB 和 UE 未连接时在天线端口 0、1、2、3 处捕获。你会注意到，每个天线的参考信号位置都不同。 由于此参考信号位置的差异，REG 分组可能由 PCFICH 的不同位置中略有不同。
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" caption="各天线小区特定参考信号">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_4Antenna_01.png" caption="各天线小区特定参考信号">}}
 
 有两种不同类型的参考信号：小区特定参考信号和 UE 特定参考信号
 
@@ -189,49 +189,49 @@ CRS 是否以任何子帧类型（类型 1、2、3）传输？
 
 下图基于 36.211 的图 6.10.2.2-1：MBSFN 参考信号的映射（扩展循环前缀，Δf= 15 kHz）
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" caption="Reference Signal - MBSFN">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R4.png" caption="Reference Signal - MBSFN">}}
 
 ### RS - UE Specific
 
 下图基于 36.211 的图 6.10.3.2-1：特定于 UE 的参考信号，天线端口 5（正常循环前缀）的映射
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" caption="Reference Signal - UE Specific - Antenna Port 5">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R5.png" caption="Reference Signal - UE Specific - Antenna Port 5">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" caption="Reference Signal - UE Specific - Antenna Port 5">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R7_10_03.png" caption="Reference Signal - UE Specific - Antenna Port 5">}}
 
 ### RS - Positioning
 
 下图基于 36.211 的图 6.10.4.2-1：定位参考信号的映射（正常循环前缀）
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" caption="Reference Signal - Positioning - Antenna Port 6 ">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R6.png" caption="Reference Signal - Positioning - Antenna Port 6 ">}}
 
 ### RS - CSI
 
 下图基于 36.211 的图 6.10.5.2-1：CSI 参考信号的映射（CSI 配置 0，常规循环前缀）
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" caption="Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ReferenceSignal_R15_R22_01.png" caption="Reference Signal - CSI - Antenna Port 15,16,17,18,19,20,21,22">}}
 
 ## 全帧快照
 
 下图展示了上述提及的所有物理信道在整个框架上的整体图像：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" caption="Full Frame">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Map_FullFrame.png" caption="Full Frame">}}
 
 ## 通信过程中的物理信道
 
 下图显示了上行/下行数据传输的总体顺序：
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" caption="数据传输序列图">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/ChannelFlow_Small.png" caption="数据传输序列图">}}
 
 ## 附加图
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" caption="Spectrogram - LTE FDD DL - Radio Frame">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_01.png" caption="Spectrogram - LTE FDD DL - Radio Frame">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" caption="Spectrogram - LTE FDD DL - PBCH">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_02.png" caption="Spectrogram - LTE FDD DL - PBCH">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" caption="Spectrogram - LTE FDD DL - PSS/SSS">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/DL_Spectrogram_03.png" caption="Spectrogram - LTE FDD DL - PSS/SSS">}}
 
-{{<image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" caption="Spectrogram - LTE FDD DL - Each Symbol">}}
+{{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-PCS/LTE_DL_Idle_RF_Profile.png" caption="Spectrogram - LTE FDD DL - Each Symbol">}}
 
 ## 另见
 

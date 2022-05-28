@@ -25,7 +25,7 @@ HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示
 
 下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" caption="Credit: [Kaushal Kumar Panday](https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx) From: [SSL Handshake and HTTPS Bindings on IIS](https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx)" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" caption="Credit: [Kaushal Kumar Panday](https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx) From: [SSL Handshake and HTTPS Bindings on IIS](https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx)" >}}
 
 其中 `Handshake protocol`，`Change Ciper Spec protocol` 和 `Alert protocol` 组成了 `SSL Handshaking Protocols`。
 
@@ -41,7 +41,7 @@ HTTPS 和 HTTP 协议相比提供了:
 
 使用 RSA 算法的 SSL 握手过程是这样的:
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
 1. [明文] 客户端发送随机数 client_random 和支持的加密方式列表
 2. [明文] 服务器返回随机数 server_random ，选择的加密方式和服务器证书链
@@ -53,7 +53,7 @@ HTTPS 和 HTTP 协议相比提供了:
 
 那么什么是证书呢？
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" caption="证书信息" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" caption="证书信息" >}}
 
 ### 证书中包含了以下信息
 
@@ -168,17 +168,17 @@ Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Ha
 
 使用 `RSA` 算法的握手过程是这样的（已在总览中提到）
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
 客户端和服务端在握手 hello 消息中明文交换了 `client_random` 和 `server_random` ，使用 `RSA` 公钥加密传输 `premaster secret` ，最后通过算法，客户端和服务端分别计算 `master secret`。其中，不直接使用 `premaster secret` 的原因是：保证 `secret` 的随机性不受任意一方的影响。
 
 除了使用 `RSA` 算法在公共信道交换密钥，还可以通过 `Diffie–Hellman` 算法。`Diffie–Hellman` 算法的原理是这样的
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" caption="By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/Diffie-Hellman_Key_Exchange.webp" caption="By Original schema: A.J. Han Vinck, University of Duisburg-Essen SVG version: Flugaal [Public domain], via Wikimedia Commons" >}}
 
 使用 `Diffie–Hellman` 算法交换 `premaster secret` 的流程
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" caption="Source: [Keyless SSL: The Nitty Gritty Technical Details](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/)" >}}
 
 ## 小结
 
@@ -259,7 +259,7 @@ The master secret is expanded into a sequence of secure bytes, which is then spl
 
 使用 `Diffie-Hellman` 算法的 `TLS` 握手细节
 
-{{< image src="https://cdn.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" caption="Source: https://cipherstuff.wordpress.com/" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" caption="Source: https://cipherstuff.wordpress.com/" >}}
 
 ## 拓展阅读
 
