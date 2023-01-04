@@ -19,10 +19,6 @@
 
   - [ClearURLs](https://microsoftedge.microsoft.com/addons/detail/clearurls/mdkdmaickkfdekbjdoojfalpbkgaddei)
 
-  - ~~[Enpass extension](https://microsoftedge.microsoft.com/addons/detail/enpass-extension-require/mliehcloacfoicbanjhhnlimealolgoi)~~
-
-  - ~~[Feedbro](https://microsoftedge.microsoft.com/addons/detail/feedbro/pdfbckdfhgaohcfdkcgpggcifmalimfd)~~：已自建 FreshRSS
-
   - [MONKNOW](https://microsoftedge.microsoft.com/addons/detail/monknow-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5-%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9D%A2%E6%9D%BF/ekpbeboofmnpohcmdnfkhjameokgffde)
 
   - [OneNote Web Clipper](https://microsoftedge.microsoft.com/addons/detail/onenote-web-clipper/oogbnpmeihfgnccdnmmlgicknopghhma)
@@ -35,17 +31,11 @@
 
   - [uBlock Origin](https://microsoftedge.microsoft.com/addons/detail/ublock-origin/odfafepnkmbhccpbejgmiehpchacaeak)
 
-  - [京价保 - 京东价保助手](https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge)
-
-  - ~~[FireShot](https://microsoftedge.microsoft.com/addons/detail/%E6%8D%95%E6%8D%89%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE-fireshot%E7%9A%84/fcbmiimfkmkkkffjlopcpdlgclncnknm)~~：浏览器自带
-
   - [沙拉查词-聚合词典划词翻译](https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp)
 
   - [隐私獾](https://microsoftedge.microsoft.com/addons/detail/%E9%9A%90%E7%A7%81%E7%8D%BE/mkejgcgkdlddbggjhhflekkondicpnop)
 
   - [Augmented Steam](https://chrome.google.com/webstore/detail/augmented-steam/dnhpnfgdlenaccegplpojghhmaamnnfp)：Steam 增强
-
-  - [Free Download Manager](https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp)
 
   - [Imagus](https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab)：鼠标悬停放大图片
 
@@ -57,8 +47,6 @@
 
   - [Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
 
-  - ~~[Unpaywall](https://chrome.google.com/webstore/detail/unpaywall/iplffkdpngmdjhlpjmppncnlhomiipha)~~
-
   - [Vimium C - 全键盘操作浏览器](https://microsoftedge.microsoft.com/addons/detail/vimium-c-%E5%85%A8%E9%94%AE%E7%9B%98%E6%93%8D%E4%BD%9C%E6%B5%8F%E8%A7%88%E5%99%A8/aibcglbfblnogfjhbcmmpobjhnomhcdo)
 
   - [二管家](https://chrome.google.com/webstore/detail/nooboss/aajodjghehmlpahhboidcpfjcncmcklf)：扩展管理
@@ -68,8 +56,6 @@
   - [HTTPS Everywhere](https://microsoftedge.microsoft.com/addons/detail/https-everywhere/fchjpkplmbeeeaaogdbhjbgbknjobohb)
 
   - [图片助手(ImageAssistant) 批量图片下载器](https://microsoftedge.microsoft.com/addons/detail/%E5%9B%BE%E7%89%87%E5%8A%A9%E6%89%8Bimageassistant-%E6%89%B9%E9%87%8F%E5%9B%BE%E7%89%87/odphnbhiddhdpoccbialllejaajemdio)
-
-  - ~~[Dualsub](https://chrome.google.com/webstore/detail/dualsub/gnlibmlfpencglodjpgnalbdebfhpmfp)~~
 
   - [简悦 - SimpRead](https://chrome.google.com/webstore/detail/simpread-reader-view/ijllcpnolfcooahcekpamkbidhejabll)
 
@@ -92,6 +78,8 @@
 - **[Motrix](https://motrix.app/)**
 
 - **[Xtreme Download Manager](https://github.com/subhra74/xdm)**
+
+- **[NeatDownloadManager](https://www.neatdownloadmanager.com/index.php/en/)**
 
 ##### Windows：
 
@@ -245,16 +233,15 @@
 
 - **[Best Trace](https://www.ipip.net/product/client.html)**
 
-- **[Termius](https://termius.com/)**
+- **[tabby](https://tabby.sh/)**
 
 - **[ZeroTier One](https://www.zerotier.com/)**
 
 - **[Wireshark](https://www.wireshark.org/)**
+
 - **[Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)**
 
 ##### Windows：
-
-- ~~[MobaXterm](https://mobaxterm.mobatek.net/)~~ ：已转用 Termius，多端同步
 
 - [Fiddler](https://www.telerik.com/fiddler)
 
@@ -276,12 +263,6 @@
 
 - [PowerToys](https://github.com/microsoft/PowerToys/)
 
-- ~~[Quicker](https://getquicker.net/)~~
-
-- ~~[Wox](http://www.wox.one/)~~
-
-- ~~[WGestures](http://www.yingdev.com/projects/wgestures) ：需要安装根证书 & 长时间未更新~~
-
 - [Strokesplus.net](https://www.strokesplus.net/Downloads）：Windows 鼠标手势
 
 - [Fastcopy-M](https://github.com/Mapaler/FastCopy-M)：基于原版的二次开发
@@ -294,13 +275,9 @@
 
 - [Easystroke](https://github.com/thjaeger/easystroke/wiki/BuildInstructions)：Linux 鼠标手势
 
-- ~~[Bcompare](https://www.scootersoftware.com/download.php)~~：已用 Meld 代替
-
 ## 软件&磁盘管理
 
 ##### Windows：
-
-- ~~[CCleaner](https://www.ccleaner.com/)~~
 
 - [Dism++](https://www.chuyu.me/)
 
@@ -340,8 +317,6 @@
 
 ## 阅读
 
-- **~~[irreader](http://irreader.fatecore.com/)~~**
-
 - [FreshRSS](https://freshrss.org/)
 
 - [Fluent Reader](https://github.com/yang991178/fluent-reader)
@@ -358,7 +333,7 @@
 
 ##### macOS:
 
-- _[Reeder]_
+- _[Reader]_
   
 - [NetNewsWire](https://netnewswire.com/)
 
