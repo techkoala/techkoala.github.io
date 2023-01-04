@@ -17,8 +17,8 @@
 <blockquote>
 <p>简单介绍使用 Docker 运行的 Huginn 数据的备份与恢复</p>
 </blockquote>
-<h3 id="备份数据">备份数据</h3>
-<p>使用命令在容器中生成备份：</p>
+<h3 id="备份数据" class="headerLink">
+    <a href="#%e5%a4%87%e4%bb%bd%e6%95%b0%e6%8d%ae" class="header-mark"></a>备份数据</h3><p>使用命令在容器中生成备份：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -36,8 +36,8 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker <span class="nb">exec</span> -it  huginn mysqldump -u root -ppassword huginn_production &gt; /root/test_db.sql
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="恢复数据">恢复数据</h3>
-<p>首先复制文件到 <code>docker</code> 中：</p>
+</div><h3 id="恢复数据" class="headerLink">
+    <a href="#%e6%81%a2%e5%a4%8d%e6%95%b0%e6%8d%ae" class="header-mark"></a>恢复数据</h3><p>首先复制文件到 <code>docker</code> 中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1

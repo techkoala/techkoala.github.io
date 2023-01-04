@@ -15,8 +15,8 @@
 </blockquote>
 <p><code>SHA-2</code> (Secure Hash Algorithm 2)，是最流行的哈希算法之一，包括了：<code>SHA-224</code>、<code>SHA-256</code>、<code>SHA-384</code>、<code>SHA-512</code>、<code>SHA-512/224</code>、<code>SHA-512/256</code>。这些变体除了生成摘要的长度、循环运行的次数等一些细微差异之外，基本结构是一致的。</p>
 <p><code>SHA-2</code> 以安全和速度著称，在未生成密钥的情况下（例如挖掘比特币），像 <code>SHA-2</code> 这样的快速哈希算法通常占据上风。</p>
-<h2 id="哈希函数hash-function">哈希函数（Hash Function）</h2>
-<p>如果，你还不清楚哈希是什么，可以参见我的<a href="/hash_functions/" rel="">另外一篇文章</a></p>
+<h2 id="哈希函数hash-function" class="headerLink">
+    <a href="#%e5%93%88%e5%b8%8c%e5%87%bd%e6%95%b0hash-function" class="header-mark"></a>哈希函数（Hash Function）</h2><p>如果，你还不清楚哈希是什么，可以参见我的<a href="/hash_functions/" rel="">另外一篇文章</a></p>
 <p>简单来说，哈希函数的拥有如下三个重要特性：</p>
 <ul>
 <li>
@@ -29,13 +29,13 @@
 <p>无法从加扰数据中检索原始数据（单向函数）。</p>
 </li>
 </ul>
-<h2 id="sha-2-vs-sha-256">SHA-2 vs SHA-256</h2>
-<p>有人可能会困惑：欸？我平时看到的都是 <code>SHA-128</code>、<code>SHA-256</code> 等等，这个 <code>SHA-2</code> 又是什么？</p>
+<h2 id="sha-2-vs-sha-256" class="headerLink">
+    <a href="#sha-2-vs-sha-256" class="header-mark"></a>SHA-2 vs SHA-256</h2><p>有人可能会困惑：欸？我平时看到的都是 <code>SHA-128</code>、<code>SHA-256</code> 等等，这个 <code>SHA-2</code> 又是什么？</p>
 <p><code>SHA-2</code> 是一种算法，一种关于如何哈希数据的广义思想。<code>SHA-256</code> 设置了定义 <code>SHA-2</code> 算法行为的附加常量。其中一个常量是输出大小，“256” 和 “512” 是指它们各自的输出摘要大小（以位为单位）。</p>
-<h2 id="逐步详解-sha-256">逐步详解 SHA-256</h2>
-<p>接下来举例说明 SHA-256 如何工作:</p>
-<h3 id="第一步消息预处理">第一步：消息预处理</h3>
-<ol>
+<h2 id="逐步详解-sha-256" class="headerLink">
+    <a href="#%e9%80%90%e6%ad%a5%e8%af%a6%e8%a7%a3-sha-256" class="header-mark"></a>逐步详解 SHA-256</h2><p>接下来举例说明 SHA-256 如何工作:</p>
+<h3 id="第一步消息预处理" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e6%b6%88%e6%81%af%e9%a2%84%e5%a4%84%e7%90%86" class="header-mark"></a>第一步：消息预处理</h3><ol>
 <li>
 <p>将 <code>hello world</code> 转换为二进制</p>
 <blockquote>
@@ -75,8 +75,8 @@
 </li>
 </ol>
 <p>现在，得到了初始的输入值（通过对消息进行补位处理，最终的长度应该是 512 位的倍数）。</p>
-<h3 id="第二步初始化哈希值h">第二步：初始化哈希值（h）</h3>
-<p>现在，初始化 8 个哈希值。这些是硬编码的常数，分别代表前 8 个素数（2、3、5、7、11、13、17、19）的平方根的小数部分的前 32 位：</p>
+<h3 id="第二步初始化哈希值h" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e5%88%9d%e5%a7%8b%e5%8c%96%e5%93%88%e5%b8%8c%e5%80%bch" class="header-mark"></a>第二步：初始化哈希值（h）</h3><p>现在，初始化 8 个哈希值。这些是硬编码的常数，分别代表前 8 个素数（2、3、5、7、11、13、17、19）的平方根的小数部分的前 32 位：</p>
 <blockquote>
 <p>h0 := 0x6a09e667</p>
 <p>h1 := 0xbb67ae85</p>
@@ -87,8 +87,8 @@
 <p>h6 := 0x1f83d9ab</p>
 <p>h7 := 0x5be0cd19</p>
 </blockquote>
-<h3 id="第三步初始化圆常数k">第三步：初始化圆常数(k)</h3>
-<p>与步骤 2 类似，初始化一些常量，一共有 64 个。每个值（0-63）是前 64 个素数（2-311）的立方根分数部分的前 32 位。</p>
+<h3 id="第三步初始化圆常数k" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e5%88%9d%e5%a7%8b%e5%8c%96%e5%9c%86%e5%b8%b8%e6%95%b0k" class="header-mark"></a>第三步：初始化圆常数(k)</h3><p>与步骤 2 类似，初始化一些常量，一共有 64 个。每个值（0-63）是前 64 个素数（2-311）的立方根分数部分的前 32 位。</p>
 <blockquote>
 <p>0x428a2f98 0x71374491 0xb5c0fbcf 0xe9b5dba5 0x3956c25b 0x59f111f1</p>
 <p>0x923f82a4 0xab1c5ed5 0xd807aa98 0x12835b01 0x243185be 0x550c7dc3</p>
@@ -102,8 +102,8 @@
 <p>0x5b9cca4f 0x682e6ff3 0x748f82ee 0x78a5636f 0x84c87814 0x8cc70208</p>
 <p>0x90befffa 0xa4506ceb 0xbef9a3f7 0xc67178f2</p>
 </blockquote>
-<h3 id="第四步块循环">第四步：块循环</h3>
-<p>对输入的每 512 位分为一块，执行以下步骤：</p>
+<h3 id="第四步块循环" class="headerLink">
+    <a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5%e5%9d%97%e5%be%aa%e7%8e%af" class="header-mark"></a>第四步：块循环</h3><p>对输入的每 512 位分为一块，执行以下步骤：</p>
 <div class="details admonition warning open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-exclamation-triangle fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -112,8 +112,8 @@
             <div class="admonition-content">在本文的例子中，因为 “hello world” 太短了，所以只有一个块。在循环的每一次迭代中，都将对哈希值 h0-h7 进行变更，最终作为结果输出。</div>
         </div>
     </div>
-<h3 id="第五步重组信息数组w">第五步：重组信息数组（w）</h3>
-<ol>
+<h3 id="第五步重组信息数组w" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%94%e6%ad%a5%e9%87%8d%e7%bb%84%e4%bf%a1%e6%81%af%e6%95%b0%e7%bb%84w" class="header-mark"></a>第五步：重组信息数组（w）</h3><ol>
 <li>
 <p>将步骤 1 中的输入数据重新排列到新数组中，其中每个条目都是一个 32 位字：</p>
 <blockquote>
@@ -251,8 +251,8 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="第六步压缩">第六步：压缩</h3>
-<ol>
+<h3 id="第六步压缩" class="headerLink">
+    <a href="#%e7%ac%ac%e5%85%ad%e6%ad%a5%e5%8e%8b%e7%bc%a9" class="header-mark"></a>第六步：压缩</h3><ol>
 <li>
 <p>初始化变量 a，b，c，d，e，f，g，h，并将它们分别设置为等于当前的哈希值：h0，h1，h2，h3，h4，h5，h6，h7</p>
 </li>
@@ -425,8 +425,8 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="第七步修改最终值">第七步：修改最终值</h3>
-<p>压缩循环完成后，仍然处于在块循环中，通过向哈希值中添加它们各自的变量 a-h 来修改哈希值。同样的，所有的加法都是模 $ 2^{32} $。</p>
+<h3 id="第七步修改最终值" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%83%e6%ad%a5%e4%bf%ae%e6%94%b9%e6%9c%80%e7%bb%88%e5%80%bc" class="header-mark"></a>第七步：修改最终值</h3><p>压缩循环完成后，仍然处于在块循环中，通过向哈希值中添加它们各自的变量 a-h 来修改哈希值。同样的，所有的加法都是模 $ 2^{32} $。</p>
 <blockquote>
 <p>h0 = h0 + a = 10111001010011010010011110111001</p>
 <p>h1 = h1 + b = 10010011010011010011111000001000</p>
@@ -437,8 +437,8 @@
 <p>h6 = h6 + g = 10010000100010001111011110101100</p>
 <p>h7 = h7 + h = 11100010111011111100110111101001</p>
 </blockquote>
-<h3 id="第八步-组成最终的哈希值">第八步: 组成最终的哈希值</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="第八步-组成最终的哈希值" class="headerLink">
+    <a href="#%e7%ac%ac%e5%85%ab%e6%ad%a5-%e7%bb%84%e6%88%90%e6%9c%80%e7%bb%88%e7%9a%84%e5%93%88%e5%b8%8c%e5%80%bc" class="header-mark"></a>第八步: 组成最终的哈希值</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -449,8 +449,8 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步 🙂。</p>
-<h2 id="附录">附录</h2>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
+<h2 id="附录" class="headerLink">
+    <a href="#%e9%99%84%e5%bd%95" class="header-mark"></a>附录</h2><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Algorithm/SHA-2/SHA-2.png" data-sub-html="<h2>SHA-2 的第 t 个加密循环</h2>">
         
     </a><figcaption class="image-caption">SHA-2 的第 t 个加密循环</figcaption>
     </figure>
@@ -647,13 +647,13 @@ Produce the final hash value (big-endian):
 digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreffer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
+<p>[1] <a href="https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/" target="_blank" rel="noopener noreferrer">How SHA-2 Works Step-By-Step (SHA-256)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreffer">SHA-2</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreferrer">SHA-2</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

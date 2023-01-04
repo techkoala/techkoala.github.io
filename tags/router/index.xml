@@ -13,8 +13,8 @@
     <description><![CDATA[<blockquote>
 <p>OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍如何 dnscrypt-proxy2 进行加密查询，以及如何与上网插件进行搭配使用</p>
 </blockquote>
-<h2 id="安裝-dnscrypt-proxy2">安裝 dnscrypt-proxy2</h2>
-<p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装，命令如下：</p>
+<h2 id="安裝-dnscrypt-proxy2" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%9d-dnscrypt-proxy2" class="header-mark"></a>安裝 dnscrypt-proxy2</h2><p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装，命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -26,8 +26,8 @@ opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
 </div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
-<h2 id="配置">配置</h2>
-<p>基本使用只需要</p>
+<h2 id="配置" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%ae" class="header-mark"></a>配置</h2><p>基本使用只需要</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -65,8 +65,8 @@ opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
-<h2 id="分流搭配-ssr">分流（搭配 SSR+）</h2>
-<ol>
+<h2 id="分流搭配-ssr" class="headerLink">
+    <a href="#%e5%88%86%e6%b5%81%e6%90%ad%e9%85%8d-ssr" class="header-mark"></a>分流（搭配 SSR+）</h2><ol>
 <li>SSR+ 使用大陆 IP 白名单 并使用 5335 的 DNS 解析的方式</li>
 <li>dnscyrpt-proxy2 配置监听在 5335，仅使用 DoH 协议向 <code>Cloudflare/Google</code> 服务器查询（这些 <code>Https</code> 的查询请求全部会被 SSR+ 代理转发）</li>
 <li>iptables 劫持所有目标为 53 端口的流量到路由器的 53 端口（默认）</li>
@@ -74,13 +74,13 @@ opkg install dnscrypt-proxy2
 <li>在<code>/etc/dnsmasq.d/</code>(如无则新建）中放入<code>https://github.com/felixonmars/dnsmasq-china-list/blob/master/accelerated-domains.china.conf</code></li>
 </ol>
 <p>这样实现了凡是大陆的和在大陆有 cdn 的以及返回 AAAA 记录的域名全部直连查询并直连访问，其余的全部走代理查询，且结果在大陆以外的走代理访问（IP+域名的双白名单机制）</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -92,8 +92,8 @@ opkg install dnscrypt-proxy2
     <description><![CDATA[<blockquote>
 <p>安装 AdguardHome 运行几天后，可怜的剩余空间被日志耗尽，不得不对 OpenWRT overlay 进行扩容，本文对此进行了记录</p>
 </blockquote>
-<h2 id="什么是-overlay">什么是 overlay</h2>
-<p><code>OpenWRT</code> 一般使用的文件系统是 <code>SquashFS</code> ，这个文件系统的特点就是：<strong>只读</strong>。</p>
+<h2 id="什么是-overlay" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-overlay" class="header-mark"></a>什么是 overlay</h2><p><code>OpenWRT</code> 一般使用的文件系统是 <code>SquashFS</code> ，这个文件系统的特点就是：<strong>只读</strong>。</p>
 <p>一个只读的文件系统要怎么做到保存设置和安装软件的呢？这里就是使用 <code>/overlay</code> 的分区，<code>overlay</code> 顾名思义就是覆盖在上面一层的意思。虽然原来的文件不能修改，但把修改的部分放在 <code>overlay</code> 分区上，然后映射到原来的位置，读取的时候就可以读到修改过的文件了。</p>
 <p>为什么要用这么复杂的方法呢？ <code>OpenWRT</code> 当然也可以使用 <code>EXT4</code> 文件系统，但使用 <code>SquashFS + overlay</code> 的方式有一定的优点。</p>
 <ul>
@@ -110,8 +110,8 @@ opkg install dnscrypt-proxy2
         
     </a><figcaption class="image-caption">overlay 示意图</figcaption>
     </figure>
-<h2 id="创建新分区">创建新分区</h2>
-<p>首先，需要创建一个新的分区，这里使用的是 <code>cfdisk</code></p>
+<h2 id="创建新分区" class="headerLink">
+    <a href="#%e5%88%9b%e5%bb%ba%e6%96%b0%e5%88%86%e5%8c%ba" class="header-mark"></a>创建新分区</h2><p>首先，需要创建一个新的分区，这里使用的是 <code>cfdisk</code></p>
 <p>如果此前没有安装，首先使用下列命令进行安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -154,8 +154,8 @@ opkg install cfdisk
         
     </a><figcaption class="image-caption">确认</figcaption>
     </figure>
-<h2 id="格式化分区">格式化分区</h2>
-<p>使用命令：</p>
+<h2 id="格式化分区" class="headerLink">
+    <a href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e5%88%86%e5%8c%ba" class="header-mark"></a>格式化分区</h2><p>使用命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -169,8 +169,8 @@ opkg install cfdisk
         
     </a><figcaption class="image-caption">格式化分区</figcaption>
     </figure>
-<h2 id="挂载新分区">挂载新分区</h2>
-<p>使用命令：</p>
+<h2 id="挂载新分区" class="headerLink">
+    <a href="#%e6%8c%82%e8%bd%bd%e6%96%b0%e5%88%86%e5%8c%ba" class="header-mark"></a>挂载新分区</h2><p>使用命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -180,8 +180,8 @@ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>挂载分区</p>
-<h2 id="转移到新分区">转移到新分区</h2>
-<p>然后将原来 <code>upper</code> 层中的数据复制到新的分区中：</p>
+<h2 id="转移到新分区" class="headerLink">
+    <a href="#%e8%bd%ac%e7%a7%bb%e5%88%b0%e6%96%b0%e5%88%86%e5%8c%ba" class="header-mark"></a>转移到新分区</h2><p>然后将原来 <code>upper</code> 层中的数据复制到新的分区中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -190,8 +190,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="web-界面配置修改">Web 界面配置修改</h2>
-<p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
+</div><h2 id="web-界面配置修改" class="headerLink">
+    <a href="#web-%e7%95%8c%e9%9d%a2%e9%85%8d%e7%bd%ae%e4%bf%ae%e6%94%b9" class="header-mark"></a>Web 界面配置修改</h2><p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/openwrt.webp" title="/images/Network/OpenWRT_overlay/openwrt.webp" data-thumbnail="/images/Network/OpenWRT_overlay/openwrt.webp" data-sub-html="<h2>Web 界面</h2>">
         
     </a><figcaption class="image-caption">Web 界面</figcaption>
@@ -201,11 +201,11 @@ opkg install cfdisk
         
     </a><figcaption class="image-caption">挂载点配置</figcaption>
     </figure>
-<h2 id="完成">完成</h2>
-<p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。</p>
+<h2 id="完成" class="headerLink">
+    <a href="#%e5%ae%8c%e6%88%90" class="header-mark"></a>完成</h2><p>到这一步，只需要重启 <code>OpenWRT</code> 即可成功扩容。</p>
 <p>重启后到 <code>系统 -&gt; 软件包</code> 可以看到变大后的空间容量。</p>
-<h2 id="自动挂载">自动挂载</h2>
-<p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
+<h2 id="自动挂载" class="headerLink">
+    <a href="#%e8%87%aa%e5%8a%a8%e6%8c%82%e8%bd%bd" class="header-mark"></a>自动挂载</h2><p>分区默认会在 <code>OpenWRT</code> 重启后会自动挂载，如果遇到没有挂载的情况，需要编辑 <code>/etc/rc.local</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -215,16 +215,16 @@ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreffer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
+<p>[1] <a href="https://blog.msm.moe/mount-sd-card-to-overlay-on-openwrt/" target="_blank" rel="noopener noreferrer">OpenWrt 下把 SD 卡挂载到 /overlay ，扩大软件空间</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreffer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
+<p>[2] <a href="https://www.jianshu.com/p/8179b19cfa6d" target="_blank" rel="noopener noreferrer">软路由 LEDE 折腾 overlay 分区扩容之路</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreffer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
+<p>[3] <a href="https://www.vediotalk.com/archives/13889" target="_blank" rel="noopener noreferrer">ESXI 下 OpenWrt 扩容 Overlay,增加安装插件空间</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -245,10 +245,10 @@ opkg install cfdisk
         </div>
     </div>
 <p>当需要单独更新 OpenWRT 某个插件或者需要增加安装某个插件的时候，可以单独编译对应的 ipk 插件进行安装，而不必编译整个系统。</p>
-<h3 id="下载源码">下载源码</h3>
-<p>使用 <code>git clone</code> 对应的源码插件到下面的文件夹中</p>
-<h3 id="存放路径">存放路径</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="下载源码" class="headerLink">
+    <a href="#%e4%b8%8b%e8%bd%bd%e6%ba%90%e7%a0%81" class="header-mark"></a>下载源码</h3><p>使用 <code>git clone</code> 对应的源码插件到下面的文件夹中</p>
+<h3 id="存放路径" class="headerLink">
+    <a href="#%e5%ad%98%e6%94%be%e8%b7%af%e5%be%84" class="header-mark"></a>存放路径</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -256,8 +256,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="配置">配置</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="配置" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%ae" class="header-mark"></a>配置</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -266,8 +266,8 @@ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>然后进入对应的子菜单中找到对应插件按 <M> 表示选中插件，但不编译进固件。</p>
-<h3 id="编译">编译</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="编译" class="headerLink">
+    <a href="#%e7%bc%96%e8%af%91" class="header-mark"></a>编译</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -276,8 +276,8 @@ opkg install cfdisk
 </code></pre></td></tr></table>
 </div>
 </div><p>xxxxx 就是你需要单独编译的程序。</p>
-<h3 id="ipk-生成路径">ipk 生成路径</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="ipk-生成路径" class="headerLink">
+    <a href="#ipk-%e7%94%9f%e6%88%90%e8%b7%af%e5%be%84" class="header-mark"></a>ipk 生成路径</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -285,8 +285,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="上传-ipk-至路由器">上传 ipk 至路由器</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="上传-ipk-至路由器" class="headerLink">
+    <a href="#%e4%b8%8a%e4%bc%a0-ipk-%e8%87%b3%e8%b7%af%e7%94%b1%e5%99%a8" class="header-mark"></a>上传 ipk 至路由器</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -294,8 +294,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="安装">安装</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="安装" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%85" class="header-mark"></a>安装</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>

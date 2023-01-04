@@ -13,12 +13,12 @@
     <description><![CDATA[<blockquote>
 <p>加速访问！</p>
 </blockquote>
-<h2 id="when">When</h2>
-<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></p>
-<h2 id="why">Why</h2>
-<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
-<h2 id="what">What</h2>
-<p>下面是 <code>Vercel</code> 官网的介绍：</p>
+<h2 id="when" class="headerLink">
+    <a href="#when" class="header-mark"></a>When</h2><p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a></p>
+<h2 id="why" class="headerLink">
+    <a href="#why" class="header-mark"></a>Why</h2><p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreferrer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
+<h2 id="what" class="headerLink">
+    <a href="#what" class="header-mark"></a>What</h2><p>下面是 <code>Vercel</code> 官网的介绍：</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -32,8 +32,8 @@
         
     </a><figcaption class="image-caption">Vercel</figcaption>
     </figure>
-<h2 id="how">How</h2>
-<p>此前，本网站是托管在 <code>Github Pages</code>,然后通过 <code>Clouflare</code> 进行代理访问，因此只需要在 <code>Cloudfalre</code> 原配置上就行修改即可。</p>
+<h2 id="how" class="headerLink">
+    <a href="#how" class="header-mark"></a>How</h2><p>此前，本网站是托管在 <code>Github Pages</code>,然后通过 <code>Clouflare</code> 进行代理访问，因此只需要在 <code>Cloudfalre</code> 原配置上就行修改即可。</p>
 <ol>
 <li>首先，直接使用 <code>Github</code> 账号（或 <code>Gitlab</code> 等）登录 <code>Vercel</code> 即可（<strong>注：</strong> 不可以使用 <code>QQ</code> 邮箱为主邮箱的 <code>Github</code> 账号，<code>Vercel</code> 不识别部分邮箱域名，如果你是，请到 <code>Github</code> 修改主邮箱）</li>
 </ol>
@@ -77,9 +77,9 @@
             <div class="admonition-content">这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</div>
         </div>
     </div>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreferrer">Introduction to Vercel</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

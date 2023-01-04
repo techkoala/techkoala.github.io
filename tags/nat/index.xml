@@ -13,14 +13,14 @@
     <description><![CDATA[<blockquote>
 <p>NAT 引发的问题以及解决方法</p>
 </blockquote>
-<h2 id="问题">问题</h2>
-<p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 <code>P2P</code> 联机方式）时候给我们造成困扰。如果 <code>Xbox</code>、<code>PS</code>、<code>switch</code> 或者 <code>PC</code> 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
+<h2 id="问题" class="headerLink">
+    <a href="#%e9%97%ae%e9%a2%98" class="header-mark"></a>问题</h2><p>对称型 NAT（Symmetric NAT）常常在游玩联机游戏（尤其是 <code>P2P</code> 联机方式）时候给我们造成困扰。如果 <code>Xbox</code>、<code>PS</code>、<code>switch</code> 或者 <code>PC</code> 上的应用程序报告 NAT 是<code>严格</code>、<code>类型 3</code>、<code>类型 D</code>、<code>对称</code>这样的字样，那么就意味着你将会出现联机问题。</p>
 <p>理解这个问题之前，首先要认识到，这些设备及软件是无法感知它们是否被 <code>NAT</code> 化的。但是，在 <code>Internet</code> 上与之通信的任何设备都应该使用公共 IP 地址，例如 <code>1.1.1.1</code>。在进行任何连接尝试时，都必须知道目标公共 IP 地址和端口。在上面的所有示例中，你应该发现了网站 IP 地址和端口均已知，这些地址是固定的，并且未曾发生更改。但是，某些程序会使用一系列动态端口。在运行游戏时，你的主机选择一个随机端口来进行游戏。由于其他主机不知道你的 IP 地址或端口，因此必须在连接之前以某种方式了解它。你的主机会将游戏的 IP 地址和端口发送到 <code>Xbox Live</code> 或 <code>PS</code> 网络，这样其他主机便可以在其中检索它，然后直接与你连接。但问题是，它发送的是内部 IP 地址 <code>192.168.0.1</code> 和端口 <code>54324</code>，而不是 Nat 后的公共 IP。它应该发送的是（例如）<code>1.1.1.1</code> 的公共 IP 地址和端口 <code>54324</code>。而且当处于对称型 NAT 时，该端口也会发生更改，因此它必须发送经过 NAT 处理的端口，例如 <code>54254</code>，而不是主机本身的内部端口（<code>54324</code>）。</p>
 <p><strong>这不仅仅是游戏面对的问题，这一直是 NAT 的问题。</strong></p>
 <p>那么，主机如何得知它位于 <code>NAT</code> 之后，并告诉其他主机将数据发送到 NAT 后的 IP 地址和端口而不是其自身的内部 IP 地址和端口？</p>
-<h2 id="解决办法">解决办法</h2>
-<h3 id="stunsession-traversal-utilities">STUN（Session Traversal Utilities）</h3>
-<p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
+<h2 id="解决办法" class="headerLink">
+    <a href="#%e8%a7%a3%e5%86%b3%e5%8a%9e%e6%b3%95" class="header-mark"></a>解决办法</h2><h3 id="stunsession-traversal-utilities" class="headerLink">
+    <a href="#stunsession-traversal-utilities" class="header-mark"></a>STUN（Session Traversal Utilities）</h3><p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
         
@@ -28,24 +28,24 @@
     </figure>
 <p>如果你还记得，除了<code>对称型 NAT</code> 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
 <p>但在对称型 NAT 的情况下，每一个连接都有一个不同的映射，有一个不同的（随机生成的）端口，意味着连接到 STUN 服务器也将有它自己独特的映射，表现的就像一个新的设备接入一样。这意味着每个映射都有不同的端口，在这种情况下，STUN 检测到的端口现在已经没有用了，因为这个映射是 STUN 服务器独有的。无论映射到其他设备的端口是什么，都是未知的，STUN 也没有办法检测到它。由于你的主机无法得知每个映射到每个主机的公共 NAT 化端口，因此无法将这些信息传递给你，也就意味着没有设备可以连接到你的游戏，这就是对称型 NAT 导致如此多游戏联机问题的原因。</p>
-<h3 id="dmzdemilitarized-zone">DMZ（Demilitarized zone)</h3>
-<p>路由器上的外围网络（也称 DMZ）功能用于消除对 Internet 的限制。它主要是将你的设备移到你的网络防火墙之外的区域，将部分用于提供对外服务的服务器主机划分到一个特定的子网 —— DMZ 内，在 DMZ 的主机能与同处 DMZ 内的主机和外部网络的主机通信，而同内部网络主机的通信会被受到限制。这使 DMZ 的主机能被内部网络和外部网络所访问，而内部网络又能避免外部网络所得知。</p>
+<h3 id="dmzdemilitarized-zone" class="headerLink">
+    <a href="#dmzdemilitarized-zone" class="header-mark"></a>DMZ（Demilitarized zone)</h3><p>路由器上的外围网络（也称 DMZ）功能用于消除对 Internet 的限制。它主要是将你的设备移到你的网络防火墙之外的区域，将部分用于提供对外服务的服务器主机划分到一个特定的子网 —— DMZ 内，在 DMZ 的主机能与同处 DMZ 内的主机和外部网络的主机通信，而同内部网络主机的通信会被受到限制。这使 DMZ 的主机能被内部网络和外部网络所访问，而内部网络又能避免外部网络所得知。</p>
 <p><strong>注意</strong> 当你设置外围网络时在主机上使用静态 IP 地址十分重要。要设置静态 IP 地址，请使用路由器的 DHCP 预留功能（如果可用）。如果该功能不可用，你将需要在你的设备 上配置手动 IP 设置。</p>
-<h3 id="upnpuniversal-plug-and-play">UPnP（Universal Plug and Play）</h3>
-<p>UPnP（Universal Plug and Play）是帮助路由器有效通信的一个标准。如果路由器或网关支持 UPnP，则它在默认情况下可能已启用。开启 UPnP 功能后，局域网中的计算机可以请求路由器自动进行端口转换。这样，互联网上的计算机就能在需要时访问局域网计算机上的资源（如 MSN Messenger 或迅雷、BT、PPLive 等支持 UPnP 协议的应用程序）。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h3 id="upnpuniversal-plug-and-play" class="headerLink">
+    <a href="#upnpuniversal-plug-and-play" class="header-mark"></a>UPnP（Universal Plug and Play）</h3><p>UPnP（Universal Plug and Play）是帮助路由器有效通信的一个标准。如果路由器或网关支持 UPnP，则它在默认情况下可能已启用。开启 UPnP 功能后，局域网中的计算机可以请求路由器自动进行端口转换。这样，互联网上的计算机就能在需要时访问局域网计算机上的资源（如 MSN Messenger 或迅雷、BT、PPLive 等支持 UPnP 协议的应用程序）。</p>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
 <p>[1] <a href="www.think-like-a-computer.com/2011/09/19/symmetric-nat/" rel="">Symmetric NAT and It’s Problems | Think Like A Computer</a></p>
 </li>
 <li>
-<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreffer">Wikipedia STUN</a></p>
+<p>[2] <a href="https://zh.wikipedia.org/wiki/STUN" target="_blank" rel="noopener noreferrer">Wikipedia STUN</a></p>
 </li>
 <li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreffer">Wikipedia DMZ</a></p>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/DMZ" target="_blank" rel="noopener noreferrer">Wikipedia DMZ</a></p>
 </li>
 <li>
-<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreffer">解决 NAT 错误和多人游戏问题</a></p>
+<p>[4] <a href="https://support.xbox.com/help/Hardware-Network/connect-network/xbox-one-nat-error" target="_blank" rel="noopener noreferrer">解决 NAT 错误和多人游戏问题</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -57,8 +57,8 @@
     <description><![CDATA[<blockquote>
 <p>一文概览 NAT</p>
 </blockquote>
-<h2 id="nat">NAT</h2>
-<p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 <code>IP</code> 数据包通过路由器或防火墙时重写来源 <code>IP</code> 地址或目的 <code>IP</code> 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 <code>IP</code> 地址访问互联网的私有网络中。</p>
+<h2 id="nat" class="headerLink">
+    <a href="#nat" class="header-mark"></a>NAT</h2><p>NAT（Network Address Translation，网络地址转换）在计算机网络中是一种在 <code>IP</code> 数据包通过路由器或防火墙时重写来源 <code>IP</code> 地址或目的 <code>IP</code> 地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有 <code>IP</code> 地址访问互联网的私有网络中。</p>
 <p><code>NAT</code> 从大类上都可以分为两类：<code>静态 NAT</code> 和 <code>动态 NAT</code>。</p>
 <p><code>静态 NAT</code> 是管理员手动创建和维护映射，通常与 <code>NAT</code> 的入站类型相关联。</p>
 <p><code>动态 NAT</code> 是路由器根据需要自动创建和维护映射，通常与 <code>NAT</code> 的出站类型相关联。</p>
@@ -66,9 +66,9 @@
 <blockquote>
 <p>例如，一个 IP 为 <code>192.168.0.1</code> 的内部客户机使用端口 <code>56876</code>，经过 NAT 转变后 IP 变为 <code>3.3.3.3</code>（翻译后的源 IP）和端口 <code>56876</code>（源端口）连接到 IP <code>2.2.2.2</code>（目的 IP 地址）的 <code>80</code> 端口（目的端口）。NAT 使用原始内部 IP 和端口、翻译后 IP 和端口这 4 个值创建一个映射。当数据包从网站返回到路由器时，使用与该映射相关值，NAT 将数据包转发到内部客户端。</p>
 </blockquote>
-<h2 id="nat-的四种类型">NAT 的四种类型</h2>
-<h3 id="全锥型-natfull-cone-nat">全锥型 NAT（Full Cone NAT)</h3>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
+<h2 id="nat-的四种类型" class="headerLink">
+    <a href="#nat-%e7%9a%84%e5%9b%9b%e7%a7%8d%e7%b1%bb%e5%9e%8b" class="header-mark"></a>NAT 的四种类型</h2><h3 id="全锥型-natfull-cone-nat" class="headerLink">
+    <a href="#%e5%85%a8%e9%94%a5%e5%9e%8b-natfull-cone-nat" class="header-mark"></a>全锥型 NAT（Full Cone NAT)</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
@@ -77,8 +77,8 @@
 <p>例如，我的电脑有一个网站在 <code>80</code> 端口上运行，我创建了一个一对一的规则，将路由器的 WAN IP <code>1.1.1.1</code> 映射到 <code>192.168.0.1</code>，端口 <code>80</code> 映射到 <code>80</code> 端口。凡是在 <code>80</code> 端口向 <code>1.1.1.1</code> 发送数据的外部主机都会被 <code>NAT</code> 转发到 <code>192.168.0.1 80</code> 端口。</p>
 </blockquote>
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
-<h3 id="受限锥形-natrestricted-cone-nat">受限锥形 NAT（Restricted Cone NAT）</h3>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
+<h3 id="受限锥形-natrestricted-cone-nat" class="headerLink">
+    <a href="#%e5%8f%97%e9%99%90%e9%94%a5%e5%bd%a2-natrestricted-cone-nat" class="header-mark"></a>受限锥形 NAT（Restricted Cone NAT）</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
         
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
@@ -86,8 +86,8 @@
 <blockquote>
 <p>例如，我的电脑与一个网站 (<code>56.45.34.78</code>) 进行外向连接，源 <code>IP</code> 为 <code>192.168.0.1</code>，源端口为 <code>56723</code>。<code>NAT</code> 使用源端口 <code>56723</code> 创建一个（动态）映射到我的电脑。使用目的端口 <code>56723</code>（这是出站 NAT 的源端口）到达的<code>源 IP</code> 为 <code>56.45.34.78</code>（<code>网站 IP</code>）的数据包将被接受，接着网站返回数据至我的 <code>PC</code>。任何其他 IP 即使使用正确的 <code>56723</code> 端口进行连接尝试将被丢弃。同样，即使正确的 <code>IP</code> 使用 <code>56723</code> 以外的目的端口进行的连接尝试也将被丢弃。</p>
 </blockquote>
-<h3 id="端口受限锥型-natport-restricted-cone-nat">端口受限锥型 NAT（Port Restricted Cone NAT)</h3>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
+<h3 id="端口受限锥型-natport-restricted-cone-nat" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3%e5%8f%97%e9%99%90%e9%94%a5%e5%9e%8b-natport-restricted-cone-nat" class="header-mark"></a>端口受限锥型 NAT（Port Restricted Cone NAT)</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
         
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
@@ -95,8 +95,8 @@
 <blockquote>
 <p>例如，我的电脑在 80 端口（目标端口）上向网站 IP <code>217.87.69.8</code> 建立了一个外向连接。NAT 将我的源 IP <code>192.168.0.1</code> 映射到 WAN IP <code>1.1.1.1</code> 和源端口 <code>56723</code>。当网站发回数据包时，它的源 IP 必须是 <code>217.87.69.8</code>，目的端口是 <code>56723</code>（就像一个受限锥型 NAT），但除此之外，还要求源端口必须是 <code>80</code>。如果这三者中的任何一个不一样，端口受限锥型 NAT 就会放弃连接。</p>
 </blockquote>
-<h3 id="对称型-natsymmetric-nat">对称型 NAT（Symmetric NAT）</h3>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
+<h3 id="对称型-natsymmetric-nat" class="headerLink">
+    <a href="#%e5%af%b9%e7%a7%b0%e5%9e%8b-natsymmetric-nat" class="header-mark"></a>对称型 NAT（Symmetric NAT）</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
         
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>
@@ -108,8 +108,8 @@
 <blockquote>
 <p>例如，在<code>端口受限锥型 NAT</code> 的例子上进行扩展，我的 <code>PC</code> 向网站 <code>IP</code> <code>217.87.69.8</code> 和 <code>56.76.87.98</code> 建立两个出站连接。我的电脑使用源 <code>IP</code> <code>192.168.0.1</code> 和源端口 <code>56723</code> 进行两个连接。到目前为止，在所有类型的 <code>NAT</code> 上，这两个连接都会被 <code>NAT</code> 化，只改变源 IP 地址而保持源端口不变。然而这次，<code>对称型 NAT</code> 没有将源端口保留为 <code>56723</code>，而是将其中一个连接的源端口改为 <code>45765</code>，另一个连接的源端口改为 <code>53132</code>（随机）。这就为每个连接创建了唯一的映射，来自这些目的地的流量必须通过各自的端口进入。所以 <code>217.87.69.8</code> 必须将数据包发送到目的端口 <code>45765</code>，<code>56.76.87.98</code> 必须将数据包发送到端口 <code>53132</code>，此外还需要遵循<code>端口受限锥型 NAT</code> 的要求。</p>
 </blockquote>
-<h2 id="对-nat-的正面评价">对 NAT 的正面评价</h2>
-<ol>
+<h2 id="对-nat-的正面评价" class="headerLink">
+    <a href="#%e5%af%b9-nat-%e7%9a%84%e6%ad%a3%e9%9d%a2%e8%af%84%e4%bb%b7" class="header-mark"></a>对 NAT 的正面评价</h2><ol>
 <li>
 <p><code>NAT</code> 在一定程度上缓解了 <code>IPv4</code> 地址短缺的问题，让更多的设备（间接）接入了互联网。</p>
 </li>
@@ -117,8 +117,8 @@
 <p><code>NAT</code> 全双工连接支持的缺少在一些情况下可以看作是一个有好处的特征而不是一个限制。在一定程度上，NAT 依赖于本地网络上的一台机器来初始化和路由器另一边的主机的任何连接，它可以阻止外部网络上的主机的恶意活动。这样就可以阻止网络蠕虫病毒来提高本地系统的可靠性，阻挡恶意浏览来提高本地系统的私密性。很多具有 NAT 功能的防火墙都是使用这种功能来提供核心保护的。另外，它也为 UDP 的跨局域网的传输提供了方便。</p>
 </li>
 </ol>
-<h2 id="对-nat-的批评">对 NAT 的批评</h2>
-<ol>
+<h2 id="对-nat-的批评" class="headerLink">
+    <a href="#%e5%af%b9-nat-%e7%9a%84%e6%89%b9%e8%af%84" class="header-mark"></a>对 NAT 的批评</h2><ol>
 <li>
 <p>在一个具有 <code>NAT</code> 功能的路由器下的主机并没有获得真正的 IP 地址，并且不能参与一些因特网协议，一些需要初始化从外部网络创建的 TCP 连接和无状态协议（比如 UDP）无法实现。除非 <code>NAT</code> 路由器管理者预先设置了规则，否则送来的数据包将不能到达正确的目的地址。</p>
 </li>
@@ -135,16 +135,16 @@
 <p><code>NAT</code> 同时存在对高层协议和安全性的影响问题。<code>RFC</code> 对 <code>NAT</code> 存在的问题进行了讨论。NAT 的反对者认为这种临时性的缓解 <code>IP</code> 地址短缺的方案推迟了 <code>IPv6</code> 迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
 </li>
 </ol>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreffer">Wikipedia NAT</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreferrer">Wikipedia NAT</a></p>
 </li>
 <li>
-<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreffer">What you need to know about symmetric NAT | Think Like A Computer</a></p>
+<p>[2] <a href="https://think-like-a-computer.com/2011/09/19/symmetric-nat/" target="_blank" rel="noopener noreferrer">What you need to know about symmetric NAT | Think Like A Computer</a></p>
 </li>
 <li>
-<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreffer">NAT Types Defined</a></p>
+<p>[3] <a href="https://portforward.com/nat-types/" target="_blank" rel="noopener noreferrer">NAT Types Defined</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

@@ -13,8 +13,8 @@
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
 </blockquote>
-<h2 id="功率控制">功率控制</h2>
-<p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
+<h2 id="功率控制" class="headerLink">
+    <a href="#%e5%8a%9f%e7%8e%87%e6%8e%a7%e5%88%b6" class="header-mark"></a>功率控制</h2><p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
 <ul>
 <li>
 <p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
@@ -23,8 +23,8 @@
 <p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
 </li>
 </ul>
-<h3 id="上行功率控制">上行功率控制</h3>
-<p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
+<h3 id="上行功率控制" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%8a%9f%e7%8e%87%e6%8e%a7%e5%88%b6" class="header-mark"></a>上行功率控制</h3><p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
 <p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
 <center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
 <p>其中：</p>
@@ -51,8 +51,8 @@
 <li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
 <li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
 </ul>
-<h3 id="下行功率分配">下行功率分配</h3>
-<p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
+<h3 id="下行功率分配" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e5%8a%9f%e7%8e%87%e5%88%86%e9%85%8d" class="header-mark"></a>下行功率分配</h3><p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
 <p>下行功率分配中包括了</p>
 <ul>
 <li>提高导频信号的发射功率（即 power boosting）</li>
@@ -64,8 +64,8 @@
 <li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
 <li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
 </ul>
-<h4 id="提高-crs-导频信号的发射功率即-power-boosting">提高 CRS 导频信号的发射功率（即 power boosting）</h4>
-<p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
+<h4 id="提高-crs-导频信号的发射功率即-power-boosting" class="headerLink">
+    <a href="#%e6%8f%90%e9%ab%98-crs-%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7%e7%9a%84%e5%8f%91%e5%b0%84%e5%8a%9f%e7%8e%87%e5%8d%b3-power-boosting" class="header-mark"></a>提高 CRS 导频信号的发射功率（即 power boosting）</h4><p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
 <blockquote>
 <p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
 <p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
@@ -74,12 +74,12 @@
     </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
     </figure>
 </blockquote>
-<h4 id="用户功率分配和小区间干扰协调">用户功率分配和小区间干扰协调</h4>
-<p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
+<h4 id="用户功率分配和小区间干扰协调" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e5%8a%9f%e7%8e%87%e5%88%86%e9%85%8d%e5%92%8c%e5%b0%8f%e5%8c%ba%e9%97%b4%e5%b9%b2%e6%89%b0%e5%8d%8f%e8%b0%83" class="header-mark"></a>用户功率分配和小区间干扰协调</h4><p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
 <center>$ρ_A =δ_{power-offset} +P_A$</center>
 <p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item><item>
@@ -98,8 +98,8 @@
 <p>来源：通信人家园</p>
 <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 </blockquote>
-<h2 id="无线通信产业发展史">无线通信产业发展史</h2>
-<p>无线通信产业已经发展了四代，目前正处于 5G 产业化前夕，是当下到一个最热的话题，5G 如何发展，前景如何，是各个方面包括学术界、产业界、投资界以及政府都非常关心的。另外，中国已经启动 6G 研究的消息也见诸报端，未来无线通信产业如何发展，是不是会继续有 6、7、8、9G，也引起了大家的关切。为了回答这些问题，我们首先简单地回顾一下无线通信产业发展的历史。</p>
+<h2 id="无线通信产业发展史" class="headerLink">
+    <a href="#%e6%97%a0%e7%ba%bf%e9%80%9a%e4%bf%a1%e4%ba%a7%e4%b8%9a%e5%8f%91%e5%b1%95%e5%8f%b2" class="header-mark"></a>无线通信产业发展史</h2><p>无线通信产业已经发展了四代，目前正处于 5G 产业化前夕，是当下到一个最热的话题，5G 如何发展，前景如何，是各个方面包括学术界、产业界、投资界以及政府都非常关心的。另外，中国已经启动 6G 研究的消息也见诸报端，未来无线通信产业如何发展，是不是会继续有 6、7、8、9G，也引起了大家的关切。为了回答这些问题，我们首先简单地回顾一下无线通信产业发展的历史。</p>
 <p>无线通信产业是由<strong>需求</strong>和<strong>技术</strong>两个轮子驱动前进的。</p>
 <p>早在 1947 年，贝尔实验室的科学家就提出了蜂窝通信的概念，其中的核心技术是频率复用和切换。基于这一概念，贝尔实验室于 1978 年研制出<code>先进移动电话系统</code>（Advanced Mobile Phone Service，AMPS），这就是第一代移动通信系统。<code>AMPS</code> 是一个模拟通信系统，采用<code>频分多址</code>（FDMA）的复用技术，主要技术手段是滤波器，容易受噪声的干扰，语音质量较差。</p>
 <p>随着集成电路技术的发展，第二代移动通信系统采用了数字技术，并采用 <code>TDMA</code> 和信道编码技术，使得通信系统向宽带化发展，语音质量得到了较大的改善。其中欧洲制定的 <code>GSM</code> 系统非常成功，至今仍在广泛使用。</p>
@@ -108,22 +108,22 @@
 <p>如果我们稍微总结一下，可以发现，1G 发掘出了移动通信的巨大需求，但是采用了比较落后的技术体制，因此长不大。2G 进行了数字化革命，从而获得巨大成功。3G 是为了新出现的移动互联网需求而诞生，但是在技术上走了弯路，全球的 3G 业务都不是太成功；而 4G 回归了正确的技术路线，目前 4G 业务蓬勃发展。</p>
 <p>随着 4G 的成功商用，按照无线通信十年一代的发展规律，产业界开始了 5G 的研发。按照业界目前的一般口径，5G 在 2020 年左右开始规模商用。中国政府已经为 5G 分配了 500MHz 的频谱，三大运营商也已经在多个城市开展了商用实验，商用前的准备工作正在紧锣密鼓地进行。 很多人认为 5G 牌照会在年内（2019）发放。</p>
 <p>对于 5G 的讨论，也要从技术和需求两条线来讨论。</p>
-<h2 id="无线通信技术体制">无线通信技术体制</h2>
-<p>无线通信产业基本上可以用“端管云”三个字进行概括。 端就是终端，包括电脑， PAD，手机等。云就是存储在网络上的内容，如新浪、百度、淘宝的数据中心，而管就是连接终端和云之间的这条通道。</p>
-<h3 id="端管云">端管云</h3>
-<p>这条管道可以分为两段。一段是终端到基站（或者路由器），这段是无线通信，也叫空中接口；另一段是基站到云，是有线通信。云都是挂在因特网上的，因此因特网是这条管道当中必经之路。移动通信有核心网，基站首先挂在核心网上，再连接到因特网。核心网主要是起运营支撑作用，比如身份的识别，计费等等。而另一个体系是大家都熟悉的 <code>WiFi</code>，没有核心网，路由器是直接戳到因特网的。这就构成了两大生态体系，也就是传说中的 <code>CT</code> 和 <code>IT</code>，它们之间的合作与竞争将贯穿无线通信产业的走向。</p>
+<h2 id="无线通信技术体制" class="headerLink">
+    <a href="#%e6%97%a0%e7%ba%bf%e9%80%9a%e4%bf%a1%e6%8a%80%e6%9c%af%e4%bd%93%e5%88%b6" class="header-mark"></a>无线通信技术体制</h2><p>无线通信产业基本上可以用“端管云”三个字进行概括。 端就是终端，包括电脑， PAD，手机等。云就是存储在网络上的内容，如新浪、百度、淘宝的数据中心，而管就是连接终端和云之间的这条通道。</p>
+<h3 id="端管云" class="headerLink">
+    <a href="#%e7%ab%af%e7%ae%a1%e4%ba%91" class="header-mark"></a>端管云</h3><p>这条管道可以分为两段。一段是终端到基站（或者路由器），这段是无线通信，也叫空中接口；另一段是基站到云，是有线通信。云都是挂在因特网上的，因此因特网是这条管道当中必经之路。移动通信有核心网，基站首先挂在核心网上，再连接到因特网。核心网主要是起运营支撑作用，比如身份的识别，计费等等。而另一个体系是大家都熟悉的 <code>WiFi</code>，没有核心网，路由器是直接戳到因特网的。这就构成了两大生态体系，也就是传说中的 <code>CT</code> 和 <code>IT</code>，它们之间的合作与竞争将贯穿无线通信产业的走向。</p>
 <p>在无线通信产业当中，空中接口这一段的产值，包括终端和基站，占绝大部分。如果做一个类比，通信网络可以类比人体的循环系统或这神经系统。骨干网的部分可以类比中枢神经或者主动脉，虽然容量很大，但是只有几条。骨干网络的销售额不大，但是占据战略制高点；而空中接口部分相当于神经末梢或者毛细血管，数量庞大，占据无线通信产业的主要市场份额。</p>
 <p>有线网络现在都光纤化了。光纤的发明是基于高锟的理论，他因此获得诺贝尔奖。光纤的容量大，成本低，彻底改变了人类通信的面貌。最早的光纤线路的速率只有 45Mbps，后来以令人乍舌的速度发展，目前一根光纤已经可以达到 1Tbps。而光纤要比同等长度面条便宜，这是真正的高科技。早期光纤只用于骨干线路（比如北京和上海之间），随着成本的降低，目前光纤已经入户了。 由于光纤的存在，有线网络的主要工作在于怎么组织和利用光纤的容量，如 <code>IPV6</code>，<code>SDN</code> 等等，基本上是逻辑性的工作，总体来说是比较简单的。</p>
 <p>空中接口部分就比有线网困难多了。在有线通信当中，信号在一个精心制造的介质里面传播，无论是铜线还是光纤，信号质量非常好，随便搞搞就能达到很高的速率。而无线信号的传播环境就恶劣得多得多。无线电波在传播过程中衰减很快，还受到建筑物、山体、树木的阻挡，很多时候需要经过反射或者穿透障碍物才能达到接收机。并且，无线电波不是规规矩矩地沿着规定的路线走，会走到不希望的地方，造成对他人的干扰。但是无线通信有一个好处，就是摆脱了线的束缚，可以拿着手机随便走，这种便利性是有线通信所无法比拟的。所以尽管挑战很大，无数的研究者前仆后继，攻克无线通信当中的道道难关。</p>
-<h3 id="网络分层协议">网络分层协议</h3>
-<p>刚才说的这些事，背后是网络的分层结构。最底下的一层叫物理层，其他的可以和合并起来叫高层。物理层是处理物理信号的，比如电或者是光，就是如何把信息转换成可以用来传输的电信号或者光信号。物理层解决的是通信能力的问题，或者是带宽的问题。有了这么多的带宽之后，怎么组织和利用是高层要做的事。</p>
+<h3 id="网络分层协议" class="headerLink">
+    <a href="#%e7%bd%91%e7%bb%9c%e5%88%86%e5%b1%82%e5%8d%8f%e8%ae%ae" class="header-mark"></a>网络分层协议</h3><p>刚才说的这些事，背后是网络的分层结构。最底下的一层叫物理层，其他的可以和合并起来叫高层。物理层是处理物理信号的，比如电或者是光，就是如何把信息转换成可以用来传输的电信号或者光信号。物理层解决的是通信能力的问题，或者是带宽的问题。有了这么多的带宽之后，怎么组织和利用是高层要做的事。</p>
 <p>这个和邮政系统非常类似。物理层相当于运送信件或者包裹的方式，可以是马车，汽车、轮船、飞机，这提供了运送的能力。但是寄信的时候，我们要在信封上写通信地址，要跑到邮局交给柜台，后然分拣打包装车，到了目的地后要有邮递员送到收信地址，这些都是高层做的事情。</p>
 <p>所以大家能看出来，通信网络的核心技术在物理层。当然高层也必不可少，但相对来说可以变化的空间不大。 如果说我们的邮政系统比以前先进，主要不是体现在邮局的布置上，而是运输方式的改进，以前是马车，现在改飞机了。虽说邮局也进步了，比如装了玻璃柜台，或者信件实现了机器分拣，但不是主要的因素。</p>
 <p>光纤是现代通信网络的最重要的基石，就是物理层技术。高层技术当中大家最熟悉的是 <code>IP</code> 协议。<code>IPV4</code> 获得广泛应用后，虽说存在一些问题，试图通过 <code>IPV6</code> 去解决。但是 <code>IPV6</code> 经过二三十年也没有取代 <code>IPV4</code>，就是因为高层技术相对简单，改进的空间不大。</p>
-<h2 id="无线通信技术演进">无线通信技术演进</h2>
-<p>同样，空中接口的核心技术也在物理层，每一代移动通信是由这些核心技术所定义的。这些核心技术，也就是《通信原理》课程里面的知识。</p>
-<h3 id="3g-核心技术">3G 核心技术</h3>
-<p>空中接口的核心技术可以分为 5 个大类，分别是<code>调制</code>、<code>编码</code>、<code>多址</code>、<code>组网</code>和<code>多天线</code>。比核心技术更基础的是基础理论，包括电磁理论和信息论。</p>
+<h2 id="无线通信技术演进" class="headerLink">
+    <a href="#%e6%97%a0%e7%ba%bf%e9%80%9a%e4%bf%a1%e6%8a%80%e6%9c%af%e6%bc%94%e8%bf%9b" class="header-mark"></a>无线通信技术演进</h2><p>同样，空中接口的核心技术也在物理层，每一代移动通信是由这些核心技术所定义的。这些核心技术，也就是《通信原理》课程里面的知识。</p>
+<h3 id="3g-核心技术" class="headerLink">
+    <a href="#3g-%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af" class="header-mark"></a>3G 核心技术</h3><p>空中接口的核心技术可以分为 5 个大类，分别是<code>调制</code>、<code>编码</code>、<code>多址</code>、<code>组网</code>和<code>多天线</code>。比核心技术更基础的是基础理论，包括电磁理论和信息论。</p>
 <p>大家都知道，高通公司开发了 <code>CDMA</code> 技术，并且成为 3G 三大标准（ <code>WCDMA</code>，<code>CDMA</code>2000 和 <code>TD-SCDMA</code>）的核心技术，从而一跃成为芯片业巨头。 上图所示的是 <code>WCDMA</code> 的核心技术。高通的贡献主要在多址和组网两个领域。</p>
 <p>虽然普遍认为高通开发了 <code>CDMA</code> 技术，但是 <code>CDMA</code> 并不是高通发明的，发明人是好莱坞艳星海蒂.拉玛。<code>CDMA</code> 技术的标准接收机叫 <code>Rake 接收机</code>，也于 1950 年代由贝尔实验室发明。实际上由于当时普遍认为 <code>CDMA</code> 的保密性好，一直应用于军事通信。而高通解决的是 <code>CDMA</code> 的民用问题，这在当时是普遍不被看好的。</p>
 <p>高通解决 <code>CDMA</code> 民用有三招，分别是<code>功率控制</code>（Power Ctrl）、<code>同频复用</code>（UFR）和<code>软切换</code>。功率控制解决远近效应，同频复用提升频谱效率，软切换解决切换连续性。这构成了高通 <code>CDMA</code> 的技术体系。 这里只简要介绍一下，技术人员可以参考我的书《通信之道》。因为 UFR 并不是专利，所以高通其实在 <code>CDMA</code> 上就两个核心专利，其中软切换专利获得美国专利局的授权还载入了高通发展史。</p>
@@ -140,12 +140,12 @@
 </ul>
 <p>可以看出，高通在 3G 的多址和组网两个方面拥有核心技术。当然，在把核心技术工程化的过程当中也建立起由几千个专利组成的专利组合。凭着这些专利和芯片的联合运作，收取了大量的高通税。</p>
 <p>其实从现在的眼光看，<code>Turbo</code> 码和 <code>Alamouti 码</code>是更重要的核心技术。但这两个核心技术在法国电信和 <code>ATT</code> 这样的大公司里面，没有进行商业化运作的机制，只是收了一些专利费，没有形成象高通这么大的商业。</p>
-<h3 id="4g-核心技术">4G 核心技术</h3>
-<p>到了 4G 之后，<code>CDMA</code> 技术被 <code>OFDM</code> 技术所取代。主要的原因是 <code>CDMA</code> 存在自干扰的问题。高通的功率控制和软切换试图去解决这个问题，但采取的方法是在 <code>CDMA</code> 缺陷的基础上进行补救，但是怎么补也补不彻底。</p>
+<h3 id="4g-核心技术" class="headerLink">
+    <a href="#4g-%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af" class="header-mark"></a>4G 核心技术</h3><p>到了 4G 之后，<code>CDMA</code> 技术被 <code>OFDM</code> 技术所取代。主要的原因是 <code>CDMA</code> 存在自干扰的问题。高通的功率控制和软切换试图去解决这个问题，但采取的方法是在 <code>CDMA</code> 缺陷的基础上进行补救，但是怎么补也补不彻底。</p>
 <p>而 <code>OFDM</code> 从根本上克服了 <code>CDMA</code> 自干扰的缺陷，使得频谱效率得到了很大的提高，那这些补救措施也就没必要了。 所以在 4G 时代，高通的技术体系被摧毁了。 采用 <code>OFDM</code> 技术带来了新的问题，解决这些问题导致了三个创新的出现，这就是我在华为提出的 <code>sOFDM</code> 和软频率复用（SFR）以及爱立信提出的 <code>SC-FDMA</code> 技术。 我在华为还提出了随机波束赋形（random beam forming）技术，解决了非常火热的循环延时分集（Cyclic Delay Diversity）的严重缺陷。 在调制和编码领域仍然采用了 3G 的方案。</p>
 <p>可以看出，华为在 4G 的核心技术上已经取代了高通。但是很可惜，由于华为公司的跟随基因，无法发挥手上的专利核武的威力，还要向高通交钱，也只是向苹果收了点小钱。但是华为因此避免了专利核武打击，加上华为在产品上的优势，所以华为日子过得很好，在 4G 时代成为第一大设备制造商。</p>
-<h3 id="5g-核心技术">5G 核心技术</h3>
-<p>5G 标准已经制定完成了，盖棺定论后已经可以看得很清楚了。</p>
+<h3 id="5g-核心技术" class="headerLink">
+    <a href="#5g-%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af" class="header-mark"></a>5G 核心技术</h3><p>5G 标准已经制定完成了，盖棺定论后已经可以看得很清楚了。</p>
 <p>首先调制这块还是没有变，太基础了，想变也变不动。</p>
 <p>因为联想投票门的事情，编码这块的故事很多人都知道。相比于 3G/4G 采用的 <code>Turbo</code> 码，5G 采用了 <code>LDPC</code> 和 <code>Polar</code> 码。 这两个码都是鼎鼎大名，是 <code>Turbo</code> 码之后通信技术发展的里程碑性的技术。 但是由于 <code>Turbo</code> 码已经比较接近香农限，虽然这两个码更接近，但是对系统容量的提升已经不大，大概是 1 ～ 2%左右。</p>
 <p>多址这块，对于 5G 三大场景之一的 <code>eMBB</code> 这块没有变，还是采用了 <code>OFDM</code>。其中爱立信提出的 <code>SC-FDMA</code> 从 4G 的必选项变成了可选项，这是因为它相对于 <code>OFDM</code>A 并没有什么技术优势。</p>
@@ -157,8 +157,8 @@
 <p>综合来看，5G 相对于 4G 来说，几乎没有技术进步，在一些地方还退步了。比如说 <code>NOMA</code>，<code>F-OFDM</code>，还有为了保证短时延而采用的自包含结构。</p>
 <p>还有，5G 采用了更高的频谱。在中国是 3.5GHz，还好一点。美国用了 28GHz。频率越高覆盖越小，这是无线通信的基本知识。所以同样的网络覆盖，比起 4G 的 2.6GHz，3.5GHz 的投资要高出 50%（我也是看来的，看起来合理），而 28GHz 实现覆盖就是开玩笑了，花 5 倍的银子也是正常的。
 所以从技术角度看，5G 比 4G 没有进步，成本会更高。</p>
-<h2 id="5g-需求">5G 需求</h2>
-<p>5G 的需求，大概可以用高速率、低延迟、大连接来概括。</p>
+<h2 id="5g-需求" class="headerLink">
+    <a href="#5g-%e9%9c%80%e6%b1%82" class="header-mark"></a>5G 需求</h2><p>5G 的需求，大概可以用高速率、低延迟、大连接来概括。</p>
 <p>大家知道，4G 设计当初的速率目标是 100Mbps，随着技术的演进，4G Cat 11 的速率已经达到 600Mbps。5G 进一步把速率目标提高到 1Gbps 以上。为了满足一些低延迟业务的需求，5G 要求空中接口的延迟时间为 1ms，而 4G 的这一指标为 30ms 左右。4G 主要是为移动互联网设计的，强调的是人与网络之间的高速连接，而同时连接到网络的终端的数量并不是一个需要特别考虑的问题。而在蓬勃发展的物联网时代，每一件物体都有可能有联网要求，因此连接数量会有数量级的增加，5G 需要具有支持海量连接的能力。</p>
 <p>5G 最抓眼球的就是它的速率。看新闻经常是比光纤还快，一秒下一个大片，快到把人脸吹成骷髅，等等。
 但是有什么样的业务需要这样的速率呢？</p>
@@ -187,8 +187,8 @@
 <p>所以说，除非移动，不然没有必要用移动通信。 这样移动通信的客户群就很明确，一是人，二是车，另外还有野生动物。所以 <code>eMBB</code>，车联网，野外科学考察等等，是移动通信的正经业务。</p>
 <p>但是大多数东西是不动的。 在 <code>WiFi</code> 已经普及的情况下，很大的一块业务会被 <code>WiFi</code> 分流，比如智能家居。并且 <code>eMBB</code> 是 2C 的，而物联网多数是 2B 的，象油田，电力公司这些大企业更倾向于自建网络，就不用向运营商交月租了。以 <code>NB-IoT</code> 为例，一个链接每年 20 块的资费对很多应用是很大的一个负担。这就有了象 <code>Lora</code> 这样的系统的生存空间，成本比 5G 低得多。</p>
 <p>所以，从 5G 的三大需求看，高速率和低时延的需求都是不存在的，物联网只有小部分落入 5G 的范围。</p>
-<h2 id="移动通信与-wifi">移动通信与 WiFi</h2>
-<p>5G 与 <code>WiFi</code> 的关系是无法回避的问题，这其实是本文开始就提到了 <code>CT</code> 与 <code>IT</code> 两大生态体系的关系问题。</p>
+<h2 id="移动通信与-wifi" class="headerLink">
+    <a href="#%e7%a7%bb%e5%8a%a8%e9%80%9a%e4%bf%a1%e4%b8%8e-wifi" class="header-mark"></a>移动通信与 WiFi</h2><p>5G 与 <code>WiFi</code> 的关系是无法回避的问题，这其实是本文开始就提到了 <code>CT</code> 与 <code>IT</code> 两大生态体系的关系问题。</p>
 <p>首先有一个每个人都能感觉到的事实，<code>WiFi</code> 承载了 80%的流量，我们却不会为它付一分钱，而会为只承载 20% 流量的 4G 付月租。这是为什么？</p>
 <p>在信息社会，手机是我们与社会连接的通道。当我们习惯了这种连接之后，丢失连接后就会感到恐慌。 很多人一有机会就查一下微信，微博，电邮，股票，彩票，生怕遗漏了重大机会，或者没能及时回复。 也就是说，随时随地与社会连接，是我们的刚需。 要满足这种刚需，需要一个广覆盖的网络，这正是移动通信的目标和功能。</p>
 <p>在 <code>WiFi</code> 火热的时候，有些城市试图建设 <code>WiFi</code> 城市，用 <code>WiFi</code> 来实现覆盖，但是最终都失败了。 因为 <code>WiFi</code> 是由 IT 界设计的，生来就缺乏实现广覆盖的能力。这表现在技术方案上，就不在这里细说了。 后来 IT 界把 <code>WiFi</code> 升级到 <code>WiMax</code>，试图与 CT 竞争，但是 IT 界的基因还是导致了 <code>WiMax</code> 的失败，并且导致北电破产。</p>
@@ -196,8 +196,8 @@
 <p><code>IT</code> 与 <code>CT</code> 都试图入侵对方领地。早几年的 <code>WiMax</code> 就是 <code>IT</code> 入侵 <code>CT</code> 的一次失败的尝试。 这几年，也经常听到各种消息，一会儿是小扎，一会儿是马斯克，都要建全球免费 <code>WiFi</code>，周鸿祎说他掌管中国移动，就全免费。当然都没能成功。移动通信所要求的统一标准、广域覆盖，网归网优，客户管理，都决定了运营商是一个分层的官僚体系，与互联网基因格格不入。中国移动每年营收 8000 亿，够买 6 个 360 了，说免就免了，从哪能捞回来这么些钱？用户愿意交这个钱，非不收，那叫啥呢？</p>
 <p>反过来，移动通信能取代 <code>WiFi</code> 吗。<code>WiFi</code> 覆盖小，高速率，成本低，使用非许可频段，决定了其免费的必然性。移动通信要取代 <code>WiFi</code>，也必须达到如此低的成本，并且实现免费。这是否能做到呢？如果 4G 能够利用已有的规模优势，做低成本的 <code>Femto 基站</code>，理论上有可能。但是市场规模太小，菊花大厂看不上眼，现有的管理体制也不能适应。而小厂很难有这个技术能力。所以说也是比较难的。</p>
 <p>所以说，移动通信和 <code>WiFi</code> 有各自的应用场景。移动通信能够实现 anytime，anywhere 的连接，能够满足用户的刚需，而 <code>WiFi</code> 便宜，无月租，满足用户高速率的应用需求，将长期共存。</p>
-<h2 id="5g-之局">5G 之局</h2>
-<p>移动通信经过四代的发展之后，人们得到一个似乎的规律，就是单数代不太成功，而偶数代很成功。经过我们的分析后发现，1G 和 3G，都是新的需求促成的，但是技术不太好，而 2G 和 4G 在原有的需求基础上，改进了技术，从而很成功。1G 和 3G 虽然不太成功，但也不能说是失败，毕竟他们是满足新需求的唯一技术。 但是到了 5G，需求是虚构的，技术上并没有进步，所以必然是要失败的。</p>
+<h2 id="5g-之局" class="headerLink">
+    <a href="#5g-%e4%b9%8b%e5%b1%80" class="header-mark"></a>5G 之局</h2><p>移动通信经过四代的发展之后，人们得到一个似乎的规律，就是单数代不太成功，而偶数代很成功。经过我们的分析后发现，1G 和 3G，都是新的需求促成的，但是技术不太好，而 2G 和 4G 在原有的需求基础上，改进了技术，从而很成功。1G 和 3G 虽然不太成功，但也不能说是失败，毕竟他们是满足新需求的唯一技术。 但是到了 5G，需求是虚构的，技术上并没有进步，所以必然是要失败的。</p>
 <p>5G 是目前最火热的话题。特别是孟晚舟事件之后，美帝组团打压华为，国人已经把 5G 看成是中美对决的战场。</p>
 <p>对于 5G 的立场，任总曾经发表过一个讲话，说 5G 的需求并没有出现。我心里赞叹任总真是到了从心所欲不逾矩的境界，也不为利益所左右。后来徐直军也发表了对 5G 相对保守的观点。但是后来口风变了，任总为自己的讲话向产品线道了歉。后来华为发文表示要坚决打胜 5G 这一仗。</p>
 <p>我们已经知道，移动通信的根本的价值在于实现任何时间，任何地点的连接能力，在此基础上提高网络容量。如果没有覆盖这个前提，只是在局部实现高速率是没有商业价值的。比如说大家一直谈论的可见光通信，因为覆盖小只能服务两三个人，速率太高超过了人的带宽，就没有意义了。 这个问题对毫米波、太赫兹都是如此。
@@ -215,8 +215,8 @@
 <p>一代移动通信标准一旦启动，到产品上市之前，所有的玩家都投入了巨大的成本。鉴于通信产业的战略地位，政府意志也为之背书。大家都绑在这个战车上，即使有问题，在碰到南墙之前是不会停下来的。</p>
 <p>所以 5G 的问题，不光是华为的问题，或者是中国的问题，美国、欧洲也都是如此。很多网友看到美帝在 5G 上整华为，就觉得美帝反对的东西肯定很重要。中国长期以来落后，都以美国为灯塔。但是经过改开 40 年，中国国力日渐强盛。而通信产业整体上已经获得了领先地位。在这种竞争格局下，即使美帝也会犯错。什么铱星啊，<code>Wimax</code> 啊，不都是美帝整的吗？ 所以我们要有独立的判断，而不是被对方的判断左右。 随着商用的日益迫近，5G 的问题会逐渐暴露出来。比如最近 <code>ATT</code> 的 5G 造假，韩国 5G 被指无用，澳洲未能按计划推出 5G 服务，等等。希望本文能为各方提个醒，尽量减少损失吧。</p>
 <p>因为任总的讲话，我认为华为对 5G 是有清醒的认识的，任总最新的讲话又谈到了 5G 的需求没有出现。5G 成功当然好，又能成为华为的产粮田，况且在舆论上华为 5G 已经领先友商 12 个月。但 5G 失败对华为也是有利的。因为华为有着最齐全的产品线，是行业老大，没有技术创新也就意味着现有格局的固化，华为也就能笑到最后了。当然裁员是避免不了的，这对于通信狗们来说不是个好消息。 对于二线的设备商，却是灾难性的，对 5G 的投入无法回收，现有市场份额也会被华为逐渐蚕食。 对于高通更是灭顶之灾，3G 专利过期，4G 没专利，然后 5G 没有了，怎么收专利费？早些年嫌设备和手机不赚钱甩给别人了，现在有点傻眼。趁手上还有点银子，想收个恩智浦，也被贸易战给搅黄了。这日子怕是过不下去了。</p>
-<h2 id="未来之路">未来之路</h2>
-<p>前面已经讲到，移动通信的发展方向是在保证覆盖的情况下，用低成本的技术提高系统容量。这背后的使能器是核心技术的突破。这也是我近二十年的通信技术研究生涯所始终追求的目标。</p>
+<h2 id="未来之路" class="headerLink">
+    <a href="#%e6%9c%aa%e6%9d%a5%e4%b9%8b%e8%b7%af" class="header-mark"></a>未来之路</h2><p>前面已经讲到，移动通信的发展方向是在保证覆盖的情况下，用低成本的技术提高系统容量。这背后的使能器是核心技术的突破。这也是我近二十年的通信技术研究生涯所始终追求的目标。</p>
 <p>尽管学界对通信原理的发展前景很悲观，但是情况正在起变化。</p>
 <p>我在 2014 年发布了<code>多级软频率复用技术</code>（multilevel soft frequency reuse，MLSFR），是 <code>SFR</code> 技术的增强版。理论表明，<code>SFR</code> 可以提升频谱效率 10%左右，<code>MLSFR</code> 可以提高 30%。 值得注意的，这是在不增加任何硬件成本的前提下。 这种幅度技术进步，在最近 30 年的通信史上，只有 <code>Turbo</code> 码可以媲美，远远超过高通在 <code>CDMA</code> 领域的技术创新。MLSFR` 将成为未来移动通信组网技术的基石。</p>
 <p>影响更加深远的，我已经在信息论上获得了重大突破。大家知道，香农在 1948 年创立了信息论，其中最重要的成果是这个信道容量公式：C=log（1+S/N），是指引着通信技术研究和工业发展的灯塔。</p>
@@ -242,8 +242,8 @@
 <p>来源：知乎</p>
 <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 </blockquote>
-<h2 id="什么是波束赋形">什么是波束赋形？</h2>
-<p><strong>波束赋形</strong>这个概念可以拆分成<strong>波束</strong>和<strong>赋形</strong>这两个词来理解。</p>
+<h2 id="什么是波束赋形" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e6%b3%a2%e6%9d%9f%e8%b5%8b%e5%bd%a2" class="header-mark"></a>什么是波束赋形？</h2><p><strong>波束赋形</strong>这个概念可以拆分成<strong>波束</strong>和<strong>赋形</strong>这两个词来理解。</p>
 <ul>
 <li><strong>波束</strong>里的<strong>波</strong>字可以认为是电磁波，<strong>束</strong>字的本意是“捆绑”，因此波束的含义是捆绑在一起集中传播的电磁波</li>
 <li><strong>赋形</strong>可以简单地理解为“赋予一定的形状”</li>
@@ -261,8 +261,8 @@
     </figure>
 <p>而如果能通过波束赋形把信号聚焦成几个波束，专门指向各个手机发射的话，承载信号的电磁能量就能传播地更远，而且手机收到的信号也就会更强。</p>
 <p>因此，波束赋形在无线通信中大有可为。</p>
-<h2 id="波束赋形的基本原理是什么">波束赋形的基本原理是什么？</h2>
-<p>波束赋形的物理学原理，其实就是波的干涉现象。</p>
+<h2 id="波束赋形的基本原理是什么" class="headerLink">
+    <a href="#%e6%b3%a2%e6%9d%9f%e8%b5%8b%e5%bd%a2%e7%9a%84%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>波束赋形的基本原理是什么？</h2><p>波束赋形的物理学原理，其实就是波的干涉现象。</p>
 <p>频率相同的两列波叠加，使某些区域的振动加强，某些区域的振动减弱，而且振动加强的区域和振动减弱的区域相互隔开。</p>
 <p>想象一下，在湖边漫步时，你和女朋友在相距很近的两点激起水波，两朵涟漪不断散开，然后交叠起来，形成了下面的图样。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_10.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_10.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_10.webp" data-sub-html="<h2>波的干涉现象</h2>">
@@ -329,16 +329,16 @@
         
     </a><figcaption class="image-caption">相位控制</figcaption>
     </figure>
-<h2 id="5g-怎样实现波束赋形">5G 怎样实现波束赋形？</h2>
-<p>由此可见，波束赋形的关键在于天线单元相位的管控，也就是天线权值的处理。</p>
+<h2 id="5g-怎样实现波束赋形" class="headerLink">
+    <a href="#5g-%e6%80%8e%e6%a0%b7%e5%ae%9e%e7%8e%b0%e6%b3%a2%e6%9d%9f%e8%b5%8b%e5%bd%a2" class="header-mark"></a>5G 怎样实现波束赋形？</h2><p>由此可见，波束赋形的关键在于天线单元相位的管控，也就是天线权值的处理。</p>
 <p>根据波束赋形处理位置和方式的不同，可分为</p>
 <ul>
 <li>数字波束赋形</li>
 <li>模拟波束赋形</li>
 <li>混合波束赋形</li>
 </ul>
-<h3 id="模拟波束赋形">模拟波束赋形</h3>
-<p>所谓模拟波束赋形，就是通过处理射频信号权值，通过移相器来完成天线相位的调整，处理的位置相对靠后。</p>
+<h3 id="模拟波束赋形" class="headerLink">
+    <a href="#%e6%a8%a1%e6%8b%9f%e6%b3%a2%e6%9d%9f%e8%b5%8b%e5%bd%a2" class="header-mark"></a>模拟波束赋形</h3><p>所谓模拟波束赋形，就是通过处理射频信号权值，通过移相器来完成天线相位的调整，处理的位置相对靠后。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_16.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_16.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_16.webp" data-sub-html="<h2>模拟波束赋形</h2>">
         
     </a><figcaption class="image-caption">模拟波束赋形</figcaption>
@@ -348,8 +348,8 @@
         
     </a><figcaption class="image-caption">模拟波束赋形框图</figcaption>
     </figure>
-<h3 id="数字波束赋形">数字波束赋形</h3>
-<p>数字波束赋形则在基带模块的时候就进行了天线权值的处理，基带处理的通道数和天线单元的数量相等，因此需要为每路数据配置一套射频链路。</p>
+<h3 id="数字波束赋形" class="headerLink">
+    <a href="#%e6%95%b0%e5%ad%97%e6%b3%a2%e6%9d%9f%e8%b5%8b%e5%bd%a2" class="header-mark"></a>数字波束赋形</h3><p>数字波束赋形则在基带模块的时候就进行了天线权值的处理，基带处理的通道数和天线单元的数量相等，因此需要为每路数据配置一套射频链路。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_11.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_11.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Beamforming/Beamforming_11.webp" data-sub-html="<h2>数字波束赋形</h2>">
         
     </a><figcaption class="image-caption">数字波束赋形</figcaption>
@@ -374,8 +374,8 @@
     </figure>
 <p>在毫米波 mmWave 频段，由于频谱资源非常充沛，一个 5G 载波的带宽可达 400MHz，如果单个 AAU 支持两个载波的话，带宽就达到了惊人的 800MHz！</p>
 <p>如果还要像 Sub6G 频段的设备一样支持数字波束赋形的话，对基带处理能力要求太高，并且射频部分功放的数量也要数倍增加，实现成本过高，功耗更是大得吓人。</p>
-<h3 id="混合波束赋形">混合波束赋形</h3>
-<p>因此，业界将数字波束赋形和模拟波束赋形结合起来，使在模拟端可调幅调相的波束赋形，结合基带的数字波束赋形，称之为混合波束赋形。</p>
+<h3 id="混合波束赋形" class="headerLink">
+    <a href="#%e6%b7%b7%e5%90%88%e6%b3%a2%e6%9d%9f%e8%b5%8b%e5%bd%a2" class="header-mark"></a>混合波束赋形</h3><p>因此，业界将数字波束赋形和模拟波束赋形结合起来，使在模拟端可调幅调相的波束赋形，结合基带的数字波束赋形，称之为混合波束赋形。</p>
 <p>混合波束赋形数字和模拟融合了两者的优点：</p>
 <ul>
 <li>基带处理的通道数目明显小于模拟天线单元的数量</li>
@@ -399,8 +399,8 @@
     <description><![CDATA[<blockquote>
 <p>Meanings of 3GPP releases</p>
 </blockquote>
-<h2 id="3gpp-release-schedule-and-summary">3GPP Release schedule and summary</h2>
-<table>
+<h2 id="3gpp-release-schedule-and-summary" class="headerLink">
+    <a href="#3gpp-release-schedule-and-summary" class="header-mark"></a>3GPP Release schedule and summary</h2><table>
 <thead>
 <tr>
 <th>3GPP RELEASE</th>
@@ -511,9 +511,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreferrer">3GPP Specification Release Numbers</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：物理信号</title>
@@ -524,9 +524,9 @@
     <description><![CDATA[<blockquote>
 <p>LTE 物理信号详解</p>
 </blockquote>
-<h2 id="导频信号">导频信号</h2>
-<h3 id="下行导频信号">下行导频信号</h3>
-<p>物理层定义了 3 种下行导频信号（Reference Signal，RS），包括：</p>
+<h2 id="导频信号" class="headerLink">
+    <a href="#%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7" class="header-mark"></a>导频信号</h2><h3 id="下行导频信号" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7" class="header-mark"></a>下行导频信号</h3><p>物理层定义了 3 种下行导频信号（Reference Signal，RS），包括：</p>
 <ul>
 <li>
 <p><strong>普通子帧的小区导频信号（Cell-specific RS，CRS）</strong></p>
@@ -541,8 +541,8 @@
 <p>指的是小区在下行<strong>普通子帧</strong>中发送的<strong>用户专用</strong>的导频信号，该信号以<strong>用户为单位</strong>，通过高层信令指示是否发送了该信号并且用作<strong>用户下行数据解调</strong>的参考符号。DRS 仅在承载该用户数据的资源块上传输。</p>
 </li>
 </ul>
-<h4 id="导频序列">导频序列</h4>
-<p>使用 <code>gold 序列</code> 生成的<code>伪随机（PN）序列</code>作为物理层下行导频信号（CRS/MBSFN RS/DRS）使用的复数序列，序列的数学表达式是：</p>
+<h4 id="导频序列" class="headerLink">
+    <a href="#%e5%af%bc%e9%a2%91%e5%ba%8f%e5%88%97" class="header-mark"></a>导频序列</h4><p>使用 <code>gold 序列</code> 生成的<code>伪随机（PN）序列</code>作为物理层下行导频信号（CRS/MBSFN RS/DRS）使用的复数序列，序列的数学表达式是：</p>
 <center>$r_{l,n_s}=\frac{1}{\sqrt{2}}(1-2c(2m))+j\frac{1}{\sqrt{2}}(1-2c(2m+1))$</center>
 <p>其中，$c(n)$是寄存器长度为 31 的 <code>gold 序列</code>，生成的序列由初始值 <code>cinit</code> 所确定。</p>
 <p>3 种下行导频信号，根据各自的特性，序列的初始值有相应的设置方法。</p>
@@ -558,15 +558,15 @@
 <li><strong>用户专用导频信号</strong>，即 <code>DRS</code>。信号的发送以用户为单位，每个用户有各自的导频。序列以子帧为单位进行初始化，在每个子帧的开始，根据 <code>子帧的位置</code>、<code>小区 ID</code>（alt ）以及 <code>用户的 RNTI</code> 共同确定导频序列的初始值。具体的数学表达式为：</li>
 </ul>
 <center>$c_{init}=(\left\lfloor\frac{n_s}{2}\right\rfloor)(2N_{ID}^{cell}+1)2^{16}+n_{RNTI}$</center>
-<h4 id="导频图案">导频图案</h4>
-<p>导频信号在<strong>时频域</strong>的图案规定了放置导频符号的<strong>时频域资源位置</strong>，LTE 物理层导频图案采用了<strong>二维</strong>的设计方法，规定了下行各个天线端口（Antenna port）导频信号的时频域位置，包括：</p>
+<h4 id="导频图案" class="headerLink">
+    <a href="#%e5%af%bc%e9%a2%91%e5%9b%be%e6%a1%88" class="header-mark"></a>导频图案</h4><p>导频信号在<strong>时频域</strong>的图案规定了放置导频符号的<strong>时频域资源位置</strong>，LTE 物理层导频图案采用了<strong>二维</strong>的设计方法，规定了下行各个天线端口（Antenna port）导频信号的时频域位置，包括：</p>
 <ul>
 <li><strong>普通子帧的小区公用导频信号</strong>（CRS）支持 1 ～ 4 个发送天线使用的 Antenna port 0 ～ 3</li>
 <li>用于 <strong>MBSFN</strong> 发送的 Antenna port 4</li>
 <li>用于<strong>用户专用导频</strong>（DRS）的 Antenna port 5</li>
 </ul>
-<h5 id="小区公用导频信号">小区公用导频信号</h5>
-<p>小区公用导频信号支持<strong>最多 4 个</strong>天线端口的发送（port 0 ～ 3）</p>
+<h5 id="小区公用导频信号" class="headerLink">
+    <a href="#%e5%b0%8f%e5%8c%ba%e5%85%ac%e7%94%a8%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7" class="header-mark"></a>小区公用导频信号</h5><p>小区公用导频信号支持<strong>最多 4 个</strong>天线端口的发送（port 0 ～ 3）</p>
 <ul>
 <li>对于前 2 个天线端口（port 0 ～ 1），每个时隙有 2 个 <code>OFDM</code> 符号携带导频符号</li>
 <li>对于后 2 个天线端口（port 2 ～ 3），每个时隙有 1 个 <code>OFDM</code> 符号携带导频符号</li>
@@ -577,15 +577,15 @@
     </a><figcaption class="image-caption">下行正常子帧小区导频信号图案（CRS）</figcaption>
     </figure>
 <p>为了避免同基站不同发射天线端口之间导频与数据的干扰，在某一天线端口的导频位置上，同一基站的其他天线端口空出相应的时频资源。小区 CRS 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的<strong>相对偏移</strong>，避免<strong>不同小区</strong>的导频之间的<strong>同频干扰</strong>。</p>
-<h5 id="mbsfn-导频">MBSFN 导频</h5>
-<p><code>MBSFN</code> 导频采用单天线端口的发送，即 port 4。由于 MBSFN 广播／多播的业务特性，较大的小区半径和多小区信号的合并带来的时延扩展增加了无线信道的频率选择性。为了适应这样的特点，导频采用<strong>较小的频域间隔</strong>，即每 2 个子载波放置 1 个导频符号（在 MBSFN 专用载波采用 7.5kHz 子载波间隔时，每 4 个子载波放置 1 个导频符号）。另外，根据广播业务的移动性特点，适当地降低了导频信号在时间上的密度。</p>
+<h5 id="mbsfn-导频" class="headerLink">
+    <a href="#mbsfn-%e5%af%bc%e9%a2%91" class="header-mark"></a>MBSFN 导频</h5><p><code>MBSFN</code> 导频采用单天线端口的发送，即 port 4。由于 MBSFN 广播／多播的业务特性，较大的小区半径和多小区信号的合并带来的时延扩展增加了无线信道的频率选择性。为了适应这样的特点，导频采用<strong>较小的频域间隔</strong>，即每 2 个子载波放置 1 个导频符号（在 MBSFN 专用载波采用 7.5kHz 子载波间隔时，每 4 个子载波放置 1 个导频符号）。另外，根据广播业务的移动性特点，适当地降低了导频信号在时间上的密度。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_15.webp" data-sub-html="<h2>下行 MBSFN 导频图案</h2>">
         
     </a><figcaption class="image-caption">下行 MBSFN 导频图案</figcaption>
     </figure>
 <p><code>MBSFN</code> 导频<strong>只</strong>支持在 <code>Extended CP</code> 情况下发送。MBSFN 导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>无关</strong>，<strong>各小区</strong>导频在<strong>相同的频域位置</strong>，实现 MBSFN 集合内的<strong>不同小区</strong>导频信号的<strong>宏分集接收</strong>。</p>
-<h5 id="用户专用导频">用户专用导频</h5>
-<p>LTE Release 8 中用户专用导频信号采用<strong>单天线端口</strong>的发送，即天线端口 5。通过高层信令的指示，通知终端在数据传输中是否使用了用户专用导频，以及终端是否应该使用用户专用导频进行下行数据的解调。（DRS 主要用于支持下行波束赋形，即 BeamForming 操作）</p>
+<h5 id="用户专用导频" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e4%b8%93%e7%94%a8%e5%af%bc%e9%a2%91" class="header-mark"></a>用户专用导频</h5><p>LTE Release 8 中用户专用导频信号采用<strong>单天线端口</strong>的发送，即天线端口 5。通过高层信令的指示，通知终端在数据传输中是否使用了用户专用导频，以及终端是否应该使用用户专用导频进行下行数据的解调。（DRS 主要用于支持下行波束赋形，即 BeamForming 操作）</p>
 <p>在发送 <code>UE specific</code> 的专用导频时，保持<strong>小区公用导频信号</strong>（CRS）不变，插入用户专用导频符号，每个 <code>PRB pair</code> 中发送 12 个用户专用导频符号。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_16.webp" data-sub-html="<h2>下行用户专用导频图案</h2>">
         
@@ -593,8 +593,8 @@
     </figure>
 <p>用户专用导频子载波在频域的<strong>绝对位置</strong>与小区 ID <strong>相关</strong>，因此不同小区之间形成频域的相对偏移，避免导频之间的<strong>同频干扰</strong>。</p>
 <p>在专用导频与物理信道／信号（PBCH/PSS/SSS）<strong>发生位置冲突</strong>的时候，将<strong>丢弃</strong>冲突位置的专用导频的传输，即对专用导频进行<strong>打孔</strong>。因为仅在有数据发送时才进行 <code>DRS</code> 的传输，而小区导频 <code>CRS</code> 是<strong>始终</strong>在传输的，因此，即使用户数据的发送使用了 <code>DRS</code>，用户对于下行信道质量，即 <code>CQI</code> 的测量将<strong>始终</strong>基于小区 <code>CRS</code> 导频。</p>
-<h3 id="上行导频信号">上行导频信号</h3>
-<p>物理层定义了两种上行导频信号，包括：</p>
+<h3 id="上行导频信号" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7" class="header-mark"></a>上行导频信号</h3><p>物理层定义了两种上行导频信号，包括：</p>
 <ul>
 <li>
 <p><strong>数据解调导频（DeModulation RS，DMRS）</strong></p>
@@ -605,8 +605,8 @@
 <p>指的是终端在上行发送的用于<strong>信道状态测量</strong>的导频信号，基站通过接收该信号测量上行信道的状态，相关的信息用于对上行数据传输的自适应调度。在 <code>TDD</code> 的情况下，由于同频段上下行信道的对称性，通过对上行 <code>SRS</code> 的测量还可以获得下行信道状态的信息，可用于辅助下行传输</p>
 </li>
 </ul>
-<h4 id="导频序列-1">导频序列</h4>
-<p>使用具有<strong>衡包络零自相关</strong>（ConstantAmplitude ZeroAutoCorrelation，CAZAC）特性的序列作为上行导频序列（DMRS/SRS），长度为 $M_{SC}^{RS}$ 的导频序列的数学表达式为：</p>
+<h4 id="导频序列-1" class="headerLink">
+    <a href="#%e5%af%bc%e9%a2%91%e5%ba%8f%e5%88%97-1" class="header-mark"></a>导频序列</h4><p>使用具有<strong>衡包络零自相关</strong>（ConstantAmplitude ZeroAutoCorrelation，CAZAC）特性的序列作为上行导频序列（DMRS/SRS），长度为 $M_{SC}^{RS}$ 的导频序列的数学表达式为：</p>
 <center>$r_{u,v}^{(α)}=e^{jan}\bar{r}_{u,v}(n) , 0\leqslant n \leqslant M_{SC}^{RS}-1$</center>
 <p>其中 $\bar{r}_{u,v}(n)$ 表示基序列，由<code>基序列组的编号 u</code>和<code>组内的基序列编号 v</code>共同确定。$α$ 是对基序列的<strong>循环移位</strong>（Cyclic Shift），相同基序列的不同移位将形成不同的导频序列。</p>
 <ul>
@@ -621,8 +621,8 @@
 <p>其中 $ϕ(n)$采用计算机搜索的方式进行查找，在标准中以列表的形式给出了确定的数值。</p>
 </li>
 </ul>
-<h4 id="导频图案-1">导频图案</h4>
-<ul>
+<h4 id="导频图案-1" class="headerLink">
+    <a href="#%e5%af%bc%e9%a2%91%e5%9b%be%e6%a1%88-1" class="header-mark"></a>导频图案</h4><ul>
 <li><strong>上行解调导频</strong>（DMRS）在用户发送数据或者控制信息的资源上发送
 <ul>
 <li>在共享信道 <code>PUSCH</code> 上，每个时隙内 <code>DMRS</code> 占用 1 个 <code>OFDM</code> 符号</li>
@@ -631,15 +631,15 @@
 </li>
 <li><strong>上行 Sounding 导频</strong>（SRS）与用户发送数据的资源位置<strong>无关</strong>，由系统调度，终端在预定义的、需要进行测量的频率位置上进行发送，发送时将占用子帧的最后一个 <code>OFDM</code> 符号，小区内不同用户在相同时刻发送的 <code>SRS</code> 采用频分和码分（基序列不同的循环移位）的方式进行区分。</li>
 </ul>
-<h5 id="上行共享信道-pusch-的解调导频">上行共享信道 PUSCH 的解调导频</h5>
-<p>上行共享信道 <code>PUSCH</code> 的解调导频在每个时隙内占用 1 个 <code>OFDM</code> 符号，在用户发送上行数据的资源上发送，用于共享信道（PUSCH）数据的解调。</p>
+<h5 id="上行共享信道-pusch-的解调导频" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%85%b1%e4%ba%ab%e4%bf%a1%e9%81%93-pusch-%e7%9a%84%e8%a7%a3%e8%b0%83%e5%af%bc%e9%a2%91" class="header-mark"></a>上行共享信道 PUSCH 的解调导频</h5><p>上行共享信道 <code>PUSCH</code> 的解调导频在每个时隙内占用 1 个 <code>OFDM</code> 符号，在用户发送上行数据的资源上发送，用于共享信道（PUSCH）数据的解调。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_17.webp" data-sub-html="<h2>上行 PUSCH 数据解调导频</h2>">
         
     </a><figcaption class="image-caption">上行 PUSCH 数据解调导频</figcaption>
     </figure>
 <p>每个时隙的导频符号采用 12 或者 24 的导频序列。其中 $M_{SC}^{RS}$ 是导频序列的长度，等于频域子载波的个数。导频序列由小区在该时隙的上行导频基序列 $\bar{r}_{u,v}(n)$ 和本次发送采用的循环移位 $α$共同确定。</p>
-<h5 id="上行控制信道-pucch-的解调导频">上行控制信道 PUCCH 的解调导频</h5>
-<p>上行控制信道 <code>PUCCH</code> 的解调导频根据上行控制信道格式的不同在每个时隙内占用 2 或者 3 个 <code>OFDM</code> 符号，用于控制信道（PUCCH）数据的解调。</p>
+<h5 id="上行控制信道-pucch-的解调导频" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e6%8e%a7%e5%88%b6%e4%bf%a1%e9%81%93-pucch-%e7%9a%84%e8%a7%a3%e8%b0%83%e5%af%bc%e9%a2%91" class="header-mark"></a>上行控制信道 PUCCH 的解调导频</h5><p>上行控制信道 <code>PUCCH</code> 的解调导频根据上行控制信道格式的不同在每个时隙内占用 2 或者 3 个 <code>OFDM</code> 符号，用于控制信道（PUCCH）数据的解调。</p>
 <ul>
 <li>
 <p><code>PUCCH </code>格式 1/1a/1b 的导频发送格式。</p>
@@ -658,8 +658,8 @@
     </figure>
 </li>
 </ul>
-<h5 id="上行-sounding-导频信号">上行 Sounding 导频信号</h5>
-<p>上行 Sounding 导频信号的发送与上行物理信道<strong>无关</strong>，是独立的的上行信号，根据<strong>预定义</strong>的周期、终端在需要进行信道测量的频域位置上进行发送。</p>
+<h5 id="上行-sounding-导频信号" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c-sounding-%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7" class="header-mark"></a>上行 Sounding 导频信号</h5><p>上行 Sounding 导频信号的发送与上行物理信道<strong>无关</strong>，是独立的的上行信号，根据<strong>预定义</strong>的周期、终端在需要进行信道测量的频域位置上进行发送。</p>
 <p>上行 Sounding 导频（SRS）在子帧的最后一个 <code>OFDM</code> 符号上发送。在每个小区，采用配置小区 <code>SRS</code> 子帧周期 <code>TSFC</code> 和偏移量 <code>∆SFC</code> 的方式，定义了小区内可用于发送上行 Sounding 导频符号的子帧时间位置，标准中列表给出了各种可能的配置选项，在系统广播消息 SIB 中使用 4 个比特进行指示。</p>
 <blockquote>
 <p>例如，假设配置 $T_{SFC} =5，∆SFC ={0,1}$，那么小区 <code>SRS</code> 子帧的时间位置如图所示。</p>
@@ -683,8 +683,8 @@
     </a><figcaption class="image-caption">Sounding 导频图案</figcaption>
     </figure>
 <p>其中 <code>SRS</code> 导频带宽 $m_{SRS,b}$ 以资源块（RB）为单位，并且是 4 的整数倍。同时，可以容易地看出，导频序列的长度是 SRS 导频所占用子载波宽度的一半。</p>
-<h2 id="同步信号psssss">同步信号（PSS/SSS）</h2>
-<p>下行同步信号用于支持物理层的小区搜索，实现用户终端对小区的识别以及对系统下行信号的频率和时间同步。</p>
+<h2 id="同步信号psssss" class="headerLink">
+    <a href="#%e5%90%8c%e6%ad%a5%e4%bf%a1%e5%8f%b7psssss" class="header-mark"></a>同步信号（PSS/SSS）</h2><p>下行同步信号用于支持物理层的小区搜索，实现用户终端对小区的识别以及对系统下行信号的频率和时间同步。</p>
 <p>同步信号包括：</p>
 <ul>
 <li><strong>主同步信号（Primary Synchronization Signal，PSS）</strong></li>
@@ -724,8 +724,8 @@
         
     </a><figcaption class="image-caption">同步信号 PSS/SSS 频域结构</figcaption>
     </figure>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item><item>
@@ -737,8 +737,8 @@
     <description><![CDATA[<blockquote>
 <p>LTE 多天线技术（MIMO）详解</p>
 </blockquote>
-<h2 id="多天线技术mimo">多天线技术（MIMO）</h2>
-<p>在收到信道编码后的数据（codeword）之后，物理层进一步的处理过程包括<code>加扰</code>、<code>调制</code>、<code>层映射</code>、<code>预编码</code>（precoding）以及针对各个物理天线端口的<code>资源映射</code>和 <code>OFDM</code> 信号生成的过程。</p>
+<h2 id="多天线技术mimo" class="headerLink">
+    <a href="#%e5%a4%9a%e5%a4%a9%e7%ba%bf%e6%8a%80%e6%9c%afmimo" class="header-mark"></a>多天线技术（MIMO）</h2><p>在收到信道编码后的数据（codeword）之后，物理层进一步的处理过程包括<code>加扰</code>、<code>调制</code>、<code>层映射</code>、<code>预编码</code>（precoding）以及针对各个物理天线端口的<code>资源映射</code>和 <code>OFDM</code> 信号生成的过程。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_9.webp" data-sub-html="<h2>物理层数据处理过程</h2>">
         
     </a><figcaption class="image-caption">物理层数据处理过程</figcaption>
@@ -748,8 +748,8 @@
 <li>调制指的是对比特数据进行复数调制，包括 <code>QPSK</code>、<code>16QAM</code> 或者 <code>64QAM</code>。</li>
 </ul>
 <p>在完成调制后，物理层的基带处理过程将进行 MIMO 相关的处理，包括 <code>层映射</code> 和 <code>预编码</code> 。LTE Release 8 版本支持不同的发射天线数目（1 / 2 / 4），以及多种不同的 MIMO 方案，包括<code>单天线发送</code>、<code>空间复用</code>和<code>发送分集</code>。</p>
-<h3 id="层映射">层映射</h3>
-<p>层映射实现信道编码之后的<strong>码字</strong>（Codeword）向空间多天线形成的多个<strong>层</strong>（layer）之间的映射。</p>
+<h3 id="层映射" class="headerLink">
+    <a href="#%e5%b1%82%e6%98%a0%e5%b0%84" class="header-mark"></a>层映射</h3><p>层映射实现信道编码之后的<strong>码字</strong>（Codeword）向空间多天线形成的多个<strong>层</strong>（layer）之间的映射。</p>
 <ul>
 <li>对于单天线的情况，直观地可以得到：物理层使用 1 个码字，并且这个码字直接映射到单天线的 1 个层上</li>
 <li>对于多天线实现空间复用的情况，当空间复用的层数目大于 1 的时候，可以同时发送 2 个码字</li>
@@ -757,12 +757,12 @@
 <blockquote>
 <p>以 4×4 天线配置的情况为例，根据无线信道的情况可以支持 1、2、3 或者 4 个层的空间复用，当空间复用的层数目大于 1 的时候，可以将 2 个码字映射在这些层上采用空间复用的方式同时进行发送。对于发送分集的情况，使用 1 个码字，按照发送天线数目的不同（2 或者 4），对应于 2 或者 4 个层，此时这 1 个码字将以逐比特转换的方式映射到这些层上。</p>
 </blockquote>
-<h3 id="预编码">预编码</h3>
-<p>预编码（precoding）实现<strong>层</strong>到<strong>物理天线端口</strong>的<strong>映射</strong>。物理层使用不同的预编码方案，实现不同的 <code>MIMO</code> 模式：<code>单天线发送</code>、<code>空间复用</code>或者<code>发送分集</code>。</p>
-<h4 id="单天线发送">单天线发送</h4>
-<p>对于单天线发送的情况，直观的可以得出，1 个<strong>层</strong>将直接映射到 1 个<strong>物理天线端口</strong>上。</p>
-<h4 id="空间复用">空间复用</h4>
-<p>对于多天线实现空间复用的情况，LTE 中采用基于<code>码本</code>（codebook）进行预编码向量选择的机制，分为<code>开环</code>和<code>闭环</code>两种复用传输模式，分别采用<code>无循环延迟的预编码</code>和<code>大循环延迟的预编码</code>。</p>
+<h3 id="预编码" class="headerLink">
+    <a href="#%e9%a2%84%e7%bc%96%e7%a0%81" class="header-mark"></a>预编码</h3><p>预编码（precoding）实现<strong>层</strong>到<strong>物理天线端口</strong>的<strong>映射</strong>。物理层使用不同的预编码方案，实现不同的 <code>MIMO</code> 模式：<code>单天线发送</code>、<code>空间复用</code>或者<code>发送分集</code>。</p>
+<h4 id="单天线发送" class="headerLink">
+    <a href="#%e5%8d%95%e5%a4%a9%e7%ba%bf%e5%8f%91%e9%80%81" class="header-mark"></a>单天线发送</h4><p>对于单天线发送的情况，直观的可以得出，1 个<strong>层</strong>将直接映射到 1 个<strong>物理天线端口</strong>上。</p>
+<h4 id="空间复用" class="headerLink">
+    <a href="#%e7%a9%ba%e9%97%b4%e5%a4%8d%e7%94%a8" class="header-mark"></a>空间复用</h4><p>对于多天线实现空间复用的情况，LTE 中采用基于<code>码本</code>（codebook）进行预编码向量选择的机制，分为<code>开环</code>和<code>闭环</code>两种复用传输模式，分别采用<code>无循环延迟的预编码</code>和<code>大循环延迟的预编码</code>。</p>
 <p>在 2 个发送天线的情况时，基站一般使用<strong>线性阵列</strong>（Uniform LinearArray，ULA）的天线配置，因此，相对应地采用基于 DFT 正交距阵的码本设计方法。</p>
 <ul>
 <li>对应于 1 个<strong>层</strong>的传输，设计了 4 个可供选择的预编码向量</li>
@@ -798,8 +798,8 @@
 <li>$U$ 是 <code>DFT 矩阵</code>，通过对输入信号进行 <code>DFT</code> 变换实现<code>层</code>到<code>虚拟天线</code>的映射，将每个层的信号能量均匀地分布在虚拟天线上</li>
 <li>$D (i)$是 <code>CDD 矩阵</code>，实现虚拟天线间增量为 $\frac{1}{v}$ 的时延。</li>
 </ul>
-<h4 id="发送分集">发送分集</h4>
-<p>对于多天线实现发送分集的情况，分别采用 <code>SFBC</code>（Space Frequency Block Codiing）和 <code>SFBC+FSTD</code>（Frequency Switched Transmit Diversity）的方案支持 2 和 4 个发送天线的场景。</p>
+<h4 id="发送分集" class="headerLink">
+    <a href="#%e5%8f%91%e9%80%81%e5%88%86%e9%9b%86" class="header-mark"></a>发送分集</h4><p>对于多天线实现发送分集的情况，分别采用 <code>SFBC</code>（Space Frequency Block Codiing）和 <code>SFBC+FSTD</code>（Frequency Switched Transmit Diversity）的方案支持 2 和 4 个发送天线的场景。</p>
 <ul>
 <li>在 2 个发送天线时，使用 SFBC 的发送分集方案，实现“层”到物理天线映射的预编码操作。</li>
 </ul>
@@ -814,8 +814,8 @@
         
     </a><figcaption class="image-caption">SFBC+FSTD 发送分集</figcaption>
     </figure>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item><item>
@@ -827,8 +827,8 @@
     <description><![CDATA[<blockquote>
 <p>LTE 数据的编码、复用和交织</p>
 </blockquote>
-<h2 id="数据的编码复用和交织">数据的编码、复用和交织</h2>
-<p>为了进行传输信道向物理信道的映射，提高数据传输的性能，并且将数据是否正确传输的情况向高层报告，物理层需要对传输信道的数据进行一系列信道编码相关的处理，通常的过程包括：</p>
+<h2 id="数据的编码复用和交织" class="headerLink">
+    <a href="#%e6%95%b0%e6%8d%ae%e7%9a%84%e7%bc%96%e7%a0%81%e5%a4%8d%e7%94%a8%e5%92%8c%e4%ba%a4%e7%bb%87" class="header-mark"></a>数据的编码、复用和交织</h2><p>为了进行传输信道向物理信道的映射，提高数据传输的性能，并且将数据是否正确传输的情况向高层报告，物理层需要对传输信道的数据进行一系列信道编码相关的处理，通常的过程包括：</p>
 <ul>
 <li>码字 <code>CRC</code> 计算</li>
 <li>码块分割和码块 <code>CRC</code> 计算</li>
@@ -840,8 +840,8 @@
         
     </a><figcaption class="image-caption">传输块物理层信道编码的过程</figcaption>
     </figure>
-<h3 id="crc-计算">CRC 计算</h3>
-<p>循环冗余校验码（Cyclic Redundancy Check，CRC）是数据通信领域中最常用的一种差错校验码，接收端通过对所接收到的数据信息和相应的 CRC 信息进行校验，可以判断接收到的数据是否正确。</p>
+<h3 id="crc-计算" class="headerLink">
+    <a href="#crc-%e8%ae%a1%e7%ae%97" class="header-mark"></a>CRC 计算</h3><p>循环冗余校验码（Cyclic Redundancy Check，CRC）是数据通信领域中最常用的一种差错校验码，接收端通过对所接收到的数据信息和相应的 CRC 信息进行校验，可以判断接收到的数据是否正确。</p>
 <p>物理层提供了 4 种 CRC 计算方法，分别用于不同信息的处理过程，其中包括 2 种长度为 24 比特的 <code>CRC</code> 计算方法，1 种长度为 16 比特的 <code>CRC</code> 计算方法，和 1 种长度为 8 比特的 <code>CRC</code> 计算方法。</p>
 <ul>
 <li>长度为 24 比特的 <code>CRC</code> 用于<code>下行共享信道（DL-SCH）</code>、<code>寻呼信道（PCH</code>）、<code>多播信道（MCH）</code>和<code>上行共享信道（UL-SCH）</code>等传输信道信息的处理过程</li>
@@ -853,8 +853,8 @@
         
     </a><figcaption class="image-caption">CRC 计算（gCRC8）</figcaption>
     </figure>
-<h3 id="码块分割">码块分割</h3>
-<p>传输信道中的 1 个<code>传输块</code>（transport block）对应于物理层的 1 个<code>码字</code>（codeword），码字是物理层进行信道编码等相关操作的单位。</p>
+<h3 id="码块分割" class="headerLink">
+    <a href="#%e7%a0%81%e5%9d%97%e5%88%86%e5%89%b2" class="header-mark"></a>码块分割</h3><p>传输信道中的 1 个<code>传输块</code>（transport block）对应于物理层的 1 个<code>码字</code>（codeword），码字是物理层进行信道编码等相关操作的单位。</p>
 <p>当收到来自 <code>MAC</code> 层的 1 个传输块后，物理层将其对应为 1 个码字，首先对<strong>整个码字</strong>进行 <code>CRC</code> 的计算，得到<strong>添加</strong>了 <code>CRC</code> 比特后的码字数据流。</p>
 <p>考虑到信道纠错编码的性能与处理时延的因素，标准中定义了最大的编码长度为 6144。也就是说，如果添加 CRC 比特后 1 个码字数据流的长度<strong>大于</strong> 6144 个比特，那么需要对码字进行<strong>分割</strong>，将 1 个码字分割为<strong>若干个</strong><code>码块</code>（code block），这时候需要对每个码块<strong>再添加</strong>相应的 CRC 比特，然后以<strong>码块为单位</strong>进行后续的信道纠错编码，以满足信道纠错编码最大长度的限制。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_6.webp" data-sub-html="<h2>码块分割</h2>">
@@ -862,27 +862,27 @@
     </a><figcaption class="image-caption">码块分割</figcaption>
     </figure>
 <p>物理层采用的 <code>Turbo 编码</code>的内交织器对数据的长度有一定的要求，标准中以列表的方式给出了所支持的数值，因此，在分块过程中，可能需要进行<strong>一定的填充</strong>，保证每一个码块的长度符合内交织器的要求。</p>
-<h3 id="信道编码">信道编码</h3>
-<p>物理层支持包括<code>块编码</code>、<code>截尾的卷积编码</code>和 <code>Turbo 码</code> 3 种不同的信道纠错编码方法。</p>
+<h3 id="信道编码" class="headerLink">
+    <a href="#%e4%bf%a1%e9%81%93%e7%bc%96%e7%a0%81" class="header-mark"></a>信道编码</h3><p>物理层支持包括<code>块编码</code>、<code>截尾的卷积编码</code>和 <code>Turbo 码</code> 3 种不同的信道纠错编码方法。</p>
 <ul>
 <li><code>Turbo 码</code>由于其良好的性能，用于大部分传输信道数据信息的信道编码方法</li>
 <li><code>卷积码</code>的译码<strong>复杂度比较低</strong>，另外在码长<strong>比较短</strong>的时候，卷积码的性能与 Turbo 码相近，因此采用<code>截尾的卷积码</code>作为<code>广播信道</code>和<code>物理层下行控制信息</code>主要的信道编码方法</li>
 <li>使用<code>块编码</code>作为一些<strong>长度更短</strong>的信息的信道编码方法，包括<code>控制格式指示信息（PCFICH）</code>、<code>下行 HARQ 指示信息（PHICH）</code>和<code>物理层上行控制信息</code>（上行 ACK 信息、CQI 信息等）。</li>
 </ul>
-<h3 id="速率匹配">速率匹配</h3>
-<p>在速率匹配的过程中，对信道编码后形成的比特流进行选取，以匹配于最终实际使用的物理资源。根据所选取的数据数量的不同，形成不同的编码速率。在这个过程中，以信道编码的每个<strong>码块为单位</strong>。</p>
+<h3 id="速率匹配" class="headerLink">
+    <a href="#%e9%80%9f%e7%8e%87%e5%8c%b9%e9%85%8d" class="header-mark"></a>速率匹配</h3><p>在速率匹配的过程中，对信道编码后形成的比特流进行选取，以匹配于最终实际使用的物理资源。根据所选取的数据数量的不同，形成不同的编码速率。在这个过程中，以信道编码的每个<strong>码块为单位</strong>。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_7.webp" data-sub-html="<h2>Turbo 码速率匹配的数据选择</h2>">
         
     </a><figcaption class="image-caption">Turbo 码速率匹配的数据选择</figcaption>
     </figure>
-<h3 id="码块连接">码块连接</h3>
-<p>在完成以码块为单位的信道编码和速率匹配的过程之后，将对 1 个码字内所有的码块进行<strong>串行连接</strong>，形成<strong>码字</strong>（即传输块）所对应的传输序列，然后就可以进一步地进行信号调制相关的处理与发送了。</p>
+<h3 id="码块连接" class="headerLink">
+    <a href="#%e7%a0%81%e5%9d%97%e8%bf%9e%e6%8e%a5" class="header-mark"></a>码块连接</h3><p>在完成以码块为单位的信道编码和速率匹配的过程之后，将对 1 个码字内所有的码块进行<strong>串行连接</strong>，形成<strong>码字</strong>（即传输块）所对应的传输序列，然后就可以进一步地进行信号调制相关的处理与发送了。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_8.webp" data-sub-html="<h2>码块连接</h2>">
         
     </a><figcaption class="image-caption">码块连接</figcaption>
     </figure>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item><item>
@@ -894,8 +894,8 @@
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要</p>
 </blockquote>
-<h2 id="下行共享信道的传输与接收">下行共享信道的传输与接收</h2>
-<p>物理层下行数据传输包含了链路自适应的过程，基站根据终端所上报的<strong>链路质量信息</strong>（CQI/PMI/RI）选择适当的物理资源和相应的编码调制方式进行下行数据的发送，实现对系统下行无线资源的优化利用，达到最佳的性能。</p>
+<h2 id="下行共享信道的传输与接收" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e5%85%b1%e4%ba%ab%e4%bf%a1%e9%81%93%e7%9a%84%e4%bc%a0%e8%be%93%e4%b8%8e%e6%8e%a5%e6%94%b6" class="header-mark"></a>下行共享信道的传输与接收</h2><p>物理层下行数据传输包含了链路自适应的过程，基站根据终端所上报的<strong>链路质量信息</strong>（CQI/PMI/RI）选择适当的物理资源和相应的编码调制方式进行下行数据的发送，实现对系统下行无线资源的优化利用，达到最佳的性能。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_44.webp" data-sub-html="<h2>信道状态信息反馈和下行链路自适应传输</h2>">
         
     </a><figcaption class="image-caption">信道状态信息反馈和下行链路自适应传输</figcaption>
@@ -918,8 +918,8 @@
 <p>物理层下行支持 29 种调制编码格式，其中包括了 <code>QPSK</code>、<code>16QAM</code> 和 <code>64QAM</code> 3 种不同的调制方式和不同的信道编码速率（范围是 0.16 ～ 0.92）。根据这样的原则，针对每一种物理资源 <code>PRB</code> 的占用数目，规范中定义了 29 种<strong>传输块大小</strong>（Tranport block size）。</p>
 <p>在进行下行数据传输时，下行调度信息中使用 5 个比特对所调度数据使用的<strong>编码调制格式</strong>（MCS）进行指示。接收端根据该信息可以确定数据所使用的调制方式；</p>
 <p>同时，将这 5 比特 <code>MCS</code> 信息和调度信息中所分配的 <code>PRB</code> 数目相结合，可以查表确定传输块大小，即信道编码数据源大小的信息，由此实现下行数据的正确传输与接收。</p>
-<h2 id="上行共享信道的调度与传输">上行共享信道的调度与传输</h2>
-<p>物理层上行数据的传输包含了链路自适应的调度过程。</p>
+<h2 id="上行共享信道的调度与传输" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%85%b1%e4%ba%ab%e4%bf%a1%e9%81%93%e7%9a%84%e8%b0%83%e5%ba%a6%e4%b8%8e%e4%bc%a0%e8%be%93" class="header-mark"></a>上行共享信道的调度与传输</h2><p>物理层上行数据的传输包含了链路自适应的调度过程。</p>
 <p>首先，终端在上行发送 <code>Sounding 导频</code> 信号，基站利用该信号对用户上行信道的质量进行测量，根据测量的结果选择适当的物理资源和相应的编码调制方式，在上行资源调度信息中进行指示，终端根据基站的指示进行上行数据的发送，实现对系统上行无线资源的优化利用。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_47.webp" data-sub-html="<h2>Sounding 导频和上行链路自适应</h2>">
         
@@ -941,8 +941,8 @@
     </figure>
 <p>与下行类似，物理层上行支持 29 种调制编码格式，其中包括了 <code>QPSK</code>、<code>16QAM</code> 和 <code>64QAM</code> 3 种不同的调制方式和不同的信道编码速率（范围是 0.16 ～ 0.92），使用与下行相同的传输块大小的表格定义，规定了在各种 <code>PRB</code> 数目的情况下，所对应的 29 种<strong>传输块大小</strong>（Transport block size）。</p>
 <p>在进行上行数据传输时，上行调度信息中使用 5 个比特指示数据的调制编码格式（MCS），终端根据该信息可以确定所使用的调制方法（QPSK/16QAM/64QAM）；同时，将这 5 比特 <code>MCS</code> 信息和调度信息中所分配的 <code>PRB</code> 数目相结合，可以查表确定传输块大小，即信道编码数据源的大小。最后，终端进行信道编码、速率匹配的信号处理过程，实现上行数据的发送。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item><item>
@@ -954,17 +954,17 @@
     <description><![CDATA[<blockquote>
 <p>LTE 多址方式详解</p>
 </blockquote>
-<h2 id="多址方式">多址方式</h2>
-<p>LTE 的空中接口采用以 <code>OFDM</code> 技术为基础的多址方式，使用 <code>15kHz</code> 的子载波宽度，通过不同的子载波数目（72 ～ 1200 ）实现了从 1.4 ～ 20MHz 之间多种可变的系统带宽。另外，考虑到在不同应用场景的情况下，无线信道的多径传输具有不同的时延扩展特性，所以 LTE 支持两种不同循环前缀（Cyclic Prefix，CP）长度的配置：<code>Normal CP</code> 和 <code>Extend CP</code>，它们的长度分别约为 <code>4.7μs</code> 和 <code>16.7μs</code>。</p>
+<h2 id="多址方式" class="headerLink">
+    <a href="#%e5%a4%9a%e5%9d%80%e6%96%b9%e5%bc%8f" class="header-mark"></a>多址方式</h2><p>LTE 的空中接口采用以 <code>OFDM</code> 技术为基础的多址方式，使用 <code>15kHz</code> 的子载波宽度，通过不同的子载波数目（72 ～ 1200 ）实现了从 1.4 ～ 20MHz 之间多种可变的系统带宽。另外，考虑到在不同应用场景的情况下，无线信道的多径传输具有不同的时延扩展特性，所以 LTE 支持两种不同循环前缀（Cyclic Prefix，CP）长度的配置：<code>Normal CP</code> 和 <code>Extend CP</code>，它们的长度分别约为 <code>4.7μs</code> 和 <code>16.7μs</code>。</p>
 <p>在 <code>OFDM</code> 技术的基础上，根据下行和上行两个方向通信的不同特点，LTE 分别选择了<code>多载波 OFDM</code> 和<code>单载波 SC-FDMA</code>（即 DFT-SOFDM）作为多址方式的具体实现方法。</p>
-<h3 id="下行多址方式">下行多址方式</h3>
-<p>LTE 采用 <code>OFDM</code>（Orthogonal Frequency Division Multiplexing）作为下行无线信号传输的多址方式。<code>OFDM</code> 是一种<strong>多载波调制</strong>的传输技术，将数据流经过<strong>串并变换</strong>，形成多路<strong>子数据流</strong>（N 路），使用它们分别去调制 N 路子载波后<strong>并行传输</strong>。通过这样的处理，子数据流的速率是原来的 1/N，即符号周期是原来的 N 倍，使得该符号周期远<strong>大于</strong>信道的时延扩展，从而实现了将一个宽带频率选择性信道划分成 N 个<strong>窄带平坦衰落信道</strong>，因此 OFDM 信号具有很强的<strong>抗无线信道多径衰落</strong>和<strong>抗脉冲干扰</strong>的能力，并且由于实现方式简单，所以特别适用于高速无线数据传输。</p>
+<h3 id="下行多址方式" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e5%a4%9a%e5%9d%80%e6%96%b9%e5%bc%8f" class="header-mark"></a>下行多址方式</h3><p>LTE 采用 <code>OFDM</code>（Orthogonal Frequency Division Multiplexing）作为下行无线信号传输的多址方式。<code>OFDM</code> 是一种<strong>多载波调制</strong>的传输技术，将数据流经过<strong>串并变换</strong>，形成多路<strong>子数据流</strong>（N 路），使用它们分别去调制 N 路子载波后<strong>并行传输</strong>。通过这样的处理，子数据流的速率是原来的 1/N，即符号周期是原来的 N 倍，使得该符号周期远<strong>大于</strong>信道的时延扩展，从而实现了将一个宽带频率选择性信道划分成 N 个<strong>窄带平坦衰落信道</strong>，因此 OFDM 信号具有很强的<strong>抗无线信道多径衰落</strong>和<strong>抗脉冲干扰</strong>的能力，并且由于实现方式简单，所以特别适用于高速无线数据传输。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_49.webp" data-sub-html="<h2>OFDM 调制的信号处理流程</h2>">
         
     </a><figcaption class="image-caption">OFDM 调制的信号处理流程</figcaption>
     </figure>
-<h3 id="上行多址方式">上行多址方式</h3>
-<p>上行方向上，LTE 采用<code>单载波 SC-FDMA</code>（即 DFT-SOFDM） 作为多址方式。其中，同样采用了 <code>15kHz</code> 的子载波带宽，不同子载波数目实现不同的系统带宽。</p>
+<h3 id="上行多址方式" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%a4%9a%e5%9d%80%e6%96%b9%e5%bc%8f" class="header-mark"></a>上行多址方式</h3><p>上行方向上，LTE 采用<code>单载波 SC-FDMA</code>（即 DFT-SOFDM） 作为多址方式。其中，同样采用了 <code>15kHz</code> 的子载波带宽，不同子载波数目实现不同的系统带宽。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_50.webp" data-sub-html="<h2>DFT-SOFDM 调制的信号处理流程</h2>">
         
     </a><figcaption class="image-caption">DFT-SOFDM 调制的信号处理流程</figcaption>
@@ -976,8 +976,8 @@
         
     </a><figcaption class="image-caption">OFDM/DFT-SOFDM 的子载波映射</figcaption>
     </figure>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item><item>
@@ -989,8 +989,8 @@
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要综列</p>
 </blockquote>
-<h2 id="终端的小区搜索和下行同步">终端的小区搜索和下行同步</h2>
-<p>通过小区搜索的过程，终端实现对服务小区下行信号时间和频率的同步，并且确定小区的物理层 ID。</p>
+<h2 id="终端的小区搜索和下行同步" class="headerLink">
+    <a href="#%e7%bb%88%e7%ab%af%e7%9a%84%e5%b0%8f%e5%8c%ba%e6%90%9c%e7%b4%a2%e5%92%8c%e4%b8%8b%e8%a1%8c%e5%90%8c%e6%ad%a5" class="header-mark"></a>终端的小区搜索和下行同步</h2><p>通过小区搜索的过程，终端实现对服务小区下行信号时间和频率的同步，并且确定小区的物理层 ID。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master//images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_42.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master//images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_42.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master//images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_42.webp" data-sub-html="<h2>小区搜索过程</h2>">
         
     </a><figcaption class="image-caption">小区搜索过程</figcaption>
@@ -1008,8 +1008,8 @@
 </ul>
 <p>完成这些操作后，终端就可以开始读取服务小区的<strong>广播信道</strong>（PBCH）中的系统信息了。</p>
 <p>通过同步信号的检测与服务小区获得同步以后，终端还可以利用<strong>下行导频信号</strong>（CRS），进行更精确的时间与频率的同步，以及同步的维持。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item></channel>

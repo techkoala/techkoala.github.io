@@ -25,8 +25,12 @@ LTE 物理信道详解
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_physical_channels/" /><link rel="prev" href="https://www.techkoala.top/lte_physical_channels_and_signals/" /><link rel="next" href="https://www.techkoala.top/lte_uplink_frame_structure/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,7 +39,7 @@ LTE 物理信道详解
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/lte_physical_channels\/"
-        },"genre": "posts","keywords": "LTE","wordcount":  6588 ,
+        },"genre": "posts","keywords": "LTE","wordcount":  6586 ,
         "url": "https:\/\/www.techkoala.top\/lte_physical_channels\/","datePublished": "2019-08-05T21:06:48+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -46,7 +50,7 @@ LTE 物理信道详解
     </script></head>
 
 <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
@@ -114,17 +118,12 @@ LTE 物理信道详解
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-            <div class="container"><div class="toc" id="toc-auto">
-        <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LTE 系列：物理信道</h1><div class="post-meta">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LTE 系列：物理信道</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-08-05">2019-08-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6588 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/lte_physical_channels/" class="leancloud_visitors" data-flag-title="LTE 系列：物理信道">
-                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
-                    </span>&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-08-05">2019-08-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6586 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -158,8 +157,8 @@ LTE 物理信道详解
             </div><div class="content" id="content"><blockquote>
 <p>LTE 物理信道详解</p>
 </blockquote>
-<h2 id="广播信道pbch">广播信道（PBCH）</h2>
-<p>物理广播信道（Physical Broadcast CHannel，PBCH）用于承载系统的 MIB 广播信息。</p>
+<h2 id="广播信道pbch" class="headerLink">
+    <a href="#%e5%b9%bf%e6%92%ad%e4%bf%a1%e9%81%93pbch" class="header-mark"></a>广播信道（PBCH）</h2><p>物理广播信道（Physical Broadcast CHannel，PBCH）用于承载系统的 MIB 广播信息。</p>
 <p>LTE 系统广播信息分为</p>
 <ul>
 <li>
@@ -178,8 +177,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_26.webp">
     </a><figcaption class="image-caption">LTE 物理广播信道</figcaption>
     </figure>
 </li>
@@ -194,21 +192,20 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_27.webp">
     </a><figcaption class="image-caption">物理广播信道 PBCH 频域结构</figcaption>
     </figure>
 <p>当发射天线为 2/4 的时候，<code>PBCH</code> 采用<strong>发送分集</strong>（SFBC/SFBC+FSTD）的方式。在资源映射的时候，为了方便终端在不知道发射天线数目情况下的<strong>盲检测</strong>，对 1、2 或者 4 的发射天线数目，使用相同的物理资源映射方式，即总是空出 4 天线的小区公用导频 <code>CRS</code> 资源。</p>
-<h2 id="下行共享信道pdsch">下行共享信道（PDSCH）</h2>
-<p>下行物理共享信道（Physical Downlink Shared CHannel，PDSCH）用于下行数据的调度传输，是 LTE 物理层主要的下行<strong>数据承载信道</strong>，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
+<h2 id="下行共享信道pdsch" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e5%85%b1%e4%ba%ab%e4%bf%a1%e9%81%93pdsch" class="header-mark"></a>下行共享信道（PDSCH）</h2><p>下行物理共享信道（Physical Downlink Shared CHannel，PDSCH）用于下行数据的调度传输，是 LTE 物理层主要的下行<strong>数据承载信道</strong>，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
 <ul>
 <li>寻呼信息</li>
 <li>广播信息</li>
 <li>控制信息和业务数据信息</li>
 </ul>
 <p>作为决定物理层性能的关键因素之一，PDSCH 的传输支持各种物理层机制，包括信道自适应的调度，<code>HARQ</code> 和各种 <code>MIMO</code> 机制。</p>
-<h3 id="控制格式指示信道pcfich">控制格式指示信道（PCFICH）</h3>
-<p>物理控制格式指示信道（Physical Control Format Indicator CHannel，PCFICH）指示物理层控制信道的格式。</p>
+<h3 id="控制格式指示信道pcfich" class="headerLink">
+    <a href="#%e6%8e%a7%e5%88%b6%e6%a0%bc%e5%bc%8f%e6%8c%87%e7%a4%ba%e4%bf%a1%e9%81%93pcfich" class="header-mark"></a>控制格式指示信道（PCFICH）</h3><p>物理控制格式指示信道（Physical Control Format Indicator CHannel，PCFICH）指示物理层控制信道的格式。</p>
 <p>在 LTE 中，物理层控制信道（PDCCH）在每个子帧的前几个 <code>OFDM</code> 符号上传输，根据系统物理层控制信息负载情况的不同，该数值可能是 1、2 或者 3（在使用最小值 <code>1.4MHz</code> 的系统带宽的时候，为了提供足够的物理层控制信息的容量，也可以设置为 4）。<code>PCFICH</code> 信道正是对该数值进行了指示，即在当前子帧中，前几个 <code>OFDM</code> 符号用于物理层控制信道 <code>PDCCH</code> 的传输。</p>
 <p><code>PCFICH</code> 指示当前子帧中 <code>PDCCH</code> 的符号数目：1、2、3（当系统带宽 1.4MHz 的时候，取值为 2、3、4）。</p>
 <p><code>PCFICH</code> 的基带处理过程如图所示，其携带的 3 种可能性通过编码映射得到 32 比特的信息，经过 <code>QPSK</code> 调制后形成 16 个调制符号，这 16 个调制符号将映射到子帧第 1 个 <code>OFDM</code> 符号上的 4 个资源单元组 <code>REG</code> 上（每个 <code>REG</code> 包含 4 个 <code>RE</code>，可以承载 4 个调制符号）。为了获得充分的分集增益，这 4 个 <code>REG</code> 均匀地分布在系统下行带宽上。可以注意到，其中频域的起始位置 k 与小区 ID 相关，因此不同小区的 <code>PCFICH</code> 将形成相对的频域偏移，避免不同小区的 <code>PCFICH</code> 之间的干扰。</p>
@@ -218,13 +215,12 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_28.webp">
     </a><figcaption class="image-caption">物理控制信道格式指示信道（PCFICH）</figcaption>
     </figure>
 <p><code>PCFICH</code> 信道采用的发射天线与 <code>PBCH</code> 相同，即 1、2 或者 4。当发射天线数目为 2 或者 4 的时候，使用 <code>SFBC</code>/<code>SFBC+FSTD</code> 的发送分集方式。</p>
-<h3 id="harq-指示信道phich">HARQ 指示信道（PHICH）</h3>
-<p>物理 HARQ 指示信道（Physical HARQ Indicator CHannel，PHICH）承载对上行数据传输的 <code>HARQ</code> <code>ACK</code>/<code>NACK</code> 反馈信息。</p>
+<h3 id="harq-指示信道phich" class="headerLink">
+    <a href="#harq-%e6%8c%87%e7%a4%ba%e4%bf%a1%e9%81%93phich" class="header-mark"></a>HARQ 指示信道（PHICH）</h3><p>物理 HARQ 指示信道（Physical HARQ Indicator CHannel，PHICH）承载对上行数据传输的 <code>HARQ</code> <code>ACK</code>/<code>NACK</code> 反馈信息。</p>
 <p>物理层 <code>PHICH</code> 信道的传输以 <code>PHICH</code> 组的形式来组织，1 个 <code>PHICH</code> 信道由 <code>PHICH</code> <strong>组编号</strong>和<strong>组内编号</strong>共同确定。</p>
 <p>1 个 <code>PHICH</code> 组内的多个 <code>PHICH</code> 信道占用<strong>相同</strong>的时频域物理资源，采用<strong>正交扩频序列</strong>的复用方式。</p>
 <ul>
@@ -238,8 +234,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_29.webp">
     </a><figcaption class="image-caption">物理 HARQ 指示信道（PHICH）</figcaption>
     </figure>
 <ul>
@@ -256,8 +251,8 @@ LTE 物理信道详解
 <p><code>PHICH</code> 信道发射天线的数目与 <code>PBCH</code> <strong>相同</strong>，当发射天线数目为 2、4 的时候采用<code> SFBC</code>/<code>SFBC+FSTD</code> 的<strong>发送分集</strong>方式。</p>
 <p><code>PHICH</code> 信道的<strong>索引号</strong>与上行数据传输的资源位置<strong>相对应</strong>，也就是说，<strong>不需要</strong>采用信令进行指示，根据上行 <code>PUSCH</code> 数据传输的资源位置就可以确定下行 <code>PHICH</code> 信号的索引号。</p>
 <p>具体来说，由相应的上行 <code>PUSCH</code> 数据传输使用的第 1 个物理资源块 <code>PRB</code> 的序号所确定。另外，为了使得各个 <code>PHICH</code> 组中实际使用的 <code>PHICH</code> 信道数量的负载均衡，相邻的上行 <code>PRB</code> 位置对应于不同 <code>PHICH</code> 组中的 <code>PHICH</code> 信道。</p>
-<h2 id="下行控制信道pdcch">下行控制信道（PDCCH）</h2>
-<p>下行物理控制信道（Physical Downlink Control CHannel，PDCCH）用于承载物理层的下行控制消息，包括：</p>
+<h2 id="下行控制信道pdcch" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e6%8e%a7%e5%88%b6%e4%bf%a1%e9%81%93pdcch" class="header-mark"></a>下行控制信道（PDCCH）</h2><p>下行物理控制信道（Physical Downlink Control CHannel，PDCCH）用于承载物理层的下行控制消息，包括：</p>
 <ul>
 <li>上／下行数据传输的调度信息</li>
 <li>上行功率控制命令信息</li>
@@ -271,14 +266,13 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_30.webp">
     </a><figcaption class="image-caption">下行物理控制信道（PDCCH）</figcaption>
     </figure>
 <p><code>PDCCH</code> 信道的发射天线与 <code>PBCH</code> 相同，即 1、2 或者 4。当发射天线数目为 2、4 的时候采用 <code>SFBC</code>/<code>SFBC+FSTD</code> 的发送分集方式。</p>
 <p>终端对 <code>PDCCH</code> 信道的接收采用<strong>盲检测</strong>的方式，即终端根据所使用的下行控制信息（DCI）的格式，解调所有可能属于自己的下行 <code>PDCCH</code> 信道，搜索属于自己的信息。</p>
-<h2 id="随机接入信道prach">随机接入信道（PRACH）</h2>
-<p>物理随机接入信道（Physical RandomAccess CHannel，PRACH）用于终端上行发送随机接入信号（random access preamble），启动随机接入的过程。</p>
+<h2 id="随机接入信道prach" class="headerLink">
+    <a href="#%e9%9a%8f%e6%9c%ba%e6%8e%a5%e5%85%a5%e4%bf%a1%e9%81%93prach" class="header-mark"></a>随机接入信道（PRACH）</h2><p>物理随机接入信道（Physical RandomAccess CHannel，PRACH）用于终端上行发送随机接入信号（random access preamble），启动随机接入的过程。</p>
 <p>随机接入信号由</p>
 <ul>
 <li><strong>循环前缀（Cyclic Prefix，CP）</strong></li>
@@ -293,8 +287,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_31.webp">
     </a><figcaption class="image-caption">物理随机接入信道</figcaption>
     </figure>
 <p>根据适用的场景的不同（例如：小区半径和链路的功率预算），LTE 物理层支持 5 种随机接入信号格式，具体使用过程中，由高层信令指示小区所使用的随机接入信道的配置。</p>
@@ -304,8 +297,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_32.webp">
     </a><figcaption class="image-caption">随机接入信号格式</figcaption>
     </figure>
 <p>其中格式 4 的随机接入信号仅用于 <code>TDD Type 2</code> 中，当 <code>TDD</code> 配置特殊时隙 <code>UpPTS</code> 的长度为 2 个 <code>OFDM</code> 符号时，可以在 <code>UpPTS</code> 的位置发送格式 4 的随机接入信号，以较小的开销实现随机接入的功能。</p>
@@ -316,8 +308,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_33.webp">
     </a><figcaption class="image-caption">PRACH preamble 生成方法（Format 0）</figcaption>
     </figure>
 <p>LTE 物理层使用 <code>Zadoff-Chu</code> 序列作为生成随机接入信号的序列。每个小区有 64 个可用的序列，由小区的下行广播进行指示。</p>
@@ -331,8 +322,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_34.webp">
     </a><figcaption class="image-caption">随机接入信道的物理资源位置</figcaption>
     </figure>
 </blockquote>
@@ -343,8 +333,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_35.webp">
     </a><figcaption class="image-caption">TDD Type 2 中频分的 PRACH 信道</figcaption>
     </figure>
 <p>因为 <code>TDD</code> 支持不同的上下行时间比例的配置，在某些配置情况下上行时间较少，所以可能需要在同一个时刻支持多个 <code>PRACH</code> 信道，以提供足够的随机接入信道的容量。在普通子帧中，由于上行两边频带存在 <code>PUCCH</code> 控制信道，而中间是 <code>PUSCH</code> 数据信道，因此 <code>PRACH</code> 信道采用频率偏移结合上下交错的分配方式为 <code>PUCCH</code> 和 <code>PUSCH</code> 信道留出物理资源空间。而对于 <code>PRACH Format 4</code>，由于特殊时隙 <code>UpPTS</code> 上不存在 <code>PUCCH</code> 或者 <code>PUSCH</code> 信道，因此采用了不同的机制：从上行频域的边际开始，连续分布，在两次 <code>UpPTS</code> 之间采用跳频的方式，即交替地从上边带或者下边带开始，这样可以在随机接入信号需要多次传输的时候获得频率分集的增益。</p>
@@ -354,12 +343,11 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_36.webp">
     </a><figcaption class="image-caption">TDD Type 2 中 PRACH Format 4 的频分与跳频</figcaption>
     </figure>
-<h2 id="上行控制信道pucch">上行控制信道（PUCCH）</h2>
-<p>上行物理控制信道（Physical Uplink Control CHannel，PUCCH）传输物理层上行控制信息，包括<strong>上行调度请求</strong>、<strong>对下行数据的 ACK/NACK 信息</strong>和<strong>信道状态信息 CSI 反馈（包括 CQI/PMI/RI）</strong>。</p>
+<h2 id="上行控制信道pucch" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e6%8e%a7%e5%88%b6%e4%bf%a1%e9%81%93pucch" class="header-mark"></a>上行控制信道（PUCCH）</h2><p>上行物理控制信道（Physical Uplink Control CHannel，PUCCH）传输物理层上行控制信息，包括<strong>上行调度请求</strong>、<strong>对下行数据的 ACK/NACK 信息</strong>和<strong>信道状态信息 CSI 反馈（包括 CQI/PMI/RI）</strong>。</p>
 <p>每 1 组 <code>PUCCH</code> 信道占用 1 个 <code>RB-pair</code> 的物理资源，采用时隙跳频的方式，在系统上行频带的两边进行传输，而上行频带的中间部分用于传输上行共享信道（PUSCH）的数据。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp" data-sub-html="<h2>PUCCH 信道的资源分布</h2>">
         <img
@@ -367,8 +355,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_37.webp">
     </a><figcaption class="image-caption">PUCCH 信道的资源分布</figcaption>
     </figure>
 <p>根据所承载的上行控制信息，物理层设计了不同的 <code>PUCCH</code> 格式，对应于不同的发送方法。</p>
@@ -378,8 +365,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_38.webp">
     </a><figcaption class="image-caption">PUCCH 信道不同的格式</figcaption>
     </figure>
 <p>根据不同格式的 <code>PUCCH</code> 信道的特点，它们在频域的分布情况如图所示。</p>
@@ -389,8 +375,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_39.webp">
     </a><figcaption class="image-caption">不同格式 PUCCH 信道在频域的分布情况</figcaption>
     </figure>
 <ul>
@@ -398,8 +383,8 @@ LTE 物理信道详解
 <li><code>PUCCH 1/1a/1b</code> 承载的是调度请求信息和对下行数据的 <code>ACK</code> 信息，资源数量是动态变化的，与小区中发送的下行数据的数量相关，因此将这一部分资源放置在稍靠近频率中心的位置，方便将系统剩余的频率资源用于上行共享信道 <code>PUSCH</code> 的传输。</li>
 </ul>
 <p>在所占用的 1 个 <code>RB-pair</code> 的时频域资源中，<code>PUCCH 1/1a/1b</code> 和 <code>PUCCH 2/2a/2b</code> 都采用了码分的方式进一步地复用多个 <code>PUCCH</code> 信道。因此当配置的 <code>PUCCH 2/2a/2b</code> 信道数量所占用的资源数目不是 <code>RB-pair</code> 整数倍的时候，在 <code>PUCCH 2/2a/2b</code> 和 <code>PUCCH 1/1a/1b</code> 频域的交界处将出现它们在某 1 个 <code>RB-pair</code> 内以码分的方式混合传输的情况。</p>
-<h3 id="pucch-格式-11a1b">PUCCH 格式 1/1a/1b</h3>
-<p><code>PUCCH</code> 格式 <code>1/1a/1b</code> 用于终端发送<strong>调度请求信息</strong>或者<strong>1、2 比特的 ACK/NACK 信息</strong>。</p>
+<h3 id="pucch-格式-11a1b" class="headerLink">
+    <a href="#pucch-%e6%a0%bc%e5%bc%8f-11a1b" class="header-mark"></a>PUCCH 格式 1/1a/1b</h3><p><code>PUCCH</code> 格式 <code>1/1a/1b</code> 用于终端发送<strong>调度请求信息</strong>或者<strong>1、2 比特的 ACK/NACK 信息</strong>。</p>
 <p>使用一个调制符号 $d(0)$ 来表示 <code>PUCCH 1/1a/1b</code> 发送的信息。对于 <code>PUCCH 1</code> 的<strong>调度请求信息</strong>，基站侧仅需要检测是否存在这样的发送，此时的 $d(0)$ 设置为预定义的固定值（d(0)=1）。对于 <code>PUCCH 1a/1b</code> 的 <code>ACK</code> 信息，$d(0)$ 为 <code>BPSK</code> 或者 <code>QPSK</code> 调制符号，分别对应于 1 比特或者 2 比特的 <code>ACK</code> 信息。</p>
 <p>在信息的发送过程中，首先使用正交扩频序列 $w(m)$ 进行扩频，将信息分散在一个时隙内用于 PUCCH 传输的多个上行符号上；然后，在每个上行符号上使用 1 个长度为 12 的 <code>Zadoff-Chu</code> 序列 $r_{u,v}^{\alpha}$ 进行调制，得到长度为 12 的复数序列对应于 1 个 <code>RB</code> 内的 12 个子载波。因此，<code>PUCCH 1/1a/1b</code> 的发送包含了<strong>正交扩频序列</strong>和<strong>Zadoff-Chu 序列</strong>两次码扩频的过程，可以复用的信道数目为二者的乘积。</p>
 <blockquote>
@@ -410,8 +395,7 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_40.webp">
     </a><figcaption class="image-caption">PUCCH 1/1a/1b 物理层信号发送方法（Normal CP）</figcaption>
     </figure>
 </blockquote>
@@ -420,8 +404,8 @@ LTE 物理信道详解
 <li>子帧内的 2 个时隙使用不同的正交扩频序列 $w(m)$，即<strong>正交序列跳频</strong></li>
 <li>时隙内的不同上行符号之间使用 <code>Zadoff-Chu</code> 序列不同的循环移位，即<strong>Cyclic Shift 跳频</strong></li>
 </ul>
-<h3 id="pucch-format-22a2b">PUCCH Format 2/2a/2b</h3>
-<p><code>PUCCH</code> 格式 2 用于终端发送信道状态信息（Channel State Information，CSI），包括：</p>
+<h3 id="pucch-format-22a2b" class="headerLink">
+    <a href="#pucch-format-22a2b" class="header-mark"></a>PUCCH Format 2/2a/2b</h3><p><code>PUCCH</code> 格式 2 用于终端发送信道状态信息（Channel State Information，CSI），包括：</p>
 <ul>
 <li><strong>信道质量指示（Channel Quality Indicator，CQI）</strong></li>
 <li><strong>预编码向量指示（Precoding Matrix Indicator，PMI）</strong></li>
@@ -439,15 +423,14 @@ LTE 物理信道详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_41.webp">
     </a><figcaption class="image-caption">PUCCH 2/2a/2b 物理层信号发送方法（Normal CP）</figcaption>
     </figure>
 </blockquote>
 <p>在 <code>PUCCH 2a/2b</code> 中，除了 20 个比特的 <code>CSI</code> 信息之外，还承载 1 或者 2 比特的 <code>ACK</code> 信息。该 <code>ACK</code> 信息将通过 <code>BPSK</code> 或者 <code>QPSK</code> 的调制，形成一个调制符号 d(10)，然后调制在导频符号上进行传输。</p>
 <p><code>PUCCH 2a/2b</code> <strong>仅适用</strong>于 <code>Normal CP</code> 的情况，对于 <code>Extended CP</code> 的情况，由于 <code>PUCCH 格式 2</code> 的每个时隙内只有 1 列上行导频，难以将 <code>ACK</code>/<code>NAK</code> 信息调制在导频中。所以，在这种情况下，如果 <code>ACK</code>/<code>NAK</code> 和 <code>CQI</code> 需要<strong>同时</strong>传输，那么将对它们进行<strong>联合编码</strong>，形成 20 比特的编码后数据，采用 <code>Extended CP</code> 的 <code>PUCCH 格式 2</code> 进行发送。</p>
-<h2 id="上行共享信道pusch">上行共享信道（PUSCH）</h2>
-<p>上行物理共享信道（Physical Uplink Shared CHannel，PUSCH）用于上行数据的调度传输，是物理层主要的上行数据承载信道，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
+<h2 id="上行共享信道pusch" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%85%b1%e4%ba%ab%e4%bf%a1%e9%81%93pusch" class="header-mark"></a>上行共享信道（PUSCH）</h2><p>上行物理共享信道（Physical Uplink Shared CHannel，PUSCH）用于上行数据的调度传输，是物理层主要的上行数据承载信道，可以承载来自上层的不同的传输内容（即不同的逻辑信道），包括：</p>
 <ul>
 <li>控制信息</li>
 <li>用户业务信息</li>
@@ -458,8 +441,8 @@ LTE 物理信道详解
 <p>例如：为了保持上行单载波的特性，LTE Release 8 物理层不支持单用户的上行共享信道（PUSCH）和上行控制信道（PUCCH）的频分复用，即 1 个用户不能在一个时刻同时发送 <code>PUSCH</code> 信道和 <code>PUCCH</code> 信道。当用户有上行数据 <code>PUSCH</code> 正在发送的时候，如果需要同时发送物理层上行控制信息（CSI、ACK 或者 RI），那么这些信息不能在 <code>PUCCH</code> 信道上传输，而是将这些控制信息与数据信息一起复用在 <code>PUSCH</code> 信道上进行传输。</p>
 </blockquote>
 <p>另外，单载波（DFT-SOFDM）多址方式的处理过程中包含了 <code>DFT</code> 的操作，为了降低 <code>DFT</code> 运算的复杂度，便于使用类似 <code>FFT</code> 的快速算法，标准中对上行 <code>PUSCH</code> 信道子载波分配的数目进行了规定，即上行分配的 RB 数目的数值必须能够被 2、3、5 这 3 个质数所分解，即必须满足条件$=2_{α2}、3_{α3}、5_{α5}$，其中 $α2 、α3 和 α5$ 是非负整数。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul></div>
 
@@ -495,18 +478,19 @@ LTE 物理信道详解
             </noscript></div></article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
         </div><script>
                     if('serviceWorker' in navigator) {
                         navigator.serviceWorker
                             .register('/sw.min.js', { scope: '/' })
                             .then(function(registration) {
-                                
                             });
                 
                         navigator.serviceWorker
                             .ready
                             .then(function(registration) {
-                                
                             });
                     }
                 </script></footer></div>
@@ -516,14 +500,13 @@ LTE 物理信道详解
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
 
-<div class="pjax-assets"><script type="text/javascript" src="/lib/waline/Waline.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","highlight":true,"lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

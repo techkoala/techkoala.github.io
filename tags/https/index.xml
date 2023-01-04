@@ -25,12 +25,12 @@
 <li>什么是证书和数字签名，它们是如何传递信任的</li>
 <li>HTTPS 有什么样的功能，它是如何实现这样的功能的</li>
 </ul>
-<h2 id="简介">简介</h2>
-<p>HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示为 SSL 3.1，TLS 1.1 为 SSL 3.2，TLS 1.2 为 SSL 3.3。本文着重描述 TLS 协议的 1.2 版本</p>
+<h2 id="简介" class="headerLink">
+    <a href="#%e7%ae%80%e4%bb%8b" class="header-mark"></a>简介</h2><p>HTTPS，也称作 HTTP over TLS。TLS 的前身是 SSL，TLS 1.0 通常被标示为 SSL 3.1，TLS 1.1 为 SSL 3.2，TLS 1.2 为 SSL 3.3。本文着重描述 TLS 协议的 1.2 版本</p>
 <p>下图描述了在 TCP/IP 协议栈中 TLS (各子协议）和 HTTP 的关系</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/tcp-ip-model.webp" data-sub-html="<h2>Credit: Kaushal Kumar Panday From: SSL Handshake and HTTPS Bindings on IIS</h2>">
         
-    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreffer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreffer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
+    </a><figcaption class="image-caption">Credit: <a href="https://blogs.msdn.com/213737/ProfileUrlRedirect.ashx" target="_blank" rel="noopener noreferrer">Kaushal Kumar Panday</a> From: <a href="https://blogs.msdn.com/b/kaushal/archive/2013/08/03/ssl-handshake-and-https-bindings-on-iis.aspx" target="_blank" rel="noopener noreferrer">SSL Handshake and HTTPS Bindings on IIS</a></figcaption>
     </figure>
 <p>其中 <code>Handshake protocol</code>，<code>Change Ciper Spec protocol</code> 和 <code>Alert protocol</code> 组成了 <code>SSL Handshaking Protocols</code>。</p>
 <p>HTTPS 和 HTTP 协议相比提供了:</p>
@@ -40,11 +40,11 @@
 <li>身份认证：第三方无法伪造服务端（客户端）身份</li>
 </ol>
 <p>其中，数据完整性和隐私性由 TLS Record Protocol 保证，身份认证由 TLS Handshaking Protocols 实现。</p>
-<h2 id="总览">总览</h2>
-<p>使用 RSA 算法的 SSL 握手过程是这样的:</p>
+<h2 id="总览" class="headerLink">
+    <a href="#%e6%80%bb%e8%a7%88" class="header-mark"></a>总览</h2><p>使用 RSA 算法的 SSL 握手过程是这样的:</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <ol>
 <li>[明文] 客户端发送随机数 client_random 和支持的加密方式列表</li>
@@ -53,22 +53,22 @@
 <li>服务端使用私钥解密 premaster secret</li>
 <li>两端分别通过 client_random，server_random 和 premaster secret 生成 master secret，用于对称加密后续通信内容</li>
 </ol>
-<h3 id="证书digital-certificate">证书（Digital certificate）</h3>
-<p>那么什么是证书呢？</p>
+<h3 id="证书digital-certificate" class="headerLink">
+    <a href="#%e8%af%81%e4%b9%a6digital-certificate" class="header-mark"></a>证书（Digital certificate）</h3><p>那么什么是证书呢？</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/certificate.webp" data-sub-html="<h2>证书信息</h2>">
         
     </a><figcaption class="image-caption">证书信息</figcaption>
     </figure>
-<h3 id="证书中包含了以下信息">证书中包含了以下信息</h3>
-<ol>
+<h3 id="证书中包含了以下信息" class="headerLink">
+    <a href="#%e8%af%81%e4%b9%a6%e4%b8%ad%e5%8c%85%e5%90%ab%e4%ba%86%e4%bb%a5%e4%b8%8b%e4%bf%a1%e6%81%af" class="header-mark"></a>证书中包含了以下信息</h3><ol>
 <li>证书信息：过期时间和序列号</li>
 <li>所有者信息：姓名等</li>
 <li>所有者公钥</li>
 </ol>
 <p><strong>为什么服务端要发送证书给客户端?</strong></p>
 <p>互联网有太多的服务需要使用证书来验证身份，以至于客户端（操作系统或浏览器等）无法内置所有证书，需要通过服务端将证书发送给客户端。</p>
-<h3 id="客户端为什么要验证接收到的证书">客户端为什么要验证接收到的证书</h3>
-<p><strong>中间人攻击</strong></p>
+<h3 id="客户端为什么要验证接收到的证书" class="headerLink">
+    <a href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e9%aa%8c%e8%af%81%e6%8e%a5%e6%94%b6%e5%88%b0%e7%9a%84%e8%af%81%e4%b9%a6" class="header-mark"></a>客户端为什么要验证接收到的证书</h3><p><strong>中间人攻击</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -79,8 +79,8 @@
         伪造证书            拦截请求
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="客户端如何验证接收到的证书">客户端如何验证接收到的证书</h3>
-<p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
+</div><h3 id="客户端如何验证接收到的证书" class="headerLink">
+    <a href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e5%a6%82%e4%bd%95%e9%aa%8c%e8%af%81%e6%8e%a5%e6%94%b6%e5%88%b0%e7%9a%84%e8%af%81%e4%b9%a6" class="header-mark"></a>客户端如何验证接收到的证书</h3><p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -158,14 +158,14 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
-<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreffer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
+<p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
 <p>Susan 将证书发送给 Bob 后，Bob 通过 CA 证书的公钥验证证书签名。</p>
 <p>Bob 信任 CA，CA 信任 Susan 使得 Bob 信任 Susan，信任链（Chain Of Trust）就是这样形成的。</p>
 <p>事实上，Bob 客户端内置的是 CA 的根证书 (Root Certificate)，HTTPS 协议中服务器会发送证书链（Certificate Chain）给客户端。</p>
-<h2 id="tls-协议">TLS 协议</h2>
-<p><code>TLS</code> 协议包括 <code>TLS Record Protocol</code> 和 <code>TLS Handshake Protocol</code>。总览中的流程图仅涉及到 <code>TLS Handshake Protocol</code>。</p>
-<h3 id="tls-record-protocol">TLS Record Protocol</h3>
-<p>在 <code>TLS</code> 协议中，有四种子协议运行于 <code>Record protocol</code> 之上</p>
+<h2 id="tls-协议" class="headerLink">
+    <a href="#tls-%e5%8d%8f%e8%ae%ae" class="header-mark"></a>TLS 协议</h2><p><code>TLS</code> 协议包括 <code>TLS Record Protocol</code> 和 <code>TLS Handshake Protocol</code>。总览中的流程图仅涉及到 <code>TLS Handshake Protocol</code>。</p>
+<h3 id="tls-record-protocol" class="headerLink">
+    <a href="#tls-record-protocol" class="header-mark"></a>TLS Record Protocol</h3><p>在 <code>TLS</code> 协议中，有四种子协议运行于 <code>Record protocol</code> 之上</p>
 <ul>
 <li>Handshake protocol</li>
 <li>Alert protocol</li>
@@ -196,12 +196,12 @@
 <blockquote>
 <p>其中，Record 首先被加密，然后添加 MAC（message authentication code）以保证数据完整性。</p>
 </blockquote>
-<h3 id="tls-handshaking-protocols">TLS Handshaking Protocols</h3>
-<p>Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。</p>
+<h3 id="tls-handshaking-protocols" class="headerLink">
+    <a href="#tls-handshaking-protocols" class="header-mark"></a>TLS Handshaking Protocols</h3><p>Handshakeing protocols 包括 Alert Protocol，Change Ciper Spec Protocol 和 Handshake protocol。本文不会详细介绍 Alert Protocol 和 Change Ciper Spec Protocol。</p>
 <p>使用 <code>RSA</code> 算法的握手过程是这样的（已在总览中提到）</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_rsa.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
 <p>客户端和服务端在握手 hello 消息中明文交换了 <code>client_random</code> 和 <code>server_random</code> ，使用 <code>RSA</code> 公钥加密传输 <code>premaster secret</code> ，最后通过算法，客户端和服务端分别计算 <code>master secret</code>。其中，不直接使用 <code>premaster secret</code> 的原因是：保证 <code>secret</code> 的随机性不受任意一方的影响。</p>
 <p>除了使用 <code>RSA</code> 算法在公共信道交换密钥，还可以通过 <code>Diffie–Hellman</code> 算法。<code>Diffie–Hellman</code> 算法的原理是这样的</p>
@@ -212,17 +212,17 @@
 <p>使用 <code>Diffie–Hellman</code> 算法交换 <code>premaster secret</code> 的流程</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/ssl_handshake_diffie_hellman.webp" data-sub-html="<h2>Source: Keyless SSL: The Nitty Gritty Technical Details</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless SSL: The Nitty Gritty Technical Details</a></figcaption>
     </figure>
-<h2 id="小结">小结</h2>
-<p><code>TLS Handshaking Protocols</code> 协商了 <code>TLS Record Protocol</code> 使用的算法和所需参数，并验证了服务端身份；</p>
+<h2 id="小结" class="headerLink">
+    <a href="#%e5%b0%8f%e7%bb%93" class="header-mark"></a>小结</h2><p><code>TLS Handshaking Protocols</code> 协商了 <code>TLS Record Protocol</code> 使用的算法和所需参数，并验证了服务端身份；</p>
 <p><code>TLS Record Protocol</code> 在协商后保证应用层数据的完整性和隐私性。</p>
 <p><code>TLS Handshaking Protocol</code> 的核心是在公开信道上传递 <code>premaster secret</code>。</p>
-<h2 id="qa">Q&amp;A</h2>
-<h3 id="为什么传输内容不直接使用非对称加密">为什么传输内容不直接使用非对称加密？</h3>
-<p>因为性能限制。</p>
-<h3 id="https-能保证正常连接">HTTPS 能保证正常连接？</h3>
-<p>不能。</p>
+<h2 id="qa" class="headerLink">
+    <a href="#qa" class="header-mark"></a>Q&amp;A</h2><h3 id="为什么传输内容不直接使用非对称加密" class="headerLink">
+    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bc%a0%e8%be%93%e5%86%85%e5%ae%b9%e4%b8%8d%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" class="header-mark"></a>为什么传输内容不直接使用非对称加密？</h3><p>因为性能限制。</p>
+<h3 id="https-能保证正常连接" class="headerLink">
+    <a href="#https-%e8%83%bd%e4%bf%9d%e8%af%81%e6%ad%a3%e5%b8%b8%e8%bf%9e%e6%8e%a5" class="header-mark"></a>HTTPS 能保证正常连接？</h3><p>不能。</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -232,8 +232,8 @@
         </div>
     </div>
 <p>攻击者甚至可以直接丢弃双方的数据包</p>
-<h3 id="服务端如何验证客户端身份">服务端如何验证客户端身份？</h3>
-<p>通过 <code>Client Certificate</code></p>
+<h3 id="服务端如何验证客户端身份" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e7%ab%af%e5%a6%82%e4%bd%95%e9%aa%8c%e8%af%81%e5%ae%a2%e6%88%b7%e7%ab%af%e8%ba%ab%e4%bb%bd" class="header-mark"></a>服务端如何验证客户端身份？</h3><p>通过 <code>Client Certificate</code></p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -242,8 +242,8 @@
             <div class="admonition-content">This message conveys the client’s certificate chain to the server; the server will use it when verifying the CertificateVerify message (when the client authentication is based on signing) or calculating the premaster secret (for non-ephemeral Diffie- Hellman). The certificate MUST be appropriate for the negotiated cipher suite’s key exchange algorithm, and any negotiated extensions.</div>
         </div>
     </div>
-<h3 id="alert-protocol-有什么作用">Alert protocol 有什么作用？</h3>
-<p><code>Closure Alerts</code>：防止 <code>Truncation Attack</code></p>
+<h3 id="alert-protocol-有什么作用" class="headerLink">
+    <a href="#alert-protocol-%e6%9c%89%e4%bb%80%e4%b9%88%e4%bd%9c%e7%94%a8" class="header-mark"></a>Alert protocol 有什么作用？</h3><p><code>Closure Alerts</code>：防止 <code>Truncation Attack</code></p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -253,8 +253,8 @@
         </div>
     </div>
 <p>Error Alerts：错误处理</p>
-<h3 id="master-secret-是如何计算的">master secret 是如何计算的</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="master-secret-是如何计算的" class="headerLink">
+    <a href="#master-secret-%e6%98%af%e5%a6%82%e4%bd%95%e8%ae%a1%e7%ae%97%e7%9a%84" class="header-mark"></a>master secret 是如何计算的</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -266,8 +266,8 @@
                       [0..47];
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="加密压缩和-mac-算法参数是如何计算的">加密，压缩和 MAC 算法参数是如何计算的</h3>
-<p><code>Handshaking Protocols</code> 使得客户端和服务端交换了三个参数：<code>client_random</code>，<code>server_random</code> 和 <code>master_secret</code>，通过以下算法生成算法所需要的参数</p>
+</div><h3 id="加密压缩和-mac-算法参数是如何计算的" class="headerLink">
+    <a href="#%e5%8a%a0%e5%af%86%e5%8e%8b%e7%bc%a9%e5%92%8c-mac-%e7%ae%97%e6%b3%95%e5%8f%82%e6%95%b0%e6%98%af%e5%a6%82%e4%bd%95%e8%ae%a1%e7%ae%97%e7%9a%84" class="header-mark"></a>加密，压缩和 MAC 算法参数是如何计算的</h3><p><code>Handshaking Protocols</code> 使得客户端和服务端交换了三个参数：<code>client_random</code>，<code>server_random</code> 和 <code>master_secret</code>，通过以下算法生成算法所需要的参数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -317,28 +317,28 @@
 <p>使用 <code>Diffie-Hellman</code> 算法的 <code>TLS</code> 握手细节</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/HTTPS/dh-detail.webp" data-sub-html="<h2>Source: https://cipherstuff.wordpress.com/</h2>">
         
-    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/" target="_blank" rel="noopener noreffer">https://cipherstuff.wordpress.com/</a></figcaption>
+    </a><figcaption class="image-caption">Source: <a href="https://cipherstuff.wordpress.com/" target="_blank" rel="noopener noreferrer">https://cipherstuff.wordpress.com/</a></figcaption>
     </figure>
-<h2 id="拓展阅读">拓展阅读</h2>
-<ul>
-<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">Keyless</a></li>
-<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer">Let’s Encrypt</a></li>
+<h2 id="拓展阅读" class="headerLink">
+    <a href="#%e6%8b%93%e5%b1%95%e9%98%85%e8%af%bb" class="header-mark"></a>拓展阅读</h2><ul>
+<li><a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">Keyless</a></li>
+<li><a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a></li>
 <li>Session resume</li>
 <li>证书 Revoke</li>
 </ul>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">TLS1.2 规范</a></p>
+<p>[1] <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreferrer">TLS1.2 规范</a></p>
 </li>
 <li>
-<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreffer">PKI 规范</a></p>
+<p>[2] <a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener noreferrer">PKI 规范</a></p>
 </li>
 <li>
-<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreffer">证书和数字签名</a></p>
+<p>[3] <a href="http://www.youdzone.com/signature.html" target="_blank" rel="noopener noreferrer">证书和数字签名</a></p>
 </li>
 <li>
-<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreffer">TLS Handshake</a></p>
+<p>[4] <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/" target="_blank" rel="noopener noreferrer">TLS Handshake</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

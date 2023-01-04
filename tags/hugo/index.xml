@@ -13,8 +13,8 @@
     <description><![CDATA[<blockquote>
 <p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案</p>
 </blockquote>
-<h3 id="1-虚拟机中-hugo-server-无法远程访问">1. 虚拟机中 Hugo server 无法远程访问</h3>
-<p><code>hugo server</code> 默认只会 <code>bind localhost</code></p>
+<h3 id="1-虚拟机中-hugo-server-无法远程访问" class="headerLink">
+    <a href="#1-%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%b8%ad-hugo-server-%e6%97%a0%e6%b3%95%e8%bf%9c%e7%a8%8b%e8%ae%bf%e9%97%ae" class="header-mark"></a>1. 虚拟机中 Hugo server 无法远程访问</h3><p><code>hugo server</code> 默认只会 <code>bind localhost</code></p>
 <p>使用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -25,8 +25,8 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机 IP，即可通过同网域机器访问该 web 服务</p>
-<h3 id="2-使用-git-信息生成文章上一次修改时间">2. 使用 git 信息生成文章上一次修改时间</h3>
-<p>首先，启用 <code>git</code> 信息：</p>
+<h3 id="2-使用-git-信息生成文章上一次修改时间" class="headerLink">
+    <a href="#2-%e4%bd%bf%e7%94%a8-git-%e4%bf%a1%e6%81%af%e7%94%9f%e6%88%90%e6%96%87%e7%ab%a0%e4%b8%8a%e4%b8%80%e6%ac%a1%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4" class="header-mark"></a>2. 使用 git 信息生成文章上一次修改时间</h3><p>首先，启用 <code>git</code> 信息：</p>
 <blockquote>
 <p>enableGitInfo = true</p>
 </blockquote>
@@ -43,11 +43,11 @@
 <p>但是这样，如果只 push public 文件夹到 Github 上部署的话，网页上无法正确跳转对应的 commit 详情页。</p>
 </li>
 </ul>
-<h3 id="3-页面出现-extra-stringxxxx">3. 页面出现 %!(EXTRA string=xxxx)</h3>
-<p>LoveIt Github Issue 提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreffer">解决方案</a></p>
+<h3 id="3-页面出现-extra-stringxxxx" class="headerLink">
+    <a href="#3-%e9%a1%b5%e9%9d%a2%e5%87%ba%e7%8e%b0-extra-stringxxxx" class="header-mark"></a>3. 页面出现 %!(EXTRA string=xxxx)</h3><p>LoveIt Github Issue 提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreferrer">解决方案</a></p>
 <p>但实际通过修改 <code>config.toml</code> 中的<code>defaultContentLanguage = &quot;zh&quot;</code>为<code>defaultContentLanguage = &quot;zh-cn&quot;</code>即可解决。</p>
-<h3 id="4开启-gitalk-评论">4.开启 Gitalk 评论</h3>
-<p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
+<h3 id="4开启-gitalk-评论" class="headerLink">
+    <a href="#4%e5%bc%80%e5%90%af-gitalk-%e8%af%84%e8%ae%ba" class="header-mark"></a>4.开启 Gitalk 评论</h3><p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
 <p>因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。</p>
 <p>接着打开 <code>Settings &gt; Developer settings &gt; OAuth Apps</code> ，点击 <code>New OAuth App</code></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
@@ -74,8 +74,8 @@ clientId = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取
 clientSecret = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取</p>
 </blockquote>
 <p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p>
-<h3 id="5cdn-配置">5.CDN 配置</h3>
-<p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
+<h3 id="5cdn-配置" class="headerLink">
+    <a href="#5cdn-%e9%85%8d%e7%bd%ae" class="header-mark"></a>5.CDN 配置</h3><p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
 <p>将该目录下的 <code>jsdelivr.yml</code> 移动到你的项目下相同路径： <code>assets/data/cdn/</code>。（如果需要使用别的 <code>CDN</code>，可以执行参考 <code>CDN</code> 网站的配置说明对 <code>jsdelivr.yml</code> 进行修改</p>
 <p>然后修改 <code>config.toml</code> 文件中的：</p>
 <blockquote>
@@ -85,8 +85,8 @@ clientSecret = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取</p>
 <p>(&ldquo;jsdelivr.yml&rdquo;)</p>
 <p>data = &ldquo;jsdelivr.yml&rdquo;</p>
 </blockquote>
-<h3 id="6hugo-矩阵渲染">6.Hugo 矩阵渲染</h3>
-<p>因为 hugo 默认的 Markdown 引擎先处理 Markdown，而反斜杠\在 Markdown 中代表转义字符，所以双斜杠无法正确渲染矩阵，</p>
+<h3 id="6hugo-矩阵渲染" class="headerLink">
+    <a href="#6hugo-%e7%9f%a9%e9%98%b5%e6%b8%b2%e6%9f%93" class="header-mark"></a>6.Hugo 矩阵渲染</h3><p>因为 hugo 默认的 Markdown 引擎先处理 Markdown，而反斜杠\在 Markdown 中代表转义字符，所以双斜杠无法正确渲染矩阵，</p>
 <p>$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \ 0&amp;1\end{bmatrix}$</p>
 <p>解决办法是在 <code>Katex</code> 原始语法再加入一个斜杠就好了</p>
 <p>$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \\ 0&amp;1\end{bmatrix}$</p>]]></description>

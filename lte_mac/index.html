@@ -25,8 +25,12 @@ LTE MAC 层详解
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_mac/" /><link rel="prev" href="https://www.techkoala.top/lte_rlc/" /><link rel="next" href="https://www.techkoala.top/lte_rrc/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,7 +39,7 @@ LTE MAC 层详解
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/lte_mac\/"
-        },"genre": "posts","keywords": "LTE","wordcount":  5795 ,
+        },"genre": "posts","keywords": "LTE","wordcount":  5798 ,
         "url": "https:\/\/www.techkoala.top\/lte_mac\/","datePublished": "2019-06-10T21:00:31+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -46,7 +50,7 @@ LTE MAC 层详解
     </script></head>
 
 <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
@@ -114,17 +118,12 @@ LTE MAC 层详解
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-            <div class="container"><div class="toc" id="toc-auto">
-        <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LTE 系列：MAC 层</h1><div class="post-meta">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LTE 系列：MAC 层</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-06-10">2019-06-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5795 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/lte_mac/" class="leancloud_visitors" data-flag-title="LTE 系列：MAC 层">
-                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
-                    </span>&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-06-10">2019-06-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5798 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -168,8 +167,8 @@ LTE MAC 层详解
             </div><div class="content" id="content"><blockquote>
 <p>LTE MAC 层详解</p>
 </blockquote>
-<h2 id="媒体接入控制mac">媒体接入控制（MAC）</h2>
-<p>媒体接入控制（Medium Access Control，MAC）层接收来自上层的 <code>RLC</code> 层的逻辑信道，经过处理后，以传输信道的方式输出到下层的物理层。</p>
+<h2 id="媒体接入控制mac" class="headerLink">
+    <a href="#%e5%aa%92%e4%bd%93%e6%8e%a5%e5%85%a5%e6%8e%a7%e5%88%b6mac" class="header-mark"></a>媒体接入控制（MAC）</h2><p>媒体接入控制（Medium Access Control，MAC）层接收来自上层的 <code>RLC</code> 层的逻辑信道，经过处理后，以传输信道的方式输出到下层的物理层。</p>
 <p>MAC 层的主要功能包括：</p>
 <ul>
 <li>逻辑信道向传输信道的映射与复用</li>
@@ -177,16 +176,16 @@ LTE MAC 层详解
 <li>选择传输格式实现动态的速率自适应</li>
 <li>混合自动重传（HybridAutomatic Repeat reQuest，HARQ）的纠错功能</li>
 </ul>
-<h3 id="逻辑信道">逻辑信道</h3>
-<p>逻辑信道根据所传输的信息的类型进行定义。LTE 定义的逻辑信道包括：</p>
+<h3 id="逻辑信道" class="headerLink">
+    <a href="#%e9%80%bb%e8%be%91%e4%bf%a1%e9%81%93" class="header-mark"></a>逻辑信道</h3><p>逻辑信道根据所传输的信息的类型进行定义。LTE 定义的逻辑信道包括：</p>
 <ul>
 <li>用于传输系统广播消息的<strong>广播控制信道</strong>（Broadcast Control CHannel，BCCH）</li>
 <li>用于传输寻呼消息的<strong>寻呼控制信道</strong>（Paging Control CHannel，PCCH）</li>
 <li>分别用于空闲状态和连接状态的终端传输控制信息的<strong>公用和专用控制信道</strong>（Common/ Dedicated Control CHannel，CCCH/DCCH）</li>
 <li>用于传输用户数据信息的<strong>专用业务信道</strong>（Dedicated Traffic CHannel，DTCH）</li>
 </ul>
-<h3 id="传输信道">传输信道</h3>
-<p>传输信道根据信息传输的方式进行定义。传输信道以<strong>传输块</strong>为单位在发送时间间隔（Transmission Time Interval，TTI）所定义的时间长度内进行每一次的发送，LTE 中设计的 <code>TTI</code> 长度是 1ms。每个传输块都有定义的传输格式，它由网络的调度功能动态地确定，包括传输块大小、调制方式和多天线方案等。</p>
+<h3 id="传输信道" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e4%bf%a1%e9%81%93" class="header-mark"></a>传输信道</h3><p>传输信道根据信息传输的方式进行定义。传输信道以<strong>传输块</strong>为单位在发送时间间隔（Transmission Time Interval，TTI）所定义的时间长度内进行每一次的发送，LTE 中设计的 <code>TTI</code> 长度是 1ms。每个传输块都有定义的传输格式，它由网络的调度功能动态地确定，包括传输块大小、调制方式和多天线方案等。</p>
 <p>LTE 定义的传输信道包括：</p>
 <ul>
 <li><strong>广播信道</strong>（Paging CHannel，PCH），采用固定的传输格式，用于传输广播控制信道；</li>
@@ -199,8 +198,7 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_9.webp">
     </a><figcaption class="image-caption">下行信道映射</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp" data-sub-html="<h2>上行信道映射</h2>">
@@ -209,20 +207,18 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_10.webp">
     </a><figcaption class="image-caption">上行信道映射</figcaption>
     </figure>
-<h3 id="mac-协议数据单元格式">MAC 协议数据单元格式</h3>
-<p><code>MAC 包头</code>可以包含多个子包头，每个子包头对应于 <code>MAC PDU</code> 负荷部分的 1 个 <code>MAC 控制单元</code>、<code>MAC SDU</code> 或者填充比特字段。</p>
+<h3 id="mac-协议数据单元格式" class="headerLink">
+    <a href="#mac-%e5%8d%8f%e8%ae%ae%e6%95%b0%e6%8d%ae%e5%8d%95%e5%85%83%e6%a0%bc%e5%bc%8f" class="header-mark"></a>MAC 协议数据单元格式</h3><p><code>MAC 包头</code>可以包含多个子包头，每个子包头对应于 <code>MAC PDU</code> 负荷部分的 1 个 <code>MAC 控制单元</code>、<code>MAC SDU</code> 或者填充比特字段。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp" data-sub-html="<h2>MAC 协议数据单元 PDU 的格式</h2>">
         <img
             class="lazyload"
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_11.webp">
     </a><figcaption class="image-caption">MAC 协议数据单元 PDU 的格式</figcaption>
     </figure>
 <p>子包头的格式如图所示：</p>
@@ -232,8 +228,7 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_12.webp">
     </a><figcaption class="image-caption">MAC 层的子包头</figcaption>
     </figure>
 <ul>
@@ -243,10 +238,10 @@ LTE MAC 层详解
 <li><code>F</code>（Format）字段指示随后的 <code>L</code> 字段的长度，7 个比特或者 15 个比特</li>
 <li><code>L</code>（Length）字段指示与子包头相对应的 <code>MAC SDU</code> 或者 <code>MAC 控制单元</code>的字节长度</li>
 </ul>
-<h3 id="mac-层功能和-mac-控制单元">MAC 层功能和 MAC 控制单元</h3>
-<p>下面介绍 MAC 层的主要功能，以及在完成这些功能过程中所需要的 MAC 控制单元。</p>
-<h4 id="随机接入过程">随机接入过程</h4>
-<p>随机接入是由 MAC 层控制的一项功能，空闲状态的终端通过随机接入过程与网络建立连接。</p>
+<h3 id="mac-层功能和-mac-控制单元" class="headerLink">
+    <a href="#mac-%e5%b1%82%e5%8a%9f%e8%83%bd%e5%92%8c-mac-%e6%8e%a7%e5%88%b6%e5%8d%95%e5%85%83" class="header-mark"></a>MAC 层功能和 MAC 控制单元</h3><p>下面介绍 MAC 层的主要功能，以及在完成这些功能过程中所需要的 MAC 控制单元。</p>
+<h4 id="随机接入过程" class="headerLink">
+    <a href="#%e9%9a%8f%e6%9c%ba%e6%8e%a5%e5%85%a5%e8%bf%87%e7%a8%8b" class="header-mark"></a>随机接入过程</h4><p>随机接入是由 MAC 层控制的一项功能，空闲状态的终端通过随机接入过程与网络建立连接。</p>
 <p>首先建立<strong>执行控制功能的连接</strong>（即 <code>RRC 连接</code>），终端由空闲状态转变为连接状态$\Longrightarrow$然后通过 <code>RRC 控制功能</code>建立数据通信的连接，开始进行数据的通信。(对于连接状态的终端，也可能因为长时间没有发送上行信号而失去上行同步，此时如果有数据需要进行发送，终端需要进行随机接入的过程，与基站重新建立上行同步。随机接入过程可以由终端发起，也可以由网络侧通过物理层下行控制信道（PDCCH）触发终端发起随机接入)</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp" data-sub-html="<h2>随机接入过程</h2>">
         <img
@@ -254,8 +249,7 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_13.webp">
     </a><figcaption class="image-caption">随机接入过程</figcaption>
     </figure>
 <p>在随机接入过程中，终端选择 1 个随机接入序列通过物理层随机接入信道（PRACH）进行发送（在网络侧触发的情况下，由触发消息指示终端所使用的随机接入序列）$\Longrightarrow$基站检测到随机接入序列的信号后，在下行方向上发送随机接入响应，该消息指示了：</p>
@@ -264,8 +258,8 @@ LTE MAC 层详解
 <li>发起随机接入的终端分配的上行资源位置</li>
 <li>上行信号发送时间的调整量</li>
 </ul>
-<h5 id="冲突解决">冲突解决</h5>
-<p>如果多个终端选择了<strong>相同的随机接入序列</strong>并且在<strong>相同的时间</strong>进行发送，那么多个终端可能针对随机接入响应的接收发生冲突，所以需要冲突解决的过程。</p>
+<h5 id="冲突解决" class="headerLink">
+    <a href="#%e5%86%b2%e7%aa%81%e8%a7%a3%e5%86%b3" class="header-mark"></a>冲突解决</h5><p>如果多个终端选择了<strong>相同的随机接入序列</strong>并且在<strong>相同的时间</strong>进行发送，那么多个终端可能针对随机接入响应的接收发生冲突，所以需要冲突解决的过程。</p>
 <p>在收到随机接入响应的消息后，终端根据消息指示的内容进行上行信号的发送（又称为“消息 3”），对应于图中的步骤 3，该信号中可能包含终端的唯一标识。随后基站根据接收到的上行信息，向唯一标识所对应的成功接入的终端返回冲突解决消息，完成冲突解决的过程。</p>
 <ul>
 <li>
@@ -278,8 +272,7 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_14.webp">
     </a><figcaption class="image-caption">MAC 控制单元——C-RNTI</figcaption>
     </figure>
 </li>
@@ -293,21 +286,20 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_15.webp">
     </a><figcaption class="image-caption">MAC 控制单元——终端冲突解决标识</figcaption>
     </figure>
 </li>
 </ul>
-<h4 id="数据的调度和传输">数据的调度和传输</h4>
-<p><strong>数据的调度和传输</strong>是 MAC 层控制的另一项主要功能。</p>
+<h4 id="数据的调度和传输" class="headerLink">
+    <a href="#%e6%95%b0%e6%8d%ae%e7%9a%84%e8%b0%83%e5%ba%a6%e5%92%8c%e4%bc%a0%e8%be%93" class="header-mark"></a>数据的调度和传输</h4><p><strong>数据的调度和传输</strong>是 MAC 层控制的另一项主要功能。</p>
 <p>对于数据信息的传输，即传输信道中的上行／下行共享信道（DL/UL-SCH），可以根据无线信道状态将无线资源在用户间进行自适应的调度分配，实现系统资源的优化利用，同时满足各个用户的 <code>QoS</code> 要求。主要采用<code>动态调度</code>的方式，也支持<code>半持续调度</code>（Semi-Persistent Scheduling，SPS）的方式。</p>
 <ul>
 <li>动态调度的情况下，根据无线信道状态和用户优先级等信息，基站按照长度等于 1ms 的 <code>TTI</code> 作为单位，在每个 1ms 对各个终端所使用的无线资源进行分配，并且选择合适的数据传输格式</li>
 <li>半持续调度的情况下，基站一次性为终端分配较长时间的无线资源，可以节省进行资源调度的控制信息</li>
 </ul>
-<h5 id="半持续调度">半持续调度</h5>
-<p>LTE 支持<code>半持续</code>（Semi-Persistent Scheduling，SPS）的调度方式。对于某些业务量不大而且比较规则的业务（例如 VoIP），一次性的对较长时间内的资源使用进行分配，而不需要在每次传输的时候都进行动态分配，通过这样的机制，节省了为终端进行资源调度的 <code>PDCCH</code> 控制信令的开销。</p>
+<h5 id="半持续调度" class="headerLink">
+    <a href="#%e5%8d%8a%e6%8c%81%e7%bb%ad%e8%b0%83%e5%ba%a6" class="header-mark"></a>半持续调度</h5><p>LTE 支持<code>半持续</code>（Semi-Persistent Scheduling，SPS）的调度方式。对于某些业务量不大而且比较规则的业务（例如 VoIP），一次性的对较长时间内的资源使用进行分配，而不需要在每次传输的时候都进行动态分配，通过这样的机制，节省了为终端进行资源调度的 <code>PDCCH</code> 控制信令的开销。</p>
 <p>对于半持续调度，为了减小调度信令的开销，基站一次为终端分配一段时间内预先定义好的无线资源和相应的传输格式，主要参数是<code>半持续调度的时间间隔</code>。例如，根据 VoIP 业务的流量特点，设置半持续调度的时间间隔等于 20ms，为用户分配一段时间内间隔为 20ms、相同频域位置和大小的无线资源。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp" data-sub-html="<h2>半持续调度</h2>">
         <img
@@ -315,20 +307,18 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_16.webp">
     </a><figcaption class="image-caption">半持续调度</figcaption>
     </figure>
-<h5 id="harq">HARQ</h5>
-<p>MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的<code>停——等</code>机制的 HARQ 进程，每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。</p>
+<h5 id="harq" class="headerLink">
+    <a href="#harq" class="header-mark"></a>HARQ</h5><p>MAC 层采用混合自动重传（Hybrid Automatic Repeat reQuest，HARQ）的数据纠错机制。设置多个并行的<code>停——等</code>机制的 HARQ 进程，每个进程独立地进行数据包的重传和合并。多个并行的进程保证数据包传输的工作效率，重传保证了数据包传输的正确性，同时合并的处理还可以提供额外的性能增益。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp" data-sub-html="<h2>多个并行的 停——等 机制的 HARQ 进程</h2>">
         <img
             class="lazyload"
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_17.webp">
     </a><figcaption class="image-caption">多个并行的 停——等 机制的 HARQ 进程</figcaption>
     </figure>
 <p>在下行的数据传输中，每个 <code>HARQ</code> 进程内部采用<code>异步</code>、<code>自适应</code>的机制。</p>
@@ -342,8 +332,8 @@ LTE MAC 层详解
 <p>例如：在时刻 0 进行初传的数据包，如果出现接收错误需要进行重新传输，那么第一次重传将发生在时刻 8，如果仍然接收错误需要继续重传，那么第二次重传将发生在时刻 16，以此类推。根据这样的同步的定时关系，对于上行 HARQ 过程的数据重新传输，基站可以不对重传的数据包进行调度。此时，终端仅收到网络侧基站反馈的关于数据接收出错的消息，终端将根据固定的定时关系，在规定的时间采用与第一次传输相同的频率资源位置和传输格式进行重传，这种方式称为同步、非自适应的 HARQ 机制。</p>
 </blockquote>
 <p>上行方向还可以支持同步、自适应的 <code>HARQ</code> 机制，网络侧基站反馈关于数据接收出错的消息的同时可以发送对于重传数据包的上行调度信息，该调度信息不改变重传数据包的传输时间，即仍然是同步的机制，但是可以调度不同位置和大小的频率资源，以及不同的传输格式，也就是说，实现自适应的 <code>HARQ</code> 机制。</p>
-<h5 id="上行缓存状态报告">上行缓存状态报告</h5>
-<p>终端的上行发送是根据基站的调度进行的，因此，终端的缓存中等待进行发送的数据的数量是基站进行调度时需要的参考信息。</p>
+<h5 id="上行缓存状态报告" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e7%bc%93%e5%ad%98%e7%8a%b6%e6%80%81%e6%8a%a5%e5%91%8a" class="header-mark"></a>上行缓存状态报告</h5><p>终端的上行发送是根据基站的调度进行的，因此，终端的缓存中等待进行发送的数据的数量是基站进行调度时需要的参考信息。</p>
 <blockquote>
 <p>例如，如果终端的缓存中没有等待发送的数据，那么基站就不应该对该终端进行上行发送的调度。</p>
 </blockquote>
@@ -359,12 +349,11 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_18.webp">
     </a><figcaption class="image-caption">MAC 控制单元——缓存状态报告</figcaption>
     </figure>
-<h5 id="功率余量报告">功率余量报告</h5>
-<p>上行信号的发送受到终端最大发射功率的限制，所以基站在调度终端进行上行发送的时候需要参考终端发射功率的情况。</p>
+<h5 id="功率余量报告" class="headerLink">
+    <a href="#%e5%8a%9f%e7%8e%87%e4%bd%99%e9%87%8f%e6%8a%a5%e5%91%8a" class="header-mark"></a>功率余量报告</h5><p>上行信号的发送受到终端最大发射功率的限制，所以基站在调度终端进行上行发送的时候需要参考终端发射功率的情况。</p>
 <blockquote>
 <p>例如：如果终端处于小区边缘，已经接近最大发射功率的限制，在这种情况下，基站如果调度这个终端使用大量资源进行大数据量的上行发送，而终端由于最大发射功率的限制可能无法保证发射信号的质量，因而导致信息传输的错误。所以基站需要根据对终端发射功率情况的了解，避免出现这样的情况。</p>
 </blockquote>
@@ -376,12 +365,11 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_19.webp">
     </a><figcaption class="image-caption">MAC 控制单元——功率余量报告</figcaption>
     </figure>
-<h4 id="上行时间同步的保持">上行时间同步的保持</h4>
-<p>在下行方向上，终端通过检测基站的同步和导频信号，与基站下行信号的发送时间取得同步，实现下行信号的接收。与此相类似，为了实现上行信号的传输，终端需要与基站取得上行方向的同步。在获得上行同步的过程中，终端根据基站的指示调整上行信号的发送时间，使得无论终端距离基站是远或者是近，它们发送的上行信号到达基站的时间是对齐的，并且符合基站的定时关系，这样方便基站对用户信号的接收，以及对多个用户信号之间干扰的管理和控制。</p>
+<h4 id="上行时间同步的保持" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e6%97%b6%e9%97%b4%e5%90%8c%e6%ad%a5%e7%9a%84%e4%bf%9d%e6%8c%81" class="header-mark"></a>上行时间同步的保持</h4><p>在下行方向上，终端通过检测基站的同步和导频信号，与基站下行信号的发送时间取得同步，实现下行信号的接收。与此相类似，为了实现上行信号的传输，终端需要与基站取得上行方向的同步。在获得上行同步的过程中，终端根据基站的指示调整上行信号的发送时间，使得无论终端距离基站是远或者是近，它们发送的上行信号到达基站的时间是对齐的，并且符合基站的定时关系，这样方便基站对用户信号的接收，以及对多个用户信号之间干扰的管理和控制。</p>
 <ul>
 <li>对于<strong>空闲状态</strong>或者处于<strong>连接状态但上行已经失去同步</strong>的终端，需要通过上行随机接入过程，获得上行同步。</li>
 <li>对处于<strong>连接状态</strong>，上行没有失去同步的终端，基站使用 MAC 控制单元向终端指示定时提前（Time Advanced，TA）命令，对终端的上行发送时间进行调整，实现终端与系统之间上行时间同步的保持。</li>
@@ -393,12 +381,11 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_20.webp">
     </a><figcaption class="image-caption">MAC 控制单元——定时提前命令</figcaption>
     </figure>
-<h4 id="不连续接收功能">不连续接收功能</h4>
-<p><strong>不连续接收</strong>（Discontinuous Reception，DRX）是一种用于实现<strong>终端省电</strong>的功能。</p>
+<h4 id="不连续接收功能" class="headerLink">
+    <a href="#%e4%b8%8d%e8%bf%9e%e7%bb%ad%e6%8e%a5%e6%94%b6%e5%8a%9f%e8%83%bd" class="header-mark"></a>不连续接收功能</h4><p><strong>不连续接收</strong>（Discontinuous Reception，DRX）是一种用于实现<strong>终端省电</strong>的功能。</p>
 <p>根据 <code>RRC 信令</code>进行配置的 <code>DRX</code> 功能，可以对处于连接状态的终端监测物理层<code>下行控制信道</code>（PDCCH）的方式进行控制。在不使用 <code>DRX</code> 功能的时候，终端需要对 <code>PDCCH</code> 信道进行连续的监测，在每一个 <code>TTI</code>（1ms），终端都需要对 <code>PDCCH</code> 信道进行监测，寻找其中可能属于自己的数据调度信息。通过配置 <code>DRX</code> 功能，设置了<code>激活”时间</code>和<code>休眠时间</code>。</p>
 <ul>
 <li>在激活的时间里，终端需要对 <code>PDCCH</code> 信道进行监测</li>
@@ -410,13 +397,12 @@ LTE MAC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_21.webp">
     </a><figcaption class="image-caption">不连续接收（DRX）功能</figcaption>
     </figure>
 <p>关于终端使用 <code>DRX</code> 功能的过程，首先通过高层 RRC 信令对终端设置 <code>DRX</code> 的相关配置，包括 <code>DRX 周期</code>、激活和休眠时间等。在工作过程中，采用 <code>MAC 层控制信令</code>开启或者关闭终端的 <code>DRX</code> 功能。<code>MAC 层</code> <code>DRX</code> 命令采用类型为 <code>DRX</code> 命令的 <code>MAC 控制单元</code>进行指示，所对应的 <code>MAC PDU</code> 子包头指示 MAC 控制单元的类型是 <code>DRX</code> 命令，因为除了指示存在 <code>DRX</code> 命令之外，不需要其他的信息，所以相应的 <code>MAC 控制单元</code>部分的长度是 <code>0</code>。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul></div>
 
@@ -452,18 +438,19 @@ LTE MAC 层详解
             </noscript></div></article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
         </div><script>
                     if('serviceWorker' in navigator) {
                         navigator.serviceWorker
                             .register('/sw.min.js', { scope: '/' })
                             .then(function(registration) {
-                                
                             });
                 
                         navigator.serviceWorker
                             .ready
                             .then(function(registration) {
-                                
                             });
                     }
                 </script></footer></div>
@@ -473,14 +460,13 @@ LTE MAC 层详解
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
 
-<div class="pjax-assets"><script type="text/javascript" src="/lib/waline/Waline.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","highlight":true,"lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

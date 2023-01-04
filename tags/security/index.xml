@@ -17,9 +17,9 @@
 <blockquote>
 <p>记录一些常见的 Linux 服务器安全问题分析以及防护措施</p>
 </blockquote>
-<h2 id="日志分析">日志分析</h2>
-<h3 id="常用日志文件">常用日志文件</h3>
-<p><code>Debian</code> 以及 <code>RHEL</code> 系的系统日志是由一个名为 <code>syslog</code> 的服务管理的，如以下日志文件都是由 <code>syslog</code> 日志服务驱动的：</p>
+<h2 id="日志分析" class="headerLink">
+    <a href="#%e6%97%a5%e5%bf%97%e5%88%86%e6%9e%90" class="header-mark"></a>日志分析</h2><h3 id="常用日志文件" class="headerLink">
+    <a href="#%e5%b8%b8%e7%94%a8%e6%97%a5%e5%bf%97%e6%96%87%e4%bb%b6" class="header-mark"></a>常用日志文件</h3><p><code>Debian</code> 以及 <code>RHEL</code> 系的系统日志是由一个名为 <code>syslog</code> 的服务管理的，如以下日志文件都是由 <code>syslog</code> 日志服务驱动的：</p>
 <p><code>/var/log/boot.log</code>：记录了系统在引导过程中发生的事件，就是 <code>Linux</code> 系统开机自检过程显示的信息</p>
 <p><code>/var/log/lastlog</code> ：记录最后一次用户成功登陆的时间、登陆 <code>IP</code> 等信息</p>
 <p><code>/var/log/messages</code> ：记录 <code>Linux</code> 操作系统常见的系统和服务错误信息</p>
@@ -33,8 +33,8 @@
 <p>注：<code>Debian</code> 系在 /var/log/auth.log 中存储认证信息而 <code>RHEL</code> 系则在 /var/log/secure 中存储。</p>
 </blockquote>
 <p><strong>Archlinux</strong> 使用 <code>systemd</code> 提供的日志系统（logging system），称为 <code>journal</code>。使用 <code>systemd</code> 日志，无需额外安装日志服务（<code>syslog</code>）。</p>
-<h3 id="相关日志查看命令">相关日志查看命令</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="相关日志查看命令" class="headerLink">
+    <a href="#%e7%9b%b8%e5%85%b3%e6%97%a5%e5%bf%97%e6%9f%a5%e7%9c%8b%e5%91%bd%e4%bb%a4" class="header-mark"></a>相关日志查看命令</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -52,10 +52,10 @@
 </code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="常见防护措施">常见防护措施</h2>
-<h3 id="ssh">SSH</h3>
-<h4 id="编辑-ssh-配置文件">编辑 SSH 配置文件</h4>
-<div class="highlight"><div class="chroma">
+<h2 id="常见防护措施" class="headerLink">
+    <a href="#%e5%b8%b8%e8%a7%81%e9%98%b2%e6%8a%a4%e6%8e%aa%e6%96%bd" class="header-mark"></a>常见防护措施</h2><h3 id="ssh" class="headerLink">
+    <a href="#ssh" class="header-mark"></a>SSH</h3><h4 id="编辑-ssh-配置文件" class="headerLink">
+    <a href="#%e7%bc%96%e8%be%91-ssh-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>编辑 SSH 配置文件</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -128,13 +128,13 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ systemctl restart sshd
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="用户以及用户组管理">用户以及用户组管理</h3>
-<h4 id="无用用户用户组">无用用户、用户组</h4>
-<p><strong>Linux 系统中可以删除的默认用户和组大致有如下这些：</strong></p>
+</div><h3 id="用户以及用户组管理" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e4%bb%a5%e5%8f%8a%e7%94%a8%e6%88%b7%e7%bb%84%e7%ae%a1%e7%90%86" class="header-mark"></a>用户以及用户组管理</h3><h4 id="无用用户用户组" class="headerLink">
+    <a href="#%e6%97%a0%e7%94%a8%e7%94%a8%e6%88%b7%e7%94%a8%e6%88%b7%e7%bb%84" class="header-mark"></a>无用用户、用户组</h4><p><strong>Linux 系统中可以删除的默认用户和组大致有如下这些：</strong></p>
 <p>可删除的用户，如 <code>adm,lp,sync,shutdown,halt,news,uucp,operator,games,gopher</code> 等。</p>
 <p>可删除的组，如 <code>adm,lp,news,uucp,games,dip,pppusers,popusers,slipusers</code> 等。</p>
-<h4 id="空口令账户">空口令账户</h4>
-<p>使用如下命令检测空口令账户：</p>
+<h4 id="空口令账户" class="headerLink">
+    <a href="#%e7%a9%ba%e5%8f%a3%e4%bb%a4%e8%b4%a6%e6%88%b7" class="header-mark"></a>空口令账户</h4><p>使用如下命令检测空口令账户：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -144,10 +144,10 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>然后查看 <code>/etc/passwd</code> 确认空口令用户是否可以登录，选择是否加固密码。</p>
-<h4 id="登录失败后强制延时">登录失败后强制延时</h4>
-<p>在 <code>/etc/pam.d/system-login</code> 中添加 <code>auth optional pam_faildelay.so delay=4000000</code>，表示延时 4 秒（单位微秒）</p>
-<h4 id="限制-root-权限">限制 root 权限</h4>
-<p>可以为单个用户启用单个程序的 <code>root</code> 权限，而不用为了运行一个程序启用该用户对 <code>root</code> 的完整访问权。例如，要授予用户 <code>alice</code> 对特定程序的访问权限：</p>
+<h4 id="登录失败后强制延时" class="headerLink">
+    <a href="#%e7%99%bb%e5%bd%95%e5%a4%b1%e8%b4%a5%e5%90%8e%e5%bc%ba%e5%88%b6%e5%bb%b6%e6%97%b6" class="header-mark"></a>登录失败后强制延时</h4><p>在 <code>/etc/pam.d/system-login</code> 中添加 <code>auth optional pam_faildelay.so delay=4000000</code>，表示延时 4 秒（单位微秒）</p>
+<h4 id="限制-root-权限" class="headerLink">
+    <a href="#%e9%99%90%e5%88%b6-root-%e6%9d%83%e9%99%90" class="header-mark"></a>限制 root 权限</h4><p>可以为单个用户启用单个程序的 <code>root</code> 权限，而不用为了运行一个程序启用该用户对 <code>root</code> 的完整访问权。例如，要授予用户 <code>alice</code> 对特定程序的访问权限：</p>
 <p>编辑 <code>/etc/sudoers</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -174,11 +174,11 @@
 </ul>
 <p>添加：</p>
 <p><code>alice ALL = NOPASSWD: /path/to/program</code></p>
-<h3 id="关闭不必要的服务">关闭不必要的服务</h3>
-<p><strong>例如</strong> 某台 <code>Linux</code> 服务器用于 <code>www</code> 应用，那么除了 <code>httpd</code> 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：</p>
+<h3 id="关闭不必要的服务" class="headerLink">
+    <a href="#%e5%85%b3%e9%97%ad%e4%b8%8d%e5%bf%85%e8%a6%81%e7%9a%84%e6%9c%8d%e5%8a%a1" class="header-mark"></a>关闭不必要的服务</h3><p><strong>例如</strong> 某台 <code>Linux</code> 服务器用于 <code>www</code> 应用，那么除了 <code>httpd</code> 服务和系统运行是必须的服务外，其他服务都可以关闭。下面这些服务一般情况下是不需要的，可以选择关闭：</p>
 <p><code>anacron、auditd、autofs、avahi-daemon、avahi-dnsconfd、bluetooth、cpuspeed、firstboot、gpm、haldaemon、hidd、ip6tables、ipsec、isdn、lpd、mcstrans、messagebus、netfs、nfs、nfslock、nscd、pcscd portmap、readahead_early、restorecond、rpcgssd、rpcidmapd、rstatd、sendmail、setroubleshoot、yppasswdd ypserv</code></p>
-<h3 id="文件系统安全">文件系统安全</h3>
-<p><strong>文件权限检查和修改</strong></p>
+<h3 id="文件系统安全" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f%e5%ae%89%e5%85%a8" class="header-mark"></a>文件系统安全</h3><p><strong>文件权限检查和修改</strong></p>
 <p><strong>（1）查找系统中任何用户都有写权限的文件或目录</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -222,9 +222,9 @@ $ find / -user root -perm -4000 -print -exec md5sum <span class="o">{}</span> <s
 </code></pre></td></tr></table>
 </div>
 </div><p>没有属主的孤儿文件比较危险，因此找到这些文件后，要么删除掉，要么修改文件的属主，使其处于安全状态。</p>
-<h2 id="常用防护软件">常用防护软件</h2>
-<h3 id="fail2ban">fail2ban</h3>
-<p>fail2ban 通过扫描日志文件，筛选登录失败后继续频繁尝试登录的同一来源的非善意行为，根据用户定义的规则对访问来源做响应的封禁处理。</p>
+<h2 id="常用防护软件" class="headerLink">
+    <a href="#%e5%b8%b8%e7%94%a8%e9%98%b2%e6%8a%a4%e8%bd%af%e4%bb%b6" class="header-mark"></a>常用防护软件</h2><h3 id="fail2ban" class="headerLink">
+    <a href="#fail2ban" class="header-mark"></a>fail2ban</h3><p>fail2ban 通过扫描日志文件，筛选登录失败后继续频繁尝试登录的同一来源的非善意行为，根据用户定义的规则对访问来源做响应的封禁处理。</p>
 <p><strong>1、安装</strong></p>
 <p>以 debian 为例：</p>
 <div class="highlight"><div class="chroma">
@@ -288,8 +288,8 @@ findtime = xxxx
 maxretry = xxxx
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="以保护-ssh-为例">以保护 SSH 为例</h4>
-<p>编辑配置文件<code>jail.local</code>，开启 ssh 保护，其中可定义多个字段：</p>
+</div><h4 id="以保护-ssh-为例" class="headerLink">
+    <a href="#%e4%bb%a5%e4%bf%9d%e6%8a%a4-ssh-%e4%b8%ba%e4%be%8b" class="header-mark"></a>以保护 SSH 为例</h4><p>编辑配置文件<code>jail.local</code>，开启 ssh 保护，其中可定义多个字段：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -379,16 +379,16 @@ $ systemctl start fail2ban
    `- Banned IP list:   31.184.198.75 173.212.240.196 116.110.108.227 171.227.208.32
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
 <p>[1] Linux 服务器为什么被黑？</p>
 </li>
 <li>
-<p>[2] <a href="https://www.cnblogs.com/doublexi/p/9636506.html" target="_blank" rel="noopener noreffer">linux 系统安全加固 &ndash; 账号相关</a></p>
+<p>[2] <a href="https://www.cnblogs.com/doublexi/p/9636506.html" target="_blank" rel="noopener noreferrer">linux 系统安全加固 &ndash; 账号相关</a></p>
 </li>
 <li>
-<p>[3] <a href="https://wiki.archlinux.org/index.php/Security" target="_blank" rel="noopener noreffer">Security - Archlinux Wiki</a></p>
+<p>[3] <a href="https://wiki.archlinux.org/index.php/Security" target="_blank" rel="noopener noreferrer">Security - Archlinux Wiki</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

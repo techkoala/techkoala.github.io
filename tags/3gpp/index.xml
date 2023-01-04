@@ -13,8 +13,8 @@
     <description><![CDATA[<blockquote>
 <p>Meanings of 3GPP releases</p>
 </blockquote>
-<h2 id="3gpp-release-schedule-and-summary">3GPP Release schedule and summary</h2>
-<table>
+<h2 id="3gpp-release-schedule-and-summary" class="headerLink">
+    <a href="#3gpp-release-schedule-and-summary" class="header-mark"></a>3GPP Release schedule and summary</h2><table>
 <thead>
 <tr>
 <th>3GPP RELEASE</th>
@@ -125,9 +125,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreffer">3GPP Specification Release Numbers</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://www.electronics-notes.com/articles/connectivity/3gpp/standards-releases.php" target="_blank" rel="noopener noreferrer">3GPP Specification Release Numbers</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

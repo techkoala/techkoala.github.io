@@ -21,8 +21,8 @@
             <div class="admonition-content">境外服务器是保证服务可用性的条件之一</div>
         </div>
     </div>
-<h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
-<p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
+<h2 id="freshrss-docker-配置" class="headerLink">
+    <a href="#freshrss-docker-%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS Docker 配置</h2><p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -39,8 +39,8 @@ mkdir ~/freshrss &amp;&amp; cd ~/freshrss
 vim docker-compose.yml
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="docker-composeyml">docker-compose.yml</h3>
-<p>配置文件内容见下：</p>
+</div><h3 id="docker-composeyml" class="headerLink">
+    <a href="#docker-composeyml" class="header-mark"></a>docker-compose.yml</h3><p>配置文件内容见下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -126,24 +126,24 @@ volumes:
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="freshrss-设置">FreshRSS 设置</h2>
-<h3 id="初始化">初始化</h3>
-<p>数据库连接需要注意的点：</p>
+</div><h2 id="freshrss-设置" class="headerLink">
+    <a href="#freshrss-%e8%ae%be%e7%bd%ae" class="header-mark"></a>FreshRSS 设置</h2><h3 id="初始化" class="headerLink">
+    <a href="#%e5%88%9d%e5%a7%8b%e5%8c%96" class="header-mark"></a>初始化</h3><p>数据库连接需要注意的点：</p>
 <ul>
 <li>主机名填写 <code>freshrss-db</code>（数据库 docker 容器名）</li>
 <li>用户名、密码、数据库分别对应之前 Docker Compose 配置文件中的 POSTGRES_USER、POSTGRES_PASSWORD、POSTGRES_DB</li>
 <li>表前缀任意填</li>
 </ul>
-<h3 id="设置">设置</h3>
-<p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
-<h3 id="扩展">扩展</h3>
-<p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
+<h3 id="设置" class="headerLink">
+    <a href="#%e8%ae%be%e7%bd%ae" class="header-mark"></a>设置</h3><p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
+<h3 id="扩展" class="headerLink">
+    <a href="#%e6%89%a9%e5%b1%95" class="header-mark"></a>扩展</h3><p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
 <p>点击扩展页面中的相应扩展，会跳转到相应的下载地址，将扩展下载后上传到 FreshRSS 安装目录下的 extensions 文件夹（之前部署 FreshRSS 的 Docker Compose 配置文件中已经将 <code>~/freshrss/extensions/</code> 对应了 FreshRSS 在容器内的扩展位置，所以只需要将扩展拖至 <code>~/freshrss/extensions/</code> 即可）</p>
 <p>将解压后的 xExtension-AutoRefresh 文件夹放到 ~/freshrss/extensions 目中，到 FreshRSS <code>设置-&gt; 扩展</code> 启用，刷新时间需要修改 <code>xExtension-AutoRefresh/static/script.js</code> ，其中时间相关单位是 ms</p>
-<h2 id="nginx-反向代理">Nginx 反向代理</h2>
-<p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
-<h2 id="配合第三方软件">配合第三方软件</h2>
-<p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
+<h2 id="nginx-反向代理" class="headerLink">
+    <a href="#nginx-%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86" class="header-mark"></a>Nginx 反向代理</h2><p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
+<h2 id="配合第三方软件" class="headerLink">
+    <a href="#%e9%85%8d%e5%90%88%e7%ac%ac%e4%b8%89%e6%96%b9%e8%bd%af%e4%bb%b6" class="header-mark"></a>配合第三方软件</h2><p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
 <p>在此之前需要到开启<code>认证 =&gt; 允许 API 访问</code>，并在<code>用户账户 =&gt; API 管理</code>中设置相应的 API 密码</p>
 <p>需要注意，<code>Feedme</code>服务应选择<code>FreshRSS</code></p>
 <p>参数配置如下：</p>
@@ -163,9 +163,9 @@ volumes:
 密码：API 密码
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreffer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
 </ul>]]></description>
 </item><item>
     <title>常用 youtube-dl 命令</title>
@@ -176,8 +176,8 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
-<h2 id="下载播放列表视频音频">下载播放列表视频+音频</h2>
-<p>Windows</p>
+<h2 id="下载播放列表视频音频" class="headerLink">
+    <a href="#%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e8%a7%86%e9%a2%91%e9%9f%b3%e9%a2%91" class="header-mark"></a>下载播放列表视频+音频</h2><p>Windows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -186,8 +186,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
-<div class="highlight"><div class="chroma">
+</div><h2 id="仅下载播放列表音频" class="headerLink">
+    <a href="#%e4%bb%85%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e9%9f%b3%e9%a2%91" class="header-mark"></a>仅下载播放列表音频</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -229,8 +229,8 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
-<h2 id="说明">说明</h2>
-<p>目前服务器上运行以下服务：</p>
+<h2 id="说明" class="headerLink">
+    <a href="#%e8%af%b4%e6%98%8e" class="header-mark"></a>说明</h2><p>目前服务器上运行以下服务：</p>
 <ul>
 <li><code>Trojan</code></li>
 <li><code>Xray</code></li>
@@ -238,15 +238,15 @@ volumes:
 <li><code>FreshRSS</code></li>
 </ul>
 <p>三个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
-<h2 id="流程概览">流程概览</h2>
-<ol>
+<h2 id="流程概览" class="headerLink">
+    <a href="#%e6%b5%81%e7%a8%8b%e6%a6%82%e8%a7%88" class="header-mark"></a>流程概览</h2><ol>
 <li>采用 <code>Docker</code> 在本地服务器上搭建 <code>Bitwarden</code>，配置并运行 <code>frpc</code> 指向服务器上的 <code>frps</code></li>
 <li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如：<code>Trojan</code>)，配置运行 <code>frps</code></li>
 <li>采用 <code>Docker</code> 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书</li>
 <li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 已默认包含，但 <code>Ubuntu</code> 等发行版还在使用更老的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
 </ol>
-<h2 id="获取-ssl-证书">获取 SSL 证书</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="获取-ssl-证书" class="headerLink">
+    <a href="#%e8%8e%b7%e5%8f%96-ssl-%e8%af%81%e4%b9%a6" class="header-mark"></a>获取 SSL 证书</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -256,9 +256,9 @@ volumes:
 $ sudo certbot --nginx -d example.com -d www.example.com
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="本地配置文件">本地配置文件</h2>
-<h3 id="frpcini">frpc.ini</h3>
-<div class="highlight"><div class="chroma">
+</div><h2 id="本地配置文件" class="headerLink">
+    <a href="#%e6%9c%ac%e5%9c%b0%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>本地配置文件</h2><h3 id="frpcini" class="headerLink">
+    <a href="#frpcini" class="header-mark"></a>frpc.ini</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -282,8 +282,8 @@ local_port = 443
 custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="本地-nginxcof">本地 nginx.cof</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="本地-nginxcof" class="headerLink">
+    <a href="#%e6%9c%ac%e5%9c%b0-nginxcof" class="header-mark"></a>本地 nginx.cof</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -439,9 +439,9 @@ http {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="服务器配置文件">服务器配置文件</h2>
-<h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
-<div class="highlight"><div class="chroma">
+</div><h2 id="服务器配置文件" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>服务器配置文件</h2><h3 id="服务器-nginxcof" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8-nginxcof" class="header-mark"></a>服务器 nginx.cof</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -627,9 +627,9 @@ http {
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="bitwarden-相关配置">Bitwarden 相关配置</h3>
-<h4 id="frpsini">frps.ini</h4>
-<div class="highlight"><div class="chroma">
+</div><h3 id="bitwarden-相关配置" class="headerLink">
+    <a href="#bitwarden-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden 相关配置</h3><h4 id="frpsini" class="headerLink">
+    <a href="#frpsini" class="header-mark"></a>frps.ini</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -645,8 +645,8 @@ authentication_method = token
 token = xxxxxx                  # frp 验证密钥
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="bitwarden-nginx-站点配置">Bitwarden Nginx 站点配置</h4>
-<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+</div><h4 id="bitwarden-nginx-站点配置" class="headerLink">
+    <a href="#bitwarden-nginx-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden Nginx 站点配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -680,9 +680,9 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
-<h4 id="trojan-nginx-配置">Trojan Nginx 配置</h4>
-<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+</div><h3 id="trojan-相关配置" class="headerLink">
+    <a href="#trojan-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan 相关配置</h3><h4 id="trojan-nginx-配置" class="headerLink">
+    <a href="#trojan-nginx-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan Nginx 配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -736,8 +736,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="trojan-配置文件" class="headerLink">
+    <a href="#trojan-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>Trojan 配置文件</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -843,8 +843,8 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="freshrss-站点配置">FreshRSS 站点配置</h3>
-<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+</div><h3 id="freshrss-站点配置" class="headerLink">
+    <a href="#freshrss-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS 站点配置</h3><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -896,9 +896,9 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="xray">Xray</h3>
-<h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
-<div class="highlight"><div class="chroma">
+</div><h3 id="xray" class="headerLink">
+    <a href="#xray" class="header-mark"></a>Xray</h3><h4 id="xray-nginx-配置" class="headerLink">
+    <a href="#xray-nginx-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray Nginx 配置</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -936,8 +936,8 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="xray-配置">Xray 配置</h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="xray-配置" class="headerLink">
+    <a href="#xray-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray 配置</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1037,8 +1037,8 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="防火墙设置">防火墙设置</h2>
-<p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>
+</div><h2 id="防火墙设置" class="headerLink">
+    <a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" class="header-mark"></a>防火墙设置</h2><p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>
 </item><item>
     <title>Vim 小技巧</title>
     <link>https://www.techkoala.top/vim_tips/</link>
@@ -1048,8 +1048,8 @@ server {
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
-<h2 id="全局命令-global">全局命令 g(lobal)</h2>
-<p>vim 进入文件，命令行模式下执行</p>
+<h2 id="全局命令-global" class="headerLink">
+    <a href="#%e5%85%a8%e5%b1%80%e5%91%bd%e4%bb%a4-global" class="header-mark"></a>全局命令 g(lobal)</h2><p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1073,8 +1073,8 @@ server {
 <li>! 表示取反，也就是不匹配的行，也可以使用 vglobal</li>
 <li>command 默认是打印文本</li>
 </ul>
-<h3 id="tip1-范围匹配">Tip.1 范围匹配</h3>
-<p>20 行到 200 行之间，每一行下插入空行</p>
+<h3 id="tip1-范围匹配" class="headerLink">
+    <a href="#tip1-%e8%8c%83%e5%9b%b4%e5%8c%b9%e9%85%8d" class="header-mark"></a>Tip.1 范围匹配</h3><p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1083,8 +1083,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="tip2-删除包含字符-pattern-的所有行" class="headerLink">
+    <a href="#tip2-%e5%88%a0%e9%99%a4%e5%8c%85%e5%90%ab%e5%ad%97%e7%ac%a6-pattern-%e7%9a%84%e6%89%80%e6%9c%89%e8%a1%8c" class="header-mark"></a>Tip.2 删除包含字符 pattern 的所有行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1092,8 +1092,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="tip3-删除空白行" class="headerLink">
+    <a href="#tip3-%e5%88%a0%e9%99%a4%e7%a9%ba%e7%99%bd%e8%a1%8c" class="header-mark"></a>Tip.3 删除空白行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1101,8 +1101,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="tip4-删除不匹配的行" class="headerLink">
+    <a href="#tip4-%e5%88%a0%e9%99%a4%e4%b8%8d%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.4 删除不匹配的行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1112,8 +1112,8 @@ server {
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip5-删除大量匹配行">Tip.5 删除大量匹配行</h3>
-<p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
+</div><h3 id="tip5-删除大量匹配行" class="headerLink">
+    <a href="#tip5-%e5%88%a0%e9%99%a4%e5%a4%a7%e9%87%8f%e5%8c%b9%e9%85%8d%e8%a1%8c" class="header-mark"></a>Tip.5 删除大量匹配行</h3><p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1122,8 +1122,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
-<p>将所有匹配的行移动到文件的末尾</p>
+</div><h3 id="tip6-移动匹配的行" class="headerLink">
+    <a href="#tip6-%e7%a7%bb%e5%8a%a8%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.6 移动匹配的行</h3><p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1132,8 +1132,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
-<p>将所有匹配的行复制到文件末尾</p>
+</div><h3 id="tip7-复制匹配的行" class="headerLink">
+    <a href="#tip7-%e5%a4%8d%e5%88%b6%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.7 复制匹配的行</h3><p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1142,8 +1142,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
-<p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
+</div><h3 id="tip8-复制到-register-a" class="headerLink">
+    <a href="#tip8-%e5%a4%8d%e5%88%b6%e5%88%b0-register-a" class="header-mark"></a>Tip.8 复制到 register a</h3><p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1157,8 +1157,8 @@ server {
 <li>y A 将匹配的行 A (append) 追加到寄存器 a 中
 存放到 a 寄存器之后就可以使用 &ldquo;ap 来粘贴使用或者其他操作了</li>
 </ul>
-<h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="tip9-反转文件中的每一行" class="headerLink">
+    <a href="#tip9-%e5%8f%8d%e8%bd%ac%e6%96%87%e4%bb%b6%e4%b8%ad%e7%9a%84%e6%af%8f%e4%b8%80%e8%a1%8c" class="header-mark"></a>Tip.9 反转文件中的每一行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1167,8 +1167,8 @@ server {
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
-<h3 id="tip10-在匹配行后添加文字">Tip.10 在匹配行后添加文字</h3>
-<p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
+<h3 id="tip10-在匹配行后添加文字" class="headerLink">
+    <a href="#tip10-%e5%9c%a8%e5%8c%b9%e9%85%8d%e8%a1%8c%e5%90%8e%e6%b7%bb%e5%8a%a0%e6%96%87%e5%ad%97" class="header-mark"></a>Tip.10 在匹配行后添加文字</h3><p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1178,9 +1178,9 @@ server {
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>网络分析工具：NetCat</title>
@@ -1192,8 +1192,8 @@ server {
         
     </a><figcaption class="image-caption">网络瑞士军刀 —— NetCat</figcaption>
     </figure>
-<h2 id="什么是-netcat">什么是 NetCat</h2>
-<p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
+<h2 id="什么是-netcat" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-netcat" class="header-mark"></a>什么是 NetCat</h2><p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
 <p>nc 可以在两台设备上面相互交互，即<code>侦听模式</code>/<code>传输模式</code></p>
 <p>nc 包含以下主要功能：</p>
 <ul>
@@ -1207,8 +1207,8 @@ server {
 <li>流媒体服务器</li>
 <li>远程克隆硬盘</li>
 </ul>
-<h2 id="使用-netcat">使用 NetCat</h2>
-<p>一般来说，nc 的命令行包括如下几个部分：</p>
+<h2 id="使用-netcat" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-netcat" class="header-mark"></a>使用 NetCat</h2><p>一般来说，nc 的命令行包括如下几个部分：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1217,11 +1217,11 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="命令选项">命令选项</h3>
-<blockquote>
+</div><h3 id="命令选项" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e9%80%89%e9%a1%b9" class="header-mark"></a>命令选项</h3><blockquote>
 <p>本文内容基于 OpenBSD 社区的变种（也叫 OpenBSD netcat，部分命令与原版有差异。 ）</p>
 </blockquote>
-<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD manual page</a></p>
+<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreferrer">OpenBSD manual page</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1256,13 +1256,13 @@ server {
 -d    NO               后台模式
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="主机">主机</h3>
-<p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
-<h3 id="端口">端口</h3>
-<p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
-<h2 id="常用使用场景示例">常用使用场景示例</h2>
-<h3 id="测试某个远程主机的监听端口是否可达">测试某个远程主机的监听端口是否可达</h3>
-<p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
+</div><h3 id="主机" class="headerLink">
+    <a href="#%e4%b8%bb%e6%9c%ba" class="header-mark"></a>主机</h3><p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
+<h3 id="端口" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3" class="header-mark"></a>端口</h3><p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
+<h2 id="常用使用场景示例" class="headerLink">
+    <a href="#%e5%b8%b8%e7%94%a8%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af%e7%a4%ba%e4%be%8b" class="header-mark"></a>常用使用场景示例</h2><h3 id="测试某个远程主机的监听端口是否可达" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e6%9f%90%e4%b8%aa%e8%bf%9c%e7%a8%8b%e4%b8%bb%e6%9c%ba%e7%9a%84%e7%9b%91%e5%90%ac%e7%ab%af%e5%8f%a3%e6%98%af%e5%90%a6%e5%8f%af%e8%be%be" class="header-mark"></a>测试某个远程主机的监听端口是否可达</h3><p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
 <ol>
 <li>监听端口没开启</li>
 <li>监听端口虽然开启，但是被防火墙阻拦了</li>
@@ -1286,8 +1286,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</h3>
-<p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
+</div><h3 id="判断防火墙是否允许-or-禁止某个端口" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e9%98%b2%e7%81%ab%e5%a2%99%e6%98%af%e5%90%a6%e5%85%81%e8%ae%b8-or-%e7%a6%81%e6%ad%a2%e6%9f%90%e4%b8%aa%e7%ab%af%e5%8f%a3" class="header-mark"></a>判断防火墙是否允许 or 禁止某个端口</h3><p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
 <p>为了叙述方便，设想如下场景：
 有两台主机 ——<code>主机 C</code> 充当客户端，<code>主机 S</code> 充当服务端。
 然后要判断<code>主机 S</code> 上的防火墙是否会拦截其它主机对 8080 TCP 端口的连接。</p>
@@ -1302,8 +1302,8 @@ server {
 </div>
 </div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
 <p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
-<h3 id="端口扫描">端口扫描</h3>
-<p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
+<h3 id="端口扫描" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3%e6%89%ab%e6%8f%8f" class="header-mark"></a>端口扫描</h3><p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1325,8 +1325,8 @@ server {
 </div>
 </div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
 <p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
-<h3 id="探测服务器类型和软件版本">探测服务器类型和软件版本</h3>
-<p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
+<h3 id="探测服务器类型和软件版本" class="headerLink">
+    <a href="#%e6%8e%a2%e6%b5%8b%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b%e5%92%8c%e8%bd%af%e4%bb%b6%e7%89%88%e6%9c%ac" class="header-mark"></a>探测服务器类型和软件版本</h3><p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1339,8 +1339,8 @@ OR
 <span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="端口转发">端口转发</h3>
-<p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
+</div><h3 id="端口转发" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91" class="header-mark"></a>端口转发</h3><p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
 <p>步骤 1：创建命名管道</p>
 <p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
 <div class="highlight"><div class="chroma">
@@ -1361,8 +1361,8 @@ OR
 </code></pre></td></tr></table>
 </div>
 </div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
-<h3 id="传输文件">传输文件</h3>
-<p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
+<h3 id="传输文件" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e6%96%87%e4%bb%b6" class="header-mark"></a>传输文件</h3><p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1380,8 +1380,8 @@ nc ip port &lt; file1
 </code></pre></td></tr></table>
 </div>
 </div><p>两者端口号要相同</p>
-<h3 id="远程备份整个磁盘">远程备份整个磁盘</h3>
-<p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
+<h3 id="远程备份整个磁盘" class="headerLink">
+    <a href="#%e8%bf%9c%e7%a8%8b%e5%a4%87%e4%bb%bd%e6%95%b4%e4%b8%aa%e7%a3%81%e7%9b%98" class="header-mark"></a>远程备份整个磁盘</h3><p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1398,8 +1398,8 @@ nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o
 dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="远程控制">远程控制</h3>
-<p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
+</div><h3 id="远程控制" class="headerLink">
+    <a href="#%e8%bf%9c%e7%a8%8b%e6%8e%a7%e5%88%b6" class="header-mark"></a>远程控制</h3><p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1416,8 +1416,8 @@ B:
 nc ip port
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="流媒体服务">流媒体服务</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="流媒体服务" class="headerLink">
+    <a href="#%e6%b5%81%e5%aa%92%e4%bd%93%e6%9c%8d%e5%8a%a1" class="header-mark"></a>流媒体服务</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1434,8 +1434,8 @@ nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4
 </code></pre></td></tr></table>
 </div>
 </div><p>A 让 test.MP4 这个文件成为<code>流</code>的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。</p>
-<h3 id="信息收集">信息收集</h3>
-<p>收集目标机上的进程信息</p>
+<h3 id="信息收集" class="headerLink">
+    <a href="#%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86" class="header-mark"></a>信息收集</h3><p>收集目标机上的进程信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1454,16 +1454,16 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">netcat manual page</a></p>
+<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreferrer">netcat manual page</a></p>
 </li>
 <li>
-<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreffer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
+<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreferrer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
+<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreferrer">NetCat 使用指南</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1475,8 +1475,8 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     <description><![CDATA[<blockquote>
 <p>搭建自己的在线 EPUB 阅读器</p>
 </blockquote>
-<h2 id="什么是-netlify">什么是 Netlify</h2>
-<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
+<h2 id="什么是-netlify" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-netlify" class="header-mark"></a>什么是 Netlify</h2><p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify 官网</a>的介绍：</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -1486,8 +1486,8 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
         </div>
     </div>
 <p>也就是说，<code>Netlify</code> 是一个提供静态网站托管的服务。它提供 <code>CI</code> 服务，能够将托管在 <code>GitHub</code>，<code>GitLab</code> 等网站上代码生成静态网站进行展示。类似于 <code>Github Pages</code>，不过功能更加丰富。</p>
-<h2 id="koodo-reader">Koodo Reader</h2>
-<p><code>Koodo Reader</code> 是一个基于 <code>React</code> 和 <code>Electron</code> 开发的 <code>Epub</code> 阅读器。</p>
+<h2 id="koodo-reader" class="headerLink">
+    <a href="#koodo-reader" class="header-mark"></a>Koodo Reader</h2><p><code>Koodo Reader</code> 是一个基于 <code>React</code> 和 <code>Electron</code> 开发的 <code>Epub</code> 阅读器。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
         
     </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
@@ -1500,10 +1500,10 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
 <p>💻 您所有的数据都支持导入导出</p>
 </blockquote>
-<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
-<h2 id="搭建">搭建</h2>
-<ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
+<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreferrer">Koodo Reader 官网</a> 查看。</p>
+<h2 id="搭建" class="headerLink">
+    <a href="#%e6%90%ad%e5%bb%ba" class="header-mark"></a>搭建</h2><ol>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
 </ol>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
         
@@ -1524,7 +1524,7 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
     </figure>
 <ol start="4">
-<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
+<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreferrer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
 </ol>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
         
@@ -1552,13 +1552,13 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     </a><figcaption class="image-caption">配置</figcaption>
     </figure>
 <ol start="8">
-<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
+<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreferrer">这里</a>看看书吧。</li>
 </ol>
-<h2 id="后续">后续</h2>
-<p>如果需要对网站进行更新，只需要关注你的 <code>Github Repo</code> 即可。每次 commit 之后，<code>Netlify</code> 都会自动拉取更新并生成。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
+<h2 id="后续" class="headerLink">
+    <a href="#%e5%90%8e%e7%bb%ad" class="header-mark"></a>后续</h2><p>如果需要对网站进行更新，只需要关注你的 <code>Github Repo</code> 即可。每次 commit 之后，<code>Netlify</code> 都会自动拉取更新并生成。</p>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreferrer">koodo-reader</a></li>
 </ul>]]></description>
 </item><item>
     <title>网络测试工具：iPerf</title>
@@ -1569,12 +1569,12 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
     <description><![CDATA[<blockquote>
 <p>TCP、UDP 和 SCTP 的终极速度测试工具</p>
 </blockquote>
-<h2 id="什么是-iperf">什么是 iPerf</h2>
-<p>iPerf 是一个用于测量网络最大带宽的小工具。iPerf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。对于每个测试，它都会报告带宽，丢包和其他参数。</p>
+<h2 id="什么是-iperf" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-iperf" class="header-mark"></a>什么是 iPerf</h2><p>iPerf 是一个用于测量网络最大带宽的小工具。iPerf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。对于每个测试，它都会报告带宽，丢包和其他参数。</p>
 <p>现在的版本也称 iPerf3，这是对 NLANR/DAST 开发的原始版本的重新设计。</p>
 <p><strong>注意</strong>：iPerf3 与此前版本的 iPerf 不兼容。</p>
-<h2 id="安装-iperf">安装 iPerf</h2>
-<p>iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreffer">官网</a>提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）</p>
+<h2 id="安装-iperf" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%85-iperf" class="header-mark"></a>安装 iPerf</h2><p>iPerf3 官方仅支持 CentOS Linux，FreeBSD 和 macOS，但实际上，<a href="https://iperf.fr/iperf-download.php" target="_blank" rel="noopener noreferrer">官网</a>提供了主流系统的预编译文件。（包括 Windows、Android、iOS、Ubuntu、Arch Linux 等）</p>
 <p>类 UNIX 系统直接使用包管理进行安装即可，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1584,8 +1584,8 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="使用-iperf">使用 iPerf</h2>
-<p>首先，介绍服务端和客户端共有的参数：</p>
+</div><h2 id="使用-iperf" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-iperf" class="header-mark"></a>使用 iPerf</h2><p>首先，介绍服务端和客户端共有的参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1721,13 +1721,13 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
         
     </a><figcaption class="image-caption">iPerf 使用实例</figcaption>
     </figure>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener noreffer">iPerf user docs</a></p>
+<p>[1] <a href="https://iperf.fr/iperf-doc.php" target="_blank" rel="noopener noreferrer">iPerf user docs</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreffer">iPerf Github</a></p>
+<p>[2] <a href="https://github.com/esnet/iperf" target="_blank" rel="noopener noreferrer">iPerf Github</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1739,8 +1739,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
     <description><![CDATA[<blockquote>
 <p>SCP 的继承者</p>
 </blockquote>
-<h2 id="什么是-sftp">什么是 SFTP</h2>
-<p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
+<h2 id="什么是-sftp" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-sftp" class="header-mark"></a>什么是 SFTP</h2><p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
 <p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
 <p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
 <div class="details admonition quote open">
@@ -1748,11 +1748,11 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></div>
+            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreferrer">draft-ietf-secsh-filexfer-02</a></div>
         </div>
     </div>
-<h2 id="使用-sftp">使用 SFTP</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="使用-sftp" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-sftp" class="header-mark"></a>使用 SFTP</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1760,8 +1760,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="选项">选项</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="选项" class="headerLink">
+    <a href="#%e9%80%89%e9%a1%b9" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1783,15 +1783,15 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 -v：升高日志等级。
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="参数">参数</h3>
-<p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
-<h2 id="参考">参考</h2>
-<ul>
+</div><h3 id="参数" class="headerLink">
+    <a href="#%e5%8f%82%e6%95%b0" class="header-mark"></a>参数</h3><p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreferrer">SSH File Transfer Protocol</a></p>
 </li>
 <li>
-<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreferrer">SFTP Command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1803,31 +1803,31 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
     <description><![CDATA[<blockquote>
 <p>SCP 的另一个绝佳替选</p>
 </blockquote>
-<h2 id="什么是-rsync">什么是 rsync</h2>
-<p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
+<h2 id="什么是-rsync" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-rsync" class="header-mark"></a>什么是 rsync</h2><p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
 <p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
 <p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
-<h2 id="rsync-算法">rsync 算法</h2>
-<div class="details admonition info open">
+<h2 id="rsync-算法" class="headerLink">
+    <a href="#rsync-%e7%ae%97%e6%b3%95" class="header-mark"></a>rsync 算法</h2><div class="details admonition info open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></div>
+            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></div>
         </div>
     </div>
 <p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
-<h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
-<p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
-<h3 id="传输算法">传输算法</h3>
-<p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
+<h3 id="分块-checksum-算法" class="headerLink">
+    <a href="#%e5%88%86%e5%9d%97-checksum-%e7%ae%97%e6%b3%95" class="header-mark"></a>分块 Checksum 算法</h3><p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
+<h3 id="传输算法" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e7%ae%97%e6%b3%95" class="header-mark"></a>传输算法</h3><p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
 <p><strong>但是</strong></p>
 <p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
 如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
-<h3 id="checksum-查找算法">Checksum 查找算法</h3>
-<p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
-<h3 id="比对算法">比对算法</h3>
-<ol>
+<h3 id="checksum-查找算法" class="headerLink">
+    <a href="#checksum-%e6%9f%a5%e6%89%be%e7%ae%97%e6%b3%95" class="header-mark"></a>Checksum 查找算法</h3><p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
+<h3 id="比对算法" class="headerLink">
+    <a href="#%e6%af%94%e5%af%b9%e7%ae%97%e6%b3%95" class="header-mark"></a>比对算法</h3><ol>
 <li>
 <p>取 <code>fileSrc</code> 的第一个文件块（我们假设的是 512 个长度），也就是从 <code>fileSrc</code> 的第 1 个字节到第 512 个字节，取出来后做 <code>rolling checksum</code> 计算。计算好的值到 <code>hash</code> 表中查询。</p>
 </li>
@@ -1841,8 +1841,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
 </li>
 </ol>
-<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
-<p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
+<h2 id="rolling-checksum-算法" class="headerLink">
+    <a href="#rolling-checksum-%e7%ae%97%e6%b3%95" class="header-mark"></a>Rolling Checksum 算法</h2><p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1867,8 +1867,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
     </a><figcaption class="image-caption">rsync 算法示意</figcaption>
     </figure>
 <p>最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。</p>
-<h2 id="使用-rsync">使用 rsync</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="使用-rsync" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-rsync" class="header-mark"></a>使用 rsync</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -2036,19 +2036,19 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 --bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
+<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreferrer">The rsync algorithm</a></p>
 </li>
 <li>
-<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></p>
 </li>
 <li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreferrer">rsync wikipedia</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreferrer">rsync command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -2060,8 +2060,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
     <description><![CDATA[<blockquote>
 <p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>
-<h2 id="什么是-scp">什么是 SCP</h2>
-<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
+<h2 id="什么是-scp" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-scp" class="header-mark"></a>什么是 SCP</h2><p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2075,18 +2075,18 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
 <p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
 <p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
-<h2 id="scp-工作原理">SCP 工作原理</h2>
-<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
-<h3 id="建立连接">建立连接</h3>
-<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
+<h2 id="scp-工作原理" class="headerLink">
+    <a href="#scp-%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86" class="header-mark"></a>SCP 工作原理</h2><p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
+<h3 id="建立连接" class="headerLink">
+    <a href="#%e5%bb%ba%e7%ab%8b%e8%bf%9e%e6%8e%a5" class="header-mark"></a>建立连接</h3><p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
 <p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         
     </a><figcaption class="image-caption">建立连接</figcaption>
     </figure>
 <p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
-<h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<h3 id="传输协议" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e5%8d%8f%e8%ae%ae" class="header-mark"></a>传输协议</h3><p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -2122,8 +2122,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
         
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
-<h2 id="使用-scp">使用 SCP</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="使用-scp" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-scp" class="header-mark"></a>使用 SCP</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -2169,10 +2169,10 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <li>源文件：指定要复制的源文件。</li>
 <li>目标文件：格式为 user@host：filename（文件名为目标文件的名称）。</li>
 </ul>
-<h2 id="scp-的问题">SCP 的问题</h2>
-<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
-<h3 id="性能">性能</h3>
-<p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
+<h2 id="scp-的问题" class="headerLink">
+    <a href="#scp-%e7%9a%84%e9%97%ae%e9%a2%98" class="header-mark"></a>SCP 的问题</h2><p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<h3 id="性能" class="headerLink">
+    <a href="#%e6%80%a7%e8%83%bd" class="header-mark"></a>性能</h3><p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2221,40 +2221,40 @@ Executed in  215.68 millis	fish       	external
 </code></pre></td></tr></table>
 </div>
 </div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
-<h3 id="安全">安全</h3>
-<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<h3 id="安全" class="headerLink">
+    <a href="#%e5%ae%89%e5%85%a8" class="header-mark"></a>安全</h3><p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
 <p><code>OpenSSH</code> 的发行说明提到：</p>
 <blockquote>
 <p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
 </blockquote>
 <p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
 <p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
-<h2 id="scp-的替代方案">SCP 的替代方案</h2>
-<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+<h2 id="scp-的替代方案" class="headerLink">
+    <a href="#scp-%e7%9a%84%e6%9b%bf%e4%bb%a3%e6%96%b9%e6%a1%88" class="header-mark"></a>SCP 的替代方案</h2><p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
 缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
 <p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
 <p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
-<h2 id="结论">结论</h2>
-<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
+<h2 id="结论" class="headerLink">
+    <a href="#%e7%bb%93%e8%ae%ba" class="header-mark"></a>结论</h2><p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
-<h2 id="另见">另见</h2>
-<ul>
+<h2 id="另见" class="headerLink">
+    <a href="#%e5%8f%a6%e8%a7%81" class="header-mark"></a>另见</h2><ul>
 <li><a href="/rsync/" rel="">rsync</a></li>
 <li><a href="/sftp/" rel="">SFTP</a></li>
 </ul>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreferrer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreferrer">Wikipedia Secure copy</a></p>
 </li>
 <li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreferrer">Call for testing: OpenSSH 8.0</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreferrer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item></channel>

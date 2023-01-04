@@ -25,8 +25,12 @@ LTE RRC 层详解
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_rrc/" /><link rel="prev" href="https://www.techkoala.top/lte_mac/" /><link rel="next" href="https://www.techkoala.top/lte_physical_layer/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,7 +39,7 @@ LTE RRC 层详解
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/lte_rrc\/"
-        },"genre": "posts","keywords": "LTE","wordcount":  6348 ,
+        },"genre": "posts","keywords": "LTE","wordcount":  6352 ,
         "url": "https:\/\/www.techkoala.top\/lte_rrc\/","datePublished": "2019-06-21T21:00:39+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -46,7 +50,7 @@ LTE RRC 层详解
     </script></head>
 
 <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
@@ -114,17 +118,12 @@ LTE RRC 层详解
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-            <div class="container"><div class="toc" id="toc-auto">
-        <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LTE 系列：RRC 层</h1><div class="post-meta">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LTE 系列：RRC 层</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/wirelesscommunication/"><i class="far fa-folder fa-fw"></i>WirelessCommunication</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-06-21">2019-06-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6348 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/lte_rrc/" class="leancloud_visitors" data-flag-title="LTE 系列：RRC 层">
-                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
-                    </span>&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-06-21">2019-06-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6352 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -165,8 +164,8 @@ LTE RRC 层详解
             </div><div class="content" id="content"><blockquote>
 <p>LTE RRC 层详解</p>
 </blockquote>
-<h2 id="无线资源控制rrc">无线资源控制（RRC）</h2>
-<p>无线资源控制（Radio Resource Control，RRC）层是 LTE 无线接入网协议中<strong>控制面</strong>部分的主要内容。</p>
+<h2 id="无线资源控制rrc" class="headerLink">
+    <a href="#%e6%97%a0%e7%ba%bf%e8%b5%84%e6%ba%90%e6%8e%a7%e5%88%b6rrc" class="header-mark"></a>无线资源控制（RRC）</h2><p>无线资源控制（Radio Resource Control，RRC）层是 LTE 无线接入网协议中<strong>控制面</strong>部分的主要内容。</p>
 <p>用户终端在进行数据通信之前，需要与网络建立承载信令消息的连接，通过信令消息的交互，控制数据通信的过程。因此，<strong>是否与网络建立了 RRC 连接</strong>是终端状态的判断依据。</p>
 <ul>
 <li><strong>RRC 连接状态</strong>即已经与网络建立了 RRC 连接的终端处于连接状态，此时终端可以进行<strong>数据传输</strong>、<strong>系统信息接收</strong>，以及<strong>邻小区的测量上报和小区切换</strong></li>
@@ -180,8 +179,8 @@ LTE RRC 层详解
 <li>服务质量（QoS）管理</li>
 <li>NAS 信令直接传输的功能</li>
 </ul>
-<h3 id="系统信息的广播">系统信息的广播</h3>
-<p>系统信息描述网络的基本情况，采用广播的方式进行发送，对应于广播控制逻辑信道（BCCH）。终端通过对系统信息的接收，获得在系统中进行通信所需要的基本网络参数。</p>
+<h3 id="系统信息的广播" class="headerLink">
+    <a href="#%e7%b3%bb%e7%bb%9f%e4%bf%a1%e6%81%af%e7%9a%84%e5%b9%bf%e6%92%ad" class="header-mark"></a>系统信息的广播</h3><p>系统信息描述网络的基本情况，采用广播的方式进行发送，对应于广播控制逻辑信道（BCCH）。终端通过对系统信息的接收，获得在系统中进行通信所需要的基本网络参数。</p>
 <p>LTE 的系统信息分为：</p>
 <ul>
 <li>
@@ -209,8 +208,7 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_22.webp">
     </a><figcaption class="image-caption">系统广播信息向传输信道的映射</figcaption>
     </figure>
 <p>系统广播信息的更新采用<code>更新提示</code>和<code>信息更新</code>两个阶段的方式。</p>
@@ -221,14 +219,13 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_23.webp">
     </a><figcaption class="image-caption">系统广播信息的更新</figcaption>
     </figure>
-<h3 id="对连接的控制">对连接的控制</h3>
-<p><strong>连接控制</strong>指的是对接入网中的无线承载进行控制的功能，包括<strong>信令承载的建立</strong>／<strong>重配置</strong>／<strong>重建立</strong>／<strong>释放</strong>、<strong>数据承载的建立</strong>／<strong>配置</strong>／<strong>释放</strong>，以及相关的<strong>完整性保护</strong>和<strong>数据加密</strong>的通信安全机制。</p>
-<h4 id="连接管理">连接管理</h4>
-<p>LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer，SRB）：</p>
+<h3 id="对连接的控制" class="headerLink">
+    <a href="#%e5%af%b9%e8%bf%9e%e6%8e%a5%e7%9a%84%e6%8e%a7%e5%88%b6" class="header-mark"></a>对连接的控制</h3><p><strong>连接控制</strong>指的是对接入网中的无线承载进行控制的功能，包括<strong>信令承载的建立</strong>／<strong>重配置</strong>／<strong>重建立</strong>／<strong>释放</strong>、<strong>数据承载的建立</strong>／<strong>配置</strong>／<strong>释放</strong>，以及相关的<strong>完整性保护</strong>和<strong>数据加密</strong>的通信安全机制。</p>
+<h4 id="连接管理" class="headerLink">
+    <a href="#%e8%bf%9e%e6%8e%a5%e7%ae%a1%e7%90%86" class="header-mark"></a>连接管理</h4><p>LTE 中一共定义了 3 个用于信令的无线承载（Signaling Radio Bearer，SRB）：</p>
 <ul>
 <li>
 <p><code>SRB0</code> 用于承载公用控制逻辑信道（CCCH）的 RRC 消息</p>
@@ -248,8 +245,7 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_24.webp">
     </a><figcaption class="image-caption">RRC 连接建立的过程</figcaption>
     </figure>
 <p>进入 <code>RRC 连接状态</code>之后，采用 <code>RRC 连接重配置</code>的过程来进行 <code>SRB2</code> 和 <code>DRB</code> 的建立和管理。</p>
@@ -276,8 +272,7 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_25.webp">
     </a><figcaption class="image-caption">RRC 连接重配置的过程</figcaption>
     </figure>
 <p>按照 <code>RRC 连接重配置</code>消息中携带的配置信息，无线承载建立的过程包括建立一个 <code>PDCP 实体</code>、建立一个 <code>RLC 实体</code>，以及按照指定的逻辑信道标识建立一个逻辑信道。</p>
@@ -288,12 +283,11 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_26.webp">
     </a><figcaption class="image-caption">RRC连接释放的过程</figcaption>
     </figure>
-<h4 id="通信安全的功能">通信安全的功能</h4>
-<p>为了保证通信的安全，防止窃听、伪装等恶意行为，无线接入网的连接控制中包含安全通信的相关功能，包括：</p>
+<h4 id="通信安全的功能" class="headerLink">
+    <a href="#%e9%80%9a%e4%bf%a1%e5%ae%89%e5%85%a8%e7%9a%84%e5%8a%9f%e8%83%bd" class="header-mark"></a>通信安全的功能</h4><p>为了保证通信的安全，防止窃听、伪装等恶意行为，无线接入网的连接控制中包含安全通信的相关功能，包括：</p>
 <ul>
 <li>信令消息的完整性保护</li>
 <li>信令消息加密</li>
@@ -306,8 +300,7 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_27.webp">
     </a><figcaption class="image-caption">安全模式激活的过程</figcaption>
     </figure>
 <p>在通信的过程中还可以通过计数器检查（counter check）的 <code>RRC 消息</code>防止<code>中间人</code>（man in the middle）攻击。在计数器检查的过程中，网络发送计数器检查消息要求终端确认在每个数据无线承载 <code>DRB</code> 上发送和接收数据的数量，通过这样的方法可以排除<code>中间人</code>可能进行的伪装通信。</p>
@@ -317,18 +310,17 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_28.webp">
     </a><figcaption class="image-caption">计数器检查的过程</figcaption>
     </figure>
-<h3 id="终端移动性的管理">终端移动性的管理</h3>
-<p>终端移动性的管理是 LTE 作为移动通信系统一个重要的控制功能，实现相关功能的协议包括:</p>
+<h3 id="终端移动性的管理" class="headerLink">
+    <a href="#%e7%bb%88%e7%ab%af%e7%a7%bb%e5%8a%a8%e6%80%a7%e7%9a%84%e7%ae%a1%e7%90%86" class="header-mark"></a>终端移动性的管理</h3><p>终端移动性的管理是 LTE 作为移动通信系统一个重要的控制功能，实现相关功能的协议包括:</p>
 <ul>
 <li>终端与无线接入网之间的 RRC 控制协议</li>
 <li>终端与核心网之间非接入层（NAS）控制协议</li>
 </ul>
-<h4 id="空闲状态终端的移动性管理">空闲状态终端的移动性管理</h4>
-<p>处于 <code>RRC 空闲状态</code>的终端与无线接入网没有建立 <code>RRC</code> 连接，终端的信息在核心网中注册并且分配有 <code>IP</code> 地址，无线接入网中不存储空闲状态终端的信息。终端进行自身的移动性管理，发起小区选择／重选，当跟踪区位置发生改变的时候向核心网进行登记。核心网记录终端所处的跟踪区位置（TrackingArea，TA，通常由相邻覆盖的若干个小区组成），核心网可以发起对终端的寻呼，终端根据核心网配置的 <code>DRX</code> 周期监听可能的寻呼消息。空闲状态的终端<strong>不能进行</strong>单播数据的传输。</p>
+<h4 id="空闲状态终端的移动性管理" class="headerLink">
+    <a href="#%e7%a9%ba%e9%97%b2%e7%8a%b6%e6%80%81%e7%bb%88%e7%ab%af%e7%9a%84%e7%a7%bb%e5%8a%a8%e6%80%a7%e7%ae%a1%e7%90%86" class="header-mark"></a>空闲状态终端的移动性管理</h4><p>处于 <code>RRC 空闲状态</code>的终端与无线接入网没有建立 <code>RRC</code> 连接，终端的信息在核心网中注册并且分配有 <code>IP</code> 地址，无线接入网中不存储空闲状态终端的信息。终端进行自身的移动性管理，发起小区选择／重选，当跟踪区位置发生改变的时候向核心网进行登记。核心网记录终端所处的跟踪区位置（TrackingArea，TA，通常由相邻覆盖的若干个小区组成），核心网可以发起对终端的寻呼，终端根据核心网配置的 <code>DRX</code> 周期监听可能的寻呼消息。空闲状态的终端<strong>不能进行</strong>单播数据的传输。</p>
 <p>在终端开机的过程中，首先根据 <code>PLMN</code>（公众网络标识）进行网络的选择，选定例如某个运营商的网络，之后终端进行小区选择，确定所驻留的小区，侦听该小区的控制信道。然后采用跟踪区改变的流程向核心网注册终端所处的跟踪区位置。</p>
 <p>终端在移动的过程中，可能由一个小区无线信号的覆盖范围进入另一个小区的覆盖范围，这时候终端将进行小区重选的操作，改变所驻留侦听控制信道的小区。如果这个小区与前一个小区属于不同的跟踪区，那么在小区重选之后，终端将发起跟踪区改变的流程，使用非接入层（NAS）信令向核心网注册新的跟踪区位置。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp" data-sub-html="<h2>空闲状态终端的寻呼和跟踪区改变</h2>">
@@ -337,13 +329,12 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_29.webp">
     </a><figcaption class="image-caption">空闲状态终端的寻呼和跟踪区改变</figcaption>
     </figure>
 <p>当有呼叫到达或者是系统消息改变需要向空闲状态的终端发送寻呼消息的时候，核心网<code>移动控制实体</code>（MME）根据终端所注册的跟踪区位置，找到相对应的跟踪区列表，然后在列表中所有的跟踪区上，发送针对该终端的寻呼消息。</p>
-<h4 id="连接状态终端的移动性管理">连接状态终端的移动性管理</h4>
-<p>处于 <code>RRC 连接状态</code>的终端与无线接入网建立了 <code>RRC</code> 连接，终端的信息在核心网和无线接入网中都进行存储和管理。网络登记终端所处的小区位置，终端的移动性由网络采用切换的流程进行管理。<code>RRC 连接状态</code>的终端<strong>可以进行</strong>单播数据的传输。为了节省耗电，终端可以采用由无线接入网配置的 <code>DRX</code> 功能。</p>
+<h4 id="连接状态终端的移动性管理" class="headerLink">
+    <a href="#%e8%bf%9e%e6%8e%a5%e7%8a%b6%e6%80%81%e7%bb%88%e7%ab%af%e7%9a%84%e7%a7%bb%e5%8a%a8%e6%80%a7%e7%ae%a1%e7%90%86" class="header-mark"></a>连接状态终端的移动性管理</h4><p>处于 <code>RRC 连接状态</code>的终端与无线接入网建立了 <code>RRC</code> 连接，终端的信息在核心网和无线接入网中都进行存储和管理。网络登记终端所处的小区位置，终端的移动性由网络采用切换的流程进行管理。<code>RRC 连接状态</code>的终端<strong>可以进行</strong>单播数据的传输。为了节省耗电，终端可以采用由无线接入网配置的 <code>DRX</code> 功能。</p>
 <p><code>RRC 连接状态</code>终端的移动性由网络进行控制，网络根据无线接口的情况决定是否改变终端的服务小区，即切换的过程是由网络触发的。为了获取关于无线接口情况的信息，网络可以配置终端进行相关的测量和上报，然后根据上报的结果，触发切换的流程。另外，没有收到终端的测量与上报，网络也可以自行触发进行切换。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp" data-sub-html="<h2>连接状态终端的小区间切换</h2>">
         <img
@@ -351,12 +342,11 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_30.webp">
     </a><figcaption class="image-caption">连接状态终端的小区间切换</figcaption>
     </figure>
-<h5 id="切换过程">切换过程</h5>
-<p>首先，由源服务小区配置终端进行相关的测量和上报，根据上报的信息，源服务小区判断终端是否需要进行切换并且选择目标小区，触发切换的信令流程：</p>
+<h5 id="切换过程" class="headerLink">
+    <a href="#%e5%88%87%e6%8d%a2%e8%bf%87%e7%a8%8b" class="header-mark"></a>切换过程</h5><p>首先，由源服务小区配置终端进行相关的测量和上报，根据上报的信息，源服务小区判断终端是否需要进行切换并且选择目标小区，触发切换的信令流程：</p>
 <ol>
 <li>通过 <code>eNodeB</code> 之间互联的 <code>X2</code> 接口，源小区向目标小区发送切换请求的消息，该消息中包含了对于目标小区无线资源需求情况的信息。</li>
 <li>如果目标小区确定可以接受终端进行切换，那么目标小区根据要求进行无线资源的准备，并向源小区反馈切换请求确认的消息，该消息包含终端接入目标小区时需要的信息，例如新的 <code>C-RNTI</code> 标识、目标小区的系统信息，以及分配的专用随机接入序列等。</li>
@@ -365,8 +355,8 @@ LTE RRC 层详解
 <li>无线接入网的切换完成后，目标基站将向核心网的<code>移动控制实体</code>（MME）发送<strong>路径切换请求</strong>，并由 <code>MME</code> 协调数据网管（SGW）完成用户数据传输路径的改变，核心网将数据路径转移到目标小区。</li>
 <li>完成数据路径的转换后，目标小区向源小区发送终端上下文释放的消息，以此来确认成功地完成了整个切换的过程，源小区释放对应于该终端用户的相关资源。</li>
 </ol>
-<h4 id="配置终端的测量和上报">配置终端的测量和上报</h4>
-<p>为了进行移动性管理的操作，终端需要根据网络的配置对无线信道的情况进行测量，包括：</p>
+<h4 id="配置终端的测量和上报" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%ae%e7%bb%88%e7%ab%af%e7%9a%84%e6%b5%8b%e9%87%8f%e5%92%8c%e4%b8%8a%e6%8a%a5" class="header-mark"></a>配置终端的测量和上报</h4><p>为了进行移动性管理的操作，终端需要根据网络的配置对无线信道的情况进行测量，包括：</p>
 <ul>
 <li>同频测量场景</li>
 <li>异频测量场景</li>
@@ -395,12 +385,11 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_31.webp">
     </a><figcaption class="image-caption">终端测量上报的过程</figcaption>
     </figure>
-<h3 id="服务质量qos管理">服务质量（QoS）管理</h3>
-<p>LTE 系统中采用 <code>EPS 承载</code>为单位进行端到端的服务质量（QoS）管理。</p>
+<h3 id="服务质量qos管理" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e8%b4%a8%e9%87%8fqos%e7%ae%a1%e7%90%86" class="header-mark"></a>服务质量（QoS）管理</h3><p>LTE 系统中采用 <code>EPS 承载</code>为单位进行端到端的服务质量（QoS）管理。</p>
 <p><code>EPS</code>（Evolved Packet System）承载是终端和分组数据网网关（P-GW）之间的连接，1 个 <code>EPS 承载</code>包括：</p>
 <ul>
 <li>1 个无线承载，即终端和 eNodeB 基站之间的连接</li>
@@ -414,8 +403,7 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp">
     </a><figcaption class="image-caption">LTE 系统中的承载</figcaption>
     </figure>
 <p>针对每一个 <code>EPS 承载</code>，由核心网分配 <code>QoS 参数</code>，包括<code>QoS 类别标识</code>（QoS Class Identifier，QCI）和<code>分配和滞留优先级</code>（Allocation and Retention Priority，ARP）。</p>
@@ -426,16 +414,15 @@ LTE RRC 层详解
 <p>另外还有<code>保证数据速率</code>（Guaranteed Bit Rate，GBR）和<code>最大数据速率</code>（Maximum Bit Rate，MBR），这两个参数用于具有保证速率属性的承载。而对于不具有保证速率属性的承载，使用参数<code>最大总速率</code>（Aggregated Maximum Bit Rate，AMBR）来限制一个终端的所有不具有保证速率属性的承载的最大总速率。</p>
 <p>根据核心网确定的 <code>QoS</code> 参数，无线接入网负责执行无线承载部分的 <code>QoS</code> 管理，例如无线资源的调度策略和排队管理策略等。</p>
 <p>RRC 协议可以执行一部分 <code>QoS</code> 管理的功能，主要包括：半持续资源调度的配置，以及通过配置终端上行逻辑信道的优先级，实现对一个终端内多个上行承载的速率控制。</p>
-<h3 id="核心网信令的直接传输">核心网信令的直接传输</h3>
-<p>除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过<code>隧道打包</code>的方式，在终端用户和网络核心网之间传输 NAS 信息。</p>
+<h3 id="核心网信令的直接传输" class="headerLink">
+    <a href="#%e6%a0%b8%e5%bf%83%e7%bd%91%e4%bf%a1%e4%bb%a4%e7%9a%84%e7%9b%b4%e6%8e%a5%e4%bc%a0%e8%be%93" class="header-mark"></a>核心网信令的直接传输</h3><p>除了 RRC 协议信息之外，RRC 消息还可以用于承载核心网的非接入层（NAS）信息。采用所定义的上行／下行 NAS 信息直接传输的 RRC 过程，可以通过<code>隧道打包</code>的方式，在终端用户和网络核心网之间传输 NAS 信息。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp" data-sub-html="<h2>上行（NAS）信息的直接传输</h2>">
         <img
             class="lazyload"
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_32.webp">
     </a><figcaption class="image-caption">上行（NAS）信息的直接传输</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp" data-sub-html="<h2>下行（NAS）信息的直接传输</h2>">
@@ -444,8 +431,7 @@ LTE RRC 层详解
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_33.webp">
     </a><figcaption class="image-caption">下行（NAS）信息的直接传输</figcaption>
     </figure></div>
 
@@ -481,18 +467,19 @@ LTE RRC 层详解
             </noscript></div></article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
         </div><script>
                     if('serviceWorker' in navigator) {
                         navigator.serviceWorker
                             .register('/sw.min.js', { scope: '/' })
                             .then(function(registration) {
-                                
                             });
                 
                         navigator.serviceWorker
                             .ready
                             .then(function(registration) {
-                                
                             });
                     }
                 </script></footer></div>
@@ -502,14 +489,13 @@ LTE RRC 层详解
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
 
-<div class="pjax-assets"><script type="text/javascript" src="/lib/waline/Waline.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","highlight":true,"lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

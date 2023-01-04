@@ -13,12 +13,12 @@
     <description><![CDATA[<blockquote>
 <p>加速访问！</p>
 </blockquote>
-<h2 id="when">When</h2>
-<p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreffer">Vercel</a></p>
-<h2 id="why">Why</h2>
-<p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreffer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
-<h2 id="what">What</h2>
-<p>下面是 <code>Vercel</code> 官网的介绍：</p>
+<h2 id="when" class="headerLink">
+    <a href="#when" class="header-mark"></a>When</h2><p>网站已于 2020-8-26 迁移至 <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a></p>
+<h2 id="why" class="headerLink">
+    <a href="#why" class="header-mark"></a>Why</h2><p>鉴于目前 <code>Github</code> 以及 <code>Cloudflare</code> 在国内的访问速度一日不如一日，所以开始寻找了替代服务。刚好有 V2er 发帖求助相同的需求，于是顺着<a href="https://www.v2ex.com/t/701487" target="_blank" rel="noopener noreferrer">帖子</a>的推荐选择了 <code>Vercel</code>。</p>
+<h2 id="what" class="headerLink">
+    <a href="#what" class="header-mark"></a>What</h2><p>下面是 <code>Vercel</code> 官网的介绍：</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -32,8 +32,8 @@
         
     </a><figcaption class="image-caption">Vercel</figcaption>
     </figure>
-<h2 id="how">How</h2>
-<p>此前，本网站是托管在 <code>Github Pages</code>,然后通过 <code>Clouflare</code> 进行代理访问，因此只需要在 <code>Cloudfalre</code> 原配置上就行修改即可。</p>
+<h2 id="how" class="headerLink">
+    <a href="#how" class="header-mark"></a>How</h2><p>此前，本网站是托管在 <code>Github Pages</code>,然后通过 <code>Clouflare</code> 进行代理访问，因此只需要在 <code>Cloudfalre</code> 原配置上就行修改即可。</p>
 <ol>
 <li>首先，直接使用 <code>Github</code> 账号（或 <code>Gitlab</code> 等）登录 <code>Vercel</code> 即可（<strong>注：</strong> 不可以使用 <code>QQ</code> 邮箱为主邮箱的 <code>Github</code> 账号，<code>Vercel</code> 不识别部分邮箱域名，如果你是，请到 <code>Github</code> 修改主邮箱）</li>
 </ol>
@@ -77,9 +77,9 @@
             <div class="admonition-content">这里我还添加一个 <code>A</code> 记录指向<code>76.76.21.21</code>，因为我默认将根域名跳转到<code>www</code>。这个根据实际情况决定，但同样记得设置设置<code>Proxy Status</code>为<code>DNS only</code>。</div>
         </div>
     </div>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreffer">Introduction to Vercel</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://vercel.com/docs/introduction" target="_blank" rel="noopener noreferrer">Introduction to Vercel</a></li>
 </ul>]]></description>
 </item><item>
     <title>如何高效搜索？</title>
@@ -92,8 +92,8 @@
 </blockquote>
 <p>搜索引擎方便了我们搜索资料，但是由于各种垃圾内容、网站地出现，实际上，搜索过程往往是十分低效的（特别是使用中文搜索）。因此，值得学习一些提升搜索效率必要的小技巧。</p>
 <p>废话不多说，直接分类讲解：</p>
-<h2 id="搜索语法">搜索语法</h2>
-<p>首先总结一下常用的语法表达式：</p>
+<h2 id="搜索语法" class="headerLink">
+    <a href="#%e6%90%9c%e7%b4%a2%e8%af%ad%e6%b3%95" class="header-mark"></a>搜索语法</h2><p>首先总结一下常用的语法表达式：</p>
 <table>
 <thead>
 <tr>
@@ -128,9 +128,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="实例展示">实例展示</h2>
-<h3 id="网页">网页</h3>
-<p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
+<h2 id="实例展示" class="headerLink">
+    <a href="#%e5%ae%9e%e4%be%8b%e5%b1%95%e7%a4%ba" class="header-mark"></a>实例展示</h2><h3 id="网页" class="headerLink">
+    <a href="#%e7%bd%91%e9%a1%b5" class="header-mark"></a>网页</h3><p>查找网站内的特定页面（例如：本网站上的 <code>Trick</code> 标签）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -175,8 +175,8 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">site:.edu filetype:xls inurl:&#34;email.xls&#34;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="email">Email</h3>
-<p>查找 Gmail 帐户</p>
+</div><h3 id="email" class="headerLink">
+    <a href="#email" class="header-mark"></a>Email</h3><p>查找 Gmail 帐户</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -234,8 +234,8 @@ for (var i = 0; i &lt; elems.length; i++) {
 </code></pre></td></tr></table>
 </div>
 </div><p>这将记录找到的每封电子邮件，而无需扫描整个页面。</p>
-<h3 id="文件">文件</h3>
-<p>查找电子表格</p>
+<h3 id="文件" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6" class="header-mark"></a>文件</h3><p>查找电子表格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -253,8 +253,8 @@ for (var i = 0; i &lt; elems.length; i++) {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">site:docs.google.com &#34;techkoala&#34;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="seo">SEO</h3>
-<p>在锚文本中查找具有特定关键字的网站</p>
+</div><h3 id="seo" class="headerLink">
+    <a href="#seo" class="header-mark"></a>SEO</h3><p>在锚文本中查找具有特定关键字的网站</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -299,14 +299,14 @@ for (var i = 0; i &lt; elems.length; i++) {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">intext:&#34;Powered by Intercom&#34; -site:intercom.com
 </code></pre></td></tr></table>
 </div>
-</div><h1 id="待更新">待更新&hellip;</h1>
-<h2 id="参考">参考</h2>
-<ul>
+</div><h1 id="待更新" class="headerLink">
+    <a href="#%e5%be%85%e6%9b%b4%e6%96%b0" class="header-mark"></a>待更新&hellip;</h1><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreffer">dorking (how to find anything on the Internet)</a></p>
+<p>[1] <a href="https://www.alec.fyi/dorking-how-to-find-anything-on-the-internet.html" target="_blank" rel="noopener noreferrer">dorking (how to find anything on the Internet)</a></p>
 </li>
 <li>
-<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreffer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
+<p>[2] <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener noreferrer">Google Search Operators: The Complete List (42 Advanced Operators)</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -318,8 +318,8 @@ for (var i = 0; i &lt; elems.length; i++) {
     <description><![CDATA[<blockquote>
 <p>搭建自己的在线 EPUB 阅读器</p>
 </blockquote>
-<h2 id="什么是-netlify">什么是 Netlify</h2>
-<p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>的介绍：</p>
+<h2 id="什么是-netlify" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-netlify" class="header-mark"></a>什么是 Netlify</h2><p>引用 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify 官网</a>的介绍：</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -329,8 +329,8 @@ for (var i = 0; i &lt; elems.length; i++) {
         </div>
     </div>
 <p>也就是说，<code>Netlify</code> 是一个提供静态网站托管的服务。它提供 <code>CI</code> 服务，能够将托管在 <code>GitHub</code>，<code>GitLab</code> 等网站上代码生成静态网站进行展示。类似于 <code>Github Pages</code>，不过功能更加丰富。</p>
-<h2 id="koodo-reader">Koodo Reader</h2>
-<p><code>Koodo Reader</code> 是一个基于 <code>React</code> 和 <code>Electron</code> 开发的 <code>Epub</code> 阅读器。</p>
+<h2 id="koodo-reader" class="headerLink">
+    <a href="#koodo-reader" class="header-mark"></a>Koodo Reader</h2><p><code>Koodo Reader</code> 是一个基于 <code>React</code> 和 <code>Electron</code> 开发的 <code>Epub</code> 阅读器。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/koodo1.webp" data-sub-html="<h2>Koodo Reader 首页</h2>">
         
     </a><figcaption class="image-caption">Koodo Reader 首页</figcaption>
@@ -343,10 +343,10 @@ for (var i = 0; i &lt; elems.length; i++) {
 <p>🖥 绑定 <strong>OneDrive</strong>， <strong>Google Drive</strong>， <strong>Dropbox</strong> 等网盘，实现数据的多端同步</p>
 <p>💻 您所有的数据都支持导入导出</p>
 </blockquote>
-<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreffer">Koodo Reader 官网</a> 查看。</p>
-<h2 id="搭建">搭建</h2>
-<ol>
-<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreffer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
+<p>更多详情请点击 <a href="https://koodo.960960.xyz/" target="_blank" rel="noopener noreferrer">Koodo Reader 官网</a> 查看。</p>
+<h2 id="搭建" class="headerLink">
+    <a href="#%e6%90%ad%e5%bb%ba" class="header-mark"></a>搭建</h2><ol>
+<li>首先进入 <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify 官网</a>，点击注册，这里我选择直接使用 <code>Github</code> 登录，当然，你也可以选择其他方式。</li>
 </ol>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/Sign_Up.webp" data-sub-html="<h2>Netlify 注册</h2>">
         
@@ -367,7 +367,7 @@ for (var i = 0; i &lt; elems.length; i++) {
     </a><figcaption class="image-caption">使用Github 创建新站点</figcaption>
     </figure>
 <ol start="4">
-<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
+<li>这一步会让你选择你将用于生成站点的库，这里我已经提前 Fork <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreferrer">troyeguo 的 Koodo Reader 库</a>，所以直接选择即可。</li>
 </ol>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Web/Reader/New_site_Auth.webp" data-sub-html="<h2>选择相应的 Repo</h2>">
         
@@ -395,13 +395,13 @@ for (var i = 0; i &lt; elems.length; i++) {
     </a><figcaption class="image-caption">配置</figcaption>
     </figure>
 <ol start="8">
-<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreffer">这里</a>看看书吧。</li>
+<li>大功告成，来<a href="https://reader.techkoala.top/" target="_blank" rel="noopener noreferrer">这里</a>看看书吧。</li>
 </ol>
-<h2 id="后续">后续</h2>
-<p>如果需要对网站进行更新，只需要关注你的 <code>Github Repo</code> 即可。每次 commit 之后，<code>Netlify</code> 都会自动拉取更新并生成。</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreffer">koodo-reader</a></li>
+<h2 id="后续" class="headerLink">
+    <a href="#%e5%90%8e%e7%bb%ad" class="header-mark"></a>后续</h2><p>如果需要对网站进行更新，只需要关注你的 <code>Github Repo</code> 即可。每次 commit 之后，<code>Netlify</code> 都会自动拉取更新并生成。</p>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://github.com/troyeguo/koodo-reader" target="_blank" rel="noopener noreferrer">koodo-reader</a></li>
 </ul>]]></description>
 </item><item>
     <title>Hugo 搭配 LoveIt 技巧总结</title>
@@ -412,8 +412,8 @@ for (var i = 0; i &lt; elems.length; i++) {
     <description><![CDATA[<blockquote>
 <p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案</p>
 </blockquote>
-<h3 id="1-虚拟机中-hugo-server-无法远程访问">1. 虚拟机中 Hugo server 无法远程访问</h3>
-<p><code>hugo server</code> 默认只会 <code>bind localhost</code></p>
+<h3 id="1-虚拟机中-hugo-server-无法远程访问" class="headerLink">
+    <a href="#1-%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%b8%ad-hugo-server-%e6%97%a0%e6%b3%95%e8%bf%9c%e7%a8%8b%e8%ae%bf%e9%97%ae" class="header-mark"></a>1. 虚拟机中 Hugo server 无法远程访问</h3><p><code>hugo server</code> 默认只会 <code>bind localhost</code></p>
 <p>使用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -424,8 +424,8 @@ for (var i = 0; i &lt; elems.length; i++) {
 </code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机 IP，即可通过同网域机器访问该 web 服务</p>
-<h3 id="2-使用-git-信息生成文章上一次修改时间">2. 使用 git 信息生成文章上一次修改时间</h3>
-<p>首先，启用 <code>git</code> 信息：</p>
+<h3 id="2-使用-git-信息生成文章上一次修改时间" class="headerLink">
+    <a href="#2-%e4%bd%bf%e7%94%a8-git-%e4%bf%a1%e6%81%af%e7%94%9f%e6%88%90%e6%96%87%e7%ab%a0%e4%b8%8a%e4%b8%80%e6%ac%a1%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4" class="header-mark"></a>2. 使用 git 信息生成文章上一次修改时间</h3><p>首先，启用 <code>git</code> 信息：</p>
 <blockquote>
 <p>enableGitInfo = true</p>
 </blockquote>
@@ -442,11 +442,11 @@ for (var i = 0; i &lt; elems.length; i++) {
 <p>但是这样，如果只 push public 文件夹到 Github 上部署的话，网页上无法正确跳转对应的 commit 详情页。</p>
 </li>
 </ul>
-<h3 id="3-页面出现-extra-stringxxxx">3. 页面出现 %!(EXTRA string=xxxx)</h3>
-<p>LoveIt Github Issue 提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreffer">解决方案</a></p>
+<h3 id="3-页面出现-extra-stringxxxx" class="headerLink">
+    <a href="#3-%e9%a1%b5%e9%9d%a2%e5%87%ba%e7%8e%b0-extra-stringxxxx" class="header-mark"></a>3. 页面出现 %!(EXTRA string=xxxx)</h3><p>LoveIt Github Issue 提到该问题的<a href="https://github.com/dillonzq/LoveIt/issues/197" title="%!(EXTRA string=Text) in some text" target="_blank" rel="noopener noreferrer">解决方案</a></p>
 <p>但实际通过修改 <code>config.toml</code> 中的<code>defaultContentLanguage = &quot;zh&quot;</code>为<code>defaultContentLanguage = &quot;zh-cn&quot;</code>即可解决。</p>
-<h3 id="4开启-gitalk-评论">4.开启 Gitalk 评论</h3>
-<p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
+<h3 id="4开启-gitalk-评论" class="headerLink">
+    <a href="#4%e5%bc%80%e5%90%af-gitalk-%e8%af%84%e8%ae%ba" class="header-mark"></a>4.开启 Gitalk 评论</h3><p>Gitalk 使用 Github 仓库的 Issue 页面存储评论内容。</p>
 <p>因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。</p>
 <p>接着打开 <code>Settings &gt; Developer settings &gt; OAuth Apps</code> ，点击 <code>New OAuth App</code></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
@@ -473,8 +473,8 @@ clientId = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取
 clientSecret = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取</p>
 </blockquote>
 <p>完成上述设置后，现在就可以正常使用 Gitalk 评论系统了。评论内容可以通过 Github 对应仓库的 Issue 页面进行管理。</p>
-<h3 id="5cdn-配置">5.CDN 配置</h3>
-<p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
+<h3 id="5cdn-配置" class="headerLink">
+    <a href="#5cdn-%e9%85%8d%e7%bd%ae" class="header-mark"></a>5.CDN 配置</h3><p><code>LoveIt</code> 的默认的 <code>CDN</code> 数据文件位于 <code>themes/LoveIt/assets/data/cdn/</code> 目录。</p>
 <p>将该目录下的 <code>jsdelivr.yml</code> 移动到你的项目下相同路径： <code>assets/data/cdn/</code>。（如果需要使用别的 <code>CDN</code>，可以执行参考 <code>CDN</code> 网站的配置说明对 <code>jsdelivr.yml</code> 进行修改</p>
 <p>然后修改 <code>config.toml</code> 文件中的：</p>
 <blockquote>
@@ -484,8 +484,8 @@ clientSecret = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取</p>
 <p>(&ldquo;jsdelivr.yml&rdquo;)</p>
 <p>data = &ldquo;jsdelivr.yml&rdquo;</p>
 </blockquote>
-<h3 id="6hugo-矩阵渲染">6.Hugo 矩阵渲染</h3>
-<p>因为 hugo 默认的 Markdown 引擎先处理 Markdown，而反斜杠\在 Markdown 中代表转义字符，所以双斜杠无法正确渲染矩阵，</p>
+<h3 id="6hugo-矩阵渲染" class="headerLink">
+    <a href="#6hugo-%e7%9f%a9%e9%98%b5%e6%b8%b2%e6%9f%93" class="header-mark"></a>6.Hugo 矩阵渲染</h3><p>因为 hugo 默认的 Markdown 引擎先处理 Markdown，而反斜杠\在 Markdown 中代表转义字符，所以双斜杠无法正确渲染矩阵，</p>
 <p>$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \ 0&amp;1\end{bmatrix}$</p>
 <p>解决办法是在 <code>Katex</code> 原始语法再加入一个斜杠就好了</p>
 <p>$W(i)=\frac{1}{\sqrt{2}}\begin{bmatrix}1&amp;0 \\ 0&amp;1\end{bmatrix}$</p>]]></description>

@@ -13,11 +13,11 @@
     <description><![CDATA[<blockquote>
 <p>如何调整已建立的 Hyper-V 虚拟机磁盘大小？本文以 Ubuntu 为例，对此进行介绍。</p>
 </blockquote>
-<h2 id="说明">说明</h2>
-<p>此教程适用于使用 LVM 格式化的任何 Ubuntu 文件系统。</p>
-<p>如果你在使用 VMware，基本步骤与下面的教程类似，区别参见<a href="https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm" target="_blank" rel="noopener noreffer">这里</a>。</p>
-<h2 id="tldr">TL;DR</h2>
-<ol>
+<h2 id="说明" class="headerLink">
+    <a href="#%e8%af%b4%e6%98%8e" class="header-mark"></a>说明</h2><p>此教程适用于使用 LVM 格式化的任何 Ubuntu 文件系统。</p>
+<p>如果你在使用 VMware，基本步骤与下面的教程类似，区别参见<a href="https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm" target="_blank" rel="noopener noreferrer">这里</a>。</p>
+<h2 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>TL;DR</h2><ol>
 <li>fdisk -l (note it’s partition 3 by looking at the current Size)</li>
 <li>parted</li>
 <li>resizepart, Fix, 3, 100% (type this instead), quit</li>
@@ -26,9 +26,9 @@
 <li>resize2fs /dev/mapper/ubuntu–vg-ubuntu–lv</li>
 <li>df -h</li>
 </ol>
-<h2 id="具体步骤">具体步骤</h2>
-<h3 id="查看剩余磁盘大小">查看剩余磁盘大小</h3>
-<p>在下面的输出中，请注意 /root 卷只有 3.9 GB 的磁盘空间：</p>
+<h2 id="具体步骤" class="headerLink">
+    <a href="#%e5%85%b7%e4%bd%93%e6%ad%a5%e9%aa%a4" class="header-mark"></a>具体步骤</h2><h3 id="查看剩余磁盘大小" class="headerLink">
+    <a href="#%e6%9f%a5%e7%9c%8b%e5%89%a9%e4%bd%99%e7%a3%81%e7%9b%98%e5%a4%a7%e5%b0%8f" class="header-mark"></a>查看剩余磁盘大小</h3><p>在下面的输出中，请注意 /root 卷只有 3.9 GB 的磁盘空间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -128,10 +128,10 @@ Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <s
 I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="调整虚拟机磁盘大小">调整虚拟机磁盘大小</h3>
-<p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
-<h3 id="重新分区">重新分区</h3>
-<p>下面利用 parted 进行对新加的磁盘进行分区。</p>
+</div><h3 id="调整虚拟机磁盘大小" class="headerLink">
+    <a href="#%e8%b0%83%e6%95%b4%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%a3%81%e7%9b%98%e5%a4%a7%e5%b0%8f" class="header-mark"></a>调整虚拟机磁盘大小</h3><p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
+<h3 id="重新分区" class="headerLink">
+    <a href="#%e9%87%8d%e6%96%b0%e5%88%86%e5%8c%ba" class="header-mark"></a>重新分区</h3><p>下面利用 parted 进行对新加的磁盘进行分区。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -208,8 +208,8 @@ Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
 <span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="扩容">扩容</h3>
-<p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
+</div><h3 id="扩容" class="headerLink">
+    <a href="#%e6%89%a9%e5%ae%b9" class="header-mark"></a>扩容</h3><p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -226,8 +226,8 @@ Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;
 The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="确认">确认</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="确认" class="headerLink">
+    <a href="#%e7%a1%ae%e8%ae%a4" class="header-mark"></a>确认</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -259,9 +259,9 @@ tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
 user@server:~#
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://vander.host/knowledgebase/operating-systems/how-to-resize-an-ubuntu-18-04-lvm-disk/" target="_blank" rel="noopener noreffer">How to resize an Ubuntu 18.04/20.04 LVM disk</a></li>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://vander.host/knowledgebase/operating-systems/how-to-resize-an-ubuntu-18-04-lvm-disk/" target="_blank" rel="noopener noreferrer">How to resize an Ubuntu 18.04/20.04 LVM disk</a></li>
 </ul>]]></description>
 </item><item>
     <title>不容错过的 Bash 技巧</title>
@@ -290,8 +290,8 @@ user@server:~#
 </div></div>
         </div>
     </div>
-<h2 id="使用-histignore-移除历史记录中无意义的命令">使用 HISTIGNORE 移除历史记录中无意义的命令</h2>
-<p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
+<h2 id="使用-histignore-移除历史记录中无意义的命令" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-histignore-%e7%a7%bb%e9%99%a4%e5%8e%86%e5%8f%b2%e8%ae%b0%e5%bd%95%e4%b8%ad%e6%97%a0%e6%84%8f%e4%b9%89%e7%9a%84%e5%91%bd%e4%bb%a4" class="header-mark"></a>使用 HISTIGNORE 移除历史记录中无意义的命令</h2><p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -319,8 +319,8 @@ user@server:~#
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
-<h2 id="设置历史记录数量">设置历史记录数量</h2>
-<p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
+<h2 id="设置历史记录数量" class="headerLink">
+    <a href="#%e8%ae%be%e7%bd%ae%e5%8e%86%e5%8f%b2%e8%ae%b0%e5%bd%95%e6%95%b0%e9%87%8f" class="header-mark"></a>设置历史记录数量</h2><p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -331,8 +331,8 @@ user@server:~#
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="更有效的调用命令">更有效的调用命令</h2>
-<p><code>!!</code>可以调用前一行的命令。</p>
+</div><h2 id="更有效的调用命令" class="headerLink">
+    <a href="#%e6%9b%b4%e6%9c%89%e6%95%88%e7%9a%84%e8%b0%83%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>更有效的调用命令</h2><p><code>!!</code>可以调用前一行的命令。</p>
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -408,8 +408,8 @@ touch temp/test
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
 <p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
-<h2 id="使用--和--调用前一行参数">使用 !$ 和 !* 调用前一行参数</h2>
-<p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
+<h2 id="使用--和--调用前一行参数" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8--%e5%92%8c--%e8%b0%83%e7%94%a8%e5%89%8d%e4%b8%80%e8%a1%8c%e5%8f%82%e6%95%b0" class="header-mark"></a>使用 !$ 和 !* 调用前一行参数</h2><p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -440,8 +440,8 @@ $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="用--替换前一行的匹配词">用 ^ 替换前一行的匹配词</h2>
-<p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
+</div><h2 id="用--替换前一行的匹配词" class="headerLink">
+    <a href="#%e7%94%a8--%e6%9b%bf%e6%8d%a2%e5%89%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%8c%b9%e9%85%8d%e8%af%8d" class="header-mark"></a>用 ^ 替换前一行的匹配词</h2><p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -454,9 +454,9 @@ $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://cyb.org.uk/2021/05/03/bash-productivity.html" target="_blank" rel="noopener noreffer">Be more productive with use of your BASH history</a></li>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://cyb.org.uk/2021/05/03/bash-productivity.html" target="_blank" rel="noopener noreferrer">Be more productive with use of your BASH history</a></li>
 </ul>]]></description>
 </item><item>
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
@@ -475,8 +475,8 @@ rm /var/log/httpd/access.log
             <div class="admonition-content">境外服务器是保证服务可用性的条件之一</div>
         </div>
     </div>
-<h2 id="freshrss-docker-配置">FreshRSS Docker 配置</h2>
-<p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
+<h2 id="freshrss-docker-配置" class="headerLink">
+    <a href="#freshrss-docker-%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS Docker 配置</h2><p>创建一个新目录 <code>~/freshrss</code> 并进入该位置，新建 docker-compose.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -493,8 +493,8 @@ mkdir ~/freshrss &amp;&amp; cd ~/freshrss
 vim docker-compose.yml
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="docker-composeyml">docker-compose.yml</h3>
-<p>配置文件内容见下：</p>
+</div><h3 id="docker-composeyml" class="headerLink">
+    <a href="#docker-composeyml" class="header-mark"></a>docker-compose.yml</h3><p>配置文件内容见下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -580,24 +580,24 @@ volumes:
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="freshrss-设置">FreshRSS 设置</h2>
-<h3 id="初始化">初始化</h3>
-<p>数据库连接需要注意的点：</p>
+</div><h2 id="freshrss-设置" class="headerLink">
+    <a href="#freshrss-%e8%ae%be%e7%bd%ae" class="header-mark"></a>FreshRSS 设置</h2><h3 id="初始化" class="headerLink">
+    <a href="#%e5%88%9d%e5%a7%8b%e5%8c%96" class="header-mark"></a>初始化</h3><p>数据库连接需要注意的点：</p>
 <ul>
 <li>主机名填写 <code>freshrss-db</code>（数据库 docker 容器名）</li>
 <li>用户名、密码、数据库分别对应之前 Docker Compose 配置文件中的 POSTGRES_USER、POSTGRES_PASSWORD、POSTGRES_DB</li>
 <li>表前缀任意填</li>
 </ul>
-<h3 id="设置">设置</h3>
-<p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
-<h3 id="扩展">扩展</h3>
-<p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
+<h3 id="设置" class="headerLink">
+    <a href="#%e8%ae%be%e7%bd%ae" class="header-mark"></a>设置</h3><p>最好关闭<code>阅读 =&gt; 合适将文章标记为已读</code>的<code>在滚动浏览后</code>，否则即便不点击打开文章、只要你划过去就标记为已读</p>
+<h3 id="扩展" class="headerLink">
+    <a href="#%e6%89%a9%e5%b1%95" class="header-mark"></a>扩展</h3><p>一个重要的扩展是 <code>Auto Refresh</code>，实现自动刷新源</p>
 <p>点击扩展页面中的相应扩展，会跳转到相应的下载地址，将扩展下载后上传到 FreshRSS 安装目录下的 extensions 文件夹（之前部署 FreshRSS 的 Docker Compose 配置文件中已经将 <code>~/freshrss/extensions/</code> 对应了 FreshRSS 在容器内的扩展位置，所以只需要将扩展拖至 <code>~/freshrss/extensions/</code> 即可）</p>
 <p>将解压后的 xExtension-AutoRefresh 文件夹放到 ~/freshrss/extensions 目中，到 FreshRSS <code>设置-&gt; 扩展</code> 启用，刷新时间需要修改 <code>xExtension-AutoRefresh/static/script.js</code> ，其中时间相关单位是 ms</p>
-<h2 id="nginx-反向代理">Nginx 反向代理</h2>
-<p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
-<h2 id="配合第三方软件">配合第三方软件</h2>
-<p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
+<h2 id="nginx-反向代理" class="headerLink">
+    <a href="#nginx-%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86" class="header-mark"></a>Nginx 反向代理</h2><p>参见<a href="/nginx_port_reuse/" rel="">使用 Nginx 实现多服务复用端口</a></p>
+<h2 id="配合第三方软件" class="headerLink">
+    <a href="#%e9%85%8d%e5%90%88%e7%ac%ac%e4%b8%89%e6%96%b9%e8%bd%af%e4%bb%b6" class="header-mark"></a>配合第三方软件</h2><p>推荐搭配<code>Feedme</code> 、<code>Fluent reader</code>食用更佳</p>
 <p>在此之前需要到开启<code>认证 =&gt; 允许 API 访问</code>，并在<code>用户账户 =&gt; API 管理</code>中设置相应的 API 密码</p>
 <p>需要注意，<code>Feedme</code>服务应选择<code>FreshRSS</code></p>
 <p>参数配置如下：</p>
@@ -617,9 +617,9 @@ volumes:
 密码：API 密码
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreffer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://blog.ichr.me/post/docker-freshrss-setup/" target="_blank" rel="noopener noreferrer">使用 Docker 部署 FreshRSS 自建专属 RSS 服务</a></li>
 </ul>]]></description>
 </item><item>
     <title>常用 youtube-dl 命令</title>
@@ -630,8 +630,8 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
-<h2 id="下载播放列表视频音频">下载播放列表视频+音频</h2>
-<p>Windows</p>
+<h2 id="下载播放列表视频音频" class="headerLink">
+    <a href="#%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e8%a7%86%e9%a2%91%e9%9f%b3%e9%a2%91" class="header-mark"></a>下载播放列表视频+音频</h2><p>Windows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -640,8 +640,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="仅下载播放列表音频">仅下载播放列表音频</h2>
-<div class="highlight"><div class="chroma">
+</div><h2 id="仅下载播放列表音频" class="headerLink">
+    <a href="#%e4%bb%85%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e9%9f%b3%e9%a2%91" class="header-mark"></a>仅下载播放列表音频</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -683,23 +683,23 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>如何持久化 Gist file raw 链接地址？</p>
 </blockquote>
-<h2 id="问题">问题</h2>
-<p>通常，Gist 文件的 raw 链接会随着版本二更改，但在使用上往往不便，因此需要持久化文件的 raw 链接地址。</p>
-<h2 id="解决方法">解决方法</h2>
-<ul>
+<h2 id="问题" class="headerLink">
+    <a href="#%e9%97%ae%e9%a2%98" class="header-mark"></a>问题</h2><p>通常，Gist 文件的 raw 链接会随着版本二更改，但在使用上往往不便，因此需要持久化文件的 raw 链接地址。</p>
+<h2 id="解决方法" class="headerLink">
+    <a href="#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95" class="header-mark"></a>解决方法</h2><ul>
 <li>
 <p>获得 Gist 文件列表中的第一个文件： <code>https://gist.github.com/gist_user/gist_id/raw/</code></p>
-<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/" target="_blank" rel="noopener noreffer">https://gist.github.com/atenni/5604522/raw/</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/" target="_blank" rel="noopener noreferrer">https://gist.github.com/atenni/5604522/raw/</a></p>
 <p>即便更改了文件名，上述方法依然可以获得列表中的第一个文件。</p>
 </li>
 <li>
 <p>获得多个文件： <code>https://gist.github.com/gist_user/gist_id/raw/file_name</code></p>
-<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md" target="_blank" rel="noopener noreffer">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
+<p>例如: <a href="https://gist.github.com/atenni/5604522/raw/README.md" target="_blank" rel="noopener noreferrer">https://gist.github.com/atenni/5604522/raw/README.md</a></p>
 </li>
 </ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://gist.github.com/atenni/5604615" target="_blank" rel="noopener noreffer">How to permalink to a gist&rsquo;s raw file</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://gist.github.com/atenni/5604615" target="_blank" rel="noopener noreferrer">How to permalink to a gist&rsquo;s raw file</a></li>
 </ul>]]></description>
 </item><item>
     <title>Windows 网络连接优先级设置</title>
@@ -710,9 +710,9 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
 </blockquote>
-<h2 id="优先级设置方法">优先级设置方法</h2>
-<h3 id="方法一控制面板中修改">方法一：控制面板中修改</h3>
-<p>接口跃点数通过以下步骤找到：</p>
+<h2 id="优先级设置方法" class="headerLink">
+    <a href="#%e4%bc%98%e5%85%88%e7%ba%a7%e8%ae%be%e7%bd%ae%e6%96%b9%e6%b3%95" class="header-mark"></a>优先级设置方法</h2><h3 id="方法一控制面板中修改" class="headerLink">
+    <a href="#%e6%96%b9%e6%b3%95%e4%b8%80%e6%8e%a7%e5%88%b6%e9%9d%a2%e6%9d%bf%e4%b8%ad%e4%bf%ae%e6%94%b9" class="header-mark"></a>方法一：控制面板中修改</h3><p>接口跃点数通过以下步骤找到：</p>
 <p>首先打开<code>控制面板 &gt; 网络和 Internet &gt; 网络连接</code></p>
 <p>找到想要修改的网络连接，右键打开<code>属性</code></p>
 <p>接下来打开<code>Internet 协议版本 4 属性 &gt; 高级</code></p>
@@ -721,8 +721,8 @@ volumes:
     </a><figcaption class="image-caption">控制面板设置界面</figcaption>
     </figure>
 <p>取消勾选<code>自动跃点</code>，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
-<h3 id="方法二powershell-中修改">方法二：Powershell 中修改</h3>
-<p>更便捷的方式是通过 Powershell 进行修改。</p>
+<h3 id="方法二powershell-中修改" class="headerLink">
+    <a href="#%e6%96%b9%e6%b3%95%e4%ba%8cpowershell-%e4%b8%ad%e4%bf%ae%e6%94%b9" class="header-mark"></a>方法二：Powershell 中修改</h3><p>更便捷的方式是通过 Powershell 进行修改。</p>
 <p>首先以管理员身份运行 Windows PowerShell，并使用命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -756,11 +756,11 @@ volumes:
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="跃点数的设置范围">跃点数的设置范围</h3>
-<p>跃点数越小，网络优先级越高。</p>
+</div><h3 id="跃点数的设置范围" class="headerLink">
+    <a href="#%e8%b7%83%e7%82%b9%e6%95%b0%e7%9a%84%e8%ae%be%e7%bd%ae%e8%8c%83%e5%9b%b4" class="header-mark"></a>跃点数的设置范围</h3><p>跃点数越小，网络优先级越高。</p>
 <p>跃点数的理论范围是 1 ~ 999，但跃点数低于 10 ，可能会导致某些网络访问失败，同时，合理的跃点数值也要参考网络带宽。</p>
-<h2 id="分流方法">分流方法</h2>
-<p>在同时使用 Wi-Fi 和有线网络的环境下可以用 route 命令实现特定网段使用特定接口。</p>
+<h2 id="分流方法" class="headerLink">
+    <a href="#%e5%88%86%e6%b5%81%e6%96%b9%e6%b3%95" class="header-mark"></a>分流方法</h2><p>在同时使用 Wi-Fi 和有线网络的环境下可以用 route 命令实现特定网段使用特定接口。</p>
 <p>举例：</p>
 <p>可以连接到互联网的 Wi-Fi 网关地址是 <code>192.168.0.1</code>，有线网网关 IP 是 <code>10.0.0.1</code>。
 分流：需要访问的内网资源都位于 <code>10.0.0.0/8</code> 段，其他流量都走 Wi-Fi。</p>
@@ -797,13 +797,13 @@ volumes:
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreffer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
+<p>[1] <a href="https://windows10.pro/set-netipinterface-interfaceindex-interfacemetric/" target="_blank" rel="noopener noreferrer">修改接口跃点数，让 Win10 优先使用无线网络连接</a></p>
 </li>
 <li>
-<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreffer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
+<p>[2] <a href="https://www.appinn.com/wi-fi-or-lan/" target="_blank" rel="noopener noreferrer">同时连接网线和 Wi-Fi，如何优先使用 Wi-Fi？试试接口跃点数</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -815,8 +815,8 @@ volumes:
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>
-<h2 id="说明">说明</h2>
-<p>目前服务器上运行以下服务：</p>
+<h2 id="说明" class="headerLink">
+    <a href="#%e8%af%b4%e6%98%8e" class="header-mark"></a>说明</h2><p>目前服务器上运行以下服务：</p>
 <ul>
 <li><code>Trojan</code></li>
 <li><code>Xray</code></li>
@@ -824,15 +824,15 @@ volumes:
 <li><code>FreshRSS</code></li>
 </ul>
 <p>三个服务使用了不同域名进行区分，但为了便捷，都使用 <code>443</code> 端口。</p>
-<h2 id="流程概览">流程概览</h2>
-<ol>
+<h2 id="流程概览" class="headerLink">
+    <a href="#%e6%b5%81%e7%a8%8b%e6%a6%82%e8%a7%88" class="header-mark"></a>流程概览</h2><ol>
 <li>采用 <code>Docker</code> 在本地服务器上搭建 <code>Bitwarden</code>，配置并运行 <code>frpc</code> 指向服务器上的 <code>frps</code></li>
 <li>在服务器上搭建其他网站或者需要使用 <code>443</code> 端口的服务（如：<code>Trojan</code>)，配置运行 <code>frps</code></li>
 <li>采用 <code>Docker</code> 搭建 FreshRSS，首先使用 IP:Port 完成相关配置，然后配置域名，申请证书</li>
 <li>安装 <code>Nginx</code>，这里需要利用 <code>Nginx</code> 的 <code>stream_ssl_preread</code> 模块，使用<code>nginx -V</code>查看是否包含该模块。（该模块在 <code>Nginx 1.19.2</code> 已默认包含，但 <code>Ubuntu</code> 等发行版还在使用更老的 <code>stable</code> 版本，需要手动添加 <code>mainline</code> 版本源，并更新 <code>Nginx</code> 到最新版本）</li>
 </ol>
-<h2 id="获取-ssl-证书">获取 SSL 证书</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="获取-ssl-证书" class="headerLink">
+    <a href="#%e8%8e%b7%e5%8f%96-ssl-%e8%af%81%e4%b9%a6" class="header-mark"></a>获取 SSL 证书</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -842,9 +842,9 @@ volumes:
 $ sudo certbot --nginx -d example.com -d www.example.com
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="本地配置文件">本地配置文件</h2>
-<h3 id="frpcini">frpc.ini</h3>
-<div class="highlight"><div class="chroma">
+</div><h2 id="本地配置文件" class="headerLink">
+    <a href="#%e6%9c%ac%e5%9c%b0%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>本地配置文件</h2><h3 id="frpcini" class="headerLink">
+    <a href="#frpcini" class="header-mark"></a>frpc.ini</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -868,8 +868,8 @@ local_port = 443
 custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="本地-nginxcof">本地 nginx.cof</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="本地-nginxcof" class="headerLink">
+    <a href="#%e6%9c%ac%e5%9c%b0-nginxcof" class="header-mark"></a>本地 nginx.cof</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1025,9 +1025,9 @@ http {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="服务器配置文件">服务器配置文件</h2>
-<h3 id="服务器-nginxcof">服务器 nginx.cof</h3>
-<div class="highlight"><div class="chroma">
+</div><h2 id="服务器配置文件" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>服务器配置文件</h2><h3 id="服务器-nginxcof" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8-nginxcof" class="header-mark"></a>服务器 nginx.cof</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1213,9 +1213,9 @@ http {
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="bitwarden-相关配置">Bitwarden 相关配置</h3>
-<h4 id="frpsini">frps.ini</h4>
-<div class="highlight"><div class="chroma">
+</div><h3 id="bitwarden-相关配置" class="headerLink">
+    <a href="#bitwarden-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden 相关配置</h3><h4 id="frpsini" class="headerLink">
+    <a href="#frpsini" class="header-mark"></a>frps.ini</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1231,8 +1231,8 @@ authentication_method = token
 token = xxxxxx                  # frp 验证密钥
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="bitwarden-nginx-站点配置">Bitwarden Nginx 站点配置</h4>
-<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+</div><h4 id="bitwarden-nginx-站点配置" class="headerLink">
+    <a href="#bitwarden-nginx-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden Nginx 站点配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1266,9 +1266,9 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="trojan-相关配置">Trojan 相关配置</h3>
-<h4 id="trojan-nginx-配置">Trojan Nginx 配置</h4>
-<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+</div><h3 id="trojan-相关配置" class="headerLink">
+    <a href="#trojan-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan 相关配置</h3><h4 id="trojan-nginx-配置" class="headerLink">
+    <a href="#trojan-nginx-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan Nginx 配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1322,8 +1322,8 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="trojan-配置文件">Trojan 配置文件</h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="trojan-配置文件" class="headerLink">
+    <a href="#trojan-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>Trojan 配置文件</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1429,8 +1429,8 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="freshrss-站点配置">FreshRSS 站点配置</h3>
-<p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
+</div><h3 id="freshrss-站点配置" class="headerLink">
+    <a href="#freshrss-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS 站点配置</h3><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1482,9 +1482,9 @@ server {
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="xray">Xray</h3>
-<h4 id="xray-nginx-配置">Xray Nginx 配置</h4>
-<div class="highlight"><div class="chroma">
+</div><h3 id="xray" class="headerLink">
+    <a href="#xray" class="header-mark"></a>Xray</h3><h4 id="xray-nginx-配置" class="headerLink">
+    <a href="#xray-nginx-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray Nginx 配置</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1522,8 +1522,8 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="xray-配置">Xray 配置</h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="xray-配置" class="headerLink">
+    <a href="#xray-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray 配置</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1623,8 +1623,8 @@ server {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="防火墙设置">防火墙设置</h2>
-<p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>
+</div><h2 id="防火墙设置" class="headerLink">
+    <a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" class="header-mark"></a>防火墙设置</h2><p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>
 </item><item>
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
     <link>https://www.techkoala.top/openwrt_doh/</link>
@@ -1634,8 +1634,8 @@ server {
     <description><![CDATA[<blockquote>
 <p>OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍如何 dnscrypt-proxy2 进行加密查询，以及如何与上网插件进行搭配使用</p>
 </blockquote>
-<h2 id="安裝-dnscrypt-proxy2">安裝 dnscrypt-proxy2</h2>
-<p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装，命令如下：</p>
+<h2 id="安裝-dnscrypt-proxy2" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%9d-dnscrypt-proxy2" class="header-mark"></a>安裝 dnscrypt-proxy2</h2><p>如果使用 OpenWrt 19.07+版本，那么直接使用 opkg 即可完成安装，命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1647,8 +1647,8 @@ opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
 </div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
-<h2 id="配置">配置</h2>
-<p>基本使用只需要</p>
+<h2 id="配置" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%ae" class="header-mark"></a>配置</h2><p>基本使用只需要</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1686,8 +1686,8 @@ opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
-<h2 id="分流搭配-ssr">分流（搭配 SSR+）</h2>
-<ol>
+<h2 id="分流搭配-ssr" class="headerLink">
+    <a href="#%e5%88%86%e6%b5%81%e6%90%ad%e9%85%8d-ssr" class="header-mark"></a>分流（搭配 SSR+）</h2><ol>
 <li>SSR+ 使用大陆 IP 白名单 并使用 5335 的 DNS 解析的方式</li>
 <li>dnscyrpt-proxy2 配置监听在 5335，仅使用 DoH 协议向 <code>Cloudflare/Google</code> 服务器查询（这些 <code>Https</code> 的查询请求全部会被 SSR+ 代理转发）</li>
 <li>iptables 劫持所有目标为 53 端口的流量到路由器的 53 端口（默认）</li>
@@ -1695,13 +1695,13 @@ opkg install dnscrypt-proxy2
 <li>在<code>/etc/dnsmasq.d/</code>(如无则新建）中放入<code>https://github.com/felixonmars/dnsmasq-china-list/blob/master/accelerated-domains.china.conf</code></li>
 </ol>
 <p>这样实现了凡是大陆的和在大陆有 cdn 的以及返回 AAAA 记录的域名全部直连查询并直连访问，其余的全部走代理查询，且结果在大陆以外的走代理访问（IP+域名的双白名单机制）</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreffer">lede</a></p>
+<p>[1] <a href="https://github.com/coolsnowwolf/lede/issues/2551" target="_blank" rel="noopener noreferrer">lede</a></p>
 </li>
 <li>
-<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreffer">Installation on OpenWrt</a></p>
+<p>[2] <a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Installation-on-OpenWrt" target="_blank" rel="noopener noreferrer">Installation on OpenWrt</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -1713,8 +1713,8 @@ opkg install dnscrypt-proxy2
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
-<h2 id="全局命令-global">全局命令 g(lobal)</h2>
-<p>vim 进入文件，命令行模式下执行</p>
+<h2 id="全局命令-global" class="headerLink">
+    <a href="#%e5%85%a8%e5%b1%80%e5%91%bd%e4%bb%a4-global" class="header-mark"></a>全局命令 g(lobal)</h2><p>vim 进入文件，命令行模式下执行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1738,8 +1738,8 @@ opkg install dnscrypt-proxy2
 <li>! 表示取反，也就是不匹配的行，也可以使用 vglobal</li>
 <li>command 默认是打印文本</li>
 </ul>
-<h3 id="tip1-范围匹配">Tip.1 范围匹配</h3>
-<p>20 行到 200 行之间，每一行下插入空行</p>
+<h3 id="tip1-范围匹配" class="headerLink">
+    <a href="#tip1-%e8%8c%83%e5%9b%b4%e5%8c%b9%e9%85%8d" class="header-mark"></a>Tip.1 范围匹配</h3><p>20 行到 200 行之间，每一行下插入空行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1748,8 +1748,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip2-删除包含字符-pattern-的所有行">Tip.2 删除包含字符 pattern 的所有行</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="tip2-删除包含字符-pattern-的所有行" class="headerLink">
+    <a href="#tip2-%e5%88%a0%e9%99%a4%e5%8c%85%e5%90%ab%e5%ad%97%e7%ac%a6-pattern-%e7%9a%84%e6%89%80%e6%9c%89%e8%a1%8c" class="header-mark"></a>Tip.2 删除包含字符 pattern 的所有行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1757,8 +1757,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip3-删除空白行">Tip.3 删除空白行</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="tip3-删除空白行" class="headerLink">
+    <a href="#tip3-%e5%88%a0%e9%99%a4%e7%a9%ba%e7%99%bd%e8%a1%8c" class="header-mark"></a>Tip.3 删除空白行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1766,8 +1766,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip4-删除不匹配的行">Tip.4 删除不匹配的行</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="tip4-删除不匹配的行" class="headerLink">
+    <a href="#tip4-%e5%88%a0%e9%99%a4%e4%b8%8d%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.4 删除不匹配的行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1777,8 +1777,8 @@ opkg install dnscrypt-proxy2
 :v/pattern/d
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip5-删除大量匹配行">Tip.5 删除大量匹配行</h3>
-<p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
+</div><h3 id="tip5-删除大量匹配行" class="headerLink">
+    <a href="#tip5-%e5%88%a0%e9%99%a4%e5%a4%a7%e9%87%8f%e5%8c%b9%e9%85%8d%e8%a1%8c" class="header-mark"></a>Tip.5 删除大量匹配行</h3><p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1787,8 +1787,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip6-移动匹配的行">Tip.6 移动匹配的行</h3>
-<p>将所有匹配的行移动到文件的末尾</p>
+</div><h3 id="tip6-移动匹配的行" class="headerLink">
+    <a href="#tip6-%e7%a7%bb%e5%8a%a8%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.6 移动匹配的行</h3><p>将所有匹配的行移动到文件的末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1797,8 +1797,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip7-复制匹配的行">Tip.7 复制匹配的行</h3>
-<p>将所有匹配的行复制到文件末尾</p>
+</div><h3 id="tip7-复制匹配的行" class="headerLink">
+    <a href="#tip7-%e5%a4%8d%e5%88%b6%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.7 复制匹配的行</h3><p>将所有匹配的行复制到文件末尾</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1807,8 +1807,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="tip8-复制到-register-a">Tip.8 复制到 register a</h3>
-<p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
+</div><h3 id="tip8-复制到-register-a" class="headerLink">
+    <a href="#tip8-%e5%a4%8d%e5%88%b6%e5%88%b0-register-a" class="header-mark"></a>Tip.8 复制到 register a</h3><p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1822,8 +1822,8 @@ opkg install dnscrypt-proxy2
 <li>y A 将匹配的行 A (append) 追加到寄存器 a 中
 存放到 a 寄存器之后就可以使用 &ldquo;ap 来粘贴使用或者其他操作了</li>
 </ul>
-<h3 id="tip9-反转文件中的每一行">Tip.9 反转文件中的每一行</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="tip9-反转文件中的每一行" class="headerLink">
+    <a href="#tip9-%e5%8f%8d%e8%bd%ac%e6%96%87%e4%bb%b6%e4%b8%ad%e7%9a%84%e6%af%8f%e4%b8%80%e8%a1%8c" class="header-mark"></a>Tip.9 反转文件中的每一行</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1832,8 +1832,8 @@ opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
-<h3 id="tip10-在匹配行后添加文字">Tip.10 在匹配行后添加文字</h3>
-<p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
+<h3 id="tip10-在匹配行后添加文字" class="headerLink">
+    <a href="#tip10-%e5%9c%a8%e5%8c%b9%e9%85%8d%e8%a1%8c%e5%90%8e%e6%b7%bb%e5%8a%a0%e6%96%87%e5%ad%97" class="header-mark"></a>Tip.10 在匹配行后添加文字</h3><p>使用 s 命令可以实现，同样使用全局 g 命令也可以实现同样的效果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1843,9 +1843,9 @@ opkg install dnscrypt-proxy2
 </code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>
-<h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreffer">Vim 全局命令 g</a></li>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：功率控制</title>
@@ -1856,8 +1856,8 @@ opkg install dnscrypt-proxy2
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
 </blockquote>
-<h2 id="功率控制">功率控制</h2>
-<p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
+<h2 id="功率控制" class="headerLink">
+    <a href="#%e5%8a%9f%e7%8e%87%e6%8e%a7%e5%88%b6" class="header-mark"></a>功率控制</h2><p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
 <ul>
 <li>
 <p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
@@ -1866,8 +1866,8 @@ opkg install dnscrypt-proxy2
 <p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
 </li>
 </ul>
-<h3 id="上行功率控制">上行功率控制</h3>
-<p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
+<h3 id="上行功率控制" class="headerLink">
+    <a href="#%e4%b8%8a%e8%a1%8c%e5%8a%9f%e7%8e%87%e6%8e%a7%e5%88%b6" class="header-mark"></a>上行功率控制</h3><p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
 <p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
 <center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
 <p>其中：</p>
@@ -1894,8 +1894,8 @@ opkg install dnscrypt-proxy2
 <li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
 <li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
 </ul>
-<h3 id="下行功率分配">下行功率分配</h3>
-<p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
+<h3 id="下行功率分配" class="headerLink">
+    <a href="#%e4%b8%8b%e8%a1%8c%e5%8a%9f%e7%8e%87%e5%88%86%e9%85%8d" class="header-mark"></a>下行功率分配</h3><p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
 <p>下行功率分配中包括了</p>
 <ul>
 <li>提高导频信号的发射功率（即 power boosting）</li>
@@ -1907,8 +1907,8 @@ opkg install dnscrypt-proxy2
 <li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
 <li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
 </ul>
-<h4 id="提高-crs-导频信号的发射功率即-power-boosting">提高 CRS 导频信号的发射功率（即 power boosting）</h4>
-<p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
+<h4 id="提高-crs-导频信号的发射功率即-power-boosting" class="headerLink">
+    <a href="#%e6%8f%90%e9%ab%98-crs-%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7%e7%9a%84%e5%8f%91%e5%b0%84%e5%8a%9f%e7%8e%87%e5%8d%b3-power-boosting" class="header-mark"></a>提高 CRS 导频信号的发射功率（即 power boosting）</h4><p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
 <blockquote>
 <p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
 <p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
@@ -1917,12 +1917,12 @@ opkg install dnscrypt-proxy2
     </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
     </figure>
 </blockquote>
-<h4 id="用户功率分配和小区间干扰协调">用户功率分配和小区间干扰协调</h4>
-<p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
+<h4 id="用户功率分配和小区间干扰协调" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e5%8a%9f%e7%8e%87%e5%88%86%e9%85%8d%e5%92%8c%e5%b0%8f%e5%8c%ba%e9%97%b4%e5%b9%b2%e6%89%b0%e5%8d%8f%e8%b0%83" class="header-mark"></a>用户功率分配和小区间干扰协调</h4><p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
 <center>$ρ_A =δ_{power-offset} +P_A$</center>
 <p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item></channel>

@@ -13,8 +13,8 @@
     <description><![CDATA[<blockquote>
 <p>ARP 以及 RARP 如何工作？</p>
 </blockquote>
-<h2 id="为什么要有-mac-地址">为什么要有 MAC 地址？</h2>
-<p>在说明 ARP 以及 RARP 之前，有必要首先说一下 MAC 地址的必要性。</p>
+<h2 id="为什么要有-mac-地址" class="headerLink">
+    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e6%9c%89-mac-%e5%9c%b0%e5%9d%80" class="header-mark"></a>为什么要有 MAC 地址？</h2><p>在说明 ARP 以及 RARP 之前，有必要首先说一下 MAC 地址的必要性。</p>
 <p>引用《Computer Networking A Top-Down Approach》中的描述：</p>
 <div class="details admonition quote open">
         <div class="details-summary admonition-title">
@@ -31,10 +31,10 @@ MAC addresses for the link layer.</div>
 <li>网络层地址往往是动态的，每次更换网络或者重启都需要对适配器进行重新配置</li>
 <li>如果取消 MAC 地址，让适配器把收到的每帧都往上层传递，就会带来一个问题：主机会去处理局域网中的每个帧，即使这个帧不属于自己，这就带来了不必要的消耗。</li>
 </ul>
-<h2 id="arp">ARP</h2>
-<p>一句话概括 ARP（Address Resolution Protocol，地址解析协议）的目的就是：负责将<strong>网络层地址</strong>（最常见的就是 IP 地址）解析为/映射到<strong>链路层地址</strong>（MAC 地址）。</p>
-<h3 id="报文结构">报文结构</h3>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
+<h2 id="arp" class="headerLink">
+    <a href="#arp" class="header-mark"></a>ARP</h2><p>一句话概括 ARP（Address Resolution Protocol，地址解析协议）的目的就是：负责将<strong>网络层地址</strong>（最常见的就是 IP 地址）解析为/映射到<strong>链路层地址</strong>（MAC 地址）。</p>
+<h3 id="报文结构" class="headerLink">
+    <a href="#%e6%8a%a5%e6%96%87%e7%bb%93%e6%9e%84" class="header-mark"></a>报文结构</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
         
     </a><figcaption class="image-caption">ARP 包结构</figcaption>
     </figure>
@@ -63,15 +63,15 @@ MAC addresses for the link layer.</div>
 </ul>
 </li>
 </ul>
-<h3 id="工作原理">工作原理</h3>
-<ol>
+<h3 id="工作原理" class="headerLink">
+    <a href="#%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86" class="header-mark"></a>工作原理</h3><ol>
 <li>每台主机都会在自己的 ARP 缓冲区 (ARP Cache)中建立一个 ARP 列表，表示 IP 地址和 MAC 地址的对应关系。</li>
 <li>当源主机需要将一个数据包要发送到目的主机时，会首先检查自己 ARP 列表中是否存在该 IP 地址对应的 MAC 地址，如果有，就直接将数据包发送到这个 MAC 地址；如果没有，就向本地网段发起一个 ARP 请求的<strong>广播包</strong>（即将目的硬件地址设置为全 1），查询此目的主机对应的 MAC 地址。此 ARP 请求数据包里包括源主机的 IP 地址、硬件地址、以及目的主机的 IP 地址。</li>
 <li>网络中所有的主机收到这个 ARP 请求后，会检查数据包中的目的 IP 是否和自己的 IP 地址一致。如果不相同就忽略此数据包；如果相同，该主机首先将发送端的 MAC 地址和 IP 地址添加到自己的 ARP 列表中，如果 ARP 表中已经存在该 IP 的信息，则将其覆盖，然后给源主机发送一个 ARP <strong>单播</strong>响应数据包，告诉对方自己是它需要查找的 MAC 地址；</li>
 <li>源主机收到这个 ARP 响应数据包后，将得到的目的主机的 IP 地址和 MAC 地址添加到自己的 ARP 列表中，并利用此信息开始数据的传输。如果源主机一直没有收到 ARP 响应数据包，表示 ARP 查询失败。</li>
 </ol>
-<h3 id="代理-arp">代理 ARP</h3>
-<p>代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：</p>
+<h3 id="代理-arp" class="headerLink">
+    <a href="#%e4%bb%a3%e7%90%86-arp" class="header-mark"></a>代理 ARP</h3><p>代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：</p>
 <p><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-sub-html="<h2>代理 ARP</h2>">
         
     </a><figcaption class="image-caption">代理 ARP</figcaption>
@@ -97,27 +97,27 @@ MAC addresses for the link layer.</div>
 <li>有网关（采用正常 ARP）时：跨网段访问谁，都问网关的 MAC</li>
 <li>无论使用哪种 ARP，跨网段通信时，发送方请求得到的目标 MAC 地址都是网关 MAC</li>
 </ul>
-<h2 id="rarp">RARP</h2>
-<p>RARP（Reverse Address Resolution Protocol，逆地址解析协议），顾名思义，用于将 MAC 地址映射为网络层地址（例如 IP 地址），用于给 MAC 地址分配 IP 地址（通常在需要远程启动(类似无盘工作站)的系统中使用）。其因为较限于 IP 地址的运用以及其他的一些缺点，因此渐为更新的 BOOTP 或 DHCP 所取代。</p>
+<h2 id="rarp" class="headerLink">
+    <a href="#rarp" class="header-mark"></a>RARP</h2><p>RARP（Reverse Address Resolution Protocol，逆地址解析协议），顾名思义，用于将 MAC 地址映射为网络层地址（例如 IP 地址），用于给 MAC 地址分配 IP 地址（通常在需要远程启动(类似无盘工作站)的系统中使用）。其因为较限于 IP 地址的运用以及其他的一些缺点，因此渐为更新的 BOOTP 或 DHCP 所取代。</p>
 <p>RARP 使用与 ARP 相同的报头结构，只是其中的操作码有所区别，见上文。</p>
-<h3 id="工作原理-1">工作原理</h3>
-<ol>
+<h3 id="工作原理-1" class="headerLink">
+    <a href="#%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86-1" class="header-mark"></a>工作原理</h3><ol>
 <li>发送主机发送一个本地的 RARP 广播，在此广播包中，声明自己的 MAC 地址并且请求任何收到此请求的 RARP 服务器分配一个 IP 地址；</li>
 <li>本地网段上的 RARP 服务器收到此请求后，检查其 RARP 列表，查找该 MAC 地址对应的 IP 地址；</li>
 <li>如果存在，RARP 服务器就给源主机发送一个响应数据包并将此 IP 地址提供给对方主机使用；</li>
 <li>如果不存在，RARP 服务器对此不做任何的响应；</li>
 <li>源主机收到从 RARP 服务器的响应信息，就利用得到的 IP 地址进行通讯；如果一直没有收到 RARP 服务器的响应信息，表示初始化失败。</li>
 </ol>
-<h2 id="安全问题">安全问题</h2>
-<h3 id="arp-欺骗">ARP 欺骗</h3>
-<p>源主机通过 ARP 协议在局域网内发送广播请求包，按照 ARP 协议的设想应该是对应主机回复，但如果攻击者进行回复，源主机依然会选择相信。这是由 ARP 协议的不验证引起的，它不验证对方是否是所声称 IP 地址的主机。同时，由于 ARP 协议是一种无状态协议，既不验证应答者的身份，也不判断是否发送过 ARP 请求，当收到一条 ARP 应答报文时，它就会更新 ARP 应答缓存表。因此，攻击者甚至可以<strong>主动</strong>向源主机发送 ARP 响应包，迫使源主机更新其 ARP 缓存表。</p>
+<h2 id="安全问题" class="headerLink">
+    <a href="#%e5%ae%89%e5%85%a8%e9%97%ae%e9%a2%98" class="header-mark"></a>安全问题</h2><h3 id="arp-欺骗" class="headerLink">
+    <a href="#arp-%e6%ac%ba%e9%aa%97" class="header-mark"></a>ARP 欺骗</h3><p>源主机通过 ARP 协议在局域网内发送广播请求包，按照 ARP 协议的设想应该是对应主机回复，但如果攻击者进行回复，源主机依然会选择相信。这是由 ARP 协议的不验证引起的，它不验证对方是否是所声称 IP 地址的主机。同时，由于 ARP 协议是一种无状态协议，既不验证应答者的身份，也不判断是否发送过 ARP 请求，当收到一条 ARP 应答报文时，它就会更新 ARP 应答缓存表。因此，攻击者甚至可以<strong>主动</strong>向源主机发送 ARP 响应包，迫使源主机更新其 ARP 缓存表。</p>
 <p>对此，一个简单的方法是使用静态绑定地址，但是此方法维护起来较为麻烦。</p>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] Computer Networking A Top-Down Approach</li>
-<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">地址解析协议</a></li>
-<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreffer">逆地址解析协议</a></li>
-<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreffer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
+<li>[2] <a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">地址解析协议</a></li>
+<li>[3] <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">逆地址解析协议</a></li>
+<li>[4] <a href="https://www.jianshu.com/p/782f3b60eb19" target="_blank" rel="noopener noreferrer">网络协议补完计划&ndash;ARP 协议和 RARP 协议</a></li>
 </ul>]]></description>
 </item></channel>
 </rss>

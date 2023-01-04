@@ -13,11 +13,11 @@
     <description><![CDATA[<blockquote>
 <p>如何调整已建立的 Hyper-V 虚拟机磁盘大小？本文以 Ubuntu 为例，对此进行介绍。</p>
 </blockquote>
-<h2 id="说明">说明</h2>
-<p>此教程适用于使用 LVM 格式化的任何 Ubuntu 文件系统。</p>
-<p>如果你在使用 VMware，基本步骤与下面的教程类似，区别参见<a href="https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm" target="_blank" rel="noopener noreffer">这里</a>。</p>
-<h2 id="tldr">TL;DR</h2>
-<ol>
+<h2 id="说明" class="headerLink">
+    <a href="#%e8%af%b4%e6%98%8e" class="header-mark"></a>说明</h2><p>此教程适用于使用 LVM 格式化的任何 Ubuntu 文件系统。</p>
+<p>如果你在使用 VMware，基本步骤与下面的教程类似，区别参见<a href="https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm" target="_blank" rel="noopener noreferrer">这里</a>。</p>
+<h2 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>TL;DR</h2><ol>
 <li>fdisk -l (note it’s partition 3 by looking at the current Size)</li>
 <li>parted</li>
 <li>resizepart, Fix, 3, 100% (type this instead), quit</li>
@@ -26,9 +26,9 @@
 <li>resize2fs /dev/mapper/ubuntu–vg-ubuntu–lv</li>
 <li>df -h</li>
 </ol>
-<h2 id="具体步骤">具体步骤</h2>
-<h3 id="查看剩余磁盘大小">查看剩余磁盘大小</h3>
-<p>在下面的输出中，请注意 /root 卷只有 3.9 GB 的磁盘空间：</p>
+<h2 id="具体步骤" class="headerLink">
+    <a href="#%e5%85%b7%e4%bd%93%e6%ad%a5%e9%aa%a4" class="header-mark"></a>具体步骤</h2><h3 id="查看剩余磁盘大小" class="headerLink">
+    <a href="#%e6%9f%a5%e7%9c%8b%e5%89%a9%e4%bd%99%e7%a3%81%e7%9b%98%e5%a4%a7%e5%b0%8f" class="header-mark"></a>查看剩余磁盘大小</h3><p>在下面的输出中，请注意 /root 卷只有 3.9 GB 的磁盘空间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -128,10 +128,10 @@ Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <s
 I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="调整虚拟机磁盘大小">调整虚拟机磁盘大小</h3>
-<p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
-<h3 id="重新分区">重新分区</h3>
-<p>下面利用 parted 进行对新加的磁盘进行分区。</p>
+</div><h3 id="调整虚拟机磁盘大小" class="headerLink">
+    <a href="#%e8%b0%83%e6%95%b4%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%a3%81%e7%9b%98%e5%a4%a7%e5%b0%8f" class="header-mark"></a>调整虚拟机磁盘大小</h3><p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
+<h3 id="重新分区" class="headerLink">
+    <a href="#%e9%87%8d%e6%96%b0%e5%88%86%e5%8c%ba" class="header-mark"></a>重新分区</h3><p>下面利用 parted 进行对新加的磁盘进行分区。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -208,8 +208,8 @@ Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
 <span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="扩容">扩容</h3>
-<p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
+</div><h3 id="扩容" class="headerLink">
+    <a href="#%e6%89%a9%e5%ae%b9" class="header-mark"></a>扩容</h3><p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -226,8 +226,8 @@ Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;
 The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="确认">确认</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="确认" class="headerLink">
+    <a href="#%e7%a1%ae%e8%ae%a4" class="header-mark"></a>确认</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -259,9 +259,9 @@ tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
 user@server:~#
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://vander.host/knowledgebase/operating-systems/how-to-resize-an-ubuntu-18-04-lvm-disk/" target="_blank" rel="noopener noreffer">How to resize an Ubuntu 18.04/20.04 LVM disk</a></li>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://vander.host/knowledgebase/operating-systems/how-to-resize-an-ubuntu-18-04-lvm-disk/" target="_blank" rel="noopener noreferrer">How to resize an Ubuntu 18.04/20.04 LVM disk</a></li>
 </ul>]]></description>
 </item><item>
     <title>不容错过的 Bash 技巧</title>
@@ -290,8 +290,8 @@ user@server:~#
 </div></div>
         </div>
     </div>
-<h2 id="使用-histignore-移除历史记录中无意义的命令">使用 HISTIGNORE 移除历史记录中无意义的命令</h2>
-<p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
+<h2 id="使用-histignore-移除历史记录中无意义的命令" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-histignore-%e7%a7%bb%e9%99%a4%e5%8e%86%e5%8f%b2%e8%ae%b0%e5%bd%95%e4%b8%ad%e6%97%a0%e6%84%8f%e4%b9%89%e7%9a%84%e5%91%bd%e4%bb%a4" class="header-mark"></a>使用 HISTIGNORE 移除历史记录中无意义的命令</h2><p>有一些命令极为常用常用、或者敲击简单，我们不想它出现在历史记录里，那么在<code>.bashrc</code>中添加下述内容忽略它即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -319,8 +319,8 @@ user@server:~#
 </code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
-<h2 id="设置历史记录数量">设置历史记录数量</h2>
-<p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
+<h2 id="设置历史记录数量" class="headerLink">
+    <a href="#%e8%ae%be%e7%bd%ae%e5%8e%86%e5%8f%b2%e8%ae%b0%e5%bd%95%e6%95%b0%e9%87%8f" class="header-mark"></a>设置历史记录数量</h2><p>为了防止不必要的丢失，可以适当的将记录数量调整的更大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -331,8 +331,8 @@ user@server:~#
 <span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="更有效的调用命令">更有效的调用命令</h2>
-<p><code>!!</code>可以调用前一行的命令。</p>
+</div><h2 id="更有效的调用命令" class="headerLink">
+    <a href="#%e6%9b%b4%e6%9c%89%e6%95%88%e7%9a%84%e8%b0%83%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>更有效的调用命令</h2><p><code>!!</code>可以调用前一行的命令。</p>
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -408,8 +408,8 @@ touch temp/test
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
 <p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
-<h2 id="使用--和--调用前一行参数">使用 !$ 和 !* 调用前一行参数</h2>
-<p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
+<h2 id="使用--和--调用前一行参数" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8--%e5%92%8c--%e8%b0%83%e7%94%a8%e5%89%8d%e4%b8%80%e8%a1%8c%e5%8f%82%e6%95%b0" class="header-mark"></a>使用 !$ 和 !* 调用前一行参数</h2><p>和<code>!!</code>不同，<code>!$</code>和<code>!*</code>仅指代前一行，命令的部分内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -440,8 +440,8 @@ $ touch !*
 touch /var/log/httpd/access.log /var/log/httpd/error.log
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="用--替换前一行的匹配词">用 ^ 替换前一行的匹配词</h2>
-<p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
+</div><h2 id="用--替换前一行的匹配词" class="headerLink">
+    <a href="#%e7%94%a8--%e6%9b%bf%e6%8d%a2%e5%89%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%8c%b9%e9%85%8d%e8%af%8d" class="header-mark"></a>用 ^ 替换前一行的匹配词</h2><p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -454,9 +454,9 @@ $ ^error^access
 rm /var/log/httpd/access.log
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
-<li>[1] <a href="https://cyb.org.uk/2021/05/03/bash-productivity.html" target="_blank" rel="noopener noreffer">Be more productive with use of your BASH history</a></li>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li>[1] <a href="https://cyb.org.uk/2021/05/03/bash-productivity.html" target="_blank" rel="noopener noreferrer">Be more productive with use of your BASH history</a></li>
 </ul>]]></description>
 </item><item>
     <title>文件传输系列：SFTP</title>
@@ -467,8 +467,8 @@ rm /var/log/httpd/access.log
     <description><![CDATA[<blockquote>
 <p>SCP 的继承者</p>
 </blockquote>
-<h2 id="什么是-sftp">什么是 SFTP</h2>
-<p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
+<h2 id="什么是-sftp" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-sftp" class="header-mark"></a>什么是 SFTP</h2><p>首先需要明确的是，SFTP（SSH File Transfer Protocol）不是运行在 SSH 上的 FTP，而是由 IETF（Internet Engineering Task Force）工作组设计的新协议，将其作为 SSH 2.0 版的扩展，提供安全的文件传输功能。因此，没有单独的 SFTP 端口，而是使用普通的 SSH 端口。协议本身不提供身份验证和安全性，而是期望底层协议提供。</p>
 <p>与仅允许文件传输的 SCP 协议相比，SFTP 协议允许对远程文件进行一系列操作，这使其更像远程文件系统协议。SFTP 客户端还支持包括恢复中断的传输，目录列表和远程文件删除等功能。此外，上传的文件可以与它们的基本属性相关联，例如时间戳。相比普通 FTP 协议，这是一项优势。</p>
 <p>尽管 SFTP 最常在 Unix 平台上实现，但 SFTP 在主流平台都可用。</p>
 <div class="details admonition quote open">
@@ -476,11 +476,11 @@ rm /var/log/httpd/access.log
             <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreffer">draft-ietf-secsh-filexfer-02</a></div>
+            <div class="admonition-content">有关 SFTP 详细草案参见 <a href="https://assets.ctfassets.net/0lvk5dbamxpi/6jBxT5LDgMqutNK4mPTGKd/4fa27cb4a130bca3b48a10c9045b0497/draft-ietf-secsh-filexfer-02" target="_blank" rel="noopener noreferrer">draft-ietf-secsh-filexfer-02</a></div>
         </div>
     </div>
-<h2 id="使用-sftp">使用 SFTP</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="使用-sftp" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-sftp" class="header-mark"></a>使用 SFTP</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -488,8 +488,8 @@ rm /var/log/httpd/access.log
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="选项">选项</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="选项" class="headerLink">
+    <a href="#%e9%80%89%e9%a1%b9" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -511,15 +511,15 @@ rm /var/log/httpd/access.log
 -v：升高日志等级。
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="参数">参数</h3>
-<p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
-<h2 id="参考">参考</h2>
-<ul>
+</div><h3 id="参数" class="headerLink">
+    <a href="#%e5%8f%82%e6%95%b0" class="header-mark"></a>参数</h3><p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreffer">SSH File Transfer Protocol</a></p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol" target="_blank" rel="noopener noreferrer">SSH File Transfer Protocol</a></p>
 </li>
 <li>
-<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreffer">SFTP Command</a></p>
+<p>[2] <a href="https://jaywcjlove.gitee.io/linux-command/c/sftp.html" target="_blank" rel="noopener noreferrer">SFTP Command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -531,31 +531,31 @@ rm /var/log/httpd/access.log
     <description><![CDATA[<blockquote>
 <p>SCP 的另一个绝佳替选</p>
 </blockquote>
-<h2 id="什么是-rsync">什么是 rsync</h2>
-<p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
+<h2 id="什么是-rsync" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-rsync" class="header-mark"></a>什么是 rsync</h2><p>rsync (remote synchronize) 是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
 <p>rsync 是<code>类 Unix</code> 系统下的数据镜像备份工具。它能同步更新两处计算机的文件与目录，并适当利用差分编码以减少数据传输量。 rsync 中的一项同类软件不常见的重要特性是每个目标的镜像只需发送一次。rsync 可以拷贝／显示目录内容，以及拷贝文件，并可选压缩以及递归拷贝。</p>
 <p>rsync 默认监听 <code>TCP</code> 端口 873，以原生 rsync 传输协议或者透过<code>远程 shell</code> 如 <code>RSH</code> 或者 <code>SSH</code> 提供文件。<code>SSH</code> 模式下，rsync 客户端运行程序必须同时在本地和远程机器上安装。</p>
-<h2 id="rsync-算法">rsync 算法</h2>
-<div class="details admonition info open">
+<h2 id="rsync-算法" class="headerLink">
+    <a href="#rsync-%e7%ae%97%e6%b3%95" class="header-mark"></a>rsync 算法</h2><div class="details admonition info open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></div>
+            <div class="admonition-content">此部分内容转载 <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></div>
         </div>
     </div>
 <p>rsync 的算法如下：（假设源文件名为 <code>fileSrc</code>，目的文件叫 <code>fileDst</code>）</p>
-<h3 id="分块-checksum-算法">分块 Checksum 算法</h3>
-<p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
-<h3 id="传输算法">传输算法</h3>
-<p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
+<h3 id="分块-checksum-算法" class="headerLink">
+    <a href="#%e5%88%86%e5%9d%97-checksum-%e7%ae%97%e6%b3%95" class="header-mark"></a>分块 Checksum 算法</h3><p>首先，我们会把 <code>fileDst</code> 的文件平均切分成若干个小块，比如每块 512 个字节，然后对<strong>每块</strong>计算<strong>两个</strong> <code>checksum</code>，一个叫 <code>rolling checksum</code>，是<code>弱 checksum</code>，32 位的 <code>checksum</code>，其使用的是 Mark Adler 发明的 <code>adler-32</code> 算法，另一个是<code>强 checksum</code>，128 位的，以前用 <code>md4</code>，现在用 <code>md5</code>。为什么要这样？因为若干年前的硬件上跑 <code>md4</code> 的算法太慢了，所以，需要一个快算法来鉴别文件块的不同，但是弱的 <code>adler-32</code> 算法碰撞概率太高了，所以我们还要引入强的 <code>checksum</code> 算法以保证两文件块是相同的。也就是说，弱的 <code>checksum</code> 是用来区别不同，而强的是用来确认相同。</p>
+<h3 id="传输算法" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e7%ae%97%e6%b3%95" class="header-mark"></a>传输算法</h3><p>同步目标端会把 <code>fileDst</code> 的一个 <code>checksum</code> 列表传给同步源，这个列表里包括了三个东西，<code>rolling checksum</code> (32bits)，<code>md5 checksume</code> (128bits)，<code>文件块编号</code>。同步源机器拿到了这个列表后，会对 <code>fileSrc</code> 做同样的 <code>checksum</code>，然后和 <code>fileDst</code> 的 <code>checksum</code> 做对比，这样就知道哪些文件块改变了。</p>
 <p><strong>但是</strong></p>
 <p>如果我 <code>fileSrc</code> 这边在文件中间加了一个字符，这样后面的文件块都会位移一个字符，这样就完全和 <code>fileDst</code> 这边的不一样了，但理论上来说，我应该只需要传一个字符就好了。这个怎么解决？
 如果这个 <code>checksum</code> 列表特别长，而两边相同的文件块可能并不是一样的顺序，那就需要查找，线性的查找起来应该特别慢吧。这个怎么解决？</p>
-<h3 id="checksum-查找算法">Checksum 查找算法</h3>
-<p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
-<h3 id="比对算法">比对算法</h3>
-<ol>
+<h3 id="checksum-查找算法" class="headerLink">
+    <a href="#checksum-%e6%9f%a5%e6%89%be%e7%ae%97%e6%b3%95" class="header-mark"></a>Checksum 查找算法</h3><p>同步源端拿到 <code>fileDst</code> 的 <code>checksum</code> 数组后，会把这个数据存到一个 <code>hash table</code> 中，用 <code>rolling checksum</code> 做 <code>hash</code>，以便获得 <code>O(1)</code> 时间复杂度的查找性能。这个 <code>hash table</code> 是 16 bits 的，所以，<code>hash table</code> 的尺寸是 2 的 16 次方，对 <code>rolling checksum</code> 的 <code>hash</code> 会被散列到 0 到 $ 2^{16} – 1 $ 中的某个整数值。</p>
+<h3 id="比对算法" class="headerLink">
+    <a href="#%e6%af%94%e5%af%b9%e7%ae%97%e6%b3%95" class="header-mark"></a>比对算法</h3><ol>
 <li>
 <p>取 <code>fileSrc</code> 的第一个文件块（我们假设的是 512 个长度），也就是从 <code>fileSrc</code> 的第 1 个字节到第 512 个字节，取出来后做 <code>rolling checksum</code> 计算。计算好的值到 <code>hash</code> 表中查询。</p>
 </li>
@@ -569,8 +569,8 @@ rm /var/log/httpd/access.log
 <p>这样，我们就可以找出 <code>fileSrc</code> 相邻两次匹配中的那些文本字符，这些就是我们要往同步目标端传的文件内容了。</p>
 </li>
 </ol>
-<h2 id="rolling-checksum-算法">Rolling Checksum 算法</h2>
-<p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
+<h2 id="rolling-checksum-算法" class="headerLink">
+    <a href="#rolling-checksum-%e7%ae%97%e6%b3%95" class="header-mark"></a>Rolling Checksum 算法</h2><p>rolling checksum 算法也叫 <code>Rabin-Karp</code> 算法，由 Richard M. Karp 和 Michael O. Rabin 在 1987 年发表，它用来解决多模式串匹配问题。其最大的精髓是，当往后面 step 1 个字符的时候，不用全部重新计算所有的 <code>checksum</code>，也就是说，从 [0, 512] rolling 到 [1, 513] 时，不需要重新计算从 1 到 513 的 <code>checksum</code>，而是重用 [0，512] 的 <code>checksum</code> 直接算出来。</p>
 <p>其公式可以表示为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -595,8 +595,8 @@ rm /var/log/httpd/access.log
     </a><figcaption class="image-caption">rsync 算法示意</figcaption>
     </figure>
 <p>最终，得到的数据组可以想象为 BT 协议下载 torrent ：一些文件块已下载（匹配上），其他的文件块还未下载（未匹配上）。然后，同步端将这些未匹配上的文件打上标号发送，目的端根据标号重组文件就完成了同步。</p>
-<h2 id="使用-rsync">使用 rsync</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="使用-rsync" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-rsync" class="header-mark"></a>使用 rsync</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -764,19 +764,19 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 --bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreffer">The rsync algorithm</a></p>
+<p>[1] <a href="https://rsync.samba.org/tech_report/tech_report.html" target="_blank" rel="noopener noreferrer">The rsync algorithm</a></p>
 </li>
 <li>
-<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreffer">RSYNC 的核心算法</a></p>
+<p>[2] <a href="https://coolshell.cn/articles/7425.html" target="_blank" rel="noopener noreferrer">RSYNC 的核心算法</a></p>
 </li>
 <li>
-<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreffer">rsync wikipedia</a></p>
+<p>[3] <a href="https://zh.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener noreferrer">rsync wikipedia</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreffer">rsync command</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/rsync.html" target="_blank" rel="noopener noreferrer">rsync command</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -788,8 +788,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
     <description><![CDATA[<blockquote>
 <p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>
-<h2 id="什么是-scp">什么是 SCP</h2>
-<p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
+<h2 id="什么是-scp" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-scp" class="header-mark"></a>什么是 SCP</h2><p>SCP（Secure Copy Protocol，安全复制协议）允许我们在两台计算机之间复制文件（和目录）。</p>
 <p>使用起来特别方便：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -803,18 +803,18 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
 <p>使用前需要首先配置到远程主机的 <code>SSH</code> 连接权限。<code>SCP</code> 的验证提示和 SSH 看起很像，因为 <code>SCP</code> 跑在 <code>SSH</code> 的上层，仅仅把它作为文件数据的管道。事实上，<code>SSH</code> 负责处理所有安全相关的任务，<code>SCP</code> 只是将一些文件扔到 <code>SSH</code> 连接上。</p>
 <p>维基百科上的条目讲述了 <code>SCP</code> 的历史，简而言之：在旧的 <code>BSD</code> 系统上曾经有一个叫 <code>RCP</code> 的工具，可以在电脑之间移动文件。在当时受信任的网络时代，每个人都是别人的朋友。后来人们意识到，也许并不是每个人在他们的网络上都是这么好的朋友。于是有人把 <code>RCP</code> 的实现复制到 <code>OpenSSH</code> 的前身上，然后简单地在 <code>SSH</code> 会话上运行它，以保护文件不被非好友发现。问题解决了！从此以后，它就留在了 <code>OpenSSH</code> 中。</p>
-<h2 id="scp-工作原理">SCP 工作原理</h2>
-<p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
-<h3 id="建立连接">建立连接</h3>
-<p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
+<h2 id="scp-工作原理" class="headerLink">
+    <a href="#scp-%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86" class="header-mark"></a>SCP 工作原理</h2><p><code>SCP</code> 并不是一个标准协议，并没有一个 <code>RFC</code> 或者任何官方描述如何实现它。<code>OpenSSH</code> 实现是一个事实上的规范。此实现有两个部分：连接建立和之后的传输协议。</p>
+<h3 id="建立连接" class="headerLink">
+    <a href="#%e5%bb%ba%e7%ab%8b%e8%bf%9e%e6%8e%a5" class="header-mark"></a>建立连接</h3><p>实际上，这并不是真正的连接。因为它只是利用 <code>SSH</code> 执行命令后的 <code>STDIN/STDOUT</code> ，有点类似 <code>Unix</code> 管道。<code>OpenSSH</code> 中包含两个程序来完成:<code>sshd</code> 和 <code>scp</code>。<code>sshd</code> 是始终运行的服务器守护进程，接受新的 <code>SSH</code> 连接。<code>SCP</code> 是伪装成 <code>SSH</code> 的客户端程序，发送和接受文件。</p>
 <p>当 <code>SCP</code> 运行时，他将开启一个新的 <code>SSH</code> 连接。在该连接上，它会在服务端执行另一个带有特殊标志的 <code>SCP</code> 程序。你可以认为是 <code>ssh exec scp [flags]</code>。主要的标志包含 <code>-t</code>（&ldquo;to&rdquo;）和 <code>-f</code>（&ldquo;from&rdquo;）用于代表接受和发送，而 <code>-d</code> 表示文件夹，<code>-r</code> 表示递归。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/SCP/scp-1.png" data-sub-html="<h2>建立连接</h2>">
         
     </a><figcaption class="image-caption">建立连接</figcaption>
     </figure>
 <p>值得注意的是，<code>SCP</code> 协议是单向的，一端发送文件，另一端接收文件。在远程端 <code>SCP</code> 开始运行后，实际的 <code>SCP</code> 协议命令开始通过 <code>STDIN</code> 和 <code>STDOUT</code> 运行。</p>
-<h3 id="传输协议">传输协议</h3>
-<p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
+<h3 id="传输协议" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e5%8d%8f%e8%ae%ae" class="header-mark"></a>传输协议</h3><p>现在，安全的 I/O 通道建立起来，并且已经有效地切换到 <code>RCP</code> 协议上。该协议是 <strong>顺序</strong>（一次一个操作）和 <strong>同步</strong>（每个命令执行完后才执行下一个命令）执行的。</p>
 <p>命令格式大致为（不带括号或空格）：<code>[command type][arguments]\n [optional data]</code></p>
 <ul>
 <li>
@@ -850,8 +850,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
         
     </a><figcaption class="image-caption">传输过程</figcaption>
     </figure>
-<h2 id="使用-scp">使用 SCP</h2>
-<div class="highlight"><div class="chroma">
+<h2 id="使用-scp" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-scp" class="header-mark"></a>使用 SCP</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -897,10 +897,10 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <li>源文件：指定要复制的源文件。</li>
 <li>目标文件：格式为 user@host：filename（文件名为目标文件的名称）。</li>
 </ul>
-<h2 id="scp-的问题">SCP 的问题</h2>
-<p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
-<h3 id="性能">性能</h3>
-<p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
+<h2 id="scp-的问题" class="headerLink">
+    <a href="#scp-%e7%9a%84%e9%97%ae%e9%a2%98" class="header-mark"></a>SCP 的问题</h2><p>看起来，<code>SCP</code> 听起来似乎没什么问题。它是一个简单易用的工具，然而存在一些现实问题。</p>
+<h3 id="性能" class="headerLink">
+    <a href="#%e6%80%a7%e8%83%bd" class="header-mark"></a>性能</h3><p>传输协议的顺序性：每个命令的强制确认都会增加大量开销。例如，如果沿途丢弃单个确认数据包，则整个连接将暂停，直到重新传输开始。最重要的是，发送所有数据而不压缩或询问接收方是否已经拥有该文件并不理想。</p>
 <p>有经验的系统管理员可以告诉您，使用 <code>tar</code> 归档文件并发送比使用 <code>scp</code> 递归命令传输要快得多。事实上，这样的话你甚至无需使用 SCP：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -949,40 +949,40 @@ Executed in  215.68 millis	fish       	external
 </code></pre></td></tr></table>
 </div>
 </div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
-<h3 id="安全">安全</h3>
-<p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
+<h3 id="安全" class="headerLink">
+    <a href="#%e5%ae%89%e5%85%a8" class="header-mark"></a>安全</h3><p>我们已经知道，<code>SCP</code> 靠 <code>SSH</code> 负担安全工作，因此它完全安全&hellip; 吗？</p>
 <p><code>OpenSSH</code> 的发行说明提到：</p>
 <blockquote>
 <p>scp 协议已经过时、不灵活且不容易修复。我们建议使用更现代的协议，如 sftp 和 rsync 来传输文件。</p>
 </blockquote>
 <p>如果远程端的 <code>shell</code> 打印出任何非交互式会话，则本地 <code>SCP</code> 进程将愉快地将该输出解释为 <code>SCP</code> 命令。好的话，这仅仅是打破 <code>SCP</code> 协议中模糊的错误。但在最坏的情况下，远程 <code>shell</code> 启动脚本是恶意的，并向你发送恶意文件，而不是所需的文件。</p>
 <p>此外，早在 2018 年，Harry Sintonen 就发现了流行的 <code>SCP</code> 实现（包括 <code>OpenSSH</code>）中的一堆漏洞。包括从修改目录的权限到覆盖任意文件（由于 <code>～/.ssh/authorized_keys</code> 或 <code>～/.bashrc</code>）、有效地执行代码，以及注入终端转义序列来隐藏任何追踪。这些漏洞对于任何构建网络 <code>CLI</code> 应用程序的人来说都是一个很好的教训。</p>
-<h2 id="scp-的替代方案">SCP 的替代方案</h2>
-<p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
+<h2 id="scp-的替代方案" class="headerLink">
+    <a href="#scp-%e7%9a%84%e6%9b%bf%e4%bb%a3%e6%96%b9%e6%a1%88" class="header-mark"></a>SCP 的替代方案</h2><p><code>SFTP</code> 被广泛认为是 <code>SCP</code> 的继承者。为了传输层安全性，它仍然在 <code>SSH</code> 上运行，并且不需要单独设置访问。它可以为您提供一个自定义交互式提示来探索远程文件系统，或者您可以使用预先编写的一系列命令编写脚本。
 缺点是，您需要学习 <code>SFTP</code> 提示命令，协议本身尚未完全标准化（有很多 <code>RFC</code> 草稿，但作者最终放弃了）。</p>
 <p><code>Rsync</code> 是另一个很好的选择。使用与 <code>SCP</code> 命令完全相同 - 它也利用 <code>SSH</code>。<code>Rsync</code> 着重优化性能 - 它执行大量的复杂本地计算从而通过网络发送尽可能少的数据。从技术上讲，它致力于数据同步而不是纯传输文件 - 如果远程和本地内容相似，则只会发送增量。</p>
 <p>同样，它也有其自身的缺点：发送方使用大量的 CPU 资源来计算要发送什么，并且接收方使用大量磁盘 IO 将数据按正确的顺序放在一起。与 <code>OpenSSH</code> 不同，<code>Rsync</code> 在大多数系统上并不预安装。</p>
-<h2 id="结论">结论</h2>
-<p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
+<h2 id="结论" class="headerLink">
+    <a href="#%e7%bb%93%e8%ae%ba" class="header-mark"></a>结论</h2><p><code>SCP</code> 是一个简单的工具，它在复制文件方面做得很好，但较新的软件在很多方面都优于它。对于您信任的计算机之间的个人简单使用，<code>SCP</code> 仍然适合。</p>
 <p>但是，如果您遇到性能问题或需要满足更高的安全标准，则上面列出的任何备选方案都比 <code>SCP</code> 更可取。选择最适合您需求的，然后试着开始使用。</p>
-<h2 id="另见">另见</h2>
-<ul>
+<h2 id="另见" class="headerLink">
+    <a href="#%e5%8f%a6%e8%a7%81" class="header-mark"></a>另见</h2><ul>
 <li><a href="/rsync/" rel="">rsync</a></li>
 <li><a href="/sftp/" rel="">SFTP</a></li>
 </ul>
-<h2 id="参考">参考</h2>
-<ul>
+<h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreffer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
+<p>[1] <a href="https://gravitational.com/blog/scp-familiar-simple-insecure-slow/" target="_blank" rel="noopener noreferrer">SCP - Familiar, Simple, Insecure, and Slow</a></p>
 </li>
 <li>
-<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreffer">Wikipedia Secure copy</a></p>
+<p>[2] <a href="https://en.wikipedia.org/wiki/Secure_copy" target="_blank" rel="noopener noreferrer">Wikipedia Secure copy</a></p>
 </li>
 <li>
-<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreffer">Call for testing: OpenSSH 8.0</a></p>
+<p>[3] <a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-March/037672.html" target="_blank" rel="noopener noreferrer">Call for testing: OpenSSH 8.0</a></p>
 </li>
 <li>
-<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreffer">Scp</a></p>
+<p>[4] <a href="https://ningyu1.github.io/linux-command/c/scp.html" target="_blank" rel="noopener noreferrer">Scp</a></p>
 </li>
 </ul>]]></description>
 </item><item>
@@ -994,14 +994,14 @@ Executed in  215.68 millis	fish       	external
     <description><![CDATA[<blockquote>
 <p>一行命令解决 Virtualbox 共享文件夹权限问题</p>
 </blockquote>
-<h2 id="功能">功能</h2>
-<p>使用 virtualbox 最方便的 <code>host-guest</code> 交换文件方案莫过于共享文件夹功能了。</p>
+<h2 id="功能" class="headerLink">
+    <a href="#%e5%8a%9f%e8%83%bd" class="header-mark"></a>功能</h2><p>使用 virtualbox 最方便的 <code>host-guest</code> 交换文件方案莫过于共享文件夹功能了。</p>
 <p>比如 <code>host</code> 有个叫 <code>git</code> 的文件夹，可以直接将此文件夹设置为共享文件夹并自动 <code>mount</code>，这样，每次在虚拟机一开机就看到这个文件夹被挂载为<code>/media/sf_git</code>。</p>
-<h2 id="问题">问题</h2>
-<p>但是，在用非 <code>root</code> 用户方法这个文件夹时却会遇到权限不足问题。</p>
+<h2 id="问题" class="headerLink">
+    <a href="#%e9%97%ae%e9%a2%98" class="header-mark"></a>问题</h2><p>但是，在用非 <code>root</code> 用户方法这个文件夹时却会遇到权限不足问题。</p>
 <p>原因在于自动 <code>mount</code> 的文件夹的所有者为 <code>root</code>，所属的组是 <code>vboxsf</code>，因此只有这两个用户有访问权限。</p>
-<h2 id="解决">解决</h2>
-<p>解决办法很简单，只需要将当前登录用户加入到 <code>vboxsf</code> 组就行了。</p>
+<h2 id="解决" class="headerLink">
+    <a href="#%e8%a7%a3%e5%86%b3" class="header-mark"></a>解决</h2><p>解决办法很简单，只需要将当前登录用户加入到 <code>vboxsf</code> 组就行了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1

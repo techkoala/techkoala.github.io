@@ -27,8 +27,12 @@
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/netcat/" /><link rel="prev" href="https://www.techkoala.top/how_https_works/" /><link rel="next" href="https://www.techkoala.top/dns_list/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript><script type="application/ld+json">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -37,7 +41,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/netcat\/"
-        },"genre": "posts","keywords": "Software","wordcount":  2065 ,
+        },"genre": "posts","keywords": "Software","wordcount":  2075 ,
         "url": "https:\/\/www.techkoala.top\/netcat\/","datePublished": "2020-08-19T23:15:35+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -48,7 +52,7 @@
     </script></head>
 
 <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
@@ -116,17 +120,12 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-            <div class="container"><div class="toc" id="toc-auto">
-        <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">网络分析工具：NetCat</h1><div class="post-meta">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">网络分析工具：NetCat</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2065 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/netcat/" class="leancloud_visitors" data-flag-title="网络分析工具：NetCat">
-                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
-                    </span>&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2075 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -169,12 +168,11 @@
             data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp"
             data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp 2x"
             data-sizes="auto"
-            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp"
-        />
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NetCat/netcat.webp">
     </a><figcaption class="image-caption">网络瑞士军刀 —— NetCat</figcaption>
     </figure>
-<h2 id="什么是-netcat">什么是 NetCat</h2>
-<p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
+<h2 id="什么是-netcat" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%af-netcat" class="header-mark"></a>什么是 NetCat</h2><p>简单来说，NetCat (nc) 是一个命令行工具，能够让你很方便、很灵活地操纵 <code>传输层协议</code>（TCP ＆ UDP）</p>
 <p>nc 可以在两台设备上面相互交互，即<code>侦听模式</code>/<code>传输模式</code></p>
 <p>nc 包含以下主要功能：</p>
 <ul>
@@ -188,8 +186,8 @@
 <li>流媒体服务器</li>
 <li>远程克隆硬盘</li>
 </ul>
-<h2 id="使用-netcat">使用 NetCat</h2>
-<p>一般来说，nc 的命令行包括如下几个部分：</p>
+<h2 id="使用-netcat" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8-netcat" class="header-mark"></a>使用 NetCat</h2><p>一般来说，nc 的命令行包括如下几个部分：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -198,11 +196,11 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="命令选项">命令选项</h3>
-<blockquote>
+</div><h3 id="命令选项" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e9%80%89%e9%a1%b9" class="header-mark"></a>命令选项</h3><blockquote>
 <p>本文内容基于 OpenBSD 社区的变种（也叫 OpenBSD netcat，部分命令与原版有差异。 ）</p>
 </blockquote>
-<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">OpenBSD manual page</a></p>
+<p>下面列举了一些常用选项，更多选项参见 <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreferrer">OpenBSD manual page</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -237,13 +235,13 @@
 -d    NO               后台模式
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="主机">主机</h3>
-<p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
-<h3 id="端口">端口</h3>
-<p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
-<h2 id="常用使用场景示例">常用使用场景示例</h2>
-<h3 id="测试某个远程主机的监听端口是否可达">测试某个远程主机的监听端口是否可达</h3>
-<p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
+</div><h3 id="主机" class="headerLink">
+    <a href="#%e4%b8%bb%e6%9c%ba" class="header-mark"></a>主机</h3><p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
+<h3 id="端口" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3" class="header-mark"></a>端口</h3><p>这部分可以没有，可以是单个端口，可以是端口范围。</p>
+<h2 id="常用使用场景示例" class="headerLink">
+    <a href="#%e5%b8%b8%e7%94%a8%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af%e7%a4%ba%e4%be%8b" class="header-mark"></a>常用使用场景示例</h2><h3 id="测试某个远程主机的监听端口是否可达" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e6%9f%90%e4%b8%aa%e8%bf%9c%e7%a8%8b%e4%b8%bb%e6%9c%ba%e7%9a%84%e7%9b%91%e5%90%ac%e7%ab%af%e5%8f%a3%e6%98%af%e5%90%a6%e5%8f%af%e8%be%be" class="header-mark"></a>测试某个远程主机的监听端口是否可达</h3><p>经常有这种需求，要判断某个主机的监听端口是否能连上。导致监听端口无法连接，通常有两种原因：</p>
 <ol>
 <li>监听端口没开启</li>
 <li>监听端口虽然开启，但是被防火墙阻拦了</li>
@@ -267,8 +265,8 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="判断防火墙是否允许-or-禁止某个端口">判断防火墙是否允许 or 禁止某个端口</h3>
-<p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
+</div><h3 id="判断防火墙是否允许-or-禁止某个端口" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e9%98%b2%e7%81%ab%e5%a2%99%e6%98%af%e5%90%a6%e5%85%81%e8%ae%b8-or-%e7%a6%81%e6%ad%a2%e6%9f%90%e4%b8%aa%e7%ab%af%e5%8f%a3" class="header-mark"></a>判断防火墙是否允许 or 禁止某个端口</h3><p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
 <p>为了叙述方便，设想如下场景：
 有两台主机 ——<code>主机 C</code> 充当客户端，<code>主机 S</code> 充当服务端。
 然后要判断<code>主机 S</code> 上的防火墙是否会拦截其它主机对 8080 TCP 端口的连接。</p>
@@ -283,8 +281,8 @@
 </div>
 </div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
 <p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
-<h3 id="端口扫描">端口扫描</h3>
-<p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
+<h3 id="端口扫描" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3%e6%89%ab%e6%8f%8f" class="header-mark"></a>端口扫描</h3><p>下面这个命令，用来扫描的端口范围从 1 到 1024</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -306,8 +304,8 @@
 </div>
 </div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
 <p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
-<h3 id="探测服务器类型和软件版本">探测服务器类型和软件版本</h3>
-<p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
+<h3 id="探测服务器类型和软件版本" class="headerLink">
+    <a href="#%e6%8e%a2%e6%b5%8b%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b%e5%92%8c%e8%bd%af%e4%bb%b6%e7%89%88%e6%9c%ac" class="header-mark"></a>探测服务器类型和软件版本</h3><p>如果某个服务器运行了 SSH 服务端，那么用如下命令可以看出：该服务器的操作系统类型，以及 SSH server 的版本。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -320,8 +318,8 @@ OR
 <span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="端口转发">端口转发</h3>
-<p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
+</div><h3 id="端口转发" class="headerLink">
+    <a href="#%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91" class="header-mark"></a>端口转发</h3><p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
 <p>步骤 1：创建命名管道</p>
 <p>用下面这个简单的命令创建一个 “命名管道”，其名称叫做 nc_pipe</p>
 <div class="highlight"><div class="chroma">
@@ -342,8 +340,8 @@ OR
 </code></pre></td></tr></table>
 </div>
 </div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
-<h3 id="传输文件">传输文件</h3>
-<p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
+<h3 id="传输文件" class="headerLink">
+    <a href="#%e4%bc%a0%e8%be%93%e6%96%87%e4%bb%b6" class="header-mark"></a>传输文件</h3><p>为了叙述方便，假设你有两台主机 A 与 B，你要把 A 主机上的文件 file1 传输到 B 主机上，保存为 file2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -361,8 +359,8 @@ nc ip port &lt; file1
 </code></pre></td></tr></table>
 </div>
 </div><p>两者端口号要相同</p>
-<h3 id="远程备份整个磁盘">远程备份整个磁盘</h3>
-<p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
+<h3 id="远程备份整个磁盘" class="headerLink">
+    <a href="#%e8%bf%9c%e7%a8%8b%e5%a4%87%e4%bb%bd%e6%95%b4%e4%b8%aa%e7%a3%81%e7%9b%98" class="header-mark"></a>远程备份整个磁盘</h3><p>假设你要把 A 主机 <code>/dev/sda</code> 磁盘的原始数据整个复制到 B 主机的 <code>/dev/sdb</code> 磁盘。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -379,8 +377,8 @@ nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o
 dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="远程控制">远程控制</h3>
-<p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
+</div><h3 id="远程控制" class="headerLink">
+    <a href="#%e8%bf%9c%e7%a8%8b%e6%8e%a7%e5%88%b6" class="header-mark"></a>远程控制</h3><p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -397,8 +395,8 @@ B:
 nc ip port
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="流媒体服务">流媒体服务</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="流媒体服务" class="headerLink">
+    <a href="#%e6%b5%81%e5%aa%92%e4%bd%93%e6%9c%8d%e5%8a%a1" class="header-mark"></a>流媒体服务</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -415,8 +413,8 @@ nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4
 </code></pre></td></tr></table>
 </div>
 </div><p>A 让 test.MP4 这个文件成为<code>流</code>的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。</p>
-<h3 id="信息收集">信息收集</h3>
-<p>收集目标机上的进程信息</p>
+<h3 id="信息收集" class="headerLink">
+    <a href="#%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86" class="header-mark"></a>信息收集</h3><p>收集目标机上的进程信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -435,16 +433,16 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考">参考</h2>
-<ul>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>
-<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreffer">netcat manual page</a></p>
+<p>[1] <a href="https://man.openbsd.org/nc.1" target="_blank" rel="noopener noreferrer">netcat manual page</a></p>
 </li>
 <li>
-<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreffer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
+<p>[2] <a href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html#head-15" target="_blank" rel="noopener noreferrer">扫盲 netcat（网猫）的 N 种用法 —— 从 “网络诊断” 到 “系统入侵”</a></p>
 </li>
 <li>
-<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreffer">NetCat 使用指南</a></p>
+<p>[3] <a href="https://www.jianshu.com/p/cb26a0f6c622" target="_blank" rel="noopener noreferrer">NetCat 使用指南</a></p>
 </li>
 </ul></div>
 
@@ -480,18 +478,19 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
             </noscript></div></article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
         </div><script>
                     if('serviceWorker' in navigator) {
                         navigator.serviceWorker
                             .register('/sw.min.js', { scope: '/' })
                             .then(function(registration) {
-                                
                             });
                 
                         navigator.serviceWorker
                             .ready
                             .then(function(registration) {
-                                
                             });
                     }
                 </script></footer></div>
@@ -501,14 +500,13 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
 
-<div class="pjax-assets"><script type="text/javascript" src="/lib/waline/Waline.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","highlight":true,"lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>
