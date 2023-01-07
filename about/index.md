@@ -6,12 +6,12 @@
 ### :man_shrugging:我
 
 - 一只`通信:dog2:`，对`网络`有浓厚的兴趣
-- 目前从事 ~~Wife~~ Wi-Fi 相关工作 :man_technologist:
-- 擅长 `Linux(Arch & Ubuntu 20.04)` & `Windows 11` & `MacOS` 开关机
+- 目前从事 Android Wi-Fi 相关研发工作 :man_technologist:
+- 擅长 `Linux(Arch & Ubuntu 22.04)` & `Windows 11` & `MacOS` 开关机
 
 ### 这个网站
 
-本质上，就是我自己的笔记:notebook_with_decorative_cover:，某天突发奇想:thought_balloon:：做成网站也不错呀，随时都可以查看，于是就诞生了这网站。
+本质上，就是我自己的笔记:notebook_with_decorative_cover:，某天突发奇想:thought_balloon:：做成网站也不错，随时都可以查看，于是就诞生了这个网站。
 
 更新随缘，内容随意。
 

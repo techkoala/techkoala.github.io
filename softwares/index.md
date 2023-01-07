@@ -129,8 +129,6 @@
 
 - [Matlab](https://ww2.mathworks.cn/products/matlab.html)
 
-- [Visual studio 2019](https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.google.com%2F)
-
 ##### Linux：
 
 - [Pycharm-professional](https://www.jetbrains.com/pycharm/)
@@ -157,8 +155,6 @@
 
 - [Adobe acrobat DC](https://get.adobe.com/cn/reader/otherversions/)
 
-- ~~[CAJViewer](http://cajviewer.cnki.net/)~~
-
 - [Visio](https://msdn.itellyou.cn/)
 
 - _OneNote_
@@ -172,8 +168,6 @@
 - **[Youtube Music](https://music.youtube.com/)**：网页 & Android 客户端
 
 - **[Apple Music](https://www.apple.com/apple-music/)**：网页 & Android 客户端
-
-- ~~**_网易云音乐_**~~
 
 - **[Macast](https://github.com/xfangfang/Macast)**: PC 充当 DLNA 接收器
 
@@ -263,7 +257,7 @@
 
 - [PowerToys](https://github.com/microsoft/PowerToys/)
 
-- [Strokesplus.net](https://www.strokesplus.net/Downloads）：Windows 鼠标手势
+- [Strokesplus.net](https://www.strokesplus.net/Downloads)：Windows 鼠标手势
 
 - [Fastcopy-M](https://github.com/Mapaler/FastCopy-M)：基于原版的二次开发
 
@@ -329,11 +323,11 @@
 
 - [Fluent Reader Lite](https://github.com/yang991178/fluent-reader-lite)
 
-- [Feedme]](https://github.com/seazon/FeedMe)
+- [Feedme](https://github.com/seazon/FeedMe)
 
 ##### macOS:
 
-- _[Reader]_
+- Reader
   
 - [NetNewsWire](https://netnewswire.com/)
 
