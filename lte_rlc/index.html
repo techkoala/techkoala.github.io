@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">LTE 系列：RLC 层 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="LTE 系列：RLC 层" />
+    <title>LTE 系列：RLC 层 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="LTE 系列：RLC 层" />
 <meta property="og:description" content="
 LTE RLC 层详解
 " />
@@ -24,7 +24,7 @@ LTE RLC 层详解
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_rlc/" /><link rel="prev" href="https://www.techkoala.top/lte_pdcp/" /><link rel="next" href="https://www.techkoala.top/lte_mac/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_rlc/" /><link rel="prev" href="https://www.techkoala.top/lte_pdcp/" /><link rel="next" href="https://www.techkoala.top/lte_mac/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
     
@@ -66,16 +66,16 @@ LTE RLC 层详解
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> 所有文章 </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> 标签 </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> 分类 </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> 工具 </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> 软件 </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    </span><a href="#" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a></div>
         </div>
@@ -93,20 +93,20 @@ LTE RLC 层详解
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -165,10 +165,11 @@ LTE RLC 层详解
     <a href="#%e9%80%8f%e6%98%8e%e6%a8%a1%e5%bc%8ftm" class="header-mark"></a>透明模式（TM）</h3><p>此模式下，<code>RLC</code> 子层是完全透明的，<strong>不执行任何功能</strong>，例如不添加 <code>RLC 包头</code>、不进行数据分段或者连接，即来自上层的数据在 <code>RLC</code> 层<strong>不进行任何处理</strong>，“透明”地传输到下层的 <code>MAC 层</code>。透明模式用于广播、寻呼和公用控制信道等信息需要传输给多个用户的情况，相对应于广播、上下行公用控制和寻呼等逻辑信道。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp" data-sub-html="<h2>TM 模式数据消息的 RLC PDU 格式</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_4.webp">
     </a><figcaption class="image-caption">TM 模式数据消息的 RLC PDU 格式</figcaption>
     </figure>
@@ -183,10 +184,11 @@ LTE RLC 层详解
 <p><code>AM 模式</code>的 <code>RLC PDU</code> 由 <code>RLC 包头</code>和 <code>RLC SDU</code> 组成，<code>RLC 包头</code>包括 <code>D/C</code>，<code>RF</code>，<code>P</code>，<code>FI</code>， <code>E</code> 和 <code>SN</code> 字段。如果 <code>RLC PDU</code> 中包含多于 1 个数据字段，那么相对应的 <code>RLC 包头</code>还将包括 <code>E</code> 和 <code>LI</code> 字段，以分别对应于各个数据字段。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 格式</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_5.webp">
     </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 格式</figcaption>
     </figure>
@@ -203,10 +205,11 @@ LTE RLC 层详解
 <p>在 <code>AM 模式</code>下，<code>RLC</code> 层使用 <code>ARQ</code> 纠错机制对传输错误的数据包进行重传，由于下层指示的数据包传输大小可能与初次传输时候的情况有所不同，可能需要对初次传输的 <code>AM PDU</code> 进行分段，因此形成了<code>AM PDU 分段</code>的格式。与 <code>AM PDU</code> 相比较，<code>AM PDU</code> 分段在包头部分多了两个字段：<code>LSF</code> 和 <code>SO</code>。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp" data-sub-html="<h2>AM 模式数据消息的 RLC PDU 分段的格式</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_6.webp">
     </a><figcaption class="image-caption">AM 模式数据消息的 RLC PDU 分段的格式</figcaption>
     </figure>
@@ -217,10 +220,11 @@ LTE RLC 层详解
 <p>除了 <code>RLC 数据 PDU</code> 之外，<code>AM 模式</code>下还可能传输 <code>RLC 控制 PDU</code>，进行 <code>RLC 状态</code>的报告。由数据接收方的 <code>RLC 实体</code>向数据发送方对等的 <code>RLC 实体</code>发送 <code>RLC 状态 PDU</code>，报告 <code>AM PDU</code> 数据包的接收状态，包括正确接收的数据包的最后序号，以及接收错误的数据包的序号。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp" data-sub-html="<h2>RLC 状态 PDU</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_7.webp">
     </a><figcaption class="image-caption">RLC 状态 PDU</figcaption>
     </figure>
@@ -238,10 +242,11 @@ LTE RLC 层详解
 <p>与 <code>AM 模式</code>相比较，<code>UM 模式</code>的 <code>RLC PUD</code> 少了 3 个字段：<code>D/C</code>、<code>RF</code> 和 <code>P</code>。因为 <code>RLC 控制 PDU</code> 只在 <code>AM 模式</code>进行传输，<code>UM 模式</code>仅传输 <code>RLC 数据 PDU</code>，因此不需要指示 <code>RLC 控制</code>或者 <code>RLC 数据信息</code>的 <code>D/C</code> 字段。<code>UM 模式</code>不进行 <code>ARQ</code> 纠错的重传，因此不会出现数据包重传需要重新分段的情况，所以不需要指示数据分段的 <code>RF</code> 字段。P 字段所指示的 <code>RLC 状态报告</code>也仅适用于 <code>AM 模式</code>，因此 <code>UM 模式</code>的情况下不需要这个字段。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp" data-sub-html="<h2>UM 模式数据消息的 RLC PDU 格式</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_upper_layer_protocol/LTE_upper_layer_protocol_8.webp">
     </a><figcaption class="image-caption">UM 模式数据消息的 RLC PDU 格式</figcaption>
     </figure>
@@ -262,7 +267,7 @@ LTE RLC 层详解
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_rlc/" data-title="LTE 系列：RLC 层" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_rlc/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_rlc/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_rlc/" data-title="LTE 系列：RLC 层"><i class="fab fa-weibo fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_rlc/" data-title="LTE 系列：RLC 层"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="#" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_rlc/" data-title="LTE 系列：RLC 层" data-hashtags="LTE"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_rlc/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_rlc/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_rlc/" data-title="LTE 系列：RLC 层"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_rlc/" data-title="LTE 系列：RLC 层"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -304,13 +309,11 @@ LTE RLC 层详解
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":null,"findAllMatches":null,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":null,"ignoreLocation":null,"isCaseSensitive":null,"location":null,"maxResultLength":10,"minMatchCharLength":null,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":null,"type":"fuse","useExtendedSearch":null},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
-
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

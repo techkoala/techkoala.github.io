@@ -4,7 +4,48 @@
         <link>https://www.techkoala.top/posts/</link>
         <description>所有文章 | TechKoala - Input/Output</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 20 Jan 2023 11:03:05 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Wi-Fi 7 概述</title>
+    <link>https://www.techkoala.top/wi-fi7_synopsis/</link>
+    <pubDate>Fri, 20 Jan 2023 11:03:05 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/wi-fi7_synopsis/</guid>
+    <description><![CDATA[<blockquote>
+<p>Wi-Fi 7 变化的总结描述</p>
+</blockquote>
+<h2 id="wi-fi-7-的发布时间" class="headerLink">
+    <a href="#wi-fi-7-%e7%9a%84%e5%8f%91%e5%b8%83%e6%97%b6%e9%97%b4" class="header-mark"></a>Wi-Fi 7 的发布时间</h2><p>IEEE 802.11be EHT 工作组已于 2019 年 5 月成立，802.11be（Wi-Fi 7）的开发工作仍在进行中，整个协议标准将按照两个 Release 发布，Release1 预计在 2021 年将发布第一版草案 Draft1.0，预期在 2022 年底发布标准；Release2 预计在 2022 年初启动，并且在 2024 年底完成标准发布。</p>
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" data-sub-html="<h2>会议进程</h2>">
+        
+    </a><figcaption class="image-caption">会议进程</figcaption>
+    </figure>
+<h2 id="wi-fi-7-vs-wi-fi-6" class="headerLink">
+    <a href="#wi-fi-7-vs-wi-fi-6" class="header-mark"></a>Wi-Fi 7 vs Wi-Fi 6</h2><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" data-sub-html="<h2>特性对比</h2>">
+        
+    </a><figcaption class="image-caption">特性对比</figcaption>
+    </figure>
+<h2 id="wi-fi-7-支持的新特性" class="headerLink">
+    <a href="#wi-fi-7-%e6%94%af%e6%8c%81%e7%9a%84%e6%96%b0%e7%89%b9%e6%80%a7" class="header-mark"></a>Wi-Fi 7 支持的新特性</h2><p>Wi-Fi 7 协议的目标是将 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WLAN.html" title="WLAN" target="_blank" rel="noopener noreferrer">WLAN</a> 网络的吞吐率提升到 30Gbps，并且提供低时延的接入保障。为了满足这个目标，整个协议在 PHY 层和 MAC 层都做了相应的改变。相对于 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi&#43;6.html" title="WiFi 6" target="_blank" rel="noopener noreferrer">Wi-Fi 6</a> 协议，Wi-Fi 7 协议带来的主要技术变革点如下：</p>
+<h3 id="新频段" class="headerLink">
+    <a href="#%e6%96%b0%e9%a2%91%e6%ae%b5" class="header-mark"></a>新频段</h3><p>相比 Wi-Fi 6，7 引入了 6GHz 频段（6e 也有），上下限分别为 5.925 —— 7.125 GHz：
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" data-sub-html="<h2>频段说明</h2>">
+        
+    </a><figcaption class="image-caption">频段说明</figcaption>
+    </figure></p>
+<h3 id="支持最大-320mhz-带宽" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81%e6%9c%80%e5%a4%a7-320mhz-%e5%b8%a6%e5%ae%bd" class="header-mark"></a>支持最大 320MHz 带宽</h3><p>2.4GHz 和 5GHz 频段免授权频谱有限且拥挤，现有 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi.html" title="WiFi" target="_blank" rel="noopener noreferrer">Wi-Fi</a> 在运行 VR/AR 等新兴应用时，不可避免地会遇到 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QoS.html" title="QoS" target="_blank" rel="noopener noreferrer">QoS</a> 低的问题。为了实现最大吞吐量不低于 30Gbps 的目标，Wi-Fi 7 将继续引入 6GHz 频段，并增加新的带宽模式，包括连续 240MHz，非连续 160+80MHz，连续 320 MHz 和非连续 160+160MHz。</p>
+<h3 id="支持-multi-ru-机制" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81-multi-ru-%e6%9c%ba%e5%88%b6" class="header-mark"></a>支持 Multi-RU 机制</h3><p>在 Wi-Fi 6 中，每个用户只能在分配到的特定 RU 上发送或接收帧，大大限制了频谱资源调度的灵活性。为解决该问题，进一步提升频谱效率，Wi-Fi 7 中定义了允许将多个 RU 分配给单用户的机制。当然，为了平衡实现的复杂度和频谱的利用率，协议中对 RU 的组合做了一定的限制，即：小规格 RU（小于 242-Tone 的 RU）只能与小规格 RU 合并，大规格 RU（大于等于 242-Tone 的 RU）只能与大规格 RU 合并，不允许小规格 RU 和大规格 RU 混合使用。</p>
+<h3 id="引入更高阶的-4096-qam-调制技术" class="headerLink">
+    <a href="#%e5%bc%95%e5%85%a5%e6%9b%b4%e9%ab%98%e9%98%b6%e7%9a%84-4096-qam-%e8%b0%83%e5%88%b6%e6%8a%80%e6%9c%af" class="header-mark"></a>引入更高阶的 4096-QAM 调制技术</h3><p>Wi-Fi 6 的最高调制方式是 1024-QAM，其中调制符号承载 10bits。为了进一步提升速率，Wi-Fi 7 将会引入 4096-QAM，使得调制符号承载 12bit。在相同的编码下，Wi-Fi 7 的 4096-QAM 比 Wi-Fi 6 的 1024-QAM 可以获得 20% 的速率提升。</p>
+<h3 id="引入-multi-link-多链路机制" class="headerLink">
+    <a href="#%e5%bc%95%e5%85%a5-multi-link-%e5%a4%9a%e9%93%be%e8%b7%af%e6%9c%ba%e5%88%b6" class="header-mark"></a>引入 Multi-Link 多链路机制</h3><p>为了实现所有可用频谱资源的高效利用，迫切需要在 2.4 GHz、5 GHz 和 6 GHz 上建立新的频谱管理、协调和传输机制。工作组定义了多<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/LACP.html" title="LACP" target="_blank" rel="noopener noreferrer">链路聚合</a>相关的技术，主要包括增强型多链路聚合的 MAC 架构、多链路信道接入和多链路传输等相关技术。</p>
+<h3 id="支持更多的数据流mimo-功能增强" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81%e6%9b%b4%e5%a4%9a%e7%9a%84%e6%95%b0%e6%8d%ae%e6%b5%81mimo-%e5%8a%9f%e8%83%bd%e5%a2%9e%e5%bc%ba" class="header-mark"></a>支持更多的数据流，MIMO 功能增强</h3><p>在 Wi-Fi 7 中，空间流的数从 Wi-Fi 6 的 8 个增加到 16 个，理论上可以将物理传输速率提升两倍以上。支持更多的数据流也将会带来更强大的特性——分布式 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/MIMO.html" title="MIMO" target="_blank" rel="noopener noreferrer">MIMO</a>，意为 16 条数据流可以不由一个接入点提供，而是由多个接入点同时提供，这意味着多个 AP 之间需要相互协同进行工作。</p>
+<h3 id="支持多-ap-间的协同调度" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81%e5%a4%9a-ap-%e9%97%b4%e7%9a%84%e5%8d%8f%e5%90%8c%e8%b0%83%e5%ba%a6" class="header-mark"></a>支持多 AP 间的协同调度</h3><p>目前在 802.11 的协议框架内，AP 之间实际上是没有太多协作的关系。自动调优、智能漫游等常见的 WLAN 功能都属于厂商自定义的特性。AP 间协作的目的也仅是优化信道选择，调整 AP 间负载等，以实现射频资源高效利用、均衡分配的目的。Wi-Fi 7 中的多 AP 间的协同调度，包括小区间的在时域和频域的协调规划，小区间的干扰协调，以及分布式 MIMO，可以有效降低 AP 之间的干扰，极大的提升空口资源的利用率。</p>
+<p>多 AP 间的协同调度的方式有很多，包括 C-OFDMA（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/OFDMA.html" title="OFDMA" target="_blank" rel="noopener noreferrer">Orthogonal Frequency-Division Multiple Access</a>）、CSR（Coordinated Spatial Reuse）、CBF（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E6%B3%A2%E6%9D%9F%E6%88%90%E5%BD%A2.html" title="波束成形" target="_blank" rel="noopener noreferrer">Beamforming</a>）和 JXT（Joint Transmission）等。</p>]]></description>
+</item><item>
     <title>快速调整 Hyper-V 虚拟机磁盘大小</title>
     <link>https://www.techkoala.top/resize_vm_lvm_disk_size/</link>
     <pubDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</pubDate><author>
@@ -1607,8 +1648,8 @@ server {
                     ],
                     &#34;certificates&#34;: [
                         {
-                            &#34;certificateFile&#34;: &#34;/usr/local/etc/xray/fullchain.pem&#34;, # 你的域名证书
-                            &#34;keyFile&#34;: &#34;/usr/local/etc/xray/privkey.pem&#34; # 你的证书私钥
+                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
+                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
                         }
                     ]
                 }
@@ -1846,84 +1887,6 @@ opkg install dnscrypt-proxy2
 <h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
 <li>[1] <a href="http://einverne.github.io/post/2017/10/vim-global.html" target="_blank" rel="noopener noreferrer">Vim 全局命令 g</a></li>
-</ul>]]></description>
-</item><item>
-    <title>LTE 系列：功率控制</title>
-    <link>https://www.techkoala.top/lte_power_control/</link>
-    <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate><author>
-        <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/lte_power_control/</guid>
-    <description><![CDATA[<blockquote>
-<p>LTE 功率控制</p>
-</blockquote>
-<h2 id="功率控制" class="headerLink">
-    <a href="#%e5%8a%9f%e7%8e%87%e6%8e%a7%e5%88%b6" class="header-mark"></a>功率控制</h2><p>针对上行和下行信号的发送特点，物理层定义了相应的功率控制的机制。</p>
-<ul>
-<li>
-<p>对于上行信号，终端的功率控制在<strong>节能</strong>和<strong>抑制用户间干扰</strong>的方面具有重要意义，所以，相应的采用<strong>闭环功率控制</strong>的方式，控制终端在上行单载波符号上的发送功率。</p>
-</li>
-<li>
-<p>对于下行信号，基站合理的功率分配和相互之间的协调能够<strong>抑制小区间的干扰</strong>，提高组网的系统性能，所以，相应的采用<strong>开环功率分配</strong>的机制，控制基站在下行各个子载波上的发送功率。</p>
-</li>
-</ul>
-<h3 id="上行功率控制" class="headerLink">
-    <a href="#%e4%b8%8a%e8%a1%8c%e5%8a%9f%e7%8e%87%e6%8e%a7%e5%88%b6" class="header-mark"></a>上行功率控制</h3><p>上行功率控制以<strong>各个终端为单位</strong>，控制终端到达基站的接收功率，使得不同距离的用户都能以适当的功率到达基站，<strong>避免远近效应</strong>。物理层上行采用<strong>部分功率控制</strong>（Fractional Power Control）结合<strong>闭环功率控制</strong>的方案，对无线链路的大尺度衰落和小尺度衰落进行补偿。</p>
-<p>在子帧 i，终端 <code>PUSCH</code> 信道的发射功率可以表示为：</p>
-<center>$P_{PUSCH}(i)=min\{P_{CMAX},10log_{10}(M_{PUSCH}(i))+P_{O_{PUSCH}} (j)+α(j)·PL+∆TF (i)+f(i)\}[dBm]$</center>
-<p>其中：</p>
-<ul>
-<li>$P_{CMAX}$ 表示终端的最大发射功率</li>
-<li>$M_{PUSCH}(i)$ 表示 <code>PUSCH</code> 的传输带宽（RB 数目）</li>
-<li>$PL$ 是终端测量得到的下行大尺度损耗</li>
-<li>$∆TF (i)$ 表示由调制编码方式和数据类型（控制信息或者数据信息）所确定的功率偏移量。</li>
-<li>$KS＝1.25$ 或者 0，表示是否针对不同的调制方式进行补偿</li>
-<li>$f(i)$ 是由终端闭环功率控制所形成的调整值。它的数值根据 <code>PDCCH Format0/3/3A</code> 上的功率控制命令进行调整</li>
-</ul>
-<p>物理层有两种闭环功率控制类型：</p>
-<ul>
-<li><strong>累计型（accumulation）</strong></li>
-<li><strong>绝对值型（absolute）</strong></li>
-</ul>
-<p>与上行数据调度相类似</p>
-<ul>
-<li>在 <code>FDD</code> 情况下，<code>PDCCH Format 0/3/3A</code> 功率控制命令和相应的 <code>PUSCH</code> 发送之间的时延是 4ms</li>
-<li>在 <code>TDD</code> 情况下，该时延的数值根据上下行时间分配比例的不同而有所不同</li>
-</ul>
-<p>与功率控制相结合，可以通过小区之间交换干扰情况的信息，进行协调的调度，抑制小区间的同频干扰，小区间 X2 接口上交互的信息有两种：</p>
-<ul>
-<li><strong>过载指示（Overload Indicator，OI）</strong>：指示本小区每个 <code>PRB</code> 上受到的上行干扰情况。相邻小区通过交换该消息了解对方目前的负载情况，并进行适当的调整</li>
-<li><strong>干扰指示（High Interference Indicator，HII）</strong>：指示本小区每个 PRB 对于上行干扰的敏感度情况。该消息反映了本小区的调度安排，相邻小区通过交换该信息了解对方将要采用的调度安排，并进行适当的调整以实现协调的调度。</li>
-</ul>
-<h3 id="下行功率分配" class="headerLink">
-    <a href="#%e4%b8%8b%e8%a1%8c%e5%8a%9f%e7%8e%87%e5%88%86%e9%85%8d" class="header-mark"></a>下行功率分配</h3><p>下行功率分配以每个 <code>RE</code> 为单位，控制基站在<strong>各个时刻各个子载波</strong>上的发射功率。</p>
-<p>下行功率分配中包括了</p>
-<ul>
-<li>提高导频信号的发射功率（即 power boosting）</li>
-<li>用户调度相结合实现小区间干扰抑制的相关机制</li>
-</ul>
-<p>小区公用导频信号（CRS）在频率上和时间上采用<strong>恒定</strong>的发射功率，基站通过高层信令指示该发射功率的数值，在接收端，终端通过测量该信号的平均接收功率并与信令指示的发射功率进行比较，获得<strong>大尺度衰落</strong>的数值。</p>
-<p>下行共享信道 <code>PDSCH</code> 的发射功率表示为 <code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值，即 $ρA$ 和 $ρB$ 。其中</p>
-<ul>
-<li>$ρA$ 表示时隙内<strong>不带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内的第 1、2、3、5、6 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
-<li>$ρB$ 表示时隙内<strong>带有</strong> <code>CRS</code> 导频信号的 <code>OFDM</code> 符号上（例如：2 天线、<code>Normal CP</code> 的情况下，时隙内第 0、4 个 <code>OFDM</code> 符号），<code>PDSCH RE</code> 与 <code>CRS RE</code> 的功率比值</li>
-</ul>
-<h4 id="提高-crs-导频信号的发射功率即-power-boosting" class="headerLink">
-    <a href="#%e6%8f%90%e9%ab%98-crs-%e5%af%bc%e9%a2%91%e4%bf%a1%e5%8f%b7%e7%9a%84%e5%8f%91%e5%b0%84%e5%8a%9f%e7%8e%87%e5%8d%b3-power-boosting" class="header-mark"></a>提高 CRS 导频信号的发射功率（即 power boosting）</h4><p>小区通过高层信令指示 $\frac{ρB}{ρA}$，通过不同的比值可以设置导频信号在基站总功率中不同的开销比例，由此实现了不同程度地提高 <code>CRS</code> 导频信号发射功率的功能。</p>
-<blockquote>
-<p>例：以发射天线数目等于 2 为例，支持 4 种不同的小区配置 $\frac{ρB}{ρA}=[\frac{5}{4},1,\frac{3}{4},\frac{1}{2}]$，分别对应于导频占总功率开销为$[\frac{1}{6}，\frac{1}{3}，\frac{3}{6}，\frac{2}{3}]$的情况。</p>
-<p>下图表示了 $\frac{ρB}{ρA} =1$ 和 $\frac{ρB}{ρA} =\frac{1}{2}$ 时天线端口 #0 的信号功率情况，分别实现了导频信号以 3dB 和 9dB 高于同一 <code>OFDM</code> 符号中数据元素的发送功率。</p>
-<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE_Physical_Layer/LTE_physical_layer_43.webp" data-sub-html="<h2>两种情况下天线端口 #0 的信号功率</h2>">
-        
-    </a><figcaption class="image-caption">两种情况下天线端口 #0 的信号功率</figcaption>
-    </figure>
-</blockquote>
-<h4 id="用户功率分配和小区间干扰协调" class="headerLink">
-    <a href="#%e7%94%a8%e6%88%b7%e5%8a%9f%e7%8e%87%e5%88%86%e9%85%8d%e5%92%8c%e5%b0%8f%e5%8c%ba%e9%97%b4%e5%b9%b2%e6%89%b0%e5%8d%8f%e8%b0%83" class="header-mark"></a>用户功率分配和小区间干扰协调</h4><p>在指示 $\frac{ρB}{ρA}$ 的基础上，通过高层参数 $P_A$ 可以确定 $ρA$ 的具体数值，得到基站下行针对用户的 <code>PDSCH</code> 发射功率，该信息将用于 <code>16QAM</code>、<code>64QAM</code> 和 <code>MU-MIMO</code> 等需要幅度信息的检测过程。$P_A$ 和 $ρA$ 的数值关系是</p>
-<center>$ρ_A =δ_{power-offset} +P_A$</center>
-<p>其中 $δ_{power-offset}$ 用于 <code>MU-MIMO</code> 的场景，例如 $δ_{power-offset} =−3dB$ 可以表示功率平均分配给两个用户的情况。</p>
-<h2 id="参考" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
-<li>[1] LTE-Advanced 关键技术详解</li>
 </ul>]]></description>
 </item></channel>
 </rss>

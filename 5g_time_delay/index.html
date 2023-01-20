@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">5G NR 系列：如何做到空口 &lt;1ms 的延迟 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="5G NR 系列：如何做到空口 &lt;1ms 的延迟" />
+    <title>5G NR 系列：如何做到空口 &lt;1ms 的延迟 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="5G NR 系列：如何做到空口 &lt;1ms 的延迟" />
 <meta property="og:description" content="
 无线网络中的时延是如何一步步进化到 5G 中的 &lt;1ms ？
 " />
@@ -24,7 +24,7 @@
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/5g_time_delay/" /><link rel="prev" href="https://www.techkoala.top/lte_uplink_frame_structure/" /><link rel="next" href="https://www.techkoala.top/lte_basic_physical_resource/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/5g_time_delay/" /><link rel="prev" href="https://www.techkoala.top/lte_uplink_frame_structure/" /><link rel="next" href="https://www.techkoala.top/lte_basic_physical_resource/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
     
@@ -66,16 +66,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> 所有文章 </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> 标签 </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> 分类 </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> 工具 </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> 软件 </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    </span><a href="#" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a></div>
         </div>
@@ -93,20 +93,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -186,10 +186,11 @@
     <a href="#%e5%8d%95%e5%90%91%e5%bb%b6%e8%bf%9f" class="header-mark"></a>单向延迟</h3><p>单向延迟指的是信息从发送方传到接收方的所花费的时间。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp" data-sub-html="<h2>单向时间延迟</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/One_way_delay.webp">
     </a><figcaption class="image-caption">单向时间延迟</figcaption>
     </figure>
@@ -197,10 +198,11 @@
     <a href="#%e5%8f%8c%e5%90%91%e5%bb%b6%e8%bf%9f" class="header-mark"></a>双向延迟</h3><p>双向延迟（Round Trip Time, RTT）, 指的是信息从发送方到达接收方，加上接受方发信息给发送方所花费的总时间。双向延迟在工程中更加常见，因为我们可以只在信息发送方或者接收方的其中一方就可以测量到双向延迟（利用 ping 等工具）。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp" data-sub-html="<h2>双向时间延迟</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay.webp">
     </a><figcaption class="image-caption">双向时间延迟</figcaption>
     </figure>
@@ -209,10 +211,11 @@
 <p>另外一点是 1 毫秒指的是无线网络 <strong>空中接口</strong>（手机和基站之间，不包括核心网，互联网等网络节点）的延迟时间。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp" data-sub-html="<h2>用户面时间延迟</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/User_interface_delay.webp">
     </a><figcaption class="image-caption">用户面时间延迟</figcaption>
     </figure>
@@ -223,10 +226,11 @@
 <p><strong>而在当时，LTE 网络的延迟状况是接近于～ 20ms 的双向时延。（理论延迟时间，实际根据无线环境情况一般会更长）</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp" data-sub-html="<h2>LTE 网络空中接口上下行时延基线</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_delay_baselin.webp">
     </a><figcaption class="image-caption">LTE 网络空中接口上下行时延基线</figcaption>
     </figure>
@@ -239,19 +243,21 @@
 <p>详细的时间延迟组成请参考 <a href="https://www.3gpp.org/DynaReport/36881.htm" target="_blank" rel="noopener noreferrer">3GPP 36.881 Study on latency reduction techniques for LTE（5.2.1）</a></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp" data-sub-html="<h2>LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_uplink_time_delay.webp">
     </a><figcaption class="image-caption">LTE 上行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp" data-sub-html="<h2>LTE 下行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_downlink_time_delay.webp">
     </a><figcaption class="image-caption">LTE 下行时间延迟组成（Source:3GPP 36.881 Study on latency reduction techniques for LTE）</figcaption>
     </figure>
@@ -260,10 +266,11 @@
 <p>时间来到了 2015 年，3 月初，中国上海，乍暖还寒，在 3GPP RAN 67 次会议上，终于迎来了关于减少 LTE 网络时间延迟的研究项目（SI）立项（<a href="http://www.3gpp.org/ftp/tsg_Ran/tsg_Ran/TSGR_67/Docs/RP-150465.zip" target="_blank" rel="noopener noreferrer">RP-150465 New SI proposal: Study on Latency reduction techniques for LTE</a>）。本次研究项目的立项旨在减小 LTE 网络的时间延迟，因为在此以前 LTE 网络一直向着速率更快的方向在发展，但是网络的延迟水平一直没有得到改善，而研究发现用户面网络延迟的改善能够提升网络的速率瓶颈（因为 TCP 的慢启动效应，改善 TCP 握手的时延，从而提升网络的速率），而且能够更好地支持更多对于时延要求特别高的应用，比如：VR，实时游戏，VoIP，视频会议等等。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp" data-sub-html="<h2>改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Support_for_5G.webp">
     </a><figcaption class="image-caption">改善 LTE 无线时延水平以支持更多的应用 （Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</figcaption>
     </figure>
@@ -281,10 +288,11 @@
 <p><strong>终端用户在接收到无线资源调度后，如果没有数据发送，始终会使用已经分配的无线资源上传填充数据（padding data），这样会造成网络的干扰水平抬升，影响了网络的整体性能。而且手机的耗电量也增加了。</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp" data-sub-html="<h2>LTE 预调度（Pre-scheduling）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_pre_scheduling.webp">
     </a><figcaption class="image-caption">LTE 预调度（Pre-scheduling）</figcaption>
     </figure>
@@ -294,39 +302,43 @@
 <p>至此，上行的网络传输延迟大大减少。根据仿真的结果，<strong>LTE 空中接口双向传输时延降至～ 8ms</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp" data-sub-html="<h2>更短的半静态调度周期</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Semi_static_scheduling_cycle.webp">
     </a><figcaption class="image-caption">更短的半静态调度周期</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp" data-sub-html="<h2>上行不用发送 Padding 数据</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Without_padding.webp">
     </a><figcaption class="image-caption">上行不用发送 Padding 数据</figcaption>
     </figure>
 <p><strong>手机的能耗也下降了～ 10%</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp" data-sub-html="<h2>时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Energy_to_Throughput.webp">
     </a><figcaption class="image-caption">时延减少的同时对手机耗电量的改善 (Source: 3GPP R2-153490 L2 enhancements to reduce latency)</figcaption>
     </figure>
 <p><strong>同时网络时延的改善也从侧面提升了终端的速率～ 30%-40%</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp" data-sub-html="<h2>时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Ftp_rate_to_Throughput.webp">
     </a><figcaption class="image-caption">时延减少的同时对终端速率提升 (Source: 3GPP R2-153490 L2 enhancements to reduce latency, Ericsson)</figcaption>
     </figure>
@@ -337,40 +349,44 @@
 <p>1 个子帧还可以分为两个时隙，每个时隙还可以分为 7 个符号，至此，终于分完。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp" data-sub-html="<h2>Short transmission time interval (sTTI) 减少传输时延</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/sTTI.webp">
     </a><figcaption class="image-caption">Short transmission time interval (sTTI) 减少传输时延</figcaption>
     </figure>
 <p>以前 LTE 网络每次的传输时间间隔是固定一个子帧 = 1 毫秒，上图红色部分是控制信道，用于传输无线资源指派等信令，绿色部分是下行数据信道，用于传输数据。本次工作要做的是将传输时间间隔从子帧级别（1ms) 降低至符号级别（1/14 ms），最小的调度间隔根据情况可以选择 3/2 个符号（3/14ms, 2/14ms），7 个符号（7/14ms），具体的子时隙 (subslot) 细分方式如下图。从而又进一步降低了整个 LTE 无线网络空口的时延。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp" data-sub-html="<h2>4G LTE sTTI 上下行可选配置方式（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_sTTI.webp">
     </a><figcaption class="image-caption">4G LTE sTTI 上下行可选配置方式（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</figcaption>
     </figure>
 <p>在 LTE release 15 中，还降低了 <strong>处理（procession）时间 (收到上行资源 grant 到上行传输数据的时间，以及从收到下行指派到反馈 HARQ ACK/NACK 指示的时间)，以前需要 4ms，降至了 3ms。</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp" data-sub-html="<h2>R15 处理时间的减少从 n&#43;4 到 n&#43;3 ms（Source: 3GPP TR 21.915 Summary of Rel-15 Work Items）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/R15_process_time.webp">
     </a><figcaption class="image-caption">R15 处理时间的减少从 n+4 到 n+3 ms（Source: 3GPP TR 21.915 Summary of Rel-15 Work Items）</figcaption>
     </figure>
 <p>2018 年，到 LTE release 15 时，<strong>所有的大招都用上，LTE 的网络延迟理论上可以降至双向 2.7 毫秒（下行 0.7 毫秒 + 上行 2.0 毫秒）</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp" data-sub-html="<h2>LTE 用户面时延（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/LTE_user_interface_time_delay.webp">
     </a><figcaption class="image-caption">LTE 用户面时延（Source: URLLC Services in 5GLow Latency Enhancements for LTE, Thomas Fehrenbach, Rohit Datta）</figcaption>
     </figure>
@@ -382,10 +398,11 @@
 <p><strong>关于超低的时延：1ms 的无线空中接口双向传输时延是怎么一步步实现的呢？</strong></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp" data-sub-html="<h2>5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/URLLC.webp">
     </a><figcaption class="image-caption">5G URLLC 满足极低时延极高可靠业务（Source: Ericsson, Joachim Sachs: 5G Ultra-Reliable and Low Latency Communication, IEEE cscn2017）</figcaption>
     </figure>
@@ -397,10 +414,11 @@
 <p>虽然本回答主要讨论的是低时延的系统架构设计，但是低时延是与 URLLC 的另一部分需求：极高的可靠性（99.999%）被共同捆绑在一起的。如果单单考虑低时延会比低时延高可靠简单很多，因为要满足极高的可靠性惯常采用更多的控制信令开销，重传，冗余，这些手段往往会提升时间延迟的水平。所以如何在保证可靠性的同时改善时延水平在物理层的设计中是难上加难。5G 物理层用了哪些手段来改善时延呢？</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp" data-sub-html="<h2>5G 用户面协议层</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/5g_user_interface_protocol_layer.webp">
     </a><figcaption class="image-caption">5G 用户面协议层</figcaption>
     </figure>
@@ -408,20 +426,22 @@
     <a href="#%e5%8c%85%e7%bb%93%e6%9e%84packet-structure" class="header-mark"></a>包结构（Packet structure）</h3><p>在 4G LTE 的时延分析中提到过的系统处理时间在时延中所占的分量比较大，而且改善较为不易。这部分时延包括了接收包，获取控制信息，调度信息，解调数据，以及错误检测。在 4G LTE 中是采用下图左侧这种方形的包结构，传输的信息分为三部分，导频信息（Pilot），控制信息（control information），以及数据（data）。这种设计方式被广泛的用来对抗信道衰落。但是在 5G 中 URLLC 包采用的是下图右侧这种设计方式，导频信息，控制信息，以及数据依次在时域上排列，这样做的好处是信道估计，控制信道解码，数据的获取可以串行的进行，通过这样的方式这样减少了处理时间。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp" data-sub-html="<h2>4G LTE 和 5G URLLC 包结构对比 （Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Packet_structure.webp">
     </a><figcaption class="image-caption">4G LTE 和 5G URLLC 包结构对比 （Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</figcaption>
     </figure>
 <p>从手机收到资源分配（Grant）指令到数据的传输时间要求如下，中间部分是 5G 不同子载波间隔（Subcarrier Spacing）配置下的不同要求：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp" data-sub-html="<h2>从手机收到资源分配（Grant）指令到数据的传输时间要求（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Transmission_time_requirements.webp">
     </a><figcaption class="image-caption">从手机收到资源分配（Grant）指令到数据的传输时间要求（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
     </figure>
@@ -431,19 +451,21 @@
     <a href="#%e6%9b%b4%e7%9f%ad%e7%9a%84%e4%bc%a0%e8%be%93%e6%97%b6%e9%97%b4%e9%97%b4%e9%9a%94%e5%8f%af%e5%8f%98%e7%9a%84-numerology" class="header-mark"></a>更短的传输时间间隔（可变的 Numerology）</h3><p>从更短的时间间隔这点说 5G 是天生丽质一点都不为过，LTE 规定的一个子载波 (传送信息的最小频域单位) 是 15KHz，时间域是 1ms （正常情况下）。5G 所需要支持的频率范围非常广，中低频从 450MHz~6000MHz（FR1），高频从 24.25GHz~52.6GHz（FR2）。高频意味着更高的相位噪声，所以需要设计更加宽的子载波间隔来抵御相位噪声的干扰。更宽的子载波间隔，意味着时域上更短的时隙，更短的传输时间间隔，我们在 4G LTE 时代千方百计想要降低的传输时间间隔在 5G 时代只需要使用更高的频段，更宽的子载波间隔就轻而易举的降低了。而且根据不同的频段可以选择从 15KHz, 30KHz 到 120KHz 的子载波间隔，可以简单的理解为，<strong>5G 子载波间隔相比于 LTE 15KHz 增加了多少倍，那么在时域上的传输时间间隔就减少相应的倍数</strong>。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp" data-sub-html="<h2>频域子载波间隔成倍增加，时域符号时长相应倍数减少（Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Subcarrier_spacing.webp">
     </a><figcaption class="image-caption">频域子载波间隔成倍增加，时域符号时长相应倍数减少（Source: Ultra Reliable and Low LatencyCommunications in 5G Downlink: PhysicalLayer Aspects）</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp" data-sub-html="<h2>不同子载波间隔（sub-carrier spacing）对应的无线帧结构</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/frame_structure.webp">
     </a><figcaption class="image-caption">不同子载波间隔（sub-carrier spacing）对应的无线帧结构</figcaption>
     </figure>
@@ -451,10 +473,11 @@
     <a href="#%e5%be%ae%e6%97%b6%e9%9a%99%e8%b0%83%e5%ba%a6mini-slot" class="header-mark"></a>微时隙调度（Mini-slot）</h3><p>微时隙调度继承了 LTE 中减小传输时间间隔 (subslot) 的设计理念，<strong>将最小的传输时间间隔由子帧拓展到了符号上</strong>。第一优先级最小的调度间隔根据情况可以选择 2 个符号，4 个符号，7 个符号。下图是一个下行数据传输的示例，数据包到达了基站，基站经过 4 个符号的处理以及等待合适的 sPDCCH 时间，随后通过两个符号的微时隙调度将数据传输给用户。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp" data-sub-html="<h2>下行微时隙调度</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Mini_slot.webp">
     </a><figcaption class="image-caption">下行微时隙调度</figcaption>
     </figure>
@@ -465,10 +488,11 @@
 <p>5G 与 4G HARQ 流程时间对比：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp" data-sub-html="<h2>5G 与 4G LTE HARQ 时延对比（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/HARQ.webp">
     </a><figcaption class="image-caption">5G 与 4G LTE HARQ 时延对比（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
     </figure>
@@ -477,10 +501,11 @@
 <p>在 5G 中可以将预留资源分配给一组终端用户，并且设计了当多个用户同时在相同的无线资源上发生冲撞的解决机制。这样在降低时延的同时使宝贵的无线资源的利用率也得到了保证。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp" data-sub-html="<h2>5G 上行免调度传输 type1 和 type2 （Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Schedule_free_transmission.webp">
     </a><figcaption class="image-caption">5G 上行免调度传输 type1 和 type2 （Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
     </figure>
@@ -499,10 +524,11 @@
 <p>这种方式有个弊端就是会影响原本被分配资源的 A 的用户的数据传输（在被用户 B 抢占的资源上），当然优秀的 5G 系统也设计了方案来解决这个问题，方式有：HARQ 重传用户 A 受影响的传输数据，或者是直接通过控制信令（DCI2-1）通知用户 A，哪些传输的数据受到了影响。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp" data-sub-html="<h2>下行预清空调度示例（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Preemption_scheduling.webp">
     </a><figcaption class="image-caption">下行预清空调度示例（Source: NR: the next generation wireless access technology by ErikDahlman, JohanSkold, StefanParkvall, Ericsson）</figcaption>
     </figure>
@@ -512,10 +538,11 @@
 <p>那么通过以上关键技术的组合，是怎么一步步使 5G 无线网络时间延迟降低到 1 毫秒的呢？</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp" data-sub-html="<h2>无线网络空中接口双向时延演进</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Two_way_delay_evolution.webp">
     </a><figcaption class="image-caption">无线网络空中接口双向时延演进</figcaption>
     </figure>
@@ -523,10 +550,11 @@
 <p>至此，1ms 梦寐以求的目标终于达成，但是科技工作者们仍没有停下探索的脚步，目前的研究转向了 5G 物理层的增强对 URLLC 业务的支持，而新的研究项目也已经成功立项并完成：<a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.824/38824-g00.zip" target="_blank" rel="noopener noreferrer">Study on physical layer enhancements for NR ultra-reliable and low latency case (URLLC)</a>, 在下一版本 5G release 16 中，URLLC 将从 PDCCH，UCI，PUSCH（上下行控制信道以及上行数据信道）获得更多的提升。同时还研究支持对时延和可靠性要求极高的工业互联网应用 <a href="http://www.3gpp.org/ftp//Specs/archive/38_series/38.825/38825-g00.zip" target="_blank" rel="noopener noreferrer">Study on NR industrial Internet of Things (IoT)</a>。探索为什么 5G 能降低网络时间延迟到 1ms 完结，但是需要引起注意的是，我们这里讨论的延迟是整个网络中的一部分，特指空中接口。但是网络的传输时延绝不是空中接口单一接口就能够保证的，还涉及到端到端的核心网以及互联网。剩下这部分属于 TSN（Time Sensitive Networking）的范围，什么是 TSN，怎么将无线 URLLC 和 TSN 结合起来为工业 4.0 服务，下次有机会再聊。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp" data-sub-html="<h2>无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/5G/Delay/Industrial_Internet_Service.webp">
     </a><figcaption class="image-caption">无线网络的低时延高可靠特性结合 TSN 为工业互联网服务（Source：Boosting smart manufacturing with 5G wireless connectivity, Ericsson）</figcaption>
     </figure>
@@ -601,7 +629,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/5g_time_delay/" data-title="5G NR 系列：如何做到空口 &lt;1ms 的延迟" data-hashtags="5G"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/5g_time_delay/" data-hashtag="5G"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/5g_time_delay/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/5g_time_delay/" data-title="5G NR 系列：如何做到空口 &lt;1ms 的延迟"><i class="fab fa-weibo fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/5g_time_delay/" data-title="5G NR 系列：如何做到空口 &lt;1ms 的延迟"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="#" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/5g_time_delay/" data-title="5G NR 系列：如何做到空口 &lt;1ms 的延迟" data-hashtags="5G"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/5g_time_delay/" data-hashtag="5G"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/5g_time_delay/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/5g_time_delay/" data-title="5G NR 系列：如何做到空口 &lt;1ms 的延迟"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/5g_time_delay/" data-title="5G NR 系列：如何做到空口 &lt;1ms 的延迟"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -643,13 +671,11 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":null,"findAllMatches":null,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":null,"ignoreLocation":null,"isCaseSensitive":null,"location":null,"maxResultLength":10,"minMatchCharLength":null,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":null,"type":"fuse","useExtendedSearch":null},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
-
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

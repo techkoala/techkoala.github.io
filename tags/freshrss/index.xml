@@ -968,8 +968,8 @@ server {
                     ],
                     &#34;certificates&#34;: [
                         {
-                            &#34;certificateFile&#34;: &#34;/usr/local/etc/xray/fullchain.pem&#34;, # 你的域名证书
-                            &#34;keyFile&#34;: &#34;/usr/local/etc/xray/privkey.pem&#34; # 你的证书私钥
+                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
+                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
                         }
                     ]
                 }

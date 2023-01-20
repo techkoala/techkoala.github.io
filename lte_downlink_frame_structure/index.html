@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">LTE 系列：下行链路帧结构 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="LTE 系列：下行链路帧结构" />
+    <title>LTE 系列：下行链路帧结构 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="LTE 系列：下行链路帧结构" />
 <meta property="og:description" content="
 LTE 下行链路帧结构详细讲解
 " />
@@ -24,7 +24,7 @@ LTE 下行链路帧结构详细讲解
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_downlink_frame_structure/" /><link rel="prev" href="https://www.techkoala.top/lte_frame_structure/" /><link rel="next" href="https://www.techkoala.top/lte_physical_channels_and_signals/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/lte_downlink_frame_structure/" /><link rel="prev" href="https://www.techkoala.top/lte_frame_structure/" /><link rel="next" href="https://www.techkoala.top/lte_physical_channels_and_signals/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
     
@@ -66,16 +66,16 @@ LTE 下行链路帧结构详细讲解
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> 所有文章 </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> 标签 </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> 分类 </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> 工具 </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> 软件 </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                    </span><a href="#" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a></div>
         </div>
@@ -93,20 +93,20 @@ LTE 下行链路帧结构详细讲解
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" onclick="return false;" class="menu-item theme-switch" title="切换主题">
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -153,10 +153,11 @@ LTE 下行链路帧结构详细讲解
     <a href="#fdd%e7%b1%bb%e5%9e%8b-1" class="header-mark"></a>FDD——类型 1</h3><p>36.211 中 <code>FDD</code> <code>LTE</code> 的帧结构概览图如下所示：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png" data-sub-html="<h2>FDD 帧结构</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_Fig4_1_1_FDD_DL_FrameStructure.png">
     </a><figcaption class="image-caption">FDD 帧结构</figcaption>
     </figure>
@@ -179,10 +180,11 @@ LTE 下行链路帧结构详细讲解
 <p>那么一个时隙是时域上最小的结构吗？不，如果进一步放大此结构，则会得到下图：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png" data-sub-html="<h2>时隙结构</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Symbols.png">
     </a><figcaption class="image-caption">时隙结构</figcaption>
     </figure>
@@ -192,10 +194,11 @@ LTE 下行链路帧结构详细讲解
 <p>继续放大子帧以可以观察到确切的时间和采样，如下图所示：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png" data-sub-html="<h2>符号结构</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/FDD_DL_FrameStructure_Subframe_01.png">
     </a><figcaption class="image-caption">符号结构</figcaption>
     </figure>
@@ -256,20 +259,22 @@ LTE 下行链路帧结构详细讲解
 <p>下图是<code>LTE 资源网格</code>的总体子帧结构：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png" data-sub-html="<h2>LTE 资源网格</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_01.png">
     </a><figcaption class="image-caption">LTE 资源网格</figcaption>
     </figure>
 <p>以下显示所有 4 个天线信号叠加（重叠）的理想情况下的下行链路帧结构和 RE（Resource Element，资源元素）映射的示例。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png" data-sub-html="<h2>4天线帧结构和 RE 映射示例</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/LTE_DL_FrameStructure_02.png">
     </a><figcaption class="image-caption">4天线帧结构和 RE 映射示例</figcaption>
     </figure>
@@ -277,10 +282,11 @@ LTE 下行链路帧结构详细讲解
 <p>现在我们进一步放大结构，但这一次是在频域而不是时域扩展。我们将获得以下完整的详细图：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png" data-sub-html="<h2>下行帧结构物理信道</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/PHY_CH_DL.png">
     </a><figcaption class="image-caption">下行帧结构物理信道</figcaption>
     </figure>
@@ -354,10 +360,11 @@ LTE 下行链路帧结构详细讲解
 <h3 id="tdd类型-2" class="headerLink">
     <a href="#tdd%e7%b1%bb%e5%9e%8b-2" class="header-mark"></a>TDD——类型 2</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png" data-sub-html="<h2>TDD 帧结构</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/36_211_TDD_DL_FrameStructure.png">
     </a><figcaption class="image-caption">TDD 帧结构</figcaption>
     </figure>
@@ -418,64 +425,71 @@ LTE 下行链路帧结构详细讲解
 </table>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 1, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_1_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 1, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 2, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_2_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 2, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 3, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_3_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 3, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 4, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_4_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 4, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 5, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_5_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 5, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 6, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_6_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 6, Special Subframe Config 0</figcaption>
     </figure>
@@ -483,82 +497,91 @@ LTE 下行链路帧结构详细讲解
 <p>下面展示具有不同特殊子帧配置的资源网格的示例。在这些示例中，仅注意子帧 0 和子帧 6 中的符号结构如何变化。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 0</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_0_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 0</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 1</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_1_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 1</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 2</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_2_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 2</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 3</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_3_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 3</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 4</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_4_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 4</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 5</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_5_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 5</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 6</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_6_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 6</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 7</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_7_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 7</figcaption>
     </figure>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png" data-sub-html="<h2>Configuration 0, Special Subframe Config 8</h2>">
         <img
-            class="lazyload"
-            data-src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png"
-            data-srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png 2x"
+            sizes="auto"
             alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/LTE/LTE-DL-FS/TDD_UL_DL_Configuration_0_SpecialSubframeConfig_8_01.png">
     </a><figcaption class="image-caption">Configuration 0, Special Subframe Config 8</figcaption>
     </figure>
@@ -586,7 +609,7 @@ LTE 下行链路帧结构详细讲解
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" onclick="return false;" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-title="LTE 系列：下行链路帧结构" data-hashtags="LTE,Translation"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_downlink_frame_structure/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-title="LTE 系列：下行链路帧结构"><i class="fab fa-weibo fa-fw"></i></a><a href="#" onclick="return false;" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-title="LTE 系列：下行链路帧结构"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="#" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-title="LTE 系列：下行链路帧结构" data-hashtags="LTE,Translation"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-hashtag="LTE"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/lte_downlink_frame_structure/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-title="LTE 系列：下行链路帧结构"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/lte_downlink_frame_structure/" data-title="LTE 系列：下行链路帧结构"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -628,13 +651,11 @@ LTE 下行链路帧结构详细讲解
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":null,"findAllMatches":null,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":null,"ignoreLocation":null,"isCaseSensitive":null,"location":null,"maxResultLength":10,"minMatchCharLength":null,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":null,"type":"fuse","useExtendedSearch":null},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-166130360-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
-
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript></div>
 </body>
 
 </html>

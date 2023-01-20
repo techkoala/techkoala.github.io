@@ -1,0 +1,49 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Wi-Fi - 标签 - TechKoala - Input/Output</title>
+        <link>https://www.techkoala.top/tags/wi-fi/</link>
+        <description>Wi-Fi - 标签 - TechKoala - Input/Output</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 20 Jan 2023 11:03:05 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/wi-fi/" rel="self" type="application/rss+xml" /><item>
+    <title>Wi-Fi 7 概述</title>
+    <link>https://www.techkoala.top/wi-fi7_synopsis/</link>
+    <pubDate>Fri, 20 Jan 2023 11:03:05 &#43;0800</pubDate><author>
+        <name>TechKoala</name>
+    </author><guid>https://www.techkoala.top/wi-fi7_synopsis/</guid>
+    <description><![CDATA[<blockquote>
+<p>Wi-Fi 7 变化的总结描述</p>
+</blockquote>
+<h2 id="wi-fi-7-的发布时间" class="headerLink">
+    <a href="#wi-fi-7-%e7%9a%84%e5%8f%91%e5%b8%83%e6%97%b6%e9%97%b4" class="header-mark"></a>Wi-Fi 7 的发布时间</h2><p>IEEE 802.11be EHT 工作组已于 2019 年 5 月成立，802.11be（Wi-Fi 7）的开发工作仍在进行中，整个协议标准将按照两个 Release 发布，Release1 预计在 2021 年将发布第一版草案 Draft1.0，预期在 2022 年底发布标准；Release2 预计在 2022 年初启动，并且在 2024 年底完成标准发布。</p>
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" data-sub-html="<h2>会议进程</h2>">
+        
+    </a><figcaption class="image-caption">会议进程</figcaption>
+    </figure>
+<h2 id="wi-fi-7-vs-wi-fi-6" class="headerLink">
+    <a href="#wi-fi-7-vs-wi-fi-6" class="header-mark"></a>Wi-Fi 7 vs Wi-Fi 6</h2><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" data-sub-html="<h2>特性对比</h2>">
+        
+    </a><figcaption class="image-caption">特性对比</figcaption>
+    </figure>
+<h2 id="wi-fi-7-支持的新特性" class="headerLink">
+    <a href="#wi-fi-7-%e6%94%af%e6%8c%81%e7%9a%84%e6%96%b0%e7%89%b9%e6%80%a7" class="header-mark"></a>Wi-Fi 7 支持的新特性</h2><p>Wi-Fi 7 协议的目标是将 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WLAN.html" title="WLAN" target="_blank" rel="noopener noreferrer">WLAN</a> 网络的吞吐率提升到 30Gbps，并且提供低时延的接入保障。为了满足这个目标，整个协议在 PHY 层和 MAC 层都做了相应的改变。相对于 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi&#43;6.html" title="WiFi 6" target="_blank" rel="noopener noreferrer">Wi-Fi 6</a> 协议，Wi-Fi 7 协议带来的主要技术变革点如下：</p>
+<h3 id="新频段" class="headerLink">
+    <a href="#%e6%96%b0%e9%a2%91%e6%ae%b5" class="header-mark"></a>新频段</h3><p>相比 Wi-Fi 6，7 引入了 6GHz 频段（6e 也有），上下限分别为 5.925 —— 7.125 GHz：
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" data-sub-html="<h2>频段说明</h2>">
+        
+    </a><figcaption class="image-caption">频段说明</figcaption>
+    </figure></p>
+<h3 id="支持最大-320mhz-带宽" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81%e6%9c%80%e5%a4%a7-320mhz-%e5%b8%a6%e5%ae%bd" class="header-mark"></a>支持最大 320MHz 带宽</h3><p>2.4GHz 和 5GHz 频段免授权频谱有限且拥挤，现有 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi.html" title="WiFi" target="_blank" rel="noopener noreferrer">Wi-Fi</a> 在运行 VR/AR 等新兴应用时，不可避免地会遇到 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QoS.html" title="QoS" target="_blank" rel="noopener noreferrer">QoS</a> 低的问题。为了实现最大吞吐量不低于 30Gbps 的目标，Wi-Fi 7 将继续引入 6GHz 频段，并增加新的带宽模式，包括连续 240MHz，非连续 160+80MHz，连续 320 MHz 和非连续 160+160MHz。</p>
+<h3 id="支持-multi-ru-机制" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81-multi-ru-%e6%9c%ba%e5%88%b6" class="header-mark"></a>支持 Multi-RU 机制</h3><p>在 Wi-Fi 6 中，每个用户只能在分配到的特定 RU 上发送或接收帧，大大限制了频谱资源调度的灵活性。为解决该问题，进一步提升频谱效率，Wi-Fi 7 中定义了允许将多个 RU 分配给单用户的机制。当然，为了平衡实现的复杂度和频谱的利用率，协议中对 RU 的组合做了一定的限制，即：小规格 RU（小于 242-Tone 的 RU）只能与小规格 RU 合并，大规格 RU（大于等于 242-Tone 的 RU）只能与大规格 RU 合并，不允许小规格 RU 和大规格 RU 混合使用。</p>
+<h3 id="引入更高阶的-4096-qam-调制技术" class="headerLink">
+    <a href="#%e5%bc%95%e5%85%a5%e6%9b%b4%e9%ab%98%e9%98%b6%e7%9a%84-4096-qam-%e8%b0%83%e5%88%b6%e6%8a%80%e6%9c%af" class="header-mark"></a>引入更高阶的 4096-QAM 调制技术</h3><p>Wi-Fi 6 的最高调制方式是 1024-QAM，其中调制符号承载 10bits。为了进一步提升速率，Wi-Fi 7 将会引入 4096-QAM，使得调制符号承载 12bit。在相同的编码下，Wi-Fi 7 的 4096-QAM 比 Wi-Fi 6 的 1024-QAM 可以获得 20% 的速率提升。</p>
+<h3 id="引入-multi-link-多链路机制" class="headerLink">
+    <a href="#%e5%bc%95%e5%85%a5-multi-link-%e5%a4%9a%e9%93%be%e8%b7%af%e6%9c%ba%e5%88%b6" class="header-mark"></a>引入 Multi-Link 多链路机制</h3><p>为了实现所有可用频谱资源的高效利用，迫切需要在 2.4 GHz、5 GHz 和 6 GHz 上建立新的频谱管理、协调和传输机制。工作组定义了多<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/LACP.html" title="LACP" target="_blank" rel="noopener noreferrer">链路聚合</a>相关的技术，主要包括增强型多链路聚合的 MAC 架构、多链路信道接入和多链路传输等相关技术。</p>
+<h3 id="支持更多的数据流mimo-功能增强" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81%e6%9b%b4%e5%a4%9a%e7%9a%84%e6%95%b0%e6%8d%ae%e6%b5%81mimo-%e5%8a%9f%e8%83%bd%e5%a2%9e%e5%bc%ba" class="header-mark"></a>支持更多的数据流，MIMO 功能增强</h3><p>在 Wi-Fi 7 中，空间流的数从 Wi-Fi 6 的 8 个增加到 16 个，理论上可以将物理传输速率提升两倍以上。支持更多的数据流也将会带来更强大的特性——分布式 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/MIMO.html" title="MIMO" target="_blank" rel="noopener noreferrer">MIMO</a>，意为 16 条数据流可以不由一个接入点提供，而是由多个接入点同时提供，这意味着多个 AP 之间需要相互协同进行工作。</p>
+<h3 id="支持多-ap-间的协同调度" class="headerLink">
+    <a href="#%e6%94%af%e6%8c%81%e5%a4%9a-ap-%e9%97%b4%e7%9a%84%e5%8d%8f%e5%90%8c%e8%b0%83%e5%ba%a6" class="header-mark"></a>支持多 AP 间的协同调度</h3><p>目前在 802.11 的协议框架内，AP 之间实际上是没有太多协作的关系。自动调优、智能漫游等常见的 WLAN 功能都属于厂商自定义的特性。AP 间协作的目的也仅是优化信道选择，调整 AP 间负载等，以实现射频资源高效利用、均衡分配的目的。Wi-Fi 7 中的多 AP 间的协同调度，包括小区间的在时域和频域的协调规划，小区间的干扰协调，以及分布式 MIMO，可以有效降低 AP 之间的干扰，极大的提升空口资源的利用率。</p>
+<p>多 AP 间的协同调度的方式有很多，包括 C-OFDMA（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/OFDMA.html" title="OFDMA" target="_blank" rel="noopener noreferrer">Orthogonal Frequency-Division Multiple Access</a>）、CSR（Coordinated Spatial Reuse）、CBF（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E6%B3%A2%E6%9D%9F%E6%88%90%E5%BD%A2.html" title="波束成形" target="_blank" rel="noopener noreferrer">Beamforming</a>）和 JXT（Joint Transmission）等。</p>]]></description>
+</item></channel>
+</rss>

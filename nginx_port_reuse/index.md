@@ -436,8 +436,8 @@ server {
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/usr/local/etc/xray/fullchain.pem", # 你的域名证书
-                            "keyFile": "/usr/local/etc/xray/privkey.pem" # 你的证书私钥
+                            "certificateFile": "/usr/local/etc/ssl/fullchain.pem", # 你的域名证书
+                            "keyFile": "/usr/local/etc/ssl/privkey.pem" # 你的证书私钥
                         }
                     ]
                 }
