@@ -14,6 +14,7 @@
 5. OFDMA 改进
 
 下两图展示了 WiFi 发展历程中重要的参数信息的变化：
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png">}}
 
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png">}}
@@ -23,15 +24,20 @@
 
 ## 6GHz
 随着 6GHz 频段的引入，未来 Wi-Fi 的频段一共将有三部分组成，如下图所示：
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png">}}
+
 具体到 6GHz 的位置，其可容纳的信道数量如下：
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png">}}
+
 新的 6GHz 频段 (5925-7125 MHz)，宽度为 1.2 GHz，可容纳 3 或 6 个 320MHz 的频带，4 个 240MHz 的频带，7 个 160MHz 的频带，或 14 个 80MHz 的频带。支持首选扫描信道 (PSC) 的通道 (5, 21, 37, 53, 69, 85, 101, 117, 133, 149, 165, 181, 197) , 进行快速被动扫描。
 
 ## 320MHz
 320MHz信道化: 由6GHz的任意2个连续160MHz组成，包含2种类型：
 - 320MHz-1（信道号为 31, 95, 159）
 - 320MHz-2（信道号为 63, 127, 191）
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png">}}
 
 ## 冲突
@@ -49,6 +55,7 @@ QAM 在用于 [Wi-Fi](https://info.support.huawei.com/info-finder/encyclopedia/
 而 QAM 则有更多的符号，每个符号都有相应的相位和幅度值。
 
 以 16-QAM 为例，通过 QAM 调制可得到 16 个不同的波形，分别代表 0000，0001.... 这也意味着一共有 16 种符号，一个符号可以传递 4 bit 信息。
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" caption="16-QAM示意图">}}
 
 ## QAM 是如何工作的？
@@ -69,14 +76,18 @@ QAM 是将信号加载到 2 个正交的载波上（通常是正弦和余弦）�
 - 4096-QAM，4096 是 2 的 12 次方，每个符号能传输 12bit 的数据。
 
 因此，作为比 Wi-Fi 6 1024-QAM 更高阶的 4096-QAM，数据传输的峰值速率进一步提高 20%。
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png">}}
+
 ## QAM 对 Wi-Fi 标准速率影响
 在 Wi-Fi 标准中，定义了调制和编码方案 MCS（Modulation and Coding Scheme）。MCS 对应一组调制和编码方式。以 [Wi-Fi 6](https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi+6.html "WiFi 6") 为例，MCS 索引有 12 个。
 
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" caption="Wi-Fi 6 中 MCS 索引对应的调制方式以及编码率">}} 
+
 如果 MCS 为 1，则使用的是 QPSK 的调制方式；如果 MCS 为 11，则使用的是 1024 的调制方式。
 对于每个 MCS 的索引值，根据信道带宽、空间流数和保护间隔（Guard Interval，GI）可以计算出不同的速率。
 计算公式如下：
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" caption="Wi-Fi 标准的速率计算公式">}}
 
 ## 代价
@@ -97,9 +108,11 @@ MLD（Multi-Link Device）其实是MLO在物理层（PHY）的体现，传统的
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png">}}
  
 改进后的芯片结构大致如下图，由两个独立的 RF 前端，这两个独立的 RF 前端对应到两个独立的基带处理，然后对应到上层接口，因此可以在一块 IC 内部，做到两个频段同时连接，即双频双发（DBDC）。
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png">}}
 
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png">}}
+
 802.11be对MLD部分做了一些改动，一个MLD设备由多个AP或者多个STA组成，并且引入新的MAC来标识MLD设备。新增的功能总结大致如下三点：
 -   多链路发现和设置：MLD具有能够动态更新每对链路上同时进行帧交换的能力。每个单独的AP/STA还可以提供关于同一MLD内其他附属AP/STA的操作参数的信息。
 -   流量链路映射：在多链路集里面，对数据帧进行分类的服务质量（QoS）标识符（TID）会映射到所有链路中。该映射会被MLD下所有链路协商更新。此外，MLD接收方将利用buff缓存对多个链路传输的相同TID的QoS数据帧进行重排。
@@ -108,9 +121,11 @@ MLD（Multi-Link Device）其实是MLO在物理层（PHY）的体现，传统的
 # OFDMA 增强
 ## RU
 OFDMA 允许同时提供具有不同带宽需求的多个用户，从而有效利用可用频谱。子载波被分成若干组，每组表示为具有最小尺寸为 26 个子载波（2MHz 宽）和最大尺寸为 996 个子载波（77.8MHz 宽）的资源单元（RU）。
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png">}}
 
 ## 前导码打孔 & MRU
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png">}}
 
 假设 S20 被雷达信号占用：
@@ -121,6 +136,7 @@ OFDMA 允许同时提供具有不同带宽需求的多个用户，从而有效�
 80MHz 允许打孔 20MHz 信道，160MHz 允许打孔 20/40MHz，320MHz 允许打孔 40/80/80+40MHz
 
 Wi-Fi 7 支持在 EHT PPDU 中使用 MRU，以获得更高的频谱效率，实际上 MRU 就是支持多种 tone 根据需要进行组合，使得 RU 分配更加灵活，减小延迟。
+
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png">}}
 
 {{<image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png">}}

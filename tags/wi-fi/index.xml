@@ -22,34 +22,34 @@
 <li>MLD（MLO 的基础）</li>
 <li>OFDMA 改进</li>
 </ol>
-<p>下两图展示了 WiFi 发展历程中重要的参数信息的变化：
+<p>下两图展示了 WiFi 发展历程中重要的参数信息的变化：</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png">
         
-    </a></p>
+    </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png">
         
     </a>
 <h1 id="6ghz320mhz" class="headerLink">
     <a href="#6ghz320mhz" class="header-mark"></a>6GHz&amp;320MHz</h1><p>6GHz 的频段并非 Wi-Fi 7 首次采用（由 Wi-Fi 6E 引入），但是 Wi-Fi 7 在此基础上将 Wi-Fi 6/6E 最大单信道宽带由 160MHz 提升到了 320MHz 。</p>
 <h2 id="6ghz" class="headerLink">
-    <a href="#6ghz" class="header-mark"></a>6GHz</h2><p>随着 6GHz 频段的引入，未来 Wi-Fi 的频段一共将有三部分组成，如下图所示：
+    <a href="#6ghz" class="header-mark"></a>6GHz</h2><p>随着 6GHz 频段的引入，未来 Wi-Fi 的频段一共将有三部分组成，如下图所示：</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png">
         
     </a>
-具体到 6GHz 的位置，其可容纳的信道数量如下：
+<p>具体到 6GHz 的位置，其可容纳的信道数量如下：</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png">
         
     </a>
-新的 6GHz 频段 (5925-7125 MHz)，宽度为 1.2 GHz，可容纳 3 或 6 个 320MHz 的频带，4 个 240MHz 的频带，7 个 160MHz 的频带，或 14 个 80MHz 的频带。支持首选扫描信道 (PSC) 的通道 (5, 21, 37, 53, 69, 85, 101, 117, 133, 149, 165, 181, 197) , 进行快速被动扫描。</p>
+<p>新的 6GHz 频段 (5925-7125 MHz)，宽度为 1.2 GHz，可容纳 3 或 6 个 320MHz 的频带，4 个 240MHz 的频带，7 个 160MHz 的频带，或 14 个 80MHz 的频带。支持首选扫描信道 (PSC) 的通道 (5, 21, 37, 53, 69, 85, 101, 117, 133, 149, 165, 181, 197) , 进行快速被动扫描。</p>
 <h2 id="320mhz" class="headerLink">
     <a href="#320mhz" class="header-mark"></a>320MHz</h2><p>320MHz信道化: 由6GHz的任意2个连续160MHz组成，包含2种类型：</p>
 <ul>
 <li>320MHz-1（信道号为 31, 95, 159）</li>
-<li>320MHz-2（信道号为 63, 127, 191）
+<li>320MHz-2（信道号为 63, 127, 191）</li>
+</ul>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png">
         
-    </a></li>
-</ul>
+    </a>
 <h2 id="冲突" class="headerLink">
     <a href="#%e5%86%b2%e7%aa%81" class="header-mark"></a>冲突</h2><p>虽然一些国家和地区（如美国和欧盟）已经批准 6GHz 中或宽或窄的频段用于 Wi-Fi，但采用 6GHz 也需要考虑如下几种场景可能占用 6GHz 带来冲突：</p>
 <ul>
@@ -65,11 +65,11 @@
 <li>相位调制：通过改变载波的相位来区分 0 和 1。例如我们常见的 BPSK，就是使用 0° 和 180° 共 2 个相位表示 0 和 1，即 2 种符号；QPSK 则是使用 0°、90°、180° 和 270° 共 4 个相位，能够表示 00、01、10 和 11 共 4 种符号，传递 2 bit 的信息。其实 QPSK 就是一种特殊的 QAM，即 4-QAM。</li>
 </ul>
 <p>而 QAM 则有更多的符号，每个符号都有相应的相位和幅度值。</p>
-<p>以 16-QAM 为例，通过 QAM 调制可得到 16 个不同的波形，分别代表 0000，0001&hellip;. 这也意味着一共有 16 种符号，一个符号可以传递 4 bit 信息。
+<p>以 16-QAM 为例，通过 QAM 调制可得到 16 个不同的波形，分别代表 0000，0001&hellip;. 这也意味着一共有 16 种符号，一个符号可以传递 4 bit 信息。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" data-sub-html="<h2>16-QAM示意图</h2>">
         
     </a><figcaption class="image-caption">16-QAM示意图</figcaption>
-    </figure></p>
+    </figure>
 <h2 id="qam-是如何工作的" class="headerLink">
     <a href="#qam-%e6%98%af%e5%a6%82%e4%bd%95%e5%b7%a5%e4%bd%9c%e7%9a%84" class="header-mark"></a>QAM 是如何工作的？</h2><p>QAM 是将信号加载到 2 个正交的载波上（通常是正弦和余弦），通过对这两个载波幅度调整并叠加，最终得到相位和幅度都调制过的信号。这两个载波通常被称为 I 信号，另一个被称为 Q 信号，所以这种调制方式也被称为 IQ 调制。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png" data-sub-html="<h2>IQ 调制</h2>">
@@ -86,23 +86,23 @@
 <li>1024-QAM，1024 是 2 的 10 次方，每个符号能传输 10bit 的数据。</li>
 <li>4096-QAM，4096 是 2 的 12 次方，每个符号能传输 12bit 的数据。</li>
 </ul>
-<p>因此，作为比 Wi-Fi 6 1024-QAM 更高阶的 4096-QAM，数据传输的峰值速率进一步提高 20%。
+<p>因此，作为比 Wi-Fi 6 1024-QAM 更高阶的 4096-QAM，数据传输的峰值速率进一步提高 20%。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png">
         
-    </a></p>
+    </a>
 <h2 id="qam-对-wi-fi-标准速率影响" class="headerLink">
     <a href="#qam-%e5%af%b9-wi-fi-%e6%a0%87%e5%87%86%e9%80%9f%e7%8e%87%e5%bd%b1%e5%93%8d" class="header-mark"></a>QAM 对 Wi-Fi 标准速率影响</h2><p>在 Wi-Fi 标准中，定义了调制和编码方案 MCS（Modulation and Coding Scheme）。MCS 对应一组调制和编码方式。以 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi&#43;6.html" title="WiFi 6" target="_blank" rel="noopener noreferrer">Wi-Fi 6</a> 为例，MCS 索引有 12 个。</p>
-<p><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" data-sub-html="<h2>Wi-Fi 6 中 MCS 索引对应的调制方式以及编码率</h2>">
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" data-sub-html="<h2>Wi-Fi 6 中 MCS 索引对应的调制方式以及编码率</h2>">
         
     </a><figcaption class="image-caption">Wi-Fi 6 中 MCS 索引对应的调制方式以及编码率</figcaption>
     </figure>
-如果 MCS 为 1，则使用的是 QPSK 的调制方式；如果 MCS 为 11，则使用的是 1024 的调制方式。
+<p>如果 MCS 为 1，则使用的是 QPSK 的调制方式；如果 MCS 为 11，则使用的是 1024 的调制方式。
 对于每个 MCS 的索引值，根据信道带宽、空间流数和保护间隔（Guard Interval，GI）可以计算出不同的速率。
-计算公式如下：
+计算公式如下：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" data-sub-html="<h2>Wi-Fi 标准的速率计算公式</h2>">
         
     </a><figcaption class="image-caption">Wi-Fi 标准的速率计算公式</figcaption>
-    </figure></p>
+    </figure>
 <h2 id="代价" class="headerLink">
     <a href="#%e4%bb%a3%e4%bb%b7" class="header-mark"></a>代价</h2><p>尽管较高阶的调制速率能够为无线电通信系统提供更快的数据速率和更高水平的频谱效率，但这是有代价的。较高阶的调制方案对噪声和干扰的适应性要差得多。</p>
 <p>因为发送一个符号所用的载波频宽是固定的，发送时长也是一定的，较高阶意味着两个符号之间差异就越小。这不仅对接收双方的器件要求很高，而且对环境的要求也很高。也就是说，如果环境过于恶劣，终端将无法使用高阶的 QAM 模式通信，只能使用较低阶次的调制模式。</p>
@@ -115,14 +115,14 @@
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png">
         
     </a>
-<p>改进后的芯片结构大致如下图，由两个独立的 RF 前端，这两个独立的 RF 前端对应到两个独立的基带处理，然后对应到上层接口，因此可以在一块 IC 内部，做到两个频段同时连接，即双频双发（DBDC）。
+<p>改进后的芯片结构大致如下图，由两个独立的 RF 前端，这两个独立的 RF 前端对应到两个独立的基带处理，然后对应到上层接口，因此可以在一块 IC 内部，做到两个频段同时连接，即双频双发（DBDC）。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png">
         
-    </a></p>
-<p><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png">
+    </a>
+<a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png">
         
     </a>
-802.11be对MLD部分做了一些改动，一个MLD设备由多个AP或者多个STA组成，并且引入新的MAC来标识MLD设备。新增的功能总结大致如下三点：</p>
+<p>802.11be对MLD部分做了一些改动，一个MLD设备由多个AP或者多个STA组成，并且引入新的MAC来标识MLD设备。新增的功能总结大致如下三点：</p>
 <ul>
 <li>多链路发现和设置：MLD具有能够动态更新每对链路上同时进行帧交换的能力。每个单独的AP/STA还可以提供关于同一MLD内其他附属AP/STA的操作参数的信息。</li>
 <li>流量链路映射：在多链路集里面，对数据帧进行分类的服务质量（QoS）标识符（TID）会映射到所有链路中。该映射会被MLD下所有链路协商更新。此外，MLD接收方将利用buff缓存对多个链路传输的相同TID的QoS数据帧进行重排。</li>
@@ -130,10 +130,10 @@
 </ul>
 <h1 id="ofdma-增强" class="headerLink">
     <a href="#ofdma-%e5%a2%9e%e5%bc%ba" class="header-mark"></a>OFDMA 增强</h1><h2 id="ru" class="headerLink">
-    <a href="#ru" class="header-mark"></a>RU</h2><p>OFDMA 允许同时提供具有不同带宽需求的多个用户，从而有效利用可用频谱。子载波被分成若干组，每组表示为具有最小尺寸为 26 个子载波（2MHz 宽）和最大尺寸为 996 个子载波（77.8MHz 宽）的资源单元（RU）。
+    <a href="#ru" class="header-mark"></a>RU</h2><p>OFDMA 允许同时提供具有不同带宽需求的多个用户，从而有效利用可用频谱。子载波被分成若干组，每组表示为具有最小尺寸为 26 个子载波（2MHz 宽）和最大尺寸为 996 个子载波（77.8MHz 宽）的资源单元（RU）。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png">
         
-    </a></p>
+    </a>
 <h2 id="前导码打孔--mru" class="headerLink">
     <a href="#%e5%89%8d%e5%af%bc%e7%a0%81%e6%89%93%e5%ad%94--mru" class="header-mark"></a>前导码打孔 &amp; MRU</h2><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png">
         
@@ -145,10 +145,10 @@
 </ul>
 <p>打孔的类型：1. 静态打孔（建立 BSS 时打孔）；2. 动态打孔（传输 PPDU 时，在静态打孔的基础上，打孔附加的信道）
 80MHz 允许打孔 20MHz 信道，160MHz 允许打孔 20/40MHz，320MHz 允许打孔 40/80/80+40MHz</p>
-<p>Wi-Fi 7 支持在 EHT PPDU 中使用 MRU，以获得更高的频谱效率，实际上 MRU 就是支持多种 tone 根据需要进行组合，使得 RU 分配更加灵活，减小延迟。
+<p>Wi-Fi 7 支持在 EHT PPDU 中使用 MRU，以获得更高的频谱效率，实际上 MRU 就是支持多种 tone 根据需要进行组合，使得 RU 分配更加灵活，减小延迟。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png">
         
-    </a></p>
+    </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png">
         
     </a>
