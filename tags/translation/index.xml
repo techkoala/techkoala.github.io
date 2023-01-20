@@ -158,13 +158,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">For i from w[16…63]:
-    s0 = (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)
-
-    s1 = (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
-
-    w[i] = w[i-16] + s0 + w[i-7] + s1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">For i from w[16…63]:
+</span></span><span class="line"><span class="cl">    s0 = (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    s1 = (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    w[i] = w[i-16] + s0 + w[i-7] + s1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以 w[16] 举例说明：</p>
 <blockquote>
@@ -276,21 +276,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">for i from 0 to 63:
-    S1 = (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
-    ch = (e and f) xor ((not e) and g)
-    temp1 = h + S1 + ch + k[i] + w[i]
-    S0 = (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
-    maj = (a and b) xor (a and c) xor (b and c)
-    temp2 := S0 + maj
-    h = g
-    g = f
-    e = d + temp1
-    d = c
-    c = b
-    b = a
-    a = temp1 + temp2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for i from 0 to 63:
+</span></span><span class="line"><span class="cl">    S1 = (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
+</span></span><span class="line"><span class="cl">    ch = (e and f) xor ((not e) and g)
+</span></span><span class="line"><span class="cl">    temp1 = h + S1 + ch + k[i] + w[i]
+</span></span><span class="line"><span class="cl">    S0 = (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
+</span></span><span class="line"><span class="cl">    maj = (a and b) xor (a and c) xor (b and c)
+</span></span><span class="line"><span class="cl">    temp2 := S0 + maj
+</span></span><span class="line"><span class="cl">    h = g
+</span></span><span class="line"><span class="cl">    g = f
+</span></span><span class="line"><span class="cl">    e = d + temp1
+</span></span><span class="line"><span class="cl">    d = c
+</span></span><span class="line"><span class="cl">    c = b
+</span></span><span class="line"><span class="cl">    b = a
+</span></span><span class="line"><span class="cl">    a = temp1 + temp2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>下面演示第一次迭代，所有加法都是以 $ 2^{32} $ 为模的：</p>
 <blockquote>
@@ -444,9 +444,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
-       = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
+</span></span><span class="line"><span class="cl">       = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>搞定！至此，本文非常详细地实现了 SHA-256 中的每一步 🙂。</p>
 <h2 id="附录" class="headerLink">
@@ -563,89 +563,89 @@
 </span><span class="lnt">82
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Initialize hash values:
-(first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19):
-h0 := 0x6a09e667
-h1 := 0xbb67ae85
-h2 := 0x3c6ef372
-h3 := 0xa54ff53a
-h4 := 0x510e527f
-h5 := 0x9b05688c
-h6 := 0x1f83d9ab
-h7 := 0x5be0cd19
-
-Initialize array of round constants:
-(first 32 bits of the fractional parts of the cube roots of the first 64 primes 2..311):
-k[0..63] :=
-   0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
-   0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
-   0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-   0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
-   0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
-   0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-   0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-   0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
-
-Pre-processing (Padding):
-begin with the original message of length L bits
-append a single &#39;1&#39; bit
-append K &#39;0&#39; bits, where K is the minimum number &gt;= 0 such that L + 1 + K + 64 is a multiple of 512
-append L as a 64-bit big-endian integer, making the total post-processed length a multiple of 512 bits
-
-Process the message in successive 512-bit chunks:
-break message into 512-bit chunks
-for each chunk
-    create a 64-entry message schedule array w[0..63] of 32-bit words
-    (The initial values in w[0..63] don&#39;t matter, so many implementations zero them here)
-    copy chunk into first 16 words w[0..15] of the message schedule array
-
-    Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
-    for i from 16 to 63
-        s0 := (w[i-15] rightrotate  7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift  3)
-        s1 := (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
-        w[i] := w[i-16] + s0 + w[i-7] + s1
-
-    Initialize working variables to current hash value:
-    a := h0
-    b := h1
-    c := h2
-    d := h3
-    e := h4
-    f := h5
-    g := h6
-    h := h7
-
-    Compression function main loop:
-    for i from 0 to 63
-        S1 := (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
-        ch := (e and f) xor ((not e) and g)
-        temp1 := h + S1 + ch + k[i] + w[i]
-        S0 := (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
-        maj := (a and b) xor (a and c) xor (b and c)
-        temp2 := S0 + maj
-
-        h := g
-        g := f
-        f := e
-        e := d + temp1
-        d := c
-        c := b
-        b := a
-        a := temp1 + temp2
-
-    Add the compressed chunk to the current hash value:
-    h0 := h0 + a
-    h1 := h1 + b
-    h2 := h2 + c
-    h3 := h3 + d
-    h4 := h4 + e
-    h5 := h5 + f
-    h6 := h6 + g
-    h7 := h7 + h
-
-Produce the final hash value (big-endian):
-digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Initialize hash values:
+</span></span><span class="line"><span class="cl">(first 32 bits of the fractional parts of the square roots of the first 8 primes 2..19):
+</span></span><span class="line"><span class="cl">h0 := 0x6a09e667
+</span></span><span class="line"><span class="cl">h1 := 0xbb67ae85
+</span></span><span class="line"><span class="cl">h2 := 0x3c6ef372
+</span></span><span class="line"><span class="cl">h3 := 0xa54ff53a
+</span></span><span class="line"><span class="cl">h4 := 0x510e527f
+</span></span><span class="line"><span class="cl">h5 := 0x9b05688c
+</span></span><span class="line"><span class="cl">h6 := 0x1f83d9ab
+</span></span><span class="line"><span class="cl">h7 := 0x5be0cd19
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Initialize array of round constants:
+</span></span><span class="line"><span class="cl">(first 32 bits of the fractional parts of the cube roots of the first 64 primes 2..311):
+</span></span><span class="line"><span class="cl">k[0..63] :=
+</span></span><span class="line"><span class="cl">   0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+</span></span><span class="line"><span class="cl">   0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+</span></span><span class="line"><span class="cl">   0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+</span></span><span class="line"><span class="cl">   0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+</span></span><span class="line"><span class="cl">   0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+</span></span><span class="line"><span class="cl">   0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+</span></span><span class="line"><span class="cl">   0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+</span></span><span class="line"><span class="cl">   0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Pre-processing (Padding):
+</span></span><span class="line"><span class="cl">begin with the original message of length L bits
+</span></span><span class="line"><span class="cl">append a single &#39;1&#39; bit
+</span></span><span class="line"><span class="cl">append K &#39;0&#39; bits, where K is the minimum number &gt;= 0 such that L + 1 + K + 64 is a multiple of 512
+</span></span><span class="line"><span class="cl">append L as a 64-bit big-endian integer, making the total post-processed length a multiple of 512 bits
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Process the message in successive 512-bit chunks:
+</span></span><span class="line"><span class="cl">break message into 512-bit chunks
+</span></span><span class="line"><span class="cl">for each chunk
+</span></span><span class="line"><span class="cl">    create a 64-entry message schedule array w[0..63] of 32-bit words
+</span></span><span class="line"><span class="cl">    (The initial values in w[0..63] don&#39;t matter, so many implementations zero them here)
+</span></span><span class="line"><span class="cl">    copy chunk into first 16 words w[0..15] of the message schedule array
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
+</span></span><span class="line"><span class="cl">    for i from 16 to 63
+</span></span><span class="line"><span class="cl">        s0 := (w[i-15] rightrotate  7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift  3)
+</span></span><span class="line"><span class="cl">        s1 := (w[i- 2] rightrotate 17) xor (w[i- 2] rightrotate 19) xor (w[i- 2] rightshift 10)
+</span></span><span class="line"><span class="cl">        w[i] := w[i-16] + s0 + w[i-7] + s1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Initialize working variables to current hash value:
+</span></span><span class="line"><span class="cl">    a := h0
+</span></span><span class="line"><span class="cl">    b := h1
+</span></span><span class="line"><span class="cl">    c := h2
+</span></span><span class="line"><span class="cl">    d := h3
+</span></span><span class="line"><span class="cl">    e := h4
+</span></span><span class="line"><span class="cl">    f := h5
+</span></span><span class="line"><span class="cl">    g := h6
+</span></span><span class="line"><span class="cl">    h := h7
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Compression function main loop:
+</span></span><span class="line"><span class="cl">    for i from 0 to 63
+</span></span><span class="line"><span class="cl">        S1 := (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
+</span></span><span class="line"><span class="cl">        ch := (e and f) xor ((not e) and g)
+</span></span><span class="line"><span class="cl">        temp1 := h + S1 + ch + k[i] + w[i]
+</span></span><span class="line"><span class="cl">        S0 := (a rightrotate 2) xor (a rightrotate 13) xor (a rightrotate 22)
+</span></span><span class="line"><span class="cl">        maj := (a and b) xor (a and c) xor (b and c)
+</span></span><span class="line"><span class="cl">        temp2 := S0 + maj
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        h := g
+</span></span><span class="line"><span class="cl">        g := f
+</span></span><span class="line"><span class="cl">        f := e
+</span></span><span class="line"><span class="cl">        e := d + temp1
+</span></span><span class="line"><span class="cl">        d := c
+</span></span><span class="line"><span class="cl">        c := b
+</span></span><span class="line"><span class="cl">        b := a
+</span></span><span class="line"><span class="cl">        a := temp1 + temp2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Add the compressed chunk to the current hash value:
+</span></span><span class="line"><span class="cl">    h0 := h0 + a
+</span></span><span class="line"><span class="cl">    h1 := h1 + b
+</span></span><span class="line"><span class="cl">    h2 := h2 + c
+</span></span><span class="line"><span class="cl">    h3 := h3 + d
+</span></span><span class="line"><span class="cl">    h4 := h4 + e
+</span></span><span class="line"><span class="cl">    h5 := h5 + f
+</span></span><span class="line"><span class="cl">    h6 := h6 + g
+</span></span><span class="line"><span class="cl">    h7 := h7 + h
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Produce the final hash value (big-endian):
+</span></span><span class="line"><span class="cl">digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6 append h7
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -814,8 +814,8 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">$ scp local_file remote_host:/home
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
 <p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
@@ -874,8 +874,8 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ scp 选项 参数
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
@@ -895,20 +895,20 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
--2：使用ssh协议版本2；
--4：使用ipv4；
--6：使用ipv6；
--B：以批处理模式运行；
--C：使用压缩；
--F：指定ssh配置文件；
--l：指定宽带限制；
--o：指定使用的ssh选项；
--P：指定远程主机的端口号；
--p：保留文件的最后修改时间，最后访问时间和权限模式；
--q：不显示复制进度；
--r：以递归方式复制。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-1：使用ssh协议版本1；
+</span></span><span class="line"><span class="cl">-2：使用ssh协议版本2；
+</span></span><span class="line"><span class="cl">-4：使用ipv4；
+</span></span><span class="line"><span class="cl">-6：使用ipv6；
+</span></span><span class="line"><span class="cl">-B：以批处理模式运行；
+</span></span><span class="line"><span class="cl">-C：使用压缩；
+</span></span><span class="line"><span class="cl">-F：指定ssh配置文件；
+</span></span><span class="line"><span class="cl">-l：指定宽带限制；
+</span></span><span class="line"><span class="cl">-o：指定使用的ssh选项；
+</span></span><span class="line"><span class="cl">-P：指定远程主机的端口号；
+</span></span><span class="line"><span class="cl">-p：保留文件的最后修改时间，最后访问时间和权限模式；
+</span></span><span class="line"><span class="cl">-q：不显示复制进度；
+</span></span><span class="line"><span class="cl">-r：以递归方式复制。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>参数分别为：</p>
 <ul>
@@ -944,27 +944,27 @@ digest := hash := h0 append h1 append h2 append h3 append h4 append h5 append h6
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
-<span class="m">10000</span>
-
-<span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
-
-________________________________________________________
-Executed in  882.99 millis	fish       	external
-   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
-   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
-
-<span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
-tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
-
-________________________________________________________
-Executed in  215.68 millis	fish       	external
-   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
-   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="c1"># Copy a local folder with 10000 files</span>
+</span></span><span class="line"><span class="cl">$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl"><span class="m">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Using scp</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">________________________________________________________
+</span></span><span class="line"><span class="cl">Executed in  882.99 millis	fish       	external
+</span></span><span class="line"><span class="cl">   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
+</span></span><span class="line"><span class="cl">   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Using tar over ssh</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">________________________________________________________
+</span></span><span class="line"><span class="cl">Executed in  215.68 millis	fish       	external
+</span></span><span class="line"><span class="cl">   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
+</span></span><span class="line"><span class="cl">   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
 <h3 id="安全" class="headerLink">
@@ -1165,8 +1165,8 @@ Executed in  215.68 millis	fish       	external
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-421.awsdNS-52.com github.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @NS-421.awsdNS-52.com github.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>递归 DNS 服务器</code>，本身并不知道谁拥有什么 <code>IP</code> 地址。它们通过询问正确的权威 <code>DNS</code> 服务器，找出域名的 <code>IP</code> 地址，然后缓存这个 <code>IP</code> 地址，以备再次询问。<code>8.8.8.8</code> 是一个递归 <code>DNS</code> 服务器。</p>
 <p>当人们访问你的网站时，他们可能会向递归 <code>DNS</code> 服务器进行 <code>DNS</code> 查询。那么，递归 <code>DNS</code> 服务器是如何工作的呢？</p>
@@ -1190,14 +1190,14 @@ Executed in  215.68 millis	fish       	external
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @198.41.0.4 github.com
-
-...
-com.			172800	IN	NS	a.gtld-servers.net.
-...
-a.gtld-servers.net.	172800	IN	A	192.5.6.30
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @198.41.0.4 github.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">com.			172800	IN	NS	a.gtld-servers.net.
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">a.gtld-servers.net.	172800	IN	A	192.5.6.30
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到，这里我们得到一个 <code>com.</code> 的权威 NS<code>a.gtld-servers.net.</code> 及其 IP 地址 <code>192.5.6.30</code></p>
 <div class="details admonition warning open">
@@ -1221,13 +1221,13 @@ a.gtld-servers.net.	172800	IN	A	192.5.6.30
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
-
-...
-github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @192.5.6.30 github.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
+</span></span><span class="line"><span class="cl">NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里，我们得到的 <code>github.com.</code>NS<code>NS-421.awsdNS-52.com.</code> 及其 <code>IP</code> 地址 <code>205.251.193.165</code></p>
 </li>
@@ -1240,10 +1240,10 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
-
-github.com.		60	IN	A	140.82.112.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @205.251.193.165 github.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">github.com.		60	IN	A	140.82.112.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此，在假设没有缓存的情况下，我们通过完整的流程（实际上绝大多数情况不需要完整进行）获得了 <code>github.com</code> 的 <code>IP</code> 地址。</p>
 </li>
@@ -1269,10 +1269,10 @@ github.com.		60	IN	A	140.82.112.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @205.251.193.165 github.com
-
-github.com.		60	IN	A	140.82.112.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @205.251.193.165 github.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">github.com.		60	IN	A	140.82.112.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里的 60（秒）即表示 <code>TTL</code>，这是一个很短的 <code>TTL</code>。理论上，如果每个用户都遵循 <code>DNS</code> 标准，那么 <code>github.com</code> 在更改了 <code>IP</code> 地址后，每个用户都应该在 60 秒内得到这个新的地址。但实际上呢？</p>
 <h3 id="更新同一-ns-上的-dns-记录" class="headerLink">
@@ -1284,10 +1284,10 @@ github.com.		60	IN	A	140.82.112.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
-
-test.jvNS.ca.		299	IN	A	1.2.3.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @8.8.8.8 test.jvNS.ca
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">test.jvNS.ca.		299	IN	A	1.2.3.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果此前没有设置过 <code>DNS</code> 记录，因为没有缓存，所以立刻生效了。这里可以看到 <code>TTL</code> 是 299。那么，修改 <code>IP</code> 为 <code>5.6.7.8</code> 呢。</p>
 <div class="highlight"><div class="chroma">
@@ -1297,10 +1297,10 @@ test.jvNS.ca.		299	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 test.jvNS.ca
-
-test.jvNS.ca.		144	IN	A	1.2.3.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @8.8.8.8 test.jvNS.ca
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">test.jvNS.ca.		144	IN	A	1.2.3.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到，<code>IP</code> 并没有发生改变且 <code>TTL</code> 表示缓存还将存在 144 秒。而且，多次查询，你可能会发现，有时候可以得到新的 <code>IP</code>，但有的时候又是旧的 <code>IP</code>。</p>
 <p>这里是因为像 <code>8.8.8.8</code> 这样的 <code>DNS</code> 服务器采用了负载均衡，每次查询可能被分配到不同的后端服务器，而他们的缓存不尽相同。</p>
@@ -1321,10 +1321,10 @@ test.jvNS.ca.		144	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @8.8.8.8 examplecat.com
-
-examplecat.com.		17	IN	A	104.248.50.87
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @8.8.8.8 examplecat.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">examplecat.com.		17	IN	A	104.248.50.87
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>8.8.8.8</code> 没有变化，询问别的 DNS：</p>
 <div class="highlight"><div class="chroma">
@@ -1334,10 +1334,10 @@ examplecat.com.		17	IN	A	104.248.50.87
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @1.1.1.1 examplecat.com
-
-examplecat.com.		299	IN	A	1.2.3.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @1.1.1.1 examplecat.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">examplecat.com.		299	IN	A	1.2.3.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>1.1.1.1</code> 更新了。</p>
 <p>造成这样不同结果的原因，可能是此前并没有人询问过 <code>1.1.1.1</code>，所以他没有缓存，能立刻得到新的 <code>IP</code>。</p>
@@ -1349,10 +1349,10 @@ examplecat.com.		299	IN	A	1.2.3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
-
-examplecat.com.		300	IN	A	1.2.3.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @NS-cloud-b1.googledomaiNS.com examplecat.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">examplecat.com.		300	IN	A	1.2.3.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="ns-的-ttl-要长很多" class="headerLink">
     <a href="#ns-%e7%9a%84-ttl-%e8%a6%81%e9%95%bf%e5%be%88%e5%a4%9a" class="header-mark"></a>NS 的 TTL 要长很多</h3><p>域名商提示：“修改将在 48 小时内生效” 的原因是 <code>NS</code> 记录（告诉<code>递归 NS</code> 应该向哪个 <code>NS</code> 查询）的 TTL 要长的多。</p>
@@ -1367,13 +1367,13 @@ examplecat.com.		300	IN	A	1.2.3.4
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig @192.5.6.30 github.com
-
-...
-github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
-NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig @192.5.6.30 github.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">github.com.		172800	IN	NS	NS-421.awsdNS-52.com.
+</span></span><span class="line"><span class="cl">NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>172800 秒是 48 小时！这就是为什么更改 <code>NS</code> 后需要更长的时间来生效。</p>
 <h3 id="ns-如何得到更新" class="headerLink">
@@ -1385,10 +1385,10 @@ NS-421.awsdNS-52.com.	172800	IN	A	205.251.193.165
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig NS @j.gtld-servers.net examplecat.com
-
-examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dig NS @j.gtld-servers.net examplecat.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">examplecat.com.		172800	IN	NS	NS-cloud-b1.googledomaiNS.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>你可能会疑惑，新的 <code>NS</code> 记录是如何在根服务器处更新的呢？是因为当你在域名商那里更改你域名的 <code>NS</code> 后，他们会负责将这个给更改告知根服务器。</p>
 <p>通常这个更新将在几分钟内就生效，但是对于其他一些顶级域名（<code>TLD</code>）（非<code>.com</code>）可能速度稍微慢一些。</p>

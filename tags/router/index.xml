@@ -21,9 +21,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
-opkg install dnscrypt-proxy2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">opkg update
+</span></span><span class="line"><span class="cl">opkg install dnscrypt-proxy2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
 <h2 id="配置" class="headerLink">
@@ -33,8 +33,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
@@ -42,16 +42,16 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
 <p>软件已经内置了常见的 DoH/DoT 服务器了，因此只需要填入名称即可</p>
@@ -61,8 +61,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/etc/init.d/dnscrypt-proxy restart
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
 <h2 id="分流搭配-ssr" class="headerLink">
@@ -119,9 +119,9 @@ opkg install dnscrypt-proxy2
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg update
-opkg install cfdisk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">opkg update
+</span></span><span class="line"><span class="cl">opkg install cfdisk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后输入</p>
 <div class="highlight"><div class="chroma">
@@ -129,8 +129,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cfdisk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cfdisk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开磁盘管理界面：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
@@ -161,8 +161,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkfs.ext4 /dev/sda3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkfs.ext4 /dev/sda3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>格式化分区</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/format.webp" title="/images/Network/OpenWRT_overlay/format.webp" data-thumbnail="/images/Network/OpenWRT_overlay/format.webp" data-sub-html="<h2>格式化分区</h2>">
@@ -176,8 +176,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mount /dev/sda3 /mnt/sda3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mount /dev/sda3 /mnt/sda3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>挂载分区</p>
 <h2 id="转移到新分区" class="headerLink">
@@ -187,8 +187,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp -r /overlay/* /mnt/sda3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="web-界面配置修改" class="headerLink">
     <a href="#web-%e7%95%8c%e9%9d%a2%e9%85%8d%e7%bd%ae%e4%bf%ae%e6%94%b9" class="header-mark"></a>Web 界面配置修改</h2><p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
@@ -211,8 +211,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vim /etc/rc.local
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /etc/rc.local
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
 <h2 id="参考" class="headerLink">
@@ -253,8 +253,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/package
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/lede/package
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="配置" class="headerLink">
     <a href="#%e9%85%8d%e7%bd%ae" class="header-mark"></a>配置</h3><div class="highlight"><div class="chroma">
@@ -262,8 +262,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make menuconfig
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">make menuconfig
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后进入对应的子菜单中找到对应插件按 <M> 表示选中插件，但不编译进固件。</p>
 <h3 id="编译" class="headerLink">
@@ -272,8 +272,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">make package/xxxxx/compile <span class="nv">V</span><span class="o">=</span><span class="m">99</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>xxxxx 就是你需要单独编译的程序。</p>
 <h3 id="ipk-生成路径" class="headerLink">
@@ -282,8 +282,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">~/lede/bin/packages/x86_64/xxxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/lede/bin/packages/x86_64/xxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="上传-ipk-至路由器" class="headerLink">
     <a href="#%e4%b8%8a%e4%bc%a0-ipk-%e8%87%b3%e8%b7%af%e7%94%b1%e5%99%a8" class="header-mark"></a>上传 ipk 至路由器</h3><div class="highlight"><div class="chroma">
@@ -291,8 +291,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">scp xxxxxxx.ipk root@192.168.1.1:/tmp
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scp xxxxxxx.ipk root@192.168.1.1:/tmp
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="安装" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85" class="header-mark"></a>安装</h3><div class="highlight"><div class="chroma">
@@ -300,8 +300,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg install /tmp/xxxxx.ipk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">opkg install /tmp/xxxxx.ipk
+</span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
 </item></channel>

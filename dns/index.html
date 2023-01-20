@@ -13,7 +13,6 @@
 <meta property="og:url" content="https://www.techkoala.top/dns/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-20T13:24:18+08:00" />
 <meta property="article:modified_time" content="2022-05-28T20:40:38+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DNS 报文详解"/>
 <meta name="twitter:description" content="
@@ -39,7 +38,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/dns\/"
-        },"genre": "posts","keywords": "DNS","wordcount":  1855 ,
+        },"genre": "posts","keywords": "DNS","wordcount":  1758 ,
         "url": "https:\/\/www.techkoala.top\/dns\/","datePublished": "2020-10-20T13:24:18+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -122,7 +121,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-20">2020-10-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1855 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-20">2020-10-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1758 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -240,8 +239,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">（Name，Value，Type，TTL）
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">（Name，Value，Type，TTL）
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中 TTL 表示生存时间，决定了资源记录应该从缓存中删除的时间。</p>
 <ul>
@@ -257,8 +256,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">udp port 53
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">udp port 53
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样我们只抓取通过 UDP 53 端口的 DNS 请求，此外如果需要仅仅显示特定的 DNS 查询，还可以进一步应用显示过滤器，例如这里我们仅查看<code>www.techkoala.top</code>的查询记录，则显示过滤器设置为：</p>
 <div class="highlight"><div class="chroma">
@@ -266,8 +265,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">dns.qry.name==www.techkoala.top
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dns.qry.name==www.techkoala.top
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/DNS/Request_16.webp" data-sub-html="<h2>16 进制表示</h2>">
         <img

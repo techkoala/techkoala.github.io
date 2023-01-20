@@ -13,7 +13,6 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 <meta property="og:url" content="https://www.techkoala.top/iperf/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-07T17:45:55+08:00" />
 <meta property="article:modified_time" content="2022-05-28T20:40:38+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="网络测试工具：iPerf"/>
 <meta name="twitter:description" content="
@@ -39,7 +38,7 @@ TCP、UDP 和 SCTP 的终极速度测试工具
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/iperf\/"
-        },"genre": "posts","keywords": "Software","wordcount":  1770 ,
+        },"genre": "posts","keywords": "Software","wordcount":  1764 ,
         "url": "https:\/\/www.techkoala.top\/iperf\/","datePublished": "2020-08-07T17:45:55+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -122,7 +121,7 @@ TCP、UDP 和 SCTP 的终极速度测试工具
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-07">2020-08-07</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1770 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-07">2020-08-07</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1764 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -156,8 +155,8 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo apt install iperf3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="使用-iperf" class="headerLink">
     <a href="#%e4%bd%bf%e7%94%a8-iperf" class="header-mark"></a>使用 iPerf</h2><p>首先，介绍服务端和客户端共有的参数：</p>
@@ -178,20 +177,20 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
---cport n         指定客户端端口
--f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
--i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
--F, --file name   客户端：从文件读取并写入网络，而不是使用随机数据；服务器端：从网络读取并写入文件，而不是丢弃数据。
--A, --affinity    如果可以，设置 CPU 关联（仅限 Linux 和 FreeBSD）。
--B, --bind host   绑定到主机。对于客户端，这将设置出站接口。对于服务器，这将设置传入接口。这只适用于具有多个网络接口的多宿主主机。
--V, --verbose     提供更详细的输出
--J, --json        以 JSON 格式输出
---logfile file    输出到日志文件
---d, --debug      发出调试输出
--v, --version     输出版本信息
--h, --help        输出帮助信息
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
+</span></span><span class="line"><span class="cl">--cport n         指定客户端端口
+</span></span><span class="line"><span class="cl">-f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
+</span></span><span class="line"><span class="cl">-i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
+</span></span><span class="line"><span class="cl">-F, --file name   客户端：从文件读取并写入网络，而不是使用随机数据；服务器端：从网络读取并写入文件，而不是丢弃数据。
+</span></span><span class="line"><span class="cl">-A, --affinity    如果可以，设置 CPU 关联（仅限 Linux 和 FreeBSD）。
+</span></span><span class="line"><span class="cl">-B, --bind host   绑定到主机。对于客户端，这将设置出站接口。对于服务器，这将设置传入接口。这只适用于具有多个网络接口的多宿主主机。
+</span></span><span class="line"><span class="cl">-V, --verbose     提供更详细的输出
+</span></span><span class="line"><span class="cl">-J, --json        以 JSON 格式输出
+</span></span><span class="line"><span class="cl">--logfile file    输出到日志文件
+</span></span><span class="line"><span class="cl">--d, --debug      发出调试输出
+</span></span><span class="line"><span class="cl">-v, --version     输出版本信息
+</span></span><span class="line"><span class="cl">-h, --help        输出帮助信息
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>服务端特有参数：</p>
 <div class="highlight"><div class="chroma">
@@ -201,10 +200,10 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
--D, --daemon      将服务器作为守护进程在后台运行
--I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
+</span></span><span class="line"><span class="cl">-D, --daemon      将服务器作为守护进程在后台运行
+</span></span><span class="line"><span class="cl">-I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>客户端特有参数:</p>
 <div class="highlight"><div class="chroma">
@@ -236,32 +235,32 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
---sctp	                使用 SCTP 而不是 TCP
--u, --udp	            使用 UDP 而不是 TCP
--b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
--t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
--n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
--k, --blockcount    	要传输的块（数据包）数
--l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
--P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
--R, --reverse	        以反向模式运行（服务器发送，客户端接收）
--w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
--M, --set-mss  	        尝试设置 TCP 最大段大小（MSS）。MSS 通常是 MTU-TCP/IP 标头的 <span class="m">40</span> 个字节。对于以太网，MSS 为 <span class="m">1460</span> 字节（1500 字节 MTU）
--N, --no-delay	        设置 “TCP no delay” 选项，禁用 Nagle 的算法。通常，仅对交互式应用程序（如 telnet）禁用此功能
--4, --version4	        仅使用 IPv4.
--6, --version4	        仅使用 IPv6.
--S, --tos               传出数据包的服务类型。<span class="o">(</span>许多路由器会忽略TOS字段。）可以使用十六进制值（0x）作为前缀，使用八进制数（0）作为前缀，或者使用十进制来指定值。 例如，<span class="s1">&#39;0x10&#39;</span><span class="nv">十六进制</span><span class="o">=</span><span class="s1">&#39;020&#39;</span><span class="nv">八进制</span><span class="o">=</span><span class="s1">&#39;16&#39;</span>十进制。RFC 1349中指定的TOS编号为：
-                        IPTOS_LOWDELAY     minimize delay        0x10
-                        IPTOS_THROUGHPUT   maximize throughput   0x08
-                        IPTOS_RELIABILITY  maximize reliability  0x04
-                        IPTOS_LOWCOST      minimize cost         0x02
--L, --flowlabel  	    设置 IPv6 流标签（当前仅在 Linux 上受支持）
--Z, --zerocopy	        使用 “零拷贝” 方法发送数据，如 sendfile（2），而不是通常的 write（2）。这样可以占用更少的 CPU
--O, --omit  	        省略测试的前 n 秒，以跳过 TCP TCP 慢启动周期
--T, --title             为每个输出行添加此字符串前缀
--C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-c, --client host	    在客户端模式下运行 iPerf
+</span></span><span class="line"><span class="cl">--sctp	                使用 SCTP 而不是 TCP
+</span></span><span class="line"><span class="cl">-u, --udp	            使用 UDP 而不是 TCP
+</span></span><span class="line"><span class="cl">-b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
+</span></span><span class="line"><span class="cl">-t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
+</span></span><span class="line"><span class="cl">-n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
+</span></span><span class="line"><span class="cl">-k, --blockcount    	要传输的块（数据包）数
+</span></span><span class="line"><span class="cl">-l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
+</span></span><span class="line"><span class="cl">-P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
+</span></span><span class="line"><span class="cl">-R, --reverse	        以反向模式运行（服务器发送，客户端接收）
+</span></span><span class="line"><span class="cl">-w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
+</span></span><span class="line"><span class="cl">-M, --set-mss  	        尝试设置 TCP 最大段大小（MSS）。MSS 通常是 MTU-TCP/IP 标头的 <span class="m">40</span> 个字节。对于以太网，MSS 为 <span class="m">1460</span> 字节（1500 字节 MTU）
+</span></span><span class="line"><span class="cl">-N, --no-delay	        设置 “TCP no delay” 选项，禁用 Nagle 的算法。通常，仅对交互式应用程序（如 telnet）禁用此功能
+</span></span><span class="line"><span class="cl">-4, --version4	        仅使用 IPv4.
+</span></span><span class="line"><span class="cl">-6, --version4	        仅使用 IPv6.
+</span></span><span class="line"><span class="cl">-S, --tos               传出数据包的服务类型。<span class="o">(</span>许多路由器会忽略TOS字段。）可以使用十六进制值（0x）作为前缀，使用八进制数（0）作为前缀，或者使用十进制来指定值。 例如，<span class="s1">&#39;0x10&#39;</span>十六进制<span class="o">=</span><span class="s1">&#39;020&#39;</span>八进制<span class="o">=</span><span class="s1">&#39;16&#39;</span>十进制。RFC 1349中指定的TOS编号为：
+</span></span><span class="line"><span class="cl">                        IPTOS_LOWDELAY     minimize delay        0x10
+</span></span><span class="line"><span class="cl">                        IPTOS_THROUGHPUT   maximize throughput   0x08
+</span></span><span class="line"><span class="cl">                        IPTOS_RELIABILITY  maximize reliability  0x04
+</span></span><span class="line"><span class="cl">                        IPTOS_LOWCOST      minimize cost         0x02
+</span></span><span class="line"><span class="cl">-L, --flowlabel  	    设置 IPv6 流标签（当前仅在 Linux 上受支持）
+</span></span><span class="line"><span class="cl">-Z, --zerocopy	        使用 “零拷贝” 方法发送数据，如 sendfile（2），而不是通常的 write（2）。这样可以占用更少的 CPU
+</span></span><span class="line"><span class="cl">-O, --omit  	        省略测试的前 n 秒，以跳过 TCP TCP 慢启动周期
+</span></span><span class="line"><span class="cl">-T, --title             为每个输出行添加此字符串前缀
+</span></span><span class="line"><span class="cl">-C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
@@ -278,9 +277,9 @@ TCP、UDP 和 SCTP 的终极速度测试工具
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">服务端
-$ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">服务端
+</span></span><span class="line"><span class="cl">$ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -288,9 +287,9 @@ $ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">客户端
-$ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">客户端
+</span></span><span class="line"><span class="cl">$ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-sub-html="<h2>iPerf 使用实例</h2>">
         <img

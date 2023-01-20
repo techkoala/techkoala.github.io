@@ -32,12 +32,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
-mkdir ~/freshrss &amp;&amp; cd ~/freshrss
-
-# 新建&amp;编辑配置文件
-vim docker-compose.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 创建 FreshRSS 目录并进入
+</span></span><span class="line"><span class="cl">mkdir ~/freshrss &amp;&amp; cd ~/freshrss
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 新建&amp;编辑配置文件
+</span></span><span class="line"><span class="cl">vim docker-compose.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="docker-composeyml" class="headerLink">
     <a href="#docker-composeyml" class="header-mark"></a>docker-compose.yml</h3><p>配置文件内容见下：</p>
@@ -80,42 +80,42 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
-
-version: &#34;3&#34;
-
-services:
-  freshrss-db:
-    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
-    container_name: freshrss-db
-    hostname: freshrss-db
-    restart: always
-    volumes:
-      - freshrss-db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
-      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
-      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
-
-  freshrss-app:
-    image: freshrss/freshrss:latest
-    container_name: freshrss-app
-    hostname: freshrss-app
-    restart: always
-    ports:
-      - &#34;39954:80&#34;                   # 映射端口
-    depends_on:
-      - freshrss-db
-    volumes:
-      - ./data:/var/www/FreshRSS/data
-      - ./extensions:/var/www/FreshRSS/extensions
-    environment:
-      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
-      TZ: Asia/Shanghai            # 时区
-
-volumes:
-  freshrss-db:
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ~/freshrss/docker-compose.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">version: &#34;3&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  freshrss-db:
+</span></span><span class="line"><span class="cl">    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+</span></span><span class="line"><span class="cl">    container_name: freshrss-db
+</span></span><span class="line"><span class="cl">    hostname: freshrss-db
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - freshrss-db:/var/lib/postgresql/data
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  freshrss-app:
+</span></span><span class="line"><span class="cl">    image: freshrss/freshrss:latest
+</span></span><span class="line"><span class="cl">    container_name: freshrss-app
+</span></span><span class="line"><span class="cl">    hostname: freshrss-app
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - &#34;39954:80&#34;                   # 映射端口
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - freshrss-db
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./data:/var/www/FreshRSS/data
+</span></span><span class="line"><span class="cl">      - ./extensions:/var/www/FreshRSS/extensions
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
+</span></span><span class="line"><span class="cl">      TZ: Asia/Shanghai            # 时区
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">volumes:
+</span></span><span class="line"><span class="cl">  freshrss-db:
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
@@ -123,8 +123,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker-compose up -d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置" class="headerLink">
     <a href="#freshrss-%e8%ae%be%e7%bd%ae" class="header-mark"></a>FreshRSS 设置</h2><h3 id="初始化" class="headerLink">
@@ -156,12 +156,12 @@ volumes:
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
-域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
-
-用户名：注册用户名
-密码：API 密码
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+</span></span><span class="line"><span class="cl">域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">用户名：注册用户名
+</span></span><span class="line"><span class="cl">密码：API 密码
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -199,9 +199,9 @@ volumes:
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
-$ sudo certbot --nginx -d example.com -d www.example.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo apt install certbot python3-certbot-nginx
+</span></span><span class="line"><span class="cl">$ sudo certbot --nginx -d example.com -d www.example.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="本地配置文件" class="headerLink">
     <a href="#%e6%9c%ac%e5%9c%b0%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>本地配置文件</h2><h3 id="frpcini" class="headerLink">
@@ -218,16 +218,16 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-server_addr = xxx.xxx.xxx.xxx           # 服务器地址
-server_port = xxx                       # 与服务器 frps 通信的端口
-token = xxxxxx                          # frp 验证密钥
-
-[bitwarden_https]
-type = https
-local_port = 443
-custom_domains = xxx.xxx.xxx            # Bitwarden 域名
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">server_addr = xxx.xxx.xxx.xxx           # 服务器地址
+</span></span><span class="line"><span class="cl">server_port = xxx                       # 与服务器 frps 通信的端口
+</span></span><span class="line"><span class="cl">token = xxxxxx                          # frp 验证密钥
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[bitwarden_https]
+</span></span><span class="line"><span class="cl">type = https
+</span></span><span class="line"><span class="cl">local_port = 443
+</span></span><span class="line"><span class="cl">custom_domains = xxx.xxx.xxx            # Bitwarden 域名
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="本地-nginxcof" class="headerLink">
     <a href="#%e6%9c%ac%e5%9c%b0-nginxcof" class="header-mark"></a>本地 nginx.cof</h3><div class="highlight"><div class="chroma">
@@ -309,82 +309,82 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
-worker_processes auto;
-error_log /var/log/nginx/error.log warn;
-pid /var/run/nginx.pid;
-worker_rlimit_nofile 8192;
-events {
-    worker_connections 4096;
-}
-http {
-    include mime.types;
-    default_type application/octet-stream;
-
-    client_max_body_size 0;
-    client_body_buffer_size 512k;
-
-    sendfile on;
-    sendfile_max_chunk 1m;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-
-    types_hash_max_size 4096;
-
-    proxy_cache_path /var/run/nginx-proxy-cache levels=1:2 keys_zone=cache_one:20m inactive=1d max_size=500m;
-    proxy_cache cache_one;
-    proxy_temp_path /var/run/proxy_temp_dir;
-    proxy_temp_file_write_size 128k;
-    proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
-    proxy_buffer_size 16k;
-    proxy_busy_buffers_size 24k;
-    proxy_buffers 64 4k;
-
-    gzip on;
-    gzip_min_length 1k;
-    gzip_buffers 4 16k;
-    gzip_http_version 1.1;
-    gzip_comp_level 2;
-    gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
-    gzip_vary on;
-    gzip_proxied expired no-cache no-store private auth;
-    gzip_disable &#34;MSIE [1-6]\.&#34;;
-
-    server_tokens off;
-
-    server {
-        listen 443 ssl http2;
-        server_name xxx.xxx.xxx;                        # 域名
-
-        ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
-        ssl_certificate_key /xxx/cert/privkey.pem;
-        ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
-        ssl_prefer_server_ciphers off;
-        ssl_session_cache shared:SSL:10m;
-        ssl_session_timeout 1d;
-
-        location / {
-            proxy_pass http://127.0.0.1:8080;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
-
-        location /notifications/hub {
-            proxy_pass http://127.0.0.1:3012;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection &#34;upgrade&#34;;
-        }
-
-        location /notifications/hub/negotiate {
-            proxy_pass http://127.0.0.1:8080;
-        }
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">user www www;
+</span></span><span class="line"><span class="cl">worker_processes auto;
+</span></span><span class="line"><span class="cl">error_log /var/log/nginx/error.log warn;
+</span></span><span class="line"><span class="cl">pid /var/run/nginx.pid;
+</span></span><span class="line"><span class="cl">worker_rlimit_nofile 8192;
+</span></span><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">    worker_connections 4096;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">    include mime.types;
+</span></span><span class="line"><span class="cl">    default_type application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    client_max_body_size 0;
+</span></span><span class="line"><span class="cl">    client_body_buffer_size 512k;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    sendfile on;
+</span></span><span class="line"><span class="cl">    sendfile_max_chunk 1m;
+</span></span><span class="line"><span class="cl">    tcp_nopush on;
+</span></span><span class="line"><span class="cl">    tcp_nodelay on;
+</span></span><span class="line"><span class="cl">    keepalive_timeout 65;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    types_hash_max_size 4096;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    proxy_cache_path /var/run/nginx-proxy-cache levels=1:2 keys_zone=cache_one:20m inactive=1d max_size=500m;
+</span></span><span class="line"><span class="cl">    proxy_cache cache_one;
+</span></span><span class="line"><span class="cl">    proxy_temp_path /var/run/proxy_temp_dir;
+</span></span><span class="line"><span class="cl">    proxy_temp_file_write_size 128k;
+</span></span><span class="line"><span class="cl">    proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
+</span></span><span class="line"><span class="cl">    proxy_buffer_size 16k;
+</span></span><span class="line"><span class="cl">    proxy_busy_buffers_size 24k;
+</span></span><span class="line"><span class="cl">    proxy_buffers 64 4k;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    gzip on;
+</span></span><span class="line"><span class="cl">    gzip_min_length 1k;
+</span></span><span class="line"><span class="cl">    gzip_buffers 4 16k;
+</span></span><span class="line"><span class="cl">    gzip_http_version 1.1;
+</span></span><span class="line"><span class="cl">    gzip_comp_level 2;
+</span></span><span class="line"><span class="cl">    gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
+</span></span><span class="line"><span class="cl">    gzip_vary on;
+</span></span><span class="line"><span class="cl">    gzip_proxied expired no-cache no-store private auth;
+</span></span><span class="line"><span class="cl">    gzip_disable &#34;MSIE [1-6]\.&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server_tokens off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen 443 ssl http2;
+</span></span><span class="line"><span class="cl">        server_name xxx.xxx.xxx;                        # 域名
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
+</span></span><span class="line"><span class="cl">        ssl_certificate_key /xxx/cert/privkey.pem;
+</span></span><span class="line"><span class="cl">        ssl_protocols TLSv1.2 TLSv1.3;
+</span></span><span class="line"><span class="cl">        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+</span></span><span class="line"><span class="cl">        ssl_prefer_server_ciphers off;
+</span></span><span class="line"><span class="cl">        ssl_session_cache shared:SSL:10m;
+</span></span><span class="line"><span class="cl">        ssl_session_timeout 1d;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">            proxy_set_header Host $host;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Real-IP $remote_addr;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location /notifications/hub {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:3012;
+</span></span><span class="line"><span class="cl">            proxy_set_header Upgrade $http_upgrade;
+</span></span><span class="line"><span class="cl">            proxy_set_header Connection &#34;upgrade&#34;;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location /notifications/hub/negotiate {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="服务器配置文件" class="headerLink">
     <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>服务器配置文件</h2><h3 id="服务器-nginxcof" class="headerLink">
@@ -479,100 +479,98 @@ http {
 </span><span class="lnt">87
 </span><span class="lnt">88
 </span><span class="lnt">89
-</span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
-worker_processes auto;
-pid /var/run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
-
-events {
-	worker_connections 768;
-	# multi_accept on;
-}
-
-stream {
-    map $ssl_preread_server_name $name {
-        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
-        xxx.techkoala.top trojan;           # Trojan 域名
-        xxx.techkoala.top rss;              # FreshRSS 域名
-        xxx.techkoala.top xrls;              # Xray 域名
-    }
-    upstream frps-bitwarden {
-        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
-    }
-    upstream trojan {
-        server 127.0.0.1:4443;         # Trojan 本地监听端口
-    }
-    upstream rss {
-        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
-    }
-    upstream xtls {
-        server 127.0.0.1:8443;       # Xray 本地监听端口
-    }
-    server {
-        listen 443 reuseport;
-        listen [::]:443 reuseport;
-        proxy_pass	$name;
-        ssl_preread on;               # 开启 ssl_preread
-    }
-}
-
-http {
-	##
-	# Basic Settings
-	##
-
-	sendfile on;
-	tcp_nopush on;
-	tcp_nodelay on;
-	keepalive_timeout 65;
-	types_hash_max_size 2048;
-	# server_tokens off;
-
-	# server_names_hash_bucket_size 64;
-	# server_name_in_redirect off;
-
-	include /etc/nginx/mime.types;
-	default_type application/octet-stream;
-
-	##
-	# SSL Settings
-	##
-
-	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
-	ssl_prefer_server_ciphers on;
-
-	##
-	# Logging Settings
-	##
-
-	access_log /var/log/nginx/access.log;
-	error_log /var/log/nginx/error.log;
-
-	##
-	# Gzip Settings
-	##
-
-	gzip on;
-
-	# gzip_vary on;
-	# gzip_proxied any;
-	# gzip_comp_level 6;
-	# gzip_buffers 16 8k;
-	# gzip_http_version 1.1;
-	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-	##
-	# Virtual Host Configs
-	##
-
-	include /etc/nginx/conf.d/*.conf;
-	include /etc/nginx/sites-enabled/*;     # 启用的网站配置放置在此文件夹下
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">user www-data;
+</span></span><span class="line"><span class="cl">worker_processes auto;
+</span></span><span class="line"><span class="cl">pid /var/run/nginx.pid;
+</span></span><span class="line"><span class="cl">include /etc/nginx/modules-enabled/*.conf;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">	worker_connections 768;
+</span></span><span class="line"><span class="cl">	# multi_accept on;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">stream {
+</span></span><span class="line"><span class="cl">    map $ssl_preread_server_name $name {
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top trojan;           # Trojan 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top rss;              # FreshRSS 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top xrls;              # Xray 域名
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream frps-bitwarden {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream trojan {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:4443;         # Trojan 本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream rss {
+</span></span><span class="line"><span class="cl">        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream xtls {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:8443;       # Xray 本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen 443 reuseport;
+</span></span><span class="line"><span class="cl">        listen [::]:443 reuseport;
+</span></span><span class="line"><span class="cl">        proxy_pass	$name;
+</span></span><span class="line"><span class="cl">        ssl_preread on;               # 开启 ssl_preread
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Basic Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	sendfile on;
+</span></span><span class="line"><span class="cl">	tcp_nopush on;
+</span></span><span class="line"><span class="cl">	tcp_nodelay on;
+</span></span><span class="line"><span class="cl">	keepalive_timeout 65;
+</span></span><span class="line"><span class="cl">	types_hash_max_size 2048;
+</span></span><span class="line"><span class="cl">	# server_tokens off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# server_names_hash_bucket_size 64;
+</span></span><span class="line"><span class="cl">	# server_name_in_redirect off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	include /etc/nginx/mime.types;
+</span></span><span class="line"><span class="cl">	default_type application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# SSL Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+</span></span><span class="line"><span class="cl">	ssl_prefer_server_ciphers on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Logging Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	access_log /var/log/nginx/access.log;
+</span></span><span class="line"><span class="cl">	error_log /var/log/nginx/error.log;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Gzip Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	gzip on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# gzip_vary on;
+</span></span><span class="line"><span class="cl">	# gzip_proxied any;
+</span></span><span class="line"><span class="cl">	# gzip_comp_level 6;
+</span></span><span class="line"><span class="cl">	# gzip_buffers 16 8k;
+</span></span><span class="line"><span class="cl">	# gzip_http_version 1.1;
+</span></span><span class="line"><span class="cl">	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Virtual Host Configs
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	include /etc/nginx/conf.d/*.conf;
+</span></span><span class="line"><span class="cl">	include /etc/nginx/sites-enabled/*;     # 启用的网站配置放置在此文件夹下
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="bitwarden-相关配置" class="headerLink">
     <a href="#bitwarden-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden 相关配置</h3><h4 id="frpsini" class="headerLink">
@@ -585,12 +583,12 @@ http {
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">bind_port = xxxx                # 与本地 frpc 通信的端口
+</span></span><span class="line"><span class="cl">vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+</span></span><span class="line"><span class="cl">authentication_method = token
+</span></span><span class="line"><span class="cl">token = xxxxxx                  # frp 验证密钥
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="bitwarden-nginx-站点配置" class="headerLink">
     <a href="#bitwarden-nginx-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden Nginx 站点配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
@@ -604,19 +602,17 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
-## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
-server {
-        listen 80;
-        listen [::]:80;
-        server_name xxx.techkoala.top;                    # Bitwarden 域名
-        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## Bitwarden 配置。只负责只将 http 重定向至 https
+</span></span><span class="line"><span class="cl">## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        listen [::]:80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;                    # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -624,8 +620,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置" class="headerLink">
     <a href="#trojan-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan 相关配置</h3><h4 id="trojan-nginx-配置" class="headerLink">
@@ -650,29 +646,27 @@ server {
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-    listen 127.0.0.1:80 default_server;
-    server_name xxx.techkoala.top;             # 自己的域名
-    location / {
-        proxy_pass https://www.digitalocean.com; # 伪装的网站
-    }
-}
-server {
-    listen 127.0.0.1:80;
-    server_name xxx.techkoala.top;                 # 自己服务器的 IP
-    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
-}
-server {
-    listen 0.0.0.0:80;
-    listen [::]:80;
-    server_name _;
-    return 301 https://$host$request_uri;
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 127.0.0.1:80 default_server;
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;             # 自己的域名
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass https://www.digitalocean.com; # 伪装的网站
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 127.0.0.1:80;
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+</span></span><span class="line"><span class="cl">    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 0.0.0.0:80;
+</span></span><span class="line"><span class="cl">    listen [::]:80;
+</span></span><span class="line"><span class="cl">    server_name _;
+</span></span><span class="line"><span class="cl">    return 301 https://$host$request_uri;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -680,8 +674,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件" class="headerLink">
     <a href="#trojan-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>Trojan 配置文件</h4><div class="highlight"><div class="chroma">
@@ -738,57 +732,57 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
-    &#34;run_type&#34;: &#34;server&#34;,
-    &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
-    &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
-    &#34;remote_addr&#34;: &#34;127.0.0.1&#34;,
-    &#34;remote_port&#34;: 80,              # 伪装站点的端口
-    &#34;password&#34;: [
-        &#34;xxxxxx&#34;                    # 密钥
-    ],
-    &#34;log_level&#34;: 1,
-    &#34;ssl&#34;: {
-        &#34;cert&#34;: &#34;/usr/local/etc/ssl/certificate.crt&#34;,
-        &#34;key&#34;: &#34;/usr/local/etc/ssl/private.key&#34;,
-        &#34;key_password&#34;: &#34;&#34;,
-        &#34;cipher&#34;: &#34;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&#34;,
-        &#34;cipher_tls13&#34;: &#34;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#34;,
-        &#34;prefer_server_cipher&#34;: true,
-        &#34;alpn&#34;: [
-            &#34;http/1.1&#34;
-        ],
-        &#34;alpn_port_override&#34;: {
-            &#34;h2&#34;: 81
-        },
-        &#34;reuse_session&#34;: true,
-        &#34;session_ticket&#34;: false,
-        &#34;session_timeout&#34;: 600,
-        &#34;plain_http_response&#34;: &#34;&#34;,
-        &#34;curves&#34;: &#34;&#34;,
-        &#34;dhparam&#34;: &#34;&#34;
-    },
-    &#34;tcp&#34;: {
-        &#34;prefer_ipv4&#34;: false,
-        &#34;no_delay&#34;: true,
-        &#34;keep_alive&#34;: true,
-        &#34;reuse_port&#34;: false,
-        &#34;fast_open&#34;: false,
-        &#34;fast_open_qlen&#34;: 20
-    },
-    &#34;mysql&#34;: {
-        &#34;enabled&#34;: false,
-        &#34;server_addr&#34;: &#34;127.0.0.1&#34;,
-        &#34;server_port&#34;: 3306,
-        &#34;database&#34;: &#34;trojan&#34;,
-        &#34;username&#34;: &#34;trojan&#34;,
-        &#34;password&#34;: &#34;&#34;,
-        &#34;key&#34;: &#34;&#34;,
-        &#34;cert&#34;: &#34;&#34;,
-        &#34;ca&#34;: &#34;&#34;
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;run_type&#34;: &#34;server&#34;,
+</span></span><span class="line"><span class="cl">    &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
+</span></span><span class="line"><span class="cl">    &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
+</span></span><span class="line"><span class="cl">    &#34;remote_addr&#34;: &#34;127.0.0.1&#34;,
+</span></span><span class="line"><span class="cl">    &#34;remote_port&#34;: 80,              # 伪装站点的端口
+</span></span><span class="line"><span class="cl">    &#34;password&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;xxxxxx&#34;                    # 密钥
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;log_level&#34;: 1,
+</span></span><span class="line"><span class="cl">    &#34;ssl&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;cert&#34;: &#34;/usr/local/etc/ssl/certificate.crt&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key&#34;: &#34;/usr/local/etc/ssl/private.key&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key_password&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cipher&#34;: &#34;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cipher_tls13&#34;: &#34;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#34;,
+</span></span><span class="line"><span class="cl">        &#34;prefer_server_cipher&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;alpn&#34;: [
+</span></span><span class="line"><span class="cl">            &#34;http/1.1&#34;
+</span></span><span class="line"><span class="cl">        ],
+</span></span><span class="line"><span class="cl">        &#34;alpn_port_override&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;h2&#34;: 81
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        &#34;reuse_session&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;session_ticket&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;session_timeout&#34;: 600,
+</span></span><span class="line"><span class="cl">        &#34;plain_http_response&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;curves&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;dhparam&#34;: &#34;&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;tcp&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;prefer_ipv4&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;no_delay&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;keep_alive&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;reuse_port&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;fast_open&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;fast_open_qlen&#34;: 20
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;mysql&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;enabled&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;server_addr&#34;: &#34;127.0.0.1&#34;,
+</span></span><span class="line"><span class="cl">        &#34;server_port&#34;: 3306,
+</span></span><span class="line"><span class="cl">        &#34;database&#34;: &#34;trojan&#34;,
+</span></span><span class="line"><span class="cl">        &#34;username&#34;: &#34;trojan&#34;,
+</span></span><span class="line"><span class="cl">        &#34;password&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cert&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;ca&#34;: &#34;&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="freshrss-站点配置" class="headerLink">
     <a href="#freshrss-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS 站点配置</h3><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
@@ -811,28 +805,26 @@ server {
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-        listen 80;
-        listen [::]:80;
-        server_name xxx.techkoala.top;
-        return 301 https://xxx.techkoala.top$request_uri;
-    }
-
-server {
-    listen 39955 ssl http2;          # FreshRSS 本地监听端口
-    server_name rss.techkoala.top;
-    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
-
-    location / {
-       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
-    }
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        listen [::]:80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+</span></span><span class="line"><span class="cl">    server_name rss.techkoala.top;
+</span></span><span class="line"><span class="cl">    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+</span></span><span class="line"><span class="cl">    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -840,8 +832,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="xray" class="headerLink">
     <a href="#xray" class="header-mark"></a>Xray</h3><h4 id="xray-nginx-配置" class="headerLink">
@@ -865,23 +857,23 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-        listen 80;
-        server_name xxx.techkoala.top;
-        if ($host = xxxx.techkoala.top) {
-                return 301 https://$host$request_uri;
-        }
-        return 404;
-}
-
-server {
-        listen 127.0.0.1:23333;
-        server_name xxxx.techkoala.top;
-        location / {
-                proxy_pass https://www.digitalocean.com; # 伪装的网站
-        }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        if ($host = xxxx.techkoala.top) {
+</span></span><span class="line"><span class="cl">                return 301 https://$host$request_uri;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return 404;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 127.0.0.1:23333;
+</span></span><span class="line"><span class="cl">        server_name xxxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">                proxy_pass https://www.digitalocean.com; # 伪装的网站
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="xray-配置" class="headerLink">
     <a href="#xray-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray 配置</h4><div class="highlight"><div class="chroma">
@@ -935,54 +927,54 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
-    &#34;log&#34;: {
-        &#34;loglevel&#34;: &#34;warning&#34;
-    },
-    &#34;inbounds&#34;: [
-        {
-            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
-            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
-            &#34;protocol&#34;: &#34;vless&#34;,
-            &#34;settings&#34;: {
-                &#34;clients&#34;: [
-                    {
-                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
-                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
-                        &#34;level&#34;: 0
-                    }
-                ],
-                &#34;decryption&#34;: &#34;none&#34;,
-                &#34;fallbacks&#34;: [
-                    {
-                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
-                    }
-                 ]
-            },
-            &#34;streamSettings&#34;: {
-                &#34;network&#34;: &#34;tcp&#34;,
-                &#34;security&#34;: &#34;xtls&#34;,
-                &#34;xtlsSettings&#34;: {
-                    &#34;alpn&#34;: [
-                        &#34;http/1.1&#34;
-                    ],
-                    &#34;certificates&#34;: [
-                        {
-                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
-                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
-                        }
-                    ]
-                }
-            }
-        }
-    ],
-    &#34;outbounds&#34;: [
-        {
-            &#34;protocol&#34;: &#34;freedom&#34;
-        }
-    ]
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;log&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;loglevel&#34;: &#34;warning&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;inbounds&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
+</span></span><span class="line"><span class="cl">            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
+</span></span><span class="line"><span class="cl">            &#34;protocol&#34;: &#34;vless&#34;,
+</span></span><span class="line"><span class="cl">            &#34;settings&#34;: {
+</span></span><span class="line"><span class="cl">                &#34;clients&#34;: [
+</span></span><span class="line"><span class="cl">                    {
+</span></span><span class="line"><span class="cl">                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
+</span></span><span class="line"><span class="cl">                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
+</span></span><span class="line"><span class="cl">                        &#34;level&#34;: 0
+</span></span><span class="line"><span class="cl">                    }
+</span></span><span class="line"><span class="cl">                ],
+</span></span><span class="line"><span class="cl">                &#34;decryption&#34;: &#34;none&#34;,
+</span></span><span class="line"><span class="cl">                &#34;fallbacks&#34;: [
+</span></span><span class="line"><span class="cl">                    {
+</span></span><span class="line"><span class="cl">                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
+</span></span><span class="line"><span class="cl">                    }
+</span></span><span class="line"><span class="cl">                 ]
+</span></span><span class="line"><span class="cl">            },
+</span></span><span class="line"><span class="cl">            &#34;streamSettings&#34;: {
+</span></span><span class="line"><span class="cl">                &#34;network&#34;: &#34;tcp&#34;,
+</span></span><span class="line"><span class="cl">                &#34;security&#34;: &#34;xtls&#34;,
+</span></span><span class="line"><span class="cl">                &#34;xtlsSettings&#34;: {
+</span></span><span class="line"><span class="cl">                    &#34;alpn&#34;: [
+</span></span><span class="line"><span class="cl">                        &#34;http/1.1&#34;
+</span></span><span class="line"><span class="cl">                    ],
+</span></span><span class="line"><span class="cl">                    &#34;certificates&#34;: [
+</span></span><span class="line"><span class="cl">                        {
+</span></span><span class="line"><span class="cl">                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
+</span></span><span class="line"><span class="cl">                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
+</span></span><span class="line"><span class="cl">                        }
+</span></span><span class="line"><span class="cl">                    ]
+</span></span><span class="line"><span class="cl">                }
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;outbounds&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            &#34;protocol&#34;: &#34;freedom&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="防火墙设置" class="headerLink">
     <a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" class="header-mark"></a>防火墙设置</h2><p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>

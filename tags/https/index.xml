@@ -75,9 +75,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
-        伪造证书            拦截请求
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">客户端 &lt;------------ 攻击者 &lt;------------ 服务端
+</span></span><span class="line"><span class="cl">        伪造证书            拦截请求
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="客户端如何验证接收到的证书" class="headerLink">
     <a href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e5%a6%82%e4%bd%95%e9%aa%8c%e8%af%81%e6%8e%a5%e6%94%b6%e5%88%b0%e7%9a%84%e8%af%81%e4%b9%a6" class="header-mark"></a>客户端如何验证接收到的证书</h3><p>为了回答这个问题，需要引入<code>数字签名</code> (Digital Signature)。</p>
@@ -98,20 +98,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
-| A digital signature |
-|(not to be confused  |
-|with a digital       |
-|certificate)         |              +---------+                +--------+
-| is a mathematical   |---- 哈希 ---&gt;| 消息摘要  |--- 私钥加密 ---&gt;| 数字签名 |
-|technique used       |              +---------+                +--------+
-|to validate the      |
-|authenticity and     |
-|integrity of a       |
-|message, software    |
-|or digital document. |
-+---------------------+
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+---------------------+
+</span></span><span class="line"><span class="cl">| A digital signature |
+</span></span><span class="line"><span class="cl">|(not to be confused  |
+</span></span><span class="line"><span class="cl">|with a digital       |
+</span></span><span class="line"><span class="cl">|certificate)         |              +---------+                +--------+
+</span></span><span class="line"><span class="cl">| is a mathematical   |---- 哈希 ---&gt;| 消息摘要  |--- 私钥加密 ---&gt;| 数字签名 |
+</span></span><span class="line"><span class="cl">|technique used       |              +---------+                +--------+
+</span></span><span class="line"><span class="cl">|to validate the      |
+</span></span><span class="line"><span class="cl">|authenticity and     |
+</span></span><span class="line"><span class="cl">|integrity of a       |
+</span></span><span class="line"><span class="cl">|message, software    |
+</span></span><span class="line"><span class="cl">|or digital document. |
+</span></span><span class="line"><span class="cl">+---------------------+
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将一段文本通过哈希（hash）和私钥加密处理后生成数字签名。</p>
 <p>假设消息传递在 Bob，Susan 和 Pat 三人之间发生。Susan 将消息连同数字签名一起发送给 Bob，Bob 接收到消息后，可以这样验证接收到的消息就是 Susan 发送的</p>
@@ -137,25 +137,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+---------------------+
-| A digital signature |
-|(not to be confused  |
-|with a digital       |
-|certificate)         |              +---------+
-| is a mathematical   |---- 哈希 ---&gt;|  消息摘要 |
-|technique used       |              +---------+
-|to validate the      |                 |
-|authenticity and     |                 |
-|integrity of a       |                 |
-|message, software    |                 对
-|or digital document. |                 比
-+---------------------+                 |
-                                        |
-                                        |
-        +---------+               +----------+
-        | 数字签名 |--- 公钥解密 ---&gt;|  消息摘要 |
-        +---------+               +----------+
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+---------------------+
+</span></span><span class="line"><span class="cl">| A digital signature |
+</span></span><span class="line"><span class="cl">|(not to be confused  |
+</span></span><span class="line"><span class="cl">|with a digital       |
+</span></span><span class="line"><span class="cl">|certificate)         |              +---------+
+</span></span><span class="line"><span class="cl">| is a mathematical   |---- 哈希 ---&gt;|  消息摘要 |
+</span></span><span class="line"><span class="cl">|technique used       |              +---------+
+</span></span><span class="line"><span class="cl">|to validate the      |                 |
+</span></span><span class="line"><span class="cl">|authenticity and     |                 |
+</span></span><span class="line"><span class="cl">|integrity of a       |                 |
+</span></span><span class="line"><span class="cl">|message, software    |                 对
+</span></span><span class="line"><span class="cl">|or digital document. |                 比
+</span></span><span class="line"><span class="cl">+---------------------+                 |
+</span></span><span class="line"><span class="cl">                                        |
+</span></span><span class="line"><span class="cl">                                        |
+</span></span><span class="line"><span class="cl">        +---------+               +----------+
+</span></span><span class="line"><span class="cl">        | 数字签名 |--- 公钥解密 ---&gt;|  消息摘要 |
+</span></span><span class="line"><span class="cl">        +---------+               +----------+
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当然，这个前提是 Bob 知道 Susan 的公钥。更重要的是，和消息本身一样，公钥不能在不安全的网络中直接发送给 Bob。</p>
 <p>此时就引入了<a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer">证书颁发机构</a>（Certificate Authority，简称 CA），CA 数量并不多，Bob 客户端内置了所有受信任 CA 的证书。CA 对 Susan 的公钥（和其他信息）数字签名后生成证书。</p>
@@ -188,9 +188,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">empty state -------------------&gt; pending state ------------------&gt; current state
-             Handshake Protocol                Change Cipher Spec
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">empty state -------------------&gt; pending state ------------------&gt; current state
+</span></span><span class="line"><span class="cl">             Handshake Protocol                Change Cipher Spec
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>初始当前状态（Current State）没有指定加密，压缩和 MAC 算法，因而在完成 TLS Handshaking Protocols 一系列动作之前，客户端和服务端的数据都是<strong>明文传输</strong>的；当 TLS 完成握手过程后，客户端和服务端确定了加密，压缩和 MAC 算法及其参数，数据（Record）会通过指定算法处理。</p>
 <blockquote>
@@ -261,10 +261,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
-                      ClientHello.random + ServerHello.random)
-                      [0..47];
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  master_secret = PRF (pre_master_secret, &#34;master secret&#34;,
+</span></span><span class="line"><span class="cl">                      ClientHello.random + ServerHello.random)
+</span></span><span class="line"><span class="cl">                      [0..47];
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="加密压缩和-mac-算法参数是如何计算的" class="headerLink">
     <a href="#%e5%8a%a0%e5%af%86%e5%8e%8b%e7%bc%a9%e5%92%8c-mac-%e7%ae%97%e6%b3%95%e5%8f%82%e6%95%b0%e6%98%af%e5%a6%82%e4%bd%95%e8%ae%a1%e7%ae%97%e7%9a%84" class="header-mark"></a>加密，压缩和 MAC 算法参数是如何计算的</h3><p><code>Handshaking Protocols</code> 使得客户端和服务端交换了三个参数：<code>client_random</code>，<code>server_random</code> 和 <code>master_secret</code>，通过以下算法生成算法所需要的参数</p>
@@ -288,23 +288,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">To</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">material</span><span class="p">,</span><span class="w"> </span><span class="n">compute</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="n">key_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">PRF</span><span class="w"> </span><span class="p">(</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">master_secret</span><span class="p">,</span><span class="w">
-</span><span class="w">                  </span><span class="s2">&#34;key expansion&#34;</span><span class="p">,</span><span class="w">
-</span><span class="w">                  </span><span class="n">SecurityParameters</span><span class="p">.</span><span class="o">`</span><span class="n">server_random</span><span class="o">`</span><span class="w"> </span><span class="o">+</span><span class="w">
-</span><span class="w">                  </span><span class="n">SecurityParameters</span><span class="p">.</span><span class="o">`</span><span class="n">client_random</span><span class="o">`</span><span class="p">);</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">until</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">generated</span><span class="p">.</span><span class="w">  </span><span class="k">Then</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">key_block</span><span class="w"> </span><span class="k">is</span><span class="w">
-</span><span class="w"></span><span class="n">partitioned</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">follows</span><span class="p">:</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="n">client_write_MAC_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">mac_key_length</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="n">server_write_MAC_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">mac_key_length</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="n">client_write_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">enc_key_length</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="n">server_write_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">enc_key_length</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="n">client_write_IV</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">fixed_iv_length</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="n">server_write_IV</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">fixed_iv_length</span><span class="p">]</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">To</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">material</span><span class="p">,</span><span class="w"> </span><span class="n">compute</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">key_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">PRF</span><span class="w"> </span><span class="p">(</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">master_secret</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="s2">&#34;key expansion&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="n">SecurityParameters</span><span class="p">.</span><span class="o">`</span><span class="n">server_random</span><span class="o">`</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="n">SecurityParameters</span><span class="p">.</span><span class="o">`</span><span class="n">client_random</span><span class="o">`</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">until</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">generated</span><span class="p">.</span><span class="w">  </span><span class="k">Then</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">key_block</span><span class="w"> </span><span class="k">is</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">partitioned</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">follows</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">client_write_MAC_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">mac_key_length</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">server_write_MAC_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">mac_key_length</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">client_write_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">enc_key_length</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">server_write_key</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">enc_key_length</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">client_write_IV</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">fixed_iv_length</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">server_write_IV</span><span class="w"> </span><span class="p">[</span><span class="n">SecurityParameters</span><span class="p">.</span><span class="n">fixed_iv_length</span><span class="p">]</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition quote open">
         <div class="details-summary admonition-title">

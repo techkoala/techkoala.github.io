@@ -13,7 +13,6 @@ SCP 的另一个绝佳替选
 <meta property="og:url" content="https://www.techkoala.top/rsync/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-05T20:58:00+08:00" />
 <meta property="article:modified_time" content="2022-05-28T20:40:38+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="文件传输系列：rsync"/>
 <meta name="twitter:description" content="
@@ -39,7 +38,7 @@ SCP 的另一个绝佳替选
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/rsync\/"
-        },"genre": "posts","keywords": "Software, Linux","wordcount":  3219 ,
+        },"genre": "posts","keywords": "Software, Linux","wordcount":  3214 ,
         "url": "https:\/\/www.techkoala.top\/rsync\/","datePublished": "2020-08-05T20:58:00+08:00","dateModified": "2022-05-28T20:40:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -122,7 +121,7 @@ SCP 的另一个绝佳替选
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-05">2020-08-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3219 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-05">2020-08-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-28">2022-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3214 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -198,8 +197,8 @@ SCP 的另一个绝佳替选
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
@@ -208,8 +207,8 @@ SCP 的另一个绝佳替选
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
         <img
@@ -233,13 +232,13 @@ SCP 的另一个绝佳替选
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
 <ul>
@@ -328,68 +327,68 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
--q, --quiet 精简输出模式。
--C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
--c, --checksum 打开校验开关，强制对文件传输进行校验。
--a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
--r, --recursive 对子目录以递归模式处理。
--R, --relative 使用相对路径信息。
--b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
--u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
--l, --links 保留软链结。
--L, --copy-links 想对待常规文件一样处理软链结。
--H, --hard-links 保留硬链结。
--I, --ignore-times 不跳过那些有同样的时间和长度的文件。
--p, --perms 保持文件权限。
--o, --owner 保持文件属主信息。
--g, --group 保持文件属组信息。
--D, --devices 保持设备文件信息。
--t, --times 保持文件时间信息。
--S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
--T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
--n, --dry-run 现实哪些文件将被传输。
--w, --whole-file 拷贝文件，不进行增量检测。
--x, --one-file-system 不要跨越文件系统边界。
--B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
--e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
--P 等同于 --partial。
--z, --compress 对备份的文件在传输时进行压缩处理。
--h, --help 显示帮助信息。
---backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
--suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
---copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
---safe-links 忽略指向 SRC 路径目录树以外的链结。
---rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
---existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
---delete 删除那些 DST 中 SRC 没有的文件。
---delete-excluded 同样删除接收端那些被该选项指定排除的文件。
---delete-after 传输结束以后再删除。
---ignore-errors 及时出现 IO 错误也进行删除。
---max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
---partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
---force 强制删除目录，即使不为空。
---numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
---timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
---size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
---modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
---compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
---progress 显示备份过程。
---exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
---include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
---exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
---include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
---version 打印版本信息。
---address 绑定到特定的地址。
---config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
---port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
---blocking-io 对远程 shell 使用阻塞 IO。
--stats 给出某些文件的传输状态。
---progress 在传输时现实传输过程。
---log-format<span class="o">=</span>formAT 指定日志文件格式。
---password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
---bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-v, --verbose 详细模式输出。
+</span></span><span class="line"><span class="cl">-q, --quiet 精简输出模式。
+</span></span><span class="line"><span class="cl">-C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
+</span></span><span class="line"><span class="cl">-c, --checksum 打开校验开关，强制对文件传输进行校验。
+</span></span><span class="line"><span class="cl">-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
+</span></span><span class="line"><span class="cl">-r, --recursive 对子目录以递归模式处理。
+</span></span><span class="line"><span class="cl">-R, --relative 使用相对路径信息。
+</span></span><span class="line"><span class="cl">-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
+</span></span><span class="line"><span class="cl">-u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
+</span></span><span class="line"><span class="cl">-l, --links 保留软链结。
+</span></span><span class="line"><span class="cl">-L, --copy-links 想对待常规文件一样处理软链结。
+</span></span><span class="line"><span class="cl">-H, --hard-links 保留硬链结。
+</span></span><span class="line"><span class="cl">-I, --ignore-times 不跳过那些有同样的时间和长度的文件。
+</span></span><span class="line"><span class="cl">-p, --perms 保持文件权限。
+</span></span><span class="line"><span class="cl">-o, --owner 保持文件属主信息。
+</span></span><span class="line"><span class="cl">-g, --group 保持文件属组信息。
+</span></span><span class="line"><span class="cl">-D, --devices 保持设备文件信息。
+</span></span><span class="line"><span class="cl">-t, --times 保持文件时间信息。
+</span></span><span class="line"><span class="cl">-S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
+</span></span><span class="line"><span class="cl">-T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
+</span></span><span class="line"><span class="cl">-n, --dry-run 现实哪些文件将被传输。
+</span></span><span class="line"><span class="cl">-w, --whole-file 拷贝文件，不进行增量检测。
+</span></span><span class="line"><span class="cl">-x, --one-file-system 不要跨越文件系统边界。
+</span></span><span class="line"><span class="cl">-B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
+</span></span><span class="line"><span class="cl">-e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
+</span></span><span class="line"><span class="cl">-P 等同于 --partial。
+</span></span><span class="line"><span class="cl">-z, --compress 对备份的文件在传输时进行压缩处理。
+</span></span><span class="line"><span class="cl">-h, --help 显示帮助信息。
+</span></span><span class="line"><span class="cl">--backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
+</span></span><span class="line"><span class="cl">-suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
+</span></span><span class="line"><span class="cl">--copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
+</span></span><span class="line"><span class="cl">--safe-links 忽略指向 SRC 路径目录树以外的链结。
+</span></span><span class="line"><span class="cl">--rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
+</span></span><span class="line"><span class="cl">--existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
+</span></span><span class="line"><span class="cl">--delete 删除那些 DST 中 SRC 没有的文件。
+</span></span><span class="line"><span class="cl">--delete-excluded 同样删除接收端那些被该选项指定排除的文件。
+</span></span><span class="line"><span class="cl">--delete-after 传输结束以后再删除。
+</span></span><span class="line"><span class="cl">--ignore-errors 及时出现 IO 错误也进行删除。
+</span></span><span class="line"><span class="cl">--max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
+</span></span><span class="line"><span class="cl">--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
+</span></span><span class="line"><span class="cl">--force 强制删除目录，即使不为空。
+</span></span><span class="line"><span class="cl">--numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
+</span></span><span class="line"><span class="cl">--timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
+</span></span><span class="line"><span class="cl">--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
+</span></span><span class="line"><span class="cl">--modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
+</span></span><span class="line"><span class="cl">--compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
+</span></span><span class="line"><span class="cl">--progress 显示备份过程。
+</span></span><span class="line"><span class="cl">--exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
+</span></span><span class="line"><span class="cl">--include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
+</span></span><span class="line"><span class="cl">--exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
+</span></span><span class="line"><span class="cl">--include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
+</span></span><span class="line"><span class="cl">--version 打印版本信息。
+</span></span><span class="line"><span class="cl">--address 绑定到特定的地址。
+</span></span><span class="line"><span class="cl">--config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
+</span></span><span class="line"><span class="cl">--port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
+</span></span><span class="line"><span class="cl">--blocking-io 对远程 shell 使用阻塞 IO。
+</span></span><span class="line"><span class="cl">-stats 给出某些文件的传输状态。
+</span></span><span class="line"><span class="cl">--progress 在传输时现实传输过程。
+</span></span><span class="line"><span class="cl">--log-format<span class="o">=</span>formAT 指定日志文件格式。
+</span></span><span class="line"><span class="cl">--password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
+</span></span><span class="line"><span class="cl">--bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>

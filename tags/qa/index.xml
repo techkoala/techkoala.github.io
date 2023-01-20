@@ -20,8 +20,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">操作 -&gt; 虚拟交换机管理器 -&gt; 新建虚拟网络交换机 -&gt; 选择外部类型 -&gt; 创建虚拟交换机 -&gt; 设置连接类型为内部网络 -&gt; 应用
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">操作 -&gt; 虚拟交换机管理器 -&gt; 新建虚拟网络交换机 -&gt; 选择外部类型 -&gt; 创建虚拟交换机 -&gt; 设置连接类型为内部网络 -&gt; 应用
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>首先点击虚拟机右边的 Hyper-V 操作选项<code>虚拟交换机管理器</code>：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/VM/Hyper-v_Bridging/hyperv-1.webp" data-sub-html="<h2>网络拓扑图</h2>">
@@ -68,8 +68,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ rm /var/lib/rrdcached/db/pve2-node
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">$ rm /var/lib/rrdcached/db/pve2-node
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="4-群晖-socks-代理" class="headerLink">
     <a href="#4-%e7%be%a4%e6%99%96-socks-%e4%bb%a3%e7%90%86" class="header-mark"></a>4. 群晖 socks 代理</h3><p>Openwrt 安装 luci-app-Privoxy，设置转发规则：</p>
@@ -78,8 +78,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ /ip:port .
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">$ /ip:port .
+</span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
 </item><item>
@@ -99,8 +99,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ Hugo server --bind xxx.xxx.xxx.xxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机 IP，即可通过同网域机器访问该 web 服务</p>
 <h3 id="2-使用-git-信息生成文章上一次修改时间" class="headerLink">
@@ -190,8 +190,8 @@ clientSecret = &ldquo;xxxxxx&rdquo; # 请于 OAuth App 页面获取</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>重启一次系统组设置即生效。</p>]]></description>
 </item></channel>

@@ -13,7 +13,6 @@ OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍�
 <meta property="og:url" content="https://www.techkoala.top/openwrt_doh/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-29T20:36:35+08:00" />
 <meta property="article:modified_time" content="2021-11-12T17:24:52+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流"/>
 <meta name="twitter:description" content="
@@ -152,9 +151,9 @@ OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
-opkg install dnscrypt-proxy2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">opkg update
+</span></span><span class="line"><span class="cl">opkg install dnscrypt-proxy2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
 <h2 id="配置" class="headerLink">
@@ -164,8 +163,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
@@ -173,16 +172,16 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
 <p>软件已经内置了常见的 DoH/DoT 服务器了，因此只需要填入名称即可</p>
@@ -192,8 +191,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/etc/init.d/dnscrypt-proxy restart
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
 <h2 id="分流搭配-ssr" class="headerLink">

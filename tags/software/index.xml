@@ -32,12 +32,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
-mkdir ~/freshrss &amp;&amp; cd ~/freshrss
-
-# 新建&amp;编辑配置文件
-vim docker-compose.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 创建 FreshRSS 目录并进入
+</span></span><span class="line"><span class="cl">mkdir ~/freshrss &amp;&amp; cd ~/freshrss
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 新建&amp;编辑配置文件
+</span></span><span class="line"><span class="cl">vim docker-compose.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="docker-composeyml" class="headerLink">
     <a href="#docker-composeyml" class="header-mark"></a>docker-compose.yml</h3><p>配置文件内容见下：</p>
@@ -80,42 +80,42 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
-
-version: &#34;3&#34;
-
-services:
-  freshrss-db:
-    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
-    container_name: freshrss-db
-    hostname: freshrss-db
-    restart: always
-    volumes:
-      - freshrss-db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
-      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
-      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
-
-  freshrss-app:
-    image: freshrss/freshrss:latest
-    container_name: freshrss-app
-    hostname: freshrss-app
-    restart: always
-    ports:
-      - &#34;39954:80&#34;                   # 映射端口
-    depends_on:
-      - freshrss-db
-    volumes:
-      - ./data:/var/www/FreshRSS/data
-      - ./extensions:/var/www/FreshRSS/extensions
-    environment:
-      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
-      TZ: Asia/Shanghai            # 时区
-
-volumes:
-  freshrss-db:
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ~/freshrss/docker-compose.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">version: &#34;3&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  freshrss-db:
+</span></span><span class="line"><span class="cl">    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+</span></span><span class="line"><span class="cl">    container_name: freshrss-db
+</span></span><span class="line"><span class="cl">    hostname: freshrss-db
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - freshrss-db:/var/lib/postgresql/data
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  freshrss-app:
+</span></span><span class="line"><span class="cl">    image: freshrss/freshrss:latest
+</span></span><span class="line"><span class="cl">    container_name: freshrss-app
+</span></span><span class="line"><span class="cl">    hostname: freshrss-app
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - &#34;39954:80&#34;                   # 映射端口
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - freshrss-db
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./data:/var/www/FreshRSS/data
+</span></span><span class="line"><span class="cl">      - ./extensions:/var/www/FreshRSS/extensions
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
+</span></span><span class="line"><span class="cl">      TZ: Asia/Shanghai            # 时区
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">volumes:
+</span></span><span class="line"><span class="cl">  freshrss-db:
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
@@ -123,8 +123,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker-compose up -d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置" class="headerLink">
     <a href="#freshrss-%e8%ae%be%e7%bd%ae" class="header-mark"></a>FreshRSS 设置</h2><h3 id="初始化" class="headerLink">
@@ -156,12 +156,12 @@ volumes:
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
-域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
-
-用户名：注册用户名
-密码：API 密码
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+</span></span><span class="line"><span class="cl">域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">用户名：注册用户名
+</span></span><span class="line"><span class="cl">密码：API 密码
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -183,19 +183,17 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频" class="headerLink">
     <a href="#%e4%bb%85%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e9%9f%b3%e9%a2%91" class="header-mark"></a>仅下载播放列表音频</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -209,15 +207,15 @@ volumes:
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
--f bestaudio                #最佳音频
---extract-audio             #提取音频
---audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
---playlist-items 1,2,5      #下载播放列表中的哪些项
---playstart-start 2         #从第二项开始下载播放列表
---playstart-end 2
--f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+</span></span><span class="line"><span class="cl">-f bestaudio                #最佳音频
+</span></span><span class="line"><span class="cl">--extract-audio             #提取音频
+</span></span><span class="line"><span class="cl">--audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
+</span></span><span class="line"><span class="cl">--playlist-items 1,2,5      #下载播放列表中的哪些项
+</span></span><span class="line"><span class="cl">--playstart-start 2         #从第二项开始下载播放列表
+</span></span><span class="line"><span class="cl">--playstart-end 2
+</span></span><span class="line"><span class="cl">-f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
+</span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
 </item><item>
@@ -252,9 +250,9 @@ volumes:
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
-$ sudo certbot --nginx -d example.com -d www.example.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo apt install certbot python3-certbot-nginx
+</span></span><span class="line"><span class="cl">$ sudo certbot --nginx -d example.com -d www.example.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="本地配置文件" class="headerLink">
     <a href="#%e6%9c%ac%e5%9c%b0%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>本地配置文件</h2><h3 id="frpcini" class="headerLink">
@@ -271,16 +269,16 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-server_addr = xxx.xxx.xxx.xxx           # 服务器地址
-server_port = xxx                       # 与服务器 frps 通信的端口
-token = xxxxxx                          # frp 验证密钥
-
-[bitwarden_https]
-type = https
-local_port = 443
-custom_domains = xxx.xxx.xxx            # Bitwarden 域名
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">server_addr = xxx.xxx.xxx.xxx           # 服务器地址
+</span></span><span class="line"><span class="cl">server_port = xxx                       # 与服务器 frps 通信的端口
+</span></span><span class="line"><span class="cl">token = xxxxxx                          # frp 验证密钥
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[bitwarden_https]
+</span></span><span class="line"><span class="cl">type = https
+</span></span><span class="line"><span class="cl">local_port = 443
+</span></span><span class="line"><span class="cl">custom_domains = xxx.xxx.xxx            # Bitwarden 域名
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="本地-nginxcof" class="headerLink">
     <a href="#%e6%9c%ac%e5%9c%b0-nginxcof" class="header-mark"></a>本地 nginx.cof</h3><div class="highlight"><div class="chroma">
@@ -362,82 +360,82 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
-worker_processes auto;
-error_log /var/log/nginx/error.log warn;
-pid /var/run/nginx.pid;
-worker_rlimit_nofile 8192;
-events {
-    worker_connections 4096;
-}
-http {
-    include mime.types;
-    default_type application/octet-stream;
-
-    client_max_body_size 0;
-    client_body_buffer_size 512k;
-
-    sendfile on;
-    sendfile_max_chunk 1m;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-
-    types_hash_max_size 4096;
-
-    proxy_cache_path /var/run/nginx-proxy-cache levels=1:2 keys_zone=cache_one:20m inactive=1d max_size=500m;
-    proxy_cache cache_one;
-    proxy_temp_path /var/run/proxy_temp_dir;
-    proxy_temp_file_write_size 128k;
-    proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
-    proxy_buffer_size 16k;
-    proxy_busy_buffers_size 24k;
-    proxy_buffers 64 4k;
-
-    gzip on;
-    gzip_min_length 1k;
-    gzip_buffers 4 16k;
-    gzip_http_version 1.1;
-    gzip_comp_level 2;
-    gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
-    gzip_vary on;
-    gzip_proxied expired no-cache no-store private auth;
-    gzip_disable &#34;MSIE [1-6]\.&#34;;
-
-    server_tokens off;
-
-    server {
-        listen 443 ssl http2;
-        server_name xxx.xxx.xxx;                        # 域名
-
-        ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
-        ssl_certificate_key /xxx/cert/privkey.pem;
-        ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
-        ssl_prefer_server_ciphers off;
-        ssl_session_cache shared:SSL:10m;
-        ssl_session_timeout 1d;
-
-        location / {
-            proxy_pass http://127.0.0.1:8080;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
-
-        location /notifications/hub {
-            proxy_pass http://127.0.0.1:3012;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection &#34;upgrade&#34;;
-        }
-
-        location /notifications/hub/negotiate {
-            proxy_pass http://127.0.0.1:8080;
-        }
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">user www www;
+</span></span><span class="line"><span class="cl">worker_processes auto;
+</span></span><span class="line"><span class="cl">error_log /var/log/nginx/error.log warn;
+</span></span><span class="line"><span class="cl">pid /var/run/nginx.pid;
+</span></span><span class="line"><span class="cl">worker_rlimit_nofile 8192;
+</span></span><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">    worker_connections 4096;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">    include mime.types;
+</span></span><span class="line"><span class="cl">    default_type application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    client_max_body_size 0;
+</span></span><span class="line"><span class="cl">    client_body_buffer_size 512k;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    sendfile on;
+</span></span><span class="line"><span class="cl">    sendfile_max_chunk 1m;
+</span></span><span class="line"><span class="cl">    tcp_nopush on;
+</span></span><span class="line"><span class="cl">    tcp_nodelay on;
+</span></span><span class="line"><span class="cl">    keepalive_timeout 65;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    types_hash_max_size 4096;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    proxy_cache_path /var/run/nginx-proxy-cache levels=1:2 keys_zone=cache_one:20m inactive=1d max_size=500m;
+</span></span><span class="line"><span class="cl">    proxy_cache cache_one;
+</span></span><span class="line"><span class="cl">    proxy_temp_path /var/run/proxy_temp_dir;
+</span></span><span class="line"><span class="cl">    proxy_temp_file_write_size 128k;
+</span></span><span class="line"><span class="cl">    proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
+</span></span><span class="line"><span class="cl">    proxy_buffer_size 16k;
+</span></span><span class="line"><span class="cl">    proxy_busy_buffers_size 24k;
+</span></span><span class="line"><span class="cl">    proxy_buffers 64 4k;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    gzip on;
+</span></span><span class="line"><span class="cl">    gzip_min_length 1k;
+</span></span><span class="line"><span class="cl">    gzip_buffers 4 16k;
+</span></span><span class="line"><span class="cl">    gzip_http_version 1.1;
+</span></span><span class="line"><span class="cl">    gzip_comp_level 2;
+</span></span><span class="line"><span class="cl">    gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
+</span></span><span class="line"><span class="cl">    gzip_vary on;
+</span></span><span class="line"><span class="cl">    gzip_proxied expired no-cache no-store private auth;
+</span></span><span class="line"><span class="cl">    gzip_disable &#34;MSIE [1-6]\.&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server_tokens off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen 443 ssl http2;
+</span></span><span class="line"><span class="cl">        server_name xxx.xxx.xxx;                        # 域名
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
+</span></span><span class="line"><span class="cl">        ssl_certificate_key /xxx/cert/privkey.pem;
+</span></span><span class="line"><span class="cl">        ssl_protocols TLSv1.2 TLSv1.3;
+</span></span><span class="line"><span class="cl">        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+</span></span><span class="line"><span class="cl">        ssl_prefer_server_ciphers off;
+</span></span><span class="line"><span class="cl">        ssl_session_cache shared:SSL:10m;
+</span></span><span class="line"><span class="cl">        ssl_session_timeout 1d;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">            proxy_set_header Host $host;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Real-IP $remote_addr;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location /notifications/hub {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:3012;
+</span></span><span class="line"><span class="cl">            proxy_set_header Upgrade $http_upgrade;
+</span></span><span class="line"><span class="cl">            proxy_set_header Connection &#34;upgrade&#34;;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location /notifications/hub/negotiate {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="服务器配置文件" class="headerLink">
     <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>服务器配置文件</h2><h3 id="服务器-nginxcof" class="headerLink">
@@ -532,100 +530,98 @@ http {
 </span><span class="lnt">87
 </span><span class="lnt">88
 </span><span class="lnt">89
-</span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
-worker_processes auto;
-pid /var/run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
-
-events {
-	worker_connections 768;
-	# multi_accept on;
-}
-
-stream {
-    map $ssl_preread_server_name $name {
-        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
-        xxx.techkoala.top trojan;           # Trojan 域名
-        xxx.techkoala.top rss;              # FreshRSS 域名
-        xxx.techkoala.top xrls;              # Xray 域名
-    }
-    upstream frps-bitwarden {
-        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
-    }
-    upstream trojan {
-        server 127.0.0.1:4443;         # Trojan 本地监听端口
-    }
-    upstream rss {
-        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
-    }
-    upstream xtls {
-        server 127.0.0.1:8443;       # Xray 本地监听端口
-    }
-    server {
-        listen 443 reuseport;
-        listen [::]:443 reuseport;
-        proxy_pass	$name;
-        ssl_preread on;               # 开启 ssl_preread
-    }
-}
-
-http {
-	##
-	# Basic Settings
-	##
-
-	sendfile on;
-	tcp_nopush on;
-	tcp_nodelay on;
-	keepalive_timeout 65;
-	types_hash_max_size 2048;
-	# server_tokens off;
-
-	# server_names_hash_bucket_size 64;
-	# server_name_in_redirect off;
-
-	include /etc/nginx/mime.types;
-	default_type application/octet-stream;
-
-	##
-	# SSL Settings
-	##
-
-	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
-	ssl_prefer_server_ciphers on;
-
-	##
-	# Logging Settings
-	##
-
-	access_log /var/log/nginx/access.log;
-	error_log /var/log/nginx/error.log;
-
-	##
-	# Gzip Settings
-	##
-
-	gzip on;
-
-	# gzip_vary on;
-	# gzip_proxied any;
-	# gzip_comp_level 6;
-	# gzip_buffers 16 8k;
-	# gzip_http_version 1.1;
-	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-	##
-	# Virtual Host Configs
-	##
-
-	include /etc/nginx/conf.d/*.conf;
-	include /etc/nginx/sites-enabled/*;     # 启用的网站配置放置在此文件夹下
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">user www-data;
+</span></span><span class="line"><span class="cl">worker_processes auto;
+</span></span><span class="line"><span class="cl">pid /var/run/nginx.pid;
+</span></span><span class="line"><span class="cl">include /etc/nginx/modules-enabled/*.conf;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">	worker_connections 768;
+</span></span><span class="line"><span class="cl">	# multi_accept on;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">stream {
+</span></span><span class="line"><span class="cl">    map $ssl_preread_server_name $name {
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top trojan;           # Trojan 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top rss;              # FreshRSS 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top xrls;              # Xray 域名
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream frps-bitwarden {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream trojan {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:4443;         # Trojan 本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream rss {
+</span></span><span class="line"><span class="cl">        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream xtls {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:8443;       # Xray 本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen 443 reuseport;
+</span></span><span class="line"><span class="cl">        listen [::]:443 reuseport;
+</span></span><span class="line"><span class="cl">        proxy_pass	$name;
+</span></span><span class="line"><span class="cl">        ssl_preread on;               # 开启 ssl_preread
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Basic Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	sendfile on;
+</span></span><span class="line"><span class="cl">	tcp_nopush on;
+</span></span><span class="line"><span class="cl">	tcp_nodelay on;
+</span></span><span class="line"><span class="cl">	keepalive_timeout 65;
+</span></span><span class="line"><span class="cl">	types_hash_max_size 2048;
+</span></span><span class="line"><span class="cl">	# server_tokens off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# server_names_hash_bucket_size 64;
+</span></span><span class="line"><span class="cl">	# server_name_in_redirect off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	include /etc/nginx/mime.types;
+</span></span><span class="line"><span class="cl">	default_type application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# SSL Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+</span></span><span class="line"><span class="cl">	ssl_prefer_server_ciphers on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Logging Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	access_log /var/log/nginx/access.log;
+</span></span><span class="line"><span class="cl">	error_log /var/log/nginx/error.log;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Gzip Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	gzip on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# gzip_vary on;
+</span></span><span class="line"><span class="cl">	# gzip_proxied any;
+</span></span><span class="line"><span class="cl">	# gzip_comp_level 6;
+</span></span><span class="line"><span class="cl">	# gzip_buffers 16 8k;
+</span></span><span class="line"><span class="cl">	# gzip_http_version 1.1;
+</span></span><span class="line"><span class="cl">	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Virtual Host Configs
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	include /etc/nginx/conf.d/*.conf;
+</span></span><span class="line"><span class="cl">	include /etc/nginx/sites-enabled/*;     # 启用的网站配置放置在此文件夹下
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="bitwarden-相关配置" class="headerLink">
     <a href="#bitwarden-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden 相关配置</h3><h4 id="frpsini" class="headerLink">
@@ -638,12 +634,12 @@ http {
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">bind_port = xxxx                # 与本地 frpc 通信的端口
+</span></span><span class="line"><span class="cl">vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+</span></span><span class="line"><span class="cl">authentication_method = token
+</span></span><span class="line"><span class="cl">token = xxxxxx                  # frp 验证密钥
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="bitwarden-nginx-站点配置" class="headerLink">
     <a href="#bitwarden-nginx-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden Nginx 站点配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
@@ -657,19 +653,17 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
-## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
-server {
-        listen 80;
-        listen [::]:80;
-        server_name xxx.techkoala.top;                    # Bitwarden 域名
-        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## Bitwarden 配置。只负责只将 http 重定向至 https
+</span></span><span class="line"><span class="cl">## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        listen [::]:80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;                    # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -677,8 +671,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置" class="headerLink">
     <a href="#trojan-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan 相关配置</h3><h4 id="trojan-nginx-配置" class="headerLink">
@@ -703,29 +697,27 @@ server {
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-    listen 127.0.0.1:80 default_server;
-    server_name xxx.techkoala.top;             # 自己的域名
-    location / {
-        proxy_pass https://www.digitalocean.com; # 伪装的网站
-    }
-}
-server {
-    listen 127.0.0.1:80;
-    server_name xxx.techkoala.top;                 # 自己服务器的 IP
-    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
-}
-server {
-    listen 0.0.0.0:80;
-    listen [::]:80;
-    server_name _;
-    return 301 https://$host$request_uri;
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 127.0.0.1:80 default_server;
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;             # 自己的域名
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass https://www.digitalocean.com; # 伪装的网站
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 127.0.0.1:80;
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+</span></span><span class="line"><span class="cl">    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 0.0.0.0:80;
+</span></span><span class="line"><span class="cl">    listen [::]:80;
+</span></span><span class="line"><span class="cl">    server_name _;
+</span></span><span class="line"><span class="cl">    return 301 https://$host$request_uri;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -733,8 +725,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件" class="headerLink">
     <a href="#trojan-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>Trojan 配置文件</h4><div class="highlight"><div class="chroma">
@@ -791,57 +783,57 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
-    &#34;run_type&#34;: &#34;server&#34;,
-    &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
-    &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
-    &#34;remote_addr&#34;: &#34;127.0.0.1&#34;,
-    &#34;remote_port&#34;: 80,              # 伪装站点的端口
-    &#34;password&#34;: [
-        &#34;xxxxxx&#34;                    # 密钥
-    ],
-    &#34;log_level&#34;: 1,
-    &#34;ssl&#34;: {
-        &#34;cert&#34;: &#34;/usr/local/etc/ssl/certificate.crt&#34;,
-        &#34;key&#34;: &#34;/usr/local/etc/ssl/private.key&#34;,
-        &#34;key_password&#34;: &#34;&#34;,
-        &#34;cipher&#34;: &#34;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&#34;,
-        &#34;cipher_tls13&#34;: &#34;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#34;,
-        &#34;prefer_server_cipher&#34;: true,
-        &#34;alpn&#34;: [
-            &#34;http/1.1&#34;
-        ],
-        &#34;alpn_port_override&#34;: {
-            &#34;h2&#34;: 81
-        },
-        &#34;reuse_session&#34;: true,
-        &#34;session_ticket&#34;: false,
-        &#34;session_timeout&#34;: 600,
-        &#34;plain_http_response&#34;: &#34;&#34;,
-        &#34;curves&#34;: &#34;&#34;,
-        &#34;dhparam&#34;: &#34;&#34;
-    },
-    &#34;tcp&#34;: {
-        &#34;prefer_ipv4&#34;: false,
-        &#34;no_delay&#34;: true,
-        &#34;keep_alive&#34;: true,
-        &#34;reuse_port&#34;: false,
-        &#34;fast_open&#34;: false,
-        &#34;fast_open_qlen&#34;: 20
-    },
-    &#34;mysql&#34;: {
-        &#34;enabled&#34;: false,
-        &#34;server_addr&#34;: &#34;127.0.0.1&#34;,
-        &#34;server_port&#34;: 3306,
-        &#34;database&#34;: &#34;trojan&#34;,
-        &#34;username&#34;: &#34;trojan&#34;,
-        &#34;password&#34;: &#34;&#34;,
-        &#34;key&#34;: &#34;&#34;,
-        &#34;cert&#34;: &#34;&#34;,
-        &#34;ca&#34;: &#34;&#34;
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;run_type&#34;: &#34;server&#34;,
+</span></span><span class="line"><span class="cl">    &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
+</span></span><span class="line"><span class="cl">    &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
+</span></span><span class="line"><span class="cl">    &#34;remote_addr&#34;: &#34;127.0.0.1&#34;,
+</span></span><span class="line"><span class="cl">    &#34;remote_port&#34;: 80,              # 伪装站点的端口
+</span></span><span class="line"><span class="cl">    &#34;password&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;xxxxxx&#34;                    # 密钥
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;log_level&#34;: 1,
+</span></span><span class="line"><span class="cl">    &#34;ssl&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;cert&#34;: &#34;/usr/local/etc/ssl/certificate.crt&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key&#34;: &#34;/usr/local/etc/ssl/private.key&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key_password&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cipher&#34;: &#34;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cipher_tls13&#34;: &#34;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#34;,
+</span></span><span class="line"><span class="cl">        &#34;prefer_server_cipher&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;alpn&#34;: [
+</span></span><span class="line"><span class="cl">            &#34;http/1.1&#34;
+</span></span><span class="line"><span class="cl">        ],
+</span></span><span class="line"><span class="cl">        &#34;alpn_port_override&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;h2&#34;: 81
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        &#34;reuse_session&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;session_ticket&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;session_timeout&#34;: 600,
+</span></span><span class="line"><span class="cl">        &#34;plain_http_response&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;curves&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;dhparam&#34;: &#34;&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;tcp&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;prefer_ipv4&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;no_delay&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;keep_alive&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;reuse_port&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;fast_open&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;fast_open_qlen&#34;: 20
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;mysql&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;enabled&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;server_addr&#34;: &#34;127.0.0.1&#34;,
+</span></span><span class="line"><span class="cl">        &#34;server_port&#34;: 3306,
+</span></span><span class="line"><span class="cl">        &#34;database&#34;: &#34;trojan&#34;,
+</span></span><span class="line"><span class="cl">        &#34;username&#34;: &#34;trojan&#34;,
+</span></span><span class="line"><span class="cl">        &#34;password&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cert&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;ca&#34;: &#34;&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="freshrss-站点配置" class="headerLink">
     <a href="#freshrss-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS 站点配置</h3><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
@@ -864,28 +856,26 @@ server {
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-        listen 80;
-        listen [::]:80;
-        server_name xxx.techkoala.top;
-        return 301 https://xxx.techkoala.top$request_uri;
-    }
-
-server {
-    listen 39955 ssl http2;          # FreshRSS 本地监听端口
-    server_name rss.techkoala.top;
-    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
-
-    location / {
-       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
-    }
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        listen [::]:80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+</span></span><span class="line"><span class="cl">    server_name rss.techkoala.top;
+</span></span><span class="line"><span class="cl">    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+</span></span><span class="line"><span class="cl">    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -893,8 +883,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="xray" class="headerLink">
     <a href="#xray" class="header-mark"></a>Xray</h3><h4 id="xray-nginx-配置" class="headerLink">
@@ -918,23 +908,23 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-        listen 80;
-        server_name xxx.techkoala.top;
-        if ($host = xxxx.techkoala.top) {
-                return 301 https://$host$request_uri;
-        }
-        return 404;
-}
-
-server {
-        listen 127.0.0.1:23333;
-        server_name xxxx.techkoala.top;
-        location / {
-                proxy_pass https://www.digitalocean.com; # 伪装的网站
-        }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        if ($host = xxxx.techkoala.top) {
+</span></span><span class="line"><span class="cl">                return 301 https://$host$request_uri;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return 404;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 127.0.0.1:23333;
+</span></span><span class="line"><span class="cl">        server_name xxxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">                proxy_pass https://www.digitalocean.com; # 伪装的网站
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="xray-配置" class="headerLink">
     <a href="#xray-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray 配置</h4><div class="highlight"><div class="chroma">
@@ -988,54 +978,54 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
-    &#34;log&#34;: {
-        &#34;loglevel&#34;: &#34;warning&#34;
-    },
-    &#34;inbounds&#34;: [
-        {
-            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
-            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
-            &#34;protocol&#34;: &#34;vless&#34;,
-            &#34;settings&#34;: {
-                &#34;clients&#34;: [
-                    {
-                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
-                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
-                        &#34;level&#34;: 0
-                    }
-                ],
-                &#34;decryption&#34;: &#34;none&#34;,
-                &#34;fallbacks&#34;: [
-                    {
-                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
-                    }
-                 ]
-            },
-            &#34;streamSettings&#34;: {
-                &#34;network&#34;: &#34;tcp&#34;,
-                &#34;security&#34;: &#34;xtls&#34;,
-                &#34;xtlsSettings&#34;: {
-                    &#34;alpn&#34;: [
-                        &#34;http/1.1&#34;
-                    ],
-                    &#34;certificates&#34;: [
-                        {
-                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
-                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
-                        }
-                    ]
-                }
-            }
-        }
-    ],
-    &#34;outbounds&#34;: [
-        {
-            &#34;protocol&#34;: &#34;freedom&#34;
-        }
-    ]
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;log&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;loglevel&#34;: &#34;warning&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;inbounds&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
+</span></span><span class="line"><span class="cl">            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
+</span></span><span class="line"><span class="cl">            &#34;protocol&#34;: &#34;vless&#34;,
+</span></span><span class="line"><span class="cl">            &#34;settings&#34;: {
+</span></span><span class="line"><span class="cl">                &#34;clients&#34;: [
+</span></span><span class="line"><span class="cl">                    {
+</span></span><span class="line"><span class="cl">                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
+</span></span><span class="line"><span class="cl">                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
+</span></span><span class="line"><span class="cl">                        &#34;level&#34;: 0
+</span></span><span class="line"><span class="cl">                    }
+</span></span><span class="line"><span class="cl">                ],
+</span></span><span class="line"><span class="cl">                &#34;decryption&#34;: &#34;none&#34;,
+</span></span><span class="line"><span class="cl">                &#34;fallbacks&#34;: [
+</span></span><span class="line"><span class="cl">                    {
+</span></span><span class="line"><span class="cl">                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
+</span></span><span class="line"><span class="cl">                    }
+</span></span><span class="line"><span class="cl">                 ]
+</span></span><span class="line"><span class="cl">            },
+</span></span><span class="line"><span class="cl">            &#34;streamSettings&#34;: {
+</span></span><span class="line"><span class="cl">                &#34;network&#34;: &#34;tcp&#34;,
+</span></span><span class="line"><span class="cl">                &#34;security&#34;: &#34;xtls&#34;,
+</span></span><span class="line"><span class="cl">                &#34;xtlsSettings&#34;: {
+</span></span><span class="line"><span class="cl">                    &#34;alpn&#34;: [
+</span></span><span class="line"><span class="cl">                        &#34;http/1.1&#34;
+</span></span><span class="line"><span class="cl">                    ],
+</span></span><span class="line"><span class="cl">                    &#34;certificates&#34;: [
+</span></span><span class="line"><span class="cl">                        {
+</span></span><span class="line"><span class="cl">                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
+</span></span><span class="line"><span class="cl">                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
+</span></span><span class="line"><span class="cl">                        }
+</span></span><span class="line"><span class="cl">                    ]
+</span></span><span class="line"><span class="cl">                }
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;outbounds&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            &#34;protocol&#34;: &#34;freedom&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="防火墙设置" class="headerLink">
     <a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" class="header-mark"></a>防火墙设置</h2><p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>
@@ -1055,8 +1045,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]global[!]/{pattern}/{command}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:[range]global[!]/{pattern}/{command}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>也即：</p>
 <div class="highlight"><div class="chroma">
@@ -1064,8 +1054,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:[range]g/pattern/command
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:[range]g/pattern/command
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>[range] 指定文本范围,默认为整个文档</li>
@@ -1080,8 +1070,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:20,200g/^/pu _
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:20,200g/^/pu _
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip2-删除包含字符-pattern-的所有行" class="headerLink">
     <a href="#tip2-%e5%88%a0%e9%99%a4%e5%8c%85%e5%90%ab%e5%ad%97%e7%ac%a6-pattern-%e7%9a%84%e6%89%80%e6%9c%89%e8%a1%8c" class="header-mark"></a>Tip.2 删除包含字符 pattern 的所有行</h3><div class="highlight"><div class="chroma">
@@ -1089,8 +1079,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/pattern/d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip3-删除空白行" class="headerLink">
     <a href="#tip3-%e5%88%a0%e9%99%a4%e7%a9%ba%e7%99%bd%e8%a1%8c" class="header-mark"></a>Tip.3 删除空白行</h3><div class="highlight"><div class="chroma">
@@ -1098,8 +1088,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^$/d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/^$/d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip4-删除不匹配的行" class="headerLink">
     <a href="#tip4-%e5%88%a0%e9%99%a4%e4%b8%8d%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.4 删除不匹配的行</h3><div class="highlight"><div class="chroma">
@@ -1108,9 +1098,9 @@ server {
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g!/pattern/d
-:v/pattern/d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g!/pattern/d
+</span></span><span class="line"><span class="cl">:v/pattern/d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip5-删除大量匹配行" class="headerLink">
     <a href="#tip5-%e5%88%a0%e9%99%a4%e5%a4%a7%e9%87%8f%e5%8c%b9%e9%85%8d%e8%a1%8c" class="header-mark"></a>Tip.5 删除大量匹配行</h3><p>Vim 在删除操作时，会先把要删除的内容放到寄存器中，假如没有指定寄存器，会默认放到一个未命名的寄存器中，对于要删除大量匹配行的行为，可能导致 Vim 花一些时间处理这些拷贝，避免花费不必要的时间可以指定一个 blackhole 寄存器 _</p>
@@ -1119,8 +1109,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/d_
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/pattern/d_
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip6-移动匹配的行" class="headerLink">
     <a href="#tip6-%e7%a7%bb%e5%8a%a8%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.6 移动匹配的行</h3><p>将所有匹配的行移动到文件的末尾</p>
@@ -1129,8 +1119,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/m$
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/pattern/m$
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip7-复制匹配的行" class="headerLink">
     <a href="#tip7-%e5%a4%8d%e5%88%b6%e5%8c%b9%e9%85%8d%e7%9a%84%e8%a1%8c" class="header-mark"></a>Tip.7 复制匹配的行</h3><p>将所有匹配的行复制到文件末尾</p>
@@ -1139,8 +1129,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/t$
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/pattern/t$
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tip8-复制到-register-a" class="headerLink">
     <a href="#tip8-%e5%a4%8d%e5%88%b6%e5%88%b0-register-a" class="header-mark"></a>Tip.8 复制到 register a</h3><p>Vim 每个字母都是一个寄存器，所以使用全局命令也可以将内容复制到某一个寄存器，比如 a</p>
@@ -1149,8 +1139,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">qaq:g/pattern/y A
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">qaq:g/pattern/y A
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>qaq 清空寄存器 a，qa 开始记录命令到 a 寄存器，q 停止记录</li>
@@ -1163,8 +1153,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/^/m0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/^/m0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>:g 命令一行行匹配，匹配第一行时将第一行 m0 放到文件顶部，第二行放到文件顶部，当跑完一遍之后整个文件的每一行就反转了</p>
 <h3 id="tip10-在匹配行后添加文字" class="headerLink">
@@ -1174,8 +1164,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:g/pattern/s/$/mytext
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:g/pattern/s/$/mytext
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>To be continued&hellip;</p>
 <h2 id="参考" class="headerLink">
@@ -1214,8 +1204,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc 命令选项 主机 端口
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc 命令选项 主机 端口
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="命令选项" class="headerLink">
     <a href="#%e5%91%bd%e4%bb%a4%e9%80%89%e9%a1%b9" class="header-mark"></a>命令选项</h3><blockquote>
@@ -1240,21 +1230,21 @@ server {
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">选项	   是否有 “选项值”	   说明
--h	   NO	           输出 nc 的帮助
--v	   NO	           在网络通讯时，显示详细的输出信息
--n	   NO	           对命令行中的主机，不进行域名解析，如果主机是 IP 地址，需要用该选项
--p	  YES	           指定端口号
--l	  NO	           开启监听模式，nc 作为服务端，如不加，nc 默认作为客户端
--u	  NO	           使用 UDP 协，如不加该选项，默认是 TCP 协议
--w	  YES	           设置连接的超时间隔（N 秒）
--q	  YES	           让 nc 延时（N 秒）再退出
--z	  NO	           开启 zero-I/O 模式，该选项仅用于端口扫描
--k	  NO	           配合 -l 选项使用，可以重复接受客户端连接
--X	  YES	           指定代理的类型
--x	  YES	           以 IP:port 的格式指定代理
--d    NO               后台模式
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">选项	   是否有 “选项值”	   说明
+</span></span><span class="line"><span class="cl">-h	   NO	           输出 nc 的帮助
+</span></span><span class="line"><span class="cl">-v	   NO	           在网络通讯时，显示详细的输出信息
+</span></span><span class="line"><span class="cl">-n	   NO	           对命令行中的主机，不进行域名解析，如果主机是 IP 地址，需要用该选项
+</span></span><span class="line"><span class="cl">-p	  YES	           指定端口号
+</span></span><span class="line"><span class="cl">-l	  NO	           开启监听模式，nc 作为服务端，如不加，nc 默认作为客户端
+</span></span><span class="line"><span class="cl">-u	  NO	           使用 UDP 协，如不加该选项，默认是 TCP 协议
+</span></span><span class="line"><span class="cl">-w	  YES	           设置连接的超时间隔（N 秒）
+</span></span><span class="line"><span class="cl">-q	  YES	           让 nc 延时（N 秒）再退出
+</span></span><span class="line"><span class="cl">-z	  NO	           开启 zero-I/O 模式，该选项仅用于端口扫描
+</span></span><span class="line"><span class="cl">-k	  NO	           配合 -l 选项使用，可以重复接受客户端连接
+</span></span><span class="line"><span class="cl">-X	  YES	           指定代理的类型
+</span></span><span class="line"><span class="cl">-x	  YES	           以 IP:port 的格式指定代理
+</span></span><span class="line"><span class="cl">-d    NO               后台模式
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="主机" class="headerLink">
     <a href="#%e4%b8%bb%e6%9c%ba" class="header-mark"></a>主机</h3><p>这部分可以没有，可以以 <code>IP 地址</code> 形式表示，也可以以 <code>域名</code> 形式表示。</p>
@@ -1274,8 +1264,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -nv ip port
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -nv ip port
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>注：</strong>　默认情况下 nc 会等待很久，然后才告诉你连接失败。如果你所处的网络环境稳定且高速（比如：局域网内），那么，你可以追加 <code>-w</code> 选项，设置一个比较小的超时值。在下面的例子中，超时值设为 3 秒。</p>
 <div class="highlight"><div class="chroma">
@@ -1283,8 +1273,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -nv -w <span class="m">3</span> ip port
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -nv -w <span class="m">3</span> ip port
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="判断防火墙是否允许-or-禁止某个端口" class="headerLink">
     <a href="#%e5%88%a4%e6%96%ad%e9%98%b2%e7%81%ab%e5%a2%99%e6%98%af%e5%90%a6%e5%85%81%e8%ae%b8-or-%e7%a6%81%e6%ad%a2%e6%9f%90%e4%b8%aa%e7%ab%af%e5%8f%a3" class="header-mark"></a>判断防火墙是否允许 or 禁止某个端口</h3><p>假设你正在配置防火墙规则，禁止 TCP 的 8080 端口对外监听。那么，你如何验证自己的配置生效？</p>
@@ -1297,8 +1287,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -lv -p <span class="m">8080</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -lv -p <span class="m">8080</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后在 “主机 C” 上运行 nc，测试 “主机 S” 上的 8080 端口是否可达</p>
 <p><strong>注：</strong>　在默认情况下，nc 开启 listen 模式充当服务端，在接受<strong>第一次</strong>客户端连接之后，就会把监听端口关闭。如果你想要让 nc 始终监听模式，使之能<strong>重复</strong>接受客户端发起的连接，可以追加 <code>-k</code> 选项。</p>
@@ -1309,8 +1299,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -znv ip 1-1024
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>选项 -z
 是指开启 <code>zero-I/O 模式</code>。该模式 nc 只判断某个监听端口是否能连上，连上后<strong>不</strong>与对端进行数据通讯。</p>
@@ -1320,8 +1310,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -znv ip 1-1024  2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep succeeded
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此外，由于 <code>-v</code> 选项产生的输出位于 <code>stderr</code>，上述命令中的 <code>2&gt;&amp;1</code> 用来把 <code>stderr</code> 合并到 <code>stdout</code>。</p>
 <p><strong>另：</strong> nc 默认超时较大，导致扫描速度较慢。建议根据网络情况合理设置超时值，加快扫描速度。</p>
@@ -1334,10 +1324,10 @@ server {
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
-OR
-<span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> -n ip <span class="m">22</span>
+</span></span><span class="line"><span class="cl">OR
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;EXIT&#34;</span> <span class="p">|</span> nc -vq <span class="m">5</span> domain <span class="m">22</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="端口转发" class="headerLink">
     <a href="#%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91" class="header-mark"></a>端口转发</h3><p>用 nc 进行端口转发，需要运行两个 nc 进程，一个充当<code>服务端</code>，另一个是<code>客户端</code>，然后用管道让把两个进程的<code>标准输入输出``交叉配对</code>。所谓的<code>交叉配对</code>就是——每一个 nc 进程的<code>标准输出</code>都对接到另一个 nc 进程的<code>标准输入</code>。如此一来，就可以完美地建立双向通讯。</p>
@@ -1348,8 +1338,8 @@ OR
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkfifo nc_pipe
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkfifo nc_pipe
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>步骤 2：同时启动两个 nc</p>
 <div class="highlight"><div class="chroma">
@@ -1357,8 +1347,8 @@ OR
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -l -p <span class="m">1234</span> &lt; nc_pipe <span class="p">|</span> nc 127.0.0.1 <span class="m">5678</span> &gt; nc_pipe
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行上述命令之后，就可以把本机的 1235 端口重定向到本机的 5678 端口。</p>
 <h3 id="传输文件" class="headerLink">
@@ -1372,12 +1362,12 @@ OR
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">先在接收端 B 主机运行如下命令
-nc -l -p port &gt; file2
-
-然后在发送端 A 主机运行如下命令
-nc ip port &lt; file1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">先在接收端 B 主机运行如下命令
+</span></span><span class="line"><span class="cl">nc -l -p port &gt; file2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">然后在发送端 A 主机运行如下命令
+</span></span><span class="line"><span class="cl">nc ip port &lt; file1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>两者端口号要相同</p>
 <h3 id="远程备份整个磁盘" class="headerLink">
@@ -1391,12 +1381,12 @@ nc ip port &lt; file1
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">先在接收端（B 主机）运行如下命令
-nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sdb
-
-然后在发送端 A 主机运行如下命令
-dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">先在接收端（B 主机）运行如下命令
+</span></span><span class="line"><span class="cl">nc -lp port <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sdb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">然后在发送端 A 主机运行如下命令
+</span></span><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</span> nc ip port
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="远程控制" class="headerLink">
     <a href="#%e8%bf%9c%e7%a8%8b%e6%8e%a7%e5%88%b6" class="header-mark"></a>远程控制</h3><p>将 A 主机的 <code>bash</code> 发给 B 主机</p>
@@ -1409,12 +1399,12 @@ dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="p">|</
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">A:
-nc -lp port -c bash
-
-B:
-nc ip port
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">A:
+</span></span><span class="line"><span class="cl">nc -lp port -c bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">B:
+</span></span><span class="line"><span class="cl">nc ip port
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="流媒体服务" class="headerLink">
     <a href="#%e6%b5%81%e5%aa%92%e4%bd%93%e6%9c%8d%e5%8a%a1" class="header-mark"></a>流媒体服务</h3><div class="highlight"><div class="chroma">
@@ -1426,12 +1416,12 @@ nc ip port
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">A:
-cat test.mp4 <span class="p">|</span> nc -lp port
-
-B:
-nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4000</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">A:
+</span></span><span class="line"><span class="cl">cat test.mp4 <span class="p">|</span> nc -lp port
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">B:
+</span></span><span class="line"><span class="cl">nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4000</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>A 让 test.MP4 这个文件成为<code>流</code>的形式发送到 B，B 用 mplayer 播放，接收多少播放多少，指定缓存 4000bytes。</p>
 <h3 id="信息收集" class="headerLink">
@@ -1443,16 +1433,14 @@ nc -nv ip port <span class="p">|</span> mplayer -vo x11 -cache <span class="m">4
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nc -l -p port &gt; ps.txt
-将远程发送过来的内容保存在本地
-
-Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
-标准输入完成后 delay 一秒钟，会发送到侦听端
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -l -p port &gt; ps.txt
+</span></span><span class="line"><span class="cl">将远程发送过来的内容保存在本地
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
+</span></span><span class="line"><span class="cl">标准输入完成后 delay 一秒钟，会发送到侦听端
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -1581,8 +1569,8 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install iperf3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo apt install iperf3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="使用-iperf" class="headerLink">
     <a href="#%e4%bd%bf%e7%94%a8-iperf" class="header-mark"></a>使用 iPerf</h2><p>首先，介绍服务端和客户端共有的参数：</p>
@@ -1603,20 +1591,20 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
---cport n         指定客户端端口
--f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
--i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
--F, --file name   客户端：从文件读取并写入网络，而不是使用随机数据；服务器端：从网络读取并写入文件，而不是丢弃数据。
--A, --affinity    如果可以，设置 CPU 关联（仅限 Linux 和 FreeBSD）。
--B, --bind host   绑定到主机。对于客户端，这将设置出站接口。对于服务器，这将设置传入接口。这只适用于具有多个网络接口的多宿主主机。
--V, --verbose     提供更详细的输出
--J, --json        以 JSON 格式输出
---logfile file    输出到日志文件
---d, --debug      发出调试输出
--v, --version     输出版本信息
--h, --help        输出帮助信息
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-p, --port n      服务器用于侦听和客户端连接的服务器端口，两者应该相同，默认值为 <span class="m">5201</span>
+</span></span><span class="line"><span class="cl">--cport n         指定客户端端口
+</span></span><span class="line"><span class="cl">-f, --format      用于指定单位显示格式，支持 <span class="s1">&#39;k&#39;</span> <span class="o">=</span> Kbits/sec <span class="s1">&#39;K&#39;</span> <span class="o">=</span> KBytes/sec <span class="s1">&#39;m&#39;</span> <span class="o">=</span> Mbits/sec <span class="s1">&#39;M&#39;</span> <span class="o">=</span> MBytes/sec，默认为自适应格式
+</span></span><span class="line"><span class="cl">-i, --interval n  设置测试信息报告之间的间隔时间（以秒为单位）。如果为零，则不打印任何定期报告。默认值为零。
+</span></span><span class="line"><span class="cl">-F, --file name   客户端：从文件读取并写入网络，而不是使用随机数据；服务器端：从网络读取并写入文件，而不是丢弃数据。
+</span></span><span class="line"><span class="cl">-A, --affinity    如果可以，设置 CPU 关联（仅限 Linux 和 FreeBSD）。
+</span></span><span class="line"><span class="cl">-B, --bind host   绑定到主机。对于客户端，这将设置出站接口。对于服务器，这将设置传入接口。这只适用于具有多个网络接口的多宿主主机。
+</span></span><span class="line"><span class="cl">-V, --verbose     提供更详细的输出
+</span></span><span class="line"><span class="cl">-J, --json        以 JSON 格式输出
+</span></span><span class="line"><span class="cl">--logfile file    输出到日志文件
+</span></span><span class="line"><span class="cl">--d, --debug      发出调试输出
+</span></span><span class="line"><span class="cl">-v, --version     输出版本信息
+</span></span><span class="line"><span class="cl">-h, --help        输出帮助信息
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>服务端特有参数：</p>
 <div class="highlight"><div class="chroma">
@@ -1626,10 +1614,10 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
--D, --daemon      将服务器作为守护进程在后台运行
--I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-s, --server      在服务器模式下运行 iPerf（一次只允许一个 iPerf 连接）
+</span></span><span class="line"><span class="cl">-D, --daemon      将服务器作为守护进程在后台运行
+</span></span><span class="line"><span class="cl">-I, --pidfilefile 使用进程ID编写文件，这在作为守护进程运行时非常有用
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>客户端特有参数:</p>
 <div class="highlight"><div class="chroma">
@@ -1661,32 +1649,32 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-c, --client host	    在客户端模式下运行 iPerf
---sctp	                使用 SCTP 而不是 TCP
--u, --udp	            使用 UDP 而不是 TCP
--b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
--t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
--n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
--k, --blockcount    	要传输的块（数据包）数
--l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
--P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
--R, --reverse	        以反向模式运行（服务器发送，客户端接收）
--w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
--M, --set-mss  	        尝试设置 TCP 最大段大小（MSS）。MSS 通常是 MTU-TCP/IP 标头的 <span class="m">40</span> 个字节。对于以太网，MSS 为 <span class="m">1460</span> 字节（1500 字节 MTU）
--N, --no-delay	        设置 “TCP no delay” 选项，禁用 Nagle 的算法。通常，仅对交互式应用程序（如 telnet）禁用此功能
--4, --version4	        仅使用 IPv4.
--6, --version4	        仅使用 IPv6.
--S, --tos               传出数据包的服务类型。<span class="o">(</span>许多路由器会忽略TOS字段。）可以使用十六进制值（0x）作为前缀，使用八进制数（0）作为前缀，或者使用十进制来指定值。 例如，<span class="s1">&#39;0x10&#39;</span><span class="nv">十六进制</span><span class="o">=</span><span class="s1">&#39;020&#39;</span><span class="nv">八进制</span><span class="o">=</span><span class="s1">&#39;16&#39;</span>十进制。RFC 1349中指定的TOS编号为：
-                        IPTOS_LOWDELAY     minimize delay        0x10
-                        IPTOS_THROUGHPUT   maximize throughput   0x08
-                        IPTOS_RELIABILITY  maximize reliability  0x04
-                        IPTOS_LOWCOST      minimize cost         0x02
--L, --flowlabel  	    设置 IPv6 流标签（当前仅在 Linux 上受支持）
--Z, --zerocopy	        使用 “零拷贝” 方法发送数据，如 sendfile（2），而不是通常的 write（2）。这样可以占用更少的 CPU
--O, --omit  	        省略测试的前 n 秒，以跳过 TCP TCP 慢启动周期
--T, --title             为每个输出行添加此字符串前缀
--C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-c, --client host	    在客户端模式下运行 iPerf
+</span></span><span class="line"><span class="cl">--sctp	                使用 SCTP 而不是 TCP
+</span></span><span class="line"><span class="cl">-u, --udp	            使用 UDP 而不是 TCP
+</span></span><span class="line"><span class="cl">-b, --bandwidth      	将目标带宽设置为 nbits/sec（对于 UDP 默认为 <span class="m">1</span> Mbit/sec，对于 TCP 为无限制）。如果有多个流（-P 标志），则带宽限制将分别应用于每个流。您还可以在带宽说明符中添加一个 “/” 和一个数字。这称为 “突发模式”。 它会发送给定数量的数据包而不会暂停，即使该数据包暂时超过了指定的带宽限制
+</span></span><span class="line"><span class="cl">-t, --time  	        传输的时间（以秒为单位）。iPerf 通常通过在 t 时间内重复发送 len 长度的字节数组来工作。默认值为 <span class="m">10</span> 秒
+</span></span><span class="line"><span class="cl">-n, --num 	            要传输的缓冲区数量。通常，iPerf 只会发送 <span class="m">10</span> 秒。-n 选项覆盖此设置，并发送 len 长度字节数组 n 次，无论需要多长时间
+</span></span><span class="line"><span class="cl">-k, --blockcount    	要传输的块（数据包）数
+</span></span><span class="line"><span class="cl">-l, --length     	    读取或写入的缓冲区的长度，iPerf 通过多次写入 len 个字节的数组来工作。TCP 的默认值为 <span class="m">128</span> KB，UDP 的默认值为 <span class="m">8</span> KB。
+</span></span><span class="line"><span class="cl">-P, --parallel  	    与服务器同时建立的连接数，默认值为 <span class="m">1</span>
+</span></span><span class="line"><span class="cl">-R, --reverse	        以反向模式运行（服务器发送，客户端接收）
+</span></span><span class="line"><span class="cl">-w, --window    	    将套接字缓冲区大小设置为指定值。对于 TCP，这将设置 TCP 窗口大小（这将发送到服务器并在该侧使用）
+</span></span><span class="line"><span class="cl">-M, --set-mss  	        尝试设置 TCP 最大段大小（MSS）。MSS 通常是 MTU-TCP/IP 标头的 <span class="m">40</span> 个字节。对于以太网，MSS 为 <span class="m">1460</span> 字节（1500 字节 MTU）
+</span></span><span class="line"><span class="cl">-N, --no-delay	        设置 “TCP no delay” 选项，禁用 Nagle 的算法。通常，仅对交互式应用程序（如 telnet）禁用此功能
+</span></span><span class="line"><span class="cl">-4, --version4	        仅使用 IPv4.
+</span></span><span class="line"><span class="cl">-6, --version4	        仅使用 IPv6.
+</span></span><span class="line"><span class="cl">-S, --tos               传出数据包的服务类型。<span class="o">(</span>许多路由器会忽略TOS字段。）可以使用十六进制值（0x）作为前缀，使用八进制数（0）作为前缀，或者使用十进制来指定值。 例如，<span class="s1">&#39;0x10&#39;</span>十六进制<span class="o">=</span><span class="s1">&#39;020&#39;</span>八进制<span class="o">=</span><span class="s1">&#39;16&#39;</span>十进制。RFC 1349中指定的TOS编号为：
+</span></span><span class="line"><span class="cl">                        IPTOS_LOWDELAY     minimize delay        0x10
+</span></span><span class="line"><span class="cl">                        IPTOS_THROUGHPUT   maximize throughput   0x08
+</span></span><span class="line"><span class="cl">                        IPTOS_RELIABILITY  maximize reliability  0x04
+</span></span><span class="line"><span class="cl">                        IPTOS_LOWCOST      minimize cost         0x02
+</span></span><span class="line"><span class="cl">-L, --flowlabel  	    设置 IPv6 流标签（当前仅在 Linux 上受支持）
+</span></span><span class="line"><span class="cl">-Z, --zerocopy	        使用 “零拷贝” 方法发送数据，如 sendfile（2），而不是通常的 write（2）。这样可以占用更少的 CPU
+</span></span><span class="line"><span class="cl">-O, --omit  	        省略测试的前 n 秒，以跳过 TCP TCP 慢启动周期
+</span></span><span class="line"><span class="cl">-T, --title             为每个输出行添加此字符串前缀
+</span></span><span class="line"><span class="cl">-C, --linux-congestion  设置拥塞控制算法 <span class="o">(</span>仅适用于 iPerf 3.1 的 Linux 和 FreeBSD<span class="o">)</span>。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
@@ -1703,9 +1691,9 @@ Ps aux <span class="p">|</span>nc -nv ip port -q <span class="m">1</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">服务端
-$ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">服务端
+</span></span><span class="line"><span class="cl">$ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1713,9 +1701,9 @@ $ iperf3 -s -p <span class="m">12345</span> -i <span class="m">1</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">客户端
-$ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">客户端
+</span></span><span class="line"><span class="cl">$ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</span> -t <span class="m">20</span> -w 100k
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/iperf/iperf.webp" data-sub-html="<h2>iPerf 使用实例</h2>">
         
@@ -1757,8 +1745,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sftp 选项 参数
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="选项" class="headerLink">
     <a href="#%e9%80%89%e9%a1%b9" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
@@ -1773,15 +1761,15 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
--l：使用 ssh 协议版本 1；
--b：指定批处理文件；
--C：使用压缩；
--o：指定 ssh 选项；
--F：指定 ssh 配置文件；
--R：指定一次可以容忍多少请求数；
--v：升高日志等级。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-B：指定传输文件时缓冲区的大小；
+</span></span><span class="line"><span class="cl">-l：使用 ssh 协议版本 1；
+</span></span><span class="line"><span class="cl">-b：指定批处理文件；
+</span></span><span class="line"><span class="cl">-C：使用压缩；
+</span></span><span class="line"><span class="cl">-o：指定 ssh 选项；
+</span></span><span class="line"><span class="cl">-F：指定 ssh 配置文件；
+</span></span><span class="line"><span class="cl">-R：指定一次可以容忍多少请求数；
+</span></span><span class="line"><span class="cl">-v：升高日志等级。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="参数" class="headerLink">
     <a href="#%e5%8f%82%e6%95%b0" class="header-mark"></a>参数</h3><p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
@@ -1849,8 +1837,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
@@ -1859,8 +1847,8 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
         
@@ -1878,13 +1866,13 @@ $ iperf3 -c 192.168.1.43 -p <span class="m">12345</span> -i <span class="m">1</s
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
 <ul>
@@ -1973,68 +1961,68 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
--q, --quiet 精简输出模式。
--C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
--c, --checksum 打开校验开关，强制对文件传输进行校验。
--a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
--r, --recursive 对子目录以递归模式处理。
--R, --relative 使用相对路径信息。
--b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
--u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
--l, --links 保留软链结。
--L, --copy-links 想对待常规文件一样处理软链结。
--H, --hard-links 保留硬链结。
--I, --ignore-times 不跳过那些有同样的时间和长度的文件。
--p, --perms 保持文件权限。
--o, --owner 保持文件属主信息。
--g, --group 保持文件属组信息。
--D, --devices 保持设备文件信息。
--t, --times 保持文件时间信息。
--S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
--T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
--n, --dry-run 现实哪些文件将被传输。
--w, --whole-file 拷贝文件，不进行增量检测。
--x, --one-file-system 不要跨越文件系统边界。
--B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
--e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
--P 等同于 --partial。
--z, --compress 对备份的文件在传输时进行压缩处理。
--h, --help 显示帮助信息。
---backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
--suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
---copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
---safe-links 忽略指向 SRC 路径目录树以外的链结。
---rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
---existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
---delete 删除那些 DST 中 SRC 没有的文件。
---delete-excluded 同样删除接收端那些被该选项指定排除的文件。
---delete-after 传输结束以后再删除。
---ignore-errors 及时出现 IO 错误也进行删除。
---max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
---partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
---force 强制删除目录，即使不为空。
---numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
---timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
---size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
---modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
---compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
---progress 显示备份过程。
---exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
---include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
---exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
---include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
---version 打印版本信息。
---address 绑定到特定的地址。
---config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
---port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
---blocking-io 对远程 shell 使用阻塞 IO。
--stats 给出某些文件的传输状态。
---progress 在传输时现实传输过程。
---log-format<span class="o">=</span>formAT 指定日志文件格式。
---password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
---bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-v, --verbose 详细模式输出。
+</span></span><span class="line"><span class="cl">-q, --quiet 精简输出模式。
+</span></span><span class="line"><span class="cl">-C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
+</span></span><span class="line"><span class="cl">-c, --checksum 打开校验开关，强制对文件传输进行校验。
+</span></span><span class="line"><span class="cl">-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
+</span></span><span class="line"><span class="cl">-r, --recursive 对子目录以递归模式处理。
+</span></span><span class="line"><span class="cl">-R, --relative 使用相对路径信息。
+</span></span><span class="line"><span class="cl">-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
+</span></span><span class="line"><span class="cl">-u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
+</span></span><span class="line"><span class="cl">-l, --links 保留软链结。
+</span></span><span class="line"><span class="cl">-L, --copy-links 想对待常规文件一样处理软链结。
+</span></span><span class="line"><span class="cl">-H, --hard-links 保留硬链结。
+</span></span><span class="line"><span class="cl">-I, --ignore-times 不跳过那些有同样的时间和长度的文件。
+</span></span><span class="line"><span class="cl">-p, --perms 保持文件权限。
+</span></span><span class="line"><span class="cl">-o, --owner 保持文件属主信息。
+</span></span><span class="line"><span class="cl">-g, --group 保持文件属组信息。
+</span></span><span class="line"><span class="cl">-D, --devices 保持设备文件信息。
+</span></span><span class="line"><span class="cl">-t, --times 保持文件时间信息。
+</span></span><span class="line"><span class="cl">-S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
+</span></span><span class="line"><span class="cl">-T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
+</span></span><span class="line"><span class="cl">-n, --dry-run 现实哪些文件将被传输。
+</span></span><span class="line"><span class="cl">-w, --whole-file 拷贝文件，不进行增量检测。
+</span></span><span class="line"><span class="cl">-x, --one-file-system 不要跨越文件系统边界。
+</span></span><span class="line"><span class="cl">-B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
+</span></span><span class="line"><span class="cl">-e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
+</span></span><span class="line"><span class="cl">-P 等同于 --partial。
+</span></span><span class="line"><span class="cl">-z, --compress 对备份的文件在传输时进行压缩处理。
+</span></span><span class="line"><span class="cl">-h, --help 显示帮助信息。
+</span></span><span class="line"><span class="cl">--backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
+</span></span><span class="line"><span class="cl">-suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
+</span></span><span class="line"><span class="cl">--copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
+</span></span><span class="line"><span class="cl">--safe-links 忽略指向 SRC 路径目录树以外的链结。
+</span></span><span class="line"><span class="cl">--rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
+</span></span><span class="line"><span class="cl">--existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
+</span></span><span class="line"><span class="cl">--delete 删除那些 DST 中 SRC 没有的文件。
+</span></span><span class="line"><span class="cl">--delete-excluded 同样删除接收端那些被该选项指定排除的文件。
+</span></span><span class="line"><span class="cl">--delete-after 传输结束以后再删除。
+</span></span><span class="line"><span class="cl">--ignore-errors 及时出现 IO 错误也进行删除。
+</span></span><span class="line"><span class="cl">--max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
+</span></span><span class="line"><span class="cl">--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
+</span></span><span class="line"><span class="cl">--force 强制删除目录，即使不为空。
+</span></span><span class="line"><span class="cl">--numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
+</span></span><span class="line"><span class="cl">--timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
+</span></span><span class="line"><span class="cl">--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
+</span></span><span class="line"><span class="cl">--modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
+</span></span><span class="line"><span class="cl">--compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
+</span></span><span class="line"><span class="cl">--progress 显示备份过程。
+</span></span><span class="line"><span class="cl">--exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
+</span></span><span class="line"><span class="cl">--include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
+</span></span><span class="line"><span class="cl">--exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
+</span></span><span class="line"><span class="cl">--include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
+</span></span><span class="line"><span class="cl">--version 打印版本信息。
+</span></span><span class="line"><span class="cl">--address 绑定到特定的地址。
+</span></span><span class="line"><span class="cl">--config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
+</span></span><span class="line"><span class="cl">--port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
+</span></span><span class="line"><span class="cl">--blocking-io 对远程 shell 使用阻塞 IO。
+</span></span><span class="line"><span class="cl">-stats 给出某些文件的传输状态。
+</span></span><span class="line"><span class="cl">--progress 在传输时现实传输过程。
+</span></span><span class="line"><span class="cl">--log-format<span class="o">=</span>formAT 指定日志文件格式。
+</span></span><span class="line"><span class="cl">--password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
+</span></span><span class="line"><span class="cl">--bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -2068,8 +2056,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">$ scp local_file remote_host:/home
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
 <p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
@@ -2128,8 +2116,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ scp 选项 参数
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
@@ -2149,20 +2137,20 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
--2：使用ssh协议版本2；
--4：使用ipv4；
--6：使用ipv6；
--B：以批处理模式运行；
--C：使用压缩；
--F：指定ssh配置文件；
--l：指定宽带限制；
--o：指定使用的ssh选项；
--P：指定远程主机的端口号；
--p：保留文件的最后修改时间，最后访问时间和权限模式；
--q：不显示复制进度；
--r：以递归方式复制。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-1：使用ssh协议版本1；
+</span></span><span class="line"><span class="cl">-2：使用ssh协议版本2；
+</span></span><span class="line"><span class="cl">-4：使用ipv4；
+</span></span><span class="line"><span class="cl">-6：使用ipv6；
+</span></span><span class="line"><span class="cl">-B：以批处理模式运行；
+</span></span><span class="line"><span class="cl">-C：使用压缩；
+</span></span><span class="line"><span class="cl">-F：指定ssh配置文件；
+</span></span><span class="line"><span class="cl">-l：指定宽带限制；
+</span></span><span class="line"><span class="cl">-o：指定使用的ssh选项；
+</span></span><span class="line"><span class="cl">-P：指定远程主机的端口号；
+</span></span><span class="line"><span class="cl">-p：保留文件的最后修改时间，最后访问时间和权限模式；
+</span></span><span class="line"><span class="cl">-q：不显示复制进度；
+</span></span><span class="line"><span class="cl">-r：以递归方式复制。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>参数分别为：</p>
 <ul>
@@ -2198,27 +2186,27 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
-<span class="m">10000</span>
-
-<span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
-
-________________________________________________________
-Executed in  882.99 millis	fish       	external
-   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
-   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
-
-<span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
-tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
-
-________________________________________________________
-Executed in  215.68 millis	fish       	external
-   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
-   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="c1"># Copy a local folder with 10000 files</span>
+</span></span><span class="line"><span class="cl">$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl"><span class="m">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Using scp</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">________________________________________________________
+</span></span><span class="line"><span class="cl">Executed in  882.99 millis	fish       	external
+</span></span><span class="line"><span class="cl">   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
+</span></span><span class="line"><span class="cl">   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Using tar over ssh</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">________________________________________________________
+</span></span><span class="line"><span class="cl">Executed in  215.68 millis	fish       	external
+</span></span><span class="line"><span class="cl">   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
+</span></span><span class="line"><span class="cl">   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
 <h3 id="安全" class="headerLink">

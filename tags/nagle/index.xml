@@ -33,18 +33,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">if there is new data to send then
-    if the window size ≥ MSS and available data is ≥ MSS then
-        send complete MSS segment now
-    else
-        if there is unconfirmed data still in the pipe then
-            enqueue data in the buffer until an acknowledge is received
-        else
-            send data immediately
-        end if
-    end if
-end if
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">if there is new data to send then
+</span></span><span class="line"><span class="cl">    if the window size ≥ MSS and available data is ≥ MSS then
+</span></span><span class="line"><span class="cl">        send complete MSS segment now
+</span></span><span class="line"><span class="cl">    else
+</span></span><span class="line"><span class="cl">        if there is unconfirmed data still in the pipe then
+</span></span><span class="line"><span class="cl">            enqueue data in the buffer until an acknowledge is received
+</span></span><span class="line"><span class="cl">        else
+</span></span><span class="line"><span class="cl">            send data immediately
+</span></span><span class="line"><span class="cl">        end if
+</span></span><span class="line"><span class="cl">    end if
+</span></span><span class="line"><span class="cl">end if
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Nagle</code> 算法可能导致期望实时响应和低延迟的应用程序体验不佳。</p>
 <p>诸如网络多人视频游戏或鼠标在远程控制的操作系统中移动等应用程序，期望立即发送操作，而算法故意延迟传输，以牺牲延迟为代价提高带宽效率。因此，具有低带宽时间敏感传输的应用程序通常用于绕过 Nagle 延迟的 ACK 延迟。</p>

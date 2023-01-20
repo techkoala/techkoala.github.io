@@ -21,8 +21,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ Hugo server --bind xxx.xxx.xxx.xxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ Hugo server --bind xxx.xxx.xxx.xxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>指定虚拟机 IP，即可通过同网域机器访问该 web 服务</p>
 <h3 id="2-使用-git-信息生成文章上一次修改时间" class="headerLink">

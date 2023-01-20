@@ -25,8 +25,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim ~/.bashrc
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -38,8 +38,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
@@ -47,8 +47,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
@@ -56,8 +56,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
 <h2 id="设置历史记录数量" class="headerLink">
@@ -68,9 +68,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
-<span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">shopt</span> -s histappend
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="更有效的调用命令" class="headerLink">
     <a href="#%e6%9b%b4%e6%9c%89%e6%95%88%e7%9a%84%e8%b0%83%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>更有效的调用命令</h2><p><code>!!</code>可以调用前一行的命令。</p>
@@ -84,12 +84,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
-/etc
-$ !!
-<span class="nb">pwd</span>
-/etc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/etc
+</span></span><span class="line"><span class="cl">$ !!
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/etc
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
@@ -97,8 +97,8 @@ $ !!
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo !!
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
@@ -121,22 +121,22 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
-$ mkdir temp
-$ touch temp/test
-$ !!
-touch temp/test
-$ <span class="nb">history</span> <span class="p">|</span> tail -4
-  <span class="m">179</span>  rm -r temp/
-  <span class="m">180</span>  mkdir temp
-  <span class="m">181</span>  touch temp/test
-  <span class="m">182</span>  touch temp/test
-  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
-$ !179:p
-rm -r temp
-$ !180
-touch temp/test
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm -r temp/
+</span></span><span class="line"><span class="cl">$ mkdir temp
+</span></span><span class="line"><span class="cl">$ touch temp/test
+</span></span><span class="line"><span class="cl">$ !!
+</span></span><span class="line"><span class="cl">touch temp/test
+</span></span><span class="line"><span class="cl">$ <span class="nb">history</span> <span class="p">|</span> tail -4
+</span></span><span class="line"><span class="cl">  <span class="m">179</span>  rm -r temp/
+</span></span><span class="line"><span class="cl">  <span class="m">180</span>  mkdir temp
+</span></span><span class="line"><span class="cl">  <span class="m">181</span>  touch temp/test
+</span></span><span class="line"><span class="cl">  <span class="m">182</span>  touch temp/test
+</span></span><span class="line"><span class="cl">  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
+</span></span><span class="line"><span class="cl">$ !179:p
+</span></span><span class="line"><span class="cl">rm -r temp
+</span></span><span class="line"><span class="cl">$ !180
+</span></span><span class="line"><span class="cl">touch temp/test
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
@@ -144,8 +144,8 @@ touch temp/test
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ !ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
 <p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
@@ -160,12 +160,12 @@ touch temp/test
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
-$ vim !$
-vim items.txt
-$ cp !$ shopping.txt
-cp items.txt shopping.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mv list.txt items.txt
+</span></span><span class="line"><span class="cl">$ vim !$
+</span></span><span class="line"><span class="cl">vim items.txt
+</span></span><span class="line"><span class="cl">$ cp !$ shopping.txt
+</span></span><span class="line"><span class="cl">cp items.txt shopping.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数。</p>
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
@@ -176,10 +176,10 @@ cp items.txt shopping.txt
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
-$ touch !*
-touch /var/log/httpd/access.log /var/log/httpd/error.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+</span></span><span class="line"><span class="cl">$ touch !*
+</span></span><span class="line"><span class="cl">touch /var/log/httpd/access.log /var/log/httpd/error.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="用--替换前一行的匹配词" class="headerLink">
     <a href="#%e7%94%a8--%e6%9b%bf%e6%8d%a2%e5%89%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%8c%b9%e9%85%8d%e8%af%8d" class="header-mark"></a>用 ^ 替换前一行的匹配词</h2><p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
@@ -190,10 +190,10 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
-$ ^error^access
-rm /var/log/httpd/access.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm /var/log/httpd/error.log
+</span></span><span class="line"><span class="cl">$ ^error^access
+</span></span><span class="line"><span class="cl">rm /var/log/httpd/access.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -229,14 +229,14 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
-$ head -n <span class="m">1</span> /etc/issue  <span class="c1"># 查看操作系统版本</span>
-$ hostname              <span class="c1"># 查看计算机名</span>
-$ lspci -tv             <span class="c1"># 列出所有 PCI 设备</span>
-$ lsusb -tv             <span class="c1"># 列出所有 USB 设备</span>
-$ lsmod                 <span class="c1"># 列出加载的内核模块</span>
-$ env                   <span class="c1"># 查看环境变量</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ uname -a              <span class="c1"># 查看内核/操作系统/CPU 信息</span>
+</span></span><span class="line"><span class="cl">$ head -n <span class="m">1</span> /etc/issue  <span class="c1"># 查看操作系统版本</span>
+</span></span><span class="line"><span class="cl">$ hostname              <span class="c1"># 查看计算机名</span>
+</span></span><span class="line"><span class="cl">$ lspci -tv             <span class="c1"># 列出所有 PCI 设备</span>
+</span></span><span class="line"><span class="cl">$ lsusb -tv             <span class="c1"># 列出所有 USB 设备</span>
+</span></span><span class="line"><span class="cl">$ lsmod                 <span class="c1"># 列出加载的内核模块</span>
+</span></span><span class="line"><span class="cl">$ env                   <span class="c1"># 查看环境变量</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="系统资源" class="headerLink">
     <a href="#%e7%b3%bb%e7%bb%9f%e8%b5%84%e6%ba%90" class="header-mark"></a>系统资源</h2><div class="highlight"><div class="chroma">
@@ -253,17 +253,17 @@ $ env                   <span class="c1"># 查看环境变量</span>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
-$ lscpu                         <span class="c1"># 查看 CPU 信息</span>
-$ lshw -short                   <span class="c1"># 当前服务器 CPU、内存、磁盘等详细信息</span>
-$ free -m                       <span class="c1"># 查看内存使用量和交换区使用量</span>
-$ df -h                         <span class="c1"># 查看各分区使用情况</span>
-$ du -sh                        <span class="c1"># 查看指定目录的大小</span>
-$ grep MemTotal /proc/meminfo   <span class="c1"># 查看内存总量</span>
-$ grep MemFree /proc/meminfo    <span class="c1"># 查看空闲内存量</span>
-$ uptime                        <span class="c1"># 查看系统运行时间、用户数、负载</span>
-$ cat /proc/loadavg             <span class="c1"># 查看系统负载</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cat /proc/cpuinfo             <span class="c1"># 查看 CPU 信息</span>
+</span></span><span class="line"><span class="cl">$ lscpu                         <span class="c1"># 查看 CPU 信息</span>
+</span></span><span class="line"><span class="cl">$ lshw -short                   <span class="c1"># 当前服务器 CPU、内存、磁盘等详细信息</span>
+</span></span><span class="line"><span class="cl">$ free -m                       <span class="c1"># 查看内存使用量和交换区使用量</span>
+</span></span><span class="line"><span class="cl">$ df -h                         <span class="c1"># 查看各分区使用情况</span>
+</span></span><span class="line"><span class="cl">$ du -sh                        <span class="c1"># 查看指定目录的大小</span>
+</span></span><span class="line"><span class="cl">$ grep MemTotal /proc/meminfo   <span class="c1"># 查看内存总量</span>
+</span></span><span class="line"><span class="cl">$ grep MemFree /proc/meminfo    <span class="c1"># 查看空闲内存量</span>
+</span></span><span class="line"><span class="cl">$ uptime                        <span class="c1"># 查看系统运行时间、用户数、负载</span>
+</span></span><span class="line"><span class="cl">$ cat /proc/loadavg             <span class="c1"># 查看系统负载</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="磁盘和分区" class="headerLink">
     <a href="#%e7%a3%81%e7%9b%98%e5%92%8c%e5%88%86%e5%8c%ba" class="header-mark"></a>磁盘和分区</h2><div class="highlight"><div class="chroma">
@@ -272,9 +272,9 @@ $ cat /proc/loadavg             <span class="c1"># 查看系统负载</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
-$ fdisk -l                  <span class="c1"># 查看所有分区</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mount <span class="p">|</span> column -t         <span class="c1"># 查看挂接的分区状态</span>
+</span></span><span class="line"><span class="cl">$ fdisk -l                  <span class="c1"># 查看所有分区</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="网络信息" class="headerLink">
     <a href="#%e7%bd%91%e7%bb%9c%e4%bf%a1%e6%81%af" class="header-mark"></a>网络信息</h2><div class="highlight"><div class="chroma">
@@ -287,13 +287,13 @@ $ fdisk -l                  <span class="c1"># 查看所有分区</span>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
-$ iptables -L           <span class="c1"># 查看防火墙设置</span>
-$ route -n              <span class="c1"># 查看路由表</span>
-$ netstat -lntp         <span class="c1"># 查看所有监听端口</span>
-$ netstat -antp         <span class="c1"># 查看所有已经建立的连接</span>
-$ netstat -s            <span class="c1"># 查看网络统计信息</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ip                    <span class="c1"># 查看网络相关信息，具体用法参见 man 手册</span>
+</span></span><span class="line"><span class="cl">$ iptables -L           <span class="c1"># 查看防火墙设置</span>
+</span></span><span class="line"><span class="cl">$ route -n              <span class="c1"># 查看路由表</span>
+</span></span><span class="line"><span class="cl">$ netstat -lntp         <span class="c1"># 查看所有监听端口</span>
+</span></span><span class="line"><span class="cl">$ netstat -antp         <span class="c1"># 查看所有已经建立的连接</span>
+</span></span><span class="line"><span class="cl">$ netstat -s            <span class="c1"># 查看网络统计信息</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="进程查询" class="headerLink">
     <a href="#%e8%bf%9b%e7%a8%8b%e6%9f%a5%e8%af%a2" class="header-mark"></a>进程查询</h2><div class="highlight"><div class="chroma">
@@ -303,10 +303,10 @@ $ netstat -s            <span class="c1"># 查看网络统计信息</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -ef            <span class="c1"># 查看所有进程</span>
-$ top               <span class="c1"># 实时显示进程状态</span>
-$ htop              <span class="c1"># 实时显示进程状态，加强版 top</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -ef            <span class="c1"># 查看所有进程</span>
+</span></span><span class="line"><span class="cl">$ top               <span class="c1"># 实时显示进程状态</span>
+</span></span><span class="line"><span class="cl">$ htop              <span class="c1"># 实时显示进程状态，加强版 top</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="用户信息" class="headerLink">
     <a href="#%e7%94%a8%e6%88%b7%e4%bf%a1%e6%81%af" class="header-mark"></a>用户信息</h2><div class="highlight"><div class="chroma">
@@ -318,12 +318,12 @@ $ htop              <span class="c1"># 实时显示进程状态，加强版 top<
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ w                             <span class="c1"># 查看活动用户</span>
-$ id &lt;用户名&gt;                    <span class="c1"># 查看指定用户信息</span>
-$ last                          <span class="c1"># 查看用户登录日志</span>
-$ cut -d: -f1 /etc/passwd       <span class="c1"># 查看系统所有用户</span>
-$ cut -d: -f1 /etc/group        <span class="c1"># 查看系统所有组</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ w                             <span class="c1"># 查看活动用户</span>
+</span></span><span class="line"><span class="cl">$ id &lt;用户名&gt;                    <span class="c1"># 查看指定用户信息</span>
+</span></span><span class="line"><span class="cl">$ last                          <span class="c1"># 查看用户登录日志</span>
+</span></span><span class="line"><span class="cl">$ cut -d: -f1 /etc/passwd       <span class="c1"># 查看系统所有用户</span>
+</span></span><span class="line"><span class="cl">$ cut -d: -f1 /etc/group        <span class="c1"># 查看系统所有组</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="服务" class="headerLink">
     <a href="#%e6%9c%8d%e5%8a%a1" class="header-mark"></a>服务</h2><div class="highlight"><div class="chroma">
@@ -333,10 +333,10 @@ $ cut -d: -f1 /etc/group        <span class="c1"># 查看系统所有组</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
-$ chkconfig –list               <span class="c1"># 列出所有系统服务</span>
-$ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列出所有启动的系统服务</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ crontab -l                    <span class="c1"># 查看当前用户的计划任务</span>
+</span></span><span class="line"><span class="cl">$ chkconfig –list               <span class="c1"># 列出所有系统服务</span>
+</span></span><span class="line"><span class="cl">$ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列出所有启动的系统服务</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="软件信息" class="headerLink">
     <a href="#%e8%bd%af%e4%bb%b6%e4%bf%a1%e6%81%af" class="header-mark"></a>软件信息</h2><div class="highlight"><div class="chroma">
@@ -347,11 +347,11 @@ $ chkconfig –list <span class="p">|</span> grep on     <span class="c1"># 列�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
-$ pacman -Qmeq                  <span class="c1"># 显示 aur 软件</span>
-$ pacman -Qneq                  <span class="c1"># 显示 pacman 安装的软件</span>
-$ pactree package_name          <span class="c1"># 显示软件的依赖树</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ apt list --installed          <span class="c1"># 显示 apt 安装的软件</span>
+</span></span><span class="line"><span class="cl">$ pacman -Qmeq                  <span class="c1"># 显示 aur 软件</span>
+</span></span><span class="line"><span class="cl">$ pacman -Qneq                  <span class="c1"># 显示 pacman 安装的软件</span>
+</span></span><span class="line"><span class="cl">$ pactree package_name          <span class="c1"># 显示软件的依赖树</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
 </item><item>
@@ -407,8 +407,8 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps <span class="o">[</span>选项<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps <span class="o">[</span>选项<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="选项" class="headerLink">
     <a href="#%e9%80%89%e9%a1%b9" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
@@ -454,46 +454,46 @@ $ pactree package_name          <span class="c1"># 显示软件的依赖树</spa
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-a：          显示所有终端机下执行的程序，除了阶段作业领导者之外。
-a：           显示现行终端机下的所有程序，包括其他用户的程序。
--A：          显示所有程序。
--c：          显示CLS和PRI栏位。
-c：           列出程序时，显示每个程序真正的指令名称，而不包含路径，选项或常驻服务的标示。
--C&lt;指令名称&gt;： 指定执行指令的名称，并列出该指令的程序的状况。
--d：          显示所有程序，但不包括阶段作业领导者的程序。
--e：          此选项的效果和指定&#34;A&#34;选项相同。
-e：           列出程序时，显示每个程序所使用的环境变量。
--f：          显示UID,PPIP,C与STIME栏位。
-f：           用ASCII字符显示树状结构，表达程序间的相互关系。
-g：           显示现行终端机下的所有程序，包括群组领导者的程序。
--G&lt;群组识别码&gt;：列出属于该群组的程序的状况，也可使用群组名称来指定。
-h：           不显示标题列。
--H：          显示树状结构，表示程序间的相互关系。
--j或j：       采用工作控制的格式显示程序状况。
--l或l：       采用详细的格式来显示程序状况。
-L：           列出栏位的相关信息。
--m或m：       显示所有的执行绪。
-n：           以数字来表示USER和WCHAN栏位。
--N：          显示所有的程序，除了执行ps指令终端机下的程序之外。
--p&lt;程序识别码&gt;：指定程序识别码，并列出该程序的状况。
-r：           只列出现行终端机正在执行中的程序。
--s&lt;阶段作业&gt;：  指定阶段作业的程序识别码，并列出隶属该阶段作业的程序的状况。
-s：           采用程序信号的格式显示程序状况。
-S：           列出程序时，包括已中断的子程序资料。
--t&lt;终端机编号&gt;：指定终端机编号，并列出属于该终端机的程序的状况。
--T：          显示现行终端机下的所有程序。
-u：           以用户为主的格式来显示程序状况。
--U&lt;用户识别码&gt;：列出属于该用户的程序的状况，也可使用用户名称来指定。
-U&lt;用户名称&gt;：   列出属于该用户的程序的状况。
-v：           采用虚拟内存的格式显示程序状况。
--V或V：       显示版本信息。
--w或w：       采用宽阔的格式来显示程序状况。　
-x：           显示所有程序，不以终端机来区分。
--y：          配合选项&#34;-l&#34;使用时，不显示F(flag)栏位，并以RSS栏位取代ADDR栏位。
---headers：   重复显示标题列。
---help：      在线帮助。
---info：      显示排错信息。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-a：          显示所有终端机下执行的程序，除了阶段作业领导者之外。
+</span></span><span class="line"><span class="cl">a：           显示现行终端机下的所有程序，包括其他用户的程序。
+</span></span><span class="line"><span class="cl">-A：          显示所有程序。
+</span></span><span class="line"><span class="cl">-c：          显示CLS和PRI栏位。
+</span></span><span class="line"><span class="cl">c：           列出程序时，显示每个程序真正的指令名称，而不包含路径，选项或常驻服务的标示。
+</span></span><span class="line"><span class="cl">-C&lt;指令名称&gt;： 指定执行指令的名称，并列出该指令的程序的状况。
+</span></span><span class="line"><span class="cl">-d：          显示所有程序，但不包括阶段作业领导者的程序。
+</span></span><span class="line"><span class="cl">-e：          此选项的效果和指定&#34;A&#34;选项相同。
+</span></span><span class="line"><span class="cl">e：           列出程序时，显示每个程序所使用的环境变量。
+</span></span><span class="line"><span class="cl">-f：          显示UID,PPIP,C与STIME栏位。
+</span></span><span class="line"><span class="cl">f：           用ASCII字符显示树状结构，表达程序间的相互关系。
+</span></span><span class="line"><span class="cl">g：           显示现行终端机下的所有程序，包括群组领导者的程序。
+</span></span><span class="line"><span class="cl">-G&lt;群组识别码&gt;：列出属于该群组的程序的状况，也可使用群组名称来指定。
+</span></span><span class="line"><span class="cl">h：           不显示标题列。
+</span></span><span class="line"><span class="cl">-H：          显示树状结构，表示程序间的相互关系。
+</span></span><span class="line"><span class="cl">-j或j：       采用工作控制的格式显示程序状况。
+</span></span><span class="line"><span class="cl">-l或l：       采用详细的格式来显示程序状况。
+</span></span><span class="line"><span class="cl">L：           列出栏位的相关信息。
+</span></span><span class="line"><span class="cl">-m或m：       显示所有的执行绪。
+</span></span><span class="line"><span class="cl">n：           以数字来表示USER和WCHAN栏位。
+</span></span><span class="line"><span class="cl">-N：          显示所有的程序，除了执行ps指令终端机下的程序之外。
+</span></span><span class="line"><span class="cl">-p&lt;程序识别码&gt;：指定程序识别码，并列出该程序的状况。
+</span></span><span class="line"><span class="cl">r：           只列出现行终端机正在执行中的程序。
+</span></span><span class="line"><span class="cl">-s&lt;阶段作业&gt;：  指定阶段作业的程序识别码，并列出隶属该阶段作业的程序的状况。
+</span></span><span class="line"><span class="cl">s：           采用程序信号的格式显示程序状况。
+</span></span><span class="line"><span class="cl">S：           列出程序时，包括已中断的子程序资料。
+</span></span><span class="line"><span class="cl">-t&lt;终端机编号&gt;：指定终端机编号，并列出属于该终端机的程序的状况。
+</span></span><span class="line"><span class="cl">-T：          显示现行终端机下的所有程序。
+</span></span><span class="line"><span class="cl">u：           以用户为主的格式来显示程序状况。
+</span></span><span class="line"><span class="cl">-U&lt;用户识别码&gt;：列出属于该用户的程序的状况，也可使用用户名称来指定。
+</span></span><span class="line"><span class="cl">U&lt;用户名称&gt;：   列出属于该用户的程序的状况。
+</span></span><span class="line"><span class="cl">v：           采用虚拟内存的格式显示程序状况。
+</span></span><span class="line"><span class="cl">-V或V：       显示版本信息。
+</span></span><span class="line"><span class="cl">-w或w：       采用宽阔的格式来显示程序状况。　
+</span></span><span class="line"><span class="cl">x：           显示所有程序，不以终端机来区分。
+</span></span><span class="line"><span class="cl">-y：          配合选项&#34;-l&#34;使用时，不显示F(flag)栏位，并以RSS栏位取代ADDR栏位。
+</span></span><span class="line"><span class="cl">--headers：   重复显示标题列。
+</span></span><span class="line"><span class="cl">--help：      在线帮助。
+</span></span><span class="line"><span class="cl">--info：      显示排错信息。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="实例" class="headerLink">
     <a href="#%e5%ae%9e%e4%be%8b" class="header-mark"></a>实例</h3><p>显示所有运行中的进程：</p>
@@ -502,8 +502,8 @@ x：           显示所有程序，不以终端机来区分。
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> less
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps aux <span class="p">|</span> less
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看系统中的每个进程：</p>
 <div class="highlight"><div class="chroma">
@@ -513,10 +513,10 @@ x：           显示所有程序，不以终端机来区分。
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -A
-或
-$ ps -e
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -A
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl">$ ps -e
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看非 root 运行的进程：</p>
 <div class="highlight"><div class="chroma">
@@ -524,8 +524,8 @@ $ ps -e
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -U root -u root -N
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -U root -u root -N
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看用户 xxx 运行的进程</p>
 <div class="highlight"><div class="chroma">
@@ -533,8 +533,8 @@ $ ps -e
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -u xxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -u xxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>获得线程信息：</p>
 <div class="highlight"><div class="chroma">
@@ -543,9 +543,9 @@ $ ps -e
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -eLf
-$ ps axms
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -eLf
+</span></span><span class="line"><span class="cl">$ ps axms
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>获得安全信息：</p>
 <div class="highlight"><div class="chroma">
@@ -555,10 +555,10 @@ $ ps axms
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -eo euser,ruser,suser,fuser,f,comm,label
-$ ps axZ
-$ ps -eM
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -eo euser,ruser,suser,fuser,f,comm,label
+</span></span><span class="line"><span class="cl">$ ps axZ
+</span></span><span class="line"><span class="cl">$ ps -eM
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示进程的树状图：</p>
 <div class="highlight"><div class="chroma">
@@ -567,9 +567,9 @@ $ ps -eM
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps -ejH
-$ ps axjf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps -ejH
+</span></span><span class="line"><span class="cl">$ ps axjf
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此外 pstree 也可以以树状显示正在运行的进程。树的根节点为 pid 或 init。如果指定了用户名，进程树将以用户所拥有的进程作为根节点。</p>
 <div class="highlight"><div class="chroma">
@@ -577,8 +577,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pstree
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pstree
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查找进程：</p>
 <p>ps 可以打搭配 grep 进行指定关键词进程的查找：</p>
@@ -587,8 +587,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ps aux <span class="p">|</span> grep zsh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps aux <span class="p">|</span> grep zsh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此外使用 pgrep 也能查找当前正在运行的进程并列出符合条件的进程 ID。</p>
 <p>例如显示 firefox 的进程 ID：</p>
@@ -597,8 +597,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep firefox
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pgrep firefox
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示进程名为 sshd、所有者为 root 的进程：</p>
 <div class="highlight"><div class="chroma">
@@ -606,8 +606,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep -u root sshd
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pgrep -u root sshd
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="top-命令" class="headerLink">
     <a href="#top-%e5%91%bd%e4%bb%a4" class="header-mark"></a>top 命令</h2><p>top 命令提供了运行中系统的动态实时视图。</p>
@@ -617,8 +617,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top <span class="o">[</span>参数<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ top <span class="o">[</span>参数<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="参数" class="headerLink">
     <a href="#%e5%8f%82%e6%95%b0" class="header-mark"></a>参数</h3><div class="highlight"><div class="chroma">
@@ -634,16 +634,16 @@ $ ps axjf
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-b        批处理
--c        显示完整的治命令
--I        忽略失效过程
--s        保密模式
--S        累积模式
--i&lt;时间&gt;   设置间隔时间
--u&lt;用户名&gt; 指定用户名
--p&lt;进程号&gt; 指定进程
--n&lt;次数&gt;   循环显示的次数
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-b        批处理
+</span></span><span class="line"><span class="cl">-c        显示完整的治命令
+</span></span><span class="line"><span class="cl">-I        忽略失效过程
+</span></span><span class="line"><span class="cl">-s        保密模式
+</span></span><span class="line"><span class="cl">-S        累积模式
+</span></span><span class="line"><span class="cl">-i&lt;时间&gt;   设置间隔时间
+</span></span><span class="line"><span class="cl">-u&lt;用户名&gt; 指定用户名
+</span></span><span class="line"><span class="cl">-p&lt;进程号&gt; 指定进程
+</span></span><span class="line"><span class="cl">-n&lt;次数&gt;   循环显示的次数
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-sub-html="<h2>top 命令</h2>">
         
@@ -657,8 +657,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 &gt; /tmp/process.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ top -b -n1 &gt; /tmp/process.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将结果通过邮件发送：</p>
 <div class="highlight"><div class="chroma">
@@ -666,8 +666,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ top -b -n1 <span class="p">|</span> mail -s <span class="s1">&#39;Process snapshot&#39;</span> you@example.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ top -b -n1 <span class="p">|</span> mail -s <span class="s1">&#39;Process snapshot&#39;</span> you@example.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="htop" class="headerLink">
     <a href="#htop" class="header-mark"></a>Htop</h2><p>Htop 是一个类似 top 的交互式进程查看工具，可以垂直和水平滚动来查看所有进程和他们的命令行。进程的相关操作(killing，renicing)不需要输入 PID。Htop 一般需要自行安装。</p>
@@ -676,8 +676,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ htop
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ htop
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-sub-html="<h2>Htop 命令</h2>">
         
@@ -690,8 +690,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ atop
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ atop
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-sub-html="<h2>atop 命令</h2>">
         
@@ -724,8 +724,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">df <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>参数<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">df <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>参数<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="选项" class="headerLink">
     <a href="#%e9%80%89%e9%a1%b9" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
@@ -748,23 +748,23 @@ $ ps axjf
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-a或--all                                    包含全部的文件系统；
---block-size<span class="o">=</span>&lt;区块大小&gt;                       以指定的区块大小来显示区块数目；
--h或--human-readable                         以可读性较高的方式来显示信息；
--H或--si                                     与-h参数相同，但在计算时是以1000 Bytes为换算单位而非1024 Bytes；
--i或--inodes                                 显示inode的信息；
--k或--kilobytes                              指定区块大小为1024字节；
--l或--local                                  仅显示本地端的文件系统；
--m或--megabytes                              指定区块大小为1048576字节；
---no-sync                                    在取得磁盘使用信息前，不要执行sync指令，此为预设值；
--P或--portability                            使用POSIX的输出格式；
---sync                                       在取得磁盘使用信息前，先执行sync指令；
--t&lt;文件系统类型&gt;或--type<span class="o">=</span>&lt;文件系统类型&gt;          仅显示指定文件系统类型的磁盘信息；
--T或--print-type                             显示文件系统的类型；
--x&lt;文件系统类型&gt;或--exclude-type<span class="o">=</span>&lt;文件系统类型&gt;  不要显示指定文件系统类型的磁盘信息；
---help                                       显示帮助；
---version                                    显示版本信息。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-a或--all                                    包含全部的文件系统；
+</span></span><span class="line"><span class="cl">--block-size<span class="o">=</span>&lt;区块大小&gt;                       以指定的区块大小来显示区块数目；
+</span></span><span class="line"><span class="cl">-h或--human-readable                         以可读性较高的方式来显示信息；
+</span></span><span class="line"><span class="cl">-H或--si                                     与-h参数相同，但在计算时是以1000 Bytes为换算单位而非1024 Bytes；
+</span></span><span class="line"><span class="cl">-i或--inodes                                 显示inode的信息；
+</span></span><span class="line"><span class="cl">-k或--kilobytes                              指定区块大小为1024字节；
+</span></span><span class="line"><span class="cl">-l或--local                                  仅显示本地端的文件系统；
+</span></span><span class="line"><span class="cl">-m或--megabytes                              指定区块大小为1048576字节；
+</span></span><span class="line"><span class="cl">--no-sync                                    在取得磁盘使用信息前，不要执行sync指令，此为预设值；
+</span></span><span class="line"><span class="cl">-P或--portability                            使用POSIX的输出格式；
+</span></span><span class="line"><span class="cl">--sync                                       在取得磁盘使用信息前，先执行sync指令；
+</span></span><span class="line"><span class="cl">-t&lt;文件系统类型&gt;或--type<span class="o">=</span>&lt;文件系统类型&gt;          仅显示指定文件系统类型的磁盘信息；
+</span></span><span class="line"><span class="cl">-T或--print-type                             显示文件系统的类型；
+</span></span><span class="line"><span class="cl">-x&lt;文件系统类型&gt;或--exclude-type<span class="o">=</span>&lt;文件系统类型&gt;  不要显示指定文件系统类型的磁盘信息；
+</span></span><span class="line"><span class="cl">--help                                       显示帮助；
+</span></span><span class="line"><span class="cl">--version                                    显示版本信息。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="du" class="headerLink">
     <a href="#du" class="header-mark"></a>du</h2><p>du 命令是查看文件和目录磁盘使用的空间。</p>
@@ -774,8 +774,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">du <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>文件<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">du <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>文件<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="选项-1" class="headerLink">
     <a href="#%e9%80%89%e9%a1%b9-1" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
@@ -797,22 +797,22 @@ $ ps axjf
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-a或-all                                显示目录中个别文件的大小。
--b或-bytes                              显示目录或文件大小时，以byte为单位。
--c或--total                             除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。
--k或--kilobytes                         以KB<span class="o">(</span>1024bytes<span class="o">)</span>为单位输出。
--m或--megabytes                         以MB为单位输出。
--s或--summarize                         仅显示总计，只列出最后加总的值。
--h或--human-readable                    以K，M，G为单位，提高信息的可读性。
--x或--one-file-xystem                   以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。
--L&lt;符号链接&gt;或--dereference&lt;符号链接&gt;      显示选项中所指定符号链接的源文件大小。
--S或--separate-dirs                     显示个别目录的大小时，并不含其子目录的大小。
--X&lt;文件&gt;或--exclude-from<span class="o">=</span>&lt;文件&gt;          在&lt;文件&gt;指定目录或文件。
---exclude<span class="o">=</span>&lt;目录或文件&gt;                   略过指定的目录或文件。
--D或--dereference-args                  显示指定符号链接的源文件大小。
--H或--si                                与-h参数相同，但是K，M，G是以1000为换算单位。
--l或--count-links                       重复计算硬件链接的文件。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-a或-all                                显示目录中个别文件的大小。
+</span></span><span class="line"><span class="cl">-b或-bytes                              显示目录或文件大小时，以byte为单位。
+</span></span><span class="line"><span class="cl">-c或--total                             除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。
+</span></span><span class="line"><span class="cl">-k或--kilobytes                         以KB<span class="o">(</span>1024bytes<span class="o">)</span>为单位输出。
+</span></span><span class="line"><span class="cl">-m或--megabytes                         以MB为单位输出。
+</span></span><span class="line"><span class="cl">-s或--summarize                         仅显示总计，只列出最后加总的值。
+</span></span><span class="line"><span class="cl">-h或--human-readable                    以K，M，G为单位，提高信息的可读性。
+</span></span><span class="line"><span class="cl">-x或--one-file-xystem                   以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。
+</span></span><span class="line"><span class="cl">-L&lt;符号链接&gt;或--dereference&lt;符号链接&gt;      显示选项中所指定符号链接的源文件大小。
+</span></span><span class="line"><span class="cl">-S或--separate-dirs                     显示个别目录的大小时，并不含其子目录的大小。
+</span></span><span class="line"><span class="cl">-X&lt;文件&gt;或--exclude-from<span class="o">=</span>&lt;文件&gt;          在&lt;文件&gt;指定目录或文件。
+</span></span><span class="line"><span class="cl">--exclude<span class="o">=</span>&lt;目录或文件&gt;                   略过指定的目录或文件。
+</span></span><span class="line"><span class="cl">-D或--dereference-args                  显示指定符号链接的源文件大小。
+</span></span><span class="line"><span class="cl">-H或--si                                与-h参数相同，但是K，M，G是以1000为换算单位。
+</span></span><span class="line"><span class="cl">-l或--count-links                       重复计算硬件链接的文件。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="实例" class="headerLink">
     <a href="#%e5%ae%9e%e4%be%8b" class="header-mark"></a>实例</h3><p>按文件大小排序：</p>
@@ -821,8 +821,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du -sh * <span class="p">|</span> sort -h
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du -sh * <span class="p">|</span> sort -h
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示目录或者文件所占空间：</p>
 <div class="highlight"><div class="chroma">
@@ -830,8 +830,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示指定文件所占空间：</p>
 <div class="highlight"><div class="chroma">
@@ -839,8 +839,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du xxxxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du xxxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看指定目录的所占空间：</p>
 <div class="highlight"><div class="chroma">
@@ -848,8 +848,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du scf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du scf
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示多个文件所占空间：</p>
 <div class="highlight"><div class="chroma">
@@ -859,10 +859,10 @@ $ ps axjf
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du xxxx.tar.gz yyyy.tar.gz
-<span class="m">4</span> xxxx.tar.gz
-<span class="m">4</span> yyyy.tar.gz
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du xxxx.tar.gz yyyy.tar.gz
+</span></span><span class="line"><span class="cl"><span class="m">4</span> xxxx.tar.gz
+</span></span><span class="line"><span class="cl"><span class="m">4</span> yyyy.tar.gz
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>只显示总和的大小:</p>
 <div class="highlight"><div class="chroma">
@@ -871,9 +871,9 @@ $ ps axjf
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du -s
-<span class="m">1288</span> .
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du -s
+</span></span><span class="line"><span class="cl"><span class="m">1288</span> .
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -881,9 +881,9 @@ $ ps axjf
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ du -s scf
-<span class="m">32</span> scf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ du -s scf
+</span></span><span class="line"><span class="cl"><span class="m">32</span> scf
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示总和的大小且易读:</p>
 <div class="highlight"><div class="chroma">
@@ -891,8 +891,8 @@ $ ps axjf
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">du -sh <span class="se">\$</span>dir
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">du -sh <span class="se">\$</span>dir
+</span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
 </item></channel>

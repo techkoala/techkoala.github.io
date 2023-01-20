@@ -46,8 +46,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log —oneline
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log —oneline
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>该命令帮助您以更清晰的方式查看提交。每个提交仅显示为一行，并且只有最少量的信息，比如提交哈希、提交消息。</p>
 <h2 id="显示详细更改信息" class="headerLink">
@@ -56,8 +56,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -p
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log -p
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此命令会显示更新的详细更改信息，方便查阅。</p>
 <h2 id="根据时间筛选" class="headerLink">
@@ -66,16 +66,16 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;2020-15-05&#34;</span> --before<span class="o">=</span><span class="s2">&#34;2020-25-05&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -90,16 +90,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
-
-$ git log --before<span class="o">=</span><span class="s2">&#34;10 day ago&#34;</span> // 显示最近十天的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> // 显示上周以来的提交
-
-$ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;</span> // 显示近两个月的提交
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span> // 显示昨天的提交
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;today&#34;</span> // 显示今天的提交
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ git log --before<span class="o">=</span><span class="s2">&#34;10 day ago&#34;</span> // 显示最近十天的提交
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> // 显示上周以来的提交
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;</span> // 显示近两个月的提交
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述命令将按给定的时间段过滤出提交。 例如，<code>--after</code> 将仅筛选给定时间段之后的提交，而 <code>--before</code> 将仅筛选给定时间段之前的提交。</p>
 <h2 id="根据作者筛选" class="headerLink">
@@ -108,8 +108,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>该命令会显示由 techkoala 提交的更改。当然，可以结合上面介绍的命令，进行更加精确的筛选，例如：</p>
 <div class="highlight"><div class="chroma">
@@ -117,8 +117,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --after<span class="o">=</span><span class="s2">&#34;1 week ago&#34;</span> --author<span class="o">=</span><span class="s2">&#34;techkoala&#34;</span> -p
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="根据-log-信息筛选" class="headerLink">
     <a href="#%e6%a0%b9%e6%8d%ae-log-%e4%bf%a1%e6%81%af%e7%ad%9b%e9%80%89" class="header-mark"></a>根据 log 信息筛选</h2><div class="highlight"><div class="chroma">
@@ -126,8 +126,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --grep<span class="o">=</span><span class="s2">&#34;ISSUE-43560&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>需要注意的是，上述筛选字段区分大小写，如果需要不区分，请加上 <code>-i</code> 选项。</p>
 <p>此外，还支持正则表达式：</p>
@@ -136,8 +136,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;issue-43560\|issue-89786&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="根据文件筛选" class="headerLink">
     <a href="#%e6%a0%b9%e6%8d%ae%e6%96%87%e4%bb%b6%e7%ad%9b%e9%80%89" class="header-mark"></a>根据文件筛选</h2><div class="highlight"><div class="chroma">
@@ -145,8 +145,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log Git_Log.md
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>该命令显示针对特定文件的的提交历史。</p>
 <p>当然，可以传入多个文件：</p>
@@ -155,8 +155,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log Git_Log.md Github_Issue.md
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log Git_Log.md Github_Issue.md
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同样的，结合别的命令可以做出更精确的筛选，例如：</p>
 <div class="highlight"><div class="chroma">
@@ -164,8 +164,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log -i --grep<span class="o">=</span><span class="s2">&#34;fix &#34;</span> Git_Log.md Github_Issue.md
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="根据文件内容筛选" class="headerLink">
     <a href="#%e6%a0%b9%e6%8d%ae%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9%e7%ad%9b%e9%80%89" class="header-mark"></a>根据文件内容筛选</h2><div class="highlight"><div class="chroma">
@@ -173,8 +173,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -S<span class="s2">&#34;function login()&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log -S<span class="s2">&#34;function login()&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述命令帮你在源代码中搜索已添加到提交历史记录中的特定字符串。同样的，加上 <code>-i</code> 可以不区分大小写。</p>
 <h2 id="仅显示合并提交" class="headerLink">
@@ -183,8 +183,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --merges
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --merges
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>该命令显示当前分支上合并的提交。</p>
 <h2 id="显示不同分支间的区别" class="headerLink">
@@ -193,8 +193,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log master..develop
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log master..develop
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>该命令将显示所有来自 <code>develop</code> 但不在 <code>master</code> 分支的提交。</p>
 <h2 id="自定义-log-信息格式" class="headerLink">
@@ -203,8 +203,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log --pretty<span class="o">=</span>format:<span class="s2">&#34;%Cred%an - %ar%n %Cblue %h -%Cgreen %s %n&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Git 提供了用于自定义日志消息格式的选项，你可以查看自定义漂亮选项（custom pretty options ）以获得更多选项。</p>
 <h2 id="参考" class="headerLink">
@@ -232,8 +232,8 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh -vT git@github.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ssh -vT git@github.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>​ 然后确认您的私钥已生成并加载到 <code>SSH</code>。 如果使用的是 <code>OpenSSH 6.7</code> 或更早版本：</p>
 <div class="highlight"><div class="chroma">
@@ -245,12 +245,12 @@ $ git log --after<span class="o">=</span><span class="s2">&#34;2 month ago&#34;<
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
-$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
-&gt; Agent pid <span class="m">59566</span>
-$ ssh-add -l
-&gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 在后台启动 ssh-agent</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; Agent pid <span class="m">59566</span>
+</span></span><span class="line"><span class="cl">$ ssh-add -l
+</span></span><span class="line"><span class="cl">&gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>​ 如果使用的是 <code>OpenSSH 6.8</code> 或更新版本：</p>
 <div class="highlight"><div class="chroma">
@@ -262,12 +262,12 @@ $ ssh-add -l
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在后台启动 ssh-agent</span>
-$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
-&gt; Agent pid <span class="m">59566</span>
-$ ssh-add -l -E md5
-&gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 在后台启动 ssh-agent</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; Agent pid <span class="m">59566</span>
+</span></span><span class="line"><span class="cl">$ ssh-add -l -E md5
+</span></span><span class="line"><span class="cl">&gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/you/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="确认公钥已附加到账户" class="headerLink">
     <a href="#%e7%a1%ae%e8%ae%a4%e5%85%ac%e9%92%a5%e5%b7%b2%e9%99%84%e5%8a%a0%e5%88%b0%e8%b4%a6%e6%88%b7" class="header-mark"></a>确认公钥已附加到账户</h3><p>​ 在后台启动 <code>SSH</code> 代理程序。</p>
@@ -277,9 +277,9 @@ $ ssh-add -l -E md5
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
-&gt; Agent pid <span class="m">59566</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; Agent pid <span class="m">59566</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>​ 找到并记录公钥指纹。 如果使用的是 <code>OpenSSH 6.7</code> 或更早版本：</p>
 <div class="highlight"><div class="chroma">
@@ -288,9 +288,9 @@ $ ssh-add -l -E md5
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l
-&gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ssh-add -l
+</span></span><span class="line"><span class="cl">&gt; <span class="m">2048</span> a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>​ 如果使用的是 <code>OpenSSH 6.8</code> 或更新版本：</p>
 <div class="highlight"><div class="chroma">
@@ -299,9 +299,9 @@ $ ssh-add -l -E md5
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -l -E md5
-&gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ssh-add -l -E md5
+</span></span><span class="line"><span class="cl">&gt; <span class="m">2048</span> MD5:a0:dd:42:3c:5a:9d:e4:2a:21:52:4e:78:07:6e:c8:4d /Users/USERNAME/.ssh/id_rsa <span class="o">(</span>RSA<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果没有添加，则</p>
 <div class="highlight"><div class="chroma">
@@ -309,8 +309,8 @@ $ ssh-add -l -E md5
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add /xxx/.ssh/xxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ssh-add /xxx/.ssh/xxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">

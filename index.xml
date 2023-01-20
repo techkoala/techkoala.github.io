@@ -244,19 +244,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~$ df -h
-Filesystem Size Used Avail Use% Mounted on
-udev 1.9G <span class="m">0</span> 1.9G 0% /dev
-tmpfs 394M 1.1M 393M 1% /run
-/dev/mapper/ubuntu--vg-ubuntu--lv 3.9G 3.2G 489M 87% /
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
-tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
-/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
-/dev/sda2 976M 77M 833M 9% /boot
-/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
-tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~$ df -h
+</span></span><span class="line"><span class="cl">Filesystem Size Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">udev 1.9G <span class="m">0</span> 1.9G 0% /dev
+</span></span><span class="line"><span class="cl">tmpfs 394M 1.1M 393M 1% /run
+</span></span><span class="line"><span class="cl">/dev/mapper/ubuntu--vg-ubuntu--lv 3.9G 3.2G 489M 87% /
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
+</span></span><span class="line"><span class="cl">/dev/sda2 976M 77M 833M 9% /boot
+</span></span><span class="line"><span class="cl">/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
+</span></span><span class="line"><span class="cl">tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>接下来，在输出中可以看出实际上还有更多可用空间未利用。例如 /dev/sda3 卷上有 24G。另一个 1GB 用于启动卷和 BIOS 启动</p>
 <div class="highlight"><div class="chroma">
@@ -294,38 +294,38 @@ tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# fdisk -l
-Disk /dev/loop0: 88.5 MiB, <span class="m">92778496</span> bytes, <span class="m">181208</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-
-
-Disk /dev/loop1: <span class="m">89</span> MiB, <span class="m">93327360</span> bytes, <span class="m">182280</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-
-...
-
-Disk /dev/sda: <span class="m">25</span> GiB, <span class="m">26843545600</span> bytes, <span class="m">52428800</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
-Disklabel type: gpt
-Disk identifier: ED41F7A6-5D09-457B-A55C-C7F1E30DE419
-
-Device Start End Sectors Size Type
-/dev/sda1 <span class="m">2048</span> <span class="m">4095</span> <span class="m">2048</span> 1M BIOS boot
-/dev/sda2 <span class="m">4096</span> <span class="m">2101247</span> <span class="m">2097152</span> 1G Linux filesystem
-/dev/sda3 <span class="m">2101248</span> <span class="m">52426751</span> <span class="m">50325504</span> 24G Linux filesystem
-
-
-Disk /dev/mapper/ubuntu--vg-ubuntu--lv: <span class="m">4</span> GiB, <span class="m">4294967296</span> bytes, <span class="m">8388608</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# fdisk -l
+</span></span><span class="line"><span class="cl">Disk /dev/loop0: 88.5 MiB, <span class="m">92778496</span> bytes, <span class="m">181208</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/loop1: <span class="m">89</span> MiB, <span class="m">93327360</span> bytes, <span class="m">182280</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/sda: <span class="m">25</span> GiB, <span class="m">26843545600</span> bytes, <span class="m">52428800</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
+</span></span><span class="line"><span class="cl">Disklabel type: gpt
+</span></span><span class="line"><span class="cl">Disk identifier: ED41F7A6-5D09-457B-A55C-C7F1E30DE419
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Device Start End Sectors Size Type
+</span></span><span class="line"><span class="cl">/dev/sda1 <span class="m">2048</span> <span class="m">4095</span> <span class="m">2048</span> 1M BIOS boot
+</span></span><span class="line"><span class="cl">/dev/sda2 <span class="m">4096</span> <span class="m">2101247</span> <span class="m">2097152</span> 1G Linux filesystem
+</span></span><span class="line"><span class="cl">/dev/sda3 <span class="m">2101248</span> <span class="m">52426751</span> <span class="m">50325504</span> 24G Linux filesystem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/mapper/ubuntu--vg-ubuntu--lv: <span class="m">4</span> GiB, <span class="m">4294967296</span> bytes, <span class="m">8388608</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="调整虚拟机磁盘大小" class="headerLink">
     <a href="#%e8%b0%83%e6%95%b4%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%a3%81%e7%9b%98%e5%a4%a7%e5%b0%8f" class="header-mark"></a>调整虚拟机磁盘大小</h3><p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
@@ -352,24 +352,24 @@ I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span 
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# parted
-GNU Parted 3.2
-Using /dev/sda
-Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
-<span class="o">(</span>parted<span class="o">)</span> print
-Model: Msft Virtual Disk <span class="o">(</span>scsi<span class="o">)</span>
-Disk /dev/sda: 26.8GB
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/4096B
-Partition Table: gpt
-Disk Flags:
-
-Number Start End Size File system Name Flags
-<span class="m">1</span> 1049kB 2097kB 1049kB bios_grub
-<span class="m">2</span> 2097kB 1076MB 1074MB ext4
-<span class="m">3</span> 1076MB 26.8GB 25.8GB
-
-<span class="o">(</span>parted<span class="o">)</span> quit
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# parted
+</span></span><span class="line"><span class="cl">GNU Parted 3.2
+</span></span><span class="line"><span class="cl">Using /dev/sda
+</span></span><span class="line"><span class="cl">Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> print
+</span></span><span class="line"><span class="cl">Model: Msft Virtual Disk <span class="o">(</span>scsi<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Disk /dev/sda: 26.8GB
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/4096B
+</span></span><span class="line"><span class="cl">Partition Table: gpt
+</span></span><span class="line"><span class="cl">Disk Flags:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number Start End Size File system Name Flags
+</span></span><span class="line"><span class="cl"><span class="m">1</span> 1049kB 2097kB 1049kB bios_grub
+</span></span><span class="line"><span class="cl"><span class="m">2</span> 2097kB 1076MB 1074MB ext4
+</span></span><span class="line"><span class="cl"><span class="m">3</span> 1076MB 26.8GB 25.8GB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> quit
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -384,16 +384,16 @@ Number Start End Size File system Name Flags
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# parted
-GNU Parted 3.2
-Using /dev/sda
-Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
-<span class="o">(</span>parted<span class="o">)</span> resizepart
-Partition number? <span class="m">3</span>
-End? <span class="o">[</span>26.8GB<span class="o">]</span>?
-<span class="o">(</span>parted<span class="o">)</span> quit
-Information: You may need to update /etc/fstab.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# parted
+</span></span><span class="line"><span class="cl">GNU Parted 3.2
+</span></span><span class="line"><span class="cl">Using /dev/sda
+</span></span><span class="line"><span class="cl">Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> resizepart
+</span></span><span class="line"><span class="cl">Partition number? <span class="m">3</span>
+</span></span><span class="line"><span class="cl">End? <span class="o">[</span>26.8GB<span class="o">]</span>?
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> quit
+</span></span><span class="line"><span class="cl">Information: You may need to update /etc/fstab.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -402,10 +402,10 @@ Information: You may need to update /etc/fstab.
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# pvresize /dev/sda3
-Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
-<span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# pvresize /dev/sda3
+</span></span><span class="line"><span class="cl">Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
+</span></span><span class="line"><span class="cl"><span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="扩容" class="headerLink">
     <a href="#%e6%89%a9%e5%ae%b9" class="header-mark"></a>扩容</h3><p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
@@ -418,12 +418,12 @@ Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
-resize2fs 1.44.1 <span class="o">(</span>24-Mar-2018<span class="o">)</span>
-Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;</span> on-line resizing required
-<span class="nv">old_desc_blocks</span> <span class="o">=</span> 1, <span class="nv">new_desc_blocks</span> <span class="o">=</span> <span class="m">3</span>
-The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+</span></span><span class="line"><span class="cl">resize2fs 1.44.1 <span class="o">(</span>24-Mar-2018<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;</span> on-line resizing required
+</span></span><span class="line"><span class="cl"><span class="nv">old_desc_blocks</span> <span class="o">=</span> 1, <span class="nv">new_desc_blocks</span> <span class="o">=</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="确认" class="headerLink">
     <a href="#%e7%a1%ae%e8%ae%a4" class="header-mark"></a>确认</h3><div class="highlight"><div class="chroma">
@@ -443,20 +443,20 @@ The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">60293
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# df -h
-Filesystem Size Used Avail Use% Mounted on
-udev 1.9G <span class="m">0</span> 1.9G 0% /dev
-tmpfs 394M 1.1M 393M 1% /run
-/dev/mapper/ubuntu--vg-ubuntu--lv 23G 3.2G 19G 15% /
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
-tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
-/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
-/dev/sda2 976M 77M 833M 9% /boot
-/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
-tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
-user@server:~#
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# df -h
+</span></span><span class="line"><span class="cl">Filesystem Size Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">udev 1.9G <span class="m">0</span> 1.9G 0% /dev
+</span></span><span class="line"><span class="cl">tmpfs 394M 1.1M 393M 1% /run
+</span></span><span class="line"><span class="cl">/dev/mapper/ubuntu--vg-ubuntu--lv 23G 3.2G 19G 15% /
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
+</span></span><span class="line"><span class="cl">/dev/sda2 976M 77M 833M 9% /boot
+</span></span><span class="line"><span class="cl">/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
+</span></span><span class="line"><span class="cl">tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
+</span></span><span class="line"><span class="cl">user@server:~#
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -483,8 +483,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim ~/.bashrc
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -496,8 +496,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
@@ -505,8 +505,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
@@ -514,8 +514,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
 <h2 id="设置历史记录数量" class="headerLink">
@@ -526,9 +526,9 @@ user@server:~#
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
-<span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">shopt</span> -s histappend
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="更有效的调用命令" class="headerLink">
     <a href="#%e6%9b%b4%e6%9c%89%e6%95%88%e7%9a%84%e8%b0%83%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>更有效的调用命令</h2><p><code>!!</code>可以调用前一行的命令。</p>
@@ -542,12 +542,12 @@ user@server:~#
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
-/etc
-$ !!
-<span class="nb">pwd</span>
-/etc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/etc
+</span></span><span class="line"><span class="cl">$ !!
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/etc
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
@@ -555,8 +555,8 @@ $ !!
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo !!
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
@@ -579,22 +579,22 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
-$ mkdir temp
-$ touch temp/test
-$ !!
-touch temp/test
-$ <span class="nb">history</span> <span class="p">|</span> tail -4
-  <span class="m">179</span>  rm -r temp/
-  <span class="m">180</span>  mkdir temp
-  <span class="m">181</span>  touch temp/test
-  <span class="m">182</span>  touch temp/test
-  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
-$ !179:p
-rm -r temp
-$ !180
-touch temp/test
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm -r temp/
+</span></span><span class="line"><span class="cl">$ mkdir temp
+</span></span><span class="line"><span class="cl">$ touch temp/test
+</span></span><span class="line"><span class="cl">$ !!
+</span></span><span class="line"><span class="cl">touch temp/test
+</span></span><span class="line"><span class="cl">$ <span class="nb">history</span> <span class="p">|</span> tail -4
+</span></span><span class="line"><span class="cl">  <span class="m">179</span>  rm -r temp/
+</span></span><span class="line"><span class="cl">  <span class="m">180</span>  mkdir temp
+</span></span><span class="line"><span class="cl">  <span class="m">181</span>  touch temp/test
+</span></span><span class="line"><span class="cl">  <span class="m">182</span>  touch temp/test
+</span></span><span class="line"><span class="cl">  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
+</span></span><span class="line"><span class="cl">$ !179:p
+</span></span><span class="line"><span class="cl">rm -r temp
+</span></span><span class="line"><span class="cl">$ !180
+</span></span><span class="line"><span class="cl">touch temp/test
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
@@ -602,8 +602,8 @@ touch temp/test
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ !ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
 <p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
@@ -618,12 +618,12 @@ touch temp/test
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
-$ vim !$
-vim items.txt
-$ cp !$ shopping.txt
-cp items.txt shopping.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mv list.txt items.txt
+</span></span><span class="line"><span class="cl">$ vim !$
+</span></span><span class="line"><span class="cl">vim items.txt
+</span></span><span class="line"><span class="cl">$ cp !$ shopping.txt
+</span></span><span class="line"><span class="cl">cp items.txt shopping.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数。</p>
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
@@ -634,10 +634,10 @@ cp items.txt shopping.txt
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
-$ touch !*
-touch /var/log/httpd/access.log /var/log/httpd/error.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+</span></span><span class="line"><span class="cl">$ touch !*
+</span></span><span class="line"><span class="cl">touch /var/log/httpd/access.log /var/log/httpd/error.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="用--替换前一行的匹配词" class="headerLink">
     <a href="#%e7%94%a8--%e6%9b%bf%e6%8d%a2%e5%89%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%8c%b9%e9%85%8d%e8%af%8d" class="header-mark"></a>用 ^ 替换前一行的匹配词</h2><p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
@@ -648,10 +648,10 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
-$ ^error^access
-rm /var/log/httpd/access.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm /var/log/httpd/error.log
+</span></span><span class="line"><span class="cl">$ ^error^access
+</span></span><span class="line"><span class="cl">rm /var/log/httpd/access.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -685,12 +685,12 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 创建 FreshRSS 目录并进入
-mkdir ~/freshrss &amp;&amp; cd ~/freshrss
-
-# 新建&amp;编辑配置文件
-vim docker-compose.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 创建 FreshRSS 目录并进入
+</span></span><span class="line"><span class="cl">mkdir ~/freshrss &amp;&amp; cd ~/freshrss
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 新建&amp;编辑配置文件
+</span></span><span class="line"><span class="cl">vim docker-compose.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="docker-composeyml" class="headerLink">
     <a href="#docker-composeyml" class="header-mark"></a>docker-compose.yml</h3><p>配置文件内容见下：</p>
@@ -733,42 +733,42 @@ vim docker-compose.yml
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ~/freshrss/docker-compose.yml
-
-version: &#34;3&#34;
-
-services:
-  freshrss-db:
-    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
-    container_name: freshrss-db
-    hostname: freshrss-db
-    restart: always
-    volumes:
-      - freshrss-db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
-      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
-      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
-
-  freshrss-app:
-    image: freshrss/freshrss:latest
-    container_name: freshrss-app
-    hostname: freshrss-app
-    restart: always
-    ports:
-      - &#34;39954:80&#34;                   # 映射端口
-    depends_on:
-      - freshrss-db
-    volumes:
-      - ./data:/var/www/FreshRSS/data
-      - ./extensions:/var/www/FreshRSS/extensions
-    environment:
-      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
-      TZ: Asia/Shanghai            # 时区
-
-volumes:
-  freshrss-db:
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ~/freshrss/docker-compose.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">version: &#34;3&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  freshrss-db:
+</span></span><span class="line"><span class="cl">    image: postgres:latest            # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+</span></span><span class="line"><span class="cl">    container_name: freshrss-db
+</span></span><span class="line"><span class="cl">    hostname: freshrss-db
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - freshrss-db:/var/lib/postgresql/data
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      POSTGRES_USER: freshrss       # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">      POSTGRES_PASSWORD: freshrss   # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  freshrss-app:
+</span></span><span class="line"><span class="cl">    image: freshrss/freshrss:latest
+</span></span><span class="line"><span class="cl">    container_name: freshrss-app
+</span></span><span class="line"><span class="cl">    hostname: freshrss-app
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - &#34;39954:80&#34;                   # 映射端口
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - freshrss-db
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./data:/var/www/FreshRSS/data
+</span></span><span class="line"><span class="cl">      - ./extensions:/var/www/FreshRSS/extensions
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      CRON_MIN: &#39;*/45&#39;             # RSS 刷新周期，单位为分钟，*/45 表示每 45 分钟刷新一次
+</span></span><span class="line"><span class="cl">      TZ: Asia/Shanghai            # 时区
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">volumes:
+</span></span><span class="line"><span class="cl">  freshrss-db:
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>确认配置后，运行：</p>
 <div class="highlight"><div class="chroma">
@@ -776,8 +776,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker-compose up -d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker-compose up -d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="freshrss-设置" class="headerLink">
     <a href="#freshrss-%e8%ae%be%e7%bd%ae" class="header-mark"></a>FreshRSS 设置</h2><h3 id="初始化" class="headerLink">
@@ -809,12 +809,12 @@ volumes:
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
-域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
-
-用户名：注册用户名
-密码：API 密码
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">域名：https://xxx.techkoala.top/api/fever.php   # Fluent reader
+</span></span><span class="line"><span class="cl">域名：https://xxx.techkoala.top/api/greader.php # Feedme 使用 fever会出现 Auth Failed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">用户名：注册用户名
+</span></span><span class="line"><span class="cl">密码：API 密码
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -836,19 +836,17 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频" class="headerLink">
     <a href="#%e4%bb%85%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e9%9f%b3%e9%a2%91" class="header-mark"></a>仅下载播放列表音频</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -862,15 +860,15 @@ volumes:
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
--f bestaudio                #最佳音频
---extract-audio             #提取音频
---audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
---playlist-items 1,2,5      #下载播放列表中的哪些项
---playstart-start 2         #从第二项开始下载播放列表
---playstart-end 2
--f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+</span></span><span class="line"><span class="cl">-f bestaudio                #最佳音频
+</span></span><span class="line"><span class="cl">--extract-audio             #提取音频
+</span></span><span class="line"><span class="cl">--audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
+</span></span><span class="line"><span class="cl">--playlist-items 1,2,5      #下载播放列表中的哪些项
+</span></span><span class="line"><span class="cl">--playstart-start 2         #从第二项开始下载播放列表
+</span></span><span class="line"><span class="cl">--playstart-end 2
+</span></span><span class="line"><span class="cl">-f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
+</span></span></code></pre></td></tr></table>
 </div>
 </div>]]></description>
 </item><item>
@@ -928,8 +926,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Get-NetIPInterface</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>获得当前所有的网络连接，其中<code>InterfaceMetric</code>即为接口跃点数的值。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" data-sub-html="<h2>Powershell 设置界面</h2>">
@@ -942,8 +940,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="n">10</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-InterfaceMetric</span> <span class="mf">10</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>即可将其跃点数设置为 10。</p>
 <p>想要恢复跃点数的话，运行以下命令即可：</p>
@@ -952,8 +950,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">xxxx</span><span class="p">&gt;</span> <span class="nb">Set-NetIPInterface</span> <span class="n">-InterfaceIndex</span> <span class="n">x</span> <span class="n">-AutomaticMetric</span> <span class="n">enabled</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="跃点数的设置范围" class="headerLink">
     <a href="#%e8%b7%83%e7%82%b9%e6%95%b0%e7%9a%84%e8%ae%be%e7%bd%ae%e8%8c%83%e5%9b%b4" class="header-mark"></a>跃点数的设置范围</h3><p>跃点数越小，网络优先级越高。</p>
@@ -971,8 +969,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route delete 0.0.0.0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">route delete 0.0.0.0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>添加一个默认路由，指定所有流量走 Wi-Fi。</li>
@@ -982,8 +980,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">route add 0.0.0.0 mask 0.0.0.0 192.168.0.1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>添加另一个路由，指定 <code>10.0.0.1~10.255.255.254</code> 流量走有线网络。</li>
@@ -993,8 +991,8 @@ volumes:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">route add 10.0.0.0 mask 255.0.0.0 10.0.0.1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -1037,9 +1035,9 @@ volumes:
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install certbot python3-certbot-nginx
-$ sudo certbot --nginx -d example.com -d www.example.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo apt install certbot python3-certbot-nginx
+</span></span><span class="line"><span class="cl">$ sudo certbot --nginx -d example.com -d www.example.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="本地配置文件" class="headerLink">
     <a href="#%e6%9c%ac%e5%9c%b0%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>本地配置文件</h2><h3 id="frpcini" class="headerLink">
@@ -1056,16 +1054,16 @@ $ sudo certbot --nginx -d example.com -d www.example.com
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-server_addr = xxx.xxx.xxx.xxx           # 服务器地址
-server_port = xxx                       # 与服务器 frps 通信的端口
-token = xxxxxx                          # frp 验证密钥
-
-[bitwarden_https]
-type = https
-local_port = 443
-custom_domains = xxx.xxx.xxx            # Bitwarden 域名
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">server_addr = xxx.xxx.xxx.xxx           # 服务器地址
+</span></span><span class="line"><span class="cl">server_port = xxx                       # 与服务器 frps 通信的端口
+</span></span><span class="line"><span class="cl">token = xxxxxx                          # frp 验证密钥
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[bitwarden_https]
+</span></span><span class="line"><span class="cl">type = https
+</span></span><span class="line"><span class="cl">local_port = 443
+</span></span><span class="line"><span class="cl">custom_domains = xxx.xxx.xxx            # Bitwarden 域名
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="本地-nginxcof" class="headerLink">
     <a href="#%e6%9c%ac%e5%9c%b0-nginxcof" class="header-mark"></a>本地 nginx.cof</h3><div class="highlight"><div class="chroma">
@@ -1147,82 +1145,82 @@ custom_domains = xxx.xxx.xxx            # Bitwarden 域名
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www www;
-worker_processes auto;
-error_log /var/log/nginx/error.log warn;
-pid /var/run/nginx.pid;
-worker_rlimit_nofile 8192;
-events {
-    worker_connections 4096;
-}
-http {
-    include mime.types;
-    default_type application/octet-stream;
-
-    client_max_body_size 0;
-    client_body_buffer_size 512k;
-
-    sendfile on;
-    sendfile_max_chunk 1m;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-
-    types_hash_max_size 4096;
-
-    proxy_cache_path /var/run/nginx-proxy-cache levels=1:2 keys_zone=cache_one:20m inactive=1d max_size=500m;
-    proxy_cache cache_one;
-    proxy_temp_path /var/run/proxy_temp_dir;
-    proxy_temp_file_write_size 128k;
-    proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
-    proxy_buffer_size 16k;
-    proxy_busy_buffers_size 24k;
-    proxy_buffers 64 4k;
-
-    gzip on;
-    gzip_min_length 1k;
-    gzip_buffers 4 16k;
-    gzip_http_version 1.1;
-    gzip_comp_level 2;
-    gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
-    gzip_vary on;
-    gzip_proxied expired no-cache no-store private auth;
-    gzip_disable &#34;MSIE [1-6]\.&#34;;
-
-    server_tokens off;
-
-    server {
-        listen 443 ssl http2;
-        server_name xxx.xxx.xxx;                        # 域名
-
-        ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
-        ssl_certificate_key /xxx/cert/privkey.pem;
-        ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
-        ssl_prefer_server_ciphers off;
-        ssl_session_cache shared:SSL:10m;
-        ssl_session_timeout 1d;
-
-        location / {
-            proxy_pass http://127.0.0.1:8080;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
-
-        location /notifications/hub {
-            proxy_pass http://127.0.0.1:3012;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection &#34;upgrade&#34;;
-        }
-
-        location /notifications/hub/negotiate {
-            proxy_pass http://127.0.0.1:8080;
-        }
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">user www www;
+</span></span><span class="line"><span class="cl">worker_processes auto;
+</span></span><span class="line"><span class="cl">error_log /var/log/nginx/error.log warn;
+</span></span><span class="line"><span class="cl">pid /var/run/nginx.pid;
+</span></span><span class="line"><span class="cl">worker_rlimit_nofile 8192;
+</span></span><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">    worker_connections 4096;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">    include mime.types;
+</span></span><span class="line"><span class="cl">    default_type application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    client_max_body_size 0;
+</span></span><span class="line"><span class="cl">    client_body_buffer_size 512k;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    sendfile on;
+</span></span><span class="line"><span class="cl">    sendfile_max_chunk 1m;
+</span></span><span class="line"><span class="cl">    tcp_nopush on;
+</span></span><span class="line"><span class="cl">    tcp_nodelay on;
+</span></span><span class="line"><span class="cl">    keepalive_timeout 65;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    types_hash_max_size 4096;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    proxy_cache_path /var/run/nginx-proxy-cache levels=1:2 keys_zone=cache_one:20m inactive=1d max_size=500m;
+</span></span><span class="line"><span class="cl">    proxy_cache cache_one;
+</span></span><span class="line"><span class="cl">    proxy_temp_path /var/run/proxy_temp_dir;
+</span></span><span class="line"><span class="cl">    proxy_temp_file_write_size 128k;
+</span></span><span class="line"><span class="cl">    proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
+</span></span><span class="line"><span class="cl">    proxy_buffer_size 16k;
+</span></span><span class="line"><span class="cl">    proxy_busy_buffers_size 24k;
+</span></span><span class="line"><span class="cl">    proxy_buffers 64 4k;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    gzip on;
+</span></span><span class="line"><span class="cl">    gzip_min_length 1k;
+</span></span><span class="line"><span class="cl">    gzip_buffers 4 16k;
+</span></span><span class="line"><span class="cl">    gzip_http_version 1.1;
+</span></span><span class="line"><span class="cl">    gzip_comp_level 2;
+</span></span><span class="line"><span class="cl">    gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
+</span></span><span class="line"><span class="cl">    gzip_vary on;
+</span></span><span class="line"><span class="cl">    gzip_proxied expired no-cache no-store private auth;
+</span></span><span class="line"><span class="cl">    gzip_disable &#34;MSIE [1-6]\.&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server_tokens off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen 443 ssl http2;
+</span></span><span class="line"><span class="cl">        server_name xxx.xxx.xxx;                        # 域名
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        ssl_certificate /xxx/cert/fullchain.pem;        # 证书路径
+</span></span><span class="line"><span class="cl">        ssl_certificate_key /xxx/cert/privkey.pem;
+</span></span><span class="line"><span class="cl">        ssl_protocols TLSv1.2 TLSv1.3;
+</span></span><span class="line"><span class="cl">        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+</span></span><span class="line"><span class="cl">        ssl_prefer_server_ciphers off;
+</span></span><span class="line"><span class="cl">        ssl_session_cache shared:SSL:10m;
+</span></span><span class="line"><span class="cl">        ssl_session_timeout 1d;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">            proxy_set_header Host $host;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Real-IP $remote_addr;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location /notifications/hub {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:3012;
+</span></span><span class="line"><span class="cl">            proxy_set_header Upgrade $http_upgrade;
+</span></span><span class="line"><span class="cl">            proxy_set_header Connection &#34;upgrade&#34;;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location /notifications/hub/negotiate {
+</span></span><span class="line"><span class="cl">            proxy_pass http://127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="服务器配置文件" class="headerLink">
     <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>服务器配置文件</h2><h3 id="服务器-nginxcof" class="headerLink">
@@ -1317,100 +1315,98 @@ http {
 </span><span class="lnt">87
 </span><span class="lnt">88
 </span><span class="lnt">89
-</span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user www-data;
-worker_processes auto;
-pid /var/run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
-
-events {
-	worker_connections 768;
-	# multi_accept on;
-}
-
-stream {
-    map $ssl_preread_server_name $name {
-        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
-        xxx.techkoala.top trojan;           # Trojan 域名
-        xxx.techkoala.top rss;              # FreshRSS 域名
-        xxx.techkoala.top xrls;              # Xray 域名
-    }
-    upstream frps-bitwarden {
-        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
-    }
-    upstream trojan {
-        server 127.0.0.1:4443;         # Trojan 本地监听端口
-    }
-    upstream rss {
-        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
-    }
-    upstream xtls {
-        server 127.0.0.1:8443;       # Xray 本地监听端口
-    }
-    server {
-        listen 443 reuseport;
-        listen [::]:443 reuseport;
-        proxy_pass	$name;
-        ssl_preread on;               # 开启 ssl_preread
-    }
-}
-
-http {
-	##
-	# Basic Settings
-	##
-
-	sendfile on;
-	tcp_nopush on;
-	tcp_nodelay on;
-	keepalive_timeout 65;
-	types_hash_max_size 2048;
-	# server_tokens off;
-
-	# server_names_hash_bucket_size 64;
-	# server_name_in_redirect off;
-
-	include /etc/nginx/mime.types;
-	default_type application/octet-stream;
-
-	##
-	# SSL Settings
-	##
-
-	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
-	ssl_prefer_server_ciphers on;
-
-	##
-	# Logging Settings
-	##
-
-	access_log /var/log/nginx/access.log;
-	error_log /var/log/nginx/error.log;
-
-	##
-	# Gzip Settings
-	##
-
-	gzip on;
-
-	# gzip_vary on;
-	# gzip_proxied any;
-	# gzip_comp_level 6;
-	# gzip_buffers 16 8k;
-	# gzip_http_version 1.1;
-	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-	##
-	# Virtual Host Configs
-	##
-
-	include /etc/nginx/conf.d/*.conf;
-	include /etc/nginx/sites-enabled/*;     # 启用的网站配置放置在此文件夹下
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">user www-data;
+</span></span><span class="line"><span class="cl">worker_processes auto;
+</span></span><span class="line"><span class="cl">pid /var/run/nginx.pid;
+</span></span><span class="line"><span class="cl">include /etc/nginx/modules-enabled/*.conf;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">	worker_connections 768;
+</span></span><span class="line"><span class="cl">	# multi_accept on;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">stream {
+</span></span><span class="line"><span class="cl">    map $ssl_preread_server_name $name {
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top trojan;           # Trojan 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top rss;              # FreshRSS 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.top xrls;              # Xray 域名
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream frps-bitwarden {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream trojan {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:4443;         # Trojan 本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream rss {
+</span></span><span class="line"><span class="cl">        server 172.17.0.1:39955;       # FreshRSS Docker IP 以及映射本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    upstream xtls {
+</span></span><span class="line"><span class="cl">        server 127.0.0.1:8443;       # Xray 本地监听端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen 443 reuseport;
+</span></span><span class="line"><span class="cl">        listen [::]:443 reuseport;
+</span></span><span class="line"><span class="cl">        proxy_pass	$name;
+</span></span><span class="line"><span class="cl">        ssl_preread on;               # 开启 ssl_preread
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Basic Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	sendfile on;
+</span></span><span class="line"><span class="cl">	tcp_nopush on;
+</span></span><span class="line"><span class="cl">	tcp_nodelay on;
+</span></span><span class="line"><span class="cl">	keepalive_timeout 65;
+</span></span><span class="line"><span class="cl">	types_hash_max_size 2048;
+</span></span><span class="line"><span class="cl">	# server_tokens off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# server_names_hash_bucket_size 64;
+</span></span><span class="line"><span class="cl">	# server_name_in_redirect off;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	include /etc/nginx/mime.types;
+</span></span><span class="line"><span class="cl">	default_type application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# SSL Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+</span></span><span class="line"><span class="cl">	ssl_prefer_server_ciphers on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Logging Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	access_log /var/log/nginx/access.log;
+</span></span><span class="line"><span class="cl">	error_log /var/log/nginx/error.log;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Gzip Settings
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	gzip on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# gzip_vary on;
+</span></span><span class="line"><span class="cl">	# gzip_proxied any;
+</span></span><span class="line"><span class="cl">	# gzip_comp_level 6;
+</span></span><span class="line"><span class="cl">	# gzip_buffers 16 8k;
+</span></span><span class="line"><span class="cl">	# gzip_http_version 1.1;
+</span></span><span class="line"><span class="cl">	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">	# Virtual Host Configs
+</span></span><span class="line"><span class="cl">	##
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	include /etc/nginx/conf.d/*.conf;
+</span></span><span class="line"><span class="cl">	include /etc/nginx/sites-enabled/*;     # 启用的网站配置放置在此文件夹下
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="bitwarden-相关配置" class="headerLink">
     <a href="#bitwarden-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden 相关配置</h3><h4 id="frpsini" class="headerLink">
@@ -1423,12 +1419,12 @@ http {
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[common]
-bind_port = xxxx                # 与本地 frpc 通信的端口
-vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
-authentication_method = token
-token = xxxxxx                  # frp 验证密钥
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">bind_port = xxxx                # 与本地 frpc 通信的端口
+</span></span><span class="line"><span class="cl">vhost_https_port = xxxx         # 虚拟 https 端口，需要和 nginx.conf 内一致
+</span></span><span class="line"><span class="cl">authentication_method = token
+</span></span><span class="line"><span class="cl">token = xxxxxx                  # frp 验证密钥
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="bitwarden-nginx-站点配置" class="headerLink">
     <a href="#bitwarden-nginx-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>Bitwarden Nginx 站点配置</h4><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
@@ -1442,19 +1438,17 @@ token = xxxxxx                  # frp 验证密钥
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## Bitwarden 配置。只负责只将 http 重定向至 https
-## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
-server {
-        listen 80;
-        listen [::]:80;
-        server_name xxx.techkoala.top;                    # Bitwarden 域名
-        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## Bitwarden 配置。只负责只将 http 重定向至 https
+</span></span><span class="line"><span class="cl">## Bitwarden 的 SSL 握手交给本地服务器端的 Nginx 处理
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        listen [::]:80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;                    # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -1462,8 +1456,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置" class="headerLink">
     <a href="#trojan-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae" class="header-mark"></a>Trojan 相关配置</h3><h4 id="trojan-nginx-配置" class="headerLink">
@@ -1488,29 +1482,27 @@ server {
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-    listen 127.0.0.1:80 default_server;
-    server_name xxx.techkoala.top;             # 自己的域名
-    location / {
-        proxy_pass https://www.digitalocean.com; # 伪装的网站
-    }
-}
-server {
-    listen 127.0.0.1:80;
-    server_name xxx.techkoala.top;                 # 自己服务器的 IP
-    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
-}
-server {
-    listen 0.0.0.0:80;
-    listen [::]:80;
-    server_name _;
-    return 301 https://$host$request_uri;
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 127.0.0.1:80 default_server;
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;             # 自己的域名
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass https://www.digitalocean.com; # 伪装的网站
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 127.0.0.1:80;
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;                 # 自己服务器的 IP
+</span></span><span class="line"><span class="cl">    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 0.0.0.0:80;
+</span></span><span class="line"><span class="cl">    listen [::]:80;
+</span></span><span class="line"><span class="cl">    server_name _;
+</span></span><span class="line"><span class="cl">    return 301 https://$host$request_uri;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -1518,8 +1510,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件" class="headerLink">
     <a href="#trojan-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>Trojan 配置文件</h4><div class="highlight"><div class="chroma">
@@ -1576,57 +1568,57 @@ server {
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
-    &#34;run_type&#34;: &#34;server&#34;,
-    &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
-    &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
-    &#34;remote_addr&#34;: &#34;127.0.0.1&#34;,
-    &#34;remote_port&#34;: 80,              # 伪装站点的端口
-    &#34;password&#34;: [
-        &#34;xxxxxx&#34;                    # 密钥
-    ],
-    &#34;log_level&#34;: 1,
-    &#34;ssl&#34;: {
-        &#34;cert&#34;: &#34;/usr/local/etc/ssl/certificate.crt&#34;,
-        &#34;key&#34;: &#34;/usr/local/etc/ssl/private.key&#34;,
-        &#34;key_password&#34;: &#34;&#34;,
-        &#34;cipher&#34;: &#34;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&#34;,
-        &#34;cipher_tls13&#34;: &#34;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#34;,
-        &#34;prefer_server_cipher&#34;: true,
-        &#34;alpn&#34;: [
-            &#34;http/1.1&#34;
-        ],
-        &#34;alpn_port_override&#34;: {
-            &#34;h2&#34;: 81
-        },
-        &#34;reuse_session&#34;: true,
-        &#34;session_ticket&#34;: false,
-        &#34;session_timeout&#34;: 600,
-        &#34;plain_http_response&#34;: &#34;&#34;,
-        &#34;curves&#34;: &#34;&#34;,
-        &#34;dhparam&#34;: &#34;&#34;
-    },
-    &#34;tcp&#34;: {
-        &#34;prefer_ipv4&#34;: false,
-        &#34;no_delay&#34;: true,
-        &#34;keep_alive&#34;: true,
-        &#34;reuse_port&#34;: false,
-        &#34;fast_open&#34;: false,
-        &#34;fast_open_qlen&#34;: 20
-    },
-    &#34;mysql&#34;: {
-        &#34;enabled&#34;: false,
-        &#34;server_addr&#34;: &#34;127.0.0.1&#34;,
-        &#34;server_port&#34;: 3306,
-        &#34;database&#34;: &#34;trojan&#34;,
-        &#34;username&#34;: &#34;trojan&#34;,
-        &#34;password&#34;: &#34;&#34;,
-        &#34;key&#34;: &#34;&#34;,
-        &#34;cert&#34;: &#34;&#34;,
-        &#34;ca&#34;: &#34;&#34;
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;run_type&#34;: &#34;server&#34;,
+</span></span><span class="line"><span class="cl">    &#34;local_addr&#34;: &#34;0.0.0.0&#34;,
+</span></span><span class="line"><span class="cl">    &#34;local_port&#34;: 4443,             # 本地监听端口，与 nginx.conf 保持一致
+</span></span><span class="line"><span class="cl">    &#34;remote_addr&#34;: &#34;127.0.0.1&#34;,
+</span></span><span class="line"><span class="cl">    &#34;remote_port&#34;: 80,              # 伪装站点的端口
+</span></span><span class="line"><span class="cl">    &#34;password&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;xxxxxx&#34;                    # 密钥
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;log_level&#34;: 1,
+</span></span><span class="line"><span class="cl">    &#34;ssl&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;cert&#34;: &#34;/usr/local/etc/ssl/certificate.crt&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key&#34;: &#34;/usr/local/etc/ssl/private.key&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key_password&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cipher&#34;: &#34;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cipher_tls13&#34;: &#34;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#34;,
+</span></span><span class="line"><span class="cl">        &#34;prefer_server_cipher&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;alpn&#34;: [
+</span></span><span class="line"><span class="cl">            &#34;http/1.1&#34;
+</span></span><span class="line"><span class="cl">        ],
+</span></span><span class="line"><span class="cl">        &#34;alpn_port_override&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;h2&#34;: 81
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        &#34;reuse_session&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;session_ticket&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;session_timeout&#34;: 600,
+</span></span><span class="line"><span class="cl">        &#34;plain_http_response&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;curves&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;dhparam&#34;: &#34;&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;tcp&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;prefer_ipv4&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;no_delay&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;keep_alive&#34;: true,
+</span></span><span class="line"><span class="cl">        &#34;reuse_port&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;fast_open&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;fast_open_qlen&#34;: 20
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;mysql&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;enabled&#34;: false,
+</span></span><span class="line"><span class="cl">        &#34;server_addr&#34;: &#34;127.0.0.1&#34;,
+</span></span><span class="line"><span class="cl">        &#34;server_port&#34;: 3306,
+</span></span><span class="line"><span class="cl">        &#34;database&#34;: &#34;trojan&#34;,
+</span></span><span class="line"><span class="cl">        &#34;username&#34;: &#34;trojan&#34;,
+</span></span><span class="line"><span class="cl">        &#34;password&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;key&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;cert&#34;: &#34;&#34;,
+</span></span><span class="line"><span class="cl">        &#34;ca&#34;: &#34;&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="freshrss-站点配置" class="headerLink">
     <a href="#freshrss-%e7%ab%99%e7%82%b9%e9%85%8d%e7%bd%ae" class="header-mark"></a>FreshRSS 站点配置</h3><p>放置在<code>/etc/nginx/sites-available/</code>下，文件与域名同名</p>
@@ -1649,28 +1641,26 @@ server {
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-        listen 80;
-        listen [::]:80;
-        server_name xxx.techkoala.top;
-        return 301 https://xxx.techkoala.top$request_uri;
-    }
-
-server {
-    listen 39955 ssl http2;          # FreshRSS 本地监听端口
-    server_name rss.techkoala.top;
-    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
-
-    location / {
-       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
-    }
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        listen [::]:80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 39955 ssl http2;          # FreshRSS 本地监听端口
+</span></span><span class="line"><span class="cl">    server_name rss.techkoala.top;
+</span></span><span class="line"><span class="cl">    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
+</span></span><span class="line"><span class="cl">    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>链接配置文件</p>
 <div class="highlight"><div class="chroma">
@@ -1678,8 +1668,8 @@ server {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="xray" class="headerLink">
     <a href="#xray" class="header-mark"></a>Xray</h3><h4 id="xray-nginx-配置" class="headerLink">
@@ -1703,23 +1693,23 @@ server {
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
-        listen 80;
-        server_name xxx.techkoala.top;
-        if ($host = xxxx.techkoala.top) {
-                return 301 https://$host$request_uri;
-        }
-        return 404;
-}
-
-server {
-        listen 127.0.0.1:23333;
-        server_name xxxx.techkoala.top;
-        location / {
-                proxy_pass https://www.digitalocean.com; # 伪装的网站
-        }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 80;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        if ($host = xxxx.techkoala.top) {
+</span></span><span class="line"><span class="cl">                return 301 https://$host$request_uri;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return 404;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">        listen 127.0.0.1:23333;
+</span></span><span class="line"><span class="cl">        server_name xxxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">                proxy_pass https://www.digitalocean.com; # 伪装的网站
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="xray-配置" class="headerLink">
     <a href="#xray-%e9%85%8d%e7%bd%ae" class="header-mark"></a>Xray 配置</h4><div class="highlight"><div class="chroma">
@@ -1773,54 +1763,54 @@ server {
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
-    &#34;log&#34;: {
-        &#34;loglevel&#34;: &#34;warning&#34;
-    },
-    &#34;inbounds&#34;: [
-        {
-            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
-            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
-            &#34;protocol&#34;: &#34;vless&#34;,
-            &#34;settings&#34;: {
-                &#34;clients&#34;: [
-                    {
-                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
-                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
-                        &#34;level&#34;: 0
-                    }
-                ],
-                &#34;decryption&#34;: &#34;none&#34;,
-                &#34;fallbacks&#34;: [
-                    {
-                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
-                    }
-                 ]
-            },
-            &#34;streamSettings&#34;: {
-                &#34;network&#34;: &#34;tcp&#34;,
-                &#34;security&#34;: &#34;xtls&#34;,
-                &#34;xtlsSettings&#34;: {
-                    &#34;alpn&#34;: [
-                        &#34;http/1.1&#34;
-                    ],
-                    &#34;certificates&#34;: [
-                        {
-                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
-                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
-                        }
-                    ]
-                }
-            }
-        }
-    ],
-    &#34;outbounds&#34;: [
-        {
-            &#34;protocol&#34;: &#34;freedom&#34;
-        }
-    ]
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;log&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;loglevel&#34;: &#34;warning&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;inbounds&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            &#34;listen&#34;: &#34;127.0.0.1&#34;, # 仅监听在本地防止探测到下面的 8443 端口
+</span></span><span class="line"><span class="cl">            &#34;port&#34;: 8443, # 这里的端口对应 nginx 主配置文件内的 upstream 端口
+</span></span><span class="line"><span class="cl">            &#34;protocol&#34;: &#34;vless&#34;,
+</span></span><span class="line"><span class="cl">            &#34;settings&#34;: {
+</span></span><span class="line"><span class="cl">                &#34;clients&#34;: [
+</span></span><span class="line"><span class="cl">                    {
+</span></span><span class="line"><span class="cl">                        &#34;id&#34;: &#34;7f46753a-6a4b-4284-94c0-760340f96f1e&#34;, # 填写你的UUID
+</span></span><span class="line"><span class="cl">                        &#34;flow&#34;: &#34;xtls-rprx-direct&#34;,
+</span></span><span class="line"><span class="cl">                        &#34;level&#34;: 0
+</span></span><span class="line"><span class="cl">                    }
+</span></span><span class="line"><span class="cl">                ],
+</span></span><span class="line"><span class="cl">                &#34;decryption&#34;: &#34;none&#34;,
+</span></span><span class="line"><span class="cl">                &#34;fallbacks&#34;: [
+</span></span><span class="line"><span class="cl">                    {
+</span></span><span class="line"><span class="cl">                        &#34;dest&#34;: &#34;23333&#34; # 回落站点的端口号，与 Xray Nginx 配置一致
+</span></span><span class="line"><span class="cl">                    }
+</span></span><span class="line"><span class="cl">                 ]
+</span></span><span class="line"><span class="cl">            },
+</span></span><span class="line"><span class="cl">            &#34;streamSettings&#34;: {
+</span></span><span class="line"><span class="cl">                &#34;network&#34;: &#34;tcp&#34;,
+</span></span><span class="line"><span class="cl">                &#34;security&#34;: &#34;xtls&#34;,
+</span></span><span class="line"><span class="cl">                &#34;xtlsSettings&#34;: {
+</span></span><span class="line"><span class="cl">                    &#34;alpn&#34;: [
+</span></span><span class="line"><span class="cl">                        &#34;http/1.1&#34;
+</span></span><span class="line"><span class="cl">                    ],
+</span></span><span class="line"><span class="cl">                    &#34;certificates&#34;: [
+</span></span><span class="line"><span class="cl">                        {
+</span></span><span class="line"><span class="cl">                            &#34;certificateFile&#34;: &#34;/usr/local/etc/ssl/fullchain.pem&#34;, # 你的域名证书
+</span></span><span class="line"><span class="cl">                            &#34;keyFile&#34;: &#34;/usr/local/etc/ssl/privkey.pem&#34; # 你的证书私钥
+</span></span><span class="line"><span class="cl">                        }
+</span></span><span class="line"><span class="cl">                    ]
+</span></span><span class="line"><span class="cl">                }
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;outbounds&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            &#34;protocol&#34;: &#34;freedom&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="防火墙设置" class="headerLink">
     <a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" class="header-mark"></a>防火墙设置</h2><p>上述操作后，服务器需要打开<code>80</code>,<code>443</code>,<code>xxx</code>（frp 通信端口）</p>]]></description>
@@ -1841,9 +1831,9 @@ server {
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opkg update
-opkg install dnscrypt-proxy2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">opkg update
+</span></span><span class="line"><span class="cl">opkg install dnscrypt-proxy2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不过，版本可能不是最新，如果需要最新版本可以自行编译。</p>
 <h2 id="配置" class="headerLink">
@@ -1853,8 +1843,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
@@ -1862,16 +1852,16 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">listen_addresses = [&#39;127.0.0.1:5335&#39;]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">listen_addresses = [&#39;127.0.0.1:5335&#39;]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_names = [&#39;google&#39;, &#39;cloudflare&#39;]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>即可</p>
 <p>软件已经内置了常见的 DoH/DoT 服务器了，因此只需要填入名称即可</p>
@@ -1881,8 +1871,8 @@ opkg install dnscrypt-proxy2
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/dnscrypt-proxy restart
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/etc/init.d/dnscrypt-proxy restart
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>重启软件，dnscrypt-proxy2 就会监听在 5335 这个端口了。</p>
 <h2 id="分流搭配-ssr" class="headerLink">

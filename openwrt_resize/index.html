@@ -13,7 +13,6 @@
 <meta property="og:url" content="https://www.techkoala.top/openwrt_resize/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-09T15:57:29+08:00" />
 <meta property="article:modified_time" content="2021-09-07T13:07:01+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenWRT overlay 空间扩容"/>
 <meta name="twitter:description" content="
@@ -39,7 +38,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/openwrt_resize\/"
-        },"genre": "posts","keywords": "OpenWRT, Router","wordcount":  960 ,
+        },"genre": "posts","keywords": "OpenWRT, Router","wordcount":  920 ,
         "url": "https:\/\/www.techkoala.top\/openwrt_resize\/","datePublished": "2020-10-09T15:57:29+08:00","dateModified": "2021-09-07T13:07:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -122,7 +121,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-09">2020-10-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-09-07">2021-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 960 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-09">2020-10-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-09-07">2021-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 920 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -182,9 +181,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">opkg update
-opkg install cfdisk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">opkg update
+</span></span><span class="line"><span class="cl">opkg install cfdisk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后输入</p>
 <div class="highlight"><div class="chroma">
@@ -192,8 +191,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cfdisk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cfdisk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开磁盘管理界面：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
@@ -248,8 +247,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkfs.ext4 /dev/sda3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkfs.ext4 /dev/sda3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>格式化分区</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/format.webp" title="/images/Network/OpenWRT_overlay/format.webp" data-thumbnail="/images/Network/OpenWRT_overlay/format.webp" data-sub-html="<h2>格式化分区</h2>">
@@ -269,8 +268,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mount /dev/sda3 /mnt/sda3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mount /dev/sda3 /mnt/sda3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>挂载分区</p>
 <h2 id="转移到新分区" class="headerLink">
@@ -280,8 +279,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cp -r /overlay/* /mnt/sda3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp -r /overlay/* /mnt/sda3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="web-界面配置修改" class="headerLink">
     <a href="#web-%e7%95%8c%e9%9d%a2%e9%85%8d%e7%bd%ae%e4%bf%ae%e6%94%b9" class="header-mark"></a>Web 界面配置修改</h2><p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
@@ -316,8 +315,8 @@ opkg install cfdisk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vim /etc/rc.local
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /etc/rc.local
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在 <code>exit 0</code> 之前加入一行 <code>mount /dev/sda3 /overlay</code> 即可。</p>
 <h2 id="参考" class="headerLink">

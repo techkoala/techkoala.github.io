@@ -45,19 +45,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~$ df -h
-Filesystem Size Used Avail Use% Mounted on
-udev 1.9G <span class="m">0</span> 1.9G 0% /dev
-tmpfs 394M 1.1M 393M 1% /run
-/dev/mapper/ubuntu--vg-ubuntu--lv 3.9G 3.2G 489M 87% /
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
-tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
-/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
-/dev/sda2 976M 77M 833M 9% /boot
-/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
-tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~$ df -h
+</span></span><span class="line"><span class="cl">Filesystem Size Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">udev 1.9G <span class="m">0</span> 1.9G 0% /dev
+</span></span><span class="line"><span class="cl">tmpfs 394M 1.1M 393M 1% /run
+</span></span><span class="line"><span class="cl">/dev/mapper/ubuntu--vg-ubuntu--lv 3.9G 3.2G 489M 87% /
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
+</span></span><span class="line"><span class="cl">/dev/sda2 976M 77M 833M 9% /boot
+</span></span><span class="line"><span class="cl">/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
+</span></span><span class="line"><span class="cl">tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>接下来，在输出中可以看出实际上还有更多可用空间未利用。例如 /dev/sda3 卷上有 24G。另一个 1GB 用于启动卷和 BIOS 启动</p>
 <div class="highlight"><div class="chroma">
@@ -95,38 +95,38 @@ tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# fdisk -l
-Disk /dev/loop0: 88.5 MiB, <span class="m">92778496</span> bytes, <span class="m">181208</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-
-
-Disk /dev/loop1: <span class="m">89</span> MiB, <span class="m">93327360</span> bytes, <span class="m">182280</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
-
-...
-
-Disk /dev/sda: <span class="m">25</span> GiB, <span class="m">26843545600</span> bytes, <span class="m">52428800</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
-Disklabel type: gpt
-Disk identifier: ED41F7A6-5D09-457B-A55C-C7F1E30DE419
-
-Device Start End Sectors Size Type
-/dev/sda1 <span class="m">2048</span> <span class="m">4095</span> <span class="m">2048</span> 1M BIOS boot
-/dev/sda2 <span class="m">4096</span> <span class="m">2101247</span> <span class="m">2097152</span> 1G Linux filesystem
-/dev/sda3 <span class="m">2101248</span> <span class="m">52426751</span> <span class="m">50325504</span> 24G Linux filesystem
-
-
-Disk /dev/mapper/ubuntu--vg-ubuntu--lv: <span class="m">4</span> GiB, <span class="m">4294967296</span> bytes, <span class="m">8388608</span> sectors
-Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
-I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# fdisk -l
+</span></span><span class="line"><span class="cl">Disk /dev/loop0: 88.5 MiB, <span class="m">92778496</span> bytes, <span class="m">181208</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/loop1: <span class="m">89</span> MiB, <span class="m">93327360</span> bytes, <span class="m">182280</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/sda: <span class="m">25</span> GiB, <span class="m">26843545600</span> bytes, <span class="m">52428800</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
+</span></span><span class="line"><span class="cl">Disklabel type: gpt
+</span></span><span class="line"><span class="cl">Disk identifier: ED41F7A6-5D09-457B-A55C-C7F1E30DE419
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Device Start End Sectors Size Type
+</span></span><span class="line"><span class="cl">/dev/sda1 <span class="m">2048</span> <span class="m">4095</span> <span class="m">2048</span> 1M BIOS boot
+</span></span><span class="line"><span class="cl">/dev/sda2 <span class="m">4096</span> <span class="m">2101247</span> <span class="m">2097152</span> 1G Linux filesystem
+</span></span><span class="line"><span class="cl">/dev/sda3 <span class="m">2101248</span> <span class="m">52426751</span> <span class="m">50325504</span> 24G Linux filesystem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/mapper/ubuntu--vg-ubuntu--lv: <span class="m">4</span> GiB, <span class="m">4294967296</span> bytes, <span class="m">8388608</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">4096</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">4096</span> bytes / <span class="m">4096</span> bytes
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="调整虚拟机磁盘大小" class="headerLink">
     <a href="#%e8%b0%83%e6%95%b4%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%a3%81%e7%9b%98%e5%a4%a7%e5%b0%8f" class="header-mark"></a>调整虚拟机磁盘大小</h3><p>进入 Hyper-V 虚拟机设置界面，编辑硬盘驱动器，然后对此进行扩容，此后重启虚拟机。</p>
@@ -153,24 +153,24 @@ I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span 
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# parted
-GNU Parted 3.2
-Using /dev/sda
-Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
-<span class="o">(</span>parted<span class="o">)</span> print
-Model: Msft Virtual Disk <span class="o">(</span>scsi<span class="o">)</span>
-Disk /dev/sda: 26.8GB
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/4096B
-Partition Table: gpt
-Disk Flags:
-
-Number Start End Size File system Name Flags
-<span class="m">1</span> 1049kB 2097kB 1049kB bios_grub
-<span class="m">2</span> 2097kB 1076MB 1074MB ext4
-<span class="m">3</span> 1076MB 26.8GB 25.8GB
-
-<span class="o">(</span>parted<span class="o">)</span> quit
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# parted
+</span></span><span class="line"><span class="cl">GNU Parted 3.2
+</span></span><span class="line"><span class="cl">Using /dev/sda
+</span></span><span class="line"><span class="cl">Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> print
+</span></span><span class="line"><span class="cl">Model: Msft Virtual Disk <span class="o">(</span>scsi<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Disk /dev/sda: 26.8GB
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/4096B
+</span></span><span class="line"><span class="cl">Partition Table: gpt
+</span></span><span class="line"><span class="cl">Disk Flags:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number Start End Size File system Name Flags
+</span></span><span class="line"><span class="cl"><span class="m">1</span> 1049kB 2097kB 1049kB bios_grub
+</span></span><span class="line"><span class="cl"><span class="m">2</span> 2097kB 1076MB 1074MB ext4
+</span></span><span class="line"><span class="cl"><span class="m">3</span> 1076MB 26.8GB 25.8GB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> quit
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -185,16 +185,16 @@ Number Start End Size File system Name Flags
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# parted
-GNU Parted 3.2
-Using /dev/sda
-Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
-<span class="o">(</span>parted<span class="o">)</span> resizepart
-Partition number? <span class="m">3</span>
-End? <span class="o">[</span>26.8GB<span class="o">]</span>?
-<span class="o">(</span>parted<span class="o">)</span> quit
-Information: You may need to update /etc/fstab.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# parted
+</span></span><span class="line"><span class="cl">GNU Parted 3.2
+</span></span><span class="line"><span class="cl">Using /dev/sda
+</span></span><span class="line"><span class="cl">Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> resizepart
+</span></span><span class="line"><span class="cl">Partition number? <span class="m">3</span>
+</span></span><span class="line"><span class="cl">End? <span class="o">[</span>26.8GB<span class="o">]</span>?
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> quit
+</span></span><span class="line"><span class="cl">Information: You may need to update /etc/fstab.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -203,10 +203,10 @@ Information: You may need to update /etc/fstab.
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# pvresize /dev/sda3
-Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
-<span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# pvresize /dev/sda3
+</span></span><span class="line"><span class="cl">Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
+</span></span><span class="line"><span class="cl"><span class="m">1</span> physical volume<span class="o">(</span>s<span class="o">)</span> resized / <span class="m">0</span> physical volume<span class="o">(</span>s<span class="o">)</span> not resized
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="扩容" class="headerLink">
     <a href="#%e6%89%a9%e5%ae%b9" class="header-mark"></a>扩容</h3><p>接下来，对 LVM 虚拟磁盘进行扩容。</p>
@@ -219,12 +219,12 @@ Physical volume <span class="s2">&#34;/dev/sda3&#34;</span> changed
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
-resize2fs 1.44.1 <span class="o">(</span>24-Mar-2018<span class="o">)</span>
-Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;</span> on-line resizing required
-<span class="nv">old_desc_blocks</span> <span class="o">=</span> 1, <span class="nv">new_desc_blocks</span> <span class="o">=</span> <span class="m">3</span>
-The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+</span></span><span class="line"><span class="cl">resize2fs 1.44.1 <span class="o">(</span>24-Mar-2018<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Filesystem at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted on /<span class="p">;</span> on-line resizing required
+</span></span><span class="line"><span class="cl"><span class="nv">old_desc_blocks</span> <span class="o">=</span> 1, <span class="nv">new_desc_blocks</span> <span class="o">=</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">6029312</span> <span class="o">(</span>4k<span class="o">)</span> blocks long.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="确认" class="headerLink">
     <a href="#%e7%a1%ae%e8%ae%a4" class="header-mark"></a>确认</h3><div class="highlight"><div class="chroma">
@@ -244,20 +244,20 @@ The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="m">60293
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">user@server:~# df -h
-Filesystem Size Used Avail Use% Mounted on
-udev 1.9G <span class="m">0</span> 1.9G 0% /dev
-tmpfs 394M 1.1M 393M 1% /run
-/dev/mapper/ubuntu--vg-ubuntu--lv 23G 3.2G 19G 15% /
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
-tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
-tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
-/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
-/dev/sda2 976M 77M 833M 9% /boot
-/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
-tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
-user@server:~#
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user@server:~# df -h
+</span></span><span class="line"><span class="cl">Filesystem Size Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">udev 1.9G <span class="m">0</span> 1.9G 0% /dev
+</span></span><span class="line"><span class="cl">tmpfs 394M 1.1M 393M 1% /run
+</span></span><span class="line"><span class="cl">/dev/mapper/ubuntu--vg-ubuntu--lv 23G 3.2G 19G 15% /
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs 5.0M <span class="m">0</span> 5.0M 0% /run/lock
+</span></span><span class="line"><span class="cl">tmpfs 2.0G <span class="m">0</span> 2.0G 0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">/dev/loop0 89M 89M <span class="m">0</span> 100% /snap/core/7270
+</span></span><span class="line"><span class="cl">/dev/sda2 976M 77M 833M 9% /boot
+</span></span><span class="line"><span class="cl">/dev/loop1 90M 90M <span class="m">0</span> 100% /snap/core/7713
+</span></span><span class="line"><span class="cl">tmpfs 394M <span class="m">0</span> 394M 0% /run/user/1000
+</span></span><span class="line"><span class="cl">user@server:~#
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -284,8 +284,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ vim ~/.bashrc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim ~/.bashrc
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -297,8 +297,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s1">&#39;pwd:exit:fg:bg:top:clear:history:ls:uptime:df&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>作为补充，如果我们不希望某些敏感的命令出现在历史记录中，例如在命令行中指定密码或 API 密钥，那么可以使用下面的选项来确保任何以<strong>空格</strong>开头的命令不会出现在历史文件中：</p>
 <div class="highlight"><div class="chroma">
@@ -306,8 +306,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignorespace
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>另外：</p>
 <div class="highlight"><div class="chroma">
@@ -315,8 +315,8 @@ user@server:~#
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTCONTROL</span><span class="o">=</span>ignoredups
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>则表示当同一个命令重复出现时，只存储命令的一个副本。</p>
 <h2 id="设置历史记录数量" class="headerLink">
@@ -327,9 +327,9 @@ user@server:~#
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">shopt</span> -s histappend
-<span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">shopt</span> -s histappend
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">10000</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="更有效的调用命令" class="headerLink">
     <a href="#%e6%9b%b4%e6%9c%89%e6%95%88%e7%9a%84%e8%b0%83%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>更有效的调用命令</h2><p><code>!!</code>可以调用前一行的命令。</p>
@@ -343,12 +343,12 @@ user@server:~#
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">pwd</span>
-/etc
-$ !!
-<span class="nb">pwd</span>
-/etc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/etc
+</span></span><span class="line"><span class="cl">$ !!
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/etc
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同时，<code>!!</code>也可以作为参数加入别的命令配合使用，例如：</p>
 <div class="highlight"><div class="chroma">
@@ -356,8 +356,8 @@ $ !!
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo !!
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo !!
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>就将使用 root 权限再次执行此前的命令。</p>
 <p>此外，我们还可以通过在历史命令提供的<strong>行号</strong>前加一个<code>!</code>来运行历史上的命令，但是请注意不要打错行号，避免执行出错：</p>
@@ -380,22 +380,22 @@ $ !!
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm -r temp/
-$ mkdir temp
-$ touch temp/test
-$ !!
-touch temp/test
-$ <span class="nb">history</span> <span class="p">|</span> tail -4
-  <span class="m">179</span>  rm -r temp/
-  <span class="m">180</span>  mkdir temp
-  <span class="m">181</span>  touch temp/test
-  <span class="m">182</span>  touch temp/test
-  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
-$ !179:p
-rm -r temp
-$ !180
-touch temp/test
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm -r temp/
+</span></span><span class="line"><span class="cl">$ mkdir temp
+</span></span><span class="line"><span class="cl">$ touch temp/test
+</span></span><span class="line"><span class="cl">$ !!
+</span></span><span class="line"><span class="cl">touch temp/test
+</span></span><span class="line"><span class="cl">$ <span class="nb">history</span> <span class="p">|</span> tail -4
+</span></span><span class="line"><span class="cl">  <span class="m">179</span>  rm -r temp/
+</span></span><span class="line"><span class="cl">  <span class="m">180</span>  mkdir temp
+</span></span><span class="line"><span class="cl">  <span class="m">181</span>  touch temp/test
+</span></span><span class="line"><span class="cl">  <span class="m">182</span>  touch temp/test
+</span></span><span class="line"><span class="cl">  <span class="m">183</span>  <span class="nb">history</span> <span class="p">|</span> tail -5
+</span></span><span class="line"><span class="cl">$ !179:p
+</span></span><span class="line"><span class="cl">rm -r temp
+</span></span><span class="line"><span class="cl">$ !180
+</span></span><span class="line"><span class="cl">touch temp/test
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们也可以用前面的<code>!</code>来调用一个命令的最后一次出现，例如:</p>
 <div class="highlight"><div class="chroma">
@@ -403,8 +403,8 @@ touch temp/test
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ !ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ !ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将运行我们最后运行的以 <code>ping</code> 开头的命令。</p>
 <p>为了上述内容出错，可以添加一个<code>:p</code>来显示命令内容，而不实际执行它们。</p>
@@ -419,12 +419,12 @@ touch temp/test
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mv list.txt items.txt
-$ vim !$
-vim items.txt
-$ cp !$ shopping.txt
-cp items.txt shopping.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mv list.txt items.txt
+</span></span><span class="line"><span class="cl">$ vim !$
+</span></span><span class="line"><span class="cl">vim items.txt
+</span></span><span class="line"><span class="cl">$ cp !$ shopping.txt
+</span></span><span class="line"><span class="cl">cp items.txt shopping.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到<code>!$</code>指代上一行命令的最后一个参数。</p>
 <p>而<code>!*</code>指代上一行命令<strong>除了第一个</strong>以外的所有参数：</p>
@@ -435,10 +435,10 @@ cp items.txt shopping.txt
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
-$ touch !*
-touch /var/log/httpd/access.log /var/log/httpd/error.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm /var/log/httpd/access.log /var/log/httpd/error.log
+</span></span><span class="line"><span class="cl">$ touch !*
+</span></span><span class="line"><span class="cl">touch /var/log/httpd/access.log /var/log/httpd/error.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="用--替换前一行的匹配词" class="headerLink">
     <a href="#%e7%94%a8--%e6%9b%bf%e6%8d%a2%e5%89%8d%e4%b8%80%e8%a1%8c%e7%9a%84%e5%8c%b9%e9%85%8d%e8%af%8d" class="header-mark"></a>用 ^ 替换前一行的匹配词</h2><p><code>^</code>符号允许你在切换一个匹配的单词后重复前一个命令，比如说：</p>
@@ -449,10 +449,10 @@ touch /var/log/httpd/access.log /var/log/httpd/error.log
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rm /var/log/httpd/error.log
-$ ^error^access
-rm /var/log/httpd/access.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rm /var/log/httpd/error.log
+</span></span><span class="line"><span class="cl">$ ^error^access
+</span></span><span class="line"><span class="cl">rm /var/log/httpd/access.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -485,8 +485,8 @@ rm /var/log/httpd/access.log
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sftp 选项 参数
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sftp 选项 参数
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="选项" class="headerLink">
     <a href="#%e9%80%89%e9%a1%b9" class="header-mark"></a>选项</h3><div class="highlight"><div class="chroma">
@@ -501,15 +501,15 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-B：指定传输文件时缓冲区的大小；
--l：使用 ssh 协议版本 1；
--b：指定批处理文件；
--C：使用压缩；
--o：指定 ssh 选项；
--F：指定 ssh 配置文件；
--R：指定一次可以容忍多少请求数；
--v：升高日志等级。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-B：指定传输文件时缓冲区的大小；
+</span></span><span class="line"><span class="cl">-l：使用 ssh 协议版本 1；
+</span></span><span class="line"><span class="cl">-b：指定批处理文件；
+</span></span><span class="line"><span class="cl">-C：使用压缩；
+</span></span><span class="line"><span class="cl">-o：指定 ssh 选项；
+</span></span><span class="line"><span class="cl">-F：指定 ssh 配置文件；
+</span></span><span class="line"><span class="cl">-R：指定一次可以容忍多少请求数；
+</span></span><span class="line"><span class="cl">-v：升高日志等级。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="参数" class="headerLink">
     <a href="#%e5%8f%82%e6%95%b0" class="header-mark"></a>参数</h3><p>目标主机：指定 SFTP 服务器 IP 地址或者主机名。</p>
@@ -577,8 +577,8 @@ rm /var/log/httpd/access.log
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hash ( t[0, m-1] ) = t[0] * b^(m-1) + t[1] * b^[m-2] ..... t[m-1] * b^0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中的 b 是一个常数基数，在 Rabin-Karp 算法中，一般取值为 256。</p>
 <p>于是，在计算 hash ( t[1, m] ) 时，只需要下面这样就可以了：</p>
@@ -587,8 +587,8 @@ rm /var/log/httpd/access.log
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hash( t[1, m] ) = hash ( t[0, m-1] ) - t[0] * b^(m-1)  + t[m] * b ^0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Software/Rsync/rsync-algorithm.jpg" data-sub-html="<h2>rsync 算法示意</h2>">
         
@@ -606,13 +606,13 @@ rm /var/log/httpd/access.log
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
-rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> host:DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST:SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span> HOST::SRC DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span> HOST::DEST
+</span></span><span class="line"><span class="cl">rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span class="o">[</span>USER@<span class="o">]</span> HOST <span class="o">[</span>:PORT<span class="o">]</span>/SRC <span class="o">[</span>DEST<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对应于以上六种命令格式，<code>rsync</code> 有六种不同的工作模式：</p>
 <ul>
@@ -701,68 +701,68 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-v, --verbose 详细模式输出。
--q, --quiet 精简输出模式。
--C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
--c, --checksum 打开校验开关，强制对文件传输进行校验。
--a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
--r, --recursive 对子目录以递归模式处理。
--R, --relative 使用相对路径信息。
--b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
--u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
--l, --links 保留软链结。
--L, --copy-links 想对待常规文件一样处理软链结。
--H, --hard-links 保留硬链结。
--I, --ignore-times 不跳过那些有同样的时间和长度的文件。
--p, --perms 保持文件权限。
--o, --owner 保持文件属主信息。
--g, --group 保持文件属组信息。
--D, --devices 保持设备文件信息。
--t, --times 保持文件时间信息。
--S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
--T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
--n, --dry-run 现实哪些文件将被传输。
--w, --whole-file 拷贝文件，不进行增量检测。
--x, --one-file-system 不要跨越文件系统边界。
--B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
--e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
--P 等同于 --partial。
--z, --compress 对备份的文件在传输时进行压缩处理。
--h, --help 显示帮助信息。
---backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
--suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
---copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
---safe-links 忽略指向 SRC 路径目录树以外的链结。
---rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
---existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
---delete 删除那些 DST 中 SRC 没有的文件。
---delete-excluded 同样删除接收端那些被该选项指定排除的文件。
---delete-after 传输结束以后再删除。
---ignore-errors 及时出现 IO 错误也进行删除。
---max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
---partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
---force 强制删除目录，即使不为空。
---numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
---timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
---size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
---modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
---compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
---progress 显示备份过程。
---exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
---include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
---exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
---include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
---version 打印版本信息。
---address 绑定到特定的地址。
---config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
---port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
---blocking-io 对远程 shell 使用阻塞 IO。
--stats 给出某些文件的传输状态。
---progress 在传输时现实传输过程。
---log-format<span class="o">=</span>formAT 指定日志文件格式。
---password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
---bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-v, --verbose 详细模式输出。
+</span></span><span class="line"><span class="cl">-q, --quiet 精简输出模式。
+</span></span><span class="line"><span class="cl">-C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件。
+</span></span><span class="line"><span class="cl">-c, --checksum 打开校验开关，强制对文件传输进行校验。
+</span></span><span class="line"><span class="cl">-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 - rlptgoD。
+</span></span><span class="line"><span class="cl">-r, --recursive 对子目录以递归模式处理。
+</span></span><span class="line"><span class="cl">-R, --relative 使用相对路径信息。
+</span></span><span class="line"><span class="cl">-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为～filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
+</span></span><span class="line"><span class="cl">-u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件，不覆盖更新的文件。
+</span></span><span class="line"><span class="cl">-l, --links 保留软链结。
+</span></span><span class="line"><span class="cl">-L, --copy-links 想对待常规文件一样处理软链结。
+</span></span><span class="line"><span class="cl">-H, --hard-links 保留硬链结。
+</span></span><span class="line"><span class="cl">-I, --ignore-times 不跳过那些有同样的时间和长度的文件。
+</span></span><span class="line"><span class="cl">-p, --perms 保持文件权限。
+</span></span><span class="line"><span class="cl">-o, --owner 保持文件属主信息。
+</span></span><span class="line"><span class="cl">-g, --group 保持文件属组信息。
+</span></span><span class="line"><span class="cl">-D, --devices 保持设备文件信息。
+</span></span><span class="line"><span class="cl">-t, --times 保持文件时间信息。
+</span></span><span class="line"><span class="cl">-S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间。
+</span></span><span class="line"><span class="cl">-T --temp-dir<span class="o">=</span>DIR 在 DIR 中创建临时文件。
+</span></span><span class="line"><span class="cl">-n, --dry-run 现实哪些文件将被传输。
+</span></span><span class="line"><span class="cl">-w, --whole-file 拷贝文件，不进行增量检测。
+</span></span><span class="line"><span class="cl">-x, --one-file-system 不要跨越文件系统边界。
+</span></span><span class="line"><span class="cl">-B, --block-size<span class="o">=</span>SIZE 检验算法使用的块尺寸，默认是 <span class="m">700</span> 字节。
+</span></span><span class="line"><span class="cl">-e, --rsh<span class="o">=</span><span class="nb">command</span> 指定使用 rsh、ssh 方式进行数据同步。
+</span></span><span class="line"><span class="cl">-P 等同于 --partial。
+</span></span><span class="line"><span class="cl">-z, --compress 对备份的文件在传输时进行压缩处理。
+</span></span><span class="line"><span class="cl">-h, --help 显示帮助信息。
+</span></span><span class="line"><span class="cl">--backup-dir 将备份文件 <span class="o">(</span>如～filename<span class="o">)</span> 存放在在目录下。
+</span></span><span class="line"><span class="cl">-suffix<span class="o">=</span>SUFFIX 定义备份文件前缀。
+</span></span><span class="line"><span class="cl">--copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结。
+</span></span><span class="line"><span class="cl">--safe-links 忽略指向 SRC 路径目录树以外的链结。
+</span></span><span class="line"><span class="cl">--rsync-path<span class="o">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息。
+</span></span><span class="line"><span class="cl">--existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件。
+</span></span><span class="line"><span class="cl">--delete 删除那些 DST 中 SRC 没有的文件。
+</span></span><span class="line"><span class="cl">--delete-excluded 同样删除接收端那些被该选项指定排除的文件。
+</span></span><span class="line"><span class="cl">--delete-after 传输结束以后再删除。
+</span></span><span class="line"><span class="cl">--ignore-errors 及时出现 IO 错误也进行删除。
+</span></span><span class="line"><span class="cl">--max-delete<span class="o">=</span>NUM 最多删除 NUM 个文件。
+</span></span><span class="line"><span class="cl">--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。
+</span></span><span class="line"><span class="cl">--force 强制删除目录，即使不为空。
+</span></span><span class="line"><span class="cl">--numeric-ids 不将数字的用户和组 id 匹配为用户名和组名。
+</span></span><span class="line"><span class="cl">--timeout<span class="o">=</span><span class="nb">time</span> ip 超时时间，单位为秒。
+</span></span><span class="line"><span class="cl">--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间。
+</span></span><span class="line"><span class="cl">--modify-window<span class="o">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0。
+</span></span><span class="line"><span class="cl">--compare-dest<span class="o">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份。
+</span></span><span class="line"><span class="cl">--progress 显示备份过程。
+</span></span><span class="line"><span class="cl">--exclude<span class="o">=</span>PATTERN 指定排除不需要传输的文件模式。
+</span></span><span class="line"><span class="cl">--include<span class="o">=</span>PATTERN 指定不排除而需要传输的文件模式。
+</span></span><span class="line"><span class="cl">--exclude-from<span class="o">=</span>FILE 排除 FILE 中指定模式的文件。
+</span></span><span class="line"><span class="cl">--include-from<span class="o">=</span>FILE 不排除 FILE 指定模式匹配的文件。
+</span></span><span class="line"><span class="cl">--version 打印版本信息。
+</span></span><span class="line"><span class="cl">--address 绑定到特定的地址。
+</span></span><span class="line"><span class="cl">--config<span class="o">=</span>FILE 指定其他的配置文件，不使用默认的 rsyncd.conf 文件。
+</span></span><span class="line"><span class="cl">--port<span class="o">=</span>PORT 指定其他的 rsync 服务端口。
+</span></span><span class="line"><span class="cl">--blocking-io 对远程 shell 使用阻塞 IO。
+</span></span><span class="line"><span class="cl">-stats 给出某些文件的传输状态。
+</span></span><span class="line"><span class="cl">--progress 在传输时现实传输过程。
+</span></span><span class="line"><span class="cl">--log-format<span class="o">=</span>formAT 指定日志文件格式。
+</span></span><span class="line"><span class="cl">--password-file<span class="o">=</span>FILE 从 FILE 中得到密码。
+</span></span><span class="line"><span class="cl">--bwlimit<span class="o">=</span>KBPS 限制 I/O 带宽，KBytes per second。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
@@ -796,8 +796,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">$ scp local_file remote_host:/home
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">$ scp local_file remote_host:/home
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这将把本地文件 <code>localfile</code> 复制到远程主机的 <code>/home</code> 文件之下。</p>
 <p><code>SCP</code> 使用起来特别便利，因为他能工作在几乎所有的 <code>Unix-like</code> 的系统中，并且 <code>Windows</code> 下拥有许多客户端。但是仅仅复制文件并不是关键。<code>SCP</code> 真正的价值是对 <strong>计算机的身份进行验证</strong> 以及对 <strong>传输文件进行加密</strong>（也就是 S 代表的含义）。</p>
@@ -856,8 +856,8 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ scp 选项 参数
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ scp 选项 参数
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中选项如下：</p>
 <div class="highlight"><div class="chroma">
@@ -877,20 +877,20 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-1：使用ssh协议版本1；
--2：使用ssh协议版本2；
--4：使用ipv4；
--6：使用ipv6；
--B：以批处理模式运行；
--C：使用压缩；
--F：指定ssh配置文件；
--l：指定宽带限制；
--o：指定使用的ssh选项；
--P：指定远程主机的端口号；
--p：保留文件的最后修改时间，最后访问时间和权限模式；
--q：不显示复制进度；
--r：以递归方式复制。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-1：使用ssh协议版本1；
+</span></span><span class="line"><span class="cl">-2：使用ssh协议版本2；
+</span></span><span class="line"><span class="cl">-4：使用ipv4；
+</span></span><span class="line"><span class="cl">-6：使用ipv6；
+</span></span><span class="line"><span class="cl">-B：以批处理模式运行；
+</span></span><span class="line"><span class="cl">-C：使用压缩；
+</span></span><span class="line"><span class="cl">-F：指定ssh配置文件；
+</span></span><span class="line"><span class="cl">-l：指定宽带限制；
+</span></span><span class="line"><span class="cl">-o：指定使用的ssh选项；
+</span></span><span class="line"><span class="cl">-P：指定远程主机的端口号；
+</span></span><span class="line"><span class="cl">-p：保留文件的最后修改时间，最后访问时间和权限模式；
+</span></span><span class="line"><span class="cl">-q：不显示复制进度；
+</span></span><span class="line"><span class="cl">-r：以递归方式复制。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>参数分别为：</p>
 <ul>
@@ -926,27 +926,27 @@ rsync <span class="o">[</span>OPTION<span class="o">]</span>... rsync://<span cl
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># Copy a local folder with 10000 files</span>
-$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
-<span class="m">10000</span>
-
-<span class="c1"># Using scp</span>
-$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
-
-________________________________________________________
-Executed in  882.99 millis	fish       	external
-   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
-   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
-
-<span class="c1"># Using tar over ssh</span>
-$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
-tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
-
-________________________________________________________
-Executed in  215.68 millis	fish       	external
-   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
-   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="c1"># Copy a local folder with 10000 files</span>
+</span></span><span class="line"><span class="cl">$ find /tmp/big_folder/-type f <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl"><span class="m">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Using scp</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">time</span> scp -r -q /tmp/big_folder/server:/tmp/big_folder
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">________________________________________________________
+</span></span><span class="line"><span class="cl">Executed in  882.99 millis	fish       	external
+</span></span><span class="line"><span class="cl">   usr <span class="nb">time</span>  114.09 millis	0.00 micros  114.09 millis
+</span></span><span class="line"><span class="cl">   sys <span class="nb">time</span>  278.46 millis  949.00 micros  277.51 millis
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Using tar over ssh</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">time</span> sh -c <span class="s2">&#34;tar cf - /tmp/big_folder | ssh server &#39;tar xC /tmp/-f -&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">tar: Removing leading <span class="s1">&#39;/&#39;</span> from member names
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">________________________________________________________
+</span></span><span class="line"><span class="cl">Executed in  215.68 millis	fish       	external
+</span></span><span class="line"><span class="cl">   usr <span class="nb">time</span>   93.22 millis	0.00 micros   93.22 millis
+</span></span><span class="line"><span class="cl">   sys <span class="nb">time</span>   66.51 millis  897.00 micros   65.62 millis
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这种比较糟糕的情况下，<code>tar&amp;ssh</code> 的 215.68ms 对比 <code>SCP</code> 的 882.99ms，足足有四倍的速度提升。</p>
 <h3 id="安全" class="headerLink">
@@ -1007,8 +1007,8 @@ Executed in  215.68 millis	fish       	external
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo usermod -aG vboxsf <span class="k">$(</span>whoami<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>重启一次系统组设置即生效。</p>]]></description>
 </item></channel>

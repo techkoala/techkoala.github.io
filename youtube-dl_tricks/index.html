@@ -13,7 +13,6 @@
 <meta property="og:url" content="https://www.techkoala.top/youtube-dl_tricks/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-18T15:19:43+08:00" />
 <meta property="article:modified_time" content="2021-06-08T23:26:55+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常用 youtube-dl 命令"/>
 <meta name="twitter:description" content="
@@ -39,7 +38,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.top\/youtube-dl_tricks\/"
-        },"genre": "posts","keywords": "Software, youtube-dl","wordcount":  169 ,
+        },"genre": "posts","keywords": "Software, youtube-dl","wordcount":  168 ,
         "url": "https:\/\/www.techkoala.top\/youtube-dl_tricks\/","datePublished": "2021-05-18T15:19:43+08:00","dateModified": "2021-06-08T23:26:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -122,7 +121,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-18">2021-05-18</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-06-08">2021-06-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 169 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-18">2021-05-18</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-06-08">2021-06-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 168 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -149,19 +148,17 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">youtube-dl.exe -o <span class="s2">&#34;D:\xxxxxx\</span><span class="nv">%(title)s.%</span><span class="s2">(ext)s&#34;</span> -f bestvideo+bestaudio https://www.youtube.com/playlist?list=x
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="仅下载播放列表音频" class="headerLink">
     <a href="#%e4%bb%85%e4%b8%8b%e8%bd%bd%e6%92%ad%e6%94%be%e5%88%97%e8%a1%a8%e9%9f%b3%e9%a2%91" class="header-mark"></a>仅下载播放列表音频</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">youtububedl.exe -o D:\<span class="nv">%(title)s.%</span>(ext)s -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=xxxxxxxxxxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -175,15 +172,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
--f bestaudio                #最佳音频
---extract-audio             #提取音频
---audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
---playlist-items 1,2,5      #下载播放列表中的哪些项
---playstart-start 2         #从第二项开始下载播放列表
---playstart-end 2
--f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-o D:\%(title)s.%(ext)s     #保留原始名称和后缀
+</span></span><span class="line"><span class="cl">-f bestaudio                #最佳音频
+</span></span><span class="line"><span class="cl">--extract-audio             #提取音频
+</span></span><span class="line"><span class="cl">--audio-format mp3          #设置音频格式，下载文件若不同，则调用ffmpeg转换
+</span></span><span class="line"><span class="cl">--playlist-items 1,2,5      #下载播放列表中的哪些项
+</span></span><span class="line"><span class="cl">--playstart-start 2         #从第二项开始下载播放列表
+</span></span><span class="line"><span class="cl">--playstart-end 2
+</span></span><span class="line"><span class="cl">-f &#39;bestvideo[height&lt;=1080]+bestaudio/best[height&lt;=1080]&#39;             #设置最大下载分辨率
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
 
