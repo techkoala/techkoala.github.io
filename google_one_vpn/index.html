@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>Google One VPN 愉快玩耍指南 - TechKoala - Input/Output</title><meta name="Description" content="TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容"><meta property="og:title" content="Google One VPN 愉快玩耍指南" />
+<meta property="og:description" content="
+快速连接 Google One VPN，避免 1G 断开。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.techkoala.top/google_one_vpn/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-24T20:22:43+08:00" />
+<meta property="article:modified_time" content="2023-02-24T20:22:43+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Google One VPN 愉快玩耍指南"/>
+<meta name="twitter:description" content="
+快速连接 Google One VPN，避免 1G 断开。
+"/>
+<meta name="application-name" content="TechKoala">
+<meta name="apple-mobile-web-app-title" content="TechKoala">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.techkoala.top/google_one_vpn/" /><link rel="prev" href="https://www.techkoala.top/wi-fi7_phy_synopsis/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Google One VPN 愉快玩耍指南",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.techkoala.top\/google_one_vpn\/"
+        },"genre": "posts","keywords": "Google, VPN, Openclash","wordcount":  1849 ,
+        "url": "https:\/\/www.techkoala.top\/google_one_vpn\/","datePublished": "2023-02-24T20:22:43+08:00","dateModified": "2023-02-24T20:22:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "TechKoala"},"author": {
+                "@type": "Person",
+                "name": "TechKoala"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="auto" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="TechKoala - Input/Output"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"><i class='fas fa-book'></i> 所有文章 </a><a class="menu-item" href="/tags"><i class='fas fa-tags'></i> 标签 </a><a class="menu-item" href="/categories"><i class='fas fa-folder'></i> 分类 </a><a class="menu-item" href="/tools"><i class='fas fa-tools'></i> 工具 </a><a class="menu-item" href="/softwares"><i class='fab fa-app-store-ios'></i> 软件 </a><a class="menu-item" href="/about"><i class='fas fa-id-card'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="TechKoala - Input/Output"><span class="header-title-pre"><i class='fas fa-home'></i></span>TechKoala</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts" title=""><i class='fas fa-book'></i>所有文章</a><a class="menu-item" href="/tags" title=""><i class='fas fa-tags'></i>标签</a><a class="menu-item" href="/categories" title=""><i class='fas fa-folder'></i>分类</a><a class="menu-item" href="/tools" title=""><i class='fas fa-tools'></i>工具</a><a class="menu-item" href="/softwares" title=""><i class='fab fa-app-store-ios'></i>软件</a><a class="menu-item" href="/about" title=""><i class='fas fa-id-card'></i>关于</a><a href="#" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Google One VPN 愉快玩耍指南</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-24">2023-02-24</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-02-24">2023-02-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1849 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#机制说明">机制说明</a></li>
+        <li><a href="#先连接上">先连接上</a></li>
+        <li><a href="#再共享出来">再共享出来</a></li>
+        <li><a href="#愉快使用">愉快使用</a>
+          <ul>
+            <li><a href="#你有软路由">你有软路由？</a></li>
+            <li><a href="#没有软路由">没有软路由？</a></li>
+            <li><a href="#你只有安卓">你只有安卓？</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>快速连接 Google One VPN，避免 1G 断开。</p>
+</blockquote>
+<h2 id="机制说明" class="headerLink">
+    <a href="#%e6%9c%ba%e5%88%b6%e8%af%b4%e6%98%8e" class="header-mark"></a>机制说明</h2><p>首先，要想愉快使用，需要明确下面 Google One VPN 的下面几点机制：</p>
+<ol>
+<li>
+<p>目前仅 Android 手机可以正常连接。（当然如果你在 iPhone 上使用境外卡或使用 Android 虚拟机依然是可以的，但此不在本文讨论范围）</p>
+</li>
+<li>
+<p>该服务仅在如下国家提供（对于大陆来说，一般仅加粗地区有实用性）：</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- 奥地利
+</span></span><span class="line"><span class="cl">- 澳大利亚
+</span></span><span class="line"><span class="cl">- 比利时
+</span></span><span class="line"><span class="cl">- 加拿大
+</span></span><span class="line"><span class="cl">- 丹麦
+</span></span><span class="line"><span class="cl">- 芬兰
+</span></span><span class="line"><span class="cl">- 法国
+</span></span><span class="line"><span class="cl">- 德国
+</span></span><span class="line"><span class="cl">- 冰岛
+</span></span><span class="line"><span class="cl">- 爱尔兰
+</span></span><span class="line"><span class="cl">- 意大利
+</span></span><span class="line"><span class="cl">- **日本**
+</span></span><span class="line"><span class="cl">- 墨西哥
+</span></span><span class="line"><span class="cl">- 荷兰
+</span></span><span class="line"><span class="cl">- 挪威
+</span></span><span class="line"><span class="cl">- **韩国**
+</span></span><span class="line"><span class="cl">- 西班牙
+</span></span><span class="line"><span class="cl">- 瑞典
+</span></span><span class="line"><span class="cl">- 瑞士
+</span></span><span class="line"><span class="cl">- **台湾**
+</span></span><span class="line"><span class="cl">- 英国
+</span></span><span class="line"><span class="cl">- **美国**
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>基于第 2 点，即使真正的服务器可以直连，那我们也需要先欺骗 IP 检测服务器，具体机制如下：</li>
+</ol>
+<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" data-sub-html="<h2>机制1-准入 IP 限制</h2>">
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png">
+    </a><figcaption class="image-caption">机制1-准入 IP 限制</figcaption>
+    </figure>
+<ol start="4">
+<li>即便通过了第 3 点连接上服务器后，Google 依然还会在你每使用 1G 流量的后，再次对你的原始 IP 进行检测。如果此时检测到你的 IP 不在上述地区了，就会强制断开 VPN 连接。</li>
+</ol>
+<p>因此，不仅在于连上，还要避免 1G 断开，才叫做愉快玩耍！So,go on&hellip;</p>
+<h2 id="先连接上" class="headerLink">
+    <a href="#%e5%85%88%e8%bf%9e%e6%8e%a5%e4%b8%8a" class="header-mark"></a>先连接上</h2><p>想要连接上，其实不难，从上面的就可以看出，只需要使用受支持地区的 IP 欺骗检测服务器就可以了。
+并且，检测服务器的地址是固定的，后缀如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*.cloud.cupronickel.goog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>于是，我们需要在代理工具（如 clash for android）中，将此连接加入代理清单即可。</p>
+<p>如果你使用 rule-provider，那么可以如下写规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">payload:
+</span></span><span class="line"><span class="cl">- DOMAIN-SUFFIX,cloud.cupronickel.goog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>手机通过代理后，即可使用 Google One app 成功连接上对应地区的 Google One VPN 服务器</p>
+<h2 id="再共享出来" class="headerLink">
+    <a href="#%e5%86%8d%e5%85%b1%e4%ba%ab%e5%87%ba%e6%9d%a5" class="header-mark"></a>再共享出来</h2><p>等手机连接上后，那么你可以使用诸如 everyproxy 这样的软件在手机上开启 HTTP 或者 socks 代理，分享给局域网的其他设备使用。</p>
+<h2 id="愉快使用" class="headerLink">
+    <a href="#%e6%84%89%e5%bf%ab%e4%bd%bf%e7%94%a8" class="header-mark"></a>愉快使用</h2><p>经过上面两步，你其实已经可以正常使用 VPN 了，但是前面说到了，每当你使用了 1G 流量，Google 会再次检测你的 IP，这样你就会掉线。因为手机上只能同时开启一个 VPN 软件，所以 clash 此时没有代理这个检测服务器流量了。</p>
+<h3 id="你有软路由" class="headerLink">
+    <a href="#%e4%bd%a0%e6%9c%89%e8%bd%af%e8%b7%af%e7%94%b1" class="header-mark"></a>你有软路由？</h3><p>如果你有软路由的话，那一切都简单很多。以 opeclash 为例：</p>
+<ol>
+<li>首先，同样将上面检测服务器加入代理，并一直保持代理</li>
+<li>将手机共享出来的 socks 代理或和 HTTP 代理作为一个节点加入文件文件中，如这样：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  - name: &#34;🪜 GoogleOne&#34;
+</span></span><span class="line"><span class="cl">    type: socks5
+</span></span><span class="line"><span class="cl">    server: 192.168.XXX.XXX
+</span></span><span class="line"><span class="cl">    port: 1080
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>为了避免嵌套代理，请添加 VPN 服务器 IP 端到新的 rule-provider 中：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  - &#39;136.22.64.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.65.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.67.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.76.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.83.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.85.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.86.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.87.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.92.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.93.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.94.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.95.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.96.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.97.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.98.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.99.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.100.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.101.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.102.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.103.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.104.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.105.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.106.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.107.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.108.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.109.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.22.110.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.1.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.2.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.3.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.4.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.5.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.6.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.7.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.8.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.9.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.10.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.11.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.12.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.13.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.14.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.15.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.16.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.17.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.18.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.19.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.20.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.21.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.22.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.23.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.24.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.25.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.26.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.27.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.28.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.29.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.30.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.31.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.32.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.33.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.34.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;136.23.35.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.176.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.177.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.178.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.179.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.180.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.181.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.182.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.183.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.184.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.185.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.186.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.187.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.188.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.189.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.190.0/24&#39;
+</span></span><span class="line"><span class="cl">  - &#39;209.107.191.0/24&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以更加精确的将协议限定为 UDP（虽然实际上也只会走 UDP）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">script:
+</span></span><span class="line"><span class="cl">    shortcuts:
+</span></span><span class="line"><span class="cl">      GoogleVPNbypass: match_provider(&#39;GoogleVPNbypass&#39;) and network == &#39;udp&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>并将其加入直连：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  - SCRIPT,GoogleVPNbypass,🚀 直接连接
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，即便你每使用 1G 流量，由于你的前置代理一直都在，也不会掉线，并且将其作为节点，可以更加灵活的控制范围规则（已知其对于 YouTube 有神秘加成，打开丝滑）。</p>
+<h3 id="没有软路由" class="headerLink">
+    <a href="#%e6%b2%a1%e6%9c%89%e8%bd%af%e8%b7%af%e7%94%b1" class="header-mark"></a>没有软路由？</h3><p>那也没关系，你可以在电脑上使用 clash for windows 实现类似的效果（其他设备也是类似，如如 iPhone 上的 stash）。思路如下：</p>
+<ol>
+<li>clash for windows 的配置文件里要对代理检测服务器进行代理</li>
+<li>手机 WiFi 代理中设置电电脑 IP 以及 7890（clash 默认代理地址）</li>
+<li>在 clash for windows 配置文件里面新增一个 http 或者 socks 代理地址就是手机 IP 和 every proxy 共享出来的 http 或 socks 端口</li>
+</ol>
+<h3 id="你只有安卓" class="headerLink">
+    <a href="#%e4%bd%a0%e5%8f%aa%e6%9c%89%e5%ae%89%e5%8d%93" class="header-mark"></a>你只有安卓？</h3><p>抱歉，目前我还没有发现如何避免断开的方法。
+但是你可以使用如下两种方式，出门外面的时候也能仅使用单设备连接上 VPN。</p>
+<p>方法 1：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. clash-设置-网络-关闭 自动路由系统流量
+</span></span><span class="line"><span class="cl">2. 打开clash开关 global选项卡选择一个支持的国家，例如美国，日本，台湾等
+</span></span><span class="line"><span class="cl">3. WiFi-设置-高级-代理-服务器写入127.0.0.1 端口填入7890 排除项填入 1.com
+</span></span><span class="line"><span class="cl">4. 开启Google One VPN
+</span></span><span class="line"><span class="cl">5. 成功后 clash global 选择direct
+</span></span><span class="line"><span class="cl">6. WiFi-高级设置-代理 修改 排除项1.com为任意 比如1.cn。没有排除选项的会造成网页无法打开
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>方法 2：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. clash-设置-网络-关闭 自动路由系统流量
+</span></span><span class="line"><span class="cl">2. clash 挂一个支持的国家，例如美国，日本，台湾等。只用代理模式，不要用全局模式。
+</span></span><span class="line"><span class="cl">3. 在数据卡的设置里，设置一个新的 APN ，把 APN 的代理服务器里面设置为 127.0.0.1:7890
+</span></span><span class="line"><span class="cl">4. 直接用 Google one VPN 连接成功，成功后打开 wifi 和关闭 clash 均能保持连接状态
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">注意：连接成功后记得把clash设置为直连模式，且不可切换APN或关闭clash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h2><ul>
+<li><a href="https://outti.me/25CA97FE-A9DB-4070-95EE-CA8D324F59FA/" target="_blank" rel="noopener noreferrer">开始使用Google One VPN</a></li>
+</ul></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-02-24</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.techkoala.top/google_one_vpn/" data-title="Google One VPN 愉快玩耍指南" data-hashtags="Google,VPN,Openclash"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.techkoala.top/google_one_vpn/" data-hashtag="Google"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="分享到 Pocket" data-sharer="pocket" data-url="https://www.techkoala.top/google_one_vpn/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="分享到 微博" data-sharer="weibo" data-url="https://www.techkoala.top/google_one_vpn/" data-title="Google One VPN 愉快玩耍指南"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="分享到 Evernote" data-sharer="evernote" data-url="https://www.techkoala.top/google_one_vpn/" data-title="Google One VPN 愉快玩耍指南"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/google/">Google</a>,&nbsp;<a href="/tags/vpn/">VPN</a>,&nbsp;<a href="/tags/openclash/">Openclash</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/wi-fi7_phy_synopsis/" class="prev" rel="prev" title="Wi-Fi 7 物理层解读"><i class="fas fa-angle-left fa-fw"></i>Wi-Fi 7 物理层解读</a></div>
+</div>
+<div id="comments"><div id="waline" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/HEIGE-PCloud/DoIt">DoIt</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">TechKoala</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="/lib/waline/waline.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"waline":{"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","emoji":"https://fastly.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","lang":"zh-cn","meta":["nick","mail","link"],"pageSize":10,"serverURL":"https://blog-comments-eight.vercel.app"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":null,"findAllMatches":null,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":null,"ignoreLocation":null,"isCaseSensitive":null,"location":null,"maxResultLength":10,"minMatchCharLength":null,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":null,"type":"fuse","useExtendedSearch":null},"sharerjs":true};</script><script type="text/javascript" src="/lib/waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-166130360-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-166130360-1" async></script></div>
+</body>
+
+</html>
