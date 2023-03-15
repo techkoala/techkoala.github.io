@@ -5,6 +5,10 @@
 
 <!--more-->
 
+> ![更新]
+> 三月份开始，谷歌又对检测方式进行了更改，要求此域名（\*.googleapis.com）和原本的检测服务器来自同一 IP，否则将一直提示`VPN连接中断`
+> 将此网址加入检测风流即可，将`先连接上`章节
+
 ## 机制说明
 
 首先，要想愉快使用，需要明确下面 Google One VPN 的下面几点机制：
@@ -40,9 +44,9 @@
 
 3. 基于第 2 点，即使真正的服务器可以直连，那我们也需要先欺骗 IP 检测服务器，具体机制如下：
 
-{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" caption="机制1-准入 IP 限制" >}}
+{{< image src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" caption="准入 IP 限制" >}}
 
-4. 即便通过了第 3 点连接上服务器后，Google 依然还会在你每使用 1G 流量的后，再次对你的原始 IP 进行检测。如果此时检测到你的 IP 不在上述地区了，就会强制断开 VPN 连接。
+1. 即便通过了第 3 点连接上服务器后，Google 依然还会在你每使用 1G 流量的后，再次对你的原始 IP 进行检测。如果此时检测到你的 IP 不在上述地区了，就会强制断开 VPN 连接。
 
 因此，不仅在于连上，还要避免 1G 断开，才叫做愉快玩耍！So,go on...
 
@@ -53,6 +57,7 @@
 
 ```
 *.cloud.cupronickel.goog
+*.googleapis.com
 ```
 
 于是，我们需要在代理工具（如 clash for android）中，将此连接加入代理清单即可。
@@ -62,6 +67,7 @@
 ```
 payload:
 - DOMAIN-SUFFIX,cloud.cupronickel.goog
+- DOMAIN-SUFFIX,googleapis.com
 ```
 
 手机通过代理后，即可使用 Google One app 成功连接上对应地区的 Google One VPN 服务器
@@ -189,7 +195,7 @@ script:
 
 ### 没有软路由？
 
-那也没关系，你可以在电脑上使用 clash for windows 实现类似的效果（其他设备也是类似，如如 iPhone 上的 stash）。思路如下：
+那也没关系，你可以在电脑上使用 clash for windows 实现类似的效果（其他设备也一样，如 iPhone 上的 stash）。思路如下：
 
 1. clash for windows 的配置文件里要对代理检测服务器进行代理
 2. 手机 WiFi 代理中设置电电脑 IP 以及 7890（clash 默认代理地址）
@@ -224,5 +230,5 @@ script:
 
 ## 参考
 
-- [开始使用Google One VPN](https://outti.me/25CA97FE-A9DB-4070-95EE-CA8D324F59FA/)
+- [开始使用 Google One VPN](https://outti.me/25CA97FE-A9DB-4070-95EE-CA8D324F59FA/)
 
