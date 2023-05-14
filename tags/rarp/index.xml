@@ -35,7 +35,13 @@ MAC addresses for the link layer.</div>
     <a href="#arp" class="header-mark"></a>ARP</h2><p>一句话概括 ARP（Address Resolution Protocol，地址解析协议）的目的就是：负责将<strong>网络层地址</strong>（最常见的就是 IP 地址）解析为/映射到<strong>链路层地址</strong>（MAC 地址）。</p>
 <h3 id="报文结构" class="headerLink">
     <a href="#%e6%8a%a5%e6%96%87%e7%bb%93%e6%9e%84" class="header-mark"></a>报文结构</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp" data-sub-html="<h2>ARP 包结构</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP.webp">
     </a><figcaption class="image-caption">ARP 包结构</figcaption>
     </figure>
 <p>一般我们讨论以太网中的 ARP 报文时候，ARP 数据会被封装在以太网报文中，其中：</p>
@@ -73,7 +79,13 @@ MAC addresses for the link layer.</div>
 <h3 id="代理-arp" class="headerLink">
     <a href="#%e4%bb%a3%e7%90%86-arp" class="header-mark"></a>代理 ARP</h3><p>代理 ARP 是指当 ARP 目标不在同一网段时，网关会拦截该 ARP 请求，然后把自己的 MAC 地址回复给请求者：</p>
 <p><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp" data-sub-html="<h2>代理 ARP</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/ARP_Proxy.webp">
     </a><figcaption class="image-caption">代理 ARP</figcaption>
     </figure>
 但是需要网关需要满足：</p>
@@ -83,12 +95,24 @@ MAC addresses for the link layer.</div>
 </ul>
 <p>假如不存在网关但使用代理 ARP，则情况如下：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/whitout_GW.webp">
     </a><figcaption class="image-caption">代理 ARP</figcaption>
     </figure>
 <p>存在网关的情况下，使用正常 ARP，则情况如下：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp" data-sub-html="<h2>代理 ARP</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/ARP_RARP/with_GW.webp">
     </a><figcaption class="image-caption">代理 ARP</figcaption>
     </figure>
 <p>总结而言：</p>

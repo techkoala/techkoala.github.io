@@ -361,7 +361,13 @@
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/linux_security/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" data-sub-html="<h2>Linux</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png">
     </a><figcaption class="image-caption">Linux</figcaption>
     </figure>
 <blockquote>
@@ -1033,7 +1039,13 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp" data-sub-html="<h2>top 命令</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/top.webp">
     </a><figcaption class="image-caption">top 命令</figcaption>
     </figure>
 <p>按 q 退出，按 h 进入帮助。</p>
@@ -1067,7 +1079,13 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp" data-sub-html="<h2>Htop 命令</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/htop.webp">
     </a><figcaption class="image-caption">Htop 命令</figcaption>
     </figure>
 <h2 id="atop" class="headerLink">
@@ -1081,7 +1099,13 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp" data-sub-html="<h2>atop 命令</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/Process/atop.webp">
     </a><figcaption class="image-caption">atop 命令</figcaption>
     </figure>
 <h2 id="参考" class="headerLink">

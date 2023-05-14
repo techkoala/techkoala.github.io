@@ -82,7 +82,13 @@
 <li>基于第 2 点，即使真正的服务器可以直连，那我们也需要先欺骗 IP 检测服务器，具体机制如下：</li>
 </ol>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" data-sub-html="<h2>准入 IP 限制</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png">
     </a><figcaption class="image-caption">准入 IP 限制</figcaption>
     </figure>
 <ol start="4">
@@ -401,21 +407,45 @@
 </ol>
 <p>下两图展示了 WiFi 发展历程中重要的参数信息的变化：</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/1.png">
     </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/2.png">
     </a>
 <h1 id="6ghz320mhz" class="headerLink">
     <a href="#6ghz320mhz" class="header-mark"></a>6GHz&amp;320MHz</h1><p>6GHz 的频段并非 Wi-Fi 7 首次采用（由 Wi-Fi 6E 引入），但是 Wi-Fi 7 在此基础上将 Wi-Fi 6/6E 最大单信道宽带由 160MHz 提升到了 320MHz 。</p>
 <h2 id="6ghz" class="headerLink">
     <a href="#6ghz" class="header-mark"></a>6GHz</h2><p>随着 6GHz 频段的引入，未来 Wi-Fi 的频段一共将有三部分组成，如下图所示：</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/3.png">
     </a>
 <p>具体到 6GHz 的位置，其可容纳的信道数量如下：</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/4.png">
     </a>
 <p>新的 6GHz 频段 (5925-7125 MHz)，宽度为 1.2 GHz，可容纳 3 或 6 个 320MHz 的频带，4 个 240MHz 的频带，7 个 160MHz 的频带，或 14 个 80MHz 的频带。支持首选扫描信道 (PSC) 的通道 (5, 21, 37, 53, 69, 85, 101, 117, 133, 149, 165, 181, 197) , 进行快速被动扫描。</p>
 <h2 id="320mhz" class="headerLink">
@@ -425,7 +455,13 @@
 <li>320MHz-2（信道号为 63, 127, 191）</li>
 </ul>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/5.png">
     </a>
 <h2 id="冲突" class="headerLink">
     <a href="#%e5%86%b2%e7%aa%81" class="header-mark"></a>冲突</h2><p>虽然一些国家和地区（如美国和欧盟）已经批准 6GHz 中或宽或窄的频段用于 Wi-Fi，但采用 6GHz 也需要考虑如下几种场景可能占用 6GHz 带来冲突：</p>
@@ -444,13 +480,25 @@
 <p>而 QAM 则有更多的符号，每个符号都有相应的相位和幅度值。</p>
 <p>以 16-QAM 为例，通过 QAM 调制可得到 16 个不同的波形，分别代表 0000，0001&hellip;. 这也意味着一共有 16 种符号，一个符号可以传递 4 bit 信息。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png" data-sub-html="<h2>16-QAM示意图</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/6.png">
     </a><figcaption class="image-caption">16-QAM示意图</figcaption>
     </figure>
 <h2 id="qam-是如何工作的" class="headerLink">
     <a href="#qam-%e6%98%af%e5%a6%82%e4%bd%95%e5%b7%a5%e4%bd%9c%e7%9a%84" class="header-mark"></a>QAM 是如何工作的？</h2><p>QAM 是将信号加载到 2 个正交的载波上（通常是正弦和余弦），通过对这两个载波幅度调整并叠加，最终得到相位和幅度都调制过的信号。这两个载波通常被称为 I 信号，另一个被称为 Q 信号，所以这种调制方式也被称为 IQ 调制。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png" data-sub-html="<h2>IQ 调制</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/7.png">
     </a><figcaption class="image-caption">IQ 调制</figcaption>
     </figure>
 <p>由于 QAM 最终调制后的信号包含了相位和幅度的变换，因此 QAM 也被认为相位调制和幅度调制的组合。</p>
@@ -465,19 +513,37 @@
 </ul>
 <p>因此，作为比 Wi-Fi 6 1024-QAM 更高阶的 4096-QAM，数据传输的峰值速率进一步提高 20%。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/8.png">
     </a>
 <h2 id="qam-对-wi-fi-标准速率影响" class="headerLink">
     <a href="#qam-%e5%af%b9-wi-fi-%e6%a0%87%e5%87%86%e9%80%9f%e7%8e%87%e5%bd%b1%e5%93%8d" class="header-mark"></a>QAM 对 Wi-Fi 标准速率影响</h2><p>在 Wi-Fi 标准中，定义了调制和编码方案 MCS（Modulation and Coding Scheme）。MCS 对应一组调制和编码方式。以 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi&#43;6.html" title="WiFi 6" target="_blank" rel="noopener noreferrer">Wi-Fi 6</a> 为例，MCS 索引有 12 个。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png" data-sub-html="<h2>Wi-Fi 6 中 MCS 索引对应的调制方式以及编码率</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/9.png">
     </a><figcaption class="image-caption">Wi-Fi 6 中 MCS 索引对应的调制方式以及编码率</figcaption>
     </figure>
 <p>如果 MCS 为 1，则使用的是 QPSK 的调制方式；如果 MCS 为 11，则使用的是 1024 的调制方式。
 对于每个 MCS 的索引值，根据信道带宽、空间流数和保护间隔（Guard Interval，GI）可以计算出不同的速率。
 计算公式如下：</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png" data-sub-html="<h2>Wi-Fi 标准的速率计算公式</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/10.png">
     </a><figcaption class="image-caption">Wi-Fi 标准的速率计算公式</figcaption>
     </figure>
 <h2 id="代价" class="headerLink">
@@ -490,14 +556,32 @@
     <a href="#mld" class="header-mark"></a>MLD</h1><p>MLD（Multi-Link Device）其实是MLO在物理层（PHY）的体现，传统的WiFi仅仅包含单个链路的连接能力，MLD能够允许一块IC里面包含多个device的连接能力。在之前部分厂商已经具备并实现该技术，如QCA的DBS以及MTK的DBDC，落实到具体的功能为双WiFi技术。</p>
 <p>下图为传统的芯片结构，由两个独立的RF前端，一个基带处理部分，然后对应到上层接口，该方案只可以做到双频单发（DBSC）。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/11.png">
     </a>
 <p>改进后的芯片结构大致如下图，由两个独立的 RF 前端，这两个独立的 RF 前端对应到两个独立的基带处理，然后对应到上层接口，因此可以在一块 IC 内部，做到两个频段同时连接，即双频双发（DBDC）。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/12.png">
     </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/13.png">
     </a>
 <p>802.11be对MLD部分做了一些改动，一个MLD设备由多个AP或者多个STA组成，并且引入新的MAC来标识MLD设备。新增的功能总结大致如下三点：</p>
 <ul>
@@ -509,11 +593,23 @@
     <a href="#ofdma-%e5%a2%9e%e5%bc%ba" class="header-mark"></a>OFDMA 增强</h1><h2 id="ru" class="headerLink">
     <a href="#ru" class="header-mark"></a>RU</h2><p>OFDMA 允许同时提供具有不同带宽需求的多个用户，从而有效利用可用频谱。子载波被分成若干组，每组表示为具有最小尺寸为 26 个子载波（2MHz 宽）和最大尺寸为 996 个子载波（77.8MHz 宽）的资源单元（RU）。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/14.png">
     </a>
 <h2 id="前导码打孔--mru" class="headerLink">
     <a href="#%e5%89%8d%e5%af%bc%e7%a0%81%e6%89%93%e5%ad%94--mru" class="header-mark"></a>前导码打孔 &amp; MRU</h2><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/15.png">
     </a>
 <p>假设 S20 被雷达信号占用：</p>
 <ul>
@@ -524,16 +620,40 @@
 80MHz 允许打孔 20MHz 信道，160MHz 允许打孔 20/40MHz，320MHz 允许打孔 40/80/80+40MHz</p>
 <p>Wi-Fi 7 支持在 EHT PPDU 中使用 MRU，以获得更高的频谱效率，实际上 MRU 就是支持多种 tone 根据需要进行组合，使得 RU 分配更加灵活，减小延迟。</p>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/16.png">
     </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/17.png">
     </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/18.png">
     </a>
 <a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7-PHY/19.png">
     </a>
 <h1 id="参考" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h1><p>[1] Key Advantages of Wi-Fi 7 MediaTek Whitepaper</p>]]></description>
@@ -549,12 +669,24 @@
 <h2 id="wi-fi-7-的发布时间" class="headerLink">
     <a href="#wi-fi-7-%e7%9a%84%e5%8f%91%e5%b8%83%e6%97%b6%e9%97%b4" class="header-mark"></a>Wi-Fi 7 的发布时间</h2><p>IEEE 802.11be EHT 工作组已于 2019 年 5 月成立，802.11be（Wi-Fi 7）的开发工作仍在进行中，整个协议标准将按照两个 Release 发布，Release1 预计在 2021 年将发布第一版草案 Draft1.0，预期在 2022 年底发布标准；Release2 预计在 2022 年初启动，并且在 2024 年底完成标准发布。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png" data-sub-html="<h2>会议进程</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220505143230.png">
     </a><figcaption class="image-caption">会议进程</figcaption>
     </figure>
 <h2 id="wi-fi-7-vs-wi-fi-6" class="headerLink">
     <a href="#wi-fi-7-vs-wi-fi-6" class="header-mark"></a>Wi-Fi 7 vs Wi-Fi 6</h2><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png" data-sub-html="<h2>特性对比</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220427104250.png">
     </a><figcaption class="image-caption">特性对比</figcaption>
     </figure>
 <h2 id="wi-fi-7-支持的新特性" class="headerLink">
@@ -562,7 +694,13 @@
 <h3 id="新频段" class="headerLink">
     <a href="#%e6%96%b0%e9%a2%91%e6%ae%b5" class="header-mark"></a>新频段</h3><p>相比 Wi-Fi 6，7 引入了 6GHz 频段（6e 也有），上下限分别为 5.925 —— 7.125 GHz：
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png" data-sub-html="<h2>频段说明</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/WirelessCommunication/Wi-Fi/7/20220429105054.png">
     </a><figcaption class="image-caption">频段说明</figcaption>
     </figure></p>
 <h3 id="支持最大-320mhz-带宽" class="headerLink">
@@ -1289,7 +1427,13 @@
 <p>找到想要修改的网络连接，右键打开<code>属性</code></p>
 <p>接下来打开<code>Internet 协议版本 4 属性 &gt; 高级</code></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp" data-sub-html="<h2>控制面板设置界面</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/GUI.webp">
     </a><figcaption class="image-caption">控制面板设置界面</figcaption>
     </figure>
 <p>取消勾选<code>自动跃点</code>，填入需要设置的数值即可，有关数值设置的注意事项将在后续说明。</p>
@@ -1306,7 +1450,13 @@
 </div>
 </div><p>获得当前所有的网络连接，其中<code>InterfaceMetric</code>即为接口跃点数的值。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp" data-sub-html="<h2>Powershell 设置界面</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Network_Priority/powershell.webp">
     </a><figcaption class="image-caption">Powershell 设置界面</figcaption>
     </figure>
 <p>找到想要修改的网络连接以及它的 ifIndex (接口索引)值，例如 x，使用命令</p>

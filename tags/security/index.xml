@@ -11,7 +11,13 @@
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/linux_security/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" data-sub-html="<h2>Linux</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png">
     </a><figcaption class="image-caption">Linux</figcaption>
     </figure>
 <blockquote>

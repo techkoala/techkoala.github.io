@@ -107,7 +107,13 @@
 <li>另外在修改文件的时候相当于增加了一份文件的副本，占用了双份的空间。</li>
 </ul>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/overlay.webp" title="/images/Network/OpenWRT_overlay/overlay.webp" data-thumbnail="/images/Network/OpenWRT_overlay/overlay.webp" data-sub-html="<h2>overlay 示意图</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/overlay.webp"
+            srcset="/images/Network/OpenWRT_overlay/overlay.webp, /images/Network/OpenWRT_overlay/overlay.webp 1.5x, /images/Network/OpenWRT_overlay/overlay.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/overlay.webp">
     </a><figcaption class="image-caption">overlay 示意图</figcaption>
     </figure>
 <h2 id="创建新分区" class="headerLink">
@@ -134,24 +140,48 @@
 </div>
 </div><p>打开磁盘管理界面：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/cfdisk.webp" title="/images/Network/OpenWRT_overlay/cfdisk.webp" data-thumbnail="/images/Network/OpenWRT_overlay/cfdisk.webp" data-sub-html="<h2>磁盘界面</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/cfdisk.webp"
+            srcset="/images/Network/OpenWRT_overlay/cfdisk.webp, /images/Network/OpenWRT_overlay/cfdisk.webp 1.5x, /images/Network/OpenWRT_overlay/cfdisk.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/cfdisk.webp">
     </a><figcaption class="image-caption">磁盘界面</figcaption>
     </figure>
 <p>这里可以看到，目前一共有两个已有分区，现在新建一个分区：</p>
 <p>选中 <code>Free Space</code>，再选中 <code>New</code>，输入需要的大小，比如 5G。</p>
 <p>接着选择 <code>primary</code></p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/primary.webp" title="/images/Network/OpenWRT_overlay/primary.webp" data-thumbnail="/images/Network/OpenWRT_overlay/primary.webp" data-sub-html="<h2>选择主分区</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/primary.webp"
+            srcset="/images/Network/OpenWRT_overlay/primary.webp, /images/Network/OpenWRT_overlay/primary.webp 1.5x, /images/Network/OpenWRT_overlay/primary.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/primary.webp">
     </a><figcaption class="image-caption">选择主分区</figcaption>
     </figure>
 <p>选择 <code>Write</code>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/write.webp" title="/images/Network/OpenWRT_overlay/write.webp" data-thumbnail="/images/Network/OpenWRT_overlay/write.webp" data-sub-html="<h2>写入更改</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/write.webp"
+            srcset="/images/Network/OpenWRT_overlay/write.webp, /images/Network/OpenWRT_overlay/write.webp 1.5x, /images/Network/OpenWRT_overlay/write.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/write.webp">
     </a><figcaption class="image-caption">写入更改</figcaption>
     </figure></p>
 <p>输入 <code>yes</code>，完成新分区的创建</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/yes.webp" title="/images/Network/OpenWRT_overlay/yes.webp" data-thumbnail="/images/Network/OpenWRT_overlay/yes.webp" data-sub-html="<h2>确认</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/yes.webp"
+            srcset="/images/Network/OpenWRT_overlay/yes.webp, /images/Network/OpenWRT_overlay/yes.webp 1.5x, /images/Network/OpenWRT_overlay/yes.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/yes.webp">
     </a><figcaption class="image-caption">确认</figcaption>
     </figure>
 <h2 id="格式化分区" class="headerLink">
@@ -166,7 +196,13 @@
 </div>
 </div><p>格式化分区</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/format.webp" title="/images/Network/OpenWRT_overlay/format.webp" data-thumbnail="/images/Network/OpenWRT_overlay/format.webp" data-sub-html="<h2>格式化分区</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/format.webp"
+            srcset="/images/Network/OpenWRT_overlay/format.webp, /images/Network/OpenWRT_overlay/format.webp 1.5x, /images/Network/OpenWRT_overlay/format.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/format.webp">
     </a><figcaption class="image-caption">格式化分区</figcaption>
     </figure>
 <h2 id="挂载新分区" class="headerLink">
@@ -193,12 +229,24 @@
 </div><h2 id="web-界面配置修改" class="headerLink">
     <a href="#web-%e7%95%8c%e9%9d%a2%e9%85%8d%e7%bd%ae%e4%bf%ae%e6%94%b9" class="header-mark"></a>Web 界面配置修改</h2><p>进入 <code>OpenWRT</code> Web 界面的<code>挂载点</code>对配置进行修改：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/openwrt.webp" title="/images/Network/OpenWRT_overlay/openwrt.webp" data-thumbnail="/images/Network/OpenWRT_overlay/openwrt.webp" data-sub-html="<h2>Web 界面</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/openwrt.webp"
+            srcset="/images/Network/OpenWRT_overlay/openwrt.webp, /images/Network/OpenWRT_overlay/openwrt.webp 1.5x, /images/Network/OpenWRT_overlay/openwrt.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/openwrt.webp">
     </a><figcaption class="image-caption">Web 界面</figcaption>
     </figure>
 <p>在<code>挂载点</code>下方点击<code>添加</code>，然后如下配置：</p>
 <figure><a class="lightgallery" href="/images/Network/OpenWRT_overlay/mountpoint.webp" title="/images/Network/OpenWRT_overlay/mountpoint.webp" data-thumbnail="/images/Network/OpenWRT_overlay/mountpoint.webp" data-sub-html="<h2>挂载点配置</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="/images/Network/OpenWRT_overlay/mountpoint.webp"
+            srcset="/images/Network/OpenWRT_overlay/mountpoint.webp, /images/Network/OpenWRT_overlay/mountpoint.webp 1.5x, /images/Network/OpenWRT_overlay/mountpoint.webp 2x"
+            sizes="auto"
+            alt="/images/Network/OpenWRT_overlay/mountpoint.webp">
     </a><figcaption class="image-caption">挂载点配置</figcaption>
     </figure>
 <h2 id="完成" class="headerLink">

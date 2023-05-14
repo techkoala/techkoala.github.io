@@ -82,7 +82,13 @@
 <li>基于第 2 点，即使真正的服务器可以直连，那我们也需要先欺骗 IP 检测服务器，具体机制如下：</li>
 </ol>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png" data-sub-html="<h2>准入 IP 限制</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/Google_One_VPN/Policy1.png">
     </a><figcaption class="image-caption">准入 IP 限制</figcaption>
     </figure>
 <ol start="4">

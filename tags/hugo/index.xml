@@ -51,7 +51,13 @@
 <p>因此，首先我们需要在 Github 新建一个仓库（推荐）用于存储评论。</p>
 <p>接着打开 <code>Settings &gt; Developer settings &gt; OAuth Apps</code> ，点击 <code>New OAuth App</code></p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png" data-sub-html="<h2>新建 OAuth App</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Hugo/OAuth_App.png">
     </a><figcaption class="image-caption">新建 OAuth App</figcaption>
     </figure>
 <p>然后填写信息：</p>

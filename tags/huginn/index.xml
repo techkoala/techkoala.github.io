@@ -11,7 +11,13 @@
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/huginn_backup/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png" data-sub-html="<h2>Huginn</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Huginn/Huginn.png">
     </a><figcaption class="image-caption">Huginn</figcaption>
     </figure>
 <blockquote>

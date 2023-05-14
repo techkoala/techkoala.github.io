@@ -11,7 +11,13 @@
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.top/brief_history_of_symbian/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp" data-sub-html="<h2>Sybian 联盟</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Symbian/symbian.webp">
     </a><figcaption class="image-caption">Sybian 联盟</figcaption>
     </figure>
 <blockquote>

@@ -23,7 +23,13 @@
     <a href="#stunsession-traversal-utilities" class="header-mark"></a>STUN（Session Traversal Utilities）</h3><p>STUN 是 NAT 的 Session Traversal Utilities 的缩写，你可能已经猜到了它的名字，它是一个实用工具的集合，以帮助 NAT 设备穿越内网。简单地说，STUN 允许你的主机 / PC 或内部设备了解它的公共 NAT 的 IP 地址和端口是什么。一旦实现了这一点，你的设备现在可以发送正确的 IP 和端口，其他设备也可以连接到你。但是，它在对称型 NAT 下无法工作，在对称型 NAT 中，你的主机可以得知它的公共 IP 地址，但无法得知它的公共端口（因为，端口是 NAT 随机生成的）。</p>
 <p>STUN 的工作原理很简单。你连接到一个运行 STUN 协议的服务器 (Xbox Live Servers)，它从接收的数据包中读取源 IP 地址和源端口，这些当然会是 NAT 后的（这是我们需要的）。然后 STUN 将这些信息返回给客户端，它的工作就完成了。你的主机现在知道了它的 NAT 后的 IP 和端口，并且会把这些信息发送到其他设备上。</p>
 <figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png" data-sub-html="<h2>STUN 算法</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/STUN_Algorithm.png">
     </a><figcaption class="image-caption">STUN 算法</figcaption>
     </figure>
 <p>如果你还记得，除了<code>对称型 NAT</code> 之外，所有其他类型的 NAT 都不会改变源端口。这意味着当我的主机创建一个 NAT 映射时，它将对所有这种类型的连接使用它，当向互联网上的个设备发送和接收数据包时，它使用同一个映射，因此它使用相同的公共 IP 地址和端口；</p>
@@ -69,7 +75,13 @@
 <h2 id="nat-的四种类型" class="headerLink">
     <a href="#nat-%e7%9a%84%e5%9b%9b%e7%a7%8d%e7%b1%bb%e5%9e%8b" class="header-mark"></a>NAT 的四种类型</h2><h3 id="全锥型-natfull-cone-nat" class="headerLink">
     <a href="#%e5%85%a8%e9%94%a5%e5%9e%8b-natfull-cone-nat" class="header-mark"></a>全锥型 NAT（Full Cone NAT)</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png" data-sub-html="<h2>全锥型 NAT</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Full_Cone_NAT.png">
     </a><figcaption class="image-caption">全锥型 NAT</figcaption>
     </figure>
 <p><code>全锥型 NAT</code> 是静态 NAT，也是唯一一种永久开放端口的 <code>NAT</code>，允许从 <strong>任何外部主机</strong> 进行入站连接。<code>全锥型 NAT</code> 将一个公共 IP 地址和端口映射到 LAN IP 和端口。任何外部主机都可以通过映射的 <code>NAT </code>IP 和端口向 LAN IP 发送数据。但是，如果它试图通过不同的端口发送数据，就会失败。这种类型的 <code>NAT</code> 也被称为端口转发。这是受限制最少的 <code>NAT</code> 类型，唯一的要求是连接在一个特定的端口（客户端打开的端口）。</p>
@@ -79,7 +91,13 @@
 <p><strong>注意：</strong> 端口号不必相同；我可以在 <code>56456</code> 端口上运行我的网站，但创建 <code>NAT</code> 映射，将 <code>80</code> 端口转发到 <code>56456</code> 端口。这样，外部客户端就会认为我的网站在 <code>80</code> 端口上，而在任何其他端口上的连接尝试都会被丢弃。</p>
 <h3 id="受限锥形-natrestricted-cone-nat" class="headerLink">
     <a href="#%e5%8f%97%e9%99%90%e9%94%a5%e5%bd%a2-natrestricted-cone-nat" class="header-mark"></a>受限锥形 NAT（Restricted Cone NAT）</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png" data-sub-html="<h2>受限锥形 NAT</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Restricted_Cone_NAT.png">
     </a><figcaption class="image-caption">受限锥形 NAT</figcaption>
     </figure>
 <p><code>受限锥体 NAT</code> 是<code>动态 NAT</code>，它的工作方式与<code>全锥型 NAT</code> 相同，但会对进站的 IP 地址施加额外的限制。根据限制，唯一的要求是数据包必须从映射的端口进入，并且来自内部客户端已发送数据包的 IP 地址。<strong>亦即需要内部主机首先发起连接的外部主机，才能被接受入站。</strong></p>
@@ -88,7 +106,13 @@
 </blockquote>
 <h3 id="端口受限锥型-natport-restricted-cone-nat" class="headerLink">
     <a href="#%e7%ab%af%e5%8f%a3%e5%8f%97%e9%99%90%e9%94%a5%e5%9e%8b-natport-restricted-cone-nat" class="header-mark"></a>端口受限锥型 NAT（Port Restricted Cone NAT)</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png" data-sub-html="<h2>端口受限锥型 NAT</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Port_Restricted_Cone_NAT.png">
     </a><figcaption class="image-caption">端口受限锥型 NAT</figcaption>
     </figure>
 <p><code>端口受限锥型 NAT</code> 是<code>动态 NAT</code>，它的作用与<code>受限锥形 NAT</code> 完全相同，但同时对端口进行限制。<code>受限锥形 NAT</code> 接受来自外部主机任何源端口的连接，而<code>端口受限锥型 NAT</code> 则进一步要求外部主机的源端口是固定的。</p>
@@ -97,7 +121,13 @@
 </blockquote>
 <h3 id="对称型-natsymmetric-nat" class="headerLink">
     <a href="#%e5%af%b9%e7%a7%b0%e5%9e%8b-natsymmetric-nat" class="header-mark"></a>对称型 NAT（Symmetric NAT）</h3><figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png" data-sub-html="<h2>对称型 NAT</h2>">
-        
+        <img
+            
+            loading="lazy"
+            src="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png"
+            srcset="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png 1.5x, https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png 2x"
+            sizes="auto"
+            alt="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Network/NAT/Symmetric_NAT.png">
     </a><figcaption class="image-caption">对称型 NAT</figcaption>
     </figure>
 <p><code>对称型 NAT</code> 是<code>动态 NAT</code>，它限制的方式与<code>端口受限锥型 NAT</code> 完全相同，但处理 NAT 转换的方式不同。目前讨论的所有类型的 <code>NAT</code> 在 <code>NAT</code> 连接时都 <strong>不会改变源端口</strong>。</p>
