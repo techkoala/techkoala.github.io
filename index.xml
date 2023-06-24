@@ -1,17 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/</link>
+        <link>https://www.techkoala.net/</link>
         <description>TechKoala 的自留地，输入知识/输出笔记，内容包括但不限于 Linux、虚拟机、路由器、网络工具、计算机网络、软件推荐及使用技巧等内容</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 24 Feb 2023 20:22:43 &#43;0800</lastBuildDate>
-            <atom:link href="https://www.techkoala.top/index.xml" rel="self" type="application/rss+xml" />
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 24 Feb 2023 20:22:43 &#43;0800</lastBuildDate>
+            <atom:link href="https://www.techkoala.net/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Google One VPN 愉快玩耍指南</title>
-    <link>https://www.techkoala.top/google_one_vpn/</link>
+    <link>https://www.techkoala.net/google_one_vpn/</link>
     <pubDate>Fri, 24 Feb 2023 20:22:43 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/google_one_vpn/</guid>
+    </author><guid>https://www.techkoala.net/google_one_vpn/</guid>
     <description><![CDATA[<blockquote>
 <p>连接 Google One VPN并避免 1G 断开。</p>
 </blockquote>
@@ -391,10 +391,10 @@
 </ul>]]></description>
 </item><item>
     <title>Wi-Fi 7 物理层解读</title>
-    <link>https://www.techkoala.top/wi-fi7_phy_synopsis/</link>
+    <link>https://www.techkoala.net/wi-fi7_phy_synopsis/</link>
     <pubDate>Fri, 20 Jan 2023 11:20:05 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/wi-fi7_phy_synopsis/</guid>
+    </author><guid>https://www.techkoala.net/wi-fi7_phy_synopsis/</guid>
     <description><![CDATA[<blockquote>
 <p>Wi-Fi 7 物理层变化总结</p>
 </blockquote>
@@ -661,10 +661,10 @@
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h1><p>[1] Key Advantages of Wi-Fi 7 MediaTek Whitepaper</p>]]></description>
 </item><item>
     <title>Wi-Fi 7 概述</title>
-    <link>https://www.techkoala.top/wi-fi7_synopsis/</link>
+    <link>https://www.techkoala.net/wi-fi7_synopsis/</link>
     <pubDate>Fri, 20 Jan 2023 11:03:05 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/wi-fi7_synopsis/</guid>
+    </author><guid>https://www.techkoala.net/wi-fi7_synopsis/</guid>
     <description><![CDATA[<blockquote>
 <p>Wi-Fi 7 变化的总结</p>
 </blockquote>
@@ -720,10 +720,10 @@
 <p>多 AP 间的协同调度的方式有很多，包括 C-OFDMA（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/OFDMA.html" title="OFDMA" target="_blank" rel="noopener noreferrer">Orthogonal Frequency-Division Multiple Access</a>）、CSR（Coordinated Spatial Reuse）、CBF（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E6%B3%A2%E6%9D%9F%E6%88%90%E5%BD%A2.html" title="波束成形" target="_blank" rel="noopener noreferrer">Beamforming</a>）和 JXT（Joint Transmission）等。</p>]]></description>
 </item><item>
     <title>快速调整 Hyper-V 虚拟机磁盘大小</title>
-    <link>https://www.techkoala.top/resize_vm_lvm_disk_size/</link>
+    <link>https://www.techkoala.net/resize_vm_lvm_disk_size/</link>
     <pubDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/resize_vm_lvm_disk_size/</guid>
+    </author><guid>https://www.techkoala.net/resize_vm_lvm_disk_size/</guid>
     <description><![CDATA[<blockquote>
 <p>如何调整已建立的 Hyper-V 虚拟机磁盘大小？本文以 Ubuntu 为例，对此进行介绍。</p>
 </blockquote>
@@ -979,10 +979,10 @@
 </ul>]]></description>
 </item><item>
     <title>不容错过的 Bash 技巧</title>
-    <link>https://www.techkoala.top/bash_tricks/</link>
+    <link>https://www.techkoala.net/bash_tricks/</link>
     <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
+    </author><guid>https://www.techkoala.net/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -1174,10 +1174,10 @@
 </ul>]]></description>
 </item><item>
     <title>Docker 搭建 FreshRSS 专属 RSS 服务 </title>
-    <link>https://www.techkoala.top/frsshrss/</link>
+    <link>https://www.techkoala.net/frsshrss/</link>
     <pubDate>Fri, 28 May 2021 23:25:46 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/frsshrss/</guid>
+    </author><guid>https://www.techkoala.net/frsshrss/</guid>
     <description><![CDATA[<blockquote>
 <p>inoreader 等现有服务要么付费要么有限制，有服务器的话自建 FreshRSS 是一个很好的选择</p>
 </blockquote>
@@ -1337,10 +1337,10 @@
 </ul>]]></description>
 </item><item>
     <title>常用 youtube-dl 命令</title>
-    <link>https://www.techkoala.top/youtube-dl_tricks/</link>
+    <link>https://www.techkoala.net/youtube-dl_tricks/</link>
     <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    </author><guid>https://www.techkoala.net/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>
@@ -1388,10 +1388,10 @@
 </div>]]></description>
 </item><item>
     <title>持久化 Gist file raw 链接</title>
-    <link>https://www.techkoala.top/permalink_gist_raw_file/</link>
+    <link>https://www.techkoala.net/permalink_gist_raw_file/</link>
     <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/permalink_gist_raw_file/</guid>
+    </author><guid>https://www.techkoala.net/permalink_gist_raw_file/</guid>
     <description><![CDATA[<blockquote>
 <p>如何持久化 Gist file raw 链接地址？</p>
 </blockquote>
@@ -1415,10 +1415,10 @@
 </ul>]]></description>
 </item><item>
     <title>Windows 网络连接优先级设置</title>
-    <link>https://www.techkoala.top/windows_10_network_priority/</link>
+    <link>https://www.techkoala.net/windows_10_network_priority/</link>
     <pubDate>Thu, 29 Apr 2021 20:42:25 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/windows_10_network_priority/</guid>
+    </author><guid>https://www.techkoala.net/windows_10_network_priority/</guid>
     <description><![CDATA[<blockquote>
 <p>Windows10 默认优先使用有线连接，但是如需优先使用无线连接，除了拔网线/禁用有线网卡外，还可以通过修改接口跃点数，实现不同网络连接的优先级。</p>
 </blockquote>
@@ -1532,10 +1532,10 @@
 </ul>]]></description>
 </item><item>
     <title>使用 Nginx 实现多服务复用端口</title>
-    <link>https://www.techkoala.top/nginx_port_reuse/</link>
+    <link>https://www.techkoala.net/nginx_port_reuse/</link>
     <pubDate>Tue, 20 Apr 2021 14:17:01 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/nginx_port_reuse/</guid>
+    </author><guid>https://www.techkoala.net/nginx_port_reuse/</guid>
     <description><![CDATA[<blockquote>
 <p>利用 Nginx 在单一服务器上搭建多个同端口的服务</p>
 </blockquote>

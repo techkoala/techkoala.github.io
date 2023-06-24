@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Linux - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/linux/</link>
+        <link>https://www.techkoala.net/tags/linux/</link>
         <description>Linux - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/linux/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/linux/" rel="self" type="application/rss+xml" /><item>
     <title>快速调整 Hyper-V 虚拟机磁盘大小</title>
-    <link>https://www.techkoala.top/resize_vm_lvm_disk_size/</link>
+    <link>https://www.techkoala.net/resize_vm_lvm_disk_size/</link>
     <pubDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/resize_vm_lvm_disk_size/</guid>
+    </author><guid>https://www.techkoala.net/resize_vm_lvm_disk_size/</guid>
     <description><![CDATA[<blockquote>
 <p>如何调整已建立的 Hyper-V 虚拟机磁盘大小？本文以 Ubuntu 为例，对此进行介绍。</p>
 </blockquote>
@@ -265,10 +265,10 @@
 </ul>]]></description>
 </item><item>
     <title>不容错过的 Bash 技巧</title>
-    <link>https://www.techkoala.top/bash_tricks/</link>
+    <link>https://www.techkoala.net/bash_tricks/</link>
     <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
+    </author><guid>https://www.techkoala.net/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -460,10 +460,10 @@
 </ul>]]></description>
 </item><item>
     <title>文件传输系列：SFTP</title>
-    <link>https://www.techkoala.top/sftp/</link>
+    <link>https://www.techkoala.net/sftp/</link>
     <pubDate>Thu, 06 Aug 2020 14:07:53 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/sftp/</guid>
+    </author><guid>https://www.techkoala.net/sftp/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 的继承者</p>
 </blockquote>
@@ -524,10 +524,10 @@
 </ul>]]></description>
 </item><item>
     <title>文件传输系列：rsync</title>
-    <link>https://www.techkoala.top/rsync/</link>
+    <link>https://www.techkoala.net/rsync/</link>
     <pubDate>Wed, 05 Aug 2020 20:58:00 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/rsync/</guid>
+    </author><guid>https://www.techkoala.net/rsync/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 的另一个绝佳替选</p>
 </blockquote>
@@ -787,10 +787,10 @@
 </ul>]]></description>
 </item><item>
     <title>文件传输系列：SCP</title>
-    <link>https://www.techkoala.top/scp/</link>
+    <link>https://www.techkoala.net/scp/</link>
     <pubDate>Sat, 18 Jul 2020 10:28:05 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/scp/</guid>
+    </author><guid>https://www.techkoala.net/scp/</guid>
     <description><![CDATA[<blockquote>
 <p>SCP 就是 SSH 协议的文件传输功能吗？</p>
 </blockquote>
@@ -1005,10 +1005,10 @@
 </ul>]]></description>
 </item><item>
     <title>Virtualbox 共享文件夹权限问题</title>
-    <link>https://www.techkoala.top/virtualbox_file_share_issue/</link>
+    <link>https://www.techkoala.net/virtualbox_file_share_issue/</link>
     <pubDate>Wed, 10 Oct 2018 13:26:54 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/virtualbox_file_share_issue/</guid>
+    </author><guid>https://www.techkoala.net/virtualbox_file_share_issue/</guid>
     <description><![CDATA[<blockquote>
 <p>一行命令解决 Virtualbox 共享文件夹权限问题</p>
 </blockquote>

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Trick - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/trick/</link>
+        <link>https://www.techkoala.net/tags/trick/</link>
         <description>Trick - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/trick/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/trick/" rel="self" type="application/rss+xml" /><item>
     <title>不容错过的 Bash 技巧</title>
-    <link>https://www.techkoala.top/bash_tricks/</link>
+    <link>https://www.techkoala.net/bash_tricks/</link>
     <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
+    </author><guid>https://www.techkoala.net/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -201,10 +201,10 @@
 </ul>]]></description>
 </item><item>
     <title>Vim 小技巧</title>
-    <link>https://www.techkoala.top/vim_tips/</link>
+    <link>https://www.techkoala.net/vim_tips/</link>
     <pubDate>Tue, 19 Jan 2021 19:34:18 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/vim_tips/</guid>
+    </author><guid>https://www.techkoala.net/vim_tips/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Vim 时遇到实用的小技巧</p>
 </blockquote>
@@ -344,10 +344,10 @@
 </ul>]]></description>
 </item><item>
     <title>如何高效搜索？</title>
-    <link>https://www.techkoala.top/how_to_search/</link>
+    <link>https://www.techkoala.net/how_to_search/</link>
     <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/how_to_search/</guid>
+    </author><guid>https://www.techkoala.net/how_to_search/</guid>
     <description><![CDATA[<blockquote>
 <p>如何在互联网上高效地找到自己想要的东西？</p>
 </blockquote>
@@ -572,10 +572,10 @@
 </ul>]]></description>
 </item><item>
     <title>Git Log 使用技巧</title>
-    <link>https://www.techkoala.top/git_log/</link>
+    <link>https://www.techkoala.net/git_log/</link>
     <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/git_log/</guid>
+    </author><guid>https://www.techkoala.net/git_log/</guid>
     <description><![CDATA[<blockquote>
 <p>最常用的 Git Log 技巧令总结</p>
 </blockquote>

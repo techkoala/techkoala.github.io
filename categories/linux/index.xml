@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Linux - 分类 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/categories/linux/</link>
+        <link>https://www.techkoala.net/categories/linux/</link>
         <description>Linux - 分类 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/linux/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/categories/linux/" rel="self" type="application/rss+xml" /><item>
     <title>不容错过的 Bash 技巧</title>
-    <link>https://www.techkoala.top/bash_tricks/</link>
+    <link>https://www.techkoala.net/bash_tricks/</link>
     <pubDate>Fri, 04 Jun 2021 11:06:47 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/bash_tricks/</guid>
+    </author><guid>https://www.techkoala.net/bash_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>一些提升 Bash 使用效率的小技巧</p>
 </blockquote>
@@ -201,10 +201,10 @@
 </ul>]]></description>
 </item><item>
     <title>Linux 系统信息查询</title>
-    <link>https://www.techkoala.top/system_info/</link>
+    <link>https://www.techkoala.net/system_info/</link>
     <pubDate>Sun, 13 Sep 2020 22:35:06 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/system_info/</guid>
+    </author><guid>https://www.techkoala.net/system_info/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 Linux 系统信息查询命令</p>
 </blockquote>
@@ -356,10 +356,10 @@
 </div>]]></description>
 </item><item>
     <title>Linux 安全分析与加固</title>
-    <link>https://www.techkoala.top/linux_security/</link>
+    <link>https://www.techkoala.net/linux_security/</link>
     <pubDate>Sun, 07 Jun 2020 23:22:43 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/linux_security/</guid>
+    </author><guid>https://www.techkoala.net/linux_security/</guid>
     <description><![CDATA[<figure><a class="lightgallery" href="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" title="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" data-thumbnail="https://fastly.jsdelivr.net/gh/techkoala/techkoala.github.io@master/images/Linux/linux.png" data-sub-html="<h2>Linux</h2>">
         <img
             
@@ -749,10 +749,10 @@
 </ul>]]></description>
 </item><item>
     <title>查看 Linux 进程信息</title>
-    <link>https://www.techkoala.top/process/</link>
+    <link>https://www.techkoala.net/process/</link>
     <pubDate>Mon, 02 Mar 2020 17:03:48 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/process/</guid>
+    </author><guid>https://www.techkoala.net/process/</guid>
     <description><![CDATA[<blockquote>
 <p>Linux 中如何查看进程信息？</p>
 </blockquote>
@@ -1119,10 +1119,10 @@
 </ul>]]></description>
 </item><item>
     <title>使用 df 和 du 查看存储信息</title>
-    <link>https://www.techkoala.top/command_df_du/</link>
+    <link>https://www.techkoala.net/command_df_du/</link>
     <pubDate>Thu, 10 Oct 2019 13:36:09 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/command_df_du/</guid>
+    </author><guid>https://www.techkoala.net/command_df_du/</guid>
     <description><![CDATA[<blockquote>
 <p>Linux 中使用 df 和 du 查看磁盘以及文件存储信息的</p>
 </blockquote>

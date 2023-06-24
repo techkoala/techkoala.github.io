@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>DNS - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/dns/</link>
+        <link>https://www.techkoala.net/tags/dns/</link>
         <description>DNS - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/dns/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/dns/" rel="self" type="application/rss+xml" /><item>
     <title>OpenWRT 使用 dnscrypt-proxy2 实现 DoH 查询及分流</title>
-    <link>https://www.techkoala.top/openwrt_doh/</link>
+    <link>https://www.techkoala.net/openwrt_doh/</link>
     <pubDate>Fri, 29 Jan 2021 20:36:35 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/openwrt_doh/</guid>
+    </author><guid>https://www.techkoala.net/openwrt_doh/</guid>
     <description><![CDATA[<blockquote>
 <p>OpenWRT 默认并不支持 DoH 或 DoT，存在 DNS 泄露问题，本文介绍如何 dnscrypt-proxy2 进行加密查询，以及如何与上网插件进行搭配使用</p>
 </blockquote>
@@ -85,10 +85,10 @@
 </ul>]]></description>
 </item><item>
     <title>DNS 报文详解</title>
-    <link>https://www.techkoala.top/dns/</link>
+    <link>https://www.techkoala.net/dns/</link>
     <pubDate>Tue, 20 Oct 2020 13:24:18 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/dns/</guid>
+    </author><guid>https://www.techkoala.net/dns/</guid>
     <description><![CDATA[<blockquote>
 <p>本文主要讲解 DNS 的报文结构</p>
 </blockquote>
@@ -306,10 +306,10 @@
 </ul>]]></description>
 </item><item>
     <title>常用 DNS 服务器</title>
-    <link>https://www.techkoala.top/dns_list/</link>
+    <link>https://www.techkoala.net/dns_list/</link>
     <pubDate>Fri, 21 Aug 2020 18:44:20 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/dns_list/</guid>
+    </author><guid>https://www.techkoala.net/dns_list/</guid>
     <description><![CDATA[<blockquote>
 <p>列举国内外常见的 DNS，方便替换使用</p>
 </blockquote>
@@ -1020,10 +1020,10 @@
 </ul>]]></description>
 </item><item>
     <title>深入浅出 DNS 解析</title>
-    <link>https://www.techkoala.top/dns_update/</link>
+    <link>https://www.techkoala.net/dns_update/</link>
     <pubDate>Thu, 02 Jul 2020 15:48:24 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/dns_update/</guid>
+    </author><guid>https://www.techkoala.net/dns_update/</guid>
     <description><![CDATA[<blockquote>
 <p>DNS 如何工作？更新网站的 DNS 记录的时候发生了什么？更新后必须等待 48 小时才能生效吗？为什么有人看到的是新 IP，有人看到的是旧 IP？</p>
 </blockquote>

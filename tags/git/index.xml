@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Git - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/git/</link>
+        <link>https://www.techkoala.net/tags/git/</link>
         <description>Git - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/git/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/git/" rel="self" type="application/rss+xml" /><item>
     <title>Git Log 使用技巧</title>
-    <link>https://www.techkoala.top/git_log/</link>
+    <link>https://www.techkoala.net/git_log/</link>
     <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/git_log/</guid>
+    </author><guid>https://www.techkoala.net/git_log/</guid>
     <description><![CDATA[<blockquote>
 <p>最常用的 Git Log 技巧令总结</p>
 </blockquote>

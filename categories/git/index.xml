@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Git - 分类 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/categories/git/</link>
+        <link>https://www.techkoala.net/categories/git/</link>
         <description>Git - 分类 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 May 2021 22:22:32 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/git/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 May 2021 22:22:32 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/categories/git/" rel="self" type="application/rss+xml" /><item>
     <title>持久化 Gist file raw 链接</title>
-    <link>https://www.techkoala.top/permalink_gist_raw_file/</link>
+    <link>https://www.techkoala.net/permalink_gist_raw_file/</link>
     <pubDate>Mon, 03 May 2021 22:22:32 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/permalink_gist_raw_file/</guid>
+    </author><guid>https://www.techkoala.net/permalink_gist_raw_file/</guid>
     <description><![CDATA[<blockquote>
 <p>如何持久化 Gist file raw 链接地址？</p>
 </blockquote>
@@ -33,10 +33,10 @@
 </ul>]]></description>
 </item><item>
     <title>Git Log 使用技巧</title>
-    <link>https://www.techkoala.top/git_log/</link>
+    <link>https://www.techkoala.net/git_log/</link>
     <pubDate>Sat, 01 Aug 2020 22:30:52 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/git_log/</guid>
+    </author><guid>https://www.techkoala.net/git_log/</guid>
     <description><![CDATA[<blockquote>
 <p>最常用的 Git Log 技巧令总结</p>
 </blockquote>
@@ -218,10 +218,10 @@
 </ul>]]></description>
 </item><item>
     <title>Github 使用问题</title>
-    <link>https://www.techkoala.top/github_issue/</link>
+    <link>https://www.techkoala.net/github_issue/</link>
     <pubDate>Sun, 10 May 2020 11:25:57 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/github_issue/</guid>
+    </author><guid>https://www.techkoala.net/github_issue/</guid>
     <description><![CDATA[<blockquote>
 <p>总结使用 Github 时遇到的问题以及解决方法</p>
 </blockquote>

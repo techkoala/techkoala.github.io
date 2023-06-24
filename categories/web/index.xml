@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Web - 分类 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/categories/web/</link>
+        <link>https://www.techkoala.net/categories/web/</link>
         <description>Web - 分类 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/web/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/categories/web/" rel="self" type="application/rss+xml" /><item>
     <title>全站迁移到 Vercel</title>
-    <link>https://www.techkoala.top/migrated_to_vercel/</link>
+    <link>https://www.techkoala.net/migrated_to_vercel/</link>
     <pubDate>Wed, 26 Aug 2020 16:18:53 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/migrated_to_vercel/</guid>
+    </author><guid>https://www.techkoala.net/migrated_to_vercel/</guid>
     <description><![CDATA[<blockquote>
 <p>加速访问！</p>
 </blockquote>
@@ -119,10 +119,10 @@
 </ul>]]></description>
 </item><item>
     <title>如何高效搜索？</title>
-    <link>https://www.techkoala.top/how_to_search/</link>
+    <link>https://www.techkoala.net/how_to_search/</link>
     <pubDate>Fri, 14 Aug 2020 12:50:34 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/how_to_search/</guid>
+    </author><guid>https://www.techkoala.net/how_to_search/</guid>
     <description><![CDATA[<blockquote>
 <p>如何在互联网上高效地找到自己想要的东西？</p>
 </blockquote>
@@ -347,10 +347,10 @@
 </ul>]]></description>
 </item><item>
     <title>利用 Netlify 搭建 Koodo Reader</title>
-    <link>https://www.techkoala.top/reader/</link>
+    <link>https://www.techkoala.net/reader/</link>
     <pubDate>Wed, 12 Aug 2020 11:22:58 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/reader/</guid>
+    </author><guid>https://www.techkoala.net/reader/</guid>
     <description><![CDATA[<blockquote>
 <p>搭建自己的在线 EPUB 阅读器</p>
 </blockquote>
@@ -489,10 +489,10 @@
 </ul>]]></description>
 </item><item>
     <title>Hugo 搭配 LoveIt 技巧总结</title>
-    <link>https://www.techkoala.top/hugo_loveit_q_a/</link>
+    <link>https://www.techkoala.net/hugo_loveit_q_a/</link>
     <pubDate>Tue, 12 May 2020 21:54:02 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/hugo_loveit_q_a/</guid>
+    </author><guid>https://www.techkoala.net/hugo_loveit_q_a/</guid>
     <description><![CDATA[<blockquote>
 <p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案</p>
 </blockquote>

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>WirelessCommunication - 分类 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/categories/wirelesscommunication/</link>
+        <link>https://www.techkoala.net/categories/wirelesscommunication/</link>
         <description>WirelessCommunication - 分类 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 20 Jan 2023 11:20:05 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 20 Jan 2023 11:20:05 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/categories/wirelesscommunication/" rel="self" type="application/rss+xml" /><item>
     <title>Wi-Fi 7 物理层解读</title>
-    <link>https://www.techkoala.top/wi-fi7_phy_synopsis/</link>
+    <link>https://www.techkoala.net/wi-fi7_phy_synopsis/</link>
     <pubDate>Fri, 20 Jan 2023 11:20:05 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/wi-fi7_phy_synopsis/</guid>
+    </author><guid>https://www.techkoala.net/wi-fi7_phy_synopsis/</guid>
     <description><![CDATA[<blockquote>
 <p>Wi-Fi 7 物理层变化总结</p>
 </blockquote>
@@ -276,10 +276,10 @@
     <a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h1><p>[1] Key Advantages of Wi-Fi 7 MediaTek Whitepaper</p>]]></description>
 </item><item>
     <title>Wi-Fi 7 概述</title>
-    <link>https://www.techkoala.top/wi-fi7_synopsis/</link>
+    <link>https://www.techkoala.net/wi-fi7_synopsis/</link>
     <pubDate>Fri, 20 Jan 2023 11:03:05 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/wi-fi7_synopsis/</guid>
+    </author><guid>https://www.techkoala.net/wi-fi7_synopsis/</guid>
     <description><![CDATA[<blockquote>
 <p>Wi-Fi 7 变化的总结</p>
 </blockquote>
@@ -335,10 +335,10 @@
 <p>多 AP 间的协同调度的方式有很多，包括 C-OFDMA（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/OFDMA.html" title="OFDMA" target="_blank" rel="noopener noreferrer">Orthogonal Frequency-Division Multiple Access</a>）、CSR（Coordinated Spatial Reuse）、CBF（Coordinated <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E6%B3%A2%E6%9D%9F%E6%88%90%E5%BD%A2.html" title="波束成形" target="_blank" rel="noopener noreferrer">Beamforming</a>）和 JXT（Joint Transmission）等。</p>]]></description>
 </item><item>
     <title>LTE 系列：功率控制</title>
-    <link>https://www.techkoala.top/lte_power_control/</link>
+    <link>https://www.techkoala.net/lte_power_control/</link>
     <pubDate>Mon, 02 Nov 2020 21:16:56 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/lte_power_control/</guid>
+    </author><guid>https://www.techkoala.net/lte_power_control/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 功率控制</p>
 </blockquote>
@@ -419,10 +419,10 @@
 </ul>]]></description>
 </item><item>
     <title>5G 将是一个彻底的失败</title>
-    <link>https://www.techkoala.top/5g_will_be_a_complete_failure/</link>
+    <link>https://www.techkoala.net/5g_will_be_a_complete_failure/</link>
     <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
+    </author><guid>https://www.techkoala.net/5g_will_be_a_complete_failure/</guid>
     <description><![CDATA[<blockquote>
 <p>为什么说 5G 将是一个彻底的失败？</p>
 </blockquote>
@@ -563,10 +563,10 @@
 <p>致敬改革开放 40 周年。</p>]]></description>
 </item><item>
     <title>5G NR 系列：波束赋形</title>
-    <link>https://www.techkoala.top/beamforming/</link>
+    <link>https://www.techkoala.net/beamforming/</link>
     <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/beamforming/</guid>
+    </author><guid>https://www.techkoala.net/beamforming/</guid>
     <description><![CDATA[<blockquote>
 <p>什么是波束赋形？波束赋形的基本原理是什么？5G 怎样实现波束赋形？</p>
 </blockquote>
@@ -829,10 +829,10 @@
 <p>在波束赋形和 Massive MIMO 的加成之下，5G 在 Sub6G 频谱下单载波最多可达 7Gbps 的小区峰值速率，在毫米波频谱下单载波也最多达到了约 4.8Gbps 的小区峰值速率。</p>]]></description>
 </item><item>
     <title>3GPP Releases</title>
-    <link>https://www.techkoala.top/3gpp_releases/</link>
+    <link>https://www.techkoala.net/3gpp_releases/</link>
     <pubDate>Thu, 03 Sep 2020 15:16:34 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/3gpp_releases/</guid>
+    </author><guid>https://www.techkoala.net/3gpp_releases/</guid>
     <description><![CDATA[<blockquote>
 <p>Meanings of 3GPP releases</p>
 </blockquote>
@@ -954,10 +954,10 @@
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：物理信号</title>
-    <link>https://www.techkoala.top/lte_physical_signals/</link>
+    <link>https://www.techkoala.net/lte_physical_signals/</link>
     <pubDate>Thu, 20 Feb 2020 21:02:32 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/lte_physical_signals/</guid>
+    </author><guid>https://www.techkoala.net/lte_physical_signals/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理信号详解</p>
 </blockquote>
@@ -1239,10 +1239,10 @@
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：多天线技术（MIMO）</title>
-    <link>https://www.techkoala.top/lte_mimo/</link>
+    <link>https://www.techkoala.net/lte_mimo/</link>
     <pubDate>Sat, 01 Feb 2020 20:33:29 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/lte_mimo/</guid>
+    </author><guid>https://www.techkoala.net/lte_mimo/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 多天线技术（MIMO）详解</p>
 </blockquote>
@@ -1347,10 +1347,10 @@
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：编码、复用和交织</title>
-    <link>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</link>
+    <link>https://www.techkoala.net/lte_encoding_multiplexing_and_interleaving/</link>
     <pubDate>Fri, 10 Jan 2020 20:54:23 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/lte_encoding_multiplexing_and_interleaving/</guid>
+    </author><guid>https://www.techkoala.net/lte_encoding_multiplexing_and_interleaving/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 数据的编码、复用和交织</p>
 </blockquote>
@@ -1444,10 +1444,10 @@
 </ul>]]></description>
 </item><item>
     <title>LTE 系列：共享信道传输与接收</title>
-    <link>https://www.techkoala.top/lte_transmission_and_reception/</link>
+    <link>https://www.techkoala.net/lte_transmission_and_reception/</link>
     <pubDate>Fri, 22 Nov 2019 21:14:52 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/lte_transmission_and_reception/</guid>
+    </author><guid>https://www.techkoala.net/lte_transmission_and_reception/</guid>
     <description><![CDATA[<blockquote>
 <p>LTE 物理层概要</p>
 </blockquote>

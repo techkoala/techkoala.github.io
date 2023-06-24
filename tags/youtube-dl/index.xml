@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>youtube-dl - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/youtube-dl/</link>
+        <link>https://www.techkoala.net/tags/youtube-dl/</link>
         <description>youtube-dl - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/youtube-dl/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 May 2021 15:19:43 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/youtube-dl/" rel="self" type="application/rss+xml" /><item>
     <title>常用 youtube-dl 命令</title>
-    <link>https://www.techkoala.top/youtube-dl_tricks/</link>
+    <link>https://www.techkoala.net/youtube-dl_tricks/</link>
     <pubDate>Tue, 18 May 2021 15:19:43 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/youtube-dl_tricks/</guid>
+    </author><guid>https://www.techkoala.net/youtube-dl_tricks/</guid>
     <description><![CDATA[<blockquote>
 <p>记录一些常用的 youtube-dl 命令，拯救脑容量。</p>
 </blockquote>

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Hyper-V - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/hyper-v/</link>
+        <link>https://www.techkoala.net/tags/hyper-v/</link>
         <description>Hyper-V - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/hyper-v/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/hyper-v/" rel="self" type="application/rss+xml" /><item>
     <title>快速调整 Hyper-V 虚拟机磁盘大小</title>
-    <link>https://www.techkoala.top/resize_vm_lvm_disk_size/</link>
+    <link>https://www.techkoala.net/resize_vm_lvm_disk_size/</link>
     <pubDate>Thu, 02 Sep 2021 11:25:59 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/resize_vm_lvm_disk_size/</guid>
+    </author><guid>https://www.techkoala.net/resize_vm_lvm_disk_size/</guid>
     <description><![CDATA[<blockquote>
 <p>如何调整已建立的 Hyper-V 虚拟机磁盘大小？本文以 Ubuntu 为例，对此进行介绍。</p>
 </blockquote>
@@ -265,10 +265,10 @@
 </ul>]]></description>
 </item><item>
     <title>Hyper-V 桥接网络</title>
-    <link>https://www.techkoala.top/hyper-v_bridging/</link>
+    <link>https://www.techkoala.net/hyper-v_bridging/</link>
     <pubDate>Wed, 20 May 2020 15:30:24 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/hyper-v_bridging/</guid>
+    </author><guid>https://www.techkoala.net/hyper-v_bridging/</guid>
     <description><![CDATA[<blockquote>
 <p>Hyper-V 桥接模式</p>
 </blockquote>
@@ -318,10 +318,10 @@
 <p>设置虚拟机的 IP 与宿主机的 IP 为同一网段，方便进行连接。</p>]]></description>
 </item><item>
     <title>PVE 安装 Q&amp;A</title>
-    <link>https://www.techkoala.top/pve_q_a/</link>
+    <link>https://www.techkoala.net/pve_q_a/</link>
     <pubDate>Tue, 19 May 2020 15:31:34 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/pve_q_a/</guid>
+    </author><guid>https://www.techkoala.net/pve_q_a/</guid>
     <description><![CDATA[<blockquote>
 <p>PVE 安装过程中遇到的问题以及解决方法</p>
 </blockquote>

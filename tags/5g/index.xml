@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>5G - 标签 - TechKoala - Input/Output</title>
-        <link>https://www.techkoala.top/tags/5g/</link>
+        <link>https://www.techkoala.net/tags/5g/</link>
         <description>5G - 标签 - TechKoala - Input/Output</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.top (TechKoala)</managingEditor>
-            <webMaster>admin@techkoala.top (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.top/tags/5g/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>admin@techkoala.net (TechKoala)</managingEditor>
+            <webMaster>admin@techkoala.net (TechKoala)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</lastBuildDate><atom:link href="https://www.techkoala.net/tags/5g/" rel="self" type="application/rss+xml" /><item>
     <title>5G 将是一个彻底的失败</title>
-    <link>https://www.techkoala.top/5g_will_be_a_complete_failure/</link>
+    <link>https://www.techkoala.net/5g_will_be_a_complete_failure/</link>
     <pubDate>Sat, 03 Oct 2020 00:17:12 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/5g_will_be_a_complete_failure/</guid>
+    </author><guid>https://www.techkoala.net/5g_will_be_a_complete_failure/</guid>
     <description><![CDATA[<blockquote>
 <p>为什么说 5G 将是一个彻底的失败？</p>
 </blockquote>
@@ -150,10 +150,10 @@
 <p>致敬改革开放 40 周年。</p>]]></description>
 </item><item>
     <title>5G NR 系列：波束赋形</title>
-    <link>https://www.techkoala.top/beamforming/</link>
+    <link>https://www.techkoala.net/beamforming/</link>
     <pubDate>Wed, 09 Sep 2020 16:14:29 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/beamforming/</guid>
+    </author><guid>https://www.techkoala.net/beamforming/</guid>
     <description><![CDATA[<blockquote>
 <p>什么是波束赋形？波束赋形的基本原理是什么？5G 怎样实现波束赋形？</p>
 </blockquote>
@@ -416,10 +416,10 @@
 <p>在波束赋形和 Massive MIMO 的加成之下，5G 在 Sub6G 频谱下单载波最多可达 7Gbps 的小区峰值速率，在毫米波频谱下单载波也最多达到了约 4.8Gbps 的小区峰值速率。</p>]]></description>
 </item><item>
     <title>5G NR 系列：如何做到空口 &lt;1ms 的延迟</title>
-    <link>https://www.techkoala.top/5g_time_delay/</link>
+    <link>https://www.techkoala.net/5g_time_delay/</link>
     <pubDate>Mon, 12 Aug 2019 23:14:44 &#43;0800</pubDate><author>
         <name>TechKoala</name>
-    </author><guid>https://www.techkoala.top/5g_time_delay/</guid>
+    </author><guid>https://www.techkoala.net/5g_time_delay/</guid>
     <description><![CDATA[<blockquote>
 <p>无线网络中的时延是如何一步步进化到 5G 中的 &lt;1ms ？</p>
 </blockquote>
