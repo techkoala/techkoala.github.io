@@ -41,7 +41,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.techkoala.net\/nginx_port_reuse\/"
-        },"genre": "posts","keywords": "Software, Nginx, Bitwarden, Trojan, FreshRSS","wordcount":  1857 ,
+        },"genre": "posts","keywords": "Software, Nginx, Bitwarden, Trojan, FreshRSS","wordcount":  1894 ,
         "url": "https:\/\/www.techkoala.net\/nginx_port_reuse\/","datePublished": "2021-04-20T14:17:01+08:00","dateModified": "2023-01-20T11:13:12+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "TechKoala"},"author": {
@@ -126,7 +126,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">TechKoala</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-20">2021-04-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-01-20">2023-01-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1857 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-20">2021-04-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-01-20">2023-01-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1894 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -494,10 +494,10 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">stream {
 </span></span><span class="line"><span class="cl">    map $ssl_preread_server_name $name {
-</span></span><span class="line"><span class="cl">        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
-</span></span><span class="line"><span class="cl">        xxx.techkoala.top trojan;           # Trojan 域名
-</span></span><span class="line"><span class="cl">        xxx.techkoala.top rss;              # FreshRSS 域名
-</span></span><span class="line"><span class="cl">        xxx.techkoala.top xrls;              # Xray 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.net frps-bitwarden;   # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.net trojan;           # Trojan 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.net rss;              # FreshRSS 域名
+</span></span><span class="line"><span class="cl">        xxx.techkoala.net xtls;             # Xray 域名
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">    upstream frps-bitwarden {
 </span></span><span class="line"><span class="cl">        server 127.0.0.1:8080;         # Bitwarden的 frps 端口
@@ -610,8 +610,8 @@
 </span></span><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">        listen 80;
 </span></span><span class="line"><span class="cl">        listen [::]:80;
-</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;                    # Bitwarden 域名
-</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.net;                    # Bitwarden 域名
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.net$request_uri; # Bitwarden 域名
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
@@ -621,7 +621,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.net /etc/nginx/sites-enabled/
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="trojan-相关配置" class="headerLink">
@@ -651,15 +651,15 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">    listen 127.0.0.1:80 default_server;
-</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;             # 自己的域名
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.net;             # 自己的域名
 </span></span><span class="line"><span class="cl">    location / {
 </span></span><span class="line"><span class="cl">        proxy_pass https://www.digitalocean.com; # 伪装的网站
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">}
 </span></span><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">    listen 127.0.0.1:80;
-</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.top;                 # 自己服务器的 IP
-</span></span><span class="line"><span class="cl">    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
+</span></span><span class="line"><span class="cl">    server_name xxx.techkoala.net;                 # 自己服务器的 IP
+</span></span><span class="line"><span class="cl">    return 301 https://xxx.techkoala.net$request_uri;  # 自己的域名
 </span></span><span class="line"><span class="cl">}
 </span></span><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">    listen 0.0.0.0:80;
@@ -675,7 +675,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.net /etc/nginx/sites-enabled/
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="trojan-配置文件" class="headerLink">
@@ -806,20 +806,28 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">        listen 80;
 </span></span><span class="line"><span class="cl">        listen [::]:80;
-</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
-</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.top$request_uri;
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.net;
+</span></span><span class="line"><span class="cl">        return 301 https://xxx.techkoala.net$request_uri;
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">    listen 39955 ssl http2;          # FreshRSS 本地监听端口
-</span></span><span class="line"><span class="cl">    server_name rss.techkoala.top;
-</span></span><span class="line"><span class="cl">    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
-</span></span><span class="line"><span class="cl">    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+</span></span><span class="line"><span class="cl">    #===注意，nginx 1.25.1之后这里需要修改为
+</span></span><span class="line"><span class="cl">    listen 39955 ssl; 
+</span></span><span class="line"><span class="cl">    http2 on;
+</span></span><span class="line"><span class="cl">    #===
+</span></span><span class="line"><span class="cl">    server_name rss.techkoala.net;
+</span></span><span class="line"><span class="cl">    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.net/fullchain.pem;
+</span></span><span class="line"><span class="cl">    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.net/privkey.pem;
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    location / {
 </span></span><span class="line"><span class="cl">       proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
@@ -833,7 +841,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/xxx.techkoala.net /etc/nginx/sites-enabled/
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="xray" class="headerLink">
@@ -860,8 +868,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">        listen 80;
-</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.top;
-</span></span><span class="line"><span class="cl">        if ($host = xxxx.techkoala.top) {
+</span></span><span class="line"><span class="cl">        server_name xxx.techkoala.net;
+</span></span><span class="line"><span class="cl">        if ($host = xxxx.techkoala.net) {
 </span></span><span class="line"><span class="cl">                return 301 https://$host$request_uri;
 </span></span><span class="line"><span class="cl">        }
 </span></span><span class="line"><span class="cl">        return 404;
@@ -869,7 +877,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">server {
 </span></span><span class="line"><span class="cl">        listen 127.0.0.1:23333;
-</span></span><span class="line"><span class="cl">        server_name xxxx.techkoala.top;
+</span></span><span class="line"><span class="cl">        server_name xxxx.techkoala.net;
 </span></span><span class="line"><span class="cl">        location / {
 </span></span><span class="line"><span class="cl">                proxy_pass https://www.digitalocean.com; # 伪装的网站
 </span></span><span class="line"><span class="cl">        }

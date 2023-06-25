@@ -143,10 +143,10 @@ events {
 
 stream {
     map $ssl_preread_server_name $name {
-        xxx.techkoala.top frps-bitwarden;   # Bitwarden 域名
-        xxx.techkoala.top trojan;           # Trojan 域名
-        xxx.techkoala.top rss;              # FreshRSS 域名
-        xxx.techkoala.top xrls;              # Xray 域名
+        xxx.techkoala.net frps-bitwarden;   # Bitwarden 域名
+        xxx.techkoala.net trojan;           # Trojan 域名
+        xxx.techkoala.net rss;              # FreshRSS 域名
+        xxx.techkoala.net xtls;             # Xray 域名
     }
     upstream frps-bitwarden {
         server 127.0.0.1:8080;         # Bitwarden的 frps 端口
@@ -245,8 +245,8 @@ token = xxxxxx                  # frp 验证密钥
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.techkoala.top;                    # Bitwarden 域名
-        return 301 https://xxx.techkoala.top$request_uri; # Bitwarden 域名
+        server_name xxx.techkoala.net;                    # Bitwarden 域名
+        return 301 https://xxx.techkoala.net$request_uri; # Bitwarden 域名
 }
 
 ```
@@ -254,7 +254,7 @@ server {
 链接配置文件
 
 ```
-ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/xxx.techkoala.net /etc/nginx/sites-enabled/
 ```
 
 ### Trojan 相关配置
@@ -266,15 +266,15 @@ ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 ```
 server {
     listen 127.0.0.1:80 default_server;
-    server_name xxx.techkoala.top;             # 自己的域名
+    server_name xxx.techkoala.net;             # 自己的域名
     location / {
         proxy_pass https://www.digitalocean.com; # 伪装的网站
     }
 }
 server {
     listen 127.0.0.1:80;
-    server_name xxx.techkoala.top;                 # 自己服务器的 IP
-    return 301 https://xxx.techkoala.top$request_uri;  # 自己的域名
+    server_name xxx.techkoala.net;                 # 自己服务器的 IP
+    return 301 https://xxx.techkoala.net$request_uri;  # 自己的域名
 }
 server {
     listen 0.0.0.0:80;
@@ -288,7 +288,7 @@ server {
 链接配置文件
 
 ```
-ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/xxx.techkoala.net /etc/nginx/sites-enabled/
 ```
 
 #### Trojan 配置文件
@@ -354,15 +354,19 @@ ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 server {
         listen 80;
         listen [::]:80;
-        server_name xxx.techkoala.top;
-        return 301 https://xxx.techkoala.top$request_uri;
+        server_name xxx.techkoala.net;
+        return 301 https://xxx.techkoala.net$request_uri;
     }
 
 server {
     listen 39955 ssl http2;          # FreshRSS 本地监听端口
-    server_name rss.techkoala.top;
-    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.top/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.top/privkey.pem;
+    #===注意，nginx 1.25.1之后这里需要修改为
+    listen 39955 ssl; 
+    http2 on;
+    #===
+    server_name rss.techkoala.net;
+    ssl_certificate /etc/letsencrypt/live/xxx.techkoala.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xxx.techkoala.net/privkey.pem;
 
     location / {
        proxy_pass http://127.0.0.1:39954;   # 转发到 FreshRSS 容器映射的端口
@@ -374,7 +378,7 @@ server {
 链接配置文件
 
 ```
-ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/xxx.techkoala.net /etc/nginx/sites-enabled/
 ```
 
 ### Xray
@@ -384,8 +388,8 @@ ln -s /etc/nginx/sites-available/xxx.techkoala.top /etc/nginx/sites-enabled/
 ```
 server {
         listen 80;
-        server_name xxx.techkoala.top;
-        if ($host = xxxx.techkoala.top) {
+        server_name xxx.techkoala.net;
+        if ($host = xxxx.techkoala.net) {
                 return 301 https://$host$request_uri;
         }
         return 404;
@@ -393,7 +397,7 @@ server {
 
 server {
         listen 127.0.0.1:23333;
-        server_name xxxx.techkoala.top;
+        server_name xxxx.techkoala.net;
         location / {
                 proxy_pass https://www.digitalocean.com; # 伪装的网站
         }

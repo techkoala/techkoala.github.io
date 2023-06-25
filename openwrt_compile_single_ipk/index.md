@@ -17,7 +17,7 @@
 
 ### 存放路径
 
-```
+```shell
 ~/lede/package
 ```
 

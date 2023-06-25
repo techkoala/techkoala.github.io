@@ -11,7 +11,8 @@
         <name>TechKoala</name>
     </author><guid>https://www.techkoala.net/hugo_loveit_q_a/</guid>
     <description><![CDATA[<blockquote>
-<p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案</p>
+<p>记录使用 Hugo 搭配 LoveIt 搭建本博客遇到的问题以及解决方案
+LoveIt 停更后，迁移到 DoIt 依然适用</p>
 </blockquote>
 <h3 id="1-虚拟机中-hugo-server-无法远程访问" class="headerLink">
     <a href="#1-%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%b8%ad-hugo-server-%e6%97%a0%e6%b3%95%e8%bf%9c%e7%a8%8b%e8%ae%bf%e9%97%ae" class="header-mark"></a>1. 虚拟机中 Hugo server 无法远程访问</h3><p><code>hugo server</code> 默认只会 <code>bind localhost</code></p>
